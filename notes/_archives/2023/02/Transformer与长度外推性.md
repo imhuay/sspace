@@ -10,7 +10,7 @@ top: false
 hidden: true
 -->
 
-> ***Keywords**: Transformer, 长度外推性(Length Extrapolation/Extrapolatable )*
+> ***Keywords**: Transformer, 长度外推性(Length Extrapolation/Extrapolatable)*
 
 <!--START_SECTION:toc-->
 - [背景](#背景)
