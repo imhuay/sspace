@@ -63,7 +63,7 @@
 - [`2025-07-08` 搜索相关阅读](notes/_archives/2022/12/搜索相关阅读.md)
 - [`2025-07-08` 搜索指标](notes/_archives/2022/12/搜索指标.md)
 - [`2025-07-08` 搜索与 NLP](notes/_archives/2022/12/搜索与NLP.md)
-- [`2025-07-08` 基于 SQL 计算信息熵与信息增益](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
+- [`2025-07-08` 常用 LaTeX 公式](notes/_archives/2022/04/LaTeX备忘.md)
 
 
 <!--END_SECTION:recent-->
