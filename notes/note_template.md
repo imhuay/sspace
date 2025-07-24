@@ -1,10 +1,10 @@
-<title>
+title
 ===
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden: true
 -->
 
 <!-- TOC -->
@@ -14,7 +14,7 @@ hidden: false
 
 > algorithms/[xxx](../../../../algorithms/README.md#xxx)
 
-<div align="center"><img src="../../../_assets/Sentence-BERT模型图.png" height="300" /></div>
+<div align="center"><img src="../../../_assets/xxx.png" height="300" /></div>
 
 <table>
 <tr valign="top">
