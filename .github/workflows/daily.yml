@@ -5,13 +5,13 @@ on:
   schedule:
     # Setting it to 00:00 may cause a huge delay, probably because lots of tasks are being executed at that point.
     - cron: '0 22 * * *' # runs at every 06:00 BeiJing Time
-#  push:
-#    branches: [ 'master' ]
-#    paths:
-#      - '.github/workflows/daily.yml'
-#      - 'README.md'
-#      - 'notes/**'
-#      - 'algorithms/**'
+  push:
+    branches: [ 'master' ]
+    paths:
+      - '.github/workflows/daily.yml'
+      - 'README.md'
+      - 'notes/**'
+      - 'algorithms/**'
 
 jobs:
   update-readme:
