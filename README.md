@@ -77,13 +77,13 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 19 hrs 37 mins
+Total Time: 18 hrs 52 mins
 
-Markdown   17 hrs 9 mins   >>>>>>>>>>>>>>>>>>>>>>---   87.42 %
-Vue.js     1 hr 27 mins    >>-----------------------   07.46 %
-Stylus     45 mins         >------------------------   03.88 %
-Other      5 mins          -------------------------   00.47 %
-JSON       4 mins          -------------------------   00.36 %
+Markdown   16 hrs 50 mins  >>>>>>>>>>>>>>>>>>>>>>---   89.21 %
+Vue.js     1 hr 18 mins    >>-----------------------   06.93 %
+Stylus     30 mins         >------------------------   02.69 %
+JSON       4 mins          -------------------------   00.37 %
+Other      4 mins          -------------------------   00.36 %
 ```
 
 <!--END_SECTION:waka-->
