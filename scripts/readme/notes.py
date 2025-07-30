@@ -11,22 +11,14 @@ Subject:
 from __future__ import annotations
 
 import os
-# import os
-# import sys
-# import json
-# import unittest
-# import subprocess
 import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import ClassVar
 
 import yaml
-
-from typing import ClassVar
-from pathlib import Path
-from dataclasses import dataclass
-
 from readme._base import Builder
-from readme.utils import args, ReadmeUtils, TEMP_main_readme_notes_recent_toc
-
+from readme.utils import ReadmeUtils, TEMP_main_readme_notes_recent_toc, args
 
 # TMP_subject_toc = '''### {title}
 #

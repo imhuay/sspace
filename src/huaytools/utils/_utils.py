@@ -13,6 +13,7 @@ from __future__ import annotations
 import inspect
 import logging
 import os
+import platform
 import sys
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s@%(lineno)dL : %(message)s',
@@ -125,3 +126,9 @@ class PythonUtils:
 def get_logger(name: str = None):
     """返回一个 logger"""
     return logging.getLogger(name or PythonUtils.get_caller_name())
+
+
+def is_wsl():
+    """"""
+    return 'wsl' in platform.uname().release.lower()
+    

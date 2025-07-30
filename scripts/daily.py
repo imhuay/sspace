@@ -15,7 +15,7 @@ Subject:
 # except:  # noqa
 #     exit(1)
 
-from huaytools.utils import get_logger
+from huaytools.utils import get_logger, is_wsl
 
 from readme.build import BuildReadme
 
@@ -25,5 +25,6 @@ if __name__ == '__main__':
     """"""
     br = BuildReadme()
     br.build()
-    br.git_push()
+    if not is_wsl():
+        br.git_push()
     logger.info(f'Update Success!')
