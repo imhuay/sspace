@@ -14,6 +14,9 @@ Notes
     - [自然语言处理](#自然语言处理)
     - [传统模型](#传统模型)
     - [数据结构/算法](#数据结构算法)
+    - [LLM 应用](#llm-应用)
+    - [LLM 研究](#llm-研究)
+    - [论文笔记](#论文笔记)
 - [Engineerings](#engineerings)
     - [Python](#python)
     - [Tools](#tools)
@@ -30,8 +33,8 @@ Notes
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Transformer 常见问题 📌](_archives/2022/05/Transformer常见问题.md)
+- [`2025-08-02` git-删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md)
 - [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md)
-- [`2025-07-08` 语言模型](_archives/2022/10/语言模型.md)
 - [`2025-07-08` 电商领域的 NER](_archives/2022/12/电商NER.md)
 - [`2025-07-08` 电商搜索](_archives/2022/12/电商搜索.md)
 - [`2025-07-08` 滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
@@ -40,6 +43,9 @@ Notes
 - [`2025-07-08` 搜索相关阅读](_archives/2022/12/搜索相关阅读.md)
 - [`2025-07-08` 搜索指标](_archives/2022/12/搜索指标.md)
 - [`2025-07-08` 搜索与 NLP](_archives/2022/12/搜索与NLP.md)
+- [`2025-07-08` 常用 LaTeX 公式](_archives/2022/04/LaTeX备忘.md)
+- [`2025-07-08` 基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md)
+- [`2025-07-08` 基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md)
 
 
 <!--END_SECTION:recent-->
@@ -56,7 +62,7 @@ Notes
 <table>
 
 <tr>
-<td rowspan="3"  valign="top" width="1000">
+<td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 深度学习
 - [基础](010-深度学习.md#基础)
@@ -75,13 +81,15 @@ Notes
     - [不平衡学习](010-深度学习.md#不平衡学习)
 
 </td>
-<td rowspan="3"  valign="top" width="1000">
+<td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 自然语言处理
 - [基础](030-自然语言处理.md#基础)
     - [命名实体识别](030-自然语言处理.md#命名实体识别)
 - [应用](030-自然语言处理.md#应用)
     - [知识图谱](030-自然语言处理.md#知识图谱)
+        - [同义词挖掘](030-自然语言处理.md#同义词挖掘)
+        - [上下位挖掘](030-自然语言处理.md#上下位挖掘)
     - [搜索](030-自然语言处理.md#搜索)
 - [工具](030-自然语言处理.md#工具)
     - [HuggingFace](030-自然语言处理.md#huggingface)
@@ -89,7 +97,7 @@ Notes
 - [资源](030-自然语言处理.md#资源)
 
 </td>
-<td valign="top" width="1000">
+<td colspan="2" valign="top" width="1000">
 
 ### 传统模型
 - [XGBoost](020-机器学习.md#xgboost)
@@ -100,8 +108,7 @@ Notes
 <tr></tr>
 
 <tr>
-</td>
-<td valign="top" width="1000">
+<td colspan="2" valign="top" width="1000">
 
 ### 数据结构/算法
 - [技巧](000-数据结构与算法.md#技巧)
@@ -114,7 +121,38 @@ Notes
 </td>
 </tr>
 
+<tr></tr>
+
+<tr>
+<td colspan="3" valign="top" width="1000">
+
+### LLM 应用
+- [使用记录](040-LLM应用.md#使用记录)
+
+</td>
+
+<td colspan="3" valign="top" width="1000">
+
+### LLM 研究
+
+
+</td>
+</tr>
+
+<tr></tr>
+
+<tr>
+<td colspan="6" valign="top" width="1000">
+
+### 论文笔记
+- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](./_archives/2022/12/synonym.2012.KDD.01/README.md)
+- [[ner.2023.arxiv.01] GLiNER | 基于 Transformer 的通用 NER 模型](./_archives/2023/04/ner.2023.arxiv.01/README.md)
+
+</td>
+</tr>
+
 </table>
+
 
 
 ## Engineerings
@@ -136,7 +174,7 @@ Notes
 <td valign="top" width="1000">
 
 ### Tools
-- [Git](299-Tools.md#git)
+- [Git](998-Tools.md#git)
 
 </td>
 </tr>

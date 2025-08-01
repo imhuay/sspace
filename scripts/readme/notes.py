@@ -96,8 +96,11 @@ class SubjectInfo:
             if not m:
                 raise ValueError(self.path)
             toc = m.group(1).strip()
-            toc = toc.replace('(#', f'({self.path.name}#')
-            # toc = f'{self.head}\n{toc}'
+            # toc = toc.replace('(#', f'({self.path.name}#')
+            lns = toc.split('\n')
+            for i in range(len(lns)):
+                lns[i] = lns[i].replace('(#', f'({self.path.name}#', 1)
+            toc = '\n'.join(lns)
             self._toc = toc
         return self._toc
 

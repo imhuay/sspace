@@ -1,8 +1,8 @@
-电商 NER 标签体系
+商品 NER 标签设计
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2019%3A19%3A17&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
@@ -10,7 +10,7 @@ top: false
 hidden: true
 -->
 
-> 关键词: cross-border e-commerce (跨境电商), NER
+> ***Keywords**: NER*
 
 <!-- TOC -->
 - [常见标签](#常见标签)
@@ -21,6 +21,7 @@ hidden: true
 
 
 ## 常见标签
+> [RaNER命名实体识别-英语-电商领域-large · 模型库](https://www.modelscope.cn/models/iic/nlp_raner_named-entity-recognition_english-large-ecom)
 
 - 类目词
 - 修饰词/限定词
@@ -33,7 +34,7 @@ hidden: true
     - 场景
 - 核心词
     - 产品
-- 品牌 (修饰 or 核心 ?)
+- 品牌 (修饰词/核心词)
 
 
 ## 标注准则

@@ -1,4 +1,4 @@
-实体链接
+使用 LLM 优化简历
 ===
 <!--START_SECTION:badge-->
 
@@ -10,18 +10,12 @@ top: false
 hidden: true
 -->
 
-> ***Keywords**: keyword*
+> ***Keywords**: LLM应用*
 
 <!--START_SECTION:toc-->
-- [论文](#论文)
-- [其他](#其他)
+- [参考](#参考)
 <!--END_SECTION:toc-->
 
 
-## 论文
-
-- [[2015.wsdm.el.01] Fast and Space-Efficient Entity Linking in Queries](./2015.wsdm.el.01.md)
-
-## 其他
-
-- [实体链接相关概念](./实体链接相关概念.md)
+## 参考
+- [my-resume/notes/使用LLM优化简历.md at master · imhuay/my-resume](https://github.com/imhuay/my-resume/blob/master/notes/%E4%BD%BF%E7%94%A8LLM%E4%BC%98%E5%8C%96%E7%AE%80%E5%8E%86.md)

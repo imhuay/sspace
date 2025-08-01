@@ -12,8 +12,7 @@ hidden: false
 
 <!-- TOC -->
 - [评价指标](#评价指标)
-- [NER 一般方法](#ner-一般方法)
-- [NER 类型体系](#ner-类型体系)
+- [NER 类型](#ner-类型)
 - [参考阅读](#参考阅读)
 <!-- TOC -->
 
@@ -22,11 +21,9 @@ hidden: false
 实体维度的准召
 > [TokenClassificationEvaluator - huggingface/evaluate](https://huggingface.co/docs/evaluate/v0.3.0/en/package_reference/evaluator_classes#evaluate.TokenClassificationEvaluator)
 
-## NER 一般方法
 
-
-## NER 类型体系
-- [电商 NER 体系](电商NER标签体系.md)
+## NER 类型
+- [商品 NER 标签设计](商品NER标签设计.md)
 
 
 ## 参考阅读

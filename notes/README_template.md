@@ -14,6 +14,9 @@ Notes
     - [自然语言处理](#自然语言处理)
     - [传统模型](#传统模型)
     - [数据结构/算法](#数据结构算法)
+    - [LLM 应用](#llm-应用)
+    - [LLM 研究](#llm-研究)
+    - [论文笔记](#论文笔记)
 - [Engineerings](#engineerings)
     - [Python](#python)
     - [Tools](#tools)
@@ -42,19 +45,19 @@ Notes
 <table>
 
 <tr>
-<td rowspan="3"  valign="top" width="1000">
+<td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 深度学习
 {dl}
 
 </td>
-<td rowspan="3"  valign="top" width="1000">
+<td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 自然语言处理
 {nlp}
 
 </td>
-<td valign="top" width="1000">
+<td colspan="2" valign="top" width="1000">
 
 ### 传统模型
 {ml}
@@ -65,8 +68,7 @@ Notes
 <tr></tr>
 
 <tr>
-</td>
-<td valign="top" width="1000">
+<td colspan="2" valign="top" width="1000">
 
 ### 数据结构/算法
 {algo}
@@ -74,7 +76,37 @@ Notes
 </td>
 </tr>
 
+<tr></tr>
+
+<tr>
+<td colspan="3" valign="top" width="1000">
+
+### LLM 应用
+{llm-app}
+
+</td>
+
+<td colspan="3" valign="top" width="1000">
+
+### LLM 研究
+{llm-res}
+
+</td>
+</tr>
+
+<tr></tr>
+
+<tr>
+<td colspan="6" valign="top" width="1000">
+
+### 论文笔记
+{paper}
+
+</td>
+</tr>
+
 </table>
+
 
 
 ## Engineerings
