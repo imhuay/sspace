@@ -11,19 +11,17 @@ Subject:
 from __future__ import annotations
 
 import os
-# import sys
-# import json
-# import unittest
 import subprocess
+
+from readme._base import build
+from readme.algorithms import AlgorithmsBuilder
+from readme.notes import NotesBuilder
+from readme.utils import ReadmeUtils, args, readme_tag
 
 # from typing import *
 # from pathlib import Path
 # from collections import defaultdict
 
-from readme._base import build
-from readme.algorithms import AlgorithmsBuilder
-from readme.notes import NotesBuilder
-from readme.utils import args, ReadmeUtils, readme_tag
 
 
 class BuildReadme:

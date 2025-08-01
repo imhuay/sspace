@@ -12,14 +12,13 @@ Notes
 - [Researches](#researches)
     - [深度学习](#深度学习)
     - [自然语言处理](#自然语言处理)
-    - [数据结构与算法](#数据结构与算法)
-    - [机器学习](#机器学习)
-    - [计算机视觉](#计算机视觉)
+    - [传统模型](#传统模型)
+    - [数据结构/算法](#数据结构算法)
 - [Engineerings](#engineerings)
     - [Python](#python)
-    - [C++](#c)
+    - [Tools](#tools)
     - [Linux](#linux)
-    - [大数据](#大数据)
+    - [BigData](#bigdata)
 - [WIKI](#wiki)
 <!-- TOC -->
 
@@ -41,14 +40,15 @@ Notes
 ## Researches
 
 <table>
+
 <tr>
-<td rowspan="3" valign="top" width="1000">
+<td rowspan="3"  valign="top" width="1000">
 
 ### 深度学习
 {dl}
 
 </td>
-<td valign="top" width="1000">
+<td rowspan="3"  valign="top" width="1000">
 
 ### 自然语言处理
 {nlp}
@@ -56,8 +56,8 @@ Notes
 </td>
 <td valign="top" width="1000">
 
-### 数据结构与算法
-{algo}
+### 传统模型
+{ml}
 
 </td>
 </tr>
@@ -65,16 +65,11 @@ Notes
 <tr></tr>
 
 <tr>
-<td valign="top" width="1000">
-
-### 机器学习
-{ml}
-
 </td>
 <td valign="top" width="1000">
 
-### 计算机视觉
-{cv}
+### 数据结构/算法
+{algo}
 
 </td>
 </tr>
@@ -93,13 +88,13 @@ Notes
 </td>
 <td valign="top" width="1000">
 
-### C++
-{cpp}
+### Tools
+{tools}
 
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
 <td valign="top" width="1000">
@@ -110,7 +105,7 @@ Notes
 </td>
 <td valign="top" width="1000">
 
-### 大数据
+### BigData
 {bigdata}
 
 </td>

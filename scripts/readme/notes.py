@@ -108,7 +108,7 @@ class SubjectInfo:
                 _info = ReadmeUtils.get_annotation_info(self.txt)
             except:  # noqa
                 raise ValueError(self.path)
-            self._info = yaml.safe_load(_info)
+            self._info = yaml.safe_load(_info)  # type: ignore
         return self._info
 
     @property
@@ -130,10 +130,10 @@ class NoteInfo:
 @dataclass
 class Note:
     path: Path
-    _info: NoteInfo = None
-    _title: str = None
-    _first_commit_date: str = None
-    _last_commit_date: str = None
+    _info: NoteInfo | None = None
+    _title: str | None = None
+    _first_commit_date: str | None = None
+    _last_commit_date: str | None = None
     sort_by_first_commit: ClassVar[bool] = True
 
     def __post_init__(self):
@@ -294,8 +294,11 @@ class NotesBuilder(Builder):
 
         txt = ReadmeUtils.replace_tag_content('recent', txt, self.recent_toc)
 
-        contents = {s.toc_id: s.toc for s in self.subjects}
-        txt = txt.format(**contents)
+        # contents = {s.toc_id: s.toc for s in self.subjects}
+        # txt = txt.format(**contents)
+        for s in self.subjects:
+            toc_id, toc = s.toc_id, s.toc
+            txt = txt.replace(f'{{{toc_id}}}', toc)
 
         with self._fp_notes_readme.open('w', encoding='utf8') as f:
             f.write(txt)
@@ -303,7 +306,7 @@ class NotesBuilder(Builder):
     @property
     def toc_append(self):
         with self._fp_notes_readme.open(encoding='utf8') as f:
-            return RE.note_toc.search(f.read()).group(1).strip()
+            return RE.note_toc.search(f.read()).group(1).strip()  # type: ignore
 
     @property
     def recent_toc(self):
@@ -326,7 +329,7 @@ class NotesBuilder(Builder):
             # return content.replace('](', f']({self._fp_notes.name}/')
             txt = f.read()
         txt = ReadmeUtils.get_tag_content('notes', txt)
-        return txt.replace('](', f']({self._fp_notes.name}/')
+        return txt.replace('](', f']({self._fp_notes.name}/')  # type: ignore
 
 
 if __name__ == '__main__':

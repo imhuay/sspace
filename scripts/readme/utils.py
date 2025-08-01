@@ -12,14 +12,9 @@ from __future__ import annotations
 
 import os
 import re
-# import sys
-# import json
-# import unittest
 import subprocess
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
-# from typing import *
-# from collections import defaultdict
 from pathlib import Path
 
 from markdown.extensions import toc
@@ -203,11 +198,11 @@ class ReadmeUtils:
 
 @dataclass
 class ReadmeTag:
-    index: str = None
-    recent: str = None
-    algorithms: str = None
-    notes: str = None
-    waka: str = None
+    index: str | None = None
+    recent: str | None = None
+    algorithms: str | None = None
+    notes: str | None = None
+    waka: str | None = None
 
     def __post_init__(self):
         for f in fields(self):
@@ -242,6 +237,7 @@ class args:  # noqa
 TEMP_main_readme_notes_recent_toc = '''{toc_top}
 {toc_recent}
 '''
+
 TEMP_main_readme_algorithms_concat = '''## {title}
 
 {toc}
@@ -276,6 +272,7 @@ TEMP_algorithm_toc_table = '''<table>  <!-- invalid: frame="void", style="width:
 
 </tr>
 </table>'''
+
 TEMP_algorithm_readme = '''# {title}
 
 {toc}

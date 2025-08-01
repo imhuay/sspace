@@ -11,7 +11,7 @@ BERT+CRF 等备忘
     - CRF 中的转移概率矩阵，会考虑上个 label 来预测下一个 label；
 - 可以去掉 CRF 吗？
     - 可以；如果模型的拟合能力足够强，...
-- 标准的 CRF 有两类特征函数，一类是 ，一类是
+- 标准的 CRF 有两类特征函数，一类是**状态特征函数（State Feature Function）**，一类是**转移特征函数（Transition Feature Function）**;
 - 在 BERT+CRF 中，第一类特征函数的计算由 BERT 取代，CRF 层仅提供第二类特征
 
 

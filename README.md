@@ -34,14 +34,13 @@
 - [Researches](#researches)
     - [深度学习](#深度学习)
     - [自然语言处理](#自然语言处理)
-    - [数据结构与算法](#数据结构与算法)
-    - [机器学习](#机器学习)
-    - [计算机视觉](#计算机视觉)
+    - [传统模型](#传统模型)
+    - [数据结构/算法](#数据结构算法)
 - [Engineerings](#engineerings)
     - [Python](#python)
-    - [C++](#c)
+    - [Tools](#tools)
     - [Linux](#linux)
-    - [大数据](#大数据)
+    - [BigData](#bigdata)
 - [WIKI](#wiki)
 
 <!--END_SECTION:index-->
@@ -63,7 +62,6 @@
 - [`2025-07-08` 搜索相关阅读](notes/_archives/2022/12/搜索相关阅读.md)
 - [`2025-07-08` 搜索指标](notes/_archives/2022/12/搜索指标.md)
 - [`2025-07-08` 搜索与 NLP](notes/_archives/2022/12/搜索与NLP.md)
-- [`2025-07-08` 常用 LaTeX 公式](notes/_archives/2022/04/LaTeX备忘.md)
 
 
 <!--END_SECTION:recent-->
@@ -229,12 +227,16 @@ YAML       3 mins          -------------------------   00.40 %
 ## Researches
 
 <table>
+
 <tr>
-<td rowspan="3" valign="top" width="1000">
+<td rowspan="3"  valign="top" width="1000">
 
 ### 深度学习
 - [基础](notes/010-深度学习.md#基础)
-- [模型](notes/010-深度学习.md#模型)
+    - [激活函数](notes/010-深度学习.md#激活函数)
+    - [损失函数](notes/010-深度学习.md#损失函数)
+    - [过拟合与正则化](notes/010-深度学习.md#过拟合与正则化)
+- [深度模型](notes/010-深度学习.md#深度模型)
     - [CNN](notes/010-深度学习.md#cnn)
     - [RNN](notes/010-深度学习.md#rnn)
     - [Attention](notes/010-深度学习.md#attention)
@@ -246,7 +248,7 @@ YAML       3 mins          -------------------------   00.40 %
     - [不平衡学习](notes/010-深度学习.md#不平衡学习)
 
 </td>
-<td valign="top" width="1000">
+<td rowspan="3"  valign="top" width="1000">
 
 ### 自然语言处理
 - [基础](notes/030-自然语言处理.md#基础)
@@ -262,13 +264,8 @@ YAML       3 mins          -------------------------   00.40 %
 </td>
 <td valign="top" width="1000">
 
-### 数据结构与算法
-- [技巧](notes/000-数据结构与算法.md#技巧)
-    - [二叉树递归技巧](notes/000-数据结构与算法.md#二叉树递归技巧)
-    - [递归与动态规划](notes/000-数据结构与算法.md#递归与动态规划)
-- [模板](notes/000-数据结构与算法.md#模板)
-    - [滑动窗口](notes/000-数据结构与算法.md#滑动窗口)
-    - [链表](notes/000-数据结构与算法.md#链表)
+### 传统模型
+- [XGBoost](notes/020-机器学习.md#xgboost)
 
 </td>
 </tr>
@@ -276,16 +273,16 @@ YAML       3 mins          -------------------------   00.40 %
 <tr></tr>
 
 <tr>
-<td valign="top" width="1000">
-
-### 机器学习
-- [模型](notes/020-机器学习.md#模型)
-
 </td>
 <td valign="top" width="1000">
 
-### 计算机视觉
-
+### 数据结构/算法
+- [技巧](notes/000-数据结构与算法.md#技巧)
+    - [二叉树递归技巧](notes/000-数据结构与算法.md#二叉树递归技巧)
+    - [递归与动态规划](notes/000-数据结构与算法.md#递归与动态规划)
+- [模板](notes/000-数据结构与算法.md#模板)
+    - [滑动窗口](notes/000-数据结构与算法.md#滑动窗口)
+    - [链表](notes/000-数据结构与算法.md#链表)
 
 </td>
 </tr>
@@ -311,13 +308,13 @@ YAML       3 mins          -------------------------   00.40 %
 </td>
 <td valign="top" width="1000">
 
-### C++
-
+### Tools
+- [Git](notes/299-Tools.md#git)
 
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
 <td valign="top" width="1000">
@@ -331,7 +328,7 @@ YAML       3 mins          -------------------------   00.40 %
 </td>
 <td valign="top" width="1000">
 
-### 大数据
+### BigData
 - [SQL](notes/220-大数据.md#sql)
 - [Spark](notes/220-大数据.md#spark)
     - [Spark SQL](notes/220-大数据.md#spark-sql)
