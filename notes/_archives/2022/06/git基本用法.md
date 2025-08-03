@@ -1,4 +1,4 @@
-git 的基本使用
+git 基本用法
 ===
 <!--START_SECTION:badge-->
 

@@ -20,7 +20,6 @@ Notes
 - [Engineerings](#engineerings)
     - [Python](#python)
     - [Tools](#tools)
-    - [Linux](#linux)
     - [BigData](#bigdata)
 - [WIKI](#wiki)
 <!-- TOC -->
@@ -65,7 +64,7 @@ Notes
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
 <td colspan="2" valign="top" width="1000">
@@ -76,7 +75,7 @@ Notes
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
 <td colspan="3" valign="top" width="1000">
@@ -94,7 +93,7 @@ Notes
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
 <td colspan="6" valign="top" width="1000">
@@ -118,7 +117,7 @@ Notes
 {python}
 
 </td>
-<td valign="top" width="1000">
+<td rowspan='3' valign="top" width="1000">
 
 ### Tools
 {tools}
@@ -129,12 +128,6 @@ Notes
 <tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
-<td valign="top" width="1000">
-
-### Linux
-{linux}
-
-</td>
 <td valign="top" width="1000">
 
 ### BigData
