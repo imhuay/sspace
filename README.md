@@ -1,7 +1,7 @@
 <!-- <div style="text-align: center"> -->
 <div align="center">  <!-- style="text-align: center" 在 GitHub 主页不生效 -->
 
-# Keep on Your Studying!
+# Huay's Space
 
 [![wakatime](https://wakatime.com/badge/user/c840568d-e4b1-4c63-ade0-03856283d319.svg)](https://wakatime.com/@c840568d-e4b1-4c63-ade0-03856283d319)
 [![daily update](https://github.com/imhuay/studies/actions/workflows/daily.yml/badge.svg?branch=master)](https://github.com/imhuay/studies/actions?query=workflow:daily)
