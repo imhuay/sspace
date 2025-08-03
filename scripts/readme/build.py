@@ -13,10 +13,11 @@ from __future__ import annotations
 import os
 import subprocess
 
-from readme._base import build
-from readme.algorithms import AlgorithmsBuilder
-from readme.notes import NotesBuilder
-from readme.utils import ReadmeUtils, args, readme_tag
+from _base import build
+
+from algorithms import AlgorithmsBuilder
+from notes import NotesBuilder
+from utils import ReadmeUtils, args, readme_tag
 
 # from typing import *
 # from pathlib import Path

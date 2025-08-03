@@ -2,12 +2,22 @@ Github Action 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
-> 官方文档：[Workflows - GitHub Docs](https://docs.github.com/cn/actions/using-workflows)
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [tools]
+-->
 
-<!-- TOC -->
+> ***Keywords**: GithubAction备忘*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [工作流程语法](#工作流程语法)
     - [触发器 - `on`](#触发器---on)
     - [作业 - `jobs`](#作业---jobs)
@@ -19,9 +29,11 @@ Github Action 备忘
     - [添加 Actions secrets](#添加-actions-secrets)
     - [添加工作流状态徽章](#添加工作流状态徽章)
 - [GitHub Action 推荐](#github-action-推荐)
-<!-- TOC -->
+<!--END_SECTION:toc-->
+
 ---
 
+> 官方文档：[Workflows - GitHub Docs](https://docs.github.com/cn/actions/using-workflows)
 
 ## 工作流程语法
 > [GitHub Actions 的工作流程语法](https://docs.github.com/cn/actions/using-workflows/workflow-syntax-for-github-actions)

@@ -1,16 +1,30 @@
-Linux 后台执行
+后台运行
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+level: 0
+tag: [linux]
+-->
 
+> ***Keywords**: linux*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [`&` 指令（需要保持终端运行）](#-指令需要保持终端运行)
     - [`>/dev/null 2>&1` 详解](#devnull-21-详解)
 - [`nohup` 指令（不需要保持终端运行）](#nohup-指令不需要保持终端运行)
     - [关闭进程](#关闭进程)
 - [把执行中的命令转到后台](#把执行中的命令转到后台)
+<!--END_SECTION:toc-->
 
 ---
 

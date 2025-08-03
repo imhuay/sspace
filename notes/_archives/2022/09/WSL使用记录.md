@@ -2,11 +2,22 @@ WSL2 使用记录
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: false
+tag: [linux]
+-->
 
-<!-- TOC -->
+> ***Keywords**: WSL*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [安装 WSL2](#安装-wsl2)
     - [官方推荐设置](#官方推荐设置)
 - [环境配置](#环境配置)
@@ -19,8 +30,9 @@ WSL2 使用记录
     - [路径](#路径)
 - [FAQ](#faq)
     - [fatal: unable to access 'https://github.com/xxx.git'](#fatal-unable-to-access-httpsgithubcomxxxgit)
-<!-- TOC -->
+<!--END_SECTION:toc-->
 
+---
 
 ## 安装 WSL2
 > [WSL 的手动安装步骤 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)

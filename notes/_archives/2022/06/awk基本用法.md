@@ -1,19 +1,32 @@
-`awk` 基本用法
+`awk` 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [linux]
+-->
 
+> ***Keywords**: linux, awk*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [`awk` 批量处理行](#awk-批量处理行)
     - [基本使用](#基本使用)
     - [Reference](#reference)
     - [内建变量](#内建变量)
     - [内建函数](#内建函数)
-    - [示例](#示例)
-        - [正则过滤](#正则过滤)
-        - [一行转多行](#一行转多行)
+- [示例](#示例)
+    - [正则过滤](#正则过滤)
+    - [一行转多行](#一行转多行)
+<!--END_SECTION:toc-->
 
 ---
 
@@ -46,10 +59,11 @@ awk [选项参数] 'script' 文件
 
 ### 内建函数
 
-### 示例
-#### 正则过滤
+## 示例
 
-#### 一行转多行
+### 正则过滤
+
+### 一行转多行
 **输入**
 ```
 齐@@1##河@@1##美@@0##食@@0##小@@1##镇@@1

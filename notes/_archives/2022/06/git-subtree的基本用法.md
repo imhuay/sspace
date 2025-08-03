@@ -2,10 +2,23 @@
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [git]
+-->
 
+> ***Keywords**: git*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
+- [参考](#参考)
 - [基本用法](#基本用法)
     - [Tips](#tips)
 - [使用场景](#使用场景)
@@ -16,8 +29,11 @@
     - [注意事项](#注意事项)
 - [常见报错](#常见报错)
     - [`git subtree split` 时报 `Merge with strategy ours failed.`](#git-subtree-split-时报-merge-with-strategy-ours-failed)
+<!--END_SECTION:toc-->
 
 ---
+
+## 参考
 - 参考文档
     - [git subtree教程 - SegmentFault 思否](https://segmentfault.com/a/1190000012002151)
 

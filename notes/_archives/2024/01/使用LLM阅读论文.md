@@ -1,13 +1,15 @@
-利用 LLM 阅读论文
+使用 LLM 阅读论文
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-02%2000%3A35%3A22&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
 top: false
+draft: false
 hidden: true
+tag: [llm_app]
 -->
 
 > ***Keywords**: LLM应用*

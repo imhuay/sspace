@@ -1,15 +1,31 @@
-class method 中 `self` 的含义
+类方法中 `self` 的含义
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+level: 0
+tag: [python]
+-->
 
+> ***Keywords**: python*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [本质](#本质)
 - [使用场景](#使用场景)
     - [动态修改成员函数](#动态修改成员函数)
 - [参考](#参考)
+<!--END_SECTION:toc-->
+
+---
 
 ## 本质
 

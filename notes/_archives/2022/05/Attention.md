@@ -1,13 +1,25 @@
-Attention
+Attention 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: true
+tag: [dl_model]
+-->
 
+> ***Keywords**: Attention*
+
+<!--START_SECTION:toc-->
 - [Multi-head Self Attention](#multi-head-self-attention)
     - [前向过程（PyTorch 实现）](#前向过程pytorch-实现)
+<!--END_SECTION:toc-->
+
+---
 
 ## Multi-head Self Attention
 

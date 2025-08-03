@@ -2,10 +2,22 @@ SQL 字符串处理
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [bigdata_sql]
+-->
 
+> ***Keywords**: SQL字符串处理*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [参考文档](#参考文档)
 - [常规](#常规)
     - [小写](#小写)
@@ -16,6 +28,9 @@ SQL 字符串处理
     - [正则替换](#正则替换)
     - [正则切分](#正则切分)
     - [正则抽取](#正则抽取)
+<!--END_SECTION:toc-->
+
+---
 
 ## 参考文档
 - [Presto Documentation](https://prestodb.io/docs/current/)

@@ -2,12 +2,25 @@ Shell 脚本备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: true
+tag: [linux]
+-->
 
+> ***Keywords**: Linux, Shell*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [Tips](#tips)
     - [不使用 sh 命令，直接运行 shell 脚本的方法](#不使用-sh-命令直接运行-shell-脚本的方法)
+<!--END_SECTION:toc-->
 
 ---
 

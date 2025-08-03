@@ -1,13 +1,15 @@
-git-删除历史已提交文件
+批量删除历史已提交文件
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-02%2000%3A35%3A22&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
 top: false
+draft: false
 hidden: false
+tag: [git]
 -->
 
 > ***Keywords**: git*

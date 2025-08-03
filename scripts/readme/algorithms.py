@@ -10,22 +10,17 @@ Subject:
 """
 from __future__ import annotations
 
-# import os
-# import sys
-# import unittest
 import os
 import re
-
-from typing import ClassVar
-from pathlib import Path
-from dataclasses import dataclass, field
 from collections import defaultdict
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import ClassVar
 
 import yaml
+from _base import Builder
 
-# from huaytools.utils import MarkdownUtils
-from readme.utils import args, ReadmeUtils, MarkdownUtils
-from readme._base import Builder
+from utils import MarkdownUtils, ReadmeUtils, args
 
 
 @dataclass(unsafe_hash=True)
@@ -246,7 +241,7 @@ class Problem:
                 txt = f.read()
             try:
                 info_str = ReadmeUtils.get_annotation_info(txt)
-                self._info = yaml.safe_load(info_str.strip())
+                self._info = yaml.safe_load(info_str.strip())  # type: ignore
             except:  # noqa
                 raise ValueError(self._path)
         return self._info
@@ -334,7 +329,7 @@ class AlgorithmsBuilder(Builder):
         with self._fp_algo_readme.open(encoding='utf8') as f:
             txt = f.read()
         section = ReadmeUtils.get_tag_content('toc', txt)
-        return section.replace('](', f']({self._fp_algo_readme.relative_to(args.fp_repo)}')
+        return section.replace('](', f']({self._fp_algo_readme.relative_to(args.fp_repo)}')  # type: ignore
 
     @property
     def toc_append(self):

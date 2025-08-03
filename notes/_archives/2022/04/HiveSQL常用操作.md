@@ -1,16 +1,29 @@
-Hive SQL 常用操作
+HiveSQL 常用操作
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [bigdata_sql]
+-->
 
+> ***Keywords**: HiveSQL*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [正则](#正则)
     - [常用正则](#常用正则)
 - [常用参数](#常用参数)
 - [窗口函数-排序](#窗口函数-排序)
 - [分段采样](#分段采样)
+- [行转列、侧视图](#行转列侧视图)
 - [`case when` 基本用法](#case-when-基本用法)
 - [加载自定义 UDF](#加载自定义-udf)
 - [加载 transform](#加载-transform)
@@ -20,6 +33,9 @@ Hive SQL 常用操作
 - [建表](#建表)
 - [加载 hdfs 数据](#加载-hdfs-数据)
 - [查看表信息](#查看表信息)
+<!--END_SECTION:toc-->
+
+---
 
 ## 正则
 > Java 正则表达式 | 菜鸟教程 | https://www.runoob.com/java/java-regular-expressions.html

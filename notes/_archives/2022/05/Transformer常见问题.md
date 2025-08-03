@@ -1,12 +1,16 @@
-Transformer 常见问题
+Transformer 常见面试问题
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
-top: true
+date: 2022-06-08 10:35:25
+top: false
+draft: false
+hidden: false
+tag: [dl_bert]
 -->
 
 - [Transformer Encoder 代码](#transformer-encoder-代码)
@@ -23,7 +27,7 @@ top: true
         - [为什么 Transformer 中使用的是乘性 Attention（点积），而不是加性 Attention？](#为什么-transformer-中使用的是乘性-attention点积而不是加性-attention)
         - [Attention 计算中 Scaled 操作的目的是什么？](#attention-计算中-scaled-操作的目的是什么)
         - [在 Softmax 之前加上 Mask 的作用是什么？](#在-softmax-之前加上-mask-的作用是什么)
-    - [Add & Norm](#add--norm)
+    - [Add \& Norm](#add--norm)
         - [加入残差的作用是什么？](#加入残差的作用是什么)
         - [加入 LayerNorm 的作用是什么？](#加入-layernorm-的作用是什么)
         - [Pre-LN 和 Post-LN 的区别](#pre-ln-和-post-ln-的区别)
@@ -33,6 +37,7 @@ top: true
 - [BERT 相关面试题](#bert-相关面试题)
 - [参考资料](#参考资料)
 
+---
 
 ## Transformer Encoder 代码
 

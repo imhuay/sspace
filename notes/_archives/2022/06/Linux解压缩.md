@@ -2,9 +2,29 @@ Linux 解压缩
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [linux]
+-->
+
+> ***Keywords**: linux*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
+- [`tar` 解压缩](#tar-解压缩)
+    - [tar.gz 格式](#targz-格式)
+    - [tar.bz2 格式](#tarbz2-格式)
+- [`zip/unzip` 解压缩](#zipunzip-解压缩)
+<!--END_SECTION:toc-->
+
+---
 
 ## `tar` 解压缩
 

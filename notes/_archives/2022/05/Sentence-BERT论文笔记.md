@@ -1,12 +1,20 @@
-Sentence-BERT
+Sentence-BERT 论文笔记
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [dl_embed]
+-->
 
+> ***Keywords**: Sentence-BERT*
 
+<!--START_SECTION:toc-->
 - [相关资料](#相关资料)
     - [相关阅读](#相关阅读)
 - [模型结构](#模型结构)
@@ -18,7 +26,9 @@ Sentence-BERT
     - [为什么加入一个线性层后比直接学习距离的效果更好？](#为什么加入一个线性层后比直接学习距离的效果更好)
     - [为什么采用 `(u, v, |u-v|)` 的方式进行特征组合？](#为什么采用-u-v-u-v-的方式进行特征组合)
 - [TODO 关键词](#todo-关键词)
+<!--END_SECTION:toc-->
 
+---
 
 ## 相关资料
 - 【GitHub】[UKPLab/sentence-transformers: Multilingual Sentence & Image Embeddings with BERT](https://github.com/UKPLab/sentence-transformers)

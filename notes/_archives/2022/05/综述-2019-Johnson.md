@@ -1,11 +1,20 @@
-数据不平衡专题
+综述-2019-Johnson
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [dl_unbalanced]
+-->
 
+> ***Keywords**: 综述-2019-Johnson*
+
+<!--START_SECTION:toc-->
 - [概述](#概述)
     - [评价指标](#评价指标)
     - [机器学习中的一般方法](#机器学习中的一般方法)
@@ -20,6 +29,10 @@
         - [Focal Loss](#focal-loss)
         - [Cost‑sensitive deep neural network (CSDNN)](#costsensitive-deep-neural-network-csdnn)
 - [参考资料](#参考资料)
+<!--END_SECTION:toc-->
+
+---
+> 介绍了目前在深度学习中常用的不平衡学习方法，主要包括从数据角度和算法角度提出的方法；
 
 ## 概述
 

@@ -2,10 +2,18 @@ XGBoost 学习笔记
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 
+<!--info
+top: false
+draft: true
+hidden: true
+tag: [ml]
+-->
+
+<!--START_SECTION:toc-->
 - [Boosting 方法](#boosting-方法)
     - [AdaBoost 算法](#adaboost-算法)
     - [前向分步算法](#前向分步算法)
@@ -13,7 +21,9 @@ XGBoost 学习笔记
 - [学习算法：GBDT](#学习算法gbdt)
 - [优化](#优化)
 - [CART 树](#cart-树)
+<!--END_SECTION:toc-->
 
+---
 
 ## Boosting 方法
 

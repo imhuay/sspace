@@ -39,7 +39,7 @@ jobs:
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        python scripts/daily.py
+        python scripts/readme/main.py
         #git add -u
         #git commit -m 'Auto-Update README'
         #git push

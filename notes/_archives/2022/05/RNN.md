@@ -1,11 +1,20 @@
-RNN
+RNN 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: false
+tag: [dl_model]
+-->
 
+> ***Keywords**: RNN*
+
+<!--START_SECTION:toc-->
 - [RNN](#rnn)
     - [RNN 的前向过程](#rnn-的前向过程)
 - [LSTM](#lstm)
@@ -20,6 +29,10 @@ RNN
     - [常见问题](#常见问题-1)
         - [GRU 中各门的作用](#gru-中各门的作用)
         - [GRU 与 LSTM 的区别](#gru-与-lstm-的区别)
+
+<!--END_SECTION:toc-->
+
+---
 
 ## RNN
 

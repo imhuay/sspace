@@ -1,10 +1,26 @@
-BERT+CRF 等备忘
+BERT + CRF 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-02%2000%3A35%3A22&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: true
+tag: [dl_bert]
+-->
+
+> ***Keywords**: bert*
+
+<!--START_SECTION:toc-->
+
+<!--END_SECTION:toc-->
+
+---
+
+
 > [ BERT中进行NER为什么没有使用CRF，我们使用DL进行序列标注问题的时候CRF是必备么？ - 知乎](https://www.zhihu.com/question/358892919)
 - 加入 CRF 的原因？
     - 引入 CRF，是为了建模标注序列内部的依赖或约束；

@@ -38,15 +38,13 @@ toc_id: python
 
 
 ## 设计模式
-> [Python 设计模式](_archives/2022/09/设计模式.md)
+> [Python 设计模式](./_archives/2022/09/设计模式.md)
 
 ## 备忘
 - [requirements.txt 语法备忘](./_archives/2022/09/python-requirements语法.md)
-- [Pycharm 常用配置](./_archives/2022/07/PyCharm常用配置.md)
-    - [常用插件列表](./_archives/2022/07/PyCharm常用配置.md#常用插件)
+- [Pycharm 常用配置](./_archives/2022/07/PyCharm配置.md)
+    - [常用插件列表](./_archives/2022/07/PyCharm配置.md#常用插件)
 - [pip & conda 国内镜像](./_archives/2022/06/python国内镜像源.md)
-- [Python 标准项目结构]()
-    - TODO
 
 ### 第三方库
 

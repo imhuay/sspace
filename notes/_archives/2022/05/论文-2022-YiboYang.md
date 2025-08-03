@@ -1,18 +1,29 @@
-Do We Really Need a Learnable Classifier at the End of Deep Neural Network?
+论文-2022-YiboYang
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
-> https://arxiv.org/abs/2203.09081
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [dl_unbalanced]
+-->
 
+> ***Keywords**: 论文-2022-YiboYang*
+
+<!--START_SECTION:toc-->
 - [摘要](#摘要)
 - [引言](#引言)
 - [代码](#代码)
     - [生成 ETF](#生成-etf)
+<!--END_SECTION:toc-->
 
 ---
+> Do We Really Need a Learnable Classifier at the End of Deep Neural Network? | https://arxiv.org/abs/2203.09081
+>> 基于“神经坍缩”现象，使用**等角紧框架**向量初始化分类头且不参与训练，以缓解不平衡问题
 
 ## 摘要
 - 用于**分类**的神经网络模型通常由两部分组成：一个输出表示特征的**主干网络**（backbone network）和一个输出 logits 的**线性分类器**（linear classifier）；

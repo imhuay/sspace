@@ -1,13 +1,15 @@
-常用 LaTeX 公式
+LaTeX in Markdown 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-25%2002%3A00%3A05&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
 top: false
+draft: false
 hidden: false
+tag: [tools]
 -->
 
 <!--START_SECTION:toc-->

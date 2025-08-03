@@ -15,9 +15,9 @@ Subject:
 # except:  # noqa
 #     exit(1)
 
-from huaytools.utils import get_logger, is_wsl
+from build import BuildReadme
 
-from readme.build import BuildReadme
+from huaytools.utils import get_logger, is_wsl
 
 logger = get_logger()
 

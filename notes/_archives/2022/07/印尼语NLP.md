@@ -1,10 +1,24 @@
-印尼语 NLP
+印尼语NLP
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: true
+tag: [nlp_data]
+-->
+
+> ***Keywords**: 印尼语NLP*
+
+<!--START_SECTION:toc-->
+- [资源](#资源)
+<!--END_SECTION:toc-->
+
+---
 
 
 ## 资源

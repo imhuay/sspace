@@ -1,12 +1,24 @@
-git 基本用法
+`git` 基本用法
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
-> 官方文档：https://git-scm.com/book/zh
+<!--info
+top: false
+draft: true
+hidden: true
+level: 1
+tag: [git]
+-->
 
+> ***Keywords**: git*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [常见错误](#常见错误)
 - [基本命令](#基本命令)
     - [删除分支](#删除分支)
@@ -20,8 +32,10 @@ git 基本用法
 - [修改 commit 的 author 信息](#修改-commit-的-author-信息)
 - [常用统计](#常用统计)
     - [统计 commit 次数](#统计-commit-次数)
+<!--END_SECTION:toc-->
 
 ---
+> 官方文档：https://git-scm.com/book/zh
 
 ## 常见错误
 

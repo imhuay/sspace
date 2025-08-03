@@ -2,19 +2,40 @@ Markdown 简历工具
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: true
+draft: false
+hidden: false
+level: 2
+tag: [tools]
+-->
 
-<!-- TOC -->
+> ***Keywords**: 简历*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [GitHub 项目](#github-项目)
+    - [vuepress-theme-resume](#vuepress-theme-resume)
     - [komomoo/vuepress-theme-resume](#komomoovuepress-theme-resume)
     - [CyC2018/Markdown-Resume](#cyc2018markdown-resume)
 - [网页版](#网页版)
 - [简历技巧](#简历技巧)
-<!-- TOC -->
+<!--END_SECTION:toc-->
+
+---
 
 ## GitHub 项目
+
+### vuepress-theme-resume
+> [imhuay/vuepress-theme-resume: 一个简洁的 markdown 简历](https://github.com/imhuay/vuepress-theme-resume)
+>> 修改自 [komomoo/vuepress-theme-resume](https://github.com/komomoo/vuepress-theme-resume)
+
+<details><summary><b>History</b></summary>
 
 ### komomoo/vuepress-theme-resume
 > [komomoo/vuepress-theme-resume: 🐈 书写简洁优雅的前端程序员 markdown 简历，由 vuepress 驱动](https://github.com/komomoo/vuepress-theme-resume)
@@ -48,6 +69,8 @@ yarn dev # 或 npm run dev
 
 # 编辑位置：example/README.md
 ```
+
+</details>
 
 ### CyC2018/Markdown-Resume
 > [CyC2018/Markdown-Resume: ⭐️ Markdown 简历模版](https://github.com/CyC2018/Markdown-Resume)

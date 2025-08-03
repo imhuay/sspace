@@ -33,41 +33,55 @@
 - [Algorithm Codings](#algorithm-codings)
 - [Researches](#researches)
     - [深度学习](#深度学习)
+        - [Transformer/BERTs 🏗️](#transformerberts-️)
     - [自然语言处理](#自然语言处理)
-    - [传统模型](#传统模型)
+        - [NER](#ner)
+        - [知识图谱](#知识图谱)
+    - [LLM](#llm)
+        - [最新进展 🚀](#最新进展-)
+    - [机器学习](#机器学习)
     - [数据结构/算法](#数据结构算法)
-    - [LLM 应用](#llm-应用)
-    - [LLM 研究](#llm-研究)
-    - [论文笔记](#论文笔记)
+    - [论文笔记 📝](#论文笔记-)
 - [Engineerings](#engineerings)
     - [Python](#python)
+        - [工具](#工具-1)
+        - [第三方库](#第三方库)
     - [Tools](#tools)
-    - [Linux](#linux)
-    - [BigData](#bigdata)
-- [WIKI](#wiki)
+    - [Design Pattern](#design-pattern)
+    - [Big Data](#big-data)
+        - [SQL](#sql)
+- [Wiki](#wiki)
+- [Drafts](#drafts)
 
 <!--END_SECTION:index-->
 
 </td>
-<td valign="top" width="1000">
+<td valign="top" width="2000">
 
 ## Recently 📖
 <!--START_SECTION:recent-->
 
-- [`2025-07-08` Transformer 常见问题 📌](notes/_archives/2022/05/Transformer常见问题.md)
-- [`2025-08-02` git-删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
+- [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown简历工具.md)
+- [`2025-08-05` `uv` 备忘 ⏳](notes/_archives/2025/08/python-uv备忘.md)
+- [`2025-08-02` 批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
 - [`2025-07-08` 链表常用操作备忘](notes/_archives/2022/10/链表模板.md)
-- [`2025-07-08` 电商领域的 NER](notes/_archives/2022/12/电商NER.md)
-- [`2025-07-08` 电商搜索](notes/_archives/2022/12/电商搜索.md)
+- [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md)
+- [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md)
+- [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md)
+- [`2025-07-08` 综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md)
+- [`2025-07-08` 类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md)
+- [`2025-07-08` 电商领域的 NER ⏳](notes/_archives/2022/12/电商NER.md)
+- [`2025-07-08` 电商搜索 ⏳](notes/_archives/2022/12/电商搜索.md)
+- [`2025-07-08` 爱因斯坦标记法](notes/_archives/2022/05/爱因斯坦标记法.md)
 - [`2025-07-08` 滑动窗口模板](notes/_archives/2022/10/滑动窗口模板.md)
 - [`2025-07-08` 树形递归技巧](notes/_archives/2022/10/树形递归技巧.md)
-- [`2025-07-08` 数仓基础概念](notes/_archives/2023/01/数仓基础.md)
-- [`2025-07-08` 搜索相关阅读](notes/_archives/2022/12/搜索相关阅读.md)
-- [`2025-07-08` 搜索指标](notes/_archives/2022/12/搜索指标.md)
+- [`2025-07-08` 数仓基础概念 ⏳](notes/_archives/2023/01/数仓基础.md)
+- [`2025-07-08` 搜索相关阅读 ⏳](notes/_archives/2022/12/搜索相关阅读.md)
+- [`2025-07-08` 搜索指标 ⏳](notes/_archives/2022/12/搜索指标.md)
 - [`2025-07-08` 搜索与 NLP](notes/_archives/2022/12/搜索与NLP.md)
-- [`2025-07-08` 常用 LaTeX 公式](notes/_archives/2022/04/LaTeX备忘.md)
-- [`2025-07-08` 基于 SQL 计算信息熵与信息增益](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
-- [`2025-07-08` 基于 BERT/MLM 的查询扩展方法](notes/_archives/2022/12/qe-mlm.md)
+- [`2025-07-08` 建造者模式 (Python 实现) ⏳](notes/_archives/2022/09/设计模式-建造者模式.md)
+- [`2025-07-08` 工厂模式 (Python 实现)](notes/_archives/2022/09/设计模式-工厂模式.md)
+- [`2025-07-08` 基于 SQL 计算信息熵与信息增益 ⏳](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
 
 
 <!--END_SECTION:recent-->
@@ -81,13 +95,13 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 14 hrs 8 mins
+Total Time: 22 hrs 19 mins
 
-Markdown   12 hrs 50 mins  >>>>>>>>>>>>>>>>>>>>>>>--   90.79 %
-Python     55 mins         >>-----------------------   06.50 %
-Stylus     9 mins          -------------------------   01.18 %
-JSON       8 mins          -------------------------   01.02 %
-YAML       3 mins          -------------------------   00.40 %
+Markdown   17 hrs 12 mins  >>>>>>>>>>>>>>>>>>>------   77.09 %
+Python     3 hrs 3 mins    >>>----------------------   13.67 %
+Stylus     1 hr 15 mins    >------------------------   05.67 %
+Vue.js     40 mins         >------------------------   03.05 %
+JSON       4 mins          -------------------------   00.33 %
 ```
 
 <!--END_SECTION:waka-->
@@ -238,116 +252,134 @@ YAML       3 mins          -------------------------   00.40 %
 <td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 深度学习
-- [基础](notes/010-深度学习.md#基础)
-    - [激活函数](notes/010-深度学习.md#激活函数)
-    - [损失函数](notes/010-深度学习.md#损失函数)
-    - [过拟合与正则化](notes/010-深度学习.md#过拟合与正则化)
-- [深度模型](notes/010-深度学习.md#深度模型)
-    - [CNN](notes/010-深度学习.md#cnn)
-    - [RNN](notes/010-深度学习.md#rnn)
-    - [Attention](notes/010-深度学习.md#attention)
-    - [Transformer/BERTs](notes/010-深度学习.md#transformerberts)
-- [专题](notes/010-深度学习.md#专题)
-    - [编程框架](notes/010-深度学习.md#编程框架)
-    - [表示学习](notes/010-深度学习.md#表示学习)
-    - [迁移学习](notes/010-深度学习.md#迁移学习)
-    - [不平衡学习](notes/010-深度学习.md#不平衡学习)
+- [过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md)
+- [激活函数 ⏳](notes/_archives/2022/05/激活函数.md)
+- [损失函数 ⏳](notes/_archives/2022/05/损失函数.md)
+
+#### Transformer/BERTs 🏗️
+
+- [Transformer 常见面试问题](notes/_archives/2022/05/Transformer常见问题.md)
+- [Transformer Wiki ⏳](notes/_archives/2022/05/TransformerWiki.md)
+- [BERT + CRF 备忘 ⏳](notes/_archives/2022/04/bert_crf备忘.md)
+
+<!-- omit in toc -->
+#### 模型
+
+- [RNN 备忘 ⏳](notes/_archives/2022/05/RNN.md)
+- [CNN 备忘 ⏳](notes/_archives/2022/05/CNN.md)
+- [Attention 备忘 ⏳](notes/_archives/2022/05/Attention.md)
+
+<!-- omit in toc -->
+#### 框架
+
+- [爱因斯坦标记法](notes/_archives/2022/05/爱因斯坦标记法.md)
+- [HuggingFace 离线使用](notes/_archives/2022/06/HuggingFace离线使用.md)
+
+<!-- omit in toc -->
+#### 表示学习
+
+- [基于对比学习的表示学习训练框架 ⏳](notes/_archives/2022/05/基于对比学习的表示学习训练框架.md)
+- [基于互信息的表示学习 ⏳](notes/_archives/2022/05/基于互信息的表示学习.md)
+- [向后兼容（Backward-Compatible）的表示学习](notes/_archives/2022/05/向后兼容的表示学习.md)
+- [Sentence-BERT 论文笔记](notes/_archives/2022/05/Sentence-BERT论文笔记.md)
+
+<!-- omit in toc -->
+#### 迁移学习/SFT
+
+- [预训练模型的轻量化微调 ⏳](notes/_archives/2022/05/预训练模型的轻量化微调.md)
+
+<!-- omit in toc -->
+#### 不平衡学习
+
+- [不平衡学习概述 ⏳](notes/_archives/2022/05/不平衡学习概述.md)
+- [论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md)
+- [综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md)
 
 </td>
 <td rowspan="3" colspan="2" valign="top" width="1000">
 
 ### 自然语言处理
-- [基础](notes/030-自然语言处理.md#基础)
-    - [命名实体识别](notes/030-自然语言处理.md#命名实体识别)
-- [应用](notes/030-自然语言处理.md#应用)
-    - [知识图谱](notes/030-自然语言处理.md#知识图谱)
-        - [同义词挖掘](notes/030-自然语言处理.md#同义词挖掘)
-        - [上下位挖掘](notes/030-自然语言处理.md#上下位挖掘)
-    - [搜索](notes/030-自然语言处理.md#搜索)
-- [工具](notes/030-自然语言处理.md#工具)
-    - [HuggingFace](notes/030-自然语言处理.md#huggingface)
-    - [标注工具](notes/030-自然语言处理.md#标注工具)
-- [资源](notes/030-自然语言处理.md#资源)
+- [语言模型 ⏳](notes/_archives/2022/10/语言模型.md)
+- [NLP 任务与应用](notes/_archives/2022/06/NLP任务与应用.map.md)
+
+#### NER
+
+- [NER Wiki ⏳](notes/_archives/2022/12/NER.md)
+- [商品 NER 标签设计](notes/_archives/2022/12/商品NER标签设计.md)
+- [GLiNER 阅读笔记 ⏳](notes/_archives/2024/06/ner.2023.arxiv.01/README.md)
+
+#### 知识图谱
+
+- [知识图谱概述 ⏳](notes/_archives/2022/07/知识图谱概述.md)
+- [实体链接](notes/_archives/2022/04/实体链接/README.md)
+- [同义词挖掘](notes/_archives/2022/12/同义词挖掘.md)
+- [关系抽取 ⏳](notes/_archives/2022/10/关系抽取.md)
+- [上下位关系挖掘 ⏳](notes/_archives/2022/12/上下位挖掘.md)
+
+<!-- omit in toc -->
+#### 搜索
+
+- [搜索与 NLP](notes/_archives/2022/12/搜索与NLP.md)
+
+<!-- omit in toc -->
+#### 工具
+
+- [NLP 标注工具](notes/_archives/2022/12/NLP标注工具.md)
+
+<!-- omit in toc -->
+#### 数据
+
+- [印尼语NLP](notes/_archives/2022/07/印尼语NLP.md)
 
 </td>
-<td colspan="2" valign="top" width="1000">
+<td rowspan="3" colspan="2" valign="top" width="1000">
 
-### 传统模型
-- [XGBoost](notes/020-机器学习.md#xgboost)
+### LLM
+
+#### 最新进展 🚀
+
+
+
+<!-- omit in toc -->
+#### 应用
+
+- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md)
+- [使用 LLM 优化简历 ⏳](notes/_archives/2025/08/使用LLM优化简历.md)
 
 </td>
 </tr>
 
-<tr></tr>
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
-<td colspan="2" valign="top" width="1000">
+<td colspan="3" valign="top" width="1000">
+
+### 机器学习
+
+- [XGBoost 学习笔记 ⏳](notes/_archives/2022/05/XGBoost.md)
+- [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md)
+
+</td>
+
+<td colspan="3" valign="top" width="1000">
 
 ### 数据结构/算法
-- [技巧](notes/000-数据结构与算法.md#技巧)
-    - [二叉树递归技巧](notes/000-数据结构与算法.md#二叉树递归技巧)
-    - [递归与动态规划](notes/000-数据结构与算法.md#递归与动态规划)
-- [模板](notes/000-数据结构与算法.md#模板)
-    - [滑动窗口](notes/000-数据结构与算法.md#滑动窗口)
-    - [链表](notes/000-数据结构与算法.md#链表)
-
-</td>
-</tr>
-
-<tr></tr>
-
-<tr>
-<td colspan="3" valign="top" width="1000">
-
-### LLM 应用
-- [使用记录](notes/040-LLM应用.md#使用记录)
-
-</td>
-
-<td colspan="3" valign="top" width="1000">
-
-### LLM 研究
-
-
-</td>
-</tr>
-
-<tr></tr>
-
-<tr>
-<td colspan="6" valign="top" width="1000">
-
-### 论文笔记
-- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](notes/./_archives/2022/12/synonym.2012.KDD.01/README.md)
-- [[ner.2023.arxiv.01] GLiNER | 基于 Transformer 的通用 NER 模型](notes/./_archives/2023/04/ner.2023.arxiv.01/README.md)
-
-</td>
-</tr>
-
-</table>
 
 
 
-## Engineerings
-<table>
-<tr>
-<td valign="top" width="1000">
+**技巧**
 
-### Python
-- [标准库](notes/110-Python.md#标准库)
-    - [容器的抽象基类](notes/110-Python.md#容器的抽象基类)
-    - [数据类](notes/110-Python.md#数据类)
-    - [装饰器](notes/110-Python.md#装饰器)
-    - [杂项](notes/110-Python.md#杂项)
-- [设计模式](notes/110-Python.md#设计模式)
-- [备忘](notes/110-Python.md#备忘)
-    - [第三方库](notes/110-Python.md#第三方库)
+- [树形递归技巧](notes/_archives/2022/10/树形递归技巧.md)
+- [从暴力递归到动态规划](notes/_archives/2022/10/从暴力递归到动态规划.md)
 
-</td>
-<td valign="top" width="1000">
+**模板**
 
-### Tools
-- [Git](notes/998-Tools.md#git)
+- [链表常用操作备忘](notes/_archives/2022/10/链表模板.md)
+- [滑动窗口模板](notes/_archives/2022/10/滑动窗口模板.md)
 
 </td>
 </tr>
@@ -355,28 +387,111 @@ YAML       3 mins          -------------------------   00.40 %
 <tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
 
 <tr>
-<td valign="top" width="1000">
+<td colspan="6" valign="top" width="1000">
 
-### Linux
-- [Shell 脚本](notes/210-Linux.md#shell-脚本)
-- [常用操作](notes/210-Linux.md#常用操作)
-- [文本处理](notes/210-Linux.md#文本处理)
-- [杂项](notes/210-Linux.md#杂项)
+### 论文笔记 📝
 
-</td>
-<td valign="top" width="1000">
-
-### BigData
-- [SQL](notes/220-大数据.md#sql)
-- [Spark](notes/220-大数据.md#spark)
-    - [Spark SQL](notes/220-大数据.md#spark-sql)
+- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架 ⏳](notes/_archives/2022/12/synonym.2012.KDD.01/README.md)
 
 </td>
 </tr>
+
 </table>
 
 
-## WIKI
+## Engineerings
+<table>
+<tr>
+<td rowspan='3' valign="top" width="1000">
+
+### Python
+
+- [类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md)
+- [python 装饰器的本质](notes/_archives/2022/05/python装饰器的本质.md)
+- [python 类变量和成员变量的最佳实践](notes/_archives/2022/07/python类变量和成员变量的最佳实践.md)
+- [`dataclass` 使用记录](notes/_archives/2022/09/python-dataclass使用记录.md)
+- [Python 容器基类的使用](notes/_archives/2022/08/Python容器基类的使用.md)
+- [Python 函数声明中单独的正斜杠（/）和星号（*）是什么意思](notes/_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
+
+#### 工具
+
+- [python 国内镜像源](notes/_archives/2022/06/python国内镜像源.md)
+- [`uv` 备忘 ⏳](notes/_archives/2025/08/python-uv备忘.md)
+- [VSCode 配置 for Python](notes/_archives/2025/08/VSCode配置-Python.md)
+- [PyCharm 配置](notes/_archives/2022/07/PyCharm配置.md)
+
+#### 第三方库
+
+
+
+</td>
+<td rowspan='3' valign="top" width="1000">
+
+### Tools
+- [Markdown 简历工具](notes/_archives/2022/06/Markdown简历工具.md)
+- [LaTeX in Markdown 备忘](notes/_archives/2022/04/LaTeX备忘.md)
+- [Github Action 备忘](notes/_archives/2022/08/GithubAction备忘.md)
+- [Docker 备忘](notes/_archives/2022/08/Docker备忘.md)
+
+
+**Git**
+
+- [`git` 基本用法 ⏳](notes/_archives/2022/06/git基本用法.md)
+- [批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
+- [`git-subtree` 的基本用法](notes/_archives/2022/06/git-subtree的基本用法.md)
+
+
+**Linux**
+
+- [后台运行](notes/_archives/2022/06/Linux后台运行.md)
+- [`glob` 备忘](notes/_archives/2022/08/glob语法备忘.md)
+- [`awk` 备忘](notes/_archives/2022/06/awk基本用法.md)
+- [WSL2 使用记录 ⏳](notes/_archives/2022/09/WSL使用记录.md)
+- [Shell 脚本备忘 ⏳](notes/_archives/2022/07/Shell脚本使用记录.md)
+- [Linux 解压缩](notes/_archives/2022/06/Linux解压缩.md)
+
+</td>
+</tr>
+
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+
+<tr>
+
+</tr>
+
+<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+
+<tr>
+
+<td valign="top" width="1000">
+
+### Design Pattern
+
+- [设计模式 Wiki](notes/_archives/2022/09/设计模式.md)
+- [建造者模式 (Python 实现) ⏳](notes/_archives/2022/09/设计模式-建造者模式.md)
+- [工厂模式 (Python 实现)](notes/_archives/2022/09/设计模式-工厂模式.md)
+
+</td>
+<td valign="top" width="1000">
+
+### Big Data
+
+
+
+#### SQL
+
+- [SQL 字符串处理](notes/_archives/2022/08/SQL字符串处理.md)
+- [PySpark SQL 备忘](notes/_archives/2022/07/pyspark_sql备忘.md)
+- [HiveSQL 常用操作](notes/_archives/2022/04/HiveSQL常用操作.md)
+
+</td>
+</tr>
+
+</table>
+
+
+## Wiki
+
 - [C](notes/999-WIKI.md#c)
     - [C++](notes/999-WIKI.md#c-1)
 - [D](notes/999-WIKI.md#d)
@@ -427,5 +542,50 @@ YAML       3 mins          -------------------------   00.40 %
 - [Y](notes/999-WIKI.md#y)
     - [yaml](notes/999-WIKI.md#yaml)
     - [语言模型](notes/999-WIKI.md#语言模型)
+
+
+## Drafts
+
+- [算法面试笔记 ⏳](notes/_archives/2022/10/算法面试笔记.md)
+- [简历书写技巧 (算法) ⏳](notes/_archives/2022/10/简历技巧.md)
+- [电商领域的 NER ⏳](notes/_archives/2022/12/电商NER.md)
+- [电商搜索 ⏳](notes/_archives/2022/12/电商搜索.md)
+- [文件夹模式测试-b ⏳](notes/_archives/2025/07/测试文件夹模式/b.md)
+- [文件夹模式测试-a ⏳](notes/_archives/2025/07/测试文件夹模式/a.md)
+- [文件夹模式测试 ⏳](notes/_archives/2025/07/测试文件夹模式/README.md)
+- [数仓基础概念 ⏳](notes/_archives/2023/01/数仓基础.md)
+- [搜索相关阅读 ⏳](notes/_archives/2022/12/搜索相关阅读.md)
+- [搜索指标 ⏳](notes/_archives/2022/12/搜索指标.md)
+- [快捷键记录 ⏳](notes/_archives/2022/07/快捷键记录.md)
+- [常见的文本相似度计算 ⏳](notes/_archives/2022/12/文本相似度计算.md)
+- [实验报告模板 ⏳](notes/_archives/2022/12/实验报告模板.md)
+- [实体链接相关概念 ⏳](notes/_archives/2022/04/实体链接/实体链接相关概念.md)
+- [基于用户行为数据的同义词挖掘方法 (英文) ⏳](notes/_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
+- [基于 SQL 计算信息熵与信息增益 ⏳](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
+- [基于 BERT/MLM 的查询扩展方法 ⏳](notes/_archives/2022/12/qe-mlm.md)
+- [同义词挖掘 ⏳](notes/_archives/2025/07/同义词挖掘/README.md)
+- [低资源训练 ⏳](notes/_archives/2022/12/低资源训练.md)
+- [query 理解参考资料 ⏳](notes/_archives/2022/12/query理解相关阅读.md)
+- [huggingface 套件使用备忘 ⏳](notes/_archives/2023/06/huggingface套件使用备忘.md)
+- [`split` 分割文件 ⏳](notes/_archives/2022/06/split分割文件.md)
+- [Windows 使用备忘 ⏳](notes/_archives/2023/01/Windows备忘.md)
+- [Transformer与长度外推性 ⏳](notes/_archives/2023/02/Transformer与长度外推性.md)
+- [Transformer/BERT 常见变体 ⏳](notes/_archives/2022/10/Transformer系列模型.md)
+- [Transformer 的优势与劣势 ⏳](notes/_archives/2023/02/Transformer的优势与劣势.md)
+- [SQL优化之暴力扫描 ⏳](notes/_archives/2023/02/SQL优化之暴力扫描.md)
+- [Query 纠错 ⏳](notes/_archives/2022/12/query纠错.md)
+- [Query 扩展 (电商领域) ⏳](notes/_archives/2022/12/query扩展.md)
+- [Query 分析指南 ⏳](notes/_archives/2022/12/query分析.md)
+- [PySpark 笔记 ⏳](notes/_archives/2023/01/PySpark笔记.md)
+- [Node.js 环境搭建 ⏳](notes/_archives/2022/12/nodejs环境.md)
+- [NLP 领域术语 Wiki ⏳](notes/_archives/2022/12/nlp_wiki.md)
+- [Label Studio 使用记录 ⏳](notes/_archives/2022/12/label-studio使用记录.md)
+- [LLM 训练方案整理 ⏳](notes/_archives/2023/06/llm训练方案整理.md)
+- [LLM 应用收集 ⏳](notes/_archives/2023/06/llm应用收集.md)
+- [Jupyter & IPython 使用备忘 ⏳](notes/_archives/2022/12/jupyter与ipython备忘.md)
+- [Hive/Spark/Presto SQL 备忘 ⏳](notes/_archives/2023/01/大数据SQL备忘.md)
+- [Hive/Spark SQL 常用查询记录 ⏳](notes/_archives/2023/01/sql-常用查询记录.md)
+- [Hive 常用 SQL 备忘 ⏳](notes/_archives/2023/03/Hive常用SQL备忘.md)
+- [2015.wsdm.el ⏳](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md)
 
 <!--END_SECTION:notes-->

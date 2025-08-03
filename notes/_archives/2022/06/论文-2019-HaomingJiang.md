@@ -2,11 +2,28 @@ SMART Loss
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
-> [[1911.03437] SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural Language Models through Principled Regularized Optimization](https://arxiv.org/abs/1911.03437)
+<!--info
+top: false
+draft: true
+hidden: true
+level: 0
+tag: []
+-->
 
+> ***Keywords**: 论文-2019-HaomingJiang*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
+- [摘要](#摘要)
+- [相关工作](#相关工作)
+<!--END_SECTION:toc-->
+
+---
 
 ## 摘要
 - 迁移学习从根本上改变了自然语言处理（NLP）的格局。许多最先进的模型会先在大规模语料库上进行**预训练**，然后在下游任务上进行**微调**。
@@ -22,4 +39,3 @@ SMART Loss
     - 只微调部分层
     - 在模型中添加额外的参数或层，只训练这部分
 - 缺点：需要进行大量的调优工作
-- 

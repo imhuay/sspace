@@ -1,15 +1,27 @@
-CNN
+CNN 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: true
+tag: [dl_model]
+-->
 
+> ***Keywords**: CNN*
+
+<!--START_SECTION:toc-->
 - [CNN 基础](#cnn-基础)
     - [权值共享](#权值共享)
 - [常见问题](#常见问题)
     - [`1*1` 卷积的作用](#11-卷积的作用)
+<!--END_SECTION:toc-->
+
+---
 
 ## CNN 基础
 

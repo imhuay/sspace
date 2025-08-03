@@ -2,11 +2,22 @@ Markdown 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2019%3A29%3A58&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: []
+-->
 
-<!-- TOC -->
+> ***Keywords**: Markdown*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [基本语法](#基本语法)
     - [表格](#表格)
     - [参考链接 (Reference-style Links)](#参考链接-reference-style-links)
@@ -29,8 +40,9 @@ Markdown 备忘
     - [对齐](#对齐)
 - [VSCode 插件](#vscode-插件)
     - [自动更新目录插件](#自动更新目录插件)
-<!-- TOC -->
+<!--END_SECTION:toc-->
 
+---
 
 ## 基本语法
 > [Basic Syntax | Markdown Guide](https://www.markdownguide.org/basic-syntax)

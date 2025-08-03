@@ -1,10 +1,35 @@
-装饰器的本质
+python 装饰器的本质
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [python]
+-->
+
+> ***Keywords**: python*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
+- [概述](#概述)
+- [`示例 1`：装饰器（不带参数）](#示例-1装饰器不带参数)
+- [`示例 2`：带参数的装饰器](#示例-2带参数的装饰器)
+- [`示例 3`：`functools.wraps` 的作用](#示例-3functoolswraps-的作用)
+- [`示例 4`：类装饰器](#示例-4类装饰器)
+- [`示例 5`：装饰器类（不带参数）](#示例-5装饰器类不带参数)
+- [`示例 6`：带参数的装饰器类](#示例-6带参数的装饰器类)
+<!--END_SECTION:toc-->
+
+---
+
+## 概述
 
 - **装饰器**（不带参数的装饰器）从实现上看，就是一个“输入和输出都是**函数对象**”的函数；
 - **带参数的装饰器**实际上就是一个返回普通装饰器的函数（可以接受任意参数）；
@@ -26,6 +51,7 @@
 
 ---
 
+- [概述](#概述)
 - [`示例 1`：装饰器（不带参数）](#示例-1装饰器不带参数)
 - [`示例 2`：带参数的装饰器](#示例-2带参数的装饰器)
 - [`示例 3`：`functools.wraps` 的作用](#示例-3functoolswraps-的作用)

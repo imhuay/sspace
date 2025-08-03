@@ -2,10 +2,27 @@
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [python]
+-->
 
+> ***Keywords**: python*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
+- [基础](#基础)
+- [进阶](#进阶)
+<!--END_SECTION:toc-->
+
+---
 
 ## 基础
 - `dataclass` 是对数据的模板化封装，类比 C/C++ 中的 `stuct`；

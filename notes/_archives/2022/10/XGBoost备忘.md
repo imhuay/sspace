@@ -2,15 +2,30 @@ GBDT/XGBoost 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: false
+tag: [ml]
+-->
 
+> ***Keywords**: XGBoost*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [概述](#概述)
 - [常见面试问题](#常见面试问题)
     - [GBDT 为什么用 CART 回归树做基学习器？](#gbdt-为什么用-cart-回归树做基学习器)
     - [XGBoost 和 GBDT 的区别](#xgboost-和-gbdt-的区别)
 - [参考](#参考)
+<!--END_SECTION:toc-->
+
+---
 
 ## 概述
 - 演进路线: `Boosting` -> `Gradient Boosting` -> `GDBDT` -> `XGBoost`

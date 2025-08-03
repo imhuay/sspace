@@ -8,6 +8,7 @@ Author:
 Subject:
     utils
 """
+
 from __future__ import annotations
 
 import os
@@ -16,16 +17,20 @@ import subprocess
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import TYPE_CHECKING
 
+import yaml
 from markdown.extensions import toc
 
 from huaytools.utils import get_logger
+
+if TYPE_CHECKING:
+    from .notes import Note
 
 logger = get_logger()
 
 
 class MarkdownUtils:
-
     @staticmethod
     def slugify(head):
         return toc.slugify_unicode(head, '-')  # noqa
@@ -82,8 +87,10 @@ class ReadmeUtils:
     #     return ReadmeUtils._get_file_commit_date(fp, first_commit=True, return_datetime=return_datetime)
 
     # TEMP_GIT_LOG_FOLLOW = r'git log --invert-grep --grep="Auto\|AUTO\|auto" --format=%ad --date=iso-strict --follow "{fp}"'  # noqa
-    TEMP_GIT_LOG_FOLLOW = r'git log --author=imhuay --invert-grep --grep="Auto\|AUTO"' \
-                          r' --format=%ad --date=iso-strict --follow "{fp}"'
+    TEMP_GIT_LOG_FOLLOW = (
+        r'git log --author=imhuay --invert-grep --grep="Auto\|AUTO"'
+        r' --format=%ad --date=iso-strict --follow "{fp}"'
+    )
 
     @staticmethod
     def get_first_commit_date(fp, fmt='%Y-%m-%d %H:%M:%S') -> str:
@@ -137,14 +144,17 @@ class ReadmeUtils:
 
     @staticmethod
     def get_last_modify_badge_url(fp):
-        return ReadmeUtils.get_badge(label='last modify',
-                                     message=ReadmeUtils.get_last_commit_date(fp),
-                                     color='yellowgreen',
-                                     style='flat-square')
+        return ReadmeUtils.get_badge(
+            label='last modify',
+            message=ReadmeUtils.get_last_commit_date(fp),
+            color='yellowgreen',
+            style='flat-square',
+        )
 
     @staticmethod
     def get_badge(label, message, color, style='flat-square', url=None, **options):
         from urllib.parse import quote
+
         parameters = {
             'label': quote(str(label)),
             'message': quote(str(message)),
@@ -174,8 +184,10 @@ class ReadmeUtils:
 
     @staticmethod
     def _get_section_re_pattern(tag):
-        return re.compile(fr'{ReadmeUtils.get_tag_begin(tag)}(.*?){ReadmeUtils.get_tag_end(tag)}',
-                          flags=re.DOTALL)
+        return re.compile(
+            rf'{ReadmeUtils.get_tag_begin(tag)}(.*?){ReadmeUtils.get_tag_end(tag)}',
+            flags=re.DOTALL,
+        )
 
     @staticmethod
     def get_annotation(tag, txt) -> str | None:
@@ -194,6 +206,15 @@ class ReadmeUtils:
     def get_annotation_info(txt) -> str | None:
         """"""
         return ReadmeUtils.get_annotation('info', txt)
+
+    @staticmethod
+    def get_annotation_info_v2(note: Note) -> dict:
+        """"""
+        info_str = ReadmeUtils.get_annotation_info(note.text)
+        if info_str is None:
+            raise ValueError(f'Note info not found: {note.path}')
+        info = yaml.safe_load(info_str)
+        return info
 
 
 @dataclass
@@ -214,6 +235,7 @@ readme_tag = ReadmeTag()
 
 class args:  # noqa
     """"""
+
     _fp_cur_file = Path(__file__)
     # repo
     fp_repo = Path(_fp_cur_file.parent / '../..').resolve()
@@ -229,22 +251,29 @@ class args:  # noqa
     # notes
     fp_notes = Path(fp_repo / 'notes')
     fp_notes_archives = fp_notes / '_archives'
-    fp_notes_readme = fp_notes / 'README.md'
     fp_notes_readme_temp = fp_notes / 'README_template.md'
-    notes_top_limit = 5
+    fp_notes_readme = fp_notes / 'README.md'
+
+    fp_notes_readme_dev = fp_notes / 'README_dev.md'
+    fp_notes_readme_v1 = fp_notes / 'README_v1.md'
+    fp_notes_readme_temp_v1 = fp_notes / 'README_template_v1.md'
+    fp_notes_readme_v2 = fp_notes / 'README_v2.md'
+    fp_notes_readme_temp_v2 = fp_notes / 'README_template_v2.md'
+    fp_tags = fp_notes / '_tags.json'
+    notes_top_limit = None
 
 
-TEMP_main_readme_notes_recent_toc = '''{toc_top}
+TEMP_main_readme_notes_recent_toc = """{toc_top}
 {toc_recent}
-'''
+"""
 
-TEMP_main_readme_algorithms_concat = '''## {title}
+TEMP_main_readme_algorithms_concat = """## {title}
 
 {toc}
-'''
+"""
 
 TEMP_algorithm_toc_td_category = '<td width="1000" valign="top">\n\n{sub_toc}\n\n</td>'
-TEMP_algorithm_toc_table = '''<table>  <!-- invalid: frame="void", style="width: 100%; border: none; background: none" -->
+TEMP_algorithm_toc_table = """<table>  <!-- invalid: frame="void", style="width: 100%; border: none; background: none" -->
 <tr>
 <td colspan="2" valign="top" width="1000">
 
@@ -271,12 +300,12 @@ TEMP_algorithm_toc_table = '''<table>  <!-- invalid: frame="void", style="width:
 {toc_category}
 
 </tr>
-</table>'''
+</table>"""
 
-TEMP_algorithm_readme = '''# {title}
+TEMP_algorithm_readme = """# {title}
 
 {toc}
 
 ---
 
-{sub_toc}'''
+{sub_toc}"""

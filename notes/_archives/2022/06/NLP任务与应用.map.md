@@ -2,9 +2,32 @@ NLP 任务与应用
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: false
+hidden: true
+tag: [nlp]
+-->
+
+> ***Keywords**: NLP*
+
+<!--START_SECTION:toc-->
+- [按任务](#按任务)
+    - [分类](#分类)
+    - [匹配（关系分类）](#匹配关系分类)
+    - [序列标注](#序列标注)
+    - [生成](#生成)
+- [按应用](#按应用)
+    - [语义理解](#语义理解)
+    - [知识图谱](#知识图谱)
+    - [机器翻译](#机器翻译)
+    - [对话系统](#对话系统)
+<!--END_SECTION:toc-->
+
+---
 
 ## 按任务
 

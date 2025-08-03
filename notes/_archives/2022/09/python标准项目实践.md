@@ -2,19 +2,31 @@ Python 标准项目实践
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
+<!--info
+top: false
+draft: true
+hidden: false
+tag: []
+-->
 
-<!-- TOC -->
+> ***Keywords**: python*
+
+<!--START_SECTION:paper_title-->
+<!--END_SECTION:paper_title-->
+
+<!--START_SECTION:toc-->
 - [GitHub Actions](#github-actions)
     - [项目发布](#项目发布)
     - [代码覆盖测试](#代码覆盖测试)
 - [参考资料](#参考资料)
     - [相关文档](#相关文档)
     - [Python 项目模板](#python-项目模板)
-<!-- TOC -->
+<!--END_SECTION:toc-->
 
+---
 
 ## GitHub Actions
 
