@@ -20,7 +20,7 @@ tag: [tools]
 
 <!--START_SECTION:toc-->
 - [GitHub 项目](#github-项目)
-    - [vuepress-theme-resume](#vuepress-theme-resume)
+    - [imhuay/vuepress-theme-resume](#imhuayvuepress-theme-resume)
     - [komomoo/vuepress-theme-resume](#komomoovuepress-theme-resume)
     - [CyC2018/Markdown-Resume](#cyc2018markdown-resume)
 - [网页版](#网页版)
@@ -31,8 +31,8 @@ tag: [tools]
 
 ## GitHub 项目
 
-### vuepress-theme-resume
-> [imhuay/vuepress-theme-resume: 一个简洁的 markdown 简历](https://github.com/imhuay/vuepress-theme-resume)
+### imhuay/vuepress-theme-resume
+> 一个简洁的 markdown 简历: https://github.com/imhuay/vuepress-theme-resume
 >> 修改自 [komomoo/vuepress-theme-resume](https://github.com/komomoo/vuepress-theme-resume)
 
 <details><summary><b>History</b></summary>
@@ -73,7 +73,7 @@ yarn dev # 或 npm run dev
 </details>
 
 ### CyC2018/Markdown-Resume
-> [CyC2018/Markdown-Resume: ⭐️ Markdown 简历模版](https://github.com/CyC2018/Markdown-Resume)
+> Markdown 简历模版: https://github.com/CyC2018/Markdown-Resume
 
 
 ## 网页版
@@ -82,4 +82,4 @@ yarn dev # 或 npm run dev
 
 
 ## 简历技巧
-- [怎么写好一份简历(算法工程师)](./_archives/2022/10/简历技巧.md)
+- [怎么写好一份简历(算法工程师)](../10/程序员简历技巧.md)

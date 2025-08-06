@@ -1,4 +1,4 @@
-`git` 基本用法
+`git` 备忘
 ===
 <!--START_SECTION:badge-->
 

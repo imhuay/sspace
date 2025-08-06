@@ -31,6 +31,6 @@ toc_id: tools
 
 ## Git
 
-- [Git 基本用法](./_archives/2022/06/git基本用法.md)
+- [Git 基本用法](./_archives/2022/06/git备忘.md)
 - [`git-subtree` 基本用法](./_archives/2022/06/git-subtree的基本用法.md)
 - [删除历史已提交文件](./_archives/2025/08/git-删除历史已提交文件.md)

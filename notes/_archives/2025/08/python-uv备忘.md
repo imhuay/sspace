@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-06%2019%3A12%3A47&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
@@ -50,7 +50,7 @@ uv init
     --python [py_version]   # Specify python version
 
 # Python package 初始化结构
-## 在使用 uv 第一次运行后(如 uv add/run/sync/lock), 会添加 .venv 和 uv.lock 两个文件
+## 在使用 uv 第一次运行后(如 uv add/run/sync/lock), 会自动添加 .venv 和 uv.lock
 .
 ├── .git/
 ├── .gitignore

@@ -69,14 +69,14 @@ toc_id: wiki
 
 ### Docker
 > 一个开源的应用容器引擎，让开发者可以打包他们的应用及依赖到一个可移植的镜像中；
-- [Docker 学习笔记](./_archives/2022/08/Docker学习笔记.md)
+- [Docker 学习笔记](./_archives/2022/08/Docker备忘.md)
 
 
 ## G
 
 ### git
 > 一个开源的分布式版本控制系统，可以有效地进行项目版本管理。
-- [`git` 常用命令](./_archives/2022/06/git.md)
+- [`git` 常用命令](./_archives/2022/06/git备忘.md)
     - [`git-subtree` 的基本用法](./_archives/2022/06/git-subtree的基本用法.md)
 
 ### gitbook
@@ -91,7 +91,7 @@ toc_id: wiki
 > 一个基于 Node.js 的命令行工具，使用 Markdown 快速构建文档或书籍；  
 > 目前团队已不再维护，转向 GitBook 在线平台
 - 官方 GitHub 地址（已不再维护）：[GitbookIO/gitbook](https://github.com/GitbookIO/gitbook)
-- [GitBook 使用记录](./_archives/2022/04/Gitbook.md)
+- [GitBook 使用记录](./_archives/2022/04/Gitbook备忘.md)
     > 对 markdown 和 html 混写支持不佳，已不再使用
 
 
@@ -169,7 +169,7 @@ toc_id: wiki
 ### Markdown
 > Markdown 是一种轻量级标记语言，可以使用纯文本格式来编写文档，然后通过转化为 HTML 来丰富可读性，并在一定程度上兼容 HTML 代码；  
 > 另见：[Obsidian](#obsidian)
-- [Markdown 常用编辑格式](./_archives/2022/04/Markdown.md)
+- [Markdown 常用编辑格式](./_archives/2022/04/Markdown备忘.md)
 - [使用 Markdown 编辑简历](./_archives/2022/06/Markdown简历工具.md)
 
 
@@ -198,7 +198,7 @@ toc_id: wiki
 ### PyCharm
 > JetBrains 公司开发的一款 Python IDE;
 
-- [PyCharm 常用配置](./_archives/2022/07/PyCharm常用配置.md)
+- [PyCharm 常用配置](./_archives/2022/07/PyCharm配置.md)
 
 ### PySpark
 > Spark 为 Python 开发者提供的 API;
@@ -235,7 +235,7 @@ toc_id: wiki
 > STAR 法则是一种用于描述事件的方式, STAR 分别表示情境 (Situation)、任务 (Task)、行动 (Action)、结果 (Result) 四项的缩写;
 >> [STAR法则_百度百科](https://baike.baidu.com/item/STAR%E6%B3%95%E5%88%99/9056070)
 
-- [使用 STAR 法则描述简历](./_archives/2022/10/简历技巧.md#star-法则)
+- [使用 STAR 法则描述简历](./_archives/2022/10/程序员简历技巧.md#star-法则)
 
 
 ## T
