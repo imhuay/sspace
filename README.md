@@ -436,7 +436,7 @@ JSON       4 mins          -------------------------   00.26 %
 
 **Git**
 
-- [`git` 基本用法 ⏳](notes/_archives/2022/06/git备忘.md)
+- [`git` 备忘 ⏳](notes/_archives/2022/06/git备忘.md)
 - [批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
 - [`git-subtree` 的基本用法](notes/_archives/2022/06/git-subtree的基本用法.md)
 
