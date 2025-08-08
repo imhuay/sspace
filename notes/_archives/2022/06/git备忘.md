@@ -28,6 +28,7 @@ tag: [git]
     - [撤回上次 commit](#撤回上次-commit)
     - [删除已提交文件/文件夹](#删除已提交文件文件夹)
     - [恢复已删除的文件](#恢复已删除的文件)
+    - [`fork` 后同步源仓库](#fork-后同步源仓库)
 - [`ssh-keygen` 基本用法](#ssh-keygen-基本用法)
 - [修改 commit 的 author 信息](#修改-commit-的-author-信息)
 - [常用统计](#常用统计)
@@ -148,6 +149,47 @@ git log -- [file]
 # 恢复文件
 git checkout commit_id [file]
 ```
+
+### `fork` 后同步源仓库
+
+**`rebase` 方案**
+- 适用于双方冲突较少的情况;
+```bash
+# 添加上游仓库远程
+git remote add upstream 原仓库的URL
+
+# 获取上游仓库最新更改
+git fetch upstream
+
+# rebase
+git rebase -i upstream/master
+
+# 解决冲突
+
+# push: 由于历史记录已更改，需要强制推送
+git push -f
+```
+
+**`merge` 方案**
+- 适用于双方冲突较少的情况, 只需要解决一次冲突, 但会在历史记录中创建一个合并提交;
+```bash
+# 添加上游仓库远程
+git remote add upstream 原仓库的URL
+
+# 获取上游仓库最新更改
+git fetch upstream
+
+# merge
+git merge upstream/master
+
+# 解决冲突
+
+# push
+git add .
+git commit -m "Sync upstream"
+git push
+```
+
 
 ## `ssh-keygen` 基本用法
 - ssh key 是远程仓库识别用户身份的依据；
