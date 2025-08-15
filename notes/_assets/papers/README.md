@@ -21,7 +21,7 @@ hidden: true
 
 ### NER
 
-- [[ner.2023.arxiv.01] GLiNER: Generalist Model for Named Entity Recognition using Bidirectional Transformer](https://arxiv.org/abs/2311.08526) || [PDF](../../_archives/2023/04/ner.2023.arxiv.01/[ner.2023.arxiv.01]%20GLiNER.pdf)
+- [[ner.2023.arxiv.01] GLiNER: Generalist Model for Named Entity Recognition using Bidirectional Transformer](https://arxiv.org/abs/2311.08526) || [PDF](../../_archives/2024/06/ner.2023.arxiv.01/[ner.2023.arxiv.01]%20GLiNER.pdf)
 
 ### 同义词
 

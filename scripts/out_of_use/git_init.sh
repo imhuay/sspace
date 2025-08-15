@@ -1,5 +1,5 @@
 # 主目录
-repo="$HOME/workspace/my/studies"
+repo="$HOME/workspace/my/space"
 cd "$repo" || exit
 
 commit_info="Init (Clear history commits)"
@@ -11,7 +11,7 @@ git config --local user.email imhuay@163.com
 echo
 
 printf "=== Start Push Main Repo ===\n"
-git remote add origin "https://github.com/imhuay/studies.git"
+git remote add origin "https://github.com/imhuay/space.git"
 git add -A
 git commit -m "$commit_info"
 git push --force --set-upstream origin master

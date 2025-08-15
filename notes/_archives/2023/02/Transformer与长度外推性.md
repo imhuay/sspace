@@ -33,7 +33,7 @@ hidden: true
 ### 局部注意力
 - **注意力局部化**，简单来说就是在计算 attention 矩阵时，限制每个位置能接收的上下文（加上一个 attention mask 矩阵），这是目前主流的方法。
     > ALiBi, KERPLE, Sandwich, xPos
-    <div align="center"><img src="../../../_assets/局部注意力示意图.png" height="300" /></div>
+    <div align="center"><img src="../../../_assets/imgs/局部注意力示意图.png" height="300" /></div>
 
 ### 随机位置
 > [Randomized Positional Encodings Boost Length Generalization of Transformers | OpenReview](https://openreview.net/forum?id=nMYj4argap)

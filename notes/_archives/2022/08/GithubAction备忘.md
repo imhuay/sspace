@@ -202,7 +202,7 @@ steps:
 ### 添加工作流状态徽章
 > [Adding a workflow status badge - GitHub Docs](https://docs.github.com/cn/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
 
-![workflow](https://github.com/imhuay/studies/actions/workflows/learn-github-actions.yml/badge.svg?branch=master)
+![workflow](https://github.com/imhuay/space/actions/workflows/daily.yml/badge.svg?branch=master)
 ```txt
 ![workflow](https://github.com/<user>/<repo>/actions/workflows/$file_name.yml/badge.svg?branch=master)
 ```

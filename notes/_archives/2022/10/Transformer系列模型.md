@@ -39,7 +39,7 @@ hidden: false
 
 > algorithms/[xxx](../../../../algorithms/README.md#xxx)
 
-<div align="center"><img src="../../../_assets/Sentence-BERT模型图.png" height="300" /></div>
+<div align="center"><img src="../../../_assets/imgs/Sentence-BERT模型图.png" height="300" /></div>
 
 <table>
 <tr valign="top">

@@ -4,19 +4,19 @@
 # Huay's Space
 
 [![wakatime](https://wakatime.com/badge/user/c840568d-e4b1-4c63-ade0-03856283d319.svg)](https://wakatime.com/@c840568d-e4b1-4c63-ade0-03856283d319)
-[![daily update](https://github.com/imhuay/studies/actions/workflows/daily.yml/badge.svg?branch=master)](https://github.com/imhuay/studies/actions?query=workflow:daily)
-[![GitHub issues](https://img.shields.io/github/issues/imhuay/studies?color=important)](https://github.com/imhuay/studies/issues)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/imhuay/studies?color=active)](https://github.com/imhuay/studies/commits/master)
-[![](https://visitor-badge.laobi.icu/badge?page_id=imhuay.studies&right_color=green&left_text=page%20views)](https://visitor-badge.laobi.icu)
+[![daily update](https://github.com/imhuay/space/actions/workflows/daily.yml/badge.svg?branch=master)](https://github.com/imhuay/space/actions?query=workflow:daily)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/imhuay/space?color=active)](https://github.com/imhuay/space/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/imhuay/space?color=important)](https://github.com/imhuay/space/issues)
+[![](https://visitor-badge.laobi.icu/badge?page_id=imhuay.space&right_color=green&left_text=page%20views)](https://visitor-badge.laobi.icu)
 
 <!-- 
-[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/imhuay/studies?color=inactive)](https://github.com/imhuay/studies/issues?q=is:issue+is:closed)
-![clones](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-studies/clones.svg)
-![clones per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-studies/clones_per_week.svg)
-![views](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-studies/views.svg)
-![views per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-studies/views_per_week.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/imhuay/studies?cacheSeconds=3600)](https://github.com/imhuay/studies/commits)
-[![GitHub Repo stars](https://img.shields.io/github/stars/imhuay/studies?style=social)](https://github.com/imhuay/studies/stargazers)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/imhuay/space?color=inactive)](https://github.com/imhuay/space/issues?q=is:issue+is:closed)
+![clones](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/clones.svg)
+![clones per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/clones_per_week.svg)
+![views](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/views.svg)
+![views per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/views_per_week.svg)
+[![GitHub last commit](https://img.shields.io/github/last-commit/imhuay/space?cacheSeconds=3600)](https://github.com/imhuay/space/commits)
+[![GitHub Repo stars](https://img.shields.io/github/stars/imhuay/space?style=social)](https://github.com/imhuay/space/stargazers)
 -->
 
 </div>
