@@ -62,6 +62,7 @@
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown简历工具.md)
+- [`2025-08-08` VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
 - [`2025-08-06` 开发环境配置 (基于 WSL)](notes/_archives/2025/08/WSL开发环境配置.md)
 - [`2025-08-05` `uv` 备忘 ⏳](notes/_archives/2025/08/python-uv备忘.md)
 - [`2025-08-02` 批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
@@ -81,7 +82,6 @@
 - [`2025-07-08` 搜索指标 ⏳](notes/_archives/2022/12/搜索指标.md)
 - [`2025-07-08` 搜索与 NLP](notes/_archives/2022/12/搜索与NLP.md)
 - [`2025-07-08` 建造者模式 (Python 实现) ⏳](notes/_archives/2022/09/设计模式-建造者模式.md)
-- [`2025-07-08` 工厂模式 (Python 实现)](notes/_archives/2022/09/设计模式-工厂模式.md)
 
 
 <!--END_SECTION:recent-->
@@ -429,6 +429,7 @@ Other        2 mins          -------------------------   00.15 %
 
 ### Tools
 - [Markdown 简历工具](notes/_archives/2022/06/Markdown简历工具.md)
+- [VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
 - [LaTeX in Markdown 备忘](notes/_archives/2022/04/LaTeX备忘.md)
 - [Github Action 备忘](notes/_archives/2022/08/GithubAction备忘.md)
 - [Docker 备忘](notes/_archives/2022/08/Docker备忘.md)

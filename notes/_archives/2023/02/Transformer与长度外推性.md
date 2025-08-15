@@ -2,7 +2,7 @@ Transformer与长度外推性
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-21%2022%3A41%3A24&color=yellowgreen&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-15%2022%3A16%3A49&color=yellowgreen&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
