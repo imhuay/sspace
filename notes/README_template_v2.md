@@ -9,27 +9,22 @@ Notes
 ## Index 📑
 
 <!-- TOC -->
-- [Researches](#researches)
-    - [深度学习](#深度学习)
-        - [Transformer/BERTs 🏗️](#transformerberts-️)
-    - [自然语言处理](#自然语言处理)
-        - [NER](#ner)
-        - [知识图谱](#知识图谱)
-    - [LLM](#llm)
-        - [最新进展 🚀](#最新进展-)
-    - [机器学习](#机器学习)
-    - [数据结构/算法](#数据结构算法)
-    - [论文笔记 📝](#论文笔记-)
-- [Engineerings](#engineerings)
-    - [Python](#python)
-        - [工具](#工具-1)
-        - [第三方库](#第三方库)
-    - [Tools](#tools)
-    - [Design Pattern](#design-pattern)
-    - [Big Data](#big-data)
-        - [SQL](#sql)
-- [Wiki](#wiki)
-- [Drafts](#drafts)
+- [Researches 🔬](#researches-)
+    - [Deep Learning 🧠](#deep-learning-)
+        - [Transformer/BERTs 🤖](#transformerberts-)
+    - [NLP 📜](#nlp-)
+    - [Machine Learning ⚙️](#machine-learning-️)
+    - [Reading List 🔖](#reading-list-)
+    - [LLM 🚀](#llm-)
+    - [Algorithms 🔢](#algorithms-)
+    - [Paper Notes 📝](#paper-notes-)
+- [Engineerings 🔩](#engineerings-)
+    - [Python 🐍](#python-)
+    - [Big Data 📊](#big-data-)
+    - [Tools 🛠️](#tools-️)
+    - [Design Pattern 🏗️](#design-pattern-️)
+- [Wiki 🌐](#wiki-)
+- [Drafts 🗒️](#drafts-️)
 <!-- TOC -->
 
 </td>
@@ -47,17 +42,18 @@ Notes
 
 <!--START_SECTION:notes-->
 
-## Researches
+## Researches 🔬
 
 <table>
 
+<!-- row 1 -->
 <tr>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="6" colspan="2" valign="top" width="1000">
 
-### 深度学习
+### Deep Learning 🧠
 {{dl}}
 
-#### Transformer/BERTs 🏗️
+#### Transformer/BERTs 🤖
 
 {{dl_bert}}
 
@@ -87,15 +83,17 @@ Notes
 {{dl_unbalanced}}
 
 </td>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="4" colspan="2" valign="top" width="1000">
 
-### 自然语言处理
+### NLP 📜
 {{nlp}}
 
+<!-- omit in toc -->
 #### NER
 
 {{nlp_ner}}
 
+<!-- omit in toc -->
 #### 知识图谱
 
 {{nlp_kg}}
@@ -116,13 +114,42 @@ Notes
 {{nlp_data}}
 
 </td>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="2" colspan="2" valign="top" width="1000">
 
-### LLM
+### Machine Learning ⚙️
 
-#### 最新进展 🚀
+{{ml}}
 
-{{llm_res}}
+</td>
+</tr>
+
+<!-- row 2; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan="6" colspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+{{read}}
+
+</td>
+</tr>
+
+<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 5 -->
+<tr>
+<td rowspan="4" colspan="2" valign="top" width="1000">
+
+### LLM 🚀
+
+<!-- omit in toc -->
+#### 训练
+
+{{llm_train}}
 
 <!-- omit in toc -->
 #### 应用
@@ -132,24 +159,14 @@ Notes
 </td>
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 6; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
+<!-- row 7 -->
 <tr>
-<td colspan="3" valign="top" width="1000">
+<td rowspan="2" colspan="2" valign="top" width="1000">
 
-### 机器学习
-
-{{ml}}
-
-</td>
-
-<td colspan="3" valign="top" width="1000">
-
-### 数据结构/算法
+### Algorithms 🔢
 
 {{algo}}
 
@@ -162,14 +179,17 @@ Notes
 {{algo_temp}}
 
 </td>
+
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
+<!-- row 9 -->
 <tr>
-<td colspan="6" valign="top" width="1000">
+<td rowspan="2" colspan="6" valign="top" width="1000">
 
-### 论文笔记 📝
+### Paper Notes 📝
 
 {{paper}}
 
@@ -179,34 +199,55 @@ Notes
 </table>
 
 
-## Engineerings
+## Engineerings 🔩
 <table>
+<!-- row 1 -->
 <tr>
-<td rowspan='3' valign="top" width="1000">
+<td rowspan='4' valign="top" width="1000">
 
-### Python
+### Python 🐍
 
 {{python}}
 
+<!-- omit in toc -->
 #### 工具
 
 {{python_tool}}
 
+<!-- omit in toc -->
 #### 第三方库
 
 {{python_third}}
 
 </td>
-<td rowspan='3' valign="top" width="1000">
+<td rowspan='2' valign="top" width="1000">
 
-### Tools
+### Big Data 📊
+
+{{bigdata}}
+
+<!-- omit in toc -->
+#### SQL
+
+{{bigdata_sql}}
+
+</td>
+</tr>
+
+<!-- row 2 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan='4' valign="top" width="1000">
+
+### Tools 🛠️
+
 {{tools}}
-
 
 **Git**
 
 {{git}}
-
 
 **Linux**
 
@@ -215,32 +256,16 @@ Notes
 </td>
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 4 -->
+<tr></tr>
 
+<!-- row 5 -->
 <tr>
+<td rowspan='2' valign="top" width="1000">
 
-</tr>
-
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
-<tr>
-
-<td valign="top" width="1000">
-
-### Design Pattern
+### Design Pattern 🏗️
 
 {{design_pattern}}
-
-</td>
-<td valign="top" width="1000">
-
-### Big Data
-
-{{bigdata}}
-
-#### SQL
-
-{{bigdata_sql}}
 
 </td>
 </tr>
@@ -248,12 +273,12 @@ Notes
 </table>
 
 
-## Wiki
+## Wiki 🌐
 
 {wiki}
 
 
-## Drafts
+## Drafts 🗒️
 
 {{draft}}
 
