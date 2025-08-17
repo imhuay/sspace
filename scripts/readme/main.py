@@ -27,4 +27,4 @@ if __name__ == '__main__':
     br.build()
     if not is_wsl():
         br.git_push()
-    logger.info(f'Update Success!')
+    logger.info('Update Success!')

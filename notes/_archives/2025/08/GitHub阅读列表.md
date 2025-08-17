@@ -30,3 +30,7 @@ tag: [read]
 
 - [ ] [hiyouga/EasyR1: EasyR1: An Efficient, Scalable, Multi-Modality RL Training Framework based on veRL](https://github.com/hiyouga/EasyR1?tab=readme-ov-file)
 - [ ] [hiyouga/LLaMA-Factory: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)](https://github.com/hiyouga/LLaMA-Factory)
+- [ ] [microsoft/agent-lightning: The absolute trainer to light up AI agents.](https://github.com/microsoft/agent-lightning?tab=readme-ov-file)
+    > - 这是一个用于训练 AI 智能体的框架，强调"几乎零代码改动"即可实现强化学习优化
+    > - [copilot 总结 & 对话记录](https://copilot.microsoft.com/shares/P6kPkZRJzUDw8kxLs2ybU)
+    > - [We discovered an approach to train any AI agent with RL, with (almost) zero code changes. : r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1m9m670/we_discovered_an_approach_to_train_any_ai_agent/)

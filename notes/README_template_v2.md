@@ -9,22 +9,22 @@ Notes
 ## Index 📑
 
 <!-- TOC -->
-- [Researches 🔬](#researches-)
-    - [Deep Learning 🧠](#deep-learning-)
+- [Researches](#researches)
+    - [Deep Learning](#deep-learning)
         - [Transformer/BERTs 🤖](#transformerberts-)
-    - [NLP 📜](#nlp-)
-    - [Machine Learning ⚙️](#machine-learning-️)
+    - [NLP](#nlp)
+    - [Machine Learning](#machine-learning)
     - [Reading List 🔖](#reading-list-)
     - [LLM 🚀](#llm-)
-    - [Algorithms 🔢](#algorithms-)
+    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
-- [Engineerings 🔩](#engineerings-)
+- [Engineerings](#engineerings)
     - [Python 🐍](#python-)
-    - [Big Data 📊](#big-data-)
+    - [Big Data](#big-data)
     - [Tools 🛠️](#tools-️)
-    - [Design Pattern 🏗️](#design-pattern-️)
-- [Wiki 🌐](#wiki-)
-- [Drafts 🗒️](#drafts-️)
+    - [Design Pattern](#design-pattern)
+- [Wiki](#wiki)
+- [Drafts](#drafts)
 <!-- TOC -->
 
 </td>
@@ -42,7 +42,7 @@ Notes
 
 <!--START_SECTION:notes-->
 
-## Researches 🔬
+## Researches
 
 <table>
 
@@ -50,7 +50,7 @@ Notes
 <tr>
 <td rowspan="6" colspan="2" valign="top" width="1000">
 
-### Deep Learning 🧠
+### Deep Learning
 {{dl}}
 
 #### Transformer/BERTs 🤖
@@ -85,7 +85,7 @@ Notes
 </td>
 <td rowspan="4" colspan="2" valign="top" width="1000">
 
-### NLP 📜
+### NLP
 {{nlp}}
 
 <!-- omit in toc -->
@@ -116,7 +116,7 @@ Notes
 </td>
 <td rowspan="2" colspan="2" valign="top" width="1000">
 
-### Machine Learning ⚙️
+### Machine Learning
 
 {{ml}}
 
@@ -166,7 +166,7 @@ Notes
 <tr>
 <td rowspan="2" colspan="2" valign="top" width="1000">
 
-### Algorithms 🔢
+### Algorithms
 
 {{algo}}
 
@@ -199,7 +199,7 @@ Notes
 </table>
 
 
-## Engineerings 🔩
+## Engineerings
 <table>
 <!-- row 1 -->
 <tr>
@@ -222,7 +222,7 @@ Notes
 </td>
 <td rowspan='2' valign="top" width="1000">
 
-### Big Data 📊
+### Big Data
 
 {{bigdata}}
 
@@ -263,7 +263,7 @@ Notes
 <tr>
 <td rowspan='2' valign="top" width="1000">
 
-### Design Pattern 🏗️
+### Design Pattern
 
 {{design_pattern}}
 
@@ -273,12 +273,12 @@ Notes
 </table>
 
 
-## Wiki 🌐
+## Wiki
 
 {wiki}
 
 
-## Drafts 🗒️
+## Drafts
 
 {{draft}}
 
