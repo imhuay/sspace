@@ -16,7 +16,7 @@
     "git",
     "linux",
     "llm_app",
-    "llm_res",
+    "llm_train",
     "ml",
     "nlp",
     "nlp_data",
@@ -28,5 +28,6 @@
     "python",
     "python_third",
     "python_tool",
+    "read",
     "tools"
 ]

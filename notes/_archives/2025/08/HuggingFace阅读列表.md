@@ -1,6 +1,9 @@
 HuggingFace (博客 & 代码)
 ===
 <!--START_SECTION:badge-->
+
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-17%2005%3A14%3A41&color=yellowgreen&style=flat-square)
+
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-17 04:47:17

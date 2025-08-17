@@ -9,27 +9,22 @@ Notes
 ## Index 📑
 
 <!-- TOC -->
-- [Researches](#researches)
-    - [深度学习](#深度学习)
-        - [Transformer/BERTs 🏗️](#transformerberts-️)
-    - [自然语言处理](#自然语言处理)
-        - [NER](#ner)
-        - [知识图谱](#知识图谱)
-    - [LLM](#llm)
-        - [最新进展 🚀](#最新进展-)
-    - [机器学习](#机器学习)
-    - [数据结构/算法](#数据结构算法)
-    - [论文笔记 📝](#论文笔记-)
-- [Engineerings](#engineerings)
-    - [Python](#python)
-        - [工具](#工具-1)
-        - [第三方库](#第三方库)
-    - [Tools](#tools)
-    - [Design Pattern](#design-pattern)
-    - [Big Data](#big-data)
-        - [SQL](#sql)
-- [Wiki](#wiki)
-- [Drafts](#drafts)
+- [Researches 🔬](#researches-)
+    - [Deep Learning 🧠](#deep-learning-)
+        - [Transformer/BERTs 🤖](#transformerberts-)
+    - [NLP 📜](#nlp-)
+    - [Machine Learning ⚙️](#machine-learning-️)
+    - [Reading List 🔖](#reading-list-)
+    - [LLM 🚀](#llm-)
+    - [Algorithms 🔢](#algorithms-)
+    - [Paper Notes 📝](#paper-notes-)
+- [Engineerings 🔩](#engineerings-)
+    - [Python 🐍](#python-)
+    - [Big Data 📊](#big-data-)
+    - [Tools 🛠️](#tools-️)
+    - [Design Pattern 🏗️](#design-pattern-️)
+- [Wiki 🌐](#wiki-)
+- [Drafts 🗒️](#drafts-️)
 <!-- TOC -->
 
 </td>
@@ -55,11 +50,6 @@ Notes
 - [`2025-07-08` 爱因斯坦标记法](_archives/2022/05/爱因斯坦标记法.md)
 - [`2025-07-08` 滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
 - [`2025-07-08` 树形递归技巧](_archives/2022/10/树形递归技巧.md)
-- [`2025-07-08` 数仓基础概念 ⏳](_archives/2023/01/数仓基础.md)
-- [`2025-07-08` 搜索相关阅读 ⏳](_archives/2022/12/搜索相关阅读.md)
-- [`2025-07-08` 搜索指标 ⏳](_archives/2022/12/搜索指标.md)
-- [`2025-07-08` 搜索与 NLP](_archives/2022/12/搜索与NLP.md)
-- [`2025-07-08` 建造者模式 (Python 实现) ⏳](_archives/2022/09/设计模式-建造者模式.md)
 
 
 <!--END_SECTION:recent-->
@@ -71,21 +61,23 @@ Notes
 
 <!--START_SECTION:notes-->
 
-## Researches
+## Researches 🔬
 
 <table>
 
+<!-- row 1 -->
 <tr>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="6" colspan="2" valign="top" width="1000">
 
-### 深度学习
+### Deep Learning 🧠
 - [过拟合与正则化](_archives/2022/05/过拟合与正则化.md)
 - [激活函数 ⏳](_archives/2022/05/激活函数.md)
 - [损失函数 ⏳](_archives/2022/05/损失函数.md)
 
-#### Transformer/BERTs 🏗️
+#### Transformer/BERTs 🤖
 
 - [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md)
+- [Transformer 位置编码 ⏳](_archives/2025/08/Transformer位置编码.md)
 - [Transformer Wiki ⏳](_archives/2022/05/TransformerWiki.md)
 - [BERT + CRF 备忘 ⏳](_archives/2022/04/bert_crf备忘.md)
 
@@ -123,18 +115,20 @@ Notes
 - [综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 
 </td>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="4" colspan="2" valign="top" width="1000">
 
-### 自然语言处理
+### NLP 📜
 - [语言模型 ⏳](_archives/2022/10/语言模型.md)
 - [NLP 任务与应用](_archives/2022/06/NLP任务与应用.map.md)
 
+<!-- omit in toc -->
 #### NER
 
 - [NER Wiki ⏳](_archives/2022/12/NER.md)
 - [商品 NER 标签设计](_archives/2022/12/商品NER标签设计.md)
 - [GLiNER 阅读笔记 ⏳](_archives/2024/06/ner.2023.arxiv.01/README.md)
 
+<!-- omit in toc -->
 #### 知识图谱
 
 - [知识图谱概述 ⏳](_archives/2022/07/知识图谱概述.md)
@@ -159,11 +153,43 @@ Notes
 - [印尼语NLP](_archives/2022/07/印尼语NLP.md)
 
 </td>
-<td rowspan="3" colspan="2" valign="top" width="1000">
+<td rowspan="2" colspan="2" valign="top" width="1000">
 
-### LLM
+### Machine Learning ⚙️
 
-#### 最新进展 🚀
+- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
+- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
+
+</td>
+</tr>
+
+<!-- row 2; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan="6" colspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+- [强化学习相关](_archives/2025/08/强化学习相关资料.md)
+- [HuggingFace (博客 & 代码)](_archives/2025/08/HuggingFace阅读列表.md)
+- [GitHub (仓库)](_archives/2025/08/GitHub阅读列表.md)
+
+</td>
+</tr>
+
+<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 5 -->
+<tr>
+<td rowspan="4" colspan="2" valign="top" width="1000">
+
+### LLM 🚀
+
+<!-- omit in toc -->
+#### 训练
 
 
 
@@ -176,25 +202,14 @@ Notes
 </td>
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 6; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
+<!-- row 7 -->
 <tr>
-<td colspan="3" valign="top" width="1000">
+<td rowspan="2" colspan="2" valign="top" width="1000">
 
-### 机器学习
-
-- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
-- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
-
-</td>
-
-<td colspan="3" valign="top" width="1000">
-
-### 数据结构/算法
+### Algorithms 🔢
 
 
 
@@ -209,14 +224,17 @@ Notes
 - [滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
 
 </td>
+
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
+<!-- row 9 -->
 <tr>
-<td colspan="6" valign="top" width="1000">
+<td rowspan="2" colspan="6" valign="top" width="1000">
 
-### 论文笔记 📝
+### Paper Notes 📝
 
 - [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架 ⏳](_archives/2022/12/synonym.2012.KDD.01/README.md)
 
@@ -226,12 +244,13 @@ Notes
 </table>
 
 
-## Engineerings
+## Engineerings 🔩
 <table>
+<!-- row 1 -->
 <tr>
-<td rowspan='3' valign="top" width="1000">
+<td rowspan='4' valign="top" width="1000">
 
-### Python
+### Python 🐍
 
 - [类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
 - [python 装饰器的本质](_archives/2022/05/python装饰器的本质.md)
@@ -240,6 +259,7 @@ Notes
 - [Python 容器基类的使用](_archives/2022/08/Python容器基类的使用.md)
 - [Python 函数声明中单独的正斜杠（/）和星号（*）是什么意思](_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
 
+<!-- omit in toc -->
 #### 工具
 
 - [python 国内镜像源](_archives/2022/06/python国内镜像源.md)
@@ -247,27 +267,48 @@ Notes
 - [VSCode 配置 for Python](_archives/2025/08/VSCode配置-Python.md)
 - [PyCharm 配置](_archives/2022/07/PyCharm配置.md)
 
+<!-- omit in toc -->
 #### 第三方库
 
 
 
 </td>
-<td rowspan='3' valign="top" width="1000">
+<td rowspan='2' valign="top" width="1000">
 
-### Tools
+### Big Data 📊
+
+
+
+<!-- omit in toc -->
+#### SQL
+
+- [SQL 字符串处理](_archives/2022/08/SQL字符串处理.md)
+- [PySpark SQL 备忘](_archives/2022/07/pyspark_sql备忘.md)
+- [HiveSQL 常用操作](_archives/2022/04/HiveSQL常用操作.md)
+
+</td>
+</tr>
+
+<!-- row 2 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan='4' valign="top" width="1000">
+
+### Tools 🛠️
+
 - [Markdown 简历工具](_archives/2022/06/Markdown简历工具.md)
 - [VSCode 备忘](_archives/2025/08/VSCode备忘.md)
 - [LaTeX in Markdown 备忘](_archives/2022/04/LaTeX备忘.md)
 - [Github Action 备忘](_archives/2022/08/GithubAction备忘.md)
 - [Docker 备忘](_archives/2022/08/Docker备忘.md)
 
-
 **Git**
 
 - [`git` 备忘 ⏳](_archives/2022/06/git备忘.md)
 - [批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md)
 - [`git-subtree` 的基本用法](_archives/2022/06/git-subtree的基本用法.md)
-
 
 **Linux**
 
@@ -281,36 +322,18 @@ Notes
 </td>
 </tr>
 
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
+<!-- row 4 -->
+<tr></tr>
 
+<!-- row 5 -->
 <tr>
+<td rowspan='2' valign="top" width="1000">
 
-</tr>
-
-<tr></tr>  <!-- 空白行, 用于跳过表格的灰色行 -->
-
-<tr>
-
-<td valign="top" width="1000">
-
-### Design Pattern
+### Design Pattern 🏗️
 
 - [设计模式 Wiki](_archives/2022/09/设计模式.md)
 - [建造者模式 (Python 实现) ⏳](_archives/2022/09/设计模式-建造者模式.md)
 - [工厂模式 (Python 实现)](_archives/2022/09/设计模式-工厂模式.md)
-
-</td>
-<td valign="top" width="1000">
-
-### Big Data
-
-
-
-#### SQL
-
-- [SQL 字符串处理](_archives/2022/08/SQL字符串处理.md)
-- [PySpark SQL 备忘](_archives/2022/07/pyspark_sql备忘.md)
-- [HiveSQL 常用操作](_archives/2022/04/HiveSQL常用操作.md)
 
 </td>
 </tr>
@@ -318,7 +341,7 @@ Notes
 </table>
 
 
-## Wiki
+## Wiki 🌐
 
 - [C](999-WIKI.md#c)
     - [C++](999-WIKI.md#c-1)
@@ -372,7 +395,7 @@ Notes
     - [语言模型](999-WIKI.md#语言模型)
 
 
-## Drafts
+## Drafts 🗒️
 
 - [算法面试笔记 ⏳](_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法) ⏳](_archives/2022/10/程序员简历技巧.md)
