@@ -31,22 +31,22 @@
 
 <!-- no toc -->
 - [Algorithm Codings](#algorithm-codings)
-- [Researches 🔬](#researches-)
-    - [Deep Learning 🧠](#deep-learning-)
+- [Researches](#researches)
+    - [Deep Learning](#deep-learning)
         - [Transformer/BERTs 🤖](#transformerberts-)
-    - [NLP 📜](#nlp-)
-    - [Machine Learning ⚙️](#machine-learning-️)
+    - [NLP](#nlp)
+    - [Machine Learning](#machine-learning)
     - [Reading List 🔖](#reading-list-)
     - [LLM 🚀](#llm-)
-    - [Algorithms 🔢](#algorithms-)
+    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
-- [Engineerings 🔩](#engineerings-)
+- [Engineerings](#engineerings)
     - [Python 🐍](#python-)
-    - [Big Data 📊](#big-data-)
+    - [Big Data](#big-data)
     - [Tools 🛠️](#tools-️)
-    - [Design Pattern 🏗️](#design-pattern-️)
-- [Wiki 🌐](#wiki-)
-- [Drafts 🗒️](#drafts-️)
+    - [Design Pattern](#design-pattern)
+- [Wiki](#wiki)
+- [Drafts](#drafts)
 
 <!--END_SECTION:index-->
 
@@ -234,7 +234,7 @@ Stylus     0 secs          -------------------------   00.08 %
 
 <!--START_SECTION:notes-->
 
-## Researches 🔬
+## Researches
 
 <table>
 
@@ -242,7 +242,8 @@ Stylus     0 secs          -------------------------   00.08 %
 <tr>
 <td rowspan="6" colspan="2" valign="top" width="1000">
 
-### Deep Learning 🧠
+### Deep Learning
+
 - [过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md)
 - [激活函数 ⏳](notes/_archives/2022/05/激活函数.md)
 - [损失函数 ⏳](notes/_archives/2022/05/损失函数.md)
@@ -290,7 +291,7 @@ Stylus     0 secs          -------------------------   00.08 %
 </td>
 <td rowspan="4" colspan="2" valign="top" width="1000">
 
-### NLP 📜
+### NLP
 - [语言模型 ⏳](notes/_archives/2022/10/语言模型.md)
 - [NLP 任务与应用](notes/_archives/2022/06/NLP任务与应用.map.md)
 
@@ -304,11 +305,13 @@ Stylus     0 secs          -------------------------   00.08 %
 <!-- omit in toc -->
 #### 知识图谱
 
-- [知识图谱概述 ⏳](notes/_archives/2022/07/知识图谱概述.md)
+- [知识图谱备忘 ⏳](notes/_archives/2022/07/知识图谱概述.md)
+- [短语挖掘 ⏳](notes/_archives/2025/07/短语挖掘.md)
+  - [复合词检测 ⏳](notes/_archives/2025/08/复合词检测.md)
 - [实体链接](notes/_archives/2022/04/实体链接/README.md)
-- [同义词挖掘](notes/_archives/2022/12/同义词挖掘.md)
-- [关系抽取 ⏳](notes/_archives/2022/10/关系抽取.md)
-- [上下位关系挖掘 ⏳](notes/_archives/2022/12/上下位挖掘.md)
+- [关系挖掘备忘 ⏳](notes/_archives/2022/10/关系挖掘.md)
+  - [同义词挖掘](notes/_archives/2022/12/同义词挖掘.md)
+  - [上下位挖掘](notes/_archives/2022/12/上下位挖掘.md)
 
 <!-- omit in toc -->
 #### 搜索
@@ -328,7 +331,7 @@ Stylus     0 secs          -------------------------   00.08 %
 </td>
 <td rowspan="2" colspan="2" valign="top" width="1000">
 
-### Machine Learning ⚙️
+### Machine Learning
 
 - [XGBoost 学习笔记 ⏳](notes/_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md)
@@ -382,7 +385,7 @@ Stylus     0 secs          -------------------------   00.08 %
 <tr>
 <td rowspan="2" colspan="2" valign="top" width="1000">
 
-### Algorithms 🔢
+### Algorithms
 
 
 
@@ -417,7 +420,7 @@ Stylus     0 secs          -------------------------   00.08 %
 </table>
 
 
-## Engineerings 🔩
+## Engineerings
 <table>
 <!-- row 1 -->
 <tr>
@@ -448,7 +451,7 @@ Stylus     0 secs          -------------------------   00.08 %
 </td>
 <td rowspan='2' valign="top" width="1000">
 
-### Big Data 📊
+### Big Data
 
 
 
@@ -502,7 +505,7 @@ Stylus     0 secs          -------------------------   00.08 %
 <tr>
 <td rowspan='2' valign="top" width="1000">
 
-### Design Pattern 🏗️
+### Design Pattern
 
 - [设计模式 Wiki](notes/_archives/2022/09/设计模式.md)
 - [建造者模式 (Python 实现) ⏳](notes/_archives/2022/09/设计模式-建造者模式.md)
@@ -514,7 +517,7 @@ Stylus     0 secs          -------------------------   00.08 %
 </table>
 
 
-## Wiki 🌐
+## Wiki
 
 - [C](notes/999-WIKI.md#c)
     - [C++](notes/999-WIKI.md#c-1)
@@ -568,7 +571,7 @@ Stylus     0 secs          -------------------------   00.08 %
     - [语言模型](notes/999-WIKI.md#语言模型)
 
 
-## Drafts 🗒️
+## Drafts
 
 - [算法面试笔记 ⏳](notes/_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法) ⏳](notes/_archives/2022/10/程序员简历技巧.md)
