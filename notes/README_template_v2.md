@@ -31,7 +31,7 @@ Notes
 <td valign="top" width="2000">
 
 <!-- omit in toc -->
-## Recently 📖
+## Recent 📖
 <!--START_SECTION:recent-->
 <!--END_SECTION:recent-->
 

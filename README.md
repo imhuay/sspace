@@ -53,7 +53,7 @@
 </td>
 <td valign="top" width="2000">
 
-## Recently 📖
+## Recent 📖
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown简历工具.md)
