@@ -35,6 +35,26 @@ class MarkdownUtils:
     def slugify(head):
         return toc.slugify_unicode(head, '-')  # noqa
 
+    @staticmethod
+    def extract_markdown_links(text) -> list[dict]:
+        """
+        从文本中提取所有 Markdown 格式的链接 [text](url)
+        返回包含字典的列表
+        """
+        # 正则表达式模式：匹配 [文本](链接)
+        # pattern = r'\[([^\]]+)\]\(([^)]+)\)'
+        pattern = r'\[(.*?)\]\((.*?)\)'
+
+        matches = re.findall(pattern, text)
+
+        result = []
+        for link_text, link_url in matches:
+            result.append(
+                {'text': link_text.strip(), 'url': link_url.strip(), 'full': f'[{link_text}]({link_url})'}
+            )
+
+        return result
+
 
 class ReadmeUtils:
     BJS = timezone(

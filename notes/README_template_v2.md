@@ -51,6 +51,7 @@ Notes
 <td rowspan="6" colspan="2" valign="top" width="1000">
 
 ### Deep Learning
+
 {{dl}}
 
 #### Transformer/BERTs 🤖
