@@ -2,7 +2,8 @@ PyCharm 配置
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-15%2022%3A16%3A49&color=yellowgreen&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-07-xx&label_color=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-15%2022%3A16%3A49&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info

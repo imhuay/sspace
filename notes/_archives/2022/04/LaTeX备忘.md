@@ -2,7 +2,8 @@ LaTeX in Markdown 备忘
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-22%2003%3A35%3A56&color=yellowgreen&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-04-xx&label_color=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-22%2003%3A35%3A56&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info

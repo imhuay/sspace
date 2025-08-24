@@ -2,7 +2,8 @@ Label Studio 使用记录
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-12-xx&label_color=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info

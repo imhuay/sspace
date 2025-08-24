@@ -1,12 +1,12 @@
 ## 数组中的逆序对
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&color=yellowgreen&style=flat-square)
-[![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&color=yellow&style=flat-square)](../../../README.md#困难)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=green&style=flat-square)](../../../README.md#剑指offer)
-[![](https://img.shields.io/static/v1?label=&message=%E5%88%86%E6%B2%BB&color=blue&style=flat-square)](../../../README.md#分治)
-[![](https://img.shields.io/static/v1?label=&message=%E7%BA%BF%E6%AE%B5%E6%A0%91/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84&color=blue&style=flat-square)](../../../README.md#线段树树状数组)
-[![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&color=blue&style=flat-square)](../../../README.md#经典)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
+[![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&label_color=gray&color=yellow&style=flat-square)](../../../README.md#困难)
+[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
+[![](https://img.shields.io/static/v1?label=&message=%E5%88%86%E6%B2%BB&label_color=gray&color=blue&style=flat-square)](../../../README.md#分治)
+[![](https://img.shields.io/static/v1?label=&message=%E7%BA%BF%E6%AE%B5%E6%A0%91/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84&label_color=gray&color=blue&style=flat-square)](../../../README.md#线段树树状数组)
+[![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&label_color=gray&color=blue&style=flat-square)](../../../README.md#经典)
 
 <!--END_SECTION:badge-->
 <!--info

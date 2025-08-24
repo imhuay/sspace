@@ -2,7 +2,8 @@
 ===
 <!--START_SECTION:badge-->
 
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-06%2023%3A10%3A23&color=yellowgreen&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-06&label_color=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-06%2023%3A10%3A23&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
