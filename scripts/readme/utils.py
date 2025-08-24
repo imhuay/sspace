@@ -163,21 +163,35 @@ class ReadmeUtils:
         return re_pattern.sub(repl, txt, count=1)
 
     @staticmethod
-    def get_last_modify_badge_url(fp):
+    def get_last_modify_badge_url(fp: Path, color: str = 'thistle') -> str:
         return ReadmeUtils.get_badge(
             label='last modify',
             message=ReadmeUtils.get_last_commit_date(fp),
-            color='yellowgreen',
+            color=color,
             style='flat-square',
         )
 
     @staticmethod
-    def get_badge(label, message, color, style='flat-square', url=None, **options):
+    def get_create_date_badge_url(date: datetime | None, fp: Path, color: str = 'lightsteelblue') -> str:
+        if date is None:
+            date_s = '-'.join(fp.relative_to(args.fp_notes_archives).parts[:2]) + '-xx'
+        else:
+            date_s = date.strftime('%Y-%m-%d')
+        return ReadmeUtils.get_badge(
+            label='create date',
+            message=date_s,
+            color=color,
+            style='flat-square',
+        )
+
+    @staticmethod
+    def get_badge(label, message, color, label_color='gray', style='flat-square', url=None, **options):
         from urllib.parse import quote
 
         parameters = {
             'label': quote(str(label)),
             'message': quote(str(message)),
+            'label_color': label_color,
             'color': color,
             'style': style,
         }

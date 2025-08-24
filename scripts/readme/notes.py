@@ -99,16 +99,19 @@ class Note:
 
     def __post_init__(self):
         self.path = self.path.resolve()
-        self.update_note_last_modify()
 
         with self.path.open(encoding='utf8') as f:
             self._text = f.read()
 
-    def update_note_last_modify(self):
+        self.update_badge()
+
+    def update_badge(self):
+        badges = [
+            ReadmeUtils.get_create_date_badge_url(self.info.date, self.path),
+            ReadmeUtils.get_last_modify_badge_url(self.path),
+        ]
         with self.path.open(encoding='utf8') as f:
-            new_txt = ReadmeUtils.replace_tag_content(
-                'badge', f.read(), ReadmeUtils.get_last_modify_badge_url(self.path)
-            )
+            new_txt = ReadmeUtils.replace_tag_content('badge', f.read(), '\n'.join(badges))
         with self.path.open('w', encoding='utf8') as f:
             f.write(new_txt)
 
