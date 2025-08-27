@@ -39,9 +39,10 @@ $$
 
 ### 无编号
 
-写在行 $\begin{aligned} x &= a + b \\  &= c + d \end{aligned}$ 内;
+写在行 $\begin{aligned} x &= a + b \\  &= c + d \end{aligned}$ 内 (**GitHub 不支持行内多行**);
 
-**单独一行**: 
+**单独一行**:  
+
 $$
 \begin{align*}
  a &= 1+2 \\ 
@@ -49,13 +50,14 @@ $$
 \end{align*}
 $$
 
-**左括号**:
+**左括号**:  
+
 $$
-\left \{
-    \begin{align*}
+\left \lbrace
+    \begin{aligned}
     a &= 1+2 &// 说明1  \\ 
     b &= 2+1 &// 说明2
-    \end{align*}
+    \end{aligned}
 \right.
 $$
 
@@ -71,20 +73,22 @@ $$
 
 ## 括号
 
-**绝对值**
+**绝对值**  
+
 $$
 \left | a \right |
 $$
 
-**中括号** (直接使用 \[ 和 \] 在 VSCode 中有警告)
+**各种括号的名称表示** (用途: 比如直接使用 \[ 和 \] 在 VSCode 中有警告)  
+
 $$
-\lbrack \rbrack
+\lparen \rparen, \lbrack \rbrack, \lbrace \rbrace, \lBrace \rBrace, \llbracket \rrbracket, \lceil \rceil, \lfloor \rfloor, \langle \rangle
 $$
 
 
 ## 标记
 
-**转置**
+**转置**  
 $$\begin{align*}
 & \mathbf{A}^\mathrm{T}                 \\
 & \mathbf{A}^\top           &// 推荐     \\
