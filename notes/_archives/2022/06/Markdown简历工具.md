@@ -11,7 +11,7 @@ top: true
 draft: false
 hidden: false
 level: 2
-tag: [tools]
+tag: [tool]
 -->
 
 > ***Keywords**: 简历*

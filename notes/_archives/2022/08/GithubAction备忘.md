@@ -10,7 +10,7 @@ Github Action 备忘
 top: false
 draft: false
 hidden: false
-tag: [tools]
+tag: [tool]
 -->
 
 > ***Keywords**: GithubAction备忘*

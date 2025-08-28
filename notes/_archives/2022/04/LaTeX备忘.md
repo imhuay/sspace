@@ -10,7 +10,7 @@ LaTeX in Markdown 备忘
 top: false
 draft: false
 hidden: false
-tag: [tools]
+tag: [tool]
 -->
 
 <!--START_SECTION:toc-->

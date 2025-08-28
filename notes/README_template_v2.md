@@ -13,10 +13,12 @@ Notes
     - [Deep Learning](#deep-learning)
         - [Transformer/BERTs 🤖](#transformerberts-)
     - [NLP](#nlp)
-    - [Machine Learning](#machine-learning)
-    - [Reading List 🔖](#reading-list-)
     - [LLM 🚀](#llm-)
+        - [Prompt Engineering](#prompt-engineering)
+        - [Reinforcement Learning](#reinforcement-learning)
+    - [Reading List 🔖](#reading-list-)
     - [Algorithms](#algorithms)
+    - [Machine Learning](#machine-learning)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -48,7 +50,7 @@ Notes
 
 <!-- row 1 -->
 <tr>
-<td rowspan="6" colspan="2" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
 ### Deep Learning
 
@@ -84,7 +86,7 @@ Notes
 {{dl_unbalanced}}
 
 </td>
-<td rowspan="4" colspan="2" valign="top" width="1000">
+<td rowspan="6" valign="top" width="1000">
 
 ### NLP
 {{nlp}}
@@ -115,11 +117,17 @@ Notes
 {{nlp_data}}
 
 </td>
-<td rowspan="2" colspan="2" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
-### Machine Learning
+### LLM 🚀
 
-{{ml}}
+#### Prompt Engineering
+
+{{llm_prompt}}
+
+#### Reinforcement Learning
+
+{{llm_rl}}
 
 </td>
 </tr>
@@ -129,13 +137,6 @@ Notes
 
 <!-- row 3 -->
 <tr>
-<td rowspan="6" colspan="2" valign="top" width="1000">
-
-### Reading List 🔖
-
-{{read}}
-
-</td>
 </tr>
 
 <!-- row 4; 空白行, 用于跳过表格的灰色行 -->
@@ -143,19 +144,11 @@ Notes
 
 <!-- row 5 -->
 <tr>
-<td rowspan="4" colspan="2" valign="top" width="1000">
+<td rowspan="6" valign="top" width="1000">
 
-### LLM 🚀
+### Reading List 🔖
 
-<!-- omit in toc -->
-#### 训练
-
-{{llm_train}}
-
-<!-- omit in toc -->
-#### 应用
-
-{{llm_app}}
+{{read}}
 
 </td>
 </tr>
@@ -165,7 +158,7 @@ Notes
 
 <!-- row 7 -->
 <tr>
-<td rowspan="2" colspan="2" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
 ### Algorithms
 
@@ -180,13 +173,26 @@ Notes
 {{algo_temp}}
 
 </td>
-
 </tr>
 
 <!-- row 8; 空白行, 用于跳过表格的灰色行 -->
 <tr></tr>
 
 <!-- row 9 -->
+<tr>
+<td rowspan="2" valign="top" width="1000">
+
+### Machine Learning
+
+{{ml}}
+
+</td>
+</tr>
+
+<!-- row 10; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 11 -->
 <tr>
 <td rowspan="2" colspan="6" valign="top" width="1000">
 
@@ -196,6 +202,9 @@ Notes
 
 </td>
 </tr>
+
+<!-- row 12; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
 </table>
 

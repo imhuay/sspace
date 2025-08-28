@@ -487,7 +487,7 @@ class NotesBuilder(Builder):
         with self._fp_notes_readme_temp_v2.open(encoding='utf8') as f:
             txt = f.read()
             self._set_recent_limit(txt)
-            self._get_available_tags(txt)
+            available_tags = self._get_available_tags(txt)
 
         # generate tag toc
         # paper_toc = []
@@ -506,13 +506,22 @@ class NotesBuilder(Builder):
 
         # replace template
         txt = ReadmeUtils.replace_tag_content('recent', txt, self.recent_toc)
+        draft = []
         for tag, toc in tag2toc.items():
+            if tag not in available_tags or tag == 'draft':
+                # if DEBUG:
+                #     print(f'No tag placeholder found: {tag}: {toc}')
+                draft.extend(toc)
+                continue
+            
             if tag == 'paper':
                 toc_str = '\n'.join(paper_toc)
             else:
                 toc_str = '\n'.join(toc)
+                
             txt = txt.replace(f'{{{{{tag}}}}}', toc_str)
-
+            
+        txt = txt.replace('{{draft}}', '\n'.join(draft))
         txt = re.sub(r'\{\{.*?\}\}', '', txt)
 
         for s in self.subjects:
