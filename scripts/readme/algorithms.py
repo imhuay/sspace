@@ -19,7 +19,6 @@ from typing import ClassVar
 
 import yaml
 from _base import Builder
-
 from utils import MarkdownUtils, ReadmeUtils, args
 
 
@@ -36,7 +35,7 @@ class Tag:
         self._problems.append(p)
 
     @property
-    def problems(self):
+    def problems(self) -> list[Problem]:
         return sorted(set(self._problems), key=lambda i: i.sort_key)
 
     def __post_init__(self):
@@ -143,13 +142,20 @@ class Problem:
     _file_name = None
     _title = None
     _last_commit_time = None
+    _inter_tags = None
+    # _pre_p = None
+    # _nxt_p = None
 
     _TAG_BADGE = 'badge'
+    _TAG_RELATE = 'relate'
 
     def __post_init__(self):
+        """"""
+        self._path = self._path.resolve()
         self.update_file()
 
     def update_file(self):
+        """"""
         # try update title
         with self.path.open(encoding='utf8') as f:
             txt = f.read()
@@ -160,13 +166,53 @@ class Problem:
         else:
             lns.insert(0, self.head)
 
+        # 对没有 badge tag 做的兜底
         if not ReadmeUtils.get_tag_content(self._TAG_BADGE, txt):
             lns.insert(1, ReadmeUtils.get_tag_begin(self._TAG_BADGE))
             lns.insert(2, ReadmeUtils.get_tag_end(self._TAG_BADGE))
 
+        # 对没有 relate tag 做的兜底
+        if not ReadmeUtils.get_tag_content(self._TAG_RELATE, txt):
+            lns.append(ReadmeUtils.get_tag_begin(self._TAG_RELATE))
+            lns.append(ReadmeUtils.get_tag_end(self._TAG_RELATE))
+
         txt = ReadmeUtils.replace_tag_content(self._TAG_BADGE,
                                               '\n'.join(lns),
                                               self.badge_content)
+        with self.path.open('w', encoding='utf8') as f:
+            f.write(txt)
+
+    def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
+        """"""
+        lns = [
+            '---\n',
+            '### 相关主题\n',
+        ]
+
+        with self.path.open(encoding='utf8') as f:
+            txt = f.read()
+
+        for t in self.tags:
+            for tag in alias2tags[ReadmeUtils.norm(t)]:
+                # tmp = []
+                l2p = defaultdict(list)
+                for p in tag.problems:
+                    if p == self:
+                        continue
+                    l2p[p.level].append(p)
+                    # tmp.append(f'- [{p.relate_title}]({os.path.relpath(p.path, self.path.parent)})')
+
+                if l2p:
+                    lns.append(f'<details><summary><b>{tag.name}</b></summary>\n')
+                    l2p = sorted(l2p.items(), key=lambda i: i[0])
+                    for _, ps in l2p:
+                        ps = sorted(ps, key=lambda i: i.relate_title)
+                        for p in ps:
+                            lns.append(f'> [{p.relate_title}]({os.path.relpath(p.path, self.path.parent)})  ')
+                        lns.append('  > ')
+                    lns.append('\n</details>')
+
+        txt = ReadmeUtils.replace_tag_content(self._TAG_RELATE, txt, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(txt)
 
@@ -208,6 +254,14 @@ class Problem:
         return self.name
 
     @property
+    def relate_title(self):
+        # tags = ', '.join(self.tags)
+        if {'热门', '经典', 'lc100'}.isdisjoint(self.tags):
+            return f'[{self.level}, {self.source}] {self.name}'
+        else:
+            return f'[{self.level}, {self.source}] {self.name} 🔥'
+
+    @property
     def sort_key(self):
         return self.source, self.number
 
@@ -245,6 +299,15 @@ class Problem:
             except:  # noqa
                 raise ValueError(self._path)
         return self._info
+
+    @property
+    def inter_tags(self) -> list[str]:
+        if self._inter_tags is None:
+            inter_tags = []
+            for t in self.tags:
+                inter_tags.extend(tag_info.alias2tags[ReadmeUtils.norm(t)])
+            self._inter_tags = [t.name for t in inter_tags]
+        return self._inter_tags
 
     _F_TAGS: ClassVar[str] = 'tags'
     _F_SOURCE: ClassVar[str] = 'source'
@@ -318,10 +381,15 @@ class AlgorithmsBuilder(Builder):
     @property
     def problems_toc(self):
         lns = []
+        # first_p, last_p = None, None
         for tag_type in sorted(self.type2tags.values(), key=lambda i: i.priority):
+            # if first_p is None:
+            # first_p = tag_type.sorted_tags[0].problems[0]
             for tag in tag_type.sorted_tags:
                 lns.append(tag.toc)
                 lns.append('')
+                # last_p = tag.problems[-1]
+
         return '\n'.join(lns)
 
     @property
@@ -355,6 +423,10 @@ class AlgorithmsBuilder(Builder):
 
         # problems toc
         txt = ReadmeUtils.replace_tag_content('problems', txt, self.problems_toc)
+
+        # update problems relate
+        for p in self.problems:
+            p.set_relate_problems(self.alias2tags)
 
         with self._fp_algo_readme.open('w', encoding='utf8') as f:
             f.write(txt)

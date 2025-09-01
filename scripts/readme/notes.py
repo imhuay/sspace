@@ -23,15 +23,8 @@ from pathlib import Path
 from typing import ClassVar
 
 import yaml
-
-try:
-    from readme._base import Builder
-    from readme.utils import MarkdownUtils, ReadmeUtils, TEMP_main_readme_notes_recent_toc, args
-except ImportError:
-    from _base import Builder
-
-    from utils import MarkdownUtils, ReadmeUtils, TEMP_main_readme_notes_recent_toc, args  # type: ignore
-
+from _base import Builder
+from utils import MarkdownUtils, ReadmeUtils, TEMP_main_readme_notes_recent_toc, args  # type: ignore
 
 # TMP_subject_toc = '''### {title}
 #
@@ -74,7 +67,7 @@ class NoteInfo:
 
     def __post_init__(self):
         """"""
-        if self.tag is None:
+        if not self.tag:
             self.tag = ['draft']
 
         # if _DEBUG and self.tag is not None:

@@ -3,7 +3,7 @@
 <!--END_SECTION:badge-->
 <!--info
 tags: []
-source: LeetCode/牛客
+source: LeetCode
 level: 简单/中等/困难
 number: ''
 name: 
@@ -26,7 +26,7 @@ companies: []
 </details>
 -->
 
-<!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
+<!-- <div align='center'><img src='../../../_assets/xxx.png' height='300' /></div> -->
 
 <summary><b>思路</b></summary>
 
@@ -38,7 +38,6 @@ companies: []
 
 </details>
 
-<!-- 
-<summary><b>相关问题</b></summary>
 
--->
+<!--START_SECTION:relate-->
+<!--END_SECTION:relate-->

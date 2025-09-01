@@ -89,13 +89,13 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 28 hrs 6 mins
+Total Time: 30 hrs 41 mins
 
-Markdown   23 hrs 37 mins  >>>>>>>>>>>>>>>>>>>>>----   84.09 %
-Python     2 hrs 44 mins   >>-----------------------   09.73 %
-Vue.js     53 mins         >------------------------   03.16 %
-Stylus     46 mins         >------------------------   02.74 %
-Other      2 mins          -------------------------   00.14 %
+Markdown     28 hrs 59 mins  >>>>>>>>>>>>>>>>>>>>>>>>-   94.46 %
+Python       1 hr 27 mins    >------------------------   04.76 %
+JSON         7 mins          -------------------------   00.43 %
+Stylus       4 mins          -------------------------   00.26 %
+Vue.js       0 secs          -------------------------   00.05 %
 ```
 
 <!--END_SECTION:waka-->
@@ -486,7 +486,13 @@ Other      2 mins          -------------------------   00.14 %
 
 ### Tools 🛠️
 
-
+- [开发环境配置 (基于 WSL)](notes/_archives/2025/08/WSL开发环境配置.md)
+- [VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
+- [Markdown 备忘](notes/_archives/2022/04/Markdown备忘.md)
+  - [Markdown 简历工具](notes/_archives/2022/06/Markdown简历工具.md)
+  - [LaTeX in Markdown 备忘](notes/_archives/2022/04/LaTeX备忘.md)
+- [Github Action 备忘](notes/_archives/2022/08/GithubAction备忘.md)
+- [Docker 备忘](notes/_archives/2022/08/Docker备忘.md)
 
 **Git**
 
@@ -581,10 +587,12 @@ Other      2 mins          -------------------------   00.14 %
 
 ## Drafts
 
+- [Python Wiki](notes/_archives/2025/08/python_wiki.md)
 - [算法面试笔记 ⏳](notes/_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法) ⏳](notes/_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER ⏳](notes/_archives/2022/12/电商NER.md)
 - [电商搜索 ⏳](notes/_archives/2022/12/电商搜索.md)
+- [深度学习环境配置](notes/_archives/2022/07/深度学习环境配置.md)
 - [文件夹模式测试-b ⏳](notes/_archives/2025/07/测试文件夹模式/b.md)
 - [文件夹模式测试-a ⏳](notes/_archives/2025/07/测试文件夹模式/a.md)
 - [文件夹模式测试 ⏳](notes/_archives/2025/07/测试文件夹模式/README.md)
@@ -592,14 +600,17 @@ Other      2 mins          -------------------------   00.14 %
 - [搜索相关阅读 ⏳](notes/_archives/2022/12/搜索相关阅读.md)
 - [搜索指标 ⏳](notes/_archives/2022/12/搜索指标.md)
 - [快捷键记录 ⏳](notes/_archives/2022/07/快捷键记录.md)
+- [常见面试问题（非技术） ⏳](notes/_archives/2022/06/常见面试问题（非技术）.md)
 - [常见的文本相似度计算 ⏳](notes/_archives/2022/12/文本相似度计算.md)
 - [实验报告模板 ⏳](notes/_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念 ⏳](notes/_archives/2022/04/实体链接/实体链接相关概念.md)
+- [多轮MRC信息抽取的优缺点 ⏳](notes/_archives/2025/08/多轮MRC信息抽取的优缺点.md)
 - [基于用户行为数据的同义词挖掘方法 (英文) ⏳](notes/_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
 - [基于 SQL 计算信息熵与信息增益 ⏳](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
 - [基于 BERT/MLM 的查询扩展方法 ⏳](notes/_archives/2022/12/qe-mlm.md)
 - [同义词挖掘 ⏳](notes/_archives/2025/07/同义词挖掘/README.md)
 - [低资源训练 ⏳](notes/_archives/2022/12/低资源训练.md)
+- [requirements.txt 语法备忘](notes/_archives/2022/09/python-requirements语法.md)
 - [query 理解参考资料 ⏳](notes/_archives/2022/12/query理解相关阅读.md)
 - [huggingface 套件使用备忘 ⏳](notes/_archives/2023/06/huggingface套件使用备忘.md)
 - [`split` 分割文件 ⏳](notes/_archives/2022/06/split分割文件.md)
@@ -608,26 +619,29 @@ Other      2 mins          -------------------------   00.14 %
 - [Transformer/BERT 常见变体 ⏳](notes/_archives/2022/10/Transformer系列模型.md)
 - [Transformer 的优势与劣势 ⏳](notes/_archives/2023/02/Transformer的优势与劣势.md)
 - [SQL优化之暴力扫描 ⏳](notes/_archives/2023/02/SQL优化之暴力扫描.md)
+- [SMART Loss ⏳](notes/_archives/2022/06/论文-2019-HaomingJiang.md)
+- [RLHF 及其实现 (PPO, DPO, GRPO 等) ⏳](notes/_archives/2025/08/RLHF.md)
 - [Query 纠错 ⏳](notes/_archives/2022/12/query纠错.md)
 - [Query 扩展 (电商领域) ⏳](notes/_archives/2022/12/query扩展.md)
 - [Query 分析指南 ⏳](notes/_archives/2022/12/query分析.md)
+- [Python 标准项目实践 ⏳](notes/_archives/2022/09/python标准项目实践.md)
 - [PySpark 笔记 ⏳](notes/_archives/2023/01/PySpark笔记.md)
+- [PET (Pattern-Exploiting Training) 模型 ⏳](notes/_archives/2022/07/PET模型实践.md)
+- [Obsidian ⏳](notes/_archives/2022/05/Obsidian.md)
 - [Node.js 环境搭建 ⏳](notes/_archives/2022/12/nodejs环境.md)
 - [NLP 领域术语 Wiki ⏳](notes/_archives/2022/12/nlp_wiki.md)
+- [Mac 环境配置](notes/_archives/2022/07/Mac环境配置.md)
 - [Label Studio 使用记录 ⏳](notes/_archives/2022/12/label-studio使用记录.md)
 - [LLM 训练方案整理 ⏳](notes/_archives/2023/06/llm训练方案整理.md)
 - [LLM 应用收集 ⏳](notes/_archives/2023/06/llm应用收集.md)
+- [KDD 2022 ⏳](notes/_archives/2022/06/KDD2022.md)
 - [Jupyter & IPython 使用备忘 ⏳](notes/_archives/2022/12/jupyter与ipython备忘.md)
 - [Hive/Spark/Presto SQL 备忘 ⏳](notes/_archives/2023/01/大数据SQL备忘.md)
 - [Hive/Spark SQL 常用查询记录 ⏳](notes/_archives/2023/01/sql-常用查询记录.md)
 - [Hive 常用 SQL 备忘 ⏳](notes/_archives/2023/03/Hive常用SQL备忘.md)
+- [GitBook 备忘](notes/_archives/2022/04/Gitbook备忘.md)
+- [BERT 常见面试问题](notes/_archives/2022/05/BERT常见面试问题.md)
 - [2015.wsdm.el ⏳](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md)
-- [Markdown 简历工具](notes/_archives/2022/06/Markdown简历工具.md)
-- [开发环境配置 (基于 WSL)](notes/_archives/2025/08/WSL开发环境配置.md)
-- [VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
-- [LaTeX in Markdown 备忘](notes/_archives/2022/04/LaTeX备忘.md)
-- [Github Action 备忘](notes/_archives/2022/08/GithubAction备忘.md)
-- [Docker 备忘](notes/_archives/2022/08/Docker备忘.md)
 - [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md)
 - [使用 LLM 优化简历 ⏳](notes/_archives/2025/08/使用LLM优化简历.md)
 

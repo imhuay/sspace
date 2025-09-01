@@ -3,14 +3,14 @@ Markdown 备忘
 <!--START_SECTION:badge-->
 
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-04-xx&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-01%2022%3A32%3A03&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
 top: false
 draft: false
 hidden: false
-tag: []
+tag: [tool]
 -->
 
 > ***Keywords**: Markdown*
@@ -30,7 +30,7 @@ tag: []
     - [任务列表 (Task Lists)](#任务列表-task-lists)
     - [高亮 (Highlight)](#高亮-highlight)
 - [其他编辑技巧](#其他编辑技巧)
-    - [元素居中](#元素居中)
+    - [元素居中/靠右](#元素居中靠右)
     - [目录块 (类似 `tree` 命令生成)](#目录块-类似-tree-命令生成)
     - [换行](#换行)
     - [图片 (HTML)](#图片-html)
@@ -127,6 +127,7 @@ Here's a simple footnote[^1], and here's a longer one[^bignote].
 ```markdown
 H~2~O
 ```
+> 视 Markdown 支持情况
 
 **等价 HTML 语法**
 
@@ -180,22 +181,35 @@ I need to highlight these <mark>very important words</mark>.
 
 ## 其他编辑技巧
 
-### 元素居中
+### 元素居中/靠右
 ```html
 <!-- 通用 -->
 <div align="center">
     content
 </div>
 
-<!-- GitHub 上不生效 -->
+<!-- GitHub 上不生效: GitHub 会过滤大部分内联 CSS -->
 <div style="text-align: center;">
     content
 </div>
+
+<div style="display: flex; justify-content: space-between;">
+  <a href=".">上一篇文章</a>
+  <a href=".">下一篇文章</a>
+</div>
 ```
 
-<div align="center">
-    content
+<div align="left">
+    left
 </div>
+<div align="center">
+    center
+</div>
+<div align="right">
+    right
+</div>
+
+
 
 
 ### 目录块 (类似 `tree` 命令生成)

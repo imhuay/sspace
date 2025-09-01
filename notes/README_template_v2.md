@@ -253,7 +253,7 @@ Notes
 
 ### Tools 🛠️
 
-{{tools}}
+{{tool}}
 
 **Git**
 

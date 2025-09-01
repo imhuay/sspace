@@ -19,7 +19,7 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
+给你一个二叉树的根节点 root , 判断其是否是一个有效的二叉搜索树。
 ```
 > [98. 验证二叉搜索树 - 力扣（LeetCode）](https://leetcode-cn.com/problems/validate-binary-search-tree/)
 
@@ -37,8 +37,12 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 判断二叉搜索树的条件：
-    - 当前节点的值大于左树的最大值，小于右树的最小值，且**左右子树都是二叉搜索树**；
+- 二叉搜索树定义的定义:
+    - 节点的左子树只包含 小于 当前节点的数;
+    - 节点的右子树只包含 大于 当前节点的数;
+    - 所有左子树和右子树自身必须也是二叉搜索树;
+    - 空树是二叉搜索树
+- 可以看到, 要判断是否为二叉树, 需要**先得到左右子树的信息**, 故采用**后序遍历**;
 
 <details><summary><b>Python</b></summary>
 
@@ -49,6 +53,7 @@ companies: []
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
 
@@ -56,20 +61,22 @@ class Solution:
 
         @dataclass
         class Info:
-            mx: int
-            mi: int
-            is_bst: bool
+            is_bst: bool = False        # 当前子树是否为 BST
+            max_v: int = float('-inf')     # 当前子树中的最大值
+            min_v: int = float('inf')      # 当前子树中的最小值
 
         def dfs(x):
-            if not x: return Info(float('-inf'), float('inf'), True)
+            if not x:  # 空树是二叉搜索树
+                return Info(True)
 
-            l, r = dfs(x.left), dfs(x.right)
+            # 后序遍历: 先访问左右子树, 这里访问顺序不影响结果
+            l, r = dfs(x.left), dfs(x.right)  # 得到左右子树的 info
 
-            mx = max(x.val, r.mx)
-            mi = min(x.val, l.mi)
-            is_bst = l.is_bst and r.is_bst and l.mx < x.val < r.mi
+            max_v = max(x.val, r.max_v)
+            min_v = min(x.val, l.min_v)
+            is_bst = l.is_bst and r.is_bst and l.max_v < x.val < r.min_v
 
-            return Info(mx, mi, is_bst)
+            return Info(is_bst, max_v, min_v)
 
         return dfs(root).is_bst
 ```
