@@ -13,10 +13,12 @@ Notes
     - [Deep Learning](#deep-learning)
         - [Transformer/BERTs 🤖](#transformerberts-)
     - [NLP](#nlp)
-    - [Machine Learning](#machine-learning)
-    - [Reading List 🔖](#reading-list-)
     - [LLM 🚀](#llm-)
+        - [Prompt Engineering](#prompt-engineering)
+        - [Reinforcement Learning](#reinforcement-learning)
+    - [Reading List 🔖](#reading-list-)
     - [Algorithms](#algorithms)
+    - [Machine Learning](#machine-learning)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -50,6 +52,8 @@ Notes
 - [`2025-07-08` 电商领域的 NER ⏳](_archives/2022/12/电商NER.md)
 - [`2025-07-08` 电商搜索 ⏳](_archives/2022/12/电商搜索.md)
 - [`2025-07-08` 爱因斯坦标记法](_archives/2022/05/爱因斯坦标记法.md)
+- [`2025-07-08` 滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
+- [`2025-07-08` 树形递归技巧](_archives/2022/10/树形递归技巧.md)
 
 
 <!--END_SECTION:recent-->
@@ -67,7 +71,7 @@ Notes
 
 <!-- row 1 -->
 <tr>
-<td rowspan="6" colspan="2" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
 ### Deep Learning
 
@@ -116,7 +120,7 @@ Notes
 - [综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 
 </td>
-<td rowspan="4" colspan="2" valign="top" width="1000">
+<td rowspan="6" valign="top" width="1000">
 
 ### NLP
 - [语言模型 ⏳](_archives/2022/10/语言模型.md)
@@ -158,12 +162,17 @@ Notes
 - [印尼语NLP](_archives/2022/07/印尼语NLP.md)
 
 </td>
-<td rowspan="2" colspan="2" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
-### Machine Learning
+### LLM 🚀
 
-- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
-- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
+#### Prompt Engineering
+
+- [反思 (Reflection)](_archives/2025/08/Prompt工程-自反思.md)
+
+#### Reinforcement Learning
+
+
 
 </td>
 </tr>
@@ -173,7 +182,14 @@ Notes
 
 <!-- row 3 -->
 <tr>
-<td rowspan="6" colspan="2" valign="top" width="1000">
+</tr>
+
+<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 5 -->
+<tr>
+<td rowspan="6" valign="top" width="1000">
 
 ### Reading List 🔖
 
@@ -184,35 +200,12 @@ Notes
 </td>
 </tr>
 
-<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 5 -->
-<tr>
-<td rowspan="4" colspan="2" valign="top" width="1000">
-
-### LLM 🚀
-
-<!-- omit in toc -->
-#### 训练
-
-
-
-<!-- omit in toc -->
-#### 应用
-
-- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md)
-- [使用 LLM 优化简历 ⏳](_archives/2025/08/使用LLM优化简历.md)
-
-</td>
-</tr>
-
 <!-- row 6; 空白行, 用于跳过表格的灰色行 -->
 <tr></tr>
 
 <!-- row 7 -->
 <tr>
-<td rowspan="2" colspan="2" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
 ### Algorithms
 
@@ -229,13 +222,27 @@ Notes
 - [滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
 
 </td>
-
 </tr>
 
 <!-- row 8; 空白行, 用于跳过表格的灰色行 -->
 <tr></tr>
 
 <!-- row 9 -->
+<tr>
+<td rowspan="2" valign="top" width="1000">
+
+### Machine Learning
+
+- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
+- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
+
+</td>
+</tr>
+
+<!-- row 10; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 11 -->
 <tr>
 <td rowspan="2" colspan="6" valign="top" width="1000">
 
@@ -245,6 +252,9 @@ Notes
 
 </td>
 </tr>
+
+<!-- row 12; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
 
 </table>
 
@@ -303,11 +313,7 @@ Notes
 
 ### Tools 🛠️
 
-- [Markdown 简历工具](_archives/2022/06/Markdown简历工具.md)
-- [VSCode 备忘](_archives/2025/08/VSCode备忘.md)
-- [LaTeX in Markdown 备忘](_archives/2022/04/LaTeX备忘.md)
-- [Github Action 备忘](_archives/2022/08/GithubAction备忘.md)
-- [Docker 备忘](_archives/2022/08/Docker备忘.md)
+
 
 **Git**
 
@@ -443,5 +449,13 @@ Notes
 - [Hive/Spark SQL 常用查询记录 ⏳](_archives/2023/01/sql-常用查询记录.md)
 - [Hive 常用 SQL 备忘 ⏳](_archives/2023/03/Hive常用SQL备忘.md)
 - [2015.wsdm.el ⏳](_archives/2022/04/实体链接/2015.wsdm.el.01.md)
+- [Markdown 简历工具](_archives/2022/06/Markdown简历工具.md)
+- [开发环境配置 (基于 WSL)](_archives/2025/08/WSL开发环境配置.md)
+- [VSCode 备忘](_archives/2025/08/VSCode备忘.md)
+- [LaTeX in Markdown 备忘](_archives/2022/04/LaTeX备忘.md)
+- [Github Action 备忘](_archives/2022/08/GithubAction备忘.md)
+- [Docker 备忘](_archives/2022/08/Docker备忘.md)
+- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md)
+- [使用 LLM 优化简历 ⏳](_archives/2025/08/使用LLM优化简历.md)
 
 <!--END_SECTION:notes-->
