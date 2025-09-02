@@ -90,3 +90,19 @@ class Solution:
 
 
 
+
+<!--START_SECTION:relate-->
+
+---
+
+### 相关主题
+
+<details><summary><b>单调栈/单调队列</b></summary>
+
+> [[困难, 剑指Offer] 滑动窗口的最大值](../../2022/01/剑指Offer_5901_困难_滑动窗口的最大值.md)  
+> [[困难, 牛客] 滑动窗口的最大值](../../2022/03/牛客_0082_困难_滑动窗口的最大值.md)  
+  > 
+
+</details>
+
+<!--END_SECTION:relate-->

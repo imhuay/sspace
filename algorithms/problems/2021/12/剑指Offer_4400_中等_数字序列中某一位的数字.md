@@ -81,3 +81,18 @@ class Solution:
 
 </details>
 
+
+<!--START_SECTION:relate-->
+
+---
+
+### 相关主题
+
+<details><summary><b>找规律</b></summary>
+
+> [[困难, 剑指Offer] 1～n整数中1出现的次数](剑指Offer_4300_困难_1～n整数中1出现的次数.md)  
+  > 
+
+</details>
+
+<!--END_SECTION:relate-->
