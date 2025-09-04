@@ -121,6 +121,8 @@ Notes
 
 ### LLM 🚀
 
+{{llm}}
+
 #### Prompt Engineering
 
 {{llm_prompt}}
@@ -185,6 +187,8 @@ Notes
 ### Machine Learning
 
 {{ml}}
+
+
 
 </td>
 </tr>

@@ -15,6 +15,7 @@ import json
 import os
 import re
 import shutil
+from ast import keyword
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -88,6 +89,7 @@ class Note:
     _paper_title: str | None = None
     _date: str | None = None
     _parent_paths: list[Path] | None = None
+    _keywords: list[str] | None = None
     sort_by_first_commit: ClassVar[bool] = True
 
     def __post_init__(self):
@@ -113,6 +115,13 @@ class Note:
             return f'- [`{self.date}` {self.title} 📌]({self.path.relative_to(parent_path)})'
         else:
             return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
+
+    @property
+    def keywords(self) -> list[str]:
+        if self._keywords is None:
+            keywords = ReadmeUtils.findall_tag_content('keyword', self.text)
+            self._keywords = [MarkdownUtils.get_head_title(k) for k in keywords]
+        return self._keywords
 
     @property
     def toc_line_relative_to_repo(self):
@@ -203,7 +212,11 @@ class Note:
     @property
     def tag_toc_line(self) -> str:
         rel_path = self.path.relative_to(args.fp_notes)
-        return f'- [{self.title}]({rel_path})'
+        keywords = ', '.join(self.keywords)
+        if keywords:
+            return f'- [{self.title}]({rel_path})\n  > {keywords}'
+        else:
+            return f'- [{self.title}]({rel_path})'
 
     @property
     def paper_title(self):

@@ -21,6 +21,7 @@ from typing import TYPE_CHECKING
 
 import yaml
 from markdown.extensions import toc
+from markdown_it import MarkdownIt
 
 from huaytools.utils import get_logger
 
@@ -54,6 +55,17 @@ class MarkdownUtils:
             )
 
         return result
+
+    @staticmethod
+    def get_head_title(head: str) -> str:
+        """从 Markdown 标题中提取纯文本内容，去除标题标记和内联格式"""
+        # 使用 Markdown-It 解析器
+        md = MarkdownIt()
+        tokens = md.parse(head)
+        for t in tokens:
+            if t.type == 'inline':
+                return t.content
+        return ''
 
 
 class ReadmeUtils:
@@ -215,6 +227,16 @@ class ReadmeUtils:
         if not m:
             return None
         return m.group(1).strip()
+
+    @staticmethod
+    def findall_tag_content(tag, txt) -> list[str]:
+        """
+        <!--START_SECTION:{tag}-->
+        <content>
+        <!--END_SECTION:{tag}-->
+        """
+        re_pattern = ReadmeUtils._get_section_re_pattern(tag)
+        return [m.group(1).strip() for m in re_pattern.finditer(txt) if m]
 
     @staticmethod
     def _get_section_re_pattern(tag):
