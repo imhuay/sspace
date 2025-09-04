@@ -339,8 +339,11 @@ Stylus       6 mins          -------------------------   00.38 %
 
 ### LLM 🚀
 
+- [MoE 备忘](notes/_archives/2025/09/MoE备忘/README.md)
+
 #### Prompt Engineering
 
+- [常用 prompt 备忘](notes/_archives/2025/09/常用prompt备忘.md)
 - [反思 (Reflection)](notes/_archives/2025/08/Prompt工程-自反思.md)
 
 #### Reinforcement Learning
@@ -406,8 +409,12 @@ Stylus       6 mins          -------------------------   00.38 %
 
 ### Machine Learning
 
+- [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md)
+  > 归纳偏置
 - [XGBoost 学习笔记 ⏳](notes/_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md)
+
+
 
 </td>
 </tr>
