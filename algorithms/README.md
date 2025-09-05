@@ -61,18 +61,6 @@
 
 <td width="1000" valign="top">
 
-### 基础
-<!--START_SECTION:base-->
-
-- [模拟 (17)](#模拟)
-- [数学 (9)](#数学)
-- [找规律 (2)](#找规律)
-
-<!--END_SECTION:base-->
-
-</td>
-<td width="1000" valign="top">
-
 ### 数据结构
 <!--START_SECTION:data_struct-->
 
@@ -123,6 +111,19 @@
 - [有限状态自动机 (1)](#有限状态自动机)
 
 <!--END_SECTION:trick-->
+
+</td>
+
+<td width="1000" valign="top">
+
+### 其他
+<!--START_SECTION:other-->
+
+- [模拟 (17)](#模拟)
+- [数学 (9)](#数学)
+- [找规律 (2)](#找规律)
+
+<!--END_SECTION:other-->
 
 </td>
 

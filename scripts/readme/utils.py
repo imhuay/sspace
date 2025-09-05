@@ -268,7 +268,8 @@ class ReadmeUtils:
         """"""
         info_str = ReadmeUtils.get_annotation_info(note.text)
         if info_str is None:
-            raise ValueError(f'Note info not found: {note.path}')
+            # raise ValueError(f'Note info not found: {note.path}')
+            return dict()
         info = yaml.safe_load(info_str)
         return info
 

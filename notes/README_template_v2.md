@@ -10,15 +10,13 @@ Notes
 
 <!-- TOC -->
 - [Researches](#researches)
+    - [Transformer 🤖](#transformer-)
     - [Deep Learning](#deep-learning)
-        - [Transformer/BERTs 🤖](#transformerberts-)
     - [NLP](#nlp)
     - [LLM 🚀](#llm-)
-        - [Prompt Engineering](#prompt-engineering)
-        - [Reinforcement Learning](#reinforcement-learning)
     - [Reading List 🔖](#reading-list-)
-    - [Algorithms](#algorithms)
     - [Machine Learning](#machine-learning)
+    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -50,15 +48,21 @@ Notes
 
 <!-- row 1 -->
 <tr>
+<td rowspan="4" valign="top" width="1000">
+
+### Transformer 🤖
+
+<!-- omit in toc -->
+#### BERT
+
+{{dl_bert}}
+
+</td>
 <td rowspan="8" valign="top" width="1000">
 
 ### Deep Learning
 
 {{dl}}
-
-#### Transformer/BERTs 🤖
-
-{{dl_bert}}
 
 <!-- omit in toc -->
 #### 模型
@@ -86,7 +90,7 @@ Notes
 {{dl_unbalanced}}
 
 </td>
-<td rowspan="6" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
 ### NLP
 {{nlp}}
@@ -117,21 +121,6 @@ Notes
 {{nlp_data}}
 
 </td>
-<td rowspan="4" valign="top" width="1000">
-
-### LLM 🚀
-
-{{llm}}
-
-#### Prompt Engineering
-
-{{llm_prompt}}
-
-#### Reinforcement Learning
-
-{{llm_rl}}
-
-</td>
 </tr>
 
 <!-- row 2; 空白行, 用于跳过表格的灰色行 -->
@@ -146,11 +135,21 @@ Notes
 
 <!-- row 5 -->
 <tr>
-<td rowspan="6" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
-### Reading List 🔖
+### LLM 🚀
 
-{{read}}
+{{llm}}
+
+<!-- omit in toc -->
+#### Prompt Engineering
+
+{{llm_prompt}}
+
+<!-- omit in toc -->
+#### Reinforcement Learning
+
+{{llm_rl}}
 
 </td>
 </tr>
@@ -160,7 +159,28 @@ Notes
 
 <!-- row 7 -->
 <tr>
-<td rowspan="4" valign="top" width="1000">
+</tr>
+
+<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 9 -->
+<tr>
+<td rowspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+{{read}}
+
+</td>
+<td rowspan="2" valign="top" width="1000">
+
+### Machine Learning
+
+{{ml}}
+
+</td>
+<td rowspan="2" valign="top" width="1000">
 
 ### Algorithms
 
@@ -173,22 +193,6 @@ Notes
 **模板**
 
 {{algo_temp}}
-
-</td>
-</tr>
-
-<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 9 -->
-<tr>
-<td rowspan="2" valign="top" width="1000">
-
-### Machine Learning
-
-{{ml}}
-
-
 
 </td>
 </tr>

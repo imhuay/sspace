@@ -29,15 +29,8 @@
     中等:
     困难:
 -
-  tag_type: base
-  priority: 3
-  tags:
-    模拟:
-    找规律:
-    数学:
--
   tag_type: data_struct
-  priority: 4
+  priority: 3
   tags:
     链表:
       notes: [2022/10/链表模板.md]
@@ -57,7 +50,7 @@
       aliases: [堆, 优先队列]
 -
   tag_type: algo
-  priority: 5
+  priority: 4
   tags:
     分治:
     递归:
@@ -75,7 +68,7 @@
       aliases: [二分, 二分搜索, 二分法]
 -
   tag_type: trick
-  priority: 6
+  priority: 5
   tags:
     滑动窗口:
       notes: [2022/10/滑动窗口模板.md]
@@ -95,3 +88,10 @@
     树形递归:
       aliases: [tree+dp, tree+dfs, 树形dp, TreeDp]
       notes: [2022/10/树形递归技巧.md]
+-
+  tag_type: other
+  priority: 6
+  tags:
+    模拟:
+    找规律:
+    数学:

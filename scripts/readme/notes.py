@@ -373,7 +373,7 @@ class NotesBuilder(Builder):
         for dp, _, fns in os.walk(self._fp_notes_archives):
             for fn in fns:
                 fp = Path(dp) / fn
-                if fp.suffix != '.md':
+                if fp.suffix != '.md' or fp.name.startswith('tmp'):
                     continue
                 note = Note(fp)
                 self.notes.append(note)
