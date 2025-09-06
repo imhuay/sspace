@@ -32,6 +32,7 @@ Notes
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
+- [`2025-09-05` Transformer 指南](_archives/2025/09/Transformer梳理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md)
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md)
@@ -43,7 +44,6 @@ Notes
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md)
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md)
 - [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
-- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
 
 
 <!--END_SECTION:recent-->

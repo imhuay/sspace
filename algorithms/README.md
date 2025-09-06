@@ -834,43 +834,6 @@
 - [`牛客_0123_困难_序列化二叉树`](problems/2022/05/牛客_0123_困难_序列化二叉树.md)
 - [`牛客_0128_困难_接雨水问题`](problems/2022/05/牛客_0128_困难_接雨水问题.md)
 
-### 模拟
-![total](https://img.shields.io/static/v1?label=total&message=17&label_color=gray&color=blue&style=flat-square)
-- [`LeetCode_0352_困难_将数据流变为多个不相交区间`](problems/2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)
-- [`LeetCode_0859_简单_亲密字符串`](problems/2021/11/LeetCode_0859_简单_亲密字符串.md)
-- [`LeetCode_0915_中等_分割数组`](problems/2022/06/LeetCode_0915_中等_分割数组.md)
-- [`剑指Offer_2900_中等_顺时针打印矩阵（3种思路4个写法）`](problems/2021/11/剑指Offer_2900_中等_顺时针打印矩阵（3种思路4个写法）.md)
-- [`剑指Offer_3900_简单_数组中出现次数超过一半的数字（摩尔投票）`](problems/2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字（摩尔投票）.md)
-- [`剑指Offer_6100_简单_扑克牌中的顺子`](problems/2022/01/剑指Offer_6100_简单_扑克牌中的顺子.md)
-- [`剑指Offer_6200_中等_圆圈中最后剩下的数字（约瑟夫环问题）`](problems/2022/01/剑指Offer_6200_中等_圆圈中最后剩下的数字（约瑟夫环问题）.md)
-- [`剑指Offer_6300_中等_买卖股票的最佳时机`](problems/2022/01/剑指Offer_6300_中等_买卖股票的最佳时机.md)
-- [`牛客_0001_中等_大数加法`](problems/2022/01/牛客_0001_中等_大数加法.md)
-- [`牛客_0007_简单_买卖股票的最好时机(一)`](problems/2022/01/牛客_0007_简单_买卖股票的最好时机(一).md)
-- [`牛客_0010_中等_大数乘法`](problems/2022/01/牛客_0010_中等_大数乘法.md)
-- [`牛客_0017_中等_最长回文子串`](problems/2022/01/牛客_0017_中等_最长回文子串.md)
-- [`牛客_0038_中等_螺旋矩阵`](problems/2022/03/牛客_0038_中等_螺旋矩阵.md)
-- [`牛客_0057_简单_反转数字`](problems/2022/03/牛客_0057_简单_反转数字.md)
-- [`牛客_0063_简单_扑克牌顺子`](problems/2022/03/牛客_0063_简单_扑克牌顺子.md)
-- [`牛客_0073_简单_数组中出现次数超过一半的数字`](problems/2022/03/牛客_0073_简单_数组中出现次数超过一半的数字.md)
-- [`牛客_0089_简单_字符串变形`](problems/2022/04/牛客_0089_简单_字符串变形.md)
-
-### 数学
-![total](https://img.shields.io/static/v1?label=total&message=9&label_color=gray&color=blue&style=flat-square)
-- [`Collection_20220126_中等_划分2N个点`](problems/2022/01/Collection_20220126_中等_划分2N个点.md)
-- [`LeetCode_0343_中等_整数拆分`](problems/2021/12/LeetCode_0343_中等_整数拆分.md)
-- [`LeetCode_0441_简单_排列硬币`](problems/2021/10/LeetCode_0441_简单_排列硬币.md)
-- [`剑指Offer_1401_中等_剪绳子（整数拆分）`](problems/2021/11/剑指Offer_1401_中等_剪绳子（整数拆分）.md)
-- [`剑指Offer_1402_中等_剪绳子`](problems/2021/11/剑指Offer_1402_中等_剪绳子.md)
-- [`牛客_0056_简单_回文数字`](problems/2022/03/牛客_0056_简单_回文数字.md)
-- [`牛客_0106_简单_三个数的最大乘积`](problems/2022/04/牛客_0106_简单_三个数的最大乘积.md)
-- [`牛客_0112_简单_进制转换`](problems/2022/04/牛客_0112_简单_进制转换.md)
-- [`牛客_0129_中等_阶乘末尾0的数量`](problems/2022/05/牛客_0129_中等_阶乘末尾0的数量.md)
-
-### 找规律
-![total](https://img.shields.io/static/v1?label=total&message=2&label_color=gray&color=blue&style=flat-square)
-- [`剑指Offer_4300_困难_1～n整数中1出现的次数`](problems/2021/12/剑指Offer_4300_困难_1～n整数中1出现的次数.md)
-- [`剑指Offer_4400_中等_数字序列中某一位的数字`](problems/2021/12/剑指Offer_4400_中等_数字序列中某一位的数字.md)
-
 ### 二叉树/树
 ![total](https://img.shields.io/static/v1?label=total&message=48&label_color=gray&color=blue&style=flat-square)
 - [`LeetCode_0098_中等_验证二叉搜索树`](problems/2022/03/LeetCode_0098_中等_验证二叉搜索树.md)
@@ -1326,6 +1289,43 @@
 ### 有限状态自动机
 ![total](https://img.shields.io/static/v1?label=total&message=1&label_color=gray&color=blue&style=flat-square)
 - [`剑指Offer_2000_中等_表示数值的字符串`](problems/2021/11/剑指Offer_2000_中等_表示数值的字符串.md)
+
+### 模拟
+![total](https://img.shields.io/static/v1?label=total&message=17&label_color=gray&color=blue&style=flat-square)
+- [`LeetCode_0352_困难_将数据流变为多个不相交区间`](problems/2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)
+- [`LeetCode_0859_简单_亲密字符串`](problems/2021/11/LeetCode_0859_简单_亲密字符串.md)
+- [`LeetCode_0915_中等_分割数组`](problems/2022/06/LeetCode_0915_中等_分割数组.md)
+- [`剑指Offer_2900_中等_顺时针打印矩阵（3种思路4个写法）`](problems/2021/11/剑指Offer_2900_中等_顺时针打印矩阵（3种思路4个写法）.md)
+- [`剑指Offer_3900_简单_数组中出现次数超过一半的数字（摩尔投票）`](problems/2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字（摩尔投票）.md)
+- [`剑指Offer_6100_简单_扑克牌中的顺子`](problems/2022/01/剑指Offer_6100_简单_扑克牌中的顺子.md)
+- [`剑指Offer_6200_中等_圆圈中最后剩下的数字（约瑟夫环问题）`](problems/2022/01/剑指Offer_6200_中等_圆圈中最后剩下的数字（约瑟夫环问题）.md)
+- [`剑指Offer_6300_中等_买卖股票的最佳时机`](problems/2022/01/剑指Offer_6300_中等_买卖股票的最佳时机.md)
+- [`牛客_0001_中等_大数加法`](problems/2022/01/牛客_0001_中等_大数加法.md)
+- [`牛客_0007_简单_买卖股票的最好时机(一)`](problems/2022/01/牛客_0007_简单_买卖股票的最好时机(一).md)
+- [`牛客_0010_中等_大数乘法`](problems/2022/01/牛客_0010_中等_大数乘法.md)
+- [`牛客_0017_中等_最长回文子串`](problems/2022/01/牛客_0017_中等_最长回文子串.md)
+- [`牛客_0038_中等_螺旋矩阵`](problems/2022/03/牛客_0038_中等_螺旋矩阵.md)
+- [`牛客_0057_简单_反转数字`](problems/2022/03/牛客_0057_简单_反转数字.md)
+- [`牛客_0063_简单_扑克牌顺子`](problems/2022/03/牛客_0063_简单_扑克牌顺子.md)
+- [`牛客_0073_简单_数组中出现次数超过一半的数字`](problems/2022/03/牛客_0073_简单_数组中出现次数超过一半的数字.md)
+- [`牛客_0089_简单_字符串变形`](problems/2022/04/牛客_0089_简单_字符串变形.md)
+
+### 数学
+![total](https://img.shields.io/static/v1?label=total&message=9&label_color=gray&color=blue&style=flat-square)
+- [`Collection_20220126_中等_划分2N个点`](problems/2022/01/Collection_20220126_中等_划分2N个点.md)
+- [`LeetCode_0343_中等_整数拆分`](problems/2021/12/LeetCode_0343_中等_整数拆分.md)
+- [`LeetCode_0441_简单_排列硬币`](problems/2021/10/LeetCode_0441_简单_排列硬币.md)
+- [`剑指Offer_1401_中等_剪绳子（整数拆分）`](problems/2021/11/剑指Offer_1401_中等_剪绳子（整数拆分）.md)
+- [`剑指Offer_1402_中等_剪绳子`](problems/2021/11/剑指Offer_1402_中等_剪绳子.md)
+- [`牛客_0056_简单_回文数字`](problems/2022/03/牛客_0056_简单_回文数字.md)
+- [`牛客_0106_简单_三个数的最大乘积`](problems/2022/04/牛客_0106_简单_三个数的最大乘积.md)
+- [`牛客_0112_简单_进制转换`](problems/2022/04/牛客_0112_简单_进制转换.md)
+- [`牛客_0129_中等_阶乘末尾0的数量`](problems/2022/05/牛客_0129_中等_阶乘末尾0的数量.md)
+
+### 找规律
+![total](https://img.shields.io/static/v1?label=total&message=2&label_color=gray&color=blue&style=flat-square)
+- [`剑指Offer_4300_困难_1～n整数中1出现的次数`](problems/2021/12/剑指Offer_4300_困难_1～n整数中1出现的次数.md)
+- [`剑指Offer_4400_中等_数字序列中某一位的数字`](problems/2021/12/剑指Offer_4400_中等_数字序列中某一位的数字.md)
 
 
 <!--END_SECTION:problems-->

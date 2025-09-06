@@ -1,6 +1,10 @@
 统一视角下的 NLP 任务: "一切皆分类"
 ===
 <!--START_SECTION:badge-->
+
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-04&label_color=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-05%2012%3A30%3A39&label_color=gray&color=thistle&style=flat-square)
+
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-04 16:47:35

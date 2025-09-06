@@ -10,15 +10,13 @@ Notes
 
 <!-- TOC -->
 - [Researches](#researches)
+    - [Transformer 🤖](#transformer-)
     - [Deep Learning](#deep-learning)
-        - [Transformer/BERTs 🤖](#transformerberts-)
     - [NLP](#nlp)
     - [LLM 🚀](#llm-)
-        - [Prompt Engineering](#prompt-engineering)
-        - [Reinforcement Learning](#reinforcement-learning)
     - [Reading List 🔖](#reading-list-)
-    - [Algorithms](#algorithms)
     - [Machine Learning](#machine-learning)
+    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -37,6 +35,7 @@ Notes
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
+- [`2025-09-05` Transformer 指南](_archives/2025/09/Transformer梳理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md)
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md)
@@ -51,9 +50,6 @@ Notes
 - [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
 - [`2025-07-08` 电商领域的 NER ⏳](_archives/2022/12/电商NER.md)
 - [`2025-07-08` 电商搜索 ⏳](_archives/2022/12/电商搜索.md)
-- [`2025-07-08` 爱因斯坦标记法](_archives/2022/05/爱因斯坦标记法.md)
-- [`2025-07-08` 滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
-- [`2025-07-08` 树形递归技巧](_archives/2022/10/树形递归技巧.md)
 
 
 <!--END_SECTION:recent-->
@@ -71,6 +67,19 @@ Notes
 
 <!-- row 1 -->
 <tr>
+<td rowspan="4" valign="top" width="1000">
+
+### Transformer 🤖
+
+<!-- omit in toc -->
+#### BERT
+
+- [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md)
+- [Transformer 位置编码 ⏳](_archives/2025/08/Transformer位置编码.md)
+- [Transformer Wiki ⏳](_archives/2022/05/TransformerWiki.md)
+- [BERT + CRF 备忘 ⏳](_archives/2022/04/bert_crf备忘.md)
+
+</td>
 <td rowspan="8" valign="top" width="1000">
 
 ### Deep Learning
@@ -78,13 +87,6 @@ Notes
 - [过拟合与正则化](_archives/2022/05/过拟合与正则化.md)
 - [激活函数 ⏳](_archives/2022/05/激活函数.md)
 - [损失函数 ⏳](_archives/2022/05/损失函数.md)
-
-#### Transformer/BERTs 🤖
-
-- [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md)
-- [Transformer 位置编码 ⏳](_archives/2025/08/Transformer位置编码.md)
-- [Transformer Wiki ⏳](_archives/2022/05/TransformerWiki.md)
-- [BERT + CRF 备忘 ⏳](_archives/2022/04/bert_crf备忘.md)
 
 <!-- omit in toc -->
 #### 模型
@@ -120,9 +122,10 @@ Notes
 - [综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 
 </td>
-<td rowspan="6" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
 ### NLP
+- [统一视角下的 NLP 任务: "一切皆分类"](_archives/2025/09/统一视角下的NLP任务.md)
 - [语言模型 ⏳](_archives/2022/10/语言模型.md)
 - [NLP 任务与应用](_archives/2022/06/NLP任务与应用.map.md)
 
@@ -159,23 +162,7 @@ Notes
 <!-- omit in toc -->
 #### 数据
 
-- [印尼语NLP](_archives/2022/07/印尼语NLP.md)
-
-</td>
-<td rowspan="4" valign="top" width="1000">
-
-### LLM 🚀
-
-- [MoE 备忘](_archives/2025/09/MoE备忘/README.md)
-
-#### Prompt Engineering
-
-- [常用 prompt 备忘](_archives/2025/09/常用prompt备忘.md)
-- [反思 (Reflection)](_archives/2025/08/Prompt工程-自反思.md)
-
-#### Reinforcement Learning
-
-
+- [印尼语 NLP](_archives/2022/07/印尼语NLP.md)
 
 </td>
 </tr>
@@ -192,13 +179,22 @@ Notes
 
 <!-- row 5 -->
 <tr>
-<td rowspan="6" valign="top" width="1000">
+<td rowspan="4" valign="top" width="1000">
 
-### Reading List 🔖
+### LLM 🚀
 
-- [强化学习相关](_archives/2025/08/强化学习相关资料.md)
-- [HuggingFace (博客 & 代码)](_archives/2025/08/HuggingFace阅读列表.md)
-- [GitHub (仓库)](_archives/2025/08/GitHub阅读列表.md)
+- [MoE 备忘](_archives/2025/09/MoE备忘/README.md)
+
+<!-- omit in toc -->
+#### Prompt Engineering
+
+- [常用 prompt 备忘](_archives/2025/09/常用prompt备忘.md)
+- [反思 (Reflection)](_archives/2025/08/Prompt工程-自反思.md)
+
+<!-- omit in toc -->
+#### Reinforcement Learning
+
+
 
 </td>
 </tr>
@@ -208,7 +204,33 @@ Notes
 
 <!-- row 7 -->
 <tr>
-<td rowspan="4" valign="top" width="1000">
+</tr>
+
+<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
+<tr></tr>
+
+<!-- row 9 -->
+<tr>
+<td rowspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+- [强化学习相关](_archives/2025/08/强化学习相关资料.md)
+- [HuggingFace (博客 & 代码)](_archives/2025/08/HuggingFace阅读列表.md)
+- [GitHub (仓库)](_archives/2025/08/GitHub阅读列表.md)
+
+</td>
+<td rowspan="2" valign="top" width="1000">
+
+### Machine Learning
+
+- [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
+  > 归纳偏置
+- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
+- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
+
+</td>
+<td rowspan="2" valign="top" width="1000">
 
 ### Algorithms
 
@@ -223,25 +245,6 @@ Notes
 
 - [链表常用操作备忘](_archives/2022/10/链表模板.md)
 - [滑动窗口模板](_archives/2022/10/滑动窗口模板.md)
-
-</td>
-</tr>
-
-<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 9 -->
-<tr>
-<td rowspan="2" valign="top" width="1000">
-
-### Machine Learning
-
-- [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
-  > 归纳偏置
-- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
-- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
-
-
 
 </td>
 </tr>
@@ -422,6 +425,8 @@ Notes
 ## Drafts
 
 - [Python Wiki](_archives/2025/08/python_wiki.md)
+- [算法面试问题收录](_archives/2025/09/算法面试问题收录.md)
+  > Transformer, LLM
 - [算法面试笔记 ⏳](_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法) ⏳](_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER ⏳](_archives/2022/12/电商NER.md)
@@ -449,9 +454,11 @@ Notes
 - [huggingface 套件使用备忘 ⏳](_archives/2023/06/huggingface套件使用备忘.md)
 - [`split` 分割文件 ⏳](_archives/2022/06/split分割文件.md)
 - [Windows 使用备忘 ⏳](_archives/2023/01/Windows备忘.md)
+- [Transformer面试题库](_archives/2025/09/Transformer梳理/Transformer面试题库.md)
 - [Transformer与长度外推性 ⏳](_archives/2023/02/Transformer与长度外推性.md)
 - [Transformer/BERT 常见变体 ⏳](_archives/2022/10/Transformer系列模型.md)
 - [Transformer 的优势与劣势 ⏳](_archives/2023/02/Transformer的优势与劣势.md)
+- [Transformer 指南](_archives/2025/09/Transformer梳理/README.md)
 - [SQL优化之暴力扫描 ⏳](_archives/2023/02/SQL优化之暴力扫描.md)
 - [SMART Loss ⏳](_archives/2022/06/论文-2019-HaomingJiang.md)
 - [RLHF 及其实现 (PPO, DPO, GRPO 等) ⏳](_archives/2025/08/RLHF.md)
