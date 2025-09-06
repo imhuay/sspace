@@ -52,6 +52,8 @@ Notes
 
 ### Transformer 🤖
 
+{{dl_transformer}}
+
 <!-- omit in toc -->
 #### BERT
 

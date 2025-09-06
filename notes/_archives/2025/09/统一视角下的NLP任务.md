@@ -1,4 +1,4 @@
-统一视角下的 NLP 任务: "一切皆分类"
+统一视角下的 NLP 任务
 ===
 <!--START_SECTION:badge-->
 
