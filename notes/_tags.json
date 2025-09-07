@@ -11,6 +11,7 @@
     "dl_frame",
     "dl_model",
     "dl_sft",
+    "dl_transformer",
     "dl_unbalanced",
     "draft",
     "git",

@@ -35,7 +35,7 @@ Notes
 <!--START_SECTION:recent-->
 
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
-- [`2025-09-05` Transformer 指南](_archives/2025/09/Transformer梳理/README.md)
+- [`2025-09-05` Transformer 梳理](_archives/2025/09/Transformer梳理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md)
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md)
@@ -70,6 +70,9 @@ Notes
 <td rowspan="4" valign="top" width="1000">
 
 ### Transformer 🤖
+
+- [Transformer 梳理](_archives/2025/09/Transformer梳理/README.md)
+  - [Transformer 面试题整理](_archives/2025/09/Transformer梳理/Transformer面试题库.md)
 
 <!-- omit in toc -->
 #### BERT
@@ -125,7 +128,7 @@ Notes
 <td rowspan="8" valign="top" width="1000">
 
 ### NLP
-- [统一视角下的 NLP 任务: "一切皆分类"](_archives/2025/09/统一视角下的NLP任务.md)
+- [统一视角下的 NLP 任务](_archives/2025/09/统一视角下的NLP任务.md)
 - [语言模型 ⏳](_archives/2022/10/语言模型.md)
 - [NLP 任务与应用](_archives/2022/06/NLP任务与应用.map.md)
 
@@ -454,11 +457,9 @@ Notes
 - [huggingface 套件使用备忘 ⏳](_archives/2023/06/huggingface套件使用备忘.md)
 - [`split` 分割文件 ⏳](_archives/2022/06/split分割文件.md)
 - [Windows 使用备忘 ⏳](_archives/2023/01/Windows备忘.md)
-- [Transformer面试题库](_archives/2025/09/Transformer梳理/Transformer面试题库.md)
 - [Transformer与长度外推性 ⏳](_archives/2023/02/Transformer与长度外推性.md)
 - [Transformer/BERT 常见变体 ⏳](_archives/2022/10/Transformer系列模型.md)
 - [Transformer 的优势与劣势 ⏳](_archives/2023/02/Transformer的优势与劣势.md)
-- [Transformer 指南](_archives/2025/09/Transformer梳理/README.md)
 - [SQL优化之暴力扫描 ⏳](_archives/2023/02/SQL优化之暴力扫描.md)
 - [SMART Loss ⏳](_archives/2022/06/论文-2019-HaomingJiang.md)
 - [RLHF 及其实现 (PPO, DPO, GRPO 等) ⏳](_archives/2025/08/RLHF.md)
