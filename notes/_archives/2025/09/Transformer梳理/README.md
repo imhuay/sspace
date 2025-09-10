@@ -30,8 +30,8 @@ tag: [dl_transformer]
     - [多头注意力 (Multi-Head Attention)](#多头注意力-multi-head-attention)
     - [逐位置前馈网络 (Position-wise FFN)](#逐位置前馈网络-position-wise-ffn)
     - [残差与归一化](#残差与归一化)
-    - [位置编码 (Positional Encoding)](#位置编码-positional-encoding)
-        - [位置编码的演进 (TODO)](#位置编码的演进-todo)
+    - [正余弦位置编码](#正余弦位置编码)
+        - [位置编码的演进](#位置编码的演进)
 - [面试问题整理](#面试问题整理)
 <!--END_SECTION:toc-->
 
@@ -125,21 +125,21 @@ tag: [dl_transformer]
 - **解码端**: 输出 tokens (shifted right) → **令牌嵌入** + **位置编码** → \[Decoder Layer\] × N → **输出分布** (下一个 token 概率)
 
 
-### 位置编码 (Positional Encoding)
+### 正余弦位置编码
 
-- **背景/问题**: 自注意力机制本身是 **置换不变（permutation invariant）** 的; 它没有序列顺序的概念, 但语言是有顺序的;
+- **背景/动机**: 自注意力机制具有 **置换不变/等变性**; 因此需要显式地注入 **位置信息** 来区分不同顺序的序列;
 - **方法**: 为输入嵌入 (Input Embedding) 添加一个包含位置信息的编码
-- **正余弦位置编码** (原版)
     - 使用不同频率的正弦和余弦函数来编码位置信息;
-    - 公式:
+    - **公式**:
         - $PE_{(pos, 2i)} = \sin(\dfrac{pos}{10000^{2i/d_{model}}})$
         - $PE_{(pos, 2i+1)} = \cos(\dfrac{pos}{10000^{2i/d_{model}}})$
         - 其中 $pos$ 是 token 的位置索引, $i$ 是位置编码向量的分量索引;
     - **优点**:
-        - 可以表示比训练集中更长的序列位置 (**外推性**);
+        - 计算简单;
+        - 有一定**外推性**, 可以表示比训练集中更长的序列位置;
 
-#### 位置编码的演进 (TODO)
-> [Transformer位置编码](../../08/Transformer位置编码.md)
+#### 位置编码的演进
+> [Transformer位置编码](./位置编码.md)
 
 **参考资料**
 - 各种**绝对**/**相对位置编码**

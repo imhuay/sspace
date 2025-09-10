@@ -23,8 +23,12 @@ tag: [python_tool]
 <!--START_SECTION:toc-->
 - [背景](#背景)
 - [基础命令](#基础命令)
+    - [更新 `uv`](#更新-uv)
     - [换源](#换源)
     - [依赖管理](#依赖管理)
+        - [可选依赖](#可选依赖)
+        - [同步依赖](#同步依赖)
+        - [组依赖](#组依赖)
         - [源代码依赖](#源代码依赖)
 <!--END_SECTION:toc-->
 
@@ -67,6 +71,16 @@ uv init
 
 - `uv.lock`: `uv` 生成的锁文件, 其核心作用是确保 Python 项目的依赖安装具有确定性和可复现性; 该文件由 `uv` 管理, 不需要手动操作;
 
+### 更新 `uv`
+
+```
+If you installed uv with pip, brew, or another package manager, 
+update uv with `pip install --upgrade`, `brew upgrade`, or similar.
+
+`uv self update` is only available for uv binaries installed via the standalone installation scripts.
+```
+
+
 ### 换源
 ```toml
 # pyproject.toml
@@ -102,12 +116,61 @@ uv add [package]
 
 # 移除依赖
 uv remove [package]
-
-# 同步环境
-## 生成 .venv, 并同步 pyproject.toml 中的依赖
-# rm .venv
-uv sync
 ```
+
+#### 可选依赖
+> 安装依赖但不加入主要依赖项
+```bash
+# 添加为可选依赖
+uv add --optional "<package-name>"
+
+# 添加到特定组 (推荐, uv 特有, 可能不支持其他包管理工具)
+uv add --group "<group-name>" "<package-name>"
+
+# 添加为开发依赖
+uv add --dev "<package-name>"
+# 等价于 uv add --group dev
+
+# 仅安装到环境但不添加到 pyproject.toml
+uv pip install "<package-name>"
+```
+
+#### 同步依赖
+> [Locking and syncing | uv](https://docs.astral.sh/uv/concepts/projects/sync/#syncing-the-environment)
+```bash
+# 同步依赖, 默认只同步主依赖, 即 [project].dependencies
+uv sync
+## 生成 .venv
+
+# 升级所有依赖到最新版
+uv sync --upgrade
+
+# 升级指定包
+uv sync --upgrade-package fastapi
+
+# 同步组依赖
+uv sync --only dev      # 只同步 dev
+uv sync --only dev,docs # 同步 dev 和 docs
+uv sync --all-groups    # 主依赖 + 所有组
+
+# 同步可选依赖
+uv sync --extra cpu     # 只同步 cpu
+uv sync --extra cpu,llm # 只同步 cpu 和 llm
+uv sync --all-extras    # 主依赖 + 所有可选
+```
+
+#### 组依赖
+> 可选安装
+```bash
+uv add --group "<group-name>" "<package-name>"
+
+# uv add --group torch-cpu torch
+[dependency-groups]
+torch-cpu = [
+    "torch>=2.8.0",
+]
+```
+
 
 #### 源代码依赖
 > [Dependency sources | uv](https://docs.astral.sh/uv/concepts/projects/dependencies/#dependency-sources)
