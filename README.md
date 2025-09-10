@@ -252,7 +252,6 @@ Stylus       6 mins          -------------------------   00.33 %
 #### BERT
 
 - [Transformer 常见面试问题](notes/_archives/2022/05/Transformer常见问题.md)
-- [Transformer 位置编码 ⏳](notes/_archives/2025/08/Transformer位置编码.md)
 - [Transformer Wiki ⏳](notes/_archives/2022/05/TransformerWiki.md)
 - [BERT + CRF 备忘 ⏳](notes/_archives/2022/04/bert_crf备忘.md)
 

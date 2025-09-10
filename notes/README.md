@@ -78,7 +78,6 @@ Notes
 #### BERT
 
 - [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md)
-- [Transformer 位置编码 ⏳](_archives/2025/08/Transformer位置编码.md)
 - [Transformer Wiki ⏳](_archives/2022/05/TransformerWiki.md)
 - [BERT + CRF 备忘 ⏳](_archives/2022/04/bert_crf备忘.md)
 
