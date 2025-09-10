@@ -1,9 +1,9 @@
-Transformer 面试题整理
+Transformer 面试问题整理
 ===
 <!--START_SECTION:badge-->
 
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-08%2012%3A44%3A52&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-10%2014%3A09%3A29&label_color=gray&color=thistle&style=flat-square)
 
 <!--END_SECTION:badge-->
 <!--info
@@ -11,7 +11,8 @@ date: 2025-09-06 13:48:27
 top: false
 draft: false
 hidden: true
-level: 0
+section_number: true
+level: 99
 tag: [dl_transformer]
 -->
 
@@ -23,42 +24,49 @@ tag: [dl_transformer]
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [**模型框架**](#模型框架)
-    - [✅一句话解释 Transformer 的核心思想](#一句话解释-transformer-的核心思想)
-        - [💡Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
-        - [✅为什么 Transformer 比 RNN/LSTM 更好](#为什么-transformer-比-rnnlstm-更好)
-    - [✅简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-        - [✅为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?](#为什么大多数通用大模型选择-decoder-only-causallm-架构)
-    - [✅说明自注意力机制的计算过程](#说明自注意力机制的计算过程)
-        - [✅为什么要对 QK 的点积进行缩放?](#为什么要对-qk-的点积进行缩放)
-        - [✅多头注意力中 "多头" 的动机是什么, 是如何实现的?](#多头注意力中-多头-的动机是什么-是如何实现的)
-        - [✅为什么 Decoder 中计算自注意力需要 "掩码"?](#为什么-decoder-中计算自注意力需要-掩码)
-    - [✅Cross Attention 中的 Q, K, V 分别来自哪里?](#cross-attention-中的-q-k-v-分别来自哪里)
-    - [✅为什么 Transformer 需要位置编码?](#为什么-transformer-需要位置编码)
-        - [🔄介绍常见的位置编码](#介绍常见的位置编码)
-- [**训练与推理**](#训练与推理)
-    - [✅说明 Decoder 在训练与推理阶段的差异](#说明-decoder-在训练与推理阶段的差异)
-        - [推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#推理阶段-怎么优化随着输出序列越来越长带来的开销)
-        - [描述 KV Cache 的动机, 方法, 效果](#描述-kv-cache-的动机-方法-效果)
-        - [解释 "曝光偏差", 怎么引起的, 怎么缓解?](#解释-曝光偏差-怎么引起的-怎么缓解)
-    - [介绍常见的序列生成策略](#介绍常见的序列生成策略)
-        - [对比 BeamSearch 和 贪心搜索 的优劣](#对比-beamsearch-和-贪心搜索-的优劣)
-        - [为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
-    - [如何控制生成序列的长度和终止?](#如何控制生成序列的长度和终止)
-    - [怎么抑制 LLM 生成过程中的 重复问题?](#怎么抑制-llm-生成过程中的-重复问题)
-- [**拓展问题**](#拓展问题)
-    - [非自回归模型是如何解码的? 与自回归解码的优劣](#非自回归模型是如何解码的-与自回归解码的优劣)
+- [1. **模型框架**](#1-模型框架)
+    - [1.1. ✅一句话解释 Transformer 的核心思想](#11-一句话解释-transformer-的核心思想)
+        - [1.1.1. 💡Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#111-transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
+        - [1.1.2. ✅为什么 Transformer 比 RNN/LSTM 更好](#112-为什么-transformer-比-rnnlstm-更好)
+    - [1.2. ✅简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#12-简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+        - [1.2.1. ✅为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?](#121-为什么大多数通用大模型选择-decoder-only-causallm-架构)
+    - [1.3. ✅说明自注意力机制的计算过程](#13-说明自注意力机制的计算过程)
+        - [1.3.1. ✅为什么要对 QK 的点积进行缩放?](#131-为什么要对-qk-的点积进行缩放)
+        - [1.3.2. ✅多头注意力中 "多头" 的动机是什么, 是如何实现的?](#132-多头注意力中-多头-的动机是什么-是如何实现的)
+        - [1.3.3. ✅为什么 Decoder 中计算自注意力需要 "掩码"?](#133-为什么-decoder-中计算自注意力需要-掩码)
+    - [1.4. ✅Cross Attention 中的 Q, K, V 分别来自哪里?](#14-cross-attention-中的-q-k-v-分别来自哪里)
+- [2. **位置编码**](#2-位置编码)
+    - [2.1. ✅为什么需要位置编码?](#21-为什么需要位置编码)
+        - [2.1.1. ✅什么是 **置换不变性/置换等变性**](#211-什么是-置换不变性置换等变性)
+        - [2.1.2. ✅位置编码是如何引入到模型中的?](#212-位置编码是如何引入到模型中的)
+        - [2.1.3. 💡为什么引入位置信息时普遍使用加法而不是拼接? (绝对位置编码)](#213-为什么引入位置信息时普遍使用加法而不是拼接-绝对位置编码)
+    - [2.2. 📌介绍常见的位置编码](#22-介绍常见的位置编码)
+    - [2.3. 相对位置编码 vs 绝对位置编码](#23-相对位置编码-vs-绝对位置编码)
+    - [2.4. 相对位置编码 对比 绝对位置编码 有哪些优势?](#24-相对位置编码-对比-绝对位置编码-有哪些优势)
+        - [2.4.1. 详细说明 **旋转位置编码 (RoPE)**](#241-详细说明-旋转位置编码-rope)
+- [3. **训练与推理**](#3-训练与推理)
+    - [3.1. ✅说明 Decoder 在训练与推理阶段的差异](#31-说明-decoder-在训练与推理阶段的差异)
+        - [3.1.1. 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#311-推理阶段-怎么优化随着输出序列越来越长带来的开销)
+        - [3.1.2. 描述 KV Cache 的动机, 方法, 效果](#312-描述-kv-cache-的动机-方法-效果)
+        - [3.1.3. 解释 "曝光偏差", 怎么引起的, 怎么缓解?](#313-解释-曝光偏差-怎么引起的-怎么缓解)
+    - [3.2. 介绍常见的序列生成策略](#32-介绍常见的序列生成策略)
+        - [3.2.1. 对比 BeamSearch 和 贪心搜索 的优劣](#321-对比-beamsearch-和-贪心搜索-的优劣)
+        - [3.2.2. 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#322-为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
+    - [3.3. 如何控制生成序列的长度和终止?](#33-如何控制生成序列的长度和终止)
+    - [3.4. 怎么抑制 LLM 生成过程中的 重复问题?](#34-怎么抑制-llm-生成过程中的-重复问题)
+- [4. **拓展问题**](#4-拓展问题)
+    - [4.1. 非自回归模型是如何解码的? 与自回归解码的优劣](#41-非自回归模型是如何解码的-与自回归解码的优劣)
 <!--END_SECTION:toc-->
 
 ---
 <!-- ✅❌⭕❓✔️☑️⚠️➡️↔️📌📍🔖🏷️ -->
 
-## **模型框架**
+## 1. **模型框架**
 
-### ✅一句话解释 Transformer 的核心思想
+### 1.1. ✅一句话解释 Transformer 的核心思想
 > **思路**: Transformer 的核心 → Attention → 全局动态建模序列中各位置之间的依赖关系
 
-#### 💡Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
+#### 1.1.1. 💡Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
 > 思路: **什么是归纳偏置** → **Transformer (位置编码 + 全局依赖)** / **CNN (局部性 + 平移不变性)** / **RNN (顺序性 + 马尔可夫假设)**
 
 <details><summary><b>详述</b></summary>
@@ -78,10 +86,10 @@ tag: [dl_transformer]
 
 </details>
 
-#### ✅为什么 Transformer 比 RNN/LSTM 更好
+#### 1.1.2. ✅为什么 Transformer 比 RNN/LSTM 更好
 > **思路**: Transformer 的优势: 1) 长程依赖/全局交互, 2) 并行计算/训练速度
 
-### ✅简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
+### 1.2. ✅简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
 > **Encoder**: (文本表示, 自注意力 → FFN);  
 > **Decoder**: (自回归, 掩码自注意力 → 交叉注意力 → FFN)
 
@@ -106,7 +114,7 @@ tag: [dl_transformer]
 </details>
 
 
-#### ✅为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?
+#### 1.2.1. ✅为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?
 > 思路: **LLM 的核心能力** 是自回归生成, 与 Decoder 的的工作模式相匹配;
 
 <details><summary><b>详述</b></summary>
@@ -127,22 +135,22 @@ tag: [dl_transformer]
     - **工程优势**
         - 所有主流大模型 (GPT, LLaMA等) 都采用此架构, 整个软硬件生态都针对其进行了极度优化;
 - **参考资料**
-    - [解码器仅架构：探究大语言模型（LLM）采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
+    - [解码器仅架构: 探究大语言模型（LLM）采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
     - [为什么当前的大型语言模型（LLMs）普遍采用“仅解码器”（Decoder-only）架构？_decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
-    - [面试官问我：大模型为何都用 Decoder only 架构？_大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
+    - [面试官问我: 大模型为何都用 Decoder only 架构？_大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
 
 </details>
 
 
-### ✅说明自注意力机制的计算过程
+### 1.3. ✅说明自注意力机制的计算过程
 > Q/K/V 投影 → 计算注意力分数 → 缩放与归一化 → 加权求和
 >> $Q, K, V = XW^Q, XW^K, XW^V → QK^\top → \text{softmax}(\frac{QK^\top}{\sqrt{d_k}}) → \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V$
 
-#### ✅为什么要对 QK 的点积进行缩放?
+#### 1.3.1. ✅为什么要对 QK 的点积进行缩放?
 > 防止点击 ($QK^\top$) 的数值过大引发梯度消失; 缩放因子是 $\sqrt{d_k}$ (其中 $d_k$ 为输入向量 $K$ 的维度)
 >> **数学解释**: **两个均值为 0、方差为 1 的 d 维向量, 其点积的均值为 0、方差为 d**; 直接 softmax 会出现数值极小的分量, 反向传播时这些分量的梯度会趋于零, 导致梯度消失;
 
-#### ✅多头注意力中 "多头" 的动机是什么, 是如何实现的?
+#### 1.3.2. ✅多头注意力中 "多头" 的动机是什么, 是如何实现的?
 > **动机**: 将特征空间切分成多个独立的低维子空间 → 学习不同的注意力分布/不同的依赖关系;  
 > **实现**: 将 Q/K/V 投影到多个低维子空间 → 每个头独立执行 Attention → 将结果拼接后再整体投影;
 >> 实际并不会真的独立执行多个 Attention, 而是利用 **张量操作和广播机制** 一次完成;
@@ -178,7 +186,7 @@ def attn(self, x, mask):
 
 </details>
 
-#### ✅为什么 Decoder 中计算自注意力需要 "掩码"?
+#### 1.3.3. ✅为什么 Decoder 中计算自注意力需要 "掩码"?
 > 维持自回归特性, 防止数据泄露
 
 <details><summary><b>详述</b></summary>
@@ -195,11 +203,13 @@ def attn(self, x, mask):
 
 </details>
 
-### ✅Cross Attention 中的 Q, K, V 分别来自哪里?
+### 1.4. ✅Cross Attention 中的 Q, K, V 分别来自哪里?
 > Q 来自 Decoder 上一层的输出; K, V 来自 Encoder 最后一层的输出;
 >> **作用**: Decoder 在生成当前 token 时, 根据 **Cross-Atternion** 获取与当前生成最相关的源序列信息;
 
-### ✅为什么 Transformer 需要位置编码?
+## 2. **位置编码**
+
+### 2.1. ✅为什么需要位置编码?
 > **思路**: 自注意力机制具有 **"置换不变性"** → 需要位置编码提供的**顺序信息**;
 
 <details><summary><b>详述</b></summary>
@@ -207,48 +217,136 @@ def attn(self, x, mask):
 - **核心原因**
     - 自注意力机制的核心/本质是 **加权求和**, 在数学上不依赖输入顺序 → **置换不变性**;
 - **解决方法**
-    - 通过加入 **位置编码** 为模型提供顺序感知能力;
-    - 操作时, 为每个位置的 token 生成一个独特的位置向量, 将 **位置编码** 与 **词嵌入** 相加, 作为模型输入;
+    - 通过显式加入 **位置编码** 为模型提供 **顺序感知** 能力;
 
 </details>
 
-#### 🔄介绍常见的位置编码
-> 绝对位置编码 (正余弦位置编码), 相对位置编码 (RoPE)
+#### 2.1.1. ✅什么是 **置换不变性/置换等变性**
+> 打乱序列的输入顺序, 其自注意力计算的加权结果不变
+
+#### 2.1.2. ✅位置编码是如何引入到模型中的?
+1. 在输入模型前, 对词嵌入施加位置编码 (如 **正余弦位置编码**);
+    > 一般是生成一个与 token 维度相同的向量, 进行逐位相加 
+2. 在计算注意力前, 对 Q/K 施加变换 (如 **RoPE**);
+3. 在得到注意力后, 对 logits 施加偏置 (如 **ALiBi**);
+
+#### 2.1.3. 💡为什么引入位置信息时普遍使用加法而不是拼接? (绝对位置编码)
+> 简洁, 直观; **拼接** 只是 **加法** 的一种特殊情况
+>> [transformer里PE为什么不采用concatenation的方式？ - 知乎](https://www.zhihu.com/question/4717410141)
 
 <details><summary><b>详述</b></summary>
 
-**绝对位置编码**
+- **实用角度**:
+    - 直观, 简洁
+    - ~~计算量少 (加入 PE 多出来的维度意味着更大的隐藏层)~~;
+        > 不成立, 计算量可以通过隐层维度控制
+    - 保持输入输出维度一致;
+    - 已证实其有效性;
+- **原理**
+    - **表达能力更强**, **拼接** 只是 **加法** 的一种特殊情况;
+    - 考虑以下情况:
+        - 使用 **拼接** 方法, 设置词嵌入部分的维度为 $d_w$, 位置向量的维度为 $d_p$;
+        - 设置 **加法** 的维度为 $d_w + d_p$,
+        - 假设 **拼接** 方法更好, 那么模型可以通过学习, 使 **加法** 中词嵌入后 $d_p$ 维的分量为 0, 位置向量前 $d_w$ 维的分量为 0;
+        - 从而模拟 **拼接** 的效果, 或者说 **拼接** 只是 **加法** 的一种特殊情况;
+
+</details>
+
+<!-- ✅❌⭕❓✔️☑️⚠️🔄➡️↔️📌📍🔖🏷️💡📝 -->
+### 2.2. 📌介绍常见的位置编码
+> 绝对位置编码 (正余弦位置编码, 可学习位置编码), 相对位置编码 (Google, XLNet, T5, DeBERTa, ALiBi), 旋转位置编码 (RoPE)
+
+<details><summary><b>详述</b></summary>
+
 - **正余弦位置编码**
-    - **思路/原理**: 使用不同频率的正弦和余弦函数生成编码;
+    - **来源**: Transformer 原版
+    - **思路/原理**: 使用不同频率的正弦和余弦函数生成向量;
     - **优点**: 
         - 无需训练;
         - 具备一定的 **外推性 (extrapolation)**, 可处理比训练更长的序列; 
         - 其数学特性 **蕴含相对位置信息**;
     - **缺点**: 外推能力有限;
 - **可学习位置编码**
+    - **来源**: BERT
     - **思路/原理**: 将位置编码视为 **可学习的参数**, 随机初始化后与模型一同训练;
     - **优点**: 简单, 灵活, 能自适应地学习位置表示;
-    - **缺点**: 长度固定, 无法处理超过训练长度的序列, **缺乏外推性**;
-
-**相对位置编码**
-- **T5 式偏置**
-    - **思路/原理**: 编码 token 间的相对距离而非绝对位置, 在注意力计算时将相对位置信息作为额外偏置或向量加入:
-        $$
-        \text{score}_{i,j} = Q_i \cdot (K_j + \text{RelPosEnc}_{i-j})
-        $$
-    - **优点**: 更好的泛化性, 符合语言学直觉;
+    - **缺点**: 长度固定, 无法处理超过训练长度的序列, **无外推能力**;
+- **相对位置编码**
+    - **来源**: Shaw et al., XLNet, T5, DeBERTa, ALiBi
+    - **思路**: 对 **带有绝对位置编码** 的 Attention 打分公式进行展开, 并通过 **修改其中的分项** 来引入相对位置信息;
+    - **公式**: 
+        - 带绝对位置编码的注意力打分公式为:
+            $$
+            q_i k_j^\top = (x_i W_Q + p_i W_Q)(x_j W_K + p_j W_K)^\top
+            $$
+        - 展开:
+            $$
+            q_i k_j^\top 
+                = \underbrace{x_i W_Q W_K^\top x_j^\top}_{\text{1.输入–输入}}
+                + \underbrace{x_i W_Q W_K^\top p_j^\top}_{\text{2.输入–位置}}
+                + \underbrace{p_i W_Q W_K^\top x_j^\top}_{\text{3.位置–输入}}
+                + \underbrace{p_i W_Q W_K^\top p_j^\top}_{\text{4.位置–位置}}
+            $$
+    - 不同的相对位置编码就是在这四项中做删减、替换或组合:
+        - 经典方法 (Google Shaw et al.): 去掉 $p_i W_Q$, 并将 $p_j W_K$ 替换为相对位置向量 $R^K_{i,j}$, 其中 $R^K_{i,j}$ 依赖于相对距离 $i-j$: 
+            $$
+            q_i k_j^\top 
+                = x_i W_Q \left( x_j W_K + R^K_{i,j} \right)^\top
+            $$
+        - XLNet: 将 $p_j$ 替换为相对位置向量 $R_{i-j}$, 将 $p_i$ 替换为可训练向量 $u, v$, 其中 $R_{i-j}$ 用正弦位置编码生成:
+            $$
+            q_i k_j^\top
+                = x_i W_Q W_K^\top x_j^\top
+                + x_i W_Q W_{K,R}^\top R_{i-j}^\top
+                + u\, W_K^\top x_j^\top
+                + v\, W_{K,R}^\top R_{i-j}^\top
+            $$
+        - T5: 去掉 **2, 3** 两项, 并用可训练偏置 $\beta_{i,j}$ 代替 **4** 项, 其中 $\beta_{i,j}$ 通过 **分桶** 映射相对距离后查表得到:
+            $$
+            q_i k_j^\top
+                = x_i W_Q W_K^\top x_j^\top
+                + \beta_{i,j}
+            $$
+        - DeBERTa: 去掉 **4** 项, 保留 **2, 3** 两项, 并替换为相对位置向量, 其中 $R_{i,j}$ 依赖相对距离:
+            $$
+            q_i k_j^\top
+                = x_i W_Q W_K^\top x_j^\top
+                + x_i W_Q W_K^\top R_{i,j}^\top
+                + R_{j,i} W_Q W_K^\top x_j^\top
+            $$
+        - ALiBi: 去掉 **2, 3** 两项, 并用 **固定线性偏置** 代替 **4** 项, 其中 $m$ 为第 $h$ 个注意力头的常数斜率:
+            $$
+            q_i k_j^\top
+                = x_i W_Q W_K^\top x_j^\top
+                - m · (i − j)
+            $$
 - **旋转位置编码 (RoPE, Rotary Positional Encoding)**
+    - **来源**: RoFormer
     - **思路/原理**: 通过 **旋转矩阵 (rotation matrix)** 对 Q/K 向量进行变换, 使内积结果 **仅依赖于相对位置**;
     - **优点**: 
         - 具备绝对位置的形式, 产生相对位置的效果; 
         - 拥有 **极强的外推性**, 是目前处理长文本的最佳方案之一;
 
+**参考资料**:
+- [让研究人员绞尽脑汁的Transformer位置编码 - 科学空间|Scientific Spaces](https://kexue.fm/archives/8130)
+
 </details>
 
 
-## **训练与推理**
+### 2.3. 相对位置编码 vs 绝对位置编码
 
-### ✅说明 Decoder 在训练与推理阶段的差异
+
+### 2.4. 相对位置编码 对比 绝对位置编码 有哪些优势?
+- **绝对** 与 **相对** 的含义
+
+
+
+#### 2.4.1. 详细说明 **旋转位置编码 (RoPE)**
+
+
+## 3. **训练与推理**
+
+### 3.1. ✅说明 Decoder 在训练与推理阶段的差异
 > **核心差异**: 对 **目标序列** 的 **可见性** 不同; 
 
 <details><summary><b>详述</b></summary>
@@ -276,10 +374,10 @@ def attn(self, x, mask):
 
 </details>
 
-#### 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
+#### 3.1.1. 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
 > **方法**: KV Cache; **效果**: $O(n^2) → O(n)$
 
-#### 描述 KV Cache 的动机, 方法, 效果
+#### 3.1.2. 描述 KV Cache 的动机, 方法, 效果
 > 思路: **动机** (重复计算) → **方法** (缓存历史 K/V, 增量计算) → **效果** (降低计算复杂度)
 
 <details><summary><b>详述</b></summary>
@@ -299,7 +397,7 @@ def attn(self, x, mask):
     K_cache = torch.empty(batch, 0, d_model)
     V_cache = torch.empty(batch, 0, d_model)
 
-    # --- 第 i 步：生成第 i 个 token ---
+    # --- 第 i 步: 生成第 i 个 token ---
     # 输入: [B, 1, D]
     Xi = torch.randn(batch, 1, d_model)
 
@@ -308,7 +406,7 @@ def attn(self, x, mask):
     Ki = linear_k(Xi)  # [B, 1, D]  
     Vi = linear_v(Xi)  # [B, 1, D]
 
-    # 更新缓存：将 Ki, Vi 存入
+    # 更新缓存: 将 Ki, Vi 存入
     K_cache = torch.cat([K_cache, Ki], dim=1) # [B, prev_len + 1, D]
     V_cache = torch.cat([V_cache, Vi], dim=1) # [B, prev_len + 1, D]
 
@@ -320,24 +418,24 @@ def attn(self, x, mask):
     ```
 </details>
 
-#### 解释 "曝光偏差", 怎么引起的, 怎么缓解?
+#### 3.1.3. 解释 "曝光偏差", 怎么引起的, 怎么缓解?
 
 
-### 介绍常见的序列生成策略
+### 3.2. 介绍常见的序列生成策略
 > Greedy Search, Beam Search, Sampling
 
-#### 对比 BeamSearch 和 贪心搜索 的优劣
+#### 3.2.1. 对比 BeamSearch 和 贪心搜索 的优劣
 
 
-#### 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
+#### 3.2.2. 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
 
 
-### 如何控制生成序列的长度和终止?
+### 3.3. 如何控制生成序列的长度和终止?
 
 
-### 怎么抑制 LLM 生成过程中的 重复问题?
+### 3.4. 怎么抑制 LLM 生成过程中的 重复问题?
 
 
-## **拓展问题**
+## 4. **拓展问题**
 
-### 非自回归模型是如何解码的? 与自回归解码的优劣
+### 4.1. 非自回归模型是如何解码的? 与自回归解码的优劣

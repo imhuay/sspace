@@ -171,7 +171,7 @@ class ReadmeUtils:
     def replace_tag_content(tag, txt, content) -> str:
         """"""
         re_pattern = ReadmeUtils._get_section_re_pattern(tag)
-        repl = f'{ReadmeUtils.get_tag_begin(tag)}\n\n{content}\n\n{ReadmeUtils.get_tag_end(tag)}'
+        repl = f'{ReadmeUtils.get_tag_begin(tag)}\n{content}\n{ReadmeUtils.get_tag_end(tag)}'
         return re_pattern.sub(repl, txt, count=1)
 
     @staticmethod

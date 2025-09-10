@@ -73,6 +73,7 @@ Notes
 
 - [Transformer 梳理](_archives/2025/09/Transformer梳理/README.md)
   - [Transformer 面试题整理](_archives/2025/09/Transformer梳理/Transformer面试题库.md)
+  - [位置编码 (Postional Encoding) ⏳](_archives/2025/09/Transformer梳理/位置编码.md)
 
 <!-- omit in toc -->
 #### BERT

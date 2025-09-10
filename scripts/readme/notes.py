@@ -59,8 +59,9 @@ class RE:
 @dataclass
 class NoteInfo:
     top: bool = False
+    draft: bool = False
     hidden: bool = True
-    draft: bool = True
+    section_number: bool = False
     tag: list[str] | None = None
     level: int | None = 0
     p_title: str | None = None
@@ -90,7 +91,11 @@ class Note:
     _date: str | None = None
     _parent_paths: list[Path] | None = None
     _keywords: list[str] | None = None
+    _updated: bool = False
+
+    # ClassVar
     sort_by_first_commit: ClassVar[bool] = True
+    _max_section_level: ClassVar[int] = 6
 
     def __post_init__(self):
         self.path = self.path.resolve()
@@ -98,17 +103,88 @@ class Note:
         with self.path.open(encoding='utf8') as f:
             self._text = f.read()
 
-        self.update_badge()
+        self._update_badge()
 
-    def update_badge(self):
+        if self.info.section_number:
+            self._update_section_number()
+            self._update_toc()
+
+        if self._updated:
+            with self.path.open('w', encoding='utf8') as f:
+                f.write(self._text)
+
+    def _update_badge(self):
+        """"""
         badges = [
             ReadmeUtils.get_create_date_badge_url(self.info.date, self.path),
             ReadmeUtils.get_last_modify_badge_url(self.path),
         ]
-        with self.path.open(encoding='utf8') as f:
-            new_txt = ReadmeUtils.replace_tag_content('badge', f.read(), '\n'.join(badges))
-        with self.path.open('w', encoding='utf8') as f:
-            f.write(new_txt)
+        badge_tag = 'badge'
+        new_badge = '\n'.join(badges)
+        old_badge = ReadmeUtils.get_tag_content(badge_tag, self._text)
+        if old_badge != new_badge:
+            self._text = ReadmeUtils.replace_tag_content('badge', self._text, new_badge)
+            self._updated = True
+
+    def _update_section_number(self):
+        """为标题添加章节编号
+        如果原来已经存在, 则更新章节编号
+
+        效果:
+            ## 一级标题 => ## 1. 一级标题
+            ### 二级标题 => ### 1.1. 二级标题
+            #### 三级标题 => ### 1.1.1. 二级标题
+        """
+        self._updated = True
+        D = self._max_section_level
+        lines = self.text.split('\n')
+        section_counts = [0] * D
+
+        for i in range(len(lines)):
+            line = lines[i]
+            m = re.match(r'^(#{2,' + str(D) + r'})\s*(\d+(\.\d+)*\.)?\s*(.*)$', line)
+            if not m:
+                continue
+
+            hashes, _, _, title = m.groups()
+            level = len(hashes)
+
+            # 更新当前级别的计数器, 并重置更低级别的计数器
+            section_counts[level - 1] += 1
+            for j in range(level, D):
+                section_counts[j] = 0
+
+            # 构建章节编号字符串
+            section_number = '.'.join(str(section_counts[k]) for k in range(level) if section_counts[k] > 0) + '.'
+
+            # 更新标题行
+            lines[i] = f'{hashes} {section_number} {title.strip()}'
+
+        self._text = '\n'.join(lines)
+
+    def _update_toc(self):
+        """更新章节 TOC"""
+        self._updated = True
+        D = self._max_section_level
+        lines = self.text.split('\n')
+        toc_lines = []
+
+        for i in range(len(lines)):
+            line = lines[i]
+            m = re.match(r'^(#{2,' + str(D) + r'})\s*(.*)$', line)
+            if not m:
+                continue
+
+            hashes, title = m.groups()
+            level = len(hashes)
+
+            indent = '    ' * (level - 2)
+            anchor = MarkdownUtils.slugify(title)
+            toc_line = f'{indent}- [{title.strip()}](#{anchor})'
+            toc_lines.append(toc_line)
+
+        toc_content = '\n'.join(toc_lines)
+        self._text = ReadmeUtils.replace_tag_content('toc', self.text, toc_content)
 
     def get_toc_line_relative_to(self, parent_path: Path):
         if self.is_top:
