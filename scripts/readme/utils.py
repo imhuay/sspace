@@ -67,6 +67,60 @@ class MarkdownUtils:
                 return t.content
         return ''
 
+    @staticmethod
+    def norm_text(text: str | None) -> str | None:
+        """文本规范化
+
+        要求:
+            1. 行尾空格处理
+                如果一行全是空格, 则全部移除
+                如果行尾只有一个空格, 移除
+                如果有两个以上空格, 保留 2 个
+            2. 中文标点处理: ，。！？；：“”‘’（）
+                如果在行内, 将 "中文标点+可能得空格" 替换为 "英文标点 + 一个空格"
+                如果在行尾, 将 "中文标点+可能得空格" 替换为 "英文标点"
+        """
+        if text is None:
+            return text
+
+        lines = text.split('\n')
+        for i in range(len(lines)):
+            line = lines[i]
+
+            # 1. 行尾空格处理
+            if line.strip() == '':
+                lines[i] = ''
+                continue
+            if line.endswith('  '):
+                line = line.rstrip() + '  '
+            else:
+                line = line.rstrip()
+
+            # 2. 中文标点处理
+            line = re.sub(r'，\s*', ', ', line)
+            line = re.sub(r'。\s*', '. ', line)
+            line = re.sub(r'！\s*', '! ', line)
+            line = re.sub(r'？\s*', '? ', line)
+            line = re.sub(r'；\s*', '; ', line)
+            line = re.sub(r'：\s*', ': ', line)
+            line = re.sub(r'\s*“\s*', ' "', line)
+            line = re.sub(r'\s*”\s*', '" ', line)
+            line = re.sub(r'\s*‘\s*', " '", line)
+            line = re.sub(r'\s*’\s*', "' ", line)
+            line = re.sub(r'\s*（\s*', ' (', line)
+            line = re.sub(r'\s*）\s*', ') ', line)
+
+            # 3. 再次行尾空格处理 (防止中文标点替换后, 行尾出现单个空格)
+            if line.endswith('  '):
+                line = line.rstrip() + '  '
+            else:
+                line = line.rstrip()
+
+            lines[i] = line
+
+        new_text = '\n'.join(lines)
+        return new_text
+
 
 class ReadmeUtils:
     BJS = timezone(

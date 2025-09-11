@@ -138,6 +138,7 @@ class Problem:
     _path: Path
 
     # property
+    _text = ''
     _info = None
     _file_name = None
     _title = None
@@ -152,14 +153,30 @@ class Problem:
     def __post_init__(self):
         """"""
         self._path = self._path.resolve()
-        self.update_file()
 
-    def update_file(self):
-        """"""
-        # try update title
         with self.path.open(encoding='utf8') as f:
-            txt = f.read()
+            self._text = f.read()
 
+        self._norm_text()
+        self._update_file()
+
+        with self.path.open('w', encoding='utf8') as f:
+            f.write(self._text)
+
+    def _norm_text(self):
+        """文本规范化"""
+        new_text = MarkdownUtils.norm_text(self._text)
+        if new_text != self._text:
+            self._text = new_text
+
+    def _update_file(self):
+        """"""
+        if self._text is None:
+            return
+
+        txt = self._text
+
+        # try update title
         lns = txt.split('\n', maxsplit=1)
         if lns[0].startswith('##'):
             lns[0] = self.head
@@ -176,11 +193,7 @@ class Problem:
             lns.append(ReadmeUtils.get_tag_begin(self._TAG_RELATE))
             lns.append(ReadmeUtils.get_tag_end(self._TAG_RELATE))
 
-        txt = ReadmeUtils.replace_tag_content(self._TAG_BADGE,
-                                              '\n'.join(lns),
-                                              self.badge_content)
-        with self.path.open('w', encoding='utf8') as f:
-            f.write(txt)
+        txt = ReadmeUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 
     def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
         """"""

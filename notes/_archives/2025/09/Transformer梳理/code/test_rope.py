@@ -43,7 +43,7 @@ class RoPEDemo:
         assert D % 2 == 0, '维度必须是偶数'
 
         # 预计算频率项: 不同维度对应不同的旋转频率
-        i = np.arange(0, D // 2)
+        i = np.arange(0, D // 2)  # [1, 2, ..., D/2]
         inv_freq = 1.0 / (self.base ** (2 * i / D))  # shape: (D/2,)
 
         # 计算每个维度对应的旋转角度

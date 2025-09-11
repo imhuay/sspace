@@ -103,6 +103,7 @@ class Note:
         with self.path.open(encoding='utf8') as f:
             self._text = f.read()
 
+        self._norm_text()
         self._update_badge()
 
         if self.info.section_number:
@@ -112,6 +113,13 @@ class Note:
         if self._updated:
             with self.path.open('w', encoding='utf8') as f:
                 f.write(self._text)
+
+    def _norm_text(self):
+        """文本规范化"""
+        new_text = MarkdownUtils.norm_text(self._text)
+        if new_text != self.text:
+            self._updated = True
+            self._text = new_text
 
     def _update_badge(self):
         """"""
