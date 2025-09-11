@@ -1,6 +1,5 @@
 ## 合并K个升序链表
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&label_color=gray&color=yellow&style=flat-square)](../../../README.md#困难)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
@@ -8,7 +7,6 @@
 [![](https://img.shields.io/static/v1?label=&message=%E5%A0%86/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#堆优先队列)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&label_color=gray&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
 [![](https://img.shields.io/static/v1?label=&message=%E7%83%AD%E9%97%A8&label_color=gray&color=blue&style=flat-square)](../../../README.md#热门)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [链表, 堆, lc100, 热门]
@@ -120,7 +118,6 @@ class Solution:
 </details>
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -231,5 +228,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

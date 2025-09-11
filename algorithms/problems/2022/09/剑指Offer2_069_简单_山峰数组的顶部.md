@@ -1,11 +1,9 @@
 ## 山峰数组的顶部
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer2&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer2)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE&label_color=gray&color=blue&style=flat-square)](../../../README.md#二分查找)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [二分查找]
@@ -95,7 +93,6 @@ class Solution:
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -130,5 +127,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

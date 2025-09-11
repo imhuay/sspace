@@ -1,12 +1,10 @@
 ## 反转链表
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E9%93%BE%E8%A1%A8&label_color=gray&color=blue&style=flat-square)](../../../README.md#链表)
 [![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&label_color=gray&color=blue&style=flat-square)](../../../README.md#经典)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [链表, 经典]
@@ -71,7 +69,6 @@ class Solution:
 -->
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -156,5 +153,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

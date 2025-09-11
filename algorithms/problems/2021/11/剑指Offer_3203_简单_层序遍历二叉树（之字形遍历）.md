@@ -1,13 +1,11 @@
 ## 层序遍历二叉树（之字形遍历）
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2&label_color=gray&color=blue&style=flat-square)](../../../README.md#广度优先搜索)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BA%8C%E5%8F%89%E6%A0%91/%E6%A0%91&label_color=gray&color=blue&style=flat-square)](../../../README.md#二叉树树)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A0%88/%E9%98%9F%E5%88%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#栈队列)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [BFS, 二叉树, 队列]
@@ -110,7 +108,6 @@ class Solution:
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -200,5 +197,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

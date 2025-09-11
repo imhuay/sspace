@@ -1,12 +1,10 @@
 ## 数据流中的中位数
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&label_color=gray&color=yellow&style=flat-square)](../../../README.md#困难)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E8%AE%BE%E8%AE%A1&label_color=gray&color=blue&style=flat-square)](../../../README.md#设计)
 [![](https://img.shields.io/static/v1?label=&message=%E5%A0%86/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#堆优先队列)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [设计, 堆]
@@ -148,7 +146,6 @@ class MedianFinder:
 
 </details>
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -181,5 +178,4 @@ class MedianFinder:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

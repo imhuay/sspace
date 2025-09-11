@@ -1,12 +1,10 @@
 ## n个骰子的点数
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&label_color=gray&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&label_color=gray&color=blue&style=flat-square)](../../../README.md#动态规划)
 [![](https://img.shields.io/static/v1?label=&message=%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&label_color=gray&color=blue&style=flat-square)](../../../README.md#暴力递归与动态规划)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [动态规划, dfs2dp]
@@ -119,7 +117,6 @@ class Solution:
 - 代码同上。
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -259,5 +256,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

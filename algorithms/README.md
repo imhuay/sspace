@@ -1,8 +1,6 @@
 <!--START_SECTION:toc-->
 <!--START_SECTION:head-->
-
 ## Algorithm Codings
-
 <!--END_SECTION:head-->
 
 <table>  <!-- invalid: frame="void", style="width: 100%; border: none; background: none" -->
@@ -11,13 +9,11 @@
 
 ### Hot 🔥
 <!--START_SECTION:hot-->
-
 - [剑指Offer (75)](#剑指offer)
 - [动态规划 (53)](#动态规划)
 - [经典 (38)](#经典)
 - [LeetCode Hot 100 (26)](#leetcode-hot-100)
 - [热门 (17)](#热门)
-
 <!--END_SECTION:hot-->
 
 </td>
@@ -25,7 +21,6 @@
 
 ### Subject 📓
 <!--START_SECTION:subject-->
-
 - [牛客 (131)](#牛客)
 - [LeetCode (76)](#leetcode)
 - [剑指Offer (75)](#剑指offer)
@@ -36,7 +31,6 @@
 - [程序员面试金典 (2)](#程序员面试金典)
 - [牛客-华为机试 (1)](#牛客-华为机试)
 - [Collections (1)](#collections)
-
 <!--END_SECTION:subject-->
 
 </td>
@@ -47,11 +41,9 @@
 
 ### Level 📈
 <!--START_SECTION:level-->
-
 - [中等 (150)](#中等)
 - [简单 (104)](#简单)
 - [困难 (35)](#困难)
-
 <!--END_SECTION:level-->
 
 </td>
@@ -63,7 +55,6 @@
 
 ### 数据结构
 <!--START_SECTION:data_struct-->
-
 - [二叉树/树 (48)](#二叉树树)
 - [链表 (30)](#链表)
 - [字符串 (17)](#字符串)
@@ -74,7 +65,6 @@
 - [线段树/树状数组 (1)](#线段树树状数组)
 - [并查集 (1)](#并查集)
 - [图 (1)](#图)
-
 <!--END_SECTION:data_struct-->
 
 </td>
@@ -82,7 +72,6 @@
 
 ### 算法
 <!--START_SECTION:algo-->
-
 - [动态规划 (53)](#动态规划)
 - [二分查找 (24)](#二分查找)
 - [递归 (21)](#递归)
@@ -90,7 +79,6 @@
 - [排序 (16)](#排序)
 - [广度优先搜索 (4)](#广度优先搜索)
 - [分治 (4)](#分治)
-
 <!--END_SECTION:algo-->
 
 </td>
@@ -98,7 +86,6 @@
 
 ### 技巧
 <!--START_SECTION:trick-->
-
 - [双指针 (25)](#双指针)
 - [哈希表(Hash) (12)](#哈希表hash)
 - [暴力递归与动态规划 (11)](#暴力递归与动态规划)
@@ -109,7 +96,6 @@
 - [单调栈/单调队列 (3)](#单调栈单调队列)
 - [前缀和 (3)](#前缀和)
 - [有限状态自动机 (1)](#有限状态自动机)
-
 <!--END_SECTION:trick-->
 
 </td>
@@ -118,11 +104,9 @@
 
 ### 其他
 <!--START_SECTION:other-->
-
 - [模拟 (17)](#模拟)
 - [数学 (9)](#数学)
 - [找规律 (2)](#找规律)
-
 <!--END_SECTION:other-->
 
 </td>
@@ -135,7 +119,6 @@
 ---
 
 <!--START_SECTION:problems-->
-
 ### 牛客
 ![total](https://img.shields.io/static/v1?label=total&message=131&label_color=gray&color=blue&style=flat-square)
 - [`牛客_0001_中等_大数加法`](problems/2022/01/牛客_0001_中等_大数加法.md)
@@ -1326,6 +1309,5 @@
 ![total](https://img.shields.io/static/v1?label=total&message=2&label_color=gray&color=blue&style=flat-square)
 - [`剑指Offer_4300_困难_1～n整数中1出现的次数`](problems/2021/12/剑指Offer_4300_困难_1～n整数中1出现的次数.md)
 - [`剑指Offer_4400_中等_数字序列中某一位的数字`](problems/2021/12/剑指Offer_4400_中等_数字序列中某一位的数字.md)
-
 
 <!--END_SECTION:problems-->

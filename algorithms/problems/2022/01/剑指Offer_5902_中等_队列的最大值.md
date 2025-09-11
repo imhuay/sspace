@@ -1,12 +1,10 @@
 ## 队列的最大值
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&label_color=gray&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A0%88/%E9%98%9F%E5%88%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#栈队列)
 [![](https://img.shields.io/static/v1?label=&message=%E8%AE%BE%E8%AE%A1&label_color=gray&color=blue&style=flat-square)](../../../README.md#设计)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [队列, 设计]
@@ -103,7 +101,6 @@ class MaxQueue:
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -143,5 +140,4 @@ class MaxQueue:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

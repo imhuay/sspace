@@ -1,12 +1,10 @@
 ## 将数据流变为多个不相交区间
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&label_color=gray&color=yellow&style=flat-square)](../../../README.md#困难)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE&label_color=gray&color=blue&style=flat-square)](../../../README.md#二分查找)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&label_color=gray&color=blue&style=flat-square)](../../../README.md#模拟)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [二分查找, 模拟]
@@ -179,7 +177,6 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -236,5 +233,4 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

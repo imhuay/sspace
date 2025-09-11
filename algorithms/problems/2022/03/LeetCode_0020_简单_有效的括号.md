@@ -1,12 +1,10 @@
 ## 有效的括号
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A0%88/%E9%98%9F%E5%88%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#栈队列)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&label_color=gray&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [栈, lc100]
@@ -69,7 +67,6 @@ class Solution:
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -128,5 +125,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

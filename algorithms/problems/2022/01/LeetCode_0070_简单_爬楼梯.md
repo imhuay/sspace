@@ -1,12 +1,10 @@
 ## 爬楼梯
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&label_color=gray&color=blue&style=flat-square)](../../../README.md#动态规划)
 [![](https://img.shields.io/static/v1?label=&message=%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&label_color=gray&color=blue&style=flat-square)](../../../README.md#暴力递归与动态规划)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [动态规划, dfs2dp]
@@ -77,7 +75,6 @@ class Solution:
 </details>
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -216,5 +213,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

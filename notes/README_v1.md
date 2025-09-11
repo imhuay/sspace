@@ -30,7 +30,6 @@ Notes
 <!-- omit in toc -->
 ## Recently 📖
 <!--START_SECTION:recent-->
-
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
 - [`2025-09-05` Transformer 梳理](_archives/2025/09/Transformer梳理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
@@ -44,7 +43,6 @@ Notes
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md)
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md)
 - [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
-
 
 <!--END_SECTION:recent-->
 

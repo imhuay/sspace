@@ -1,6 +1,5 @@
 ## 数组中出现次数超过一半的数字（摩尔投票）
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
@@ -8,7 +7,6 @@
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&label_color=gray&color=blue&style=flat-square)](../../../README.md#模拟)
 [![](https://img.shields.io/static/v1?label=&message=%E5%88%86%E6%B2%BB&label_color=gray&color=blue&style=flat-square)](../../../README.md#分治)
 [![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&label_color=gray&color=blue&style=flat-square)](../../../README.md#经典)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [排序, 模拟, 分治, 经典]
@@ -155,7 +153,6 @@ class Solution:
 </details>
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -257,5 +254,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

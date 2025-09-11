@@ -1,13 +1,11 @@
 ## 编辑距离
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&label_color=gray&color=yellow&style=flat-square)](../../../README.md#困难)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&label_color=gray&color=blue&style=flat-square)](../../../README.md#动态规划)
 [![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&label_color=gray&color=blue&style=flat-square)](../../../README.md#经典)
 [![](https://img.shields.io/static/v1?label=&message=%E7%83%AD%E9%97%A8&label_color=gray&color=blue&style=flat-square)](../../../README.md#热门)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [动态规划, 经典, 热门]
@@ -141,7 +139,6 @@ class Solution:
 
 </details>
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -272,5 +269,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

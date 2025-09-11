@@ -1,12 +1,10 @@
 ## 无重复字符的最长子串
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&label_color=gray&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&label_color=gray&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3&label_color=gray&color=blue&style=flat-square)](../../../README.md#滑动窗口)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&label_color=gray&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [滑动窗口, lc100]
@@ -83,7 +81,6 @@ class Solution:
 
 </details>
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -132,5 +129,4 @@ class Solution:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->

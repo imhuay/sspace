@@ -1,11 +1,9 @@
 ## 不用加减乘除做加法
 <!--START_SECTION:badge-->
-
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BD%8D%E8%BF%90%E7%AE%97&label_color=gray&color=blue&style=flat-square)](../../../README.md#位运算)
-
 <!--END_SECTION:badge-->
 <!--info
 tags: [位运算]
@@ -107,7 +105,6 @@ public:
 
 
 <!--START_SECTION:relate-->
-
 ---
 
 ### 相关主题
@@ -127,5 +124,4 @@ public:
   > 
 
 </details>
-
 <!--END_SECTION:relate-->
