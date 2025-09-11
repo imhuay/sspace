@@ -11,6 +11,7 @@ Subject:
 
 from __future__ import annotations
 
+import difflib
 import os
 import re
 import subprocess
@@ -19,6 +20,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+import emoji
+import regex
 import yaml
 from markdown.extensions import toc
 from markdown_it import MarkdownIt
@@ -32,9 +35,55 @@ logger = get_logger()
 
 
 class MarkdownUtils:
+    """"""
+
     @staticmethod
-    def slugify(head):
-        return toc.slugify_unicode(head, '-')  # noqa
+    def slugify(value, mode='github', separator='-'):
+        if mode == 'github':
+            return MarkdownUtils.slugify_github(value)
+        return toc.slugify_unicode(value, separator)  # 无法处理部分由多个 Unicode 码点组成 emoji
+        # 以下方法也不能处理
+        # value = emoji.replace_emoji(value, '')  # 移除 emoji
+        # value = re.sub(r'[^\w\s-]', '', value).strip().lower()
+        # return re.sub(r'[{}\s]+'.format(separator), separator, value)
+
+    @staticmethod
+    def slugify_github(raw: str) -> str:
+        """
+        精确复现 GitHub 的 slugify 策略：
+            1. mdInlineToPlainText：去除图片和 HTML inline，拼接文本
+            2. 用 Unicode 正则去除所有非字母/数字/下划线/连字符/空格的字符
+            3. 全部转小写（与 toLowerCase 等价）
+            4. 将空格替换为连字符
+        """
+        _md = MarkdownIt('commonmark')
+
+        def _md_inline_to_plain_text(text: str) -> str:
+            """
+            将 Markdown inline 结构转换为纯文本：
+            - 使用 markdown-it-py 的 parseInline 方法
+            - 跳过 image 和 html_inline 类型的 token
+            - 其余 token.content 串接输出
+            """
+            env = {}
+            # parseInline 返回 [blockToken], blockToken.children 存放 inline token
+            inline_tokens = _md.parseInline(text, env)[0].children or []
+            result = []
+            for token in inline_tokens:
+                if token.type in ('image', 'html_inline'):
+                    continue
+                result.append(token.content)
+            return ''.join(result)
+
+        # 1. 提取纯文本
+        text = _md_inline_to_plain_text(raw)
+        # 2. 移除指定标点
+        #    [^\p{L}\p{M}\p{Nd}\p{Nl}\p{Pc}\- ] 匹配所有非字母/标记/数字/下划线/连字符/空格字符
+        text = regex.sub(r'[^\p{L}\p{M}\p{Nd}\p{Nl}\p{Pc}\- ]+', '', text)
+        # 3. 小写
+        text = text.lower()
+        # 4. 空格转连字符
+        return text.replace(' ', '-')
 
     @staticmethod
     def extract_markdown_links(text) -> list[dict]:
@@ -68,7 +117,7 @@ class MarkdownUtils:
         return ''
 
     @staticmethod
-    def norm_text(text: str | None) -> str | None:
+    def norm_text(text: str) -> str:
         """文本规范化
 
         要求:
@@ -80,8 +129,19 @@ class MarkdownUtils:
                 如果在行内, 将 "中文标点+可能得空格" 替换为 "英文标点 + 一个空格"
                 如果在行尾, 将 "中文标点+可能得空格" 替换为 "英文标点"
         """
-        if text is None:
-            return text
+        punc_map = {
+            '，': ',',
+            '。': '.',
+            '！': '!',
+            '？': '?',
+            '；': ';',
+            '：': ':',
+        }
+        quo_punc_map = {
+            ('“', '”'): ('"', '"'),
+            ('‘', '’'): ("'", "'"),
+            ('（', '）'): ('(', ')'),
+        }
 
         lines = text.split('\n')
         for i in range(len(lines)):
@@ -97,18 +157,14 @@ class MarkdownUtils:
                 line = line.rstrip()
 
             # 2. 中文标点处理
-            line = re.sub(r'，\s*', ', ', line)
-            line = re.sub(r'。\s*', '. ', line)
-            line = re.sub(r'！\s*', '! ', line)
-            line = re.sub(r'？\s*', '? ', line)
-            line = re.sub(r'；\s*', '; ', line)
-            line = re.sub(r'：\s*', ': ', line)
-            line = re.sub(r'\s*“\s*', ' "', line)
-            line = re.sub(r'\s*”\s*', '" ', line)
-            line = re.sub(r'\s*‘\s*', " '", line)
-            line = re.sub(r'\s*’\s*', "' ", line)
-            line = re.sub(r'\s*（\s*', ' (', line)
-            line = re.sub(r'\s*）\s*', ') ', line)
+            for cn_punc, en_punc in punc_map.items():
+                line = re.sub(rf'\s*{cn_punc}\s*', f'{en_punc} ', line)
+            # 处理成对的中文引号和括号
+            for (cn_left, cn_right), (en_left, en_right) in quo_punc_map.items():
+                line = re.sub(rf'\s*{cn_left}\s*(.*?)\s*{cn_right}\s*', f' {en_left}\\1{en_right} ', line)
+            for _, en_right in quo_punc_map.values():
+                for seg_punc in punc_map.values():
+                    line = re.sub(rf'{re.escape(en_right)}\s*{re.escape(seg_punc)}', f'{en_right}{seg_punc}', line)
 
             # 3. 再次行尾空格处理 (防止中文标点替换后, 行尾出现单个空格)
             if line.endswith('  '):
@@ -116,10 +172,36 @@ class MarkdownUtils:
             else:
                 line = line.rstrip()
 
+            # 4. 把多余的空格替换为单个空格 (除了行尾)
+            # line = re.sub(r'(?<=\S) {2,}(?=\S)', ' ', line)
+            # 代码中的缩进不好处理
+
             lines[i] = line
 
         new_text = '\n'.join(lines)
         return new_text
+
+    @staticmethod
+    def print_diffs_with_context(a: str, b: str, l_context=0, r_context=10):
+        # 使用 SequenceMatcher 找出差异块
+        matcher = difflib.SequenceMatcher(None, a, b)
+        for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+            if tag != 'equal':
+                # 从原文和新文中截取差异前后 context 个字符
+                a_start = max(i1 - l_context, 0)
+                a_end = min(i2 + r_context, len(a))
+                b_start = max(j1 - l_context, 0)
+                b_end = min(j2 + r_context, len(b))
+
+                old_seg = a[a_start:a_end]
+                new_seg = b[b_start:b_end]
+
+                print(f'=== 差异类型: {tag} ===')
+                print(f'旧内容: {repr(old_seg)}')
+                print('旧内容 Unicode:', ' '.join(f'U+{ord(ch):04X}' for ch in old_seg))
+                print(f'新内容: {repr(new_seg)}')
+                print('新内容 Unicode:', ' '.join(f'U+{ord(ch):04X}' for ch in new_seg))
+                print()
 
 
 class ReadmeUtils:

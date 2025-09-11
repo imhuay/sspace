@@ -30,7 +30,7 @@ tag: [dl_transformer]
     - [多头注意力 (Multi-Head Attention)](#多头注意力-multi-head-attention)
     - [逐位置前馈网络 (Position-wise FFN)](#逐位置前馈网络-position-wise-ffn)
     - [残差与归一化](#残差与归一化)
-    - [正余弦位置编码](#正余弦位置编码)
+    - [正弦位置编码](#正弦位置编码)
         - [位置编码的演进](#位置编码的演进)
 - [面试问题整理](#面试问题整理)
 <!--END_SECTION:toc-->
@@ -125,7 +125,7 @@ tag: [dl_transformer]
 - **解码端**: 输出 tokens (shifted right) → **令牌嵌入** + **位置编码** → \[Decoder Layer\] × N → **输出分布** (下一个 token 概率)
 
 
-### 正余弦位置编码
+### 正弦位置编码
 
 - **背景/动机**: 自注意力机制具有 **置换不变/等变性**; 因此需要显式地注入 **位置信息** 来区分不同顺序的序列;
 - **方法**: 为输入嵌入 (Input Embedding) 添加一个包含位置信息的编码

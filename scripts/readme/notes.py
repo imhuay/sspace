@@ -82,7 +82,7 @@ class Note:
     sub_notes: list[Note] = field(default_factory=list)
     par_notes: list[Note] = field(default_factory=list)
 
-    _text: str | None = None
+    _text: str = ''
     _info: NoteInfo | None = None
     _title: str | None = None
     _first_commit_date: str | None = None
@@ -118,8 +118,8 @@ class Note:
         """文本规范化"""
         new_text = MarkdownUtils.norm_text(self._text)
         if new_text != self.text:
-            self._updated = True
             self._text = new_text
+            self._updated = True
 
     def _update_badge(self):
         """"""
@@ -130,8 +130,8 @@ class Note:
         badge_tag = 'badge'
         new_badge = '\n'.join(badges)
         old_badge = ReadmeUtils.get_tag_content(badge_tag, self._text)
-        if old_badge != new_badge:
-            self._text = ReadmeUtils.replace_tag_content('badge', self._text, new_badge)
+        if new_badge != old_badge:
+            self._text = ReadmeUtils.replace_tag_content('badge', self.text, new_badge)
             self._updated = True
 
     def _update_section_number(self):
@@ -143,7 +143,6 @@ class Note:
             ### 二级标题 => ### 1.1. 二级标题
             #### 三级标题 => ### 1.1.1. 二级标题
         """
-        self._updated = True
         D = self._max_section_level
         lines = self.text.split('\n')
         section_counts = [0] * D
@@ -168,11 +167,13 @@ class Note:
             # 更新标题行
             lines[i] = f'{hashes} {section_number} {title.strip()}'
 
-        self._text = '\n'.join(lines)
+        new_text = '\n'.join(lines)
+        if new_text != self.text:
+            self._text = new_text
+            self._updated = True
 
     def _update_toc(self):
         """更新章节 TOC"""
-        self._updated = True
         D = self._max_section_level
         lines = self.text.split('\n')
         toc_lines = []
@@ -191,8 +192,12 @@ class Note:
             toc_line = f'{indent}- [{title.strip()}](#{anchor})'
             toc_lines.append(toc_line)
 
-        toc_content = '\n'.join(toc_lines)
-        self._text = ReadmeUtils.replace_tag_content('toc', self.text, toc_content)
+        new_toc_content = '\n'.join(toc_lines)
+        toc_content = ReadmeUtils.get_tag_content('toc', self.text)
+        if new_toc_content != toc_content:
+            # MarkdownUtils.print_diffs_with_context(new_toc_content, toc_content or '')
+            self._text = ReadmeUtils.replace_tag_content('toc', self.text, new_toc_content)
+            self._updated = True
 
     def get_toc_line_relative_to(self, parent_path: Path):
         if self.is_top:
