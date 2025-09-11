@@ -1,4 +1,4 @@
-## 层序遍历二叉树（之字形遍历）
+## 层序遍历二叉树 (之字形遍历)
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&label_color=gray&color=yellow&style=flat-square)](../../../README.md#简单)
@@ -12,20 +12,20 @@ tags: [BFS, 二叉树, 队列]
 source: 剑指Offer
 level: 简单
 number: '3203'
-name: 层序遍历二叉树（之字形遍历）
+name: 层序遍历二叉树 (之字形遍历)
 companies: []
 -->
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+按照之字形顺序打印二叉树, 即第一行按照从左到右的顺序打印, 第二层按照从右到左的顺序打印, 第三行再按照从左到右的顺序打印, 其他行以此类推.
 ```
 
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+请实现一个函数按照之字形顺序打印二叉树, 即第一行按照从左到右的顺序打印, 第二层按照从右到左的顺序打印, 第三行再按照从左到右的顺序打印, 其他行以此类推.
 
 例如:
     给定二叉树: [3,9,20,null,null,15,7],
@@ -35,7 +35,7 @@ companies: []
       9  20
         /  \
        15   7
-    返回其层次遍历结果：
+    返回其层次遍历结果:
 
     [
         [3],
@@ -43,12 +43,12 @@ companies: []
         [15,7]
     ]
 
-提示：
+提示:
     节点总数 <= 1000
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+来源: 力扣 (LeetCode)
+链接: https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof
+著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 </details>
@@ -57,7 +57,7 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 在“层序遍历二叉树-2”的基础上，加入奇偶层的处理即可；
+- 在 "层序遍历二叉树-2" 的基础上, 加入奇偶层的处理即可;
 
 <details><summary><b>Python</b></summary>
 
@@ -92,15 +92,15 @@ class Solution:
                 if cur.right:
                     buf.append(cur.right)
                     cnt += 1
-            
-            # 上面的代码跟 层序遍历二叉树-2 完全相同，
-            # 在将 tmp 加入 ret 时，对偶数层的 tmp 做一下倒序
+
+            # 上面的代码跟 层序遍历二叉树-2 完全相同,
+            # 在将 tmp 加入 ret 时, 对偶数层的 tmp 做一下倒序
             if lv & 1:  # 奇数层
                 ret.append(tmp)
             else:
                 ret.append(tmp[::-1])
             lv += 1
-        
+
         return ret
 ```
 

@@ -17,15 +17,15 @@ name: x 的平方根
 companies: []
 -->
 
-> [69. x 的平方根 - 力扣（LeetCode）](https://leetcode.cn/problems/sqrtx/)
+> [69. x 的平方根 - 力扣 (LeetCode) ](https://leetcode.cn/problems/sqrtx/)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个非负整数 x ，计算并返回 x 的 算术平方根 (整数部分)。
+给你一个非负整数 x , 计算并返回 x 的 算术平方根 (整数部分).
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -50,12 +50,12 @@ class Solution:
             m = (l + r) // 2
             if m ** 2 <= x < (m + 1) ** 2:
                 break
-            
+
             if m ** 2 < x:
                 l = m
             else:
                 r = m
-        
+
         return m
 ```
 
@@ -73,30 +73,30 @@ class Solution:
 class Solution:
     def mySqrt(self, x: float, e: int) -> int:
         if x in (0, 1): return x
-        
+
         assert x > 0
         flag = False
         if x < 1:  # 小于 1 的情况
             x = 1 / x
             flag = True
-        
+
         l, r = 0, x
         while l < r:
             m = (l + r) / 2
             if abs(m ** 2 - x) <= 0.1 ** e:
                 break
-            
+
             if m ** 2 < x:
                 l = m
             else:
                 r = m
-        
+
         return 1 / m if flag else m
 ```
 
 </details>
 
-<!-- 
+<!--
 <summary><b>相关问题</b></summary>
 
 -->

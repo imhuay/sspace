@@ -17,14 +17,14 @@ tag: [dl_model]
 
 <!--START_SECTION:toc-->
 - [Multi-head Self Attention](#multi-head-self-attention)
-    - [前向过程（PyTorch 实现）](#前向过程pytorch-实现)
+    - [前向过程 (PyTorch 实现) ](#前向过程pytorch-实现)
 <!--END_SECTION:toc-->
 
 ---
 
 ## Multi-head Self Attention
 
-<!-- 
+<!--
 ### 前向过程
 
 $$
@@ -36,7 +36,7 @@ $$
 $$
  -->
 
-### 前向过程（PyTorch 实现）
+### 前向过程 (PyTorch 实现)
 
 ```python
 def forward(x, mask, H, D):

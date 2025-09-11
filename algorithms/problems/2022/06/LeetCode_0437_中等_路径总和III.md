@@ -20,13 +20,13 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。
+给定一个二叉树的根节点 root , 和一个整数 targetSum , 求该二叉树里节点值之和等于 targetSum 的 路径 的数目.
 
-路径 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。
+路径 不需要从根节点开始, 也不需要在叶子节点结束, 但是路径方向必须是向下的 (只能从父节点到子节点) .
 ```
-> [437. 路径总和 III - 力扣（LeetCode）](https://leetcode-cn.com/problems/path-sum-iii/)
+> [437. 路径总和 III - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/path-sum-iii/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -38,9 +38,9 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路1：先序遍历</b></summary>
+<summary><b>思路1: 先序遍历</b></summary>
 
-- 先序遍历每个节点，每个节点再先序遍历找目标值；
+- 先序遍历每个节点, 每个节点再先序遍历找目标值;
 
 <details><summary><b>Python</b></summary>
 
@@ -61,7 +61,7 @@ class Solution:
             if not x:
                 return 0
 
-            ans = 0 if x.val != rest else 1  # 如果相等说明，从头结点开始到该节点可以形成一条路径
+            ans = 0 if x.val != rest else 1  # 如果相等说明, 从头结点开始到该节点可以形成一条路径
 
             # 继续遍历左右子树
             rest -= x.val
@@ -72,7 +72,7 @@ class Solution:
 
         # dfs 是一个先序遍历
         ret = dfs(root, targetSum)
-        # pathSum 本身也是一个先序遍历，相当于对每个点都做一次 dfs
+        # pathSum 本身也是一个先序遍历, 相当于对每个点都做一次 dfs
         ret += self.pathSum(root.left, targetSum)
         ret += self.pathSum(root.right, targetSum)
 
@@ -82,9 +82,9 @@ class Solution:
 </details>
 
 
-<summary><b>思路2：先序遍历+前缀和（最优）</b></summary>
+<summary><b>思路2: 先序遍历+前缀和 (最优) </b></summary>
 
-> [【宫水三叶】一题双解 :「DFS」&「前缀和」 - 路径总和 III - 力扣（LeetCode）](https://leetcode-cn.com/problems/path-sum-iii/solution/gong-shui-san-xie-yi-ti-shuang-jie-dfs-q-usa7/)
+> [【宫水三叶】一题双解 :「DFS」&「前缀和」 - 路径总和 III - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/path-sum-iii/solution/gong-shui-san-xie-yi-ti-shuang-jie-dfs-q-usa7/)
 
 <details><summary><b>Python</b></summary>
 
@@ -122,7 +122,7 @@ class Solution:
 </details>
 
 
-<summary><b>思路3：后序遍历（推荐）</b></summary>
+<summary><b>思路3: 后序遍历 (推荐) </b></summary>
 
 <details><summary><b>Python</b></summary>
 
@@ -136,7 +136,7 @@ class Solution:
 
 class Solution:
     def pathSum(self, root: TreeNode, targetSum: int) -> int:
-        
+
         from dataclasses import dataclass
 
         @dataclass
@@ -147,7 +147,7 @@ class Solution:
         def dfs(x):
             if not x:
                 return Info(0, [])
-            
+
             l, r = dfs(x.left), dfs(x.right)
 
             x_cnt = l.cnt + r.cnt
@@ -164,7 +164,7 @@ class Solution:
                     x_cnt += 1
 
             return Info(x_cnt, x_dp)
-        
+
         return dfs(root).cnt
 ```
 

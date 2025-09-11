@@ -17,13 +17,13 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。
-请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 0 。
-假设每一种面额的硬币有无限个。 
+给你一个整数数组 coins 表示不同面额的硬币, 另给一个整数 amount 表示总金额.
+请你计算并返回可以凑成总金额的硬币组合数. 如果任何硬币组合都无法凑出总金额, 返回 0 .
+假设每一种面额的硬币有无限个.
 ```
-> [518. 零钱兑换 II - 力扣（LeetCode）](https://leetcode-cn.com/problems/coin-change-2/)
+> [518. 零钱兑换 II - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/coin-change-2/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -35,13 +35,13 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路1：递归</b></summary>
+<summary><b>思路1: 递归</b></summary>
 
-- 定义 `dfs(a, i)` 表示目标钱数为 `a` 且从第 `i` 种硬币开始取能得到的组合数；
-    > “从第 `i` 种硬币开始取”具体指第 `i` 种之后的硬币可以任意取，前面的 `i-1` 种不能取，详见代码；
+- 定义 `dfs(a, i)` 表示目标钱数为 `a` 且从第 `i` 种硬币开始取能得到的组合数;
+    > "从第 `i` 种硬币开始取" 具体指第 `i` 种之后的硬币可以任意取, 前面的 `i-1` 种不能取, 详见代码;
 - **递归基**
-    1. 规定 `dfs(0,i) == 1`；
-    2. 隐含中止条件：当 `coins[i] > j` 时，`dfs(a,i) == 0`；
+    1. 规定 `dfs(0,i) == 1`;
+    2. 隐含中止条件: 当 `coins[i] > j` 时, `dfs(a,i) == 0`;
 
 <details><summary><b>Python</b></summary>
 
@@ -70,15 +70,15 @@ class Solution:
 </details>
 
 
-<summary><b>思路2：动态规划——基于完全背包的组合数问题</b></summary>
+<summary><b>思路2: 动态规划——基于完全背包的组合数问题</b></summary>
 
-- 定义 `dp[a]` 表示构成目标值 `i` 的组合数；
-- 转移方程 `dp[a] += dp[a - coins[i]]`，当 `a >= coins[i]` 时；
-- 初始状态 `dp[0] = 1`；
-- 关键点：先遍历“物品”（这里是硬币），在遍历“容量”（这里是金额）；
-    > 关于先后遍历两者的区别见[完全背包 - 代码随想录](https://programmercarl.com/背包问题理论基础完全背包.html)；
+- 定义 `dp[a]` 表示构成目标值 `i` 的组合数;
+- 转移方程 `dp[a] += dp[a - coins[i]]`, 当 `a >= coins[i]` 时;
+- 初始状态 `dp[0] = 1`;
+- 关键点: 先遍历 "物品" (这里是硬币) , 在遍历 "容量" (这里是金额) ;
+    > 关于先后遍历两者的区别见[完全背包 - 代码随想录](https://programmercarl.com/背包问题理论基础完全背包.html);
 
-<details><summary><b>Python：动态规划</b></summary>
+<details><summary><b>Python: 动态规划</b></summary>
 
 ```python
 class Solution:
@@ -93,7 +93,7 @@ class Solution:
             x = coins[i]
             for j in range(x, amount + 1):
                 dp[j] += dp[j - x]
-        
+
         return dp[amount]
 ```
 

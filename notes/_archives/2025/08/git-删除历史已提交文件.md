@@ -33,10 +33,10 @@ tag: [git]
 
 ```bash
 # 备份仓库, 在备份仓库上操作
-git clone --mirror your-repo.git  # 克隆所有分支、标签、refs（包括远程跟踪分支）的完整镜像
+git clone --mirror your-repo.git  # 克隆所有分支、标签、refs (包括远程跟踪分支) 的完整镜像
 cd your-repo.git
 
-# 运行filter-branch命令（将 [target-file] 替换为目标文件）
+# 运行filter-branch命令 (将 [target-file] 替换为目标文件)
 git filter-branch --force --index-filter \
 'git rm --cached --ignore-unmatch [target-file]' \
 --prune-empty --tag-name-filter cat -- --all

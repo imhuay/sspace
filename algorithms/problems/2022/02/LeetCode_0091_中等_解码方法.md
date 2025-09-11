@@ -18,14 +18,14 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-将数字解码成字母，返回可能的解码方法数；
-例如，"11106" 可以映射为：
-    "AAJF" ，将消息分组为 (1 1 10 6)
-    "KJF" ，将消息分组为 (11 10 6)
+将数字解码成字母, 返回可能的解码方法数;
+例如, "11106" 可以映射为:
+    "AAJF" , 将消息分组为 (1 1 10 6)
+    "KJF" , 将消息分组为 (11 10 6)
 ```
-> [91. 解码方法 - 力扣（LeetCode）](https://leetcode-cn.com/problems/decode-ways/)
+> [91. 解码方法 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/decode-ways/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -60,9 +60,9 @@ class Solution:
                 ret += dfs(i - 1)  # s[i-1] == 1 和 s[i-2] 的特殊讨论
             if s[i - 2] == '1' or s[i - 2] == '2' and '0' <= s[i - 1] <= '6':
                 ret += dfs(i - 2)
-            
+
             return ret
-        
+
         return dfs(len(s))
 ```
 
@@ -73,12 +73,12 @@ class Solution:
 ```python
 class Solution:
     def numDecodings(self, s: str) -> int:
-        
+
         # if s[0] == '0': return 0
 
         dp = [0] * (len(s) + 1)
         # dp[0] = dp[1] = int(s[0] != '0')
-        
+
         # 注意 i 的范围与递归中一致
         for i in range(len(s) + 1):
             # 下面就是把递归中的代码搬过来
@@ -90,7 +90,7 @@ class Solution:
                 dp[i] += dp[i - 1]
             if s[i - 2] == '1' or s[i - 2] == '2' and '0' <= s[i - 1] <= '6':
                 dp[i] += dp[i - 2]
-        
+
         return dp[-1]
 ```
 

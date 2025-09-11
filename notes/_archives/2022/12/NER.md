@@ -31,8 +31,8 @@ level: 99
 
 
 ## 参考阅读
-- [电商搜索QP：Tagging - 知乎](https://zhuanlan.zhihu.com/p/532924107)
-- [万字综述！命名实体识别（NER）的过去和现在](https://mp.weixin.qq.com/s/sNXG-K5aPRFFQ3F373-e0A)
-- Hanchu Zhang et al. “Bootstrapping Named Entity Recognition in E-Commerce with Positive Unlabeled Learning” arXiv: Computation and Language(2020): n. pag.
-- Mahesh Joshi et al. “Distributed Word Representations Improve NER for e-Commerce” north american chapter of the association for computational linguistics(2015): n. pag.
+- [电商搜索QP: Tagging - 知乎](https://zhuanlan.zhihu.com/p/532924107)
+- [万字综述! 命名实体识别 (NER) 的过去和现在](https://mp.weixin.qq.com/s/sNXG-K5aPRFFQ3F373-e0A)
+- Hanchu Zhang et al. "Bootstrapping Named Entity Recognition in E-Commerce with Positive Unlabeled Learning" arXiv: Computation and Language(2020): n. pag.
+- Mahesh Joshi et al. "Distributed Word Representations Improve NER for e-Commerce" north american chapter of the association for computational linguistics(2015): n. pag.
 - How to Improve E-commerce Search Engines? Evaluating Transformer-Based Named Entity Recognition on German Product Datasets

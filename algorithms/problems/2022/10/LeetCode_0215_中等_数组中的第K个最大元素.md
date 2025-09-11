@@ -17,17 +17,17 @@ name: 数组中的第K个最大元素
 companies: []
 -->
 
-> [215. 数组中的第K个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/kth-largest-element-in-an-array/?favorite=2cktkvj)
+> [215. 数组中的第K个最大元素 - 力扣 (LeetCode) ](https://leetcode.cn/problems/kth-largest-element-in-an-array/?favorite=2cktkvj)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
-请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
-你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。
+给定整数数组 nums 和整数 k, 请返回数组中第 k 个最大的元素.
+请注意, 你需要找的是数组排序后的第 k 个最大的元素, 而不是第 k 个不同的元素.
+你必须设计并实现时间复杂度为 O(n) 的算法解决此问题.
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -48,7 +48,7 @@ companies: []
 ```python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        
+
         def reset(l, r):
 
             # 三数取中
@@ -57,7 +57,7 @@ class Solution:
             #     nums[m], nums[l] = nums[l], nums[m]
             # elif nums[l] < nums[r] < nums[m] or nums[m] < nums[r] < nums[l]:
             #     nums[r], nums[l] = nums[l], nums[r]
-            
+
             # 随机
             i = random.randint(l, r)
             nums[l], nums[i] = nums[i], nums[l]
@@ -76,14 +76,14 @@ class Solution:
 
             if l > k - 1: dfs(lo, l)
             if l < k - 1: dfs(l + 1, hi)
-        
+
         dfs(0, len(nums))
         return nums[k - 1]
 ```
 
 </details>
 
-<!-- 
+<!--
 <summary><b>相关问题</b></summary>
 
 -->

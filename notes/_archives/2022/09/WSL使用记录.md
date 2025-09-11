@@ -37,7 +37,7 @@ tag: [linux]
 
 ## 安装 WSL2
 > [WSL 的手动安装步骤 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)
->> 这里推荐分步安装；官方推荐的 [首次安装](https://learn.microsoft.com/zh-cn/windows/wsl/install) 可能会在下载 Linux 发行版的时候卡住，而手动从应用商店下载的速度则非常快；
+>> 这里推荐分步安装; 官方推荐的 [首次安装](https://learn.microsoft.com/zh-cn/windows/wsl/install) 可能会在下载 Linux 发行版的时候卡住, 而手动从应用商店下载的速度则非常快;
 
 ### 官方推荐设置
 - [设置 Windows Terminal | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/setup/environment#set-up-windows-terminal)
@@ -48,7 +48,7 @@ tag: [linux]
 ## 环境配置
 
 ### zsh (可选)
-> [Installing ZSH · ohmyzsh/ohmyzsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) 
+> [Installing ZSH · ohmyzsh/ohmyzsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
 - 安装
     ```sh
@@ -69,7 +69,7 @@ tag: [linux]
     ```
 - 修改主题
     ```sh
-    vim ~/.zshrc 
+    vim ~/.zshrc
     # ZSH_THEME="candy"
     ```
 - 推荐主题
@@ -87,7 +87,7 @@ wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 
 # 安装, 默认安装到 /home/<user>/anaconda3
 sh Anaconda3-20xx.xx-Linux-x86_64.sh
-# 如果使用 sudo sh，则会安装到 root 目录下
+# 如果使用 sudo sh, 则会安装到 root 目录下
 ```
 
 <details><summary><b> 部分安装信息 </b></summary>
@@ -153,10 +153,10 @@ Thank you for installing Anaconda3!
 
 
 #### 安装 Pycharm 专业版
-- PyCharm 本身是安装在 Windows 环境，这里的目的是通过 Pycharm 在 WSL 上开发；
-- 社区版无法调用 WSL 上的解释器，但可以使用 Windows 端的解释器 (可能会降低性能)；
-- 专业版调用 WSL：[PyCharm WSL2 下开发调试_wslynn的博客](https://blog.csdn.net/qq_38992249/article/details/122387097)
-- 破解版安装：[PyCharm 破解教程 (持续更新~) - 异常教程](https://www.exception.site/essay/how-to-free-use-pycharm-2020)
+- PyCharm 本身是安装在 Windows 环境, 这里的目的是通过 Pycharm 在 WSL 上开发;
+- 社区版无法调用 WSL 上的解释器, 但可以使用 Windows 端的解释器 (可能会降低性能);
+- 专业版调用 WSL: [PyCharm WSL2 下开发调试_wslynn的博客](https://blog.csdn.net/qq_38992249/article/details/122387097)
+- 破解版安装: [PyCharm 破解教程 (持续更新~) - 异常教程](https://www.exception.site/essay/how-to-free-use-pycharm-2020)
 
 
 ### C++ 编译环境
@@ -169,8 +169,8 @@ sudo apt-get install build-essential
 ## WSL 常用操作
 
 ### 路径
-- 在 WSL 中访问 Windows 路径：`/mnt/<盘符字母>/<file_path>`, 如 `/mnt/d/tmp/test.txt`
-- 在 Windows 中访问 WSL 路径：`\\wsl$\<Linux名称>\<file_path>`, 如 `\\wsl$\Ubuntu-20.04\tmp\test.txt`
+- 在 WSL 中访问 Windows 路径: `/mnt/<盘符字母>/<file_path>`, 如 `/mnt/d/tmp/test.txt`
+- 在 Windows 中访问 WSL 路径: `\\wsl$\<Linux名称>\<file_path>`, 如 `\\wsl$\Ubuntu-20.04\tmp\test.txt`
     > Linux 名称可以在 Win 文件管理器路径中访问 `\\wsl$` 查看
 - 在 WSL 中用 VSCode 中打开文件/文件夹
     ```shell
@@ -182,7 +182,7 @@ sudo apt-get install build-essential
     ```shell
     cd <wsl_path>
     explorer.exe .
-    ``` 
+    ```
 
 
 ## FAQ

@@ -25,7 +25,7 @@ companies: []
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+从上到下打印出二叉树的每个节点, 同一层的节点按照从左到右的顺序打印.
 
 例如:
     给定二叉树: [3,9,20,null,null,15,7],
@@ -35,16 +35,16 @@ companies: []
     9  20
         /  \
     15   7
-返回：
+返回:
     [3,9,20,15,7]
- 
-提示：
+
+提示:
     节点总数 <= 1000
 
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+来源: 力扣 (LeetCode)
+链接: https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof
+著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 <!-- <div align="center"><img src="./_assets/xxx.png" height="300" /></div> -->
@@ -54,16 +54,16 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 利用辅助队列 q；
-    1. 将树的根结点入队；
-    2. 如果 q 不为空，则将头结点出队记为 node；如果 node 的左节点不为空，则将左节点入队；如果 node 的右节点不为空，则将右节点入队；
-    3. 重复 2、3，直到 q 为空
+- 利用辅助队列 q;
+    1. 将树的根结点入队;
+    2. 如果 q 不为空, 则将头结点出队记为 node; 如果 node 的左节点不为空, 则将左节点入队; 如果 node 的右节点不为空, 则将右节点入队;
+    3. 重复 2、3, 直到 q 为空
 
 
 <details><summary><b>Python</b></summary>
 
-- `list` 也可以模拟队列，为什么还要用 `collections.deque`？
-    - `list.pop(0)` 的时间复杂度为 `O(N)`；而 `deque.popleft()` 只要 `O(1)`；
+- `list` 也可以模拟队列, 为什么还要用 `collections.deque`?
+    - `list.pop(0)` 的时间复杂度为 `O(N)`; 而 `deque.popleft()` 只要 `O(1)`;
 
 ```python
 # Definition for a binary tree node.
@@ -89,7 +89,7 @@ class Solution:
                 buf.append(cur.left)
             if cur.right:
                 buf.append(cur.right)
-        
+
         return ret
 ```
 
@@ -112,10 +112,10 @@ class Solution {
 
 public:
     vector<int> levelOrder(TreeNode* root) {
-        
+
         vector<int> ret;
         queue<TreeNode*> q;  // 辅助队列
-        
+
         if (root)
             q.push(root);
 

@@ -82,7 +82,7 @@ hidden: false
 ### 基本类型 TODO
 
 ### 容器类型
-- 主要有 4 中容器类型: 
+- 主要有 4 中容器类型:
     - `ARRAY<data_type>`
     - `MAP<primitive_type, data_type>`
     - `STRUCT<col_name : data_type [COMMENT col_comment], ...>`
@@ -119,15 +119,15 @@ SELECT array(named_struct('c1', 'a', 'c2', 1), named_struct('c1', 'b', 'c2', 2),
 ### 建表 (`CREATE`)
 > [CreateTable - Apache Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-CreateTable)
 ```sql
--- 示例 1: 分区表, 
+-- 示例 1: 分区表,
 CREATE TABLE db_name.table_name (
     `column_1`      string COMMENT '列注释1'
     , `column_2`    bigint COMMENT '列注释2'
     , `column_3`    double COMMENT '列注释3'
     , `column_4`    array < string > COMMENT '列注释4'
-) COMMENT 'datastudio 表ddl模板' 
+) COMMENT 'datastudio 表ddl模板'
 PARTITIONED BY (
-  `pt` string COMMENT '分区注释1' 
+  `pt` string COMMENT '分区注释1'
   [, `hr` string COMMENT '分区注释2']
 )
 STORED AS ORC   -- 一种压缩格式
@@ -153,16 +153,16 @@ CREATE TABLE new_key_value_store
    ROW FORMAT SERDE "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
    STORED AS RCFile     -- 一种文件格式
    AS   -- 不指定列时, 直接使用查询结果的列名和类型 (无注释)
-SELECT 
+SELECT
     (key % 1024) AS new_key
     , concat(key, value) AS key_value_pair
 FROM key_value_store
-SORT BY new_key, key_value_pair  -- 
+SORT BY new_key, key_value_pair  --
 ;
 ```
 
 #### 临时表
-- 注意: Hive 和 Spark 中的临时表语法不同; 
+- 注意: Hive 和 Spark 中的临时表语法不同;
 ```sql
 -- Hive
 CREATE TEMPORARY TABLE IF NOT EXISTS tmp_table AS
@@ -180,7 +180,7 @@ DROP TABLE IF EXISTS db.tmp_task_tabel;
 CREATE TABLE db.tmp_tabel AS
 SELECT  ...
 ```
-> ***物理临时表使用注意事项 :*** 
+> ***物理临时表使用注意事项 :***
 > *1) 使用物理临时表时, 一定要添加任务相关的标识, 如 `db.tmp_taskname_tablename`, 否则可能导致在不用任务间依赖相同的临时表, 当临时表在其中一个任务中被删除时, 另一个任务执行失败; 2) 系统支持自动删除 `tmp` 表, 或者在脚本末尾手动删除;*
 
 ### 修改 (`ALTER`)
@@ -206,7 +206,7 @@ ALTER TABLE db.table CHANGE b b STRING COMMENT 'column b';  -- 修改类型 (名
 - 一条 `ALTER` 语句一次只能修改一列, 但是能增加多列;
 ```sql
 -- 语法
-ALTER TABLE table_name 
+ALTER TABLE table_name
   [PARTITION partition_spec]                 -- (Note: Hive 0.14.0 and later)
   ADD|REPLACE COLUMNS (col_name data_type [COMMENT col_comment], ...)
   [CASCADE|RESTRICT]                         -- (Note: Hive 1.1.0 and later)
@@ -274,20 +274,20 @@ fromClause: FROM baseTable (lateralView)*
 
 -- 示例 1: 基本用法
 SELECT A.a, B.b
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr) A
 LATERAL VIEW explode(A.arr) B AS b;
 -- 产生 3 条数据
 
 -- 示例 2: 多个侧视图, 相当于做了笛卡尔积
 SELECT A.a, B.b, C.c
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A
 LATERAL VIEW explode(A.arr1) B AS b
 LATERAL VIEW explode(A.arr2) C AS c;
 -- 产生 9 条数据
 
 -- 示例 3: 多个数组并列, 相当于 Python 中的 zip
 SELECT A.a, B.b, A.arr2[i] AS c
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A
 LATERAL VIEW posexplode(A.arr1) B AS i, b;
 -- 产生 3 条数据
 
@@ -299,21 +299,21 @@ SELECT A.a, B.b FROM (SELECT explode(array(1,2,3)) a) A
 ```
 
 #### 侧视图 for Presto (`CROSS JOIN`)
-> 
+>
 
 Presto 中与 Hive 三个示例对应的写法
 > 以下 SQL 未经过测试, 其中构造的 array 的方法在 Presto 中可能有问题;
 ```sql
 -- 示例 1
 SELECT A.a, B.b
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr) A
 CROSS JOIN UNNEST(A.arr) AS B(b);
 -- LATERAL VIEW explode(A.arr) B AS b;
 -- 产生 3 条数据
 
 -- 示例 2
 SELECT A.a, B.b, C.c
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A
 CROSS JOIN UNNEST(A.arr1) AS B(b)
 -- LATERAL VIEW explode(A.arr1) B AS b
 CROSS JOIN UNNEST(A.arr2) AS C(c);
@@ -323,7 +323,7 @@ CROSS JOIN UNNEST(A.arr2) AS C(c);
 -- 示例 3
 SELECT A.a, B.b, B.c
 -- SELECT A.a, B.b, A.arr2[i] AS c
-FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A 
+FROM (SELECT 'id' AS a, array(1,2,3) AS arr1, array('a','b','c') AS arr2) A
 CROSS JOIN UNNEST(A.arr1, A.arr2) AS B(b, c)
 -- LATERAL VIEW posexplode(A.arr1) B AS i, b;
 -- 产生 3 条数据
@@ -413,7 +413,7 @@ SELECT size(array_except(array(1,2,2), array(1,2,3,NULL))) = 0;  -- true
 
 ```
 
-<!-- 
+<!--
 #### 判断子集
 - 一个通用的方法是编写 UDF
 - 下面是一些 trick 方法
@@ -440,7 +440,7 @@ FROM (
 
 ```sql
 -- 写法 1: 适用于小数据量, 且不含 ORDER BY 的情况, 如果存在 ORDER BY, 推荐写法 2
-SELECT * 
+SELECT *
 FROM table_name A
 WHERE ...
 -- ORDER BY ...
@@ -521,16 +521,16 @@ SELECT least(3, 1, -1);  -- 3
 #### `CASE WHEN`
 ```sql
 -- 写法 1: When a = b, returns c; when a = d, returns e; else returns f.
-CASE a 
-    WHEN b THEN c 
+CASE a
+    WHEN b THEN c
     WHEN d THEN e
     -- WHEN ... THEN ...
     ELSE f
 END
 
 -- 写法 2: When a is true, returns b; when c is true, returns d; else returns e.
-CASE 
-    WHEN a THEN b 
+CASE
+    WHEN a THEN b
     WHEN c THEN d
     -- WHEN ... THEN ...
     ELSE e
@@ -547,7 +547,7 @@ select explode(array('A','B','C')) as col;
 
 -- explode(map)
 select explode(map('A',10,'B',20,'C',30)) as (key,value);
-select tf.* from (select 0) t 
+select tf.* from (select 0) t
     lateral view explode(map('A',10,'B',20,'C',30)) tf as key,value;
 -- 注意: AS aliases 这里, 前者要有括号, 后者没有括号!
 
@@ -611,7 +611,7 @@ select stack(2, -- 表示下面有两条数据
 
 #### 排序 (`ROW_NUMBER/RANK/DENSE_RANK`)
 ```sql
-SELECT 
+SELECT
     cookieid, pt, pv,
     ROW_NUMBER() OVER(PARTITION BY cookieid ORDER BY pv DESC) AS rn1,   -- 形如 1,2,3,4,5 (最常用)
     RANK() OVER(PARTITION BY cookieid ORDER BY pv DESC) AS rn2,         -- 形如 1,1,3,3,5
@@ -675,7 +675,7 @@ WHERE rn = 1
 
 #### 排序分位值
 ```sql
--- 场景：计算 query 的 pv 分位值
+-- 场景: 计算 query 的 pv 分位值
 SELECT query
     , rn
     , 1.0 * acc_pv / sum_pv AS pr
@@ -717,7 +717,7 @@ E     5   1.0   10   200    200
 > [Configuration Properties - Apache Hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 ```sql
--- 使支持列位置别名, 即 GROUP/ORDER BY 1,2,3; 
+-- 使支持列位置别名, 即 GROUP/ORDER BY 1,2,3;
 SET hive.groupby.orderby.position.alias=true;  -- Deprecated In: Hive 2.2.0, 默认关闭
 SET hive.groupby.position.alias=true;  -- Added In: Hive 2.2.0, 默认关闭
 SET hive.orderby.position.alias=true;  -- Added In: Hive 2.2.0, 默认开启
@@ -781,7 +781,7 @@ pt >= DATE_SUB('${env.today}', 7)  -- 8 天
 ```sql
 select explode(map('A',10,'B',20,'C',30)) as (key,value);  -- 必须要有括号
                                              ^^^^^^^^^^^
-select tf.* from (select 0) t 
+select tf.* from (select 0) t
     lateral view explode(map('A',10,'B',20,'C',30)) tf as key,value;  -- 必须没有括号
                                                           ^^^^^^^^^
 ```
@@ -791,14 +791,14 @@ select tf.* from (select 0) t
 - 比如不支持将 `map<string, bigint>` 自动转换为 `map<string, double>`;
     ```sql
     INSERT ...
-    SELECT map('a', 1, 
+    SELECT map('a', 1,
                'b', 2.0)  -- OK, 因为 2.0 的存在, 1 在插入时被自动转换为 double, 所以这是一个 map<string, double> 类型的值, 可以正常插入 map<string, double> 字段
         ...
     ;
     INSERT ...
-    SELECT map('a', 1, 
+    SELECT map('a', 1,
                'b', 2)    -- err, 因为所有值都是 int, 所以这是一个 map<string, bigint> 类型的值, 把它插入到 map<string, double> 会报错;
-    ``` 
+    ```
 - 解决方法: 使用 `CAST` 显式转换;
 
 

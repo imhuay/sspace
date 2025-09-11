@@ -17,39 +17,39 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-实现两个函数，分别用来序列化和反序列化二叉树。
+实现两个函数, 分别用来序列化和反序列化二叉树.
 ```
 
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-请实现两个函数，分别用来序列化和反序列化二叉树。
+请实现两个函数, 分别用来序列化和反序列化二叉树.
 
-你需要设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。
+你需要设计一个算法来实现二叉树的序列化与反序列化. 这里不限定你的序列 / 反序列化算法执行逻辑, 你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构.
 
-提示：输入输出格式与 LeetCode 目前使用的方式一致，详情请参阅 LeetCode 序列化二叉树的格式。你并非必须采取这种方式，你也可以采用其他的方法解决这个问题。
+提示: 输入输出格式与 LeetCode 目前使用的方式一致, 详情请参阅 LeetCode 序列化二叉树的格式. 你并非必须采取这种方式, 你也可以采用其他的方法解决这个问题.
 
-示例：
-    输入：root = [1,2,3,null,null,4,5]
-    输出：[1,2,3,null,null,4,5]
+示例:
+    输入: root = [1,2,3,null,null,4,5]
+    输出: [1,2,3,null,null,4,5]
 
-注意：本题与主站 297 题相同：https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
+注意: 本题与主站 297 题相同: https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+来源: 力扣 (LeetCode)
+链接: https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof
+著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 </details>
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-~~<summary><b>思路1：中序遍历+前序/后序遍历</b></summary>~~
+~~<summary><b>思路1: 中序遍历+前序/后序遍历</b></summary>~~
 
-- **只适用于树种节点不重复的情况**；
-- 单独的中序/前序/后序能不能还原二叉树；
-- 但是中序 + 前序/后序就可以；
-- 因此可以序列化可以输出，中序+前序/后序的结果，反序列化时再用他们还原；
+- **只适用于树种节点不重复的情况**;
+- 单独的中序/前序/后序能不能还原二叉树;
+- 但是中序 + 前序/后序就可以;
+- 因此可以序列化可以输出, 中序+前序/后序的结果, 反序列化时再用他们还原;
 
 <details><summary><b>Python</b></summary>
 
@@ -101,9 +101,9 @@ class Codec:
 
             root.left = dfs(inorder[:root_idx], preorder[1:root_idx + 1])
             root.right = dfs(inorder[root_idx + 1:], preorder[root_idx + 1:])
-            
+
             return root
-        
+
         return dfs(inorder, preorder)
 
 # Your Codec object will be instantiated and called as such:
@@ -114,10 +114,10 @@ class Codec:
 </details>
 
 
-<summary><b>思路2：层序遍历</b></summary>
+<summary><b>思路2: 层序遍历</b></summary>
 
-- 无论是序列化还是反序列化，都需要用到辅助队列；
-- 层序遍历的缺点是可能会保存很多无效的空节点；
+- 无论是序列化还是反序列化, 都需要用到辅助队列;
+- 层序遍历的缺点是可能会保存很多无效的空节点;
 
 <details><summary><b>Python</b></summary>
 
@@ -133,7 +133,7 @@ class Codec:
 
     def serialize(self, root):
         """Encodes a tree to a single string.
-        
+
         :type root: TreeNode
         :rtype: str
         """
@@ -156,7 +156,7 @@ class Codec:
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
-        
+
         :type data: str
         :rtype: TreeNode
         """
@@ -172,9 +172,9 @@ class Codec:
 
         while buf:
             p = buf.popleft()
-            if data[i] is not None:  # 因为在 if 中 0 也是 False，所以保险起见用 is not None 来判断
+            if data[i] is not None:  # 因为在 if 中 0 也是 False, 所以保险起见用 is not None 来判断
                 p.left = TreeNode(data[i])
-                buf.append(p.left)  # 新节点入队，当生成下一层的节点时，依然按照从左往右的顺序
+                buf.append(p.left)  # 新节点入队, 当生成下一层的节点时, 依然按照从左往右的顺序
             i += 1
             if data[i] is not None:
                 p.right = TreeNode(data[i])

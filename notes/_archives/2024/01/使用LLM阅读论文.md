@@ -32,14 +32,14 @@ tag: [llm_app]
 ### 基本六问
 > [Cool Papers - Immersive Paper Discovery](https://papers.cool/)
 
-1. 这篇论文试图解决什么问题？
-2. 有哪些相关研究？
-3. 论文如何解决这个问题？
-4. 论文做了哪些实验？
-5. 有什么可以进一步探索的点？
+1. 这篇论文试图解决什么问题?
+2. 有哪些相关研究?
+3. 论文如何解决这个问题?
+4. 论文做了哪些实验?
+5. 有什么可以进一步探索的点?
 6. 总结一下论文的主要内容
 
 
 ## 参考
 
-- [写了个刷论文的辅助网站：Cool Papers - 科学空间|Scientific Spaces](https://kexue.fm/archives/9907)
+- [写了个刷论文的辅助网站: Cool Papers - 科学空间|Scientific Spaces](https://kexue.fm/archives/9907)

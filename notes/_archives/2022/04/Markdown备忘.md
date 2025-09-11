@@ -229,8 +229,8 @@ project
 ```
 
 ### 换行
-- 法1）在行末手动插入 `<br/>`；
-- 法2）在行末添加两个空格；
+- 法1) 在行末手动插入 `<br/>`;
+- 法2) 在行末添加两个空格;
 
 ### 图片 (HTML)
 
@@ -242,25 +242,25 @@ project
     ```html
     <a href=""><img src="..." height="300" /></a>
     ```
-    - `height`用于控制图片的大小，一般不使用，图片会等比例缩放；
+    - `height`用于控制图片的大小, 一般不使用, 图片会等比例缩放;
 - 居中
     ```html
     <div align="center"><img src="..." height="300" /></div>
-    ``` 
+    ```
 
 ### 隐藏块
 ```html
-<details><summary><b>点击展开</b></summary> 
+<details><summary><b>点击展开</b></summary>
 
-// 代码块，注意上下都要保留空行
+// 代码块, 注意上下都要保留空行
 
 </details>
-<br/> <!-- 如果间隔太小，可以加一个空行 -->
+<br/> <!-- 如果间隔太小, 可以加一个空行 -->
 ```
 
-<details><summary><b>点击展开</b></summary> 
+<details><summary><b>点击展开</b></summary>
 
-// 代码块，注意上下都要保留空行
+// 代码块, 注意上下都要保留空行
 
 </details>
 
@@ -321,7 +321,7 @@ $$
 
 
 ### 引用
-> 非标准用法，在编辑时不支持跳转，但是转换成 HTML 页面后可以；
+> 非标准用法, 在编辑时不支持跳转, 但是转换成 HTML 页面后可以;
 >> 推荐使用[注脚](#注脚-footnotes)
 
 ```markdown
@@ -356,5 +356,5 @@ $$
 ## VSCode 插件
 
 ### 自动更新目录插件
-- 插件名称：Markdown All in One
-- 插入目录快捷键： `Shift + Command + P` (Create Table of Contents)
+- 插件名称: Markdown All in One
+- 插入目录快捷键: `Shift + Command + P` (Create Table of Contents)

@@ -17,13 +17,13 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
+给你二叉树的根节点 root 和一个整数目标和 targetSum , 找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径.
 
-叶子节点 是指没有子节点的节点。
+叶子节点 是指没有子节点的节点.
 ```
-> [113. 路径总和 II - 力扣（LeetCode）](https://leetcode-cn.com/problems/path-sum-ii/)
+> [113. 路径总和 II - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/path-sum-ii/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -37,7 +37,7 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 先序遍历+回溯；
+- 先序遍历+回溯;
 
 <details><summary><b>Python</b></summary>
 
@@ -50,25 +50,25 @@ companies: []
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
-        
+
         ret = []
         tmp = []
 
         def dfs(x, rest):
             if not x:
-                return 
-            
+                return
+
             rest -= x.val
             tmp.append(x.val)
             if not x.left and not x.right:
                 if rest == 0:
                     ret.append(tmp[:])
-                
+
             dfs(x.left, rest)
             dfs(x.right, rest)
             rest += x.val
             tmp.pop()
-        
+
         dfs(root, targetSum)
         return ret
 ```

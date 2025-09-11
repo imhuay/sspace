@@ -31,6 +31,6 @@ tag: [bigdata_sql]
 
 
 ## FAQ
-- [SparkSession、SQLContext 和 HiveContext 之间的区别。 - lillcol - 博客园](https://www.cnblogs.com/lillcol/p/11233456.html)
-    > SparkSession 现在是 Spark 的新入口点，代替了旧的 SQLContext 和 HiveContext；
+- [SparkSession、SQLContext 和 HiveContext 之间的区别. - lillcol - 博客园](https://www.cnblogs.com/lillcol/p/11233456.html)
+    > SparkSession 现在是 Spark 的新入口点, 代替了旧的 SQLContext 和 HiveContext;
 

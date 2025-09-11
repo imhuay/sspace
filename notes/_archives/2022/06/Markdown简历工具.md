@@ -41,7 +41,7 @@ tag: [tool]
 <details><summary><b>History</b></summary>
 
 ### komomoo/vuepress-theme-resume
-> [komomoo/vuepress-theme-resume: 🐈 书写简洁优雅的前端程序员 markdown 简历，由 vuepress 驱动](https://github.com/komomoo/vuepress-theme-resume)
+> [komomoo/vuepress-theme-resume: 🐈 书写简洁优雅的前端程序员 markdown 简历, 由 vuepress 驱动](https://github.com/komomoo/vuepress-theme-resume)
 
 使用步骤
 - [安装 nodejs](../12/nodejs环境.md#nodejs-环境搭建)
@@ -56,11 +56,11 @@ npm install --global yarn
 git clone https://github.com/komomoo/vuepress-theme-resume.git
 cd vuepress-theme-resume
 
-# git remote 自己的仓库地址，因为 fork 的仓库不能设为私有仓库，故采用这种方式
+# git remote 自己的仓库地址, 因为 fork 的仓库不能设为私有仓库, 故采用这种方式
 git remote set-url origin git@github.com:imhuay/vuepress-theme-resume.git
 git push
 
-# 添加原仓库地址，以便更新
+# 添加原仓库地址, 以便更新
 git remote add author git@github.com:komomoo/vuepress-theme-resume.git
 git pull author master
 
@@ -70,7 +70,7 @@ yarn # 或 npm i
 # 开始
 yarn dev # 或 npm run dev
 
-# 编辑位置：example/README.md
+# 编辑位置: example/README.md
 ```
 
 </details>

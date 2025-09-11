@@ -17,13 +17,13 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个二叉树的根节点 root ，按 任意顺序 ，返回所有从根节点到叶子节点的路径。
+给你一个二叉树的根节点 root , 按 任意顺序 , 返回所有从根节点到叶子节点的路径.
 
-叶子节点 是指没有子节点的节点。
+叶子节点 是指没有子节点的节点.
 ```
-> [257. 二叉树的所有路径 - 力扣（LeetCode）](https://leetcode-cn.com/problems/binary-tree-paths/)
+> [257. 二叉树的所有路径 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/binary-tree-paths/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -37,7 +37,7 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 先序遍历，特殊处理叶子节点；
+- 先序遍历, 特殊处理叶子节点;
 
 <details><summary><b>Python</b></summary>
 
@@ -50,21 +50,21 @@ companies: []
 #         self.right = right
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
-        
+
         ret = []
         tmp = []
 
         def dfs(x):
-            if not x: return 
-            
+            if not x: return
+
             tmp.append(str(x.val))
             if not x.left and not x.right:
                 ret.append('->'.join(tmp))
-            
+
             dfs(x.left)
             dfs(x.right)
             tmp.pop()
-        
+
         dfs(root)
         return ret
 ```

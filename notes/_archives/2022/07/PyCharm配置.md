@@ -28,7 +28,7 @@ tag: [python_tool]
 - [代码模板](#代码模板)
     - [Python](#python)
     - [Python Console](#python-console)
-    - [自动补全（Live Templates）](#自动补全live-templates)
+    - [自动补全 (Live Templates) ](#自动补全live-templates)
 - [常用插件](#常用插件)
     - [主题](#主题)
     - [键位映射](#键位映射)
@@ -60,14 +60,14 @@ tag: [python_tool]
 
 ### 修改快捷键
 > Keymap
-- 先安装插件：Plugins -> Marketplace -> Eclipse Keymap
+- 先安装插件: Plugins -> Marketplace -> Eclipse Keymap
     > Windows 选 Eclipse, 非 Eclipse (macOS)
 
 **常用快捷键**
 > 标注 `*` 的表示继承自 Eclipse Keymap, 不需要修改;
 
-操作 | Keyword | 快捷键（Mac） | 快捷键（Win）
-------|----------|----------|------------ 
+操作 | Keyword | 快捷键 (Mac) | 快捷键 (Win)
+------|----------|----------|------------
 行上移 (替代"语句上移") | Main Menu/Code/Move Line Up | `command + up` | `Alt + ↑`
 行下移 (替代"语句下移") | Main Menu/Code/Move Line Down | `command + down` | `Alt + ↓`
 跳转到源代码 (同跳转定义) | Main Menu/View/Jump to Source | `command + click` | `Ctrl + Click`
@@ -94,7 +94,7 @@ tag: [python_tool]
 ### Python
 > Editor | File and Code Templates -> Python Script
 
-- 更多内置变量详见：[File template variables | PyCharm](https://www.jetbrains.com/help/pycharm/file-template-variables.html)
+- 更多内置变量详见: [File template variables | PyCharm](https://www.jetbrains.com/help/pycharm/file-template-variables.html)
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -125,7 +125,7 @@ from __future__ import annotations  # python >= 3.7
 #     def __init__(self):
 #         import time
 #         from typing import Callable
-        
+
 #         for k, v in self.__class__.__dict__.items():
 #             if k.startswith('_test') and isinstance(v, Callable):
 #                 print(f'\x1b[32m=== Start "{k}" {{\x1b[0m')
@@ -166,7 +166,7 @@ sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])
 # import torch.nn.functional as F
 ```
 
-### 自动补全（Live Templates）
+### 自动补全 (Live Templates)
 > Editor | Live Templates -> Python
 
 - 将 `super()` 的自动补全修改为 Python3 模式
@@ -181,7 +181,7 @@ sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])
 ## 常用插件
 
 ### 主题
-- [Dracula Theme](https://plugins.jetbrains.com/plugin/12275-dracula-theme)（推荐）
+- [Dracula Theme](https://plugins.jetbrains.com/plugin/12275-dracula-theme) (推荐)
 - [One Dark theme](https://plugins.jetbrains.com/plugin/11938-one-dark-theme)
 
 
@@ -192,7 +192,7 @@ sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])
 ## FAQ
 
 ### 【Mac】全屏模式下打开新项目默认在新 Tab 而不是新窗口
-- **问题描述**：在全屏模式下打开新项目，默认在当前窗口的 Tab 页打开，而不是新窗口；这个问题不是因为 PyCharm 导致的，而是 Mac 的设置；
+- **问题描述**: 在全屏模式下打开新项目, 默认在当前窗口的 Tab 页打开, 而不是新窗口; 这个问题不是因为 PyCharm 导致的, 而是 Mac 的设置;
     <div align="center"><img src="../../../_assets/imgs/pycharm_tag_fix.png" height="" /></div>
-- **解决方法**：`系统偏好设置 -> 通用 -> 首选以标签页方式打开文稿` 改为 `永不`；
+- **解决方法**: `系统偏好设置 -> 通用 -> 首选以标签页方式打开文稿` 改为 `永不`;
     <div align="center"><img src="../../../_assets/imgs/pycharm_tag_fix2.png" height="" /></div>

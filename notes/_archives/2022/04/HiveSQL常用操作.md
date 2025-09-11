@@ -43,9 +43,9 @@ tag: [bigdata_sql]
 
 ### 常用正则
 ```
-中文：[\\u4E00-\\u9FA5]
-2字以上中文： '^[\\u4E00-\\u9FA5]{2,}$'
-ASCII 可见字符 & 标准中文字符集：[\\x21-\\x7e\\u4E00-\\u9FA5]
+中文: [\\u4E00-\\u9FA5]
+2字以上中文: '^[\\u4E00-\\u9FA5]{2,}$'
+ASCII 可见字符 & 标准中文字符集: [\\x21-\\x7e\\u4E00-\\u9FA5]
 ```
 
 
@@ -53,9 +53,9 @@ ASCII 可见字符 & 标准中文字符集：[\\x21-\\x7e\\u4E00-\\u9FA5]
 ```sql
 -- hive 引擎
 SET mapred.reduce.tasks=64;
-SET mapred.max.split.size=1024000;          -- 决定每个map处理的最大的文档大小，单位为B，越小 map 越多
-SET mapred.min.split.size.per.node=512000;  -- 节点中可以处理的最小的文档大小（可以考虑设置为 max 的一半）
-SET mapred.min.split.size.per.rack=512000;  -- 机架中可以处理的最小的文档大小（与 node 相同）
+SET mapred.max.split.size=1024000;          -- 决定每个map处理的最大的文档大小, 单位为B, 越小 map 越多
+SET mapred.min.split.size.per.node=512000;  -- 节点中可以处理的最小的文档大小 (可以考虑设置为 max 的一半)
+SET mapred.min.split.size.per.rack=512000;  -- 机架中可以处理的最小的文档大小 (与 node 相同)
 SET mapreduce.map.memory.mb=8192;
 SET mapreduce.reduce.memory.mb=8192;
 
@@ -67,7 +67,7 @@ SET spark.executor.memory=10G;
 ## 窗口函数-排序
 > HIVE SQL奇技淫巧 - 知乎 | https://zhuanlan.zhihu.com/p/80887746
 ```sql
-SELECT 
+SELECT
     cookieid,
     createtime,
     pv,
@@ -75,11 +75,11 @@ SELECT
     DENSE_RANK() OVER(PARTITION BY cookieid ORDER BY pv desc) AS rn2,   -- 1,1,2,2,3
     ROW_NUMBER() OVER(PARTITION BY cookieid ORDER BY pv desc) AS rn3    -- 1,2,3,4,5
     NTILE(4) OVER(ORDER BY pv) AS rn4  --将所有数据分成4片
-FROM lxw1234 
+FROM lxw1234
 WHERE cookieid = 'cookie1';
 
-cookieid day           pv       rn1     rn2     rn3     rn4 
------------------------------------------------------------ 
+cookieid day           pv       rn1     rn2     rn3     rn4
+-----------------------------------------------------------
 cookie1 2015-04-12      7       1       1       1       1
 cookie1 2015-04-11      5       2       2       2       1
 cookie1 2015-04-15      4       3       3       3       2
@@ -137,11 +137,11 @@ CROSS JOIN UNNEST(arr1, arr2) AS T (a1, a2)  -- unzip
 
 ## `case when` 基本用法
 ```
-case 
+case
     when RequestInfo like '%mtMerger%' and source='2' then 'mt'
     when source = '1' then 'mt'
-    when source = '3' then 'other' 
-    else 'dp' 
+    when source = '3' then 'other'
+    else 'dp'
 end
 ```
 
@@ -167,7 +167,7 @@ as ()
 # print(os.getcwd())
 tmp_dir = './tmp_dir'
 os.mkdir(tmp_dir)
-sys.stdout = open(os.devnull, 'w+')  # 输出重定向，防止 pip 的信息输出到 hive 表中
+sys.stdout = open(os.devnull, 'w+')  # 输出重定向, 防止 pip 的信息输出到 hive 表中
 pip.main(['install', 'pypinyin', '-t', tmp_dir, '--ignore-installed'])  # -t 表示安装到指定位置
 sys.path.append(tmp_dir)  # 添加环境变量
 sys.stdout = sys.__stdout__  # 还原输出重定向
@@ -181,7 +181,7 @@ shutil.rmtree(tmp_dir)
 
 ### 添加额外参数来选择调用函数
 ```python
-# 调用方式：
+# 调用方式:
 ## using '/usr/bin/python2.7 xxx.py --a'
 
 if len(sys.argv) <= 1:
@@ -196,7 +196,7 @@ elif sys.argv[1] == '--b':
 
 ## 临时表
 ```sql
--- 上线时使用（Hive 环境下不支持）
+-- 上线时使用 (Hive 环境下不支持)
 #set $table_name = 'tmp_子表名';
 CACHE TABLE $table_name AS
 ;
@@ -220,8 +220,8 @@ CREATE TABLE IF NOT EXISTS `$target.table`
     `sequence` string COMMENT 'sequence'
 )
 COMMENT ''
-PARTITIONED BY (hp_stat_date string comment '天分区，yyyy-mm-dd')
-ROW FORMAT DELIMITED 
+PARTITIONED BY (hp_stat_date string comment '天分区, yyyy-mm-dd')
+ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t'
     LINES TERMINATED BY '\n'
 STORED AS textfile

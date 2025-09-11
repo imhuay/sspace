@@ -16,41 +16,41 @@ name: 三数之和
 companies: []
 -->
 
-<summary><b>问题简述</b></summary> 
+<summary><b>问题简述</b></summary>
 
 ```text
-给定一个数组，找出该数组中所有和为 0 的不重复的三元组。
+给定一个数组, 找出该数组中所有和为 0 的不重复的三元组.
 
-进阶：不使用 set 去重。
+进阶: 不使用 set 去重.
 ```
 
 
-<details><summary><b>详细描述</b></summary> 
+<details><summary><b>详细描述</b></summary>
 
 ```text
-给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+给你一个包含 n 个整数的数组 nums, 判断 nums 中是否存在三个元素 a, b, c , 使得 a + b + c = 0 ? 请你找出所有和为 0 且不重复的三元组.
 
-注意：答案中不可以包含重复的三元组。
+注意: 答案中不可以包含重复的三元组.
 
-示例 1：
-    输入：nums = [-1,0,1,2,-1,-4]
-    输出：[[-1,-1,2],[-1,0,1]]
+示例 1:
+    输入: nums = [-1,0,1,2,-1,-4]
+    输出: [[-1,-1,2],[-1,0,1]]
 
-示例 2：
-    输入：nums = []
-    输出：[]
+示例 2:
+    输入: nums = []
+    输出: []
 
-示例 3：
-    输入：nums = [0]
-    输出：[]
+示例 3:
+    输入: nums = [0]
+    输出: []
 
-提示：
+提示:
     0 <= nums.length <= 3000
     -10^5 <= nums[i] <= 10^5
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/3sum
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+来源: 力扣 (LeetCode)
+链接: https://leetcode-cn.com/problems/3sum
+著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 </details>
@@ -58,11 +58,11 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 排序后，问题可以简化成两数之和（LeetCode-167）；
-- 先固定一个数，然后利用首尾双指针进行对向遍历；
-- 注意跳过相同结果；
+- 排序后, 问题可以简化成两数之和 (LeetCode-167) ;
+- 先固定一个数, 然后利用首尾双指针进行对向遍历;
+- 注意跳过相同结果;
 
-<details><summary><b>Python</b></summary> 
+<details><summary><b>Python</b></summary>
 
 ```python
 from typing import List
@@ -95,7 +95,7 @@ class Solution:
 
                     l += 1
                     r -= 1
-                    # 剪枝，注意边界条件
+                    # 剪枝, 注意边界条件
                     while l < r and nums[l] == nums[l - 1]: l += 1
                     while l < r and nums[r] == nums[r + 1]: r -= 1
 

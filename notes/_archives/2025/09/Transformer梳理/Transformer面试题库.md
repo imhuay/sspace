@@ -1,10 +1,8 @@
 Transformer 面试问题整理
 ===
 <!--START_SECTION:badge-->
-
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-10%2014%3A09%3A29&label_color=gray&color=thistle&style=flat-square)
-
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-11%2023%3A25%3A07&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-06 13:48:27
@@ -41,9 +39,9 @@ tag: [dl_transformer]
         - [2.1.2. ✅位置编码是如何引入到模型中的?](#212-位置编码是如何引入到模型中的)
         - [2.1.3. 💡为什么引入位置信息时普遍使用加法而不是拼接? (绝对位置编码)](#213-为什么引入位置信息时普遍使用加法而不是拼接-绝对位置编码)
     - [2.2. 📌介绍常见的位置编码](#22-介绍常见的位置编码)
-        - [2.3. 位置编码中 **相对** 与 **绝对** 的含义](#23-位置编码中-相对-与-绝对-的含义)
-    - [2.4. 相对位置编码 对比 绝对位置编码 有哪些优势?](#24-相对位置编码-对比-绝对位置编码-有哪些优势)
-        - [2.4.1. 详细说明 **旋转位置编码 (RoPE)**](#241-详细说明-旋转位置编码-rope)
+        - [2.2.1. 位置编码中 **相对** 与 **绝对** 的含义](#221-位置编码中-相对-与-绝对-的含义)
+    - [2.3. 相对位置编码 对比 绝对位置编码 有哪些优势?](#23-相对位置编码-对比-绝对位置编码-有哪些优势)
+        - [2.3.1. 详细说明 **旋转位置编码 (RoPE)**](#231-详细说明-旋转位置编码-rope)
 - [3. **训练与推理**](#3-训练与推理)
     - [3.1. ✅说明 Decoder 在训练与推理阶段的差异](#31-说明-decoder-在训练与推理阶段的差异)
         - [3.1.1. 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#311-推理阶段-怎么优化随着输出序列越来越长带来的开销)
@@ -135,9 +133,9 @@ tag: [dl_transformer]
     - **工程优势**
         - 所有主流大模型 (GPT, LLaMA等) 都采用此架构, 整个软硬件生态都针对其进行了极度优化;
 - **参考资料**
-    - [解码器仅架构: 探究大语言模型（LLM）采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
-    - [为什么当前的大型语言模型（LLMs）普遍采用“仅解码器”（Decoder-only）架构？_decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
-    - [面试官问我: 大模型为何都用 Decoder only 架构？_大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
+    - [解码器仅架构: 探究大语言模型 (LLM) 采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
+    - [为什么当前的大型语言模型 (LLMs) 普遍采用 "仅解码器" (Decoder-only) 架构? _decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
+    - [面试官问我: 大模型为何都用 Decoder only 架构? _大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
 
 </details>
 
@@ -168,12 +166,12 @@ def attn(self, x, mask):
     #    [B, L, d_model]
     Q, K, V = self.W_Q(x), self.W_K(x), self.W_V(x)
     d_k = K.size(-1) // self.num_head  # 每个头的维度: d_model // H
-    # 2. 重排为多头形式: 
+    # 2. 重排为多头形式:
     #    [B, L, H*d_k] → [B, H, L, d_k]
     Q = einops.rearrange(Q, 'B L (H d) -> B H L d', H=self.num_head)
     K = einops.rearrange(K, 'B L (H d) -> B H L d', H=self.num_head)
     V = einops.rearrange(V, 'B L (H d) -> B H L d', H=self.num_head)
-    # 3. 计算注意力权重 (scale → mask → softmax): 
+    # 3. 计算注意力权重 (scale → mask → softmax):
     #    [B, H, L, d_k] @ [B, H, d_k, L] → [B, H, L, L]
     scores = Q @ K.transpose(-2, -1) / math.sqrt(d_k)
     A = torch.softmax(scores + mask, dim=-1)
@@ -226,13 +224,13 @@ def attn(self, x, mask):
 
 #### 2.1.2. ✅位置编码是如何引入到模型中的?
 1. 在输入模型前, 对词嵌入施加位置编码 (如 **正余弦位置编码**);
-    > 一般是生成一个与 token 维度相同的向量, 进行逐位相加 
+    > 一般是生成一个与 token 维度相同的向量, 进行逐位相加
 2. 在计算注意力前, 对 Q/K 施加变换 (如 **RoPE**);
 3. 在得到注意力后, 对 logits 施加偏置 (如 **ALiBi**);
 
 #### 2.1.3. 💡为什么引入位置信息时普遍使用加法而不是拼接? (绝对位置编码)
 > 简洁, 直观; **拼接** 只是 **加法** 的一种特殊情况
->> [transformer里PE为什么不采用concatenation的方式？ - 知乎](https://www.zhihu.com/question/4717410141)
+>> [transformer里PE为什么不采用concatenation的方式? - 知乎](https://www.zhihu.com/question/4717410141)
 
 <details><summary><b>详述</b></summary>
 
@@ -257,47 +255,47 @@ def attn(self, x, mask):
 > 绝对位置编码 (正余弦位置编码, 可学习位置编码), 相对位置编码 (SHAW, XLNet, T5, DeBERTa, ALiBi), 旋转位置编码 (RoPE)
 >> [位置编码](./位置编码.md)
 
-#### 2.3. 位置编码中 **相对** 与 **绝对** 的含义
-> 在位置编码中，**绝对** 与 **相对** 指的是编码所表达的“位置信息”是基于 全局坐标 还是 位置差值 来定义的
+#### 2.2.1. 位置编码中 **相对** 与 **绝对** 的含义
+> 在位置编码中, **绝对** 与 **相对** 指的是编码所表达的 "位置信息" 是基于 全局坐标 还是 位置差值 来定义的
 - **绝对**
     - 为每个位置的 token 分配一个独一无二的, 固定的或可学习的编码向量;
 - **相对**
-    - 其核心是关注 token 之间的 **相对距离或方向**, 
+    - 其核心是关注 token 之间的 **相对距离或方向**,
 
 
-### 2.4. 相对位置编码 对比 绝对位置编码 有哪些优势?
+### 2.3. 相对位置编码 对比 绝对位置编码 有哪些优势?
 
 
 
-#### 2.4.1. 详细说明 **旋转位置编码 (RoPE)**
+#### 2.3.1. 详细说明 **旋转位置编码 (RoPE)**
 
 
 ## 3. **训练与推理**
 
 ### 3.1. ✅说明 Decoder 在训练与推理阶段的差异
-> **核心差异**: 对 **目标序列** 的 **可见性** 不同; 
+> **核心差异**: 对 **目标序列** 的 **可见性** 不同;
 
 <details><summary><b>详述</b></summary>
 
 - **训练阶段**:
     - **模式**: **教师强制 (Teacher Forcing)**
-    - **过程**: 
-        - 将完整的目标序列一次性输入 Decoder, 
+    - **过程**:
+        - 将完整的目标序列一次性输入 Decoder,
         - 在计算**第 i 个**位置的输出时, 模型可以看到**第 1 到 i-1 位**的真实标签;
-    - **特点**: 
+    - **特点**:
         - **并行计算**;
         - 整个目标序列可以同时输入, 通过**掩码**确保**当前位置看不到未来信息**, 一次性计算出所有位置的输出;
     - **缺点**:
         - **曝光偏差** (Exposure Bias)
 - **推理阶段**:
     - **模式**: **自回归 (Auto-regressive)**
-    - **过程**: 
+    - **过程**:
         - 从仅包含一个起始符 `<sos>` 的序列开始,
         - 模型每预测出下一个 token, 就**将该 token 追加到输入序列末尾**, 作为生成下一个 token 的上下文,
         - 直到生成结束符 `<eos>` 或达到最大长度;
-    - **缺点**: 
+    - **缺点**:
         - **串行计算**, 效率低;
-    - **优化**: 
+    - **优化**:
         - **KV Cache**
 
 </details>
@@ -311,14 +309,14 @@ def attn(self, x, mask):
 <details><summary><b>详述</b></summary>
 
 - **背景/动机**
-    - 在**自回归**生成中, 第 `i` 个 token 的注意力计算需基于前 `i` 个 token `K/V` (含开始符); 
-    - 其中前 `i-1` 个 token 的 `K/V` 在之前步骤中已计算过, 重复计算导致效率低下; 
+    - 在**自回归**生成中, 第 `i` 个 token 的注意力计算需基于前 `i` 个 token `K/V` (含开始符);
+    - 其中前 `i-1` 个 token 的 `K/V` 在之前步骤中已计算过, 重复计算导致效率低下;
 - **方法**
-    - 每步仅计算当前 token 的 `Q/K/V`, 并将新的 `K/V` 追加至缓存 `K_cache/V_cache` 中; 
-    - 执行 `Attention(Q, K_cache, V_cache)` —— **节省计算量的核心步骤**; 
-    - 生成当前 token, 并循环此过程; 
+    - 每步仅计算当前 token 的 `Q/K/V`, 并将新的 `K/V` 追加至缓存 `K_cache/V_cache` 中;
+    - 执行 `Attention(Q, K_cache, V_cache)` —— **节省计算量的核心步骤**;
+    - 生成当前 token, 并循环此过程;
 - **效果**
-    - 时间复杂度由 $O(n^2)$ 降至 $O(n)$; 
+    - 时间复杂度由 $O(n^2)$ 降至 $O(n)$;
 - **代码展开说明**:
     ```python
     # 初始化缓存

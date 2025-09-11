@@ -35,24 +35,24 @@ hidden: false
 ## NER
 
 **博客**
-- [电商搜索QP：Tagging - 知乎](https://zhuanlan.zhihu.com/p/532924107)
+- [电商搜索QP: Tagging - 知乎](https://zhuanlan.zhihu.com/p/532924107)
 
 ## query 扩展/改写
 
 **博客**
-- [电商搜索QP：Query改写 - 知乎](https://zhuanlan.zhihu.com/p/351084105)
+- [电商搜索QP: Query改写 - 知乎](https://zhuanlan.zhihu.com/p/351084105)
 
 **论文**
 - [[2103.00800] Query Rewriting via Cycle-Consistent Translation for E-Commerce Search](https://arxiv.org/abs/2103.00800)
 - Azad, Hiteshwar Kumar, and Akshay Deepak. "Query expansion techniques for information retrieval: a survey." Information Processing & Management 56.5 (2019): 1698-1735.
 - [Unsupervised synonym extraction for document enhancement in e-commerce search - Amazon Science](https://www.amazon.science/publications/unsupervised-synonym-extraction-for-document-enhancement-in-e-commerce-search)
-- Prathyusha Senthil Kumar et al. “Mickey Mouse is not a Phrase: Improving Relevance in E-Commerce with Multiword Expressions” Proceedings of the 10th Workshop on Multiword Expressions (MWE)(2014): n. pag.
+- Prathyusha Senthil Kumar et al. "Mickey Mouse is not a Phrase: Improving Relevance in E-Commerce with Multiword Expressions" Proceedings of the 10th Workshop on Multiword Expressions (MWE)(2014): n. pag.
 
 ### 同义词
-- Hanqing Lu et al. “Unsupervised synonym extraction for document enhancement in e-commerce search” (2021).
+- Hanqing Lu et al. "Unsupervised synonym extraction for document enhancement in e-commerce search" (2021).
 
 #### 缩略词
-- Ariel S. Schwartz and Marti A. Hearst. “A simple algorithm for identifying abbreviation definitions in biomedical text..” pacific symposium on biocomputing(2002): n. pag.
+- Ariel S. Schwartz and Marti A. Hearst. "A simple algorithm for identifying abbreviation definitions in biomedical text.." pacific symposium on biocomputing(2002): n. pag.
     > https://github.com/philgooch/abbreviation-extraction
 - [[1206.4522] BADREX: In situ expansion and coreference of biomedical abbreviations using dynamic regular expressions](https://arxiv.org/abs/1206.4522)
     > https://github.com/philgooch/BADREX-Biomedical-Abbreviation-Expander

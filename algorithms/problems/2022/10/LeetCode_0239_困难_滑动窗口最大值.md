@@ -17,17 +17,17 @@ name: 滑动窗口最大值
 companies: [Soul]
 -->
 
-> [239. 滑动窗口最大值 - 力扣（LeetCode）](https://leetcode.cn/problems/sliding-window-maximum/)
+> [239. 滑动窗口最大值 - 力扣 (LeetCode) ](https://leetcode.cn/problems/sliding-window-maximum/)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。
-你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
-返回 滑动窗口中的最大值。
+给你一个整数数组 nums, 有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧.
+你只可以看到在滑动窗口内的 k 个数字. 滑动窗口每次只向右移动一位.
+返回 滑动窗口中的最大值.
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -55,14 +55,14 @@ class Solution:
         h = []
         for i in range(k):
             heapq.heappush(h, (-nums[i], i))
-        
+
         ret = [-h[0][0]]
         for i in range(k, len(nums)):
             while h and h[0][1] <= i - k:
                 heapq.heappop(h)
             heapq.heappush(h, (-nums[i], i))
             ret.append(-h[0][0])
-        
+
         return ret
 ```
 

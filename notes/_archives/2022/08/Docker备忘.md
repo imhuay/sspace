@@ -32,15 +32,15 @@ tag: [tool]
 ### 启动容器
 ```shell
 $ docker run -it $name /bin/bash
-## -it: 等价于 -i -t，表示以交互方式运行并附加到当前终端
+## -it: 等价于 -i -t, 表示以交互方式运行并附加到当前终端
 ## $name: 容器名
-## /bin/bash: 容器启动后，执行该命令，表示在容器内开启一个 bash
+## /bin/bash: 容器启动后, 执行该命令, 表示在容器内开启一个 bash
 ```
 
 
 ## 配置镜像加速
-- 在客户端设置中找到 `Docker Engine`，或者打开 `~/.docker/daemon.json`；
-- 在最上层添加 `registry-mirrors` 配置：
+- 在客户端设置中找到 `Docker Engine`, 或者打开 `~/.docker/daemon.json`;
+- 在最上层添加 `registry-mirrors` 配置:
     ```json
     {
         "builder": {

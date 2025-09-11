@@ -260,7 +260,7 @@ Stylus       6 mins          -------------------------   00.33 %
 
 - [基于对比学习的表示学习训练框架 ⏳](notes/_archives/2022/05/基于对比学习的表示学习训练框架.md)
 - [基于互信息的表示学习 ⏳](notes/_archives/2022/05/基于互信息的表示学习.md)
-- [向后兼容（Backward-Compatible）的表示学习](notes/_archives/2022/05/向后兼容的表示学习.md)
+- [向后兼容 (Backward-Compatible) 的表示学习](notes/_archives/2022/05/向后兼容的表示学习.md)
 - [Sentence-BERT 论文笔记](notes/_archives/2022/05/Sentence-BERT论文笔记.md)
 
 <!-- omit in toc -->
@@ -436,7 +436,7 @@ Stylus       6 mins          -------------------------   00.33 %
 - [python 类变量和成员变量的最佳实践](notes/_archives/2022/07/python类变量和成员变量的最佳实践.md)
 - [`dataclass` 使用记录](notes/_archives/2022/09/python-dataclass使用记录.md)
 - [Python 容器基类的使用](notes/_archives/2022/08/Python容器基类的使用.md)
-- [Python 函数声明中单独的正斜杠（/）和星号（*）是什么意思](notes/_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
+- [Python 函数声明中单独的正斜杠 (/) 和星号 (*) 是什么意思](notes/_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
 
 <!-- omit in toc -->
 #### 工具
@@ -579,7 +579,7 @@ Stylus       6 mins          -------------------------   00.33 %
 ## Drafts
 
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md)
-- [算法面试问题收录](notes/_archives/2025/09/算法面试问题收录.md)
+- [算法面试问题收录 ⏳](notes/_archives/2025/09/算法面试问题收录.md)
   > Transformer, LLM
 - [算法面试笔记](notes/_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法)](notes/_archives/2022/10/程序员简历技巧.md)
@@ -593,7 +593,7 @@ Stylus       6 mins          -------------------------   00.33 %
 - [搜索相关阅读](notes/_archives/2022/12/搜索相关阅读.md)
 - [搜索指标](notes/_archives/2022/12/搜索指标.md)
 - [快捷键记录](notes/_archives/2022/07/快捷键记录.md)
-- [常见面试问题（非技术） ⏳](notes/_archives/2022/06/常见面试问题（非技术）.md)
+- [常见面试问题 (非技术) ⏳](notes/_archives/2022/06/常见面试问题（非技术）.md)
 - [常见的文本相似度计算](notes/_archives/2022/12/文本相似度计算.md)
 - [实验报告模板](notes/_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念](notes/_archives/2022/04/实体链接/实体链接相关概念.md)

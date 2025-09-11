@@ -17,11 +17,11 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个二叉树的根节点 root , 判断其是否是一个有效的二叉搜索树。
+给你一个二叉树的根节点 root , 判断其是否是一个有效的二叉搜索树.
 ```
-> [98. 验证二叉搜索树 - 力扣（LeetCode）](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+> [98. 验证二叉搜索树 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/validate-binary-search-tree/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt

@@ -16,17 +16,17 @@ name: 搜索旋转排序数组
 companies: [Soul]
 -->
 
-> [33. 搜索旋转排序数组 - 力扣（LeetCode）](https://leetcode.cn/problems/search-in-rotated-sorted-array)
+> [33. 搜索旋转排序数组 - 力扣 (LeetCode) ](https://leetcode.cn/problems/search-in-rotated-sorted-array)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-在一个旋转过的有序数组中搜索某值，若存在返回下标，否则返回 -1。
-进阶：时间复杂度要求 O(log n)
+在一个旋转过的有序数组中搜索某值, 若存在返回下标, 否则返回 -1.
+进阶: 时间复杂度要求 O(log n)
 ```
 
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -38,12 +38,12 @@ companies: [Soul]
 
 <summary><b>思路</b></summary>
 
-- “二分”的本质是两段性，而不是单调性；即只要二分后，左边满足某个性质，右边不满足某个性质，即可使用二分；
-    > [LogicStack-LeetCode/33.搜索旋转排序数组（中等）](https://github.com/SharingSource/LogicStack-LeetCode/blob/main/LeetCode/31-40/33.%20搜索旋转排序数组（中等）.md#二分解法)
-- 本题中，将数组从中间分开后，其中一个部分一定是有序的: 
-    - 有序部分可以通过比较 `a[m]` 和 `a[0]` 得到；
-    - 此时**如果 target 在有序部分**，那么可以排除无序的一半，否则可以排除有序的一半；
-- 细节详见代码；
+- "二分" 的本质是两段性, 而不是单调性; 即只要二分后, 左边满足某个性质, 右边不满足某个性质, 即可使用二分;
+    > [LogicStack-LeetCode/33.搜索旋转排序数组 (中等) ](https://github.com/SharingSource/LogicStack-LeetCode/blob/main/LeetCode/31-40/33.%20搜索旋转排序数组 (中等) .md#二分解法)
+- 本题中, 将数组从中间分开后, 其中一个部分一定是有序的:
+    - 有序部分可以通过比较 `a[m]` 和 `a[0]` 得到;
+    - 此时**如果 target 在有序部分**, 那么可以排除无序的一半, 否则可以排除有序的一半;
+- 细节详见代码;
 
 <details><summary><b>Python</b></summary>
 
@@ -55,9 +55,9 @@ class Solution:
         while l < r:
             m = l + (r - l) // 2
 
-            if nums[m] == target: 
+            if nums[m] == target:
                 return m
-            
+
             if nums[0] < nums[m]:
                 # 此时 m 左边是有序的
                 if nums[l] <= target < nums[m]:

@@ -42,7 +42,7 @@ tag: [python_tool]
 
 - **作用**: 静态检查工具 - 代码错误, 风格规范, 安全隐患等
 - 候选:
-    - 
+    -
 - 我使用的: [Ruff - Astral Software](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
 - 候选:
     - [Pylint | Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint)
@@ -122,4 +122,4 @@ tag: [python_tool]
         ```
 
 
-### 
+###

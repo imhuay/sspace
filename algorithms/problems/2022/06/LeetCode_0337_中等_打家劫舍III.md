@@ -17,15 +17,15 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 root 。
+小偷又发现了一个新的可行窃的地区. 这个地区只有一个入口, 我们称之为 root .
 
-除了 root 之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果 两个直接相连的房子在同一天晚上被打劫 ，房屋将自动报警。
+除了 root 之外, 每栋房子有且只有一个 "父 "房子与之相连. 一番侦察之后, 聪明的小偷意识到 "这个地方的所有房屋的排列类似于一棵二叉树" . 如果 两个直接相连的房子在同一天晚上被打劫 , 房屋将自动报警.
 
-给定二叉树的 root 。返回 在不触动警报的情况下 ，小偷能够盗取的最高金额 。
+给定二叉树的 root . 返回 在不触动警报的情况下 , 小偷能够盗取的最高金额 .
 ```
-> [337. 打家劫舍 III - 力扣（LeetCode）](https://leetcode-cn.com/problems/house-robber-iii/)
+> [337. 打家劫舍 III - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/house-robber-iii/)
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -37,9 +37,9 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路：树形 dp + 记忆化搜索</b></summary>
+<summary><b>思路: 树形 dp + 记忆化搜索</b></summary>
 
-- 树形 dp 问题，就是否抢劫当前节点分两种情况讨论，详见代码；
+- 树形 dp 问题, 就是否抢劫当前节点分两种情况讨论, 详见代码;
 
 <details><summary><b>Python</b></summary>
 
@@ -70,9 +70,9 @@ class Solution:
                 r2 += dfs(x.left.left) + dfs(x.left.right)
             if x.right:
                 r2 += dfs(x.right.left) + dfs(x.right.right)
-            
+
             return max(r1, r2)
-        
+
         return dfs(root)
 ```
 

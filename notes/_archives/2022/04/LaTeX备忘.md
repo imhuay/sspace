@@ -29,7 +29,7 @@ tag: [tool]
 
 ## 参考
 - [【LaTeX】LaTeX符号大全_Ljnoit-CSDN博客_latex 绝对值符号](https://blog.csdn.net/ljnoit/article/details/104264753)
-- 在线 LaTeX 公式编辑器：https://editor.codecogs.com
+- 在线 LaTeX 公式编辑器: https://editor.codecogs.com
 
 
 ## 常用符号
@@ -49,7 +49,7 @@ $$
 
 $$
 \begin{align*}
- a &= 1+2 \\ 
+ a &= 1+2 \\
    &= 2+1
 \end{align*}
 $$
@@ -59,7 +59,7 @@ $$
 $$
 \left \lbrace
     \begin{aligned}
-    a &= 1+2 &// 说明1  \\ 
+    a &= 1+2 &// 说明1  \\
     b &= 2+1 &// 说明2
     \end{aligned}
 \right.
@@ -69,7 +69,7 @@ $$
 
 $$
 \begin{align}
- a &= 1+1 &// 说明1 \\ 
+ a &= 1+1 &// 说明1 \\
  b &= 2+2 &// 说明2
 \end{align}
 $$

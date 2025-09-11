@@ -48,7 +48,7 @@ tag: [python_tool]
 
 ```bash
 # 初始化
-uv init 
+uv init
     --name [name]
     --package               # Set up the project as a Python package
     --bare                  # Only create a `pyproject.toml`
@@ -74,7 +74,7 @@ uv init
 ### 更新 `uv`
 
 ```
-If you installed uv with pip, brew, or another package manager, 
+If you installed uv with pip, brew, or another package manager,
 update uv with `pip install --upgrade`, `brew upgrade`, or similar.
 
 `uv self update` is only available for uv binaries installed via the standalone installation scripts.
@@ -99,7 +99,7 @@ uv add [package]
 
     # Add a git dependency
     uv add git+https://github.com/psf/requests
-    
+
     # Add all dependencies from `requirements.txt`.
     uv add -r requirements.txt
 

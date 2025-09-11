@@ -11,7 +11,7 @@ top: false
 hidden: false
 -->
 
-> ***Keywords**: SQL, 信息熵 (Information Entropy)，信息增益 (相对熵, KL 散度)*
+> ***Keywords**: SQL, 信息熵 (Information Entropy), 信息增益 (相对熵, KL 散度)*
 
 <!--START_SECTION:toc-->
 <!--END_SECTION:toc-->
@@ -41,14 +41,14 @@ SELECT inline(array(
     struct(15, 'boy',   'high',     0)
 )) AS (uid, gender, act_info, is_lost)
 ```
-- 第一列为用户 ID，第二列为性别，第三列为活跃度，最后一列用户是否流失。
-- 问题：性别和活跃度两个特征，哪个对用户流失影响更大？
+- 第一列为用户 ID, 第二列为性别, 第三列为活跃度, 最后一列用户是否流失.
+- 问题: 性别和活跃度两个特征, 哪个对用户流失影响更大?
 
 ## 计算
 
 ### 特征转置
 ```sql
-SELECT A.uid, B.feature_name, B.feature_value, A.is_lost 
+SELECT A.uid, B.feature_name, B.feature_value, A.is_lost
 FROM (
     SELECT inline(array(
         struct(1, 'boy', 'high', 0),

@@ -15,18 +15,18 @@ name: 组合总和II
 companies: []
 -->
 
-> [40. 组合总和 II - 力扣（LeetCode）](https://leetcode.cn/problems/combination-sum-ii/)
+> [40. 组合总和 II - 力扣 (LeetCode) ](https://leetcode.cn/problems/combination-sum-ii/)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给定一个候选人编号的集合 candidates 和一个目标数 target ，
-找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的每个数字在每个组合中只能使用 一次 。
-注意：解集不能包含重复的组合。 
+给定一个候选人编号的集合 candidates 和一个目标数 target ,
+找出 candidates 中所有可以使数字和为 target 的组合.
+candidates 中的每个数字在每个组合中只能使用 一次 .
+注意: 解集不能包含重复的组合.
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -39,10 +39,10 @@ candidates 中的每个数字在每个组合中只能使用 一次 。
 
 <summary><b>思路</b></summary>
 
-- 递归+回溯模板；
-- 代码细节：
-    - 每个数字只用一次；
-    - 组合去重；
+- 递归+回溯模板;
+- 代码细节:
+    - 每个数字只用一次;
+    - 组合去重;
 
 <details><summary><b>Python</b></summary>
 
@@ -58,14 +58,14 @@ class Solution:
                 if s == target:
                     ret.append(tmp[:])
                 return
-            
+
             for i in range(start, len(candidates)):
-                # 注意这里是 i > start（每个数字取一次），而不是 i > 0（每种数字取一次）
+                # 注意这里是 i > start (每个数字取一次) , 而不是 i > 0 (每种数字取一次)
                 if i > start and candidates[i] == candidates[i - 1]:
                     continue
 
                 tmp.append(candidates[i])
-                dfs(s + candidates[i], i + 1, tmp)  # i + 1 表示下一个开始取，即每个数字只使用一次
+                dfs(s + candidates[i], i + 1, tmp)  # i + 1 表示下一个开始取, 即每个数字只使用一次
                 tmp.pop()
 
         candidates.sort()  # 排序
@@ -78,7 +78,7 @@ class Solution:
 
 <summary><b>相关问题</b></summary>
 
-- [39. 组合总和 - 力扣（LeetCode）](https://leetcode.cn/problems/combination-sum/)
+- [39. 组合总和 - 力扣 (LeetCode) ](https://leetcode.cn/problems/combination-sum/)
 
 <!--START_SECTION:relate-->
 ---

@@ -15,17 +15,17 @@ name: 在排序数组中查找元素的第一个和最后一个位置
 companies: []
 -->
 
-> [34. 在排序数组中查找元素的第一个和最后一个位置 - 力扣（LeetCode）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/)
+> [34. 在排序数组中查找元素的第一个和最后一个位置 - 力扣 (LeetCode) ](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target。请你找出给定目标值在数组中的开始位置和结束位置。
-如果数组中不存在目标值 target，返回 [-1, -1]。
-要求：时间复杂度 O(logN)
+给你一个按照非递减顺序排列的整数数组 nums, 和一个目标值 target. 请你找出给定目标值在数组中的开始位置和结束位置.
+如果数组中不存在目标值 target, 返回 [-1, -1].
+要求: 时间复杂度 O(logN)
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -36,12 +36,12 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路：二分查找</b></summary>
+<summary><b>思路: 二分查找</b></summary>
 
 - 参考 `from bisect import bisect_left, bisect_right`
-- 代码细节见注释；
+- 代码细节见注释;
 
-<details><summary><b>Python 写法 1：左闭右开区间</b></summary>
+<details><summary><b>Python 写法 1: 左闭右开区间</b></summary>
 
 ```python
 class Solution:
@@ -60,7 +60,7 @@ class Solution:
         # 不存在 target
         if l == len(nums) or nums[l] != target:
             return [-1, -1]
-        
+
         L = l
         # 找最右侧的 target
         l, r = 0, len(nums)
@@ -70,7 +70,7 @@ class Solution:
                 l = m + 1
             else:
                 r = m
-        
+
         R = r - 1  # 注意 r 是开区间
         return [L, R]
 ```
@@ -78,7 +78,7 @@ class Solution:
 </details>
 
 
-<details><summary><b>Python 写法 2：利用 Python 特性减少代码量</b></summary>
+<details><summary><b>Python 写法 2: 利用 Python 特性减少代码量</b></summary>
 
 ```python
 class Solution:
@@ -99,7 +99,7 @@ class Solution:
         # 不存在 target
         if L == len(nums) or nums[L] != target:
             return [-1, -1]
-        
+
         R = bisect(0, len(nums), '<=') - 1
         return [L, R]
 ```

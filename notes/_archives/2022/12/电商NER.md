@@ -52,7 +52,7 @@ hidden: false
         pred: cosco (brand), table (product)
         true: cosco (brand), table and chair set (product)
         说明: "table and chair set" 不在预定义词表中;
-    ``` 
+    ```
 
 
 ## 相关论文

@@ -30,7 +30,7 @@ tag: [python]
 ## 背景
 > [容器的抽象基类 (`collections.abc`) — Python 文档](https://docs.python.org/zh-cn/3/library/collections.abc.html#collections-abstract-base-classes)  
 
-- 容器基类列表：[collections.abc — Python 文档](https://docs.python.org/zh-cn/3/library/collections.abc.html)
+- 容器基类列表: [collections.abc — Python 文档](https://docs.python.org/zh-cn/3/library/collections.abc.html)
 
 
 ## 使用场景
@@ -48,7 +48,7 @@ def foo(ls: Sequence):
 ```python
 from typing import *
 
-# 判断能否 len(obj)，即判断是否实现了 __len__
+# 判断能否 len(obj), 即判断是否实现了 __len__
 isinstance(obj, Sized)
 
 # 判断能否 obj[index]

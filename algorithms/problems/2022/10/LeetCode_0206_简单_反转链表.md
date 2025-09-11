@@ -15,15 +15,15 @@ name: 反转链表
 companies: []
 -->
 
-> [206. 反转链表 - 力扣（LeetCode）](https://leetcode.cn/problems/reverse-linked-list/)
+> [206. 反转链表 - 力扣 (LeetCode) ](https://leetcode.cn/problems/reverse-linked-list/)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+给你单链表的头节点 head , 请你反转链表, 并返回反转后的链表.
 ```
 
-<!-- 
+<!--
 <details><summary><b>详细描述</b></summary>
 
 ```txt
@@ -63,7 +63,7 @@ class Solution:
 </details>
 
 
-<!-- 
+<!--
 <summary><b>相关问题</b></summary>
 
 -->

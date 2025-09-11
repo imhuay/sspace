@@ -27,15 +27,15 @@ tag: [dl_frame]
 
 ## 参考
 
-- HuggingFace 相关套件首次使用默认会从网络下载相关资源，导致在离线环境下无法使用；
+- HuggingFace 相关套件首次使用默认会从网络下载相关资源, 导致在离线环境下无法使用;
 
 ## 方法
 
 ### 提前下载文件
 
-- 法1）手动下载文件
+- 法1) 手动下载文件
     <div align="center"><img src="../../../_assets/imgs/HuggingFace离线下载图示.png" height="300" /></div>
-- 法2）使用 `huggingface_hub` 库下载；
+- 法2) 使用 `huggingface_hub` 库下载;
     ```shell
     $ pip install huggingface_hub
     ```
@@ -45,7 +45,7 @@ tag: [dl_frame]
     hf_hub_download(repo_id="bigscience/T0_3B", filename="config.json", cache_dir="./your/path/bigscience_t0")
     ```
     <div align="center"><img src="../../../_assets/imgs/HuggingFace离线下载图示2.png" height="300" /></div>
-- 法3）在联网环境使用 `.from_pretrained()` 下载，然后使用 `.save_pretrained()` 保存；
+- 法3) 在联网环境使用 `.from_pretrained()` 下载, 然后使用 `.save_pretrained()` 保存;
     ```python
     from transformers import AutoConfig, AutoTokenizer, AutoModelForSeq2SeqLM
 
@@ -79,9 +79,9 @@ os.environ['HF_DATASETS_OFFLINE'] = '1'  # 数据
 ```
 
 #### CLI 模式
-- 在调用脚本前添加离线环境变量 
-    - 模型：`TRANSFORMERS_OFFLINE=1`；
-    - 数据：`HF_DATASETS_OFFLINE=1`
+- 在调用脚本前添加离线环境变量
+    - 模型: `TRANSFORMERS_OFFLINE=1`;
+    - 数据: `HF_DATASETS_OFFLINE=1`
 ```shell
 $ HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python examples/pytorch/translation/run_translation.py --model_name_or_path t5-small --dataset_name wmt16 --dataset_config ro-en ...
 ```

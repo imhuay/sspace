@@ -127,7 +127,7 @@ hidden: false
 
 - **简介**: MT-DNN (Multi-Task Deep Neural Network)
 - **优化方向**: 进一步提升 BERT 在下游任务中的表现, 使具有更强的泛化能力;
-- **改进方法**: 
+- **改进方法**:
     - 模型主体与 BERT 一致, 输出层为不同任务设计了各自的输出形式和目标函数;
     - 四个子任务: 单句分类, 文本相似度, 句对分类, 相关性排序;
 
@@ -242,7 +242,7 @@ hidden: false
 ### 抽取式问答
 
 ### Masking Trick
-> [从语言模型到Seq2Seq：Transformer如戏，全靠Mask - 苏剑林](https://kexue.fm/archives/6933)
+> [从语言模型到Seq2Seq: Transformer如戏, 全靠Mask - 苏剑林](https://kexue.fm/archives/6933)
 
 ### PLM
 > Permutation Language Model

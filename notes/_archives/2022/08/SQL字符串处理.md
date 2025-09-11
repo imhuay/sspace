@@ -40,34 +40,34 @@ tag: [bigdata_sql]
 
 ### 小写
 `lower(string)`
-- 支持的引擎：
+- 支持的引擎:
     - [Presto](https://prestodb.io/docs/current/functions/string.html#lower)
-- 对应的 Python 操作：`str.lower()`
+- 对应的 Python 操作: `str.lower()`
 
 ### 移除首尾空白符
 `trim(string)`
-- 支持的引擎：
+- 支持的引擎:
     - [Presto](https://prestodb.io/docs/current/functions/string.html#trim)
-- 对应的 Python 操作：`str.strip()`
+- 对应的 Python 操作: `str.strip()`
 
 ### 拼接
 `array_join(array, sep, null_replacement)`
-- 支持的引擎：
+- 支持的引擎:
     - [Presto](https://prestodb.io/docs/current/functions/array.html#array_join)
         ```sql
         SELECT array_join(ARRAY[1, NULL, 2], ','); -- 1,2
         SELECT array_join(ARRAY[1, NULL, 2], '_', 'N'); -- 1_N_2
         SELECT array_join(
-                    regexp_split('a(b), c', '[^a-z]'), 
+                    regexp_split('a(b), c', '[^a-z]'),
                     ' ');  -- 'a b c'
         ```
-- 对应的 Python 操作：`sep.join(array)`
+- 对应的 Python 操作: `sep.join(array)`
 
 ### 截取
 - `substr(string, start)`
 - `substr(string, start, length)`
     > [substr - Presto](https://prestodb.io/docs/current/functions/string.html#substr)
-    >> 注意：Positions start with 1
+    >> 注意: Positions start with 1
     ```sql
     -- Presto
     SELECT substr('abcde', 1)   -- abcde
@@ -96,9 +96,9 @@ tag: [bigdata_sql]
     -- Presto
     SELECT regexp_split('a(b), c', '[^a-z]'); -- '[a, b, , , c]'
     SELECT array_join(
-                regexp_split('a(b), c', '[^a-z]'), 
+                regexp_split('a(b), c', '[^a-z]'),
                 ' ');  -- 'a b c'
-    ``` 
+    ```
 
 ### 正则抽取
 - `regexp_extract(string, pattern)`

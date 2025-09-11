@@ -38,7 +38,7 @@ tag: [tool]
 - Cline 不支持或者我没发现
     - Roo Code 不支持或者我没发现 (基于 Cline)
 - Continue 支持
-    - 测试了 基于 DeepSeek 的效果; 
+    - 测试了 基于 DeepSeek 的效果;
     - 首先 DeepSeek 默认不会开启内联补全, 需要手动配置 `%USERPROFILE%\.continue\config.yaml` (Win);
     - API 模式下的自动补全效果很差, 速度慢, 单次补全内容少且不完整, 跟 Copilot 差距很大; 可能本地部署会好一些, 但没尝试;
     ```yaml
@@ -65,4 +65,4 @@ tag: [tool]
     - provider: problems
     - provider: folder
     - provider: codebase
-    ``` 
+    ```

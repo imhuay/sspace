@@ -30,10 +30,10 @@ tag: [llm_prompt]
 ---
 
 ## 参考
-- [自反思（Self-Reflexion） | Prompt Engineering Guide](https://www.promptingguide.ai/zh/techniques/reflexion)
+- [自反思 (Self-Reflexion) | Prompt Engineering Guide](https://www.promptingguide.ai/zh/techniques/reflexion)
 - [\[2406.10400\] Self-Reflection Makes Large Language Models Safer, Less Biased, and Ideologically Neutral](https://arxiv.org/abs/2406.10400)
-  > - 自我反思（Self-Reflection）是指让大型语言模型（LLMs）对自己的输出进行审查和修正，无需外部反馈。
-  > - 虽然**对推理能力的提升效果有限**，但在安全性、性别偏见和意识形态中立性方面表现显著。
+  > - 自我反思 (Self-Reflection) 是指让大型语言模型 (LLMs) 对自己的输出进行审查和修正, 无需外部反馈.
+  > - 虽然**对推理能力的提升效果有限**, 但在安全性、性别偏见和意识形态中立性方面表现显著.
 
 
 ## 实现

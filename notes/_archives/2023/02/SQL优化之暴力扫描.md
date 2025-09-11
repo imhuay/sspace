@@ -24,7 +24,7 @@ hidden: false
 <!--END_SECTION:toc-->
 
 ## 背景
-- 例行任务每天暴力扫描上游任务的多个分区，造成了资源浪费。
+- 例行任务每天暴力扫描上游任务的多个分区, 造成了资源浪费.
 - 示例:
     ```sql
     SELECT A.query, COUNT(1) AS n_clk
@@ -145,8 +145,8 @@ GROUP BY A.query
 SELECT A.query, A.latest_dt
 FROM (
     SELECT COALESCE(B.query, A.query) AS query
-        ,  COALESCE(B.dt, 
-                    if(A.latest_dt > DATA_SUB('$today', 30), 
+        ,  COALESCE(B.dt,
+                    if(A.latest_dt > DATA_SUB('$today', 30),
                        A.latest_dt, '-1')) AS latest_dt
     FROM (
         SELECT A.query, A.latest_dt
