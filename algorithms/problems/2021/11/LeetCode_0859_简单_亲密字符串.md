@@ -20,7 +20,7 @@ companies: []
 ```txt
 给你两个字符串 s 和 goal , 只要我们可以通过交换 s 中的两个字母得到与 goal 相等的结果, 就返回 true ; 否则返回 false.
 
-例如, 在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad" .
+例如, 在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad".
 ```
 
 <details><summary><b>详细描述</b></summary>
@@ -30,7 +30,7 @@ companies: []
 
 交换字母的定义是: 取两个下标 i 和 j (下标从 0 开始) 且满足 i != j , 接着交换 s[i] 和 s[j] 处的字符.
 
-例如, 在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad" .
+例如, 在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad".
 
 
 示例 1:
@@ -67,7 +67,7 @@ companies: []
 
 <summary><b>思路: 分情况讨论</b></summary>
 
-- 当 `len(s) != len(goal)` 时: False
+- 当 `len(s)!= len(goal)` 时: False
 - 当 `len(s) == len(goal)` 时:
     - 当 `s != goal` 时: 当且仅当不同的字符数量等于 2, 且交换后满足条件;
     - 当 `s == goal` 时: `s` 中存在出现至少 2 次的字符;
@@ -82,7 +82,7 @@ class Solution:
 
     def buddyStrings(self, s: str, goal: str) -> bool:
         """"""
-        if len(s) != len(goal):
+        if len(s)!= len(goal):
             return False
 
         dif = []

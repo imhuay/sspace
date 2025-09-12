@@ -61,7 +61,7 @@ companies: []
 <summary><b>思路</b></summary>
 
 - 根据二叉搜索树的性质, 其中序遍历的结果为递增序列;
-- 为了得到第 k 大的数, 需要递减序列, "反向" 中序遍历即可: 即按 "右中左" 的顺序深度搜索 (正向为 "左中右") ;
+- 为了得到第 k 大的数, 需要递减序列, "反向" 中序遍历即可: 即按 "右中左" 的顺序深度搜索 (正向为 "左中右");
 - 利用辅助变量提前结束搜索;
 
 
@@ -74,7 +74,7 @@ companies: []
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode(int x): val(x), left(NULL), right(NULL) {}
  * };
  */
 class Solution {

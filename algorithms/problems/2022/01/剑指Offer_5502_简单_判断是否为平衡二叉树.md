@@ -102,7 +102,7 @@ class Solution:
 
 <details><summary><b>Python</b></summary>
 
-- 可以在求二叉树深度的过程中, 提前判断是否为平衡二叉树, 若不是则提前结束 (剪枝) ;
+- 可以在求二叉树深度的过程中, 提前判断是否为平衡二叉树, 若不是则提前结束 (剪枝);
 - 时间复杂度: `O(N)`;
 
 ```python
@@ -133,7 +133,7 @@ class Solution:
             else:
                 return -1
 
-        return dfs(root) != -1
+        return dfs(root)!= -1
 ```
 
 </details>

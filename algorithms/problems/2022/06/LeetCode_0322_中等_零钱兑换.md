@@ -89,7 +89,7 @@ class Solution:
 
 </details>
 
-<details><summary><b>Python: 动态规划 写法2) 先遍历 "物品" , 在遍历 "容量" </b></summary>
+<details><summary><b>Python: 动态规划 写法2) 先遍历 "物品", 在遍历 "容量" </b></summary>
 
 > 关于先后遍历两者的区别见[完全背包 - 代码随想录](https://programmercarl.com/背包问题理论基础完全背包.html), 本题中没有区别;
 

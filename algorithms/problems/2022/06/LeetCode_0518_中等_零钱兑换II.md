@@ -75,7 +75,7 @@ class Solution:
 - 定义 `dp[a]` 表示构成目标值 `i` 的组合数;
 - 转移方程 `dp[a] += dp[a - coins[i]]`, 当 `a >= coins[i]` 时;
 - 初始状态 `dp[0] = 1`;
-- 关键点: 先遍历 "物品" (这里是硬币) , 在遍历 "容量" (这里是金额) ;
+- 关键点: 先遍历 "物品" (这里是硬币), 在遍历 "容量" (这里是金额);
     > 关于先后遍历两者的区别见[完全背包 - 代码随想录](https://programmercarl.com/背包问题理论基础完全背包.html);
 
 <details><summary><b>Python: 动态规划</b></summary>

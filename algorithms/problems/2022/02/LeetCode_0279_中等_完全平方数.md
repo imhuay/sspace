@@ -154,7 +154,7 @@ class Solution:
 
 <details><summary><b>Python: 动态规划 (更快的写法) </b></summary>
 
-- 交换内外层遍历顺序 (本题无影响) , 减小 `j` 的遍历范围;
+- 交换内外层遍历顺序 (本题无影响), 减小 `j` 的遍历范围;
     > 关于遍历 "物品" 和 "容量" 的顺序影响, 见: [零钱兑换 - 代码随想录](https://programmercarl.com/0322.零钱兑换.html)
 
 ```python
@@ -178,7 +178,7 @@ class Solution:
 
 <summary><b>其他思路</b></summary>
 
-- 数学 (时间复杂度 $O(\sqrt{n})$) : [完全平方数 - 力扣官方题解](https://leetcode-cn.com/problems/perfect-squares/solution/wan-quan-ping-fang-shu-by-leetcode-solut-t99c/)
+- 数学 (时间复杂度 $O(\sqrt{n})$): [完全平方数 - 力扣官方题解](https://leetcode-cn.com/problems/perfect-squares/solution/wan-quan-ping-fang-shu-by-leetcode-solut-t99c/)
     > [四平方和定理](https://baike.baidu.com/item/四平方和定理)证明了任意一个正整数都可以被表示为至多四个正整数的平方和;
 - BFS: [完全平方数 - 自来火](https://leetcode-cn.com/problems/perfect-squares/solution/python3zui-ji-chu-de-bfstao-lu-dai-ma-gua-he-ru-me/)
 

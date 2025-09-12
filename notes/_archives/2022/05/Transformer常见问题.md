@@ -25,7 +25,7 @@ tag: [dl_bert]
         - [为什么在 Attention 之前要对 Q/K/V 做一次投影? ](#为什么在-attention-之前要对-qkv-做一次投影)
     - [Self-Attention](#self-attention)
         - [为什么要使用多头? ](#为什么要使用多头)
-        - [为什么 Transformer 中使用的是乘性 Attention (点积) , 而不是加性 Attention? ](#为什么-transformer-中使用的是乘性-attention点积而不是加性-attention)
+        - [为什么 Transformer 中使用的是乘性 Attention (点积), 而不是加性 Attention? ](#为什么-transformer-中使用的是乘性-attention点积而不是加性-attention)
         - [Attention 计算中 Scaled 操作的目的是什么? ](#attention-计算中-scaled-操作的目的是什么)
         - [在 Softmax 之前加上 Mask 的作用是什么? ](#在-softmax-之前加上-mask-的作用是什么)
     - [Add \& Norm](#add--norm)
@@ -121,25 +121,25 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 >   - [NLP常用特征提取方法对比 - CSDN博客](https://blog.csdn.net/u013124704/article/details/105201349)
 
 ### RNN
-- 特点/优势 (Transformer之前) :
-    - 适合解决线性序列问题; 天然能够捕获位置信息 (相对+绝对) ;
+- 特点/优势 (Transformer之前):
+    - 适合解决线性序列问题; 天然能够捕获位置信息 (相对+绝对);
         > 绝对位置: 每个 token 都是在固定时间步加入编码; 相对位置: token 与 token 之间间隔的时间步也是固定的;
     - 支持不定长输入;
     - LSTM/Attention 的引入, 加强了长距离语义建模的能力;
 - 劣势:
     - 串行结构难以支持并行计算;
     - 依然存在长距离依赖问题;
-        > 有论文表明: RNN 最多只能记忆 50 个词左右的距离 (How Neural Language Models Use Context) ;
+        > 有论文表明: RNN 最多只能记忆 50 个词左右的距离 (How Neural Language Models Use Context);
     - 单向语义建模 (Bi-RNN 是两个单向拼接)
 
 ### CNN
 - 特点/优势:
-    - 捕获 n-gram 片段信息 (局部建模) ;
-    - 滑动窗口捕获相对位置特征 (但 Pooling 层会丢失位置特征) ;
-    - 并行度高 (滑动窗口并行、卷积核并行) , 计算速度快;
+    - 捕获 n-gram 片段信息 (局部建模);
+    - 滑动窗口捕获相对位置特征 (但 Pooling 层会丢失位置特征);
+    - 并行度高 (滑动窗口并行、卷积核并行), 计算速度快;
 - 劣势:
     - 长程建模能力弱: 受感受野限制, 无法捕获长距离依赖, 需要空洞卷积或加深层数等策略来弥补;
-    - Pooling 层会丢失位置信息 (目前常见的作法会放弃 Pooling) ;
+    - Pooling 层会丢失位置信息 (目前常见的作法会放弃 Pooling);
     - 相对位置敏感, 绝对位置不敏感 (平移不变性)
 
 ### Transformer
@@ -148,7 +148,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
     - Self-Attention 同时编码双向语义和解决长距离依赖问题;
     - 支持并行计算;
 - 缺点/劣势:
-    - 不支持不定长输入 (通过 padding 填充到定长) ;
+    - 不支持不定长输入 (通过 padding 填充到定长);
     - 计算复杂度高;
 
 ### Transformer 能完全取代 RNN 吗?
@@ -157,14 +157,14 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 - 不行;
 
 <!--
-下面主要从三个方面进行比较: 对**上下文语义特征**和**序列特征**的表达能力 (主要) , 以及**计算速度**;
+下面主要从三个方面进行比较: 对**上下文语义特征**和**序列特征**的表达能力 (主要), 以及**计算速度**;
 
 ### 1. 上下文语义特征
 在抽取上下文语义特征 (方向+距离) 方面: **Transformer > RNN > CNN**
-- RNN 只能进行单向编码 (Bi-RNN 是两个单向) ;
+- RNN 只能进行单向编码 (Bi-RNN 是两个单向);
   在**长距离**特征抽取上也弱于 Transformer; 有论文表明: RNN 最多只能记忆 50 个词左右的距离;
     > How Neural Language Models Use Context
-- CNN 只能对短句编码 (N-gram) ;
+- CNN 只能对短句编码 (N-gram);
 - Transformer 可以同时**编码双向语义**和**抽取长距离特征**;
 
 ### 2. 序列特征
@@ -193,16 +193,16 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 > 其他提法: 多头的加入既没有增加宽度也没有增加深度, 那加入它的意义在哪里?
 - 这里的多头和 CNN 中多通道的思想类似, 目的是期望不同的注意力头能学到不同的特征;
 
-#### 为什么 Transformer 中使用的是乘性 Attention (点积) , 而不是加性 Attention?
-- 在 GPU 场景下, 矩阵乘法的效率更高 (原作说法) ;
-- **在不进行 Scaled 的前提下**, 随着 d (每个头的特征维度) 的增大, 乘性 Attention 的效果减弱, 加性 Attention 的效果更好 (原因见下一个问题) ;
+#### 为什么 Transformer 中使用的是乘性 Attention (点积), 而不是加性 Attention?
+- 在 GPU 场景下, 矩阵乘法的效率更高 (原作说法);
+- **在不进行 Scaled 的前提下**, 随着 d (每个头的特征维度) 的增大, 乘性 Attention 的效果减弱, 加性 Attention 的效果更好 (原因见下一个问题);
     > [小莲子的回答 - 知乎](https://www.zhihu.com/question/339723385/answer/811341890)
 
 #### Attention 计算中 Scaled 操作的目的是什么?
 > 相似提法: 为什么在计算 Q 和 K 的点积时要除以根号 d?
 > 参考内容: [Transformer 中的 attention 为什么要 scaled? - 知乎](https://www.zhihu.com/question/339723385)
 - **目的**: 防止梯度消失;
-- **解释**: 在 Attention 模块中, 注意力权重通过 Softmax 转换为概率分布; 但是 Softmax 对输入比较敏感, 当输入的方差越大, 其计算出的概率分布就越 "尖锐" , 即大部分概率集中到少数几个分量位置. 极端情况下, 其概率分布将退化成一个 One-Hot 向量; 其结果就是雅可比矩阵 (偏导矩阵) 中绝大部分位置的值趋于 0, 即梯度消失; 通过缩放操作可以使注意力权重的方差重新调整为 1, 从而缓解梯度消失的问题;
+- **解释**: 在 Attention 模块中, 注意力权重通过 Softmax 转换为概率分布; 但是 Softmax 对输入比较敏感, 当输入的方差越大, 其计算出的概率分布就越 "尖锐", 即大部分概率集中到少数几个分量位置. 极端情况下, 其概率分布将退化成一个 One-Hot 向量; 其结果就是雅可比矩阵 (偏导矩阵) 中绝大部分位置的值趋于 0, 即梯度消失; 通过缩放操作可以使注意力权重的方差重新调整为 1, 从而缓解梯度消失的问题;
     - 假设 $Q$ 和 $K$ 的各分量 $\vec{q_i}$ 和 $\vec{k_i}$ 相互独立, 且均值为 $0$, 方差为 $1$;
         > 在 Embedding 和每一个 Encoder 后都会过一个 LN 层, 所以可以认为这个假设是合理的;
     - 则未经过缩放的注意力权重 $A$ 的各分量 $\vec{a_i}$ 将服从均值为 $0$, 方差为 $d$ 的正态分布;
@@ -226,7 +226,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
                 E(\vec{q_i}\vec{k_i}^T) &= E(\sum_{i=1}^d q_ik_i) = \sum_{i=1}^d E(q_ik_i) = 0 \\
                 D(\vec{q_i}\vec{k_i}^T) &= D(\sum_{i=1}^d q_ik_i) = \sum_{i=1}^d D(q_ik_i) = d
             \end{align*}$$
-        - 根据 attention 的计算公式 (softmax 前) , $A'=\frac{QK^T}{\sqrt{d}}=[\frac{\vec{q_1}\vec{k_1}^T}{\sqrt{d}}, \frac{\vec{q_2}\vec{k_2}^T}{\sqrt{d}}, .., \frac{\vec{q_n}\vec{k_n}^T}{\sqrt{d}}]=[\vec{a_1}, \vec{a_2}, .., \vec{a_n}]$, 可知 $E(\vec{a_i})=0$, $D(\vec{a_i})=1$, 推导如下:
+        - 根据 attention 的计算公式 (softmax 前), $A'=\frac{QK^T}{\sqrt{d}}=[\frac{\vec{q_1}\vec{k_1}^T}{\sqrt{d}}, \frac{\vec{q_2}\vec{k_2}^T}{\sqrt{d}}, .., \frac{\vec{q_n}\vec{k_n}^T}{\sqrt{d}}]=[\vec{a_1}, \vec{a_2}, .., \vec{a_n}]$, 可知 $E(\vec{a_i})=0$, $D(\vec{a_i})=1$, 推导如下:
             $$\begin{align*}
                 E(\vec{a_i}) &= E(\frac{\vec{q_i}\vec{k_i}^T}{\sqrt{d}}) = \frac{E(\vec{q_i}\vec{k_i}^T)}{\sqrt{d}} = \frac{0}{\sqrt{d}} = 0 \\
                 D(\vec{a_i}) &= D(\frac{\vec{q_i}\vec{k_i}^T}{\sqrt{d}}) = \frac{D(\vec{q_i}\vec{k_i}^T)}{(\sqrt{d})^2} = \frac{d}{d} = 1
@@ -261,7 +261,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 
 
 #### 在 Softmax 之前加上 Mask 的作用是什么?
-> 相关问题: 为什么将被 mask 的位置是加上一个极小值 (-1e9) , 而不是置为 0?
+> 相关问题: 为什么将被 mask 的位置是加上一个极小值 (-1e9), 而不是置为 0?
 - 回顾 softmax 的公式;
 - 其目的就是使无意义的 token 在 softmax 后得到的概率值 (注意力) 尽量接近于 0; 从而使正常 token 位置的概率和接近 1;
 
@@ -276,7 +276,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 
 #### Pre-LN 和 Post-LN 的区别
 
-- Post-LN (BERT 实现) :
+- Post-LN (BERT 实现):
     $$x_{n+1} = \text{LN}(x_n + f(x_n))$$
     - 先做完残差连接, 再归一化;
     - 优点: 保持主干网络的方程比较稳定, 是模型泛化能力更强, 性能更好;

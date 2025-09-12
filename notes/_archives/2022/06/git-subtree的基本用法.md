@@ -65,7 +65,7 @@ tag: [git]
 - `$sub_branch`: 子仓库在主仓库中分离出来的分支, 一般取子仓库所在的目录名
 
 选项说明:
-- `--squash`: "merge subtree changes as a single commit" ;
+- `--squash`: "merge subtree changes as a single commit";
     - **使用前提**: 主/子仓库不能有待提交的 commit;
     - 对 `split` 和 `push` 命令, 必须在 `--rejoin` 下才能使用;
 - `--rejoin`: "merge the new branch back into HEAD"
@@ -83,7 +83,7 @@ tag: [git]
 
 ### 场景1: 从主仓库分出子仓库
 
-1. 关联子仓库与 git 地址 (一般为空仓库) : `git remote add $name xxx.git`
+1. 关联子仓库与 git 地址 (一般为空仓库): `git remote add $name xxx.git`
 2. 将子仓库提取到单独的分支: `git subtree split --prefix=$prefix --branch $name --rejoin`
 3. 推送子仓库代码: `git subtree push --prefix=$prefix $name master --squash`
 
@@ -95,7 +95,7 @@ tag: [git]
 ### 场景2: 将子仓库添加到主仓库
 
 1. 关联子仓库与 git 地址: `git remote add $name xxx.git`
-2. 设置子仓库路径 (第一次执行时会自动拉取代码) : `git subtree add --prefix=$prefix $name master --squash`
+2. 设置子仓库路径 (第一次执行时会自动拉取代码): `git subtree add --prefix=$prefix $name master --squash`
 3. 拉取子仓库代码: `git subtree pull --prefix=$prefix $name master --squash`
 
 ### 场景3: 删除子仓库

@@ -20,8 +20,8 @@ companies: []
 ```txt
 将数字解码成字母, 返回可能的解码方法数;
 例如, "11106" 可以映射为:
-    "AAJF" , 将消息分组为 (1 1 10 6)
-    "KJF" , 将消息分组为 (11 10 6)
+    "AAJF", 将消息分组为 (1 1 10 6)
+    "KJF", 将消息分组为 (11 10 6)
 ```
 > [91. 解码方法 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/decode-ways/)
 

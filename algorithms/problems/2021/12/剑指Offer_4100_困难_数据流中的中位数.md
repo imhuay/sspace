@@ -60,7 +60,7 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 分别使用一个大顶堆存放较小的一半 (堆顶为其中的最大值) , 和一个小顶堆存放较大的一半 (堆顶为其中的最小值) ;
+- 分别使用一个大顶堆存放较小的一半 (堆顶为其中的最大值), 和一个小顶堆存放较大的一半 (堆顶为其中的最小值);
 - 动态保持两个堆的元素数量相等或差1 (为了减少判断, 可以始终保持固定的堆数量多1)
 
 <details><summary><b>Python: 优化前</b></summary>
@@ -137,7 +137,7 @@ class MedianFinder:
 
 
     def findMedian(self) -> float:
-        if len(self.hi) != len(self.lo):
+        if len(self.hi)!= len(self.lo):
             return self.hi[0]
         else:
             return (-self.lo[0] + self.hi[0]) / 2

@@ -23,7 +23,7 @@ companies: []
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-求 1+2+...+n , 要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句 (A?B:C) .
+求 1+2+...+n , 要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句 (A?B:C).
 
 示例 1:
     输入: n = 3
@@ -47,7 +47,7 @@ companies: []
 <summary><b>思路</b></summary>
 
 - 通过 "短路" 中止递归;
-- 在 Python 中 `and` 操作如果最后结果为真, 返回最后一个表达式的值, `or` 操作如果结果为真, 返回第一个结果为真的表达式的值 (写法2) ;
+- 在 Python 中 `and` 操作如果最后结果为真, 返回最后一个表达式的值, `or` 操作如果结果为真, 返回第一个结果为真的表达式的值 (写法2);
 
 <details><summary><b>Python: 写法1</b></summary>
 

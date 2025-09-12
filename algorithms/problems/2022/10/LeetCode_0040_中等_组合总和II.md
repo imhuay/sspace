@@ -60,7 +60,7 @@ class Solution:
                 return
 
             for i in range(start, len(candidates)):
-                # 注意这里是 i > start (每个数字取一次) , 而不是 i > 0 (每种数字取一次)
+                # 注意这里是 i > start (每个数字取一次), 而不是 i > 0 (每种数字取一次)
                 if i > start and candidates[i] == candidates[i - 1]:
                     continue
 

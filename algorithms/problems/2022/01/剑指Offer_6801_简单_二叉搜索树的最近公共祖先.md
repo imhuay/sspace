@@ -30,7 +30,7 @@ companies: []
 ```txt
 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先.
 
-百度百科中最近公共祖先的定义为: "对于有根树 T 的两个结点 p、q, 最近公共祖先表示为一个结点 x, 满足 x 是 p、q 的祖先且 x 的深度尽可能大 (一个节点也可以是它自己的祖先) ."
+百度百科中最近公共祖先的定义为: "对于有根树 T 的两个结点 p、q, 最近公共祖先表示为一个结点 x, 满足 x 是 p、q 的祖先且 x 的深度尽可能大 (一个节点也可以是它自己的祖先)."
 
 例如, 给定如下二叉搜索树
 
@@ -176,7 +176,7 @@ class Solution:
 > [剑指 Offer 68 - II. 二叉树的最近公共祖先 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/)
 
 - 思路1 利用了二叉搜索树的性质快速获取祖先路径;
-- 可以不利用二叉搜索树的性质来获取祖先路径 (对非二叉搜索树也适用) ;
+- 可以不利用二叉搜索树的性质来获取祖先路径 (对非二叉搜索树也适用);
 - 因为必须先找到目标节点才能确定路线, 所以可以考虑后序遍历; 当找到目标节点时, 返回 flag, 指示上级节点是否为祖先节点;
 
 <details><summary><b>Python</b></summary>
@@ -231,7 +231,7 @@ class Solution:
 **优化**: 不使用额外空间存储祖先路径, 即在遍历过程中判断;
 > [二叉树的最近公共祖先 (DFS , 清晰图解) - Krahets](https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-ii-er-cha-shu-de-zui-jin-gong-gon-7/)
 
-- 如果 node 仅是 p 和 q 的公共祖先 (但不是最近公共祖先) , 那么 node 的左右子树之一必也是 p 和 q 的公共祖先;
+- 如果 node 仅是 p 和 q 的公共祖先 (但不是最近公共祖先), 那么 node 的左右子树之一必也是 p 和 q 的公共祖先;
 - 如果 node 是 p 和 q 的最近公共祖先, 那么 node 的左右子树都不是 p 和 q 的公共祖先;
 - 根据以上两条性质, 可知, 如果 node 是 p、q 的**最近公共祖先**, 有:
     - node 是 p、q 的公共祖先, 且 p 和 q 分别在 node 的两侧;

@@ -42,7 +42,7 @@ companies: []
 - 【递归基】`i <= 0` 时, 有 `dfs(0) = 0`;
     > 小细节: 因为会用到 ` i-2` 的状态, 所以需要定义 `i < 0` 时的状态;
 - 递推公式: `dfs(i) = max(dfs(i-1), dfs(i-2) + nums[i-1])`;
-    > 对第 `i` 家 (`nums[i-1]`) , 有两种可能, 不抢 (`dfs(i-1)`) , 抢 (`dfs(i-2) + nums[i-1]`) , 去其中的较大值;
+    > 对第 `i` 家 (`nums[i-1]`), 有两种可能, 不抢 (`dfs(i-1)`), 抢 (`dfs(i-2) + nums[i-1]`), 去其中的较大值;
 
 <details><summary><b>Python: 递归</b></summary>
 

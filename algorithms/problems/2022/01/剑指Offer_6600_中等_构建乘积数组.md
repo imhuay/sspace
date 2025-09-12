@@ -46,7 +46,7 @@ companies: []
 
 <summary><b>思路</b></summary>
 
-- 双向构建前缀积 (左→右、右→左) , 示例:
+- 双向构建前缀积 (左→右、右→左), 示例:
 
     ```
     l = [1, a1, a1a2, a1a2a3]
@@ -79,7 +79,7 @@ class Solution:
 
 <details><summary><b>Python: 空间优化</b></summary>
 
-- 实际上在求 s 的时候可以同步求前缀积, 换言之, 可以节省一组前缀积 (这里优化掉 `l`) ;
+- 实际上在求 s 的时候可以同步求前缀积, 换言之, 可以节省一组前缀积 (这里优化掉 `l`);
 
 ```python
 class Solution:

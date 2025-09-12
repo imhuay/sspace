@@ -61,7 +61,7 @@ companies: []
 
 **本题的难点是如何过滤重复的状态**
 
-- **写法1) ** 遍历所有状态, 直接用 `set` 保存结果 (不剪枝) :
+- **写法1) ** 遍历所有状态, 直接用 `set` 保存结果 (不剪枝):
 
     <details><summary><b>Python</b></summary>
 
@@ -95,7 +95,7 @@ companies: []
 
     </details>
 
-- **写法2) ** 跳过重复字符 (需排序) :
+- **写法2) ** 跳过重复字符 (需排序):
     - 其中用于剪枝的代码不太好理解, 其解析详见: [「代码随想录」剑指 Offer 38. 字符串的排列](https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/dai-ma-sui-xiang-lu-jian-zhi-offer-38-zi-gwt6/)
 
         ```python
@@ -124,7 +124,7 @@ companies: []
                     if visited[i - 1] is False and i > 0 and s[i] == s[i - 1]:
                         continue
 
-                    # 下面的代码居然可以 (区别仅在于 visited[i - 1] 的状态) ,
+                    # 下面的代码居然可以 (区别仅在于 visited[i - 1] 的状态),
                     # 但是效率不如上面的, 具体解析可参考: [「代码随想录」剑指 Offer 38. 字符串的排列](https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/dai-ma-sui-xiang-lu-jian-zhi-offer-38-zi-gwt6/)
                     # if visited[i - 1] is True and i > 0 and s[i] == s[i - 1]:
                     #     continue
@@ -145,7 +145,7 @@ companies: []
 
     </details>
 
-- **写法3) ** 在每一层用一个 `set` 保存已经用过的字符 (不排序) :
+- **写法3) ** 在每一层用一个 `set` 保存已经用过的字符 (不排序):
 
     <details><summary><b>Python</b></summary>
 
@@ -187,7 +187,7 @@ companies: []
 - **写法2) ** 原地交换
     > [剑指 Offer 38. 字符串的排列 (回溯法, 清晰图解) ](https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/)
 
-    - 这个写法有点像 "下一个排列" , 只是没有使用字典序;
+    - 这个写法有点像 "下一个排列", 只是没有使用字典序;
 
     <details><summary><b>Python</b></summary>
 

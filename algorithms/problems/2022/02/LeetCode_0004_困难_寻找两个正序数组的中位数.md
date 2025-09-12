@@ -20,7 +20,7 @@ companies: []
 ```txt
 给定两个大小分别为 m 和 n 的正序 (从小到大) 数组 A 和 B. 请你找出并返回这两个正序数组的 中位数 .
 
-算法的时间复杂度应该为 O(log (m+n)) .
+算法的时间复杂度应该为 O(log (m+n)).
 ```
 > [4. 寻找两个正序数组的中位数 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
 

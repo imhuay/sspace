@@ -71,7 +71,7 @@ B是A的子结构, 即 A中有出现和B相同的结构和节点值.
     - 如果 b 与 a 是否相等;
     - 递归判断 b 和 a 的**左、右子节点是否分别相等**;
     - 如果 b 比 a 先达到空节点, 则 b 是 a 的子结构;
-2. 遍历 A 中的每个节点 a (以任意顺序遍历均可) , 然后确定 B 是否为 a 的子结构;
+2. 遍历 A 中的每个节点 a (以任意顺序遍历均可), 然后确定 B 是否为 a 的子结构;
 
 <details><summary><b>Python</b></summary>
 
@@ -125,7 +125,7 @@ class Solution:
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode(int x): val(x), left(NULL), right(NULL) {}
  * };
  */
 class Solution {

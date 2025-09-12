@@ -40,8 +40,8 @@ tag: []
 
 - 虽然文档说明公开仓库不需要申请申请密钥, 但是可能会报错, 详见: [Error: failed to properly upload](https://github.com/codecov/codecov-action/issues/598)
 - 申请 `CODECOV_TOKEN`
-    - 登录 [Codecov.io](https://app.codecov.io/gh) (关联 Github) ;
-    - 查看 `Not yet setup` 一栏 (默认显示 `Enabled`) , 选择需要测试的仓库;
+    - 登录 [Codecov.io](https://app.codecov.io/gh) (关联 Github);
+    - 查看 `Not yet setup` 一栏 (默认显示 `Enabled`), 选择需要测试的仓库;
     - 将 `CODECOV_TOKEN` 添加到 [Actions secrets](#添加-actions-secrets)
 
 示例

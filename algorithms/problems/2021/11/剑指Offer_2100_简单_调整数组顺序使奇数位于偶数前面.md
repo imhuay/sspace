@@ -18,7 +18,7 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-给定整型数组, 调整其顺序, 使所有奇数在偶数之前 (不要求顺序) .
+给定整型数组, 调整其顺序, 使所有奇数在偶数之前 (不要求顺序).
 ```
 
 <details><summary><b>详细描述</b></summary>

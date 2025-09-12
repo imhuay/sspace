@@ -61,14 +61,14 @@ tag: []
 ### 为什么 LLM 需要强化学习
 
 - 传统的监督微调 (SFT) 虽然能让模型模仿人类回答, 但难以捕捉人类的主观偏好.
-- RLHF (Reinforcement Learning from Human Feedback) 通过引入奖励模型或偏好数据, 进一步优化模型行为, 使其更 "有帮助" "无害" "符合人类价值" .
+- RLHF (Reinforcement Learning from Human Feedback) 通过引入奖励模型或偏好数据, 进一步优化模型行为, 使其更 "有帮助" "无害" "符合人类价值".
 
 
 <details><summary><b>待整理</b></summary>
 
 ```markdown
 
-## 🔧 什么是 PPO (Proximal Policy Optimization) ?
+## 🔧 什么是 PPO (Proximal Policy Optimization)?
 
 - PPO 是一种强化学习算法, 属于策略梯度方法的一种改进版本.
 - 它的特点是通过限制策略更新的幅度 (使用 KL 散度或剪切函数) 来提高训练稳定性.
@@ -85,7 +85,7 @@ tag: []
 
 ## 🧠 背景: 为什么 LLM 需要强化学习?
 
-传统的监督微调 (SFT) 虽然能让模型模仿人类回答, 但难以捕捉人类的主观偏好. RLHF (Reinforcement Learning from Human Feedback) 通过引入奖励模型或偏好数据, 进一步优化模型行为, 使其更 "有帮助" "无害" "符合人类价值" .
+传统的监督微调 (SFT) 虽然能让模型模仿人类回答, 但难以捕捉人类的主观偏好. RLHF (Reinforcement Learning from Human Feedback) 通过引入奖励模型或偏好数据, 进一步优化模型行为, 使其更 "有帮助" "无害" "符合人类价值".
 
 RLHF 通常分三阶段:
 
@@ -128,7 +128,7 @@ $$
 由斯坦福提出, DPO 是一种更简洁的 RLHF 方法, 跳过奖励模型训练, 直接用人类偏好进行优化.
 
 ### ✅ 核心思想
-- 输入为两个回答 (chosen vs rejected) , 优化目标是让模型更偏好 chosen.
+- 输入为两个回答 (chosen vs rejected), 优化目标是让模型更偏好 chosen.
 - 类似 SFT 的训练范式, 稳定易实现.
 
 ### 🧮 数学机制
@@ -139,7 +139,7 @@ $$
 $$
 
 其中:
-- \( f_\theta(x, y) \) 是模型对回答的打分 (logit) ;
+- \( f_\theta(x, y) \) 是模型对回答的打分 (logit);
 - \( \beta \) 控制偏好强度.
 
 ### 📌 优缺点
@@ -156,7 +156,7 @@ $$
 
 ### ✅ 核心思想
 - 引入 "组别" 概念, 在多个智能体之间进行相对策略优化.
-- 支持多维度奖励设计 (如意图理解、属性匹配、推理过程等) .
+- 支持多维度奖励设计 (如意图理解、属性匹配、推理过程等).
 
 ### 🧮 数学机制 (简化)
 GRPO 在 PPO 基础上, 引入 group-wise 相对优势函数:

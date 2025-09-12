@@ -58,7 +58,7 @@ companies: []
 <summary><b>思路</b></summary>
 
 ```txt
-1. 遍历 prices, 以 min_p 记录当前的最小值 (非全局最小值) ;
+1. 遍历 prices, 以 min_p 记录当前的最小值 (非全局最小值);
 2. 用当前价格 p 减去 min_p, 得到当天卖出的利润;
 3. 使用 ret 记录遍历过程中的最大利润.
 ```

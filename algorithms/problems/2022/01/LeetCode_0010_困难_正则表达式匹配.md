@@ -76,7 +76,7 @@ class Solution:
         # for j in range(2, n + 1):
         #     dp[0][j] = p[j - 1] == '*' and dp[0][j - 2]
 
-        # 为了展示 "无缝转换" , 把上面的初始化代码也写到了循环里面, 两种写法都可以
+        # 为了展示 "无缝转换", 把上面的初始化代码也写到了循环里面, 两种写法都可以
         for i in range(0, m + 1):
             for j in range(0, n + 1):
                 if i == 0 and j == 0: dp[i][j] = True

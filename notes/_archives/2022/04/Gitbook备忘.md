@@ -29,7 +29,7 @@ tag: []
 
 ## 安装
 
-- 安装 node.js (略) ;
+- 安装 node.js (略);
 - **高版本 NodeJs 安装 gitbook 会失败**, 使用 `n` 模块管理 node 版本
     ```shell
     $ sudo npm install n -g  # 安装 n 模块

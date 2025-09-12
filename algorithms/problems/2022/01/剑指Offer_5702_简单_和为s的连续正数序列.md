@@ -17,13 +17,13 @@ companies: []
 <summary><b>问题简述</b></summary>
 
 ```txt
-输入一个正整数 target , 输出所有和为 target 的连续正整数序列 (至少含有两个数) .
+输入一个正整数 target , 输出所有和为 target 的连续正整数序列 (至少含有两个数).
 ```
 
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-输入一个正整数 target , 输出所有和为 target 的连续正整数序列 (至少含有两个数) .
+输入一个正整数 target , 输出所有和为 target 的连续正整数序列 (至少含有两个数).
 
 序列内的数字由小到大排列, 不同序列按照首个数字从小到大排列.
 
@@ -96,7 +96,7 @@ class Solution:
 
 > [和为 s 的连续正数序列 (求和公式 / 滑动窗口, 清晰图解) ](https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/jian-zhi-offer-57-ii-he-wei-s-de-lian-xu-t85z/)
 
-- 当确定左边界和 target 时, 可以通过求根公式得到右边界 (去掉负根) ;
+- 当确定左边界和 target 时, 可以通过求根公式得到右边界 (去掉负根);
 - 当右边界为整数时得到一组解;
 
 <details><summary><b>Python</b></summary>

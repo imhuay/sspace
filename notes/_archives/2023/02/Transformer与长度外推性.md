@@ -32,7 +32,7 @@ hidden: true
 ## 解决方案
 
 ### 局部注意力
-- **注意力局部化**, 简单来说就是在计算 attention 矩阵时, 限制每个位置能接收的上下文 (加上一个 attention mask 矩阵) , 这是目前主流的方法.
+- **注意力局部化**, 简单来说就是在计算 attention 矩阵时, 限制每个位置能接收的上下文 (加上一个 attention mask 矩阵), 这是目前主流的方法.
     > ALiBi, KERPLE, Sandwich, xPos
     <div align="center"><img src="../../../_assets/imgs/局部注意力示意图.png" height="300" /></div>
 

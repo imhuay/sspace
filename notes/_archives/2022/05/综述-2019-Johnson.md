@@ -76,18 +76,18 @@ tag: [dl_unbalanced]
 ### 机器学习中的一般方法
 
 **数据层**
-- 随机**下采样/欠采样** (Random Under-Sampling, RUS) : 减少多数群体样本
+- 随机**下采样/欠采样** (Random Under-Sampling, RUS): 减少多数群体样本
     - 目标: 保留有价值的信息 (去除冗余的多数群体样本)
     - 常见方法:
         - 利用 K-NN (最近邻) 选择需要丢弃的多数群体样本;
-- 随机**上采样/过采样** (Random Over-Sampling, ROS) : 增加少数群体样本
+- 随机**上采样/过采样** (Random Over-Sampling, ROS): 增加少数群体样本
     - 目标: 较少过拟合
     - 常见方法:
         - 利用插值生成新样本;
         - 先对样本进行 K-Means 聚类, 再上采样;
 - 相关工具: [scikit-learn-contrib/imbalanced-learn: A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning](https://github.com/scikit-learn-contrib/imbalanced-learn)
 - **一般结论**:
-    - 下采样 (RUS) 效果普遍优于上采样 (ROS) ;
+    - 下采样 (RUS) 效果普遍优于上采样 (ROS);
     - 采样效果高度依赖于学习器和评估指标, 没有通用有效的采样方案;
 
 **算法层**
@@ -110,7 +110,7 @@ tag: [dl_unbalanced]
 
 
 ### 数据层
-- 主要还是基于**下采样** (RUS) 和**上采样** (ROS) ;
+- 主要还是基于**下采样** (RUS) 和**上采样** (ROS);
 
 #### ROS (上采样)
 > 相关论文: The Impact of Imbalanced Training Data for Convolutional Neural Networks
@@ -120,7 +120,7 @@ tag: [dl_unbalanced]
     - 最大 $\rho=2.3$;
 - **做法**
     - 通过上采样 (随机复制数据) 使类别达到平衡;
-- 本文的研究相对较早 (2015) , 主要讨论了不平衡数据对深度学习模型的影响, 在方法上没有更多创新;
+- 本文的研究相对较早 (2015), 主要讨论了不平衡数据对深度学习模型的影响, 在方法上没有更多创新;
 
 #### Two‑phase learning (两阶段学习)
 > 相关论文: Plankton classification on imbalanced large scale database via convolutional neural networks with transfer learning
@@ -131,7 +131,7 @@ tag: [dl_unbalanced]
 - **实现细节**
     - 两阶段训练过程:
         - 一阶段: 使用**阈值数据** (thresholded data) 预训练;
-            > 阈值数据: 每个类别最多随机采样 N 个样本 (论文中 N = 5000) ;
+            > 阈值数据: 每个类别最多随机采样 N 个样本 (论文中 N = 5000);
         - 二阶段: 使用全部数据微调;
 - **有效性解释**:
     - 朴素的 RUS 方法直接丢弃多数类样本, 这些被丢弃的样本不再参与到训练中, 而这些样本可能是潜在有用的样本;
@@ -160,7 +160,7 @@ tag: [dl_unbalanced]
         - $c_j$ 表示类别 $j$;
         - $N^*$ 表示类别的平均数量, 即样本总数除以类别数;
         - 在下一轮迭代中, F1 较低的类别会以更高的比率被采样, 以迫使学习器更多关注错误率较高的类别;
-        - **模型融合** (Model Fusion) : 在训练集上根据**是否使用动态采样**, 训练两个模型; 然后根据验证集上类别的正负比例设定一个阈值, 根据阈值选择其中某个模型的结果, 详见论文;
+        - **模型融合** (Model Fusion): 在训练集上根据**是否使用动态采样**, 训练两个模型; 然后根据验证集上类别的正负比例设定一个阈值, 根据阈值选择其中某个模型的结果, 详见论文;
             > **动机**: 原文认为使用动态采样训练得到的模型会在少数类上的效果更好, 而不使用动态采样的模型会在多数类上效果更好, 因此采用融合的方案; 但是这里阈值的计算方法没有看懂;
 - **有效性解释**:
     - 自适应调整采样率本质上就是在通过样本量调整类别权重;
@@ -205,10 +205,10 @@ tag: [dl_unbalanced]
 - **方法**
     $$MFE = FPE + FNE$$
     $$MSFE = \frac{1}{2}((FPE + FNE)^2 + (FPE - FNE)^2) = FPE^2 + FNE^2$$
-    - 其中 $FPE$ 为**假阳误差** (False Positive Error) , $FNE$ 为**假阴误差** (False Negative Error) , 两者均为 MSE Loss;
+    - 其中 $FPE$ 为**假阳误差** (False Positive Error), $FNE$ 为**假阴误差** (False Negative Error), 两者均为 MSE Loss;
 - **存在问题**
     - 无论是 MFE Loss 还是 MSFE Loss, 都是基于 MSE Loss, 但是在分类问题上使用 MSE 损失的效果并不好;
-        > [机器学习理论—损失函数 (二) : MSE、0-1 Loss与Logistic Loss - 知乎](https://zhuanlan.zhihu.com/p/346935187)
+        > [机器学习理论—损失函数 (二): MSE、0-1 Loss与Logistic Loss - 知乎](https://zhuanlan.zhihu.com/p/346935187)
 - **改进**
     - 可以考虑把基础损失替换成交叉熵;
 
