@@ -25,7 +25,7 @@ from typing import ClassVar
 
 import yaml
 from _base import Builder
-from utils import MarkdownUtils, ReadmeUtils, TEMP_main_readme_notes_recent_toc, args  # type: ignore
+from utils import KeywordSection, MarkdownUtils, NoteUtils, TEMP_main_readme_notes_recent_toc, args
 
 # TMP_subject_toc = '''### {title}
 #
@@ -66,6 +66,7 @@ class NoteInfo:
     level: int | None = 0
     p_title: str | None = None
     date: datetime | None = None
+    toc_title: str | None = None
 
     def __post_init__(self):
         """"""
@@ -90,7 +91,7 @@ class Note:
     _paper_title: str | None = None
     _date: str | None = None
     _parent_paths: list[Path] | None = None
-    _keywords: list[str] | None = None
+    _keywords: list[KeywordSection] | None = None
     _updated: bool = False
 
     # ClassVar
@@ -124,14 +125,14 @@ class Note:
     def _update_badge(self):
         """"""
         badges = [
-            ReadmeUtils.get_create_date_badge_url(self.info.date, self.path),
-            ReadmeUtils.get_last_modify_badge_url(self.path),
+            NoteUtils.get_create_date_badge_url(self.info.date, self.path),
+            NoteUtils.get_last_modify_badge_url(self.path),
         ]
         badge_tag = 'badge'
         new_badge = '\n'.join(badges)
-        old_badge = ReadmeUtils.get_tag_content(badge_tag, self._text)
+        old_badge = NoteUtils.get_section_content(badge_tag, self._text)
         if new_badge != old_badge:
-            self._text = ReadmeUtils.replace_tag_content('badge', self.text, new_badge)
+            self._text = NoteUtils.replace_tag_content('badge', self.text, new_badge)
             self._updated = True
 
     def _update_section_number(self):
@@ -193,10 +194,10 @@ class Note:
             toc_lines.append(toc_line)
 
         new_toc_content = '\n'.join(toc_lines)
-        toc_content = ReadmeUtils.get_tag_content('toc', self.text)
+        toc_content = NoteUtils.get_section_content('toc', self.text)
         if new_toc_content != toc_content:
             # MarkdownUtils.print_diffs_with_context(new_toc_content, toc_content or '')
-            self._text = ReadmeUtils.replace_tag_content('toc', self.text, new_toc_content)
+            self._text = NoteUtils.replace_tag_content('toc', self.text, new_toc_content)
             self._updated = True
 
     def get_toc_line_relative_to(self, parent_path: Path):
@@ -206,10 +207,10 @@ class Note:
             return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
 
     @property
-    def keywords(self) -> list[str]:
+    def keywords(self) -> list[KeywordSection] | None:
         if self._keywords is None:
-            keywords = ReadmeUtils.findall_tag_content('keyword', self.text)
-            self._keywords = [MarkdownUtils.get_head_title(k) for k in keywords]
+            keywords = NoteUtils.findall_section('keyword', self.text)
+            self._keywords = [NoteUtils.parse_keyword_section(k) for k in keywords]
         return self._keywords
 
     @property
@@ -241,20 +242,20 @@ class Note:
     @property
     def info(self) -> NoteInfo:
         if self._info is None:
-            _info = ReadmeUtils.get_annotation_info_v2(self)
+            _info = NoteUtils.get_annotation_info_v2(self)
             self._info = NoteInfo(**_info)
         return self._info
 
     @property
     def first_commit_date(self) -> str:
         if self._first_commit_date is None:
-            self._first_commit_date = ReadmeUtils.get_first_commit_date(self.path)
+            self._first_commit_date = NoteUtils.get_first_commit_date(self.path)
         return self._first_commit_date
 
     @property
     def last_commit_date(self) -> str:
         if self._last_commit_date is None:
-            self._last_commit_date = ReadmeUtils.get_last_commit_date(self.path)
+            self._last_commit_date = NoteUtils.get_last_commit_date(self.path)
         return self._last_commit_date
 
     @property
@@ -301,16 +302,17 @@ class Note:
     @property
     def tag_toc_line(self) -> str:
         rel_path = self.path.relative_to(args.fp_notes)
-        keywords = ', '.join(self.keywords)
-        if keywords:
-            return f'- [{self.title}]({rel_path})\n  > {keywords}'
+        title = self.title if self.info.toc_title is None else self.info.toc_title
+        if self.keywords:
+            keywords = ', '.join([f'[{k.name}]({rel_path}#{k.slugify_name})' for k in self.keywords])
+            return f'- [{title}]({rel_path})\n  > {keywords}'
         else:
-            return f'- [{self.title}]({rel_path})'
+            return f'- [{title}]({rel_path})'
 
     @property
     def paper_title(self):
         if self._paper_title is None:
-            paper_title = ReadmeUtils.get_tag_content('paper_title', self.text)
+            paper_title = NoteUtils.get_section_content('paper_title', self.text)
             if paper_title is None:
                 self._paper_title = _EMPTY
             else:
@@ -337,7 +339,7 @@ class Note:
     def parent_paths(self) -> list[Path]:
         if self._parent_paths is None:
             parent_notes = []
-            keywords = ReadmeUtils.get_tag_content('keywords', self.text)
+            keywords = NoteUtils.get_section_content('keywords', self.text)
             if keywords:
                 links = MarkdownUtils.extract_markdown_links(keywords)
                 for lk in links:
@@ -409,7 +411,7 @@ class SubjectInfo:
     def info(self) -> dict:
         if self._info is None:
             try:
-                _info = ReadmeUtils.get_annotation_info(self.txt)
+                _info = NoteUtils.get_annotation_info(self.txt)
             except:  # noqa
                 raise ValueError(self.path)
             self._info = yaml.safe_load(_info)  # type: ignore
@@ -515,7 +517,7 @@ class NotesBuilder(Builder):
             txt = f.read()
             self._set_recent_limit(txt)
 
-        txt = ReadmeUtils.replace_tag_content('recent', txt, self.recent_toc)
+        txt = NoteUtils.replace_tag_content('recent', txt, self.recent_toc)
 
         # contents = {s.toc_id: s.toc for s in self.subjects}
         # txt = txt.format(**contents)
@@ -600,7 +602,7 @@ class NotesBuilder(Builder):
         tag2toc, paper_toc = self._get_sub_toc()
 
         # replace template
-        txt = ReadmeUtils.replace_tag_content('recent', txt, self.recent_toc)
+        txt = NoteUtils.replace_tag_content('recent', txt, self.recent_toc)
         draft = []
         for tag, toc in tag2toc.items():
             if tag not in available_tags or tag == 'draft':
@@ -658,7 +660,7 @@ class NotesBuilder(Builder):
             # content = RE.note_content.search(f.read()).group(1).strip()
             # return content.replace('](', f']({self._fp_notes.name}/')
             txt = f.read()
-        txt = ReadmeUtils.get_tag_content('notes', txt)
+        txt = NoteUtils.get_section_content('notes', txt)
         return txt.replace('](', f']({self._fp_notes.name}/')  # type: ignore
 
 

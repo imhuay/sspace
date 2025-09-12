@@ -19,7 +19,7 @@ from typing import ClassVar
 
 import yaml
 from _base import Builder
-from utils import MarkdownUtils, ReadmeUtils, args
+from utils import MarkdownUtils, NoteUtils, args
 
 
 @dataclass(unsafe_hash=True)
@@ -63,7 +63,7 @@ class Tag:
                 _p = Path(n)
                 lns.append(f'    - [{_p.stem}](../notes/_archives/{_p})')
             lns.append('')
-        lns.append(ReadmeUtils.get_badge('total', self.count, 'blue'))
+        lns.append(NoteUtils.get_badge('total', self.count, 'blue'))
         for p in self.problems:
             lns.append(p.toc_line)
         return '\n'.join(lns)
@@ -123,7 +123,7 @@ class _TagInfo:
                 if tag.is_hot:
                     self.hot_tags.append(tag)
                 for alias in tag.aliases:
-                    self.alias2tags[ReadmeUtils.norm(alias)].append(tag)
+                    self.alias2tags[NoteUtils.norm(alias)].append(tag)
 
     @property
     def hot_tags_sorted(self):
@@ -184,16 +184,16 @@ class Problem:
             lns.insert(0, self.head)
 
         # 对没有 badge tag 做的兜底
-        if not ReadmeUtils.get_tag_content(self._TAG_BADGE, txt):
-            lns.insert(1, ReadmeUtils.get_tag_begin(self._TAG_BADGE))
-            lns.insert(2, ReadmeUtils.get_tag_end(self._TAG_BADGE))
+        if not NoteUtils.get_section_content(self._TAG_BADGE, txt):
+            lns.insert(1, NoteUtils.get_section_begin(self._TAG_BADGE))
+            lns.insert(2, NoteUtils.get_section_end(self._TAG_BADGE))
 
         # 对没有 relate tag 做的兜底
-        if not ReadmeUtils.get_tag_content(self._TAG_RELATE, txt):
-            lns.append(ReadmeUtils.get_tag_begin(self._TAG_RELATE))
-            lns.append(ReadmeUtils.get_tag_end(self._TAG_RELATE))
+        if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
+            lns.append(NoteUtils.get_section_begin(self._TAG_RELATE))
+            lns.append(NoteUtils.get_section_end(self._TAG_RELATE))
 
-        txt = ReadmeUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
+        txt = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 
     def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
         """"""
@@ -206,7 +206,7 @@ class Problem:
             txt = f.read()
 
         for t in self.tags:
-            for tag in alias2tags[ReadmeUtils.norm(t)]:
+            for tag in alias2tags[NoteUtils.norm(t)]:
                 # tmp = []
                 l2p = defaultdict(list)
                 for p in tag.problems:
@@ -225,24 +225,36 @@ class Problem:
                         lns.append('  > ')
                     lns.append('\n</details>')
 
-        txt = ReadmeUtils.replace_tag_content(self._TAG_RELATE, txt, '\n'.join(lns))
+        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, txt, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(txt)
 
     @property
     def badge_content(self):
-        lns = [ReadmeUtils.get_last_modify_badge_url(self.path)]
+        lns = [NoteUtils.get_last_modify_badge_url(self.path)]
         used = set()
-        lns.append(ReadmeUtils.get_badge('', message=self.level, color='yellow',
-                                         url=f'../../../README.md#{MarkdownUtils.slugify(self.level)}'))
-        lns.append(ReadmeUtils.get_badge('', message=self.source, color='green',
-                                         url=f'../../../README.md#{MarkdownUtils.slugify(self.source)}'))
+        lns.append(
+            NoteUtils.get_badge(
+                '', message=self.level, color='yellow', url=f'../../../README.md#{MarkdownUtils.slugify(self.level)}'
+            )
+        )
+        lns.append(
+            NoteUtils.get_badge(
+                '', message=self.source, color='green', url=f'../../../README.md#{MarkdownUtils.slugify(self.source)}'
+            )
+        )
         for t in self.tags:
-            for tag in tag_info.alias2tags[ReadmeUtils.norm(t)]:
+            for tag in tag_info.alias2tags[NoteUtils.norm(t)]:
                 if tag not in used:
                     used.add(tag)
-                    lns.append(ReadmeUtils.get_badge('', message=tag.name, color='blue',
-                                                     url=f'../../../README.md#{MarkdownUtils.slugify(tag.title)}'))
+                    lns.append(
+                        NoteUtils.get_badge(
+                            '',
+                            message=tag.name,
+                            color='blue',
+                            url=f'../../../README.md#{MarkdownUtils.slugify(tag.title)}',
+                        )
+                    )
         return '\n'.join(lns)
 
     # @property
@@ -253,7 +265,7 @@ class Problem:
     def path(self):
         if self.file_name != self._path.name:
             new_path = self._path.parent / self.file_name
-            ReadmeUtils.git_mv(self._path, new_path)
+            NoteUtils.git_mv(self._path, new_path)
             self._path = new_path
         return self._path
 
@@ -289,7 +301,7 @@ class Problem:
     @property
     def last_commit_time(self):
         if self._last_commit_time is None:
-            ReadmeUtils.get_last_commit_date(self.path)
+            NoteUtils.get_last_commit_date(self.path)
         return self._last_commit_time
 
     @property
@@ -307,7 +319,7 @@ class Problem:
             with self._path.open(encoding='utf8') as f:
                 txt = f.read()
             try:
-                info_str = ReadmeUtils.get_annotation_info(txt)
+                info_str = NoteUtils.get_annotation_info(txt)
                 self._info = yaml.safe_load(info_str.strip())  # type: ignore
             except:  # noqa
                 raise ValueError(self._path)
@@ -318,7 +330,7 @@ class Problem:
         if self._inter_tags is None:
             inter_tags = []
             for t in self.tags:
-                inter_tags.extend(tag_info.alias2tags[ReadmeUtils.norm(t)])
+                inter_tags.extend(tag_info.alias2tags[NoteUtils.norm(t)])
             self._inter_tags = [t.name for t in inter_tags]
         return self._inter_tags
 
@@ -379,10 +391,10 @@ class AlgorithmsBuilder(Builder):
                 self.problems.append(Problem(fp))
 
         for p in self.problems:
-            [tag.add_problem(p) for tag in self.alias2tags[ReadmeUtils.norm(p.source)]]
-            [tag.add_problem(p) for tag in self.alias2tags[ReadmeUtils.norm(p.level)]]
+            [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(p.source)]]
+            [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(p.level)]]
             for name in p.tags:
-                [tag.add_problem(p) for tag in self.alias2tags[ReadmeUtils.norm(name)]]
+                [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(name)]]
 
     @property
     def hot_toc(self):
@@ -409,7 +421,7 @@ class AlgorithmsBuilder(Builder):
     def readme_append(self):
         with self._fp_algo_readme.open(encoding='utf8') as f:
             txt = f.read()
-        section = ReadmeUtils.get_tag_content('toc', txt)
+        section = NoteUtils.get_section_content('toc', txt)
         return section.replace('](', f']({self._fp_algo_readme.relative_to(args.fp_repo)}')  # type: ignore
 
     @property
@@ -425,17 +437,17 @@ class AlgorithmsBuilder(Builder):
             txt = f.read()
 
         # title
-        txt = ReadmeUtils.replace_tag_content('head', txt, self.head)
+        txt = NoteUtils.replace_tag_content('head', txt, self.head)
 
         # hot
-        txt = ReadmeUtils.replace_tag_content('hot', txt, self.hot_toc)
+        txt = NoteUtils.replace_tag_content('hot', txt, self.hot_toc)
 
         # tags toc
         for tag_type, info in self.type2tags.items():
-            txt = ReadmeUtils.replace_tag_content(tag_type, txt, info.toc)
+            txt = NoteUtils.replace_tag_content(tag_type, txt, info.toc)
 
         # problems toc
-        txt = ReadmeUtils.replace_tag_content('problems', txt, self.problems_toc)
+        txt = NoteUtils.replace_tag_content('problems', txt, self.problems_toc)
 
         # update problems relate
         for p in self.problems:

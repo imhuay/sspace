@@ -10,12 +10,12 @@ Subject:
 """
 from __future__ import annotations
 
-import os
-import re
 # import sys
 import json
-# import unittest
+import os
+import re
 
+# import unittest
 # from typing import *
 # from collections import defaultdict
 from pathlib import Path
@@ -57,12 +57,12 @@ def yaml_info(info):
 
 
 def process(fp):
-    from readme.utils import ReadmeUtils
+    from readme.utils import NoteUtils
     with fp.open(encoding='utf8') as f:
         txt = f.read()
     # info_str = RE_INFO.search(txt).group(1)
     # info = json.loads(info_str)
-    info_str = ReadmeUtils.get_annotation_info(txt)
+    info_str = NoteUtils.get_annotation_info(txt)
     try:
         info = yaml.safe_load(info_str)
     except:  # noqa

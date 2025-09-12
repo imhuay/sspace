@@ -9,7 +9,7 @@ Transformer 常见面试问题
 <!--info
 date: 2022-06-08 10:35:25
 top: false
-draft: false
+draft: true
 hidden: false
 tag: [dl_bert]
 -->
@@ -19,21 +19,21 @@ tag: [dl_bert]
     - [RNN](#rnn)
     - [CNN](#cnn)
     - [Transformer](#transformer)
-    - [Transformer 能完全取代 RNN 吗? ](#transformer-能完全取代-rnn-吗)
+    - [Transformer 能完全取代 RNN 吗?](#transformer-能完全取代-rnn-吗)
 - [Transformer 中各模块的作用](#transformer-中各模块的作用)
     - [QKV Projection](#qkv-projection)
-        - [为什么在 Attention 之前要对 Q/K/V 做一次投影? ](#为什么在-attention-之前要对-qkv-做一次投影)
+        - [为什么在 Attention 之前要对 Q/K/V 做一次投影?](#为什么在-attention-之前要对-qkv-做一次投影)
     - [Self-Attention](#self-attention)
-        - [为什么要使用多头? ](#为什么要使用多头)
-        - [为什么 Transformer 中使用的是乘性 Attention (点积), 而不是加性 Attention? ](#为什么-transformer-中使用的是乘性-attention点积而不是加性-attention)
-        - [Attention 计算中 Scaled 操作的目的是什么? ](#attention-计算中-scaled-操作的目的是什么)
-        - [在 Softmax 之前加上 Mask 的作用是什么? ](#在-softmax-之前加上-mask-的作用是什么)
+        - [为什么要使用多头?](#为什么要使用多头)
+        - [为什么 Transformer 中使用的是乘性 Attention (点积), 而不是加性 Attention?](#为什么-transformer-中使用的是乘性-attention-点积-而不是加性-attention)
+        - [Attention 计算中 Scaled 操作的目的是什么?](#attention-计算中-scaled-操作的目的是什么)
+        - [在 Softmax 之前加上 Mask 的作用是什么?](#在-softmax-之前加上-mask-的作用是什么)
     - [Add \& Norm](#add--norm)
-        - [加入残差的作用是什么? ](#加入残差的作用是什么)
-        - [加入 LayerNorm 的作用是什么? ](#加入-layernorm-的作用是什么)
+        - [加入残差的作用是什么?](#加入残差的作用是什么)
+        - [加入 LayerNorm 的作用是什么?](#加入-layernorm-的作用是什么)
         - [Pre-LN 和 Post-LN 的区别](#pre-ln-和-post-ln-的区别)
     - [Feed-Forward Network](#feed-forward-network)
-        - [FFN 层的作用是什么? ](#ffn-层的作用是什么)
+        - [FFN 层的作用是什么?](#ffn-层的作用是什么)
         - [FFN 中激活函数的选择](#ffn-中激活函数的选择)
 - [BERT 相关面试题](#bert-相关面试题)
 - [参考资料](#参考资料)

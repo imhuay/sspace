@@ -1,4 +1,4 @@
-Transformer 梳理
+Transformer 模型架构
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&label_color=gray&color=lightsteelblue&style=flat-square)
@@ -6,6 +6,7 @@ Transformer 梳理
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
+toc_title: 模型架构
 top: false
 draft: false
 hidden: false
@@ -124,6 +125,7 @@ tag: [dl_transformer]
 
 
 ### 正弦位置编码
+> Sinusoidal position encoding
 
 - **背景/动机**: 自注意力机制具有 **置换不变/等变性**; 因此需要显式地注入 **位置信息** 来区分不同顺序的序列;
 - **方法**: 为输入嵌入 (Input Embedding) 添加一个包含位置信息的编码
@@ -148,4 +150,4 @@ tag: [dl_transformer]
 
 
 ## 面试问题整理
-> [Transformer面试题库](./Transformer面试题库.md)
+> [Transformer面试题](./Transformer面试题.md)

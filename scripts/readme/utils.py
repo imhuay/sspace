@@ -32,6 +32,22 @@ if TYPE_CHECKING:
     from .notes import Note
 
 logger = get_logger()
+_md = MarkdownIt('commonmark')
+
+
+@dataclass
+class KeywordSection:
+    """"""
+
+    name: str = ''
+    head_name: str = ''
+    content: str = ''
+
+    _keyword: str = ''
+
+    @property
+    def slugify_name(self):
+        return MarkdownUtils.slugify(self.head_name)
 
 
 class MarkdownUtils:
@@ -56,7 +72,6 @@ class MarkdownUtils:
             3. 全部转小写（与 toLowerCase 等价）
             4. 将空格替换为连字符
         """
-        _md = MarkdownIt('commonmark')
 
         def _md_inline_to_plain_text(text: str) -> str:
             """
@@ -99,22 +114,9 @@ class MarkdownUtils:
 
         result = []
         for link_text, link_url in matches:
-            result.append(
-                {'text': link_text.strip(), 'url': link_url.strip(), 'full': f'[{link_text}]({link_url})'}
-            )
+            result.append({'text': link_text.strip(), 'url': link_url.strip(), 'full': f'[{link_text}]({link_url})'})
 
         return result
-
-    @staticmethod
-    def get_head_title(head: str) -> str:
-        """从 Markdown 标题中提取纯文本内容，去除标题标记和内联格式"""
-        # 使用 Markdown-It 解析器
-        md = MarkdownIt()
-        tokens = md.parse(head)
-        for t in tokens:
-            if t.type == 'inline':
-                return t.content
-        return ''
 
     @staticmethod
     def norm_text(text: str) -> str:
@@ -204,7 +206,7 @@ class MarkdownUtils:
                 print()
 
 
-class ReadmeUtils:
+class NoteUtils:
     BJS = timezone(
         timedelta(hours=8),
         name='Asia/Beijing',
@@ -219,18 +221,18 @@ class ReadmeUtils:
     @staticmethod
     def git_add(fp: Path):
         """不再使用，通过 git add -u 代替"""
-        command = ReadmeUtils.GIT_ADD_TEMP.format(fp=fp.resolve())
+        command = NoteUtils.GIT_ADD_TEMP.format(fp=fp.resolve())
         code = os.system(command)
-        ReadmeUtils._log_command(code, command)
+        NoteUtils._log_command(code, command)
 
     GIT_MV_TEMP = 'git mv "{old_fp}" "{new_fp}"'
 
     @staticmethod
     def git_mv(old_fp: Path, new_fp: Path):
-        ReadmeUtils.git_add(old_fp)
-        command = ReadmeUtils.GIT_MV_TEMP.format(old_fp=old_fp.resolve(), new_fp=new_fp.resolve())
+        NoteUtils.git_add(old_fp)
+        command = NoteUtils.GIT_MV_TEMP.format(old_fp=old_fp.resolve(), new_fp=new_fp.resolve())
         code = os.system(command)
-        ReadmeUtils._log_command(code, command)
+        NoteUtils._log_command(code, command)
 
     @staticmethod
     def _log_command(code, command):
@@ -262,21 +264,21 @@ class ReadmeUtils:
 
     @staticmethod
     def get_first_commit_date(fp, fmt='%Y-%m-%d %H:%M:%S') -> str:
-        _, date_str = subprocess.getstatusoutput(f'{ReadmeUtils.TEMP_GIT_LOG_FOLLOW.format(fp=fp)} | tail -1')
-        return ReadmeUtils.get_date_str(date_str, fmt)
+        _, date_str = subprocess.getstatusoutput(f'{NoteUtils.TEMP_GIT_LOG_FOLLOW.format(fp=fp)} | tail -1')
+        return NoteUtils.get_date_str(date_str, fmt)
 
     @staticmethod
     def get_last_commit_date(fp, fmt='%Y-%m-%d %H:%M:%S') -> str:
-        _, date_str = subprocess.getstatusoutput(f'{ReadmeUtils.TEMP_GIT_LOG_FOLLOW.format(fp=fp)} | head -1')
-        return ReadmeUtils.get_date_str(date_str, fmt)
+        _, date_str = subprocess.getstatusoutput(f'{NoteUtils.TEMP_GIT_LOG_FOLLOW.format(fp=fp)} | head -1')
+        return NoteUtils.get_date_str(date_str, fmt)
 
     @staticmethod
     def get_date_str(iso_date_str: str, fmt):
         if not iso_date_str:
-            dt = datetime.now(ReadmeUtils.BJS)
+            dt = datetime.now(NoteUtils.BJS)
         else:
             dt = datetime.fromisoformat(iso_date_str)
-            dt.astimezone(ReadmeUtils.BJS)
+            dt.astimezone(NoteUtils.BJS)
         return dt.strftime(fmt)
 
     # @staticmethod
@@ -296,25 +298,25 @@ class ReadmeUtils:
     TEMP_BADGE_URL = 'https://img.shields.io/static/v1?{}'
 
     @staticmethod
-    def get_tag_begin(tag):
-        return ReadmeUtils.SECTION_START.format(tag=tag)
+    def get_section_begin(tag):
+        return NoteUtils.SECTION_START.format(tag=tag)
 
     @staticmethod
-    def get_tag_end(tag):
-        return ReadmeUtils.SECTION_END.format(tag=tag)
+    def get_section_end(tag):
+        return NoteUtils.SECTION_END.format(tag=tag)
 
     @staticmethod
-    def replace_tag_content(tag, txt, content) -> str:
+    def replace_tag_content(tag, txt, content, count=1) -> str:
         """"""
-        re_pattern = ReadmeUtils._get_section_re_pattern(tag)
-        repl = f'{ReadmeUtils.get_tag_begin(tag)}\n{content}\n{ReadmeUtils.get_tag_end(tag)}'
-        return re_pattern.sub(repl, txt, count=1)
+        re_pattern = NoteUtils._get_section_re_pattern(tag)
+        repl = f'{NoteUtils.get_section_begin(tag)}\n{content}\n{NoteUtils.get_section_end(tag)}'
+        return re_pattern.sub(repl, txt, count=count)
 
     @staticmethod
     def get_last_modify_badge_url(fp: Path, color: str = 'thistle') -> str:
-        return ReadmeUtils.get_badge(
+        return NoteUtils.get_badge(
             label='last modify',
-            message=ReadmeUtils.get_last_commit_date(fp),
+            message=NoteUtils.get_last_commit_date(fp),
             color=color,
             style='flat-square',
         )
@@ -325,7 +327,7 @@ class ReadmeUtils:
             date_s = '-'.join(fp.relative_to(args.fp_notes_archives).parts[:2]) + '-xx'
         else:
             date_s = date.strftime('%Y-%m-%d')
-        return ReadmeUtils.get_badge(
+        return NoteUtils.get_badge(
             label='create date',
             message=date_s,
             color=color,
@@ -345,50 +347,50 @@ class ReadmeUtils:
         }
         parameters.update(options)
         # parameters = {k: quote(str(v)) for k, v in parameters.items()}
-        badge_url = ReadmeUtils.TEMP_BADGE_URL.format('&'.join([f'{k}={v}' for k, v in parameters.items()]))
+        badge_url = NoteUtils.TEMP_BADGE_URL.format('&'.join([f'{k}={v}' for k, v in parameters.items()]))
         if url is None:
             return f'![{label}]({badge_url})'
         else:
             return f'[![{label}]({badge_url})]({url})'
 
     @staticmethod
-    def get_tag_content(tag, txt) -> str | None:
+    def get_section_content(name, txt) -> str | None:
         """
-        <!--START_SECTION:{tag}-->
+        <!--START_SECTION:{name}-->
         <content>
-        <!--END_SECTION:{tag}-->
+        <!--END_SECTION:{name}-->
         """
-        re_pattern = ReadmeUtils._get_section_re_pattern(tag)
+        re_pattern = NoteUtils._get_section_re_pattern(name)
         m = re_pattern.search(txt)
         if not m:
             return None
         return m.group(1).strip()
 
     @staticmethod
-    def findall_tag_content(tag, txt) -> list[str]:
+    def findall_section(name, txt) -> list[str]:
         """
-        <!--START_SECTION:{tag}-->
+        <!--START_SECTION:{name}-->
         <content>
-        <!--END_SECTION:{tag}-->
+        <!--END_SECTION:{name}-->
         """
-        re_pattern = ReadmeUtils._get_section_re_pattern(tag)
+        re_pattern = NoteUtils._get_section_re_pattern(name)
         return [m.group(1).strip() for m in re_pattern.finditer(txt) if m]
 
     @staticmethod
     def _get_section_re_pattern(tag):
         return re.compile(
-            rf'{ReadmeUtils.get_tag_begin(tag)}(.*?){ReadmeUtils.get_tag_end(tag)}',
+            rf'{NoteUtils.get_section_begin(tag)}(.*?){NoteUtils.get_section_end(tag)}',
             flags=re.DOTALL,
         )
 
     @staticmethod
-    def get_annotation(tag, txt) -> str | None:
+    def get_annotation(name, txt) -> str | None:
         """
-        <!--<tag>
+        <!--<name>
         <info>
         -->
         """
-        re_pattern = re.compile(ReadmeUtils.SECTION_ANNOTATION.format(tag=tag), flags=re.DOTALL)
+        re_pattern = re.compile(NoteUtils.SECTION_ANNOTATION.format(tag=name), flags=re.DOTALL)
         m = re_pattern.search(txt)
         if m:
             return m.group(1).strip()
@@ -397,17 +399,39 @@ class ReadmeUtils:
     @staticmethod
     def get_annotation_info(txt) -> str | None:
         """"""
-        return ReadmeUtils.get_annotation('info', txt)
+        return NoteUtils.get_annotation('info', txt)
 
     @staticmethod
     def get_annotation_info_v2(note: Note) -> dict:
         """"""
-        info_str = ReadmeUtils.get_annotation_info(note.text)
+        info_str = NoteUtils.get_annotation_info(note.text)
         if info_str is None:
             # raise ValueError(f'Note info not found: {note.path}')
             return dict()
         info = yaml.safe_load(info_str)
         return info
+
+    @staticmethod
+    def parse_keyword_section(txt: str) -> KeywordSection:
+        """从 Markdown 标题中提取纯文本内容，去除标题标记和内联格式"""
+        # 使用 Markdown-It 解析器
+        tokens = _md.parse(txt)
+        section = KeywordSection(content=txt)
+
+        is_heading = False
+        for t in tokens:
+            if t.type == 'html_block':
+                info_str = NoteUtils.get_annotation('keyword_info', t.content)
+                info = yaml.safe_load(info_str) if info_str else {}
+                section.name = info.get('name', '')
+            if t.type == 'heading_open':
+                is_heading = True
+            elif t.type == 'heading_close':
+                is_heading = False
+            elif is_heading and t.type == 'inline':
+                section.head_name = t.content
+
+        return section
 
 
 @dataclass
