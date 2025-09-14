@@ -305,7 +305,7 @@ class Note:
         title = self.title if self.info.toc_title is None else self.info.toc_title
         if self.keywords:
             keywords = ', '.join([f'[{k.name}]({rel_path}#{k.slugify_name})' for k in self.keywords])
-            return f'- [{title}]({rel_path})\n  > {keywords}'
+            return f'- [{title}]({rel_path})\n  > _{keywords}_'
         else:
             return f'- [{title}]({rel_path})'
 
