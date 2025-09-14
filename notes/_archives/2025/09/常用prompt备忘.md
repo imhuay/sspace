@@ -1,10 +1,8 @@
 常用 prompt 备忘
 ===
 <!--START_SECTION:badge-->
-
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-10%2010%3A00%3A24&label_color=gray&color=thistle&style=flat-square)
-
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-13%2003%3A09%3A18&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-03 10:26:05

@@ -54,7 +54,8 @@
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown简历工具.md)
-- [`2025-09-05` Transformer 梳理](notes/_archives/2025/09/Transformer梳理/README.md)
+- [`2025-09-09` 位置编码 (Position Encoding)](notes/_archives/2025/09/Transformer梳理/位置编码.md)
+- [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer梳理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md)
 - [`2025-08-21` 复合词检测](notes/_archives/2025/08/复合词检测.md)
 - [`2025-08-08` VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
@@ -68,7 +69,6 @@
 - [`2025-07-08` 综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md)
 - [`2025-07-08` 类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md)
 - [`2025-07-08` 电商领域的 NER](notes/_archives/2022/12/电商NER.md)
-- [`2025-07-08` 电商搜索](notes/_archives/2022/12/电商搜索.md)
 
 <!--END_SECTION:recent-->
 
@@ -222,14 +222,15 @@ Git        0 secs          -------------------------   00.04 %
 
 ### Transformer 🤖
 
-- [Transformer 梳理](notes/_archives/2025/09/Transformer梳理/README.md)
-  - [Transformer 面试问题整理](notes/_archives/2025/09/Transformer梳理/Transformer面试题库.md)
-  - [位置编码 ⏳](notes/_archives/2025/09/Transformer梳理/位置编码.md)
+- [模型架构](notes/_archives/2025/09/Transformer梳理/README.md)
+  - [位置编码 (PE)](notes/_archives/2025/09/Transformer梳理/位置编码.md)
+- [面试问题整理](notes/_archives/2025/09/Transformer梳理/Transformer面试题.md)
+  - [位置编码专题](notes/_archives/2025/09/Transformer梳理/Transformer面试题-位置编码.md)
 
 <!-- omit in toc -->
 #### BERT
 
-- [Transformer 常见面试问题](notes/_archives/2022/05/Transformer常见问题.md)
+- [Transformer 常见面试问题 ⏳](notes/_archives/2022/05/Transformer常见问题.md)
 - [Transformer Wiki ⏳](notes/_archives/2022/05/TransformerWiki.md)
 - [BERT + CRF 备忘 ⏳](notes/_archives/2022/04/bert_crf备忘.md)
 
@@ -379,7 +380,7 @@ Git        0 secs          -------------------------   00.04 %
 ### Machine Learning
 
 - [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md)
-  > 归纳偏置
+  > [归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias)
 - [XGBoost 学习笔记 ⏳](notes/_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md)
 
@@ -580,7 +581,7 @@ Git        0 secs          -------------------------   00.04 %
 
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md)
 - [算法面试问题收录 ⏳](notes/_archives/2025/09/算法面试问题收录.md)
-  > Transformer, LLM
+  > [](notes/_archives/2025/09/算法面试问题收录.md#transformer), [](notes/_archives/2025/09/算法面试问题收录.md#llm)
 - [算法面试笔记](notes/_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法)](notes/_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER](notes/_archives/2022/12/电商NER.md)
@@ -597,6 +598,8 @@ Git        0 secs          -------------------------   00.04 %
 - [常见的文本相似度计算](notes/_archives/2022/12/文本相似度计算.md)
 - [实验报告模板](notes/_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念](notes/_archives/2022/04/实体链接/实体链接相关概念.md)
+- [面试问题整理](notes/_archives/2025/09/大模型微调/大模型微调面试问题整理.md)
+- [大模型微调](notes/_archives/2025/09/大模型微调/README.md)
 - [多轮MRC信息抽取的优缺点 ⏳](notes/_archives/2025/08/多轮MRC信息抽取的优缺点.md)
 - [基于用户行为数据的同义词挖掘方法 (英文)](notes/_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
 - [基于 SQL 计算信息熵与信息增益](notes/_archives/2023/01/sql-计算信息熵与信息增益.md)
