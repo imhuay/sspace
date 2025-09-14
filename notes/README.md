@@ -227,7 +227,7 @@ Notes
 ### Machine Learning
 
 - [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
-  > [归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias)
+  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias)_
 - [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
 
@@ -428,7 +428,7 @@ Notes
 
 - [Python Wiki](_archives/2025/08/python_wiki.md)
 - [算法面试问题收录 ⏳](_archives/2025/09/算法面试问题收录.md)
-  > [](_archives/2025/09/算法面试问题收录.md#transformer), [](_archives/2025/09/算法面试问题收录.md#llm)
+  > _[](_archives/2025/09/算法面试问题收录.md#transformer), [](_archives/2025/09/算法面试问题收录.md#llm)_
 - [算法面试笔记](_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法)](_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER](_archives/2022/12/电商NER.md)
