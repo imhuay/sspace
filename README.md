@@ -627,6 +627,8 @@ Git        0 secs          -------------------------   00.04 %
 - [Node.js 环境搭建](notes/_archives/2022/12/nodejs环境.md)
 - [NLP 领域术语 Wiki](notes/_archives/2022/12/nlp_wiki.md)
 - [Mac 环境配置](notes/_archives/2022/07/Mac环境配置.md)
+- [LoRA](notes/_archives/2025/09/大模型微调/LoRA.md)
+  > _[~~QLoRA~~](notes/_archives/2025/09/大模型微调/LoRA.md#)_
 - [Label Studio 使用记录](notes/_archives/2022/12/label-studio使用记录.md)
 - [LLM 训练方案整理](notes/_archives/2023/06/llm训练方案整理.md)
 - [LLM 应用收集](notes/_archives/2023/06/llm应用收集.md)
