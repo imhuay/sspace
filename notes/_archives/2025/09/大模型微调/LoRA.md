@@ -12,11 +12,11 @@ draft: false
 hidden: true
 section_number: false
 level: 0
-tag: []
+tag: [llm]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: LoRA*
+> ***Keywords**: [PEFT](./PEFT.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -24,7 +24,9 @@ tag: []
 
 <!--START_SECTION:toc-->
 - [基础概念](#基础概念)
-- [实践细节](#实践细节)
+    - [实现思路](#实现思路)
+    - [实践细节](#实践细节)
+    - [结构改进](#结构改进)
 - [变体](#变体)
     - [QLoRA](#qlora)
     - [AdaLoRA](#adalora)
@@ -48,19 +50,24 @@ tag: []
         $$
         其中 $B \in \mathbb{R}^{d_{\text{out}} \times r}, \quad A \in \mathbb{R}^{r \times d_{\text{in}}}$, 且 **秩** $r \ll \min(d_{\text{out}}, d_{\text{in}})$
     - **这个假设被实践证明是正确的**;
-- **具体做法/思路**:
-    - 基于上述 **低秩假设**, 对需要微调的 **线性层** (如 `nn.Linear`), **冻结其原始权重** $W_0$, **不直接计算其更新** $\Delta W_0 \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$;
-    - 而是 **参数化** 两个小矩阵 $B \in \mathbb{R}^{d_{\text{out}} \times r}$ 和 $A \in \mathbb{R}^{r \times d_{\text{in}}}$, 且 $r \ll \min(d_{\text{out}}, d_{\text{in}})$;
-    - 然后通过 **旁路** 的方式学习一个低秩更新矩阵 $\Delta W = B \cdot A$, **间接模拟权重更新**;
-    - **推理时**, 将低秩更新与原始权重合并/相加;
-        - 为了在改变秩 $r$ 时灵活调整更新量/**控制更新幅度**, **避免重新调整学习率等训练超参**, 还会引入一个缩放因子 $\frac{\alpha}{r}$ 作用于低秩通路的输出 (**软约束**);
-        - **前向过程** 为:
-        $$
-        h = Wx + \frac{\alpha}{r} \Delta W x = Wx + \frac{\alpha}{r}B(Ax)
-        $$
 
-## 实践细节
+### 实现思路
 
+- 基于上述 **低秩假设**, 对需要微调的 **线性层** (如 `nn.Linear`), **冻结其原始权重** $W_0$, **不直接计算其更新** $\Delta W_0 \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$;
+- 而是 **参数化** 两个小矩阵 $B \in \mathbb{R}^{d_{\text{out}} \times r}$ 和 $A \in \mathbb{R}^{r \times d_{\text{in}}}$, 且 $r \ll \min(d_{\text{out}}, d_{\text{in}})$;
+- 然后通过 **旁路** 的方式学习一个低秩更新矩阵 $\Delta W = B \cdot A$, **间接模拟权重更新**;
+- **推理时**, 将低秩更新与原始权重合并/相加;
+    - 为了在改变秩 $r$ 时灵活调整更新量/**控制更新幅度**, **避免重新调整学习率等训练超参**, 还会引入一个缩放因子 $\frac{\alpha}{r}$ 作用于低秩通路的输出 (**软约束**);
+        > 其中 $\alpha$ 用于控制整体更新强度, $1/r$ 用于 **抵消秩带来的线性放大效应**;
+    - **前向过程** 为:
+    $$
+    h = Wx + \frac{\alpha}{r} \Delta W x = Wx + \frac{\alpha}{r}B(Ax)
+    $$
+
+### 实践细节
+
+- **代码示例**:
+    - [LoRA](./code/lora.py)
 - **初始化策略**:
     $$
     \Delta W = B \cdot A
@@ -78,8 +85,9 @@ tag: []
     - dropout:
         - LoRA 路径上的 dropout, 缓解过拟合 (如 0.05–0.2);
 - **放置位置**:
-    - **注意力子层**: $W_q, W_k, W_v, W_o$; 实践上分配到多处通常优于集中在单一矩阵;
-    - **MLP 子层:** gate/up/down 投影;
+    - **注意力层**: $W_q, W_v$ (原论文) 或 $W_q, W_k, W_v, W_o$; 
+        > 实践上分配到多处通常优于集中在单一矩阵;
+    - **MLP 层:** $W_{up}, W_{down}, W_{gate}$;
         > LLaMA 中的 MLP 使用 **SwiGLU** 激活函数, 有三个子层:
         >> $\text{MLP}(x) = W_{\text{down}} \cdot (\text{Swish}(xW_{\text{gate}}) \otimes (xW_{\text{up}}))$
     - **归一化与嵌入层:** 很少, 主流收益集中在注意力与 MLP 层;
@@ -88,12 +96,44 @@ tag: []
     \frac{r \times (d_{\text{in}}+d_{\text{out}})}{d_{\text{out}} \times d_{\text{in}}}
     $$
 - **合并与可拔插**:
-    - 推理时可将 $\Delta W$ 合并进 $W$ 得到 $W' = W + \frac{\alpha}{r} BA$, 不增加推理延迟; 也可保持 **可拔插** 以多任务切换;
+    - 推理时可将 $\Delta W$ 合并进 $W$ 得到 $W' = W + \dfrac{\alpha}{r} BA$, 不增加推理延迟; 也可保持 **可拔插** 以多任务切换;
+
+### 结构改进
+> 改进 LoRA 结构的 **核心** 是在不显著增加参数与算力的前提下 **扩展可调维度与控制粒度**, 通过分头分组、正则与门控等手段稳态放大表达空间, 更接近全参微调效果;
+
+- **分组 LoRA**:
+    - **思路**: 将大矩阵按 **维度/轴** 分块, 对每个分组独立应用低秩分解, 提升低秩近似的灵活性;
+    - **前向公式**:
+        $$
+        \begin{aligned}
+            W & = \lbrack W^{(1)}; \dots; W^{(G)} \rbrack \\
+            \Delta W & = \lbrack \Delta W^{(1)}; \dots; \Delta W^{(G)} \rbrack \\
+            \Delta W^{(g)} & = \dfrac{\alpha_g}{r_g} \cdot B^{(g)} A^{(g)} \\
+        \end{aligned}
+        $$
+    - **细节**:
+        - 组间参数独立初始化;
+    - **收益与风险**:
+        - 提升表达灵活性, 参数利用率高; 过拟合;
+    - **代码**:
+        - [group_lora](./code/group_lora.py)
+- **分头 LoRA**:
+    - 分组 LoRA 的一种特殊情况, 对 `head` 维进行分组;
+- **门控 LoRA**:
+    - **思路**: 为 LoRA 分支增加一个 **可学习的** 标量或向量门 $g$, 控制注入强度与时机
+    - **前向公式**:
+        $$
+        h = Wx + g \cdot \dfrac{\alpha}{r} \cdot B (Ax)
+        $$
+    - **收益与风险**:
+        - 提升稳定性与可控性; 过强的门稀疏可能造成欠拟合, 需配合学习率与正则退火;
+
 
 ## 变体
 
 ### QLoRA
-> 基座权重量化到 4-bit (如 NF4), LoRA 在低精度基座上训练, 极致节省显存;
+> - 在 LoRA 基础上加了 **权重量化**, 显存占用更低; 
+> - 基座权重量化到 4-bit (如 NF4), LoRA 在低精度基座上训练, 极致节省显存;
 
 ### AdaLoRA
 > 动态分配每层 rank, 将容量预算投向更 "重要" 的层;

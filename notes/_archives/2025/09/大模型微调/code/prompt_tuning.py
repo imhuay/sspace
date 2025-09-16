@@ -169,7 +169,7 @@ if __name__ == '__main__':
     labels = torch.randint(0, vocab_size, (B, T))
     attn_mask = torch.ones(B, 1, 1, T)  # 全可见；如需因果，请改造成因果 mask 并同步扩展 P
 
-    for step in range(10):
+    for step in range(5):
         logits, loss = model(input_ids, attn_mask=attn_mask, labels=labels)
         optimizer.zero_grad()
         loss.backward()

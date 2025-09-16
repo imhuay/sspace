@@ -183,7 +183,7 @@ if __name__ == '__main__':
     # 演示用全可见 mask；若做自回归建模，可构造因果掩码并在每层扩展
     attn_mask = torch.ones(B, 1, 1, T)
 
-    for step in range(10):
+    for step in range(5):
         logits, loss = model(input_ids, attn_mask, labels)
         optimizer.zero_grad()
         loss.backward()
