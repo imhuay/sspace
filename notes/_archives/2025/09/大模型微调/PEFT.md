@@ -2,11 +2,11 @@ PEFT (Parameter-Efficient Fine-Tuning)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-16&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-16%2013%3A09%3A55&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-17%2000%3A32%3A34&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-16 18:31:31
-toc_title: PEFT
+toc_title: PEFT 整理
 top: false
 draft: false
 hidden: true
@@ -23,20 +23,17 @@ tag: [llm]
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [背景](#背景)
-- [LoRA 及其变体](#lora-及其变体)
+- [LoRA](#lora)
 - [Adapter](#adapter)
-- [Prompt/Prefix Tuning](#promptprefix-tuning)
+- [Prefix/Prompt Tuning](#prefixprompt-tuning)
 - [P-Tuning V1/V2](#p-tuning-v1v2)
 - [BitFit (Bias Fine-Tuning)](#bitfit-bias-fine-tuning)
 <!--END_SECTION:toc-->
 
 ---
 
-## 背景
-
-## LoRA 及其变体
-> [LoRA](./LoRA.md#实现思路)
+## LoRA
+> [LoRA 及其变体](./LoRA.md)
 
 - **基本思路**:
     - 对需要微调的 **线性层** (如 `nn.Linear`), 冻结其原始权重 $W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$, 引入一个 **低秩更新矩阵** $\Delta W$, 用两个小矩阵参数化
@@ -57,12 +54,11 @@ tag: [llm]
 - **代码 Demo**
     - [Adapter](./code/adapter.py)
 
-## Prompt/Prefix Tuning
-> **参数注入位置** 不同
+## Prefix/Prompt Tuning
 
 - **思路**:
-    - Prompt Tuning 仅在 **输入嵌入层** 前拼接可训练的软提示向量;
     - Prefix Tuning 在 **Transformer 每一层的注意力机制** 中, 为 Key/Value 拼接可训练的 **前缀向量**;
+    - Prompt Tuning 仅在 **输入嵌入层** 前拼接可训练的软提示向量;
 - **代码 Demo**
     - [Prefix Tuning](./code/prefix_tuning.py)
     - [Prompt Tuning](./code/prompt_tuning.py)

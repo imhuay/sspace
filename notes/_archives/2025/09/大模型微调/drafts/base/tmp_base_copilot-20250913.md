@@ -2,7 +2,7 @@
 我正在准备有关 大模型微调 的面试, 请帮我尽可能详细的罗列相关知识点;
 然后准备一份尽可能全的面试问题清单, 注意清单中所有问题的答案要尽可能在知识点中直接找到或推理得到, 并附上可能得追问;
 ```
-> [Microsoft Copilot: 你的 AI 助手](https://copilot.microsoft.com/chats/8MR1M88y29mMgBdwbQ2Ae)
+> https://copilot.microsoft.com/chats/8MR1M88y29mMgBdwbQ2Ae
 
 # 大模型微调知识图谱
 

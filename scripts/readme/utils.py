@@ -39,11 +39,29 @@ _md = MarkdownIt('commonmark')
 class KeywordSection:
     """"""
 
+    content: str
     name: str = ''
     head_name: str = ''
-    content: str = ''
 
     _keyword: str = ''
+
+    def __post_init__(self):
+        tokens = _md.parse(self.content)
+        is_heading = False
+        for t in tokens:
+            if t.type == 'html_block':
+                info_str = NoteUtils.get_annotation('keyword_info', t.content)
+                info = yaml.safe_load(info_str) if info_str else {}
+                self.name = info.get('name', '')
+            if t.type == 'heading_open':
+                is_heading = True
+            elif t.type == 'heading_close':
+                is_heading = False
+            elif is_heading and t.type == 'inline':
+                self.head_name = t.content
+
+        if not self.name:
+            self.name = self.head_name
 
     @property
     def slugify_name(self):
@@ -412,25 +430,10 @@ class NoteUtils:
         return info
 
     @staticmethod
-    def parse_keyword_section(txt: str) -> KeywordSection:
+    def get_keyword_section(txt: str) -> KeywordSection:
         """从 Markdown 标题中提取纯文本内容，去除标题标记和内联格式"""
         # 使用 Markdown-It 解析器
-        tokens = _md.parse(txt)
-        section = KeywordSection(content=txt)
-
-        is_heading = False
-        for t in tokens:
-            if t.type == 'html_block':
-                info_str = NoteUtils.get_annotation('keyword_info', t.content)
-                info = yaml.safe_load(info_str) if info_str else {}
-                section.name = info.get('name', '')
-            if t.type == 'heading_open':
-                is_heading = True
-            elif t.type == 'heading_close':
-                is_heading = False
-            elif is_heading and t.type == 'inline':
-                section.head_name = t.content
-
+        section = KeywordSection(txt)
         return section
 
 

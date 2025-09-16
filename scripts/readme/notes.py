@@ -207,10 +207,10 @@ class Note:
             return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
 
     @property
-    def keywords(self) -> list[KeywordSection] | None:
+    def keywords(self) -> list[KeywordSection]:
         if self._keywords is None:
             keywords = NoteUtils.findall_section('keyword', self.text)
-            self._keywords = [NoteUtils.parse_keyword_section(k) for k in keywords]
+            self._keywords = [NoteUtils.get_keyword_section(k) for k in keywords]
         return self._keywords
 
     @property
@@ -222,10 +222,7 @@ class Note:
 
     @property
     def text(self) -> str:
-        if self._text:
-            return self._text
-        else:
-            raise ValueError(f'Note text is None: {self.path}')
+        return self._text
 
     @property
     def title(self):
@@ -300,16 +297,6 @@ class Note:
         return self.info.tag
 
     @property
-    def tag_toc_line(self) -> str:
-        rel_path = self.path.relative_to(args.fp_notes)
-        title = self.title if self.info.toc_title is None else self.info.toc_title
-        if self.keywords:
-            keywords = ', '.join([f'[{k.name}]({rel_path}#{k.slugify_name})' for k in self.keywords])
-            return f'- [{title}]({rel_path})\n  > _{keywords}_'
-        else:
-            return f'- [{title}]({rel_path})'
-
-    @property
     def paper_title(self):
         if self._paper_title is None:
             paper_title = NoteUtils.get_section_content('paper_title', self.text)
@@ -347,6 +334,21 @@ class Note:
                     parent_notes.append(p_path)
             self._parent_paths = parent_notes
         return self._parent_paths
+
+    def get_tag_toc_line(self, deep: int) -> str:
+        def _get_toc_line(_k):
+            if _k.slugify_name:
+                return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
+            else:
+                return _k.name
+
+        rel_path = self.path.relative_to(args.fp_notes)
+        title = self.title if self.info.toc_title is None else self.info.toc_title
+        keywords = ', '.join([_get_toc_line(k) for k in self.keywords if k.name])
+        if keywords:
+            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_'
+        else:
+            return f'- [{title}]({rel_path})'
 
 
 @dataclass
@@ -536,18 +538,18 @@ class NotesBuilder(Builder):
         sort_sub_toc = []
         added = set()
 
-        def _dfs_add(note: Note, n_deep: int):
+        def _dfs_add(note: Note, deep: int):
             if note.path in added:
                 return
             added.add(note.path)
-            sort_sub_toc.append('  ' * n_deep + note.tag_toc_line)
+            sort_sub_toc.append('  ' * deep + note.get_tag_toc_line(deep + 1))
 
             # if DEBUG and n_deep > 0:
             #     print(f'{note.path}')
 
             note.sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
             for sub_note in note.sub_notes:
-                _dfs_add(sub_note, n_deep + 1)
+                _dfs_add(sub_note, deep + 1)
 
         no_par_notes = [n for n in notes if not n.par_notes]
         no_par_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
@@ -610,14 +612,14 @@ class NotesBuilder(Builder):
                 #     print(f'No tag placeholder found: {tag}: {toc}')
                 draft.extend(toc)
                 continue
-            
+
             if tag == 'paper':
                 toc_str = '\n'.join(paper_toc)
             else:
                 toc_str = '\n'.join(toc)
-                
+
             txt = txt.replace(f'{{{{{tag}}}}}', toc_str)
-            
+
         txt = txt.replace('{{draft}}', '\n'.join(draft))
         txt = re.sub(r'\{\{.*?\}\}', '', txt)
 

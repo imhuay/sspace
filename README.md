@@ -1,22 +1,22 @@
 <!-- <div style="text-align: center"> -->
 <div align="center">  <!-- style="text-align: center" 在 GitHub 主页不生效 -->
 
-# Huay's Space
+# Study Space
 
 [![wakatime](https://wakatime.com/badge/user/c840568d-e4b1-4c63-ade0-03856283d319.svg)](https://wakatime.com/@c840568d-e4b1-4c63-ade0-03856283d319)
-[![daily update](https://github.com/imhuay/space/actions/workflows/daily.yml/badge.svg?branch=master)](https://github.com/imhuay/space/actions?query=workflow:daily)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/imhuay/space?color=active)](https://github.com/imhuay/space/commits/master)
-[![GitHub issues](https://img.shields.io/github/issues/imhuay/space?color=important)](https://github.com/imhuay/space/issues)
-[![](https://visitor-badge.laobi.icu/badge?page_id=imhuay.space&right_color=green&left_text=page%20views)](https://visitor-badge.laobi.icu)
+[![daily update](https://github.com/imhuay/sspace/actions/workflows/daily.yml/badge.svg?branch=master)](https://github.com/imhuay/sspace/actions?query=workflow:daily)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/imhuay/sspace?color=active)](https://github.com/imhuay/sspace/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/imhuay/sspace?color=important)](https://github.com/imhuay/sspace/issues)
+[![](https://visitor-badge.laobi.icu/badge?page_id=imhuay.sspace&right_color=green&left_text=page%20views)](https://visitor-badge.laobi.icu)
 
 <!-- 
-[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/imhuay/space?color=inactive)](https://github.com/imhuay/space/issues?q=is:issue+is:closed)
-![clones](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/clones.svg)
-![clones per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/clones_per_week.svg)
-![views](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/views.svg)
-![views per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-space/views_per_week.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/imhuay/space?cacheSeconds=3600)](https://github.com/imhuay/space/commits)
-[![GitHub Repo stars](https://img.shields.io/github/stars/imhuay/space?style=social)](https://github.com/imhuay/space/stargazers)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/imhuay/sspace?color=inactive)](https://github.com/imhuay/sspace/issues?q=is:issue+is:closed)
+![clones](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-sspace/clones.svg)
+![clones per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-sspace/clones_per_week.svg)
+![views](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-sspace/views.svg)
+![views per week](https://raw.githubusercontent.com/imhuay/imhuay/traffic/traffic-sspace/views_per_week.svg)
+[![GitHub last commit](https://img.shields.io/github/last-commit/imhuay/sspace?cacheSeconds=3600)](https://github.com/imhuay/sspace/commits)
+[![GitHub Repo stars](https://img.shields.io/github/stars/imhuay/sspace?style=social)](https://github.com/imhuay/sspace/stargazers)
 -->
 
 </div>
