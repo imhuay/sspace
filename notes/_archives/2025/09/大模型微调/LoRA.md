@@ -2,7 +2,7 @@ LoRA (Low-Rank Adaptation)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-15%2004%3A00%3A25&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-16%2013%3A09%3A55&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-15 02:29:31
@@ -85,7 +85,7 @@ tag: [llm]
     - dropout:
         - LoRA 路径上的 dropout, 缓解过拟合 (如 0.05–0.2);
 - **放置位置**:
-    - **注意力层**: $W_q, W_v$ (原论文) 或 $W_q, W_k, W_v, W_o$; 
+    - **注意力层**: $W_q, W_v$ (原论文) 或 $W_q, W_k, W_v, W_o$;
         > 实践上分配到多处通常优于集中在单一矩阵;
     - **MLP 层:** $W_{up}, W_{down}, W_{gate}$;
         > LLaMA 中的 MLP 使用 **SwiGLU** 激活函数, 有三个子层:
@@ -132,7 +132,7 @@ tag: [llm]
 ## 变体
 
 ### QLoRA
-> - 在 LoRA 基础上加了 **权重量化**, 显存占用更低; 
+> - 在 LoRA 基础上加了 **权重量化**, 显存占用更低;
 > - 基座权重量化到 4-bit (如 NF4), LoRA 在低精度基座上训练, 极致节省显存;
 
 ### AdaLoRA

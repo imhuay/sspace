@@ -225,7 +225,7 @@ Git        0 secs          -------------------------   00.04 %
 - [模型架构](notes/_archives/2025/09/Transformer梳理/README.md)
   - [位置编码 (PE)](notes/_archives/2025/09/Transformer梳理/位置编码.md)
 - [面试问题整理](notes/_archives/2025/09/Transformer梳理/Transformer面试题.md)
-  - [位置编码专题](notes/_archives/2025/09/Transformer梳理/Transformer面试题-位置编码.md)
+  - [PE 专题](notes/_archives/2025/09/Transformer梳理/Transformer面试题-位置编码.md)
 
 <!-- omit in toc -->
 #### BERT
@@ -338,12 +338,16 @@ Git        0 secs          -------------------------   00.04 %
 
 ### LLM 🚀
 
+- [PEFT](notes/_archives/2025/09/大模型微调/PEFT.md)
+  - [LoRA](notes/_archives/2025/09/大模型微调/LoRA.md)
+  > _[~~QLoRA~~](notes/_archives/2025/09/大模型微调/LoRA.md#)_
 - [MoE 备忘](notes/_archives/2025/09/MoE备忘/README.md)
+- [面试问题整理](notes/_archives/2025/09/大模型微调/大模型微调面试问题整理.md)
 
 <!-- omit in toc -->
 #### Prompt Engineering
 
-- [常用 prompt 备忘](notes/_archives/2025/09/常用prompt备忘.md)
+- [常用 prompt 备忘](notes/_archives/2025/09/LLM助手/常用prompt备忘.md)
 - [反思 (Reflection)](notes/_archives/2025/08/Prompt工程-自反思.md)
 
 <!-- omit in toc -->
@@ -598,7 +602,7 @@ Git        0 secs          -------------------------   00.04 %
 - [常见的文本相似度计算](notes/_archives/2022/12/文本相似度计算.md)
 - [实验报告模板](notes/_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念](notes/_archives/2022/04/实体链接/实体链接相关概念.md)
-- [面试问题整理](notes/_archives/2025/09/大模型微调/大模型微调面试问题整理.md)
+- [大模型解码](notes/_archives/2025/09/大模型微调/大模型解码.md)
 - [大模型微调](notes/_archives/2025/09/大模型微调/README.md)
 - [多轮MRC信息抽取的优缺点 ⏳](notes/_archives/2025/08/多轮MRC信息抽取的优缺点.md)
 - [基于用户行为数据的同义词挖掘方法 (英文)](notes/_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
@@ -627,8 +631,6 @@ Git        0 secs          -------------------------   00.04 %
 - [Node.js 环境搭建](notes/_archives/2022/12/nodejs环境.md)
 - [NLP 领域术语 Wiki](notes/_archives/2022/12/nlp_wiki.md)
 - [Mac 环境配置](notes/_archives/2022/07/Mac环境配置.md)
-- [LoRA](notes/_archives/2025/09/大模型微调/LoRA.md)
-  > _[~~QLoRA~~](notes/_archives/2025/09/大模型微调/LoRA.md#)_
 - [Label Studio 使用记录](notes/_archives/2022/12/label-studio使用记录.md)
 - [LLM 训练方案整理](notes/_archives/2023/06/llm训练方案整理.md)
 - [LLM 应用收集](notes/_archives/2023/06/llm应用收集.md)
