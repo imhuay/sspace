@@ -1,10 +1,8 @@
 AutoPhrase 备忘
 ===
 <!--START_SECTION:badge-->
-
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-22&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-22%2003%3A35%3A56&label_color=gray&color=thistle&style=flat-square)
-
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-22 12:51:20
@@ -12,7 +10,7 @@ top: false
 draft: false
 hidden: false
 level: 2
-tag: [nlp_kg]
+tags: [nlp_kg]
 -->
 
 <!--START_SECTION:keywords-->

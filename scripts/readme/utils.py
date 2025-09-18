@@ -42,8 +42,7 @@ class KeywordSection:
     content: str
     name: str = ''
     head_name: str = ''
-
-    _keyword: str = ''
+    url: str = ''
 
     def __post_init__(self):
         tokens = _md.parse(self.content)
@@ -53,6 +52,10 @@ class KeywordSection:
                 info_str = NoteUtils.get_annotation('keyword_info', t.content)
                 info = yaml.safe_load(info_str) if info_str else {}
                 self.name = info.get('name', '')
+                if info.get('extra_url', False):
+                    links = MarkdownUtils.extract_markdown_links(self.content)
+                    if links:
+                        self.url = links[0]['url']
             if t.type == 'heading_open':
                 is_heading = True
             elif t.type == 'heading_close':

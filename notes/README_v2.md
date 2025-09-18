@@ -14,6 +14,7 @@ Notes
     - [Deep Learning](#deep-learning)
     - [NLP](#nlp)
     - [LLM 🚀](#llm-)
+        - [大模型微调](#大模型微调)
     - [Reading List 🔖](#reading-list-)
     - [Machine Learning](#machine-learning)
     - [Algorithms](#algorithms)
@@ -34,8 +35,8 @@ Notes
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
-- [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer整理/位置编码.md)
-- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer整理/README.md)
+- [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
+- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md)
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md)
@@ -49,6 +50,7 @@ Notes
 - [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 - [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
 - [`2025-07-08` 电商领域的 NER](_archives/2022/12/电商NER.md)
+- [`2025-07-08` 电商搜索](_archives/2022/12/电商搜索.md)
 
 <!--END_SECTION:recent-->
 
@@ -69,9 +71,10 @@ Notes
 
 ### Transformer 🤖
 
-- [面试问题整理](_archives/2025/09/Transformer整理/Transformer_QA.md)
-- [模型架构](_archives/2025/09/Transformer整理/README.md)
-- [位置编码 (PE)](_archives/2025/09/Transformer整理/位置编码.md)
+- [模型架构](_archives/2025/09/Transformer_整理/README.md)
+- [位置编码 (PE)](_archives/2025/09/Transformer_整理/位置编码.md)
+  > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_
+- [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md)
 
 <!-- omit in toc -->
 #### BERT
@@ -184,22 +187,26 @@ Notes
 
 ### LLM 🚀
 
+- [MoE 备忘](_archives/2025/09/MoE_备忘/README.md)
+
+#### 大模型微调
+
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
+- [偏好学习 (RLHF)](_archives/2025/09/大模型微调/偏好学习.md)
+  > _[QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_
 - [PEFT 整理](_archives/2025/09/大模型微调/PEFT.md)
   - [LoRA](_archives/2025/09/大模型微调/LoRA.md)
-    - [LoRA QA](_archives/2025/09/大模型微调/LoRA_QA.md)
-- [MoE 备忘](_archives/2025/09/MoE备忘/README.md)
+    > _[QA](_archives/2025/09/大模型微调/LoRA_QA.md)_
 - [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
 
 <!-- omit in toc -->
 #### Prompt Engineering
 
-- [常用 prompt 备忘](_archives/2025/09/Prompt记录/常用prompt备忘.md)
-- [反思 (Reflection)](_archives/2025/08/Prompt工程-自反思.md)
+- [常用 prompt 备忘](_archives/2025/09/Prompt_记录/常用_prompt_备忘.md)
+- [反思 (Reflection)](_archives/2025/08/Prompt_工程-自反思.md)
 
 <!-- omit in toc -->
-#### Reinforcement Learning
-
+<!-- #### Reinforcement Learning -->
 
 
 </td>
@@ -449,7 +456,7 @@ Notes
 - [常见的文本相似度计算](_archives/2022/12/文本相似度计算.md)
 - [实验报告模板](_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念](_archives/2022/04/实体链接/实体链接相关概念.md)
-- [大模型解码](_archives/2025/09/Transformer整理/解码.md)
+- [大模型解码](_archives/2025/09/Transformer_整理/解码.md)
 - [大模型微调](_archives/2025/09/大模型微调/README.md)
 - [多轮MRC信息抽取的优缺点 ⏳](_archives/2025/08/多轮MRC信息抽取的优缺点.md)
 - [基于用户行为数据的同义词挖掘方法 (英文)](_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
@@ -457,7 +464,6 @@ Notes
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md)
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md)
 - [偏好学习QA](_archives/2025/09/大模型微调/偏好学习_QA.md)
-- [偏好学习 (RLHF)](_archives/2025/09/大模型微调/偏好学习.md)
 - [低资源训练](_archives/2022/12/低资源训练.md)
 - [requirements.txt 语法备忘](_archives/2022/09/python-requirements语法.md)
 - [query 理解参考资料](_archives/2022/12/query理解相关阅读.md)

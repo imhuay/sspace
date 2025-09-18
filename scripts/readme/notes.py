@@ -63,7 +63,7 @@ class NoteInfo:
     hidden: bool = True
     toc_hidden: bool = False
     section_number: bool = False
-    tag: list[str] | None = None
+    tags: list[str] = field(default_factory=list)
     level: int = 0
     p_title: str | None = None
     date: datetime | None = None
@@ -71,8 +71,8 @@ class NoteInfo:
 
     def __post_init__(self):
         """"""
-        if not self.tag:
-            self.tag = ['draft']
+        if not self.tags:
+            self.tags = ['draft']
 
         # if _DEBUG and self.tag is not None:
         #     print(self.tag)
@@ -83,6 +83,7 @@ class Note:
     path: Path
     sub_notes: list[Note] = field(default_factory=list)
     par_notes: list[Note] = field(default_factory=list)
+    _tags: set[str] = field(default_factory=set)
 
     _text: str = ''
     _info: NoteInfo | None = None
@@ -105,6 +106,8 @@ class Note:
         with self.path.open(encoding='utf8') as f:
             self._text = f.read()
 
+        self._tags.update(self.info.tags)
+
         self._norm_text()
         self._update_badge()
 
@@ -115,6 +118,20 @@ class Note:
         if self._updated:
             with self.path.open('w', encoding='utf8') as f:
                 f.write(self._text)
+
+    @property
+    def tags(self) -> set[str]:
+        if 'draft' in self._tags and len(self._tags) > 1:
+            self._tags.remove('draft')
+        return self._tags
+
+    def add_sub_note(self, note: Note):
+        self.sub_notes.append(note)
+        self._tags.update(note._tags)
+
+    def add_par_note(self, note: Note):
+        self.par_notes.append(note)
+        self._tags.update(note._tags)
 
     def _norm_text(self):
         """文本规范化"""
@@ -311,12 +328,6 @@ class Note:
         return self.first_commit_date if self.sort_by_first_commit else self.last_commit_date
 
     @property
-    def tags(self) -> list[str]:
-        if self.info.tag is None:
-            return []
-        return self.info.tag
-
-    @property
     def paper_title(self):
         if self._paper_title is None:
             paper_title = NoteUtils.get_section_content('paper_title', self.text)
@@ -357,7 +368,10 @@ class Note:
 
     def get_tag_toc_line(self, deep: int) -> str:
         def _get_toc_line(_k):
-            if _k.slugify_name:
+            if _k.url:
+                url = (self.path.parent / _k.url).resolve().relative_to(args.fp_notes)
+                return f'[{_k.name}]({url})'
+            elif _k.slugify_name:
                 return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
             else:
                 return _k.name
@@ -507,8 +521,10 @@ class NotesBuilder(Builder):
                 for p_path in note.parent_paths:
                     if p_path in self.path2note:
                         p_note = self.path2note[p_path]
-                        p_note.sub_notes.append(note)
-                        note.par_notes.append(p_note)
+                        # p_note.sub_notes.append(note)
+                        p_note.add_sub_note(note)
+                        # note.par_notes.append(p_note)
+                        note.add_par_note(p_note)
                     else:
                         raise ValueError(f'Parent note not found: {p_path}')
 
@@ -551,7 +567,7 @@ class NotesBuilder(Builder):
             f.write(txt)
 
     @staticmethod
-    def _get_sort_sub_toc(notes: list[Note]) -> list[str]:
+    def _get_sort_sub_toc(notes: list[Note], tag: str) -> list[str]:
         """"""
         # sorted_by_level = sorted(notes, key=lambda x: (x.info.level,), reverse=True)
 
@@ -564,22 +580,28 @@ class NotesBuilder(Builder):
             if note.path in added:
                 return
             added.add(note.path)
-            sort_sub_toc.append('  ' * deep + note.get_tag_toc_line(deep + 1))
+            toc_line = '  ' * deep + note.get_tag_toc_line(deep + 1)
+            sort_sub_toc.append(toc_line)
 
             # if DEBUG and n_deep > 0:
             #     print(f'{note.path}')
 
             note.sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
             for sub_note in note.sub_notes:
+                # 如果子文档已经在父文档中出现过 (作为引用), 则跳过
+                rel_path_str = str(sub_note.path.relative_to(args.fp_notes))
+                if rel_path_str in toc_line:
+                    continue
                 _dfs_add(sub_note, deep + 1)
 
-        # 所有没有父节点的笔记
-        no_par_notes = [n for n in notes if not n.par_notes]
-        no_par_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
+        if tag == 'draft':
+            notes_without_parent = notes[:]
+        else:
+            # 所有没有父节点的笔记
+            notes_without_parent = [n for n in notes if not n.par_notes]
+        notes_without_parent.sort(key=lambda x: (x.info.level, x.title), reverse=True)
 
-        for note in no_par_notes:
-            # if note.info.toc_hidden:
-            #     continue
+        for note in notes_without_parent:
             _dfs_add(note, 0)
 
         return sort_sub_toc
@@ -597,9 +619,11 @@ class NotesBuilder(Builder):
                 paper_toc.append(note.paper_title_toc_line)
 
         for tag, notes in tag2notes.items():
-            # if DEBUG and tag == 'nlp_kg':
-            #     pass
-            tag2toc[tag] = self._get_sort_sub_toc(notes)
+            # if DEBUG and tag == 'draft':
+            #     for n in notes:
+            #         if 'LoRA' in n.title:
+            #             print(n.path)
+            tag2toc[tag] = self._get_sort_sub_toc(notes, tag)
         # for notes in tag2notes.values():
         #     notes.sort(key=lambda e: (e.info.level, e.tag_toc_line), reverse=True)
         # for tag, notes in tag2notes.items():
@@ -627,6 +651,10 @@ class NotesBuilder(Builder):
         # for k, v in tag2notes.items():
         #     tag2toc[k] = [e.tag_toc_line for e in v]
         tag2toc, paper_toc = self._get_sub_toc()
+        # if DEBUG:
+        #     for n in tag2toc['draft']:
+        #         if 'LoRA' in n:
+        #             print(n)
 
         # replace template
         txt = NoteUtils.replace_tag_content('recent', txt, self.recent_toc)

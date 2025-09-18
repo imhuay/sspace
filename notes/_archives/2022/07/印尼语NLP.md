@@ -1,16 +1,14 @@
 印尼语 NLP
 ===
 <!--START_SECTION:badge-->
-
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-07-xx&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-05%2012%3A30%3A39&label_color=gray&color=thistle&style=flat-square)
-
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: false
 draft: false
 hidden: true
-tag: [nlp_data]
+tags: [nlp_data]
 -->
 
 > ***Keywords**: 印尼语NLP*

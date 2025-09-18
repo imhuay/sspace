@@ -1,10 +1,8 @@
 RLHF 及其实现 (PPO, DPO, GRPO 等)
 ===
 <!--START_SECTION:badge-->
-
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-19&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-21%2012%3A39%3A06&label_color=gray&color=thistle&style=flat-square)
-
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-19 22:16:00
@@ -12,7 +10,7 @@ top: false
 draft: true
 hidden: true
 level: 0
-tag: []
+tags: []
 -->
 
 > ***Keywords**: 强化学习*

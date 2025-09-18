@@ -160,8 +160,9 @@ class Problem:
         self._norm_text()
         self._update_file()
 
-        with self.path.open('w', encoding='utf8') as f:
-            f.write(self._text)
+        # 因为最后还要更新 relate 部分, 所以这里不写文件了
+        # with self.path.open('w', encoding='utf8') as f:
+        #     f.write(self._text)
 
     def _norm_text(self):
         """文本规范化"""
@@ -193,7 +194,7 @@ class Problem:
             lns.append(NoteUtils.get_section_begin(self._TAG_RELATE))
             lns.append(NoteUtils.get_section_end(self._TAG_RELATE))
 
-        txt = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
+        self._text = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 
     def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
         """"""
@@ -202,8 +203,8 @@ class Problem:
             '### 相关主题\n',
         ]
 
-        with self.path.open(encoding='utf8') as f:
-            txt = f.read()
+        # with self.path.open(encoding='utf8') as f:
+        #     txt = f.read()
 
         for t in self.tags:
             for tag in alias2tags[NoteUtils.norm(t)]:
@@ -225,7 +226,7 @@ class Problem:
                         lns.append('  > ')
                     lns.append('\n</details>')
 
-        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, txt, '\n'.join(lns))
+        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(txt)
 

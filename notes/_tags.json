@@ -18,7 +18,7 @@
     "linux",
     "llm",
     "llm_prompt",
-    "llm_rl",
+    "llm_sft",
     "ml",
     "nlp",
     "nlp_data",

@@ -14,6 +14,7 @@ Notes
     - [Deep Learning](#deep-learning)
     - [NLP](#nlp)
     - [LLM 🚀](#llm-)
+        - [大模型微调](#大模型微调)
     - [Reading List 🔖](#reading-list-)
     - [Machine Learning](#machine-learning)
     - [Algorithms](#algorithms)
@@ -143,15 +144,18 @@ Notes
 
 {{llm}}
 
+#### 大模型微调
+
+{{llm_sft}}
+
 <!-- omit in toc -->
 #### Prompt Engineering
 
 {{llm_prompt}}
 
 <!-- omit in toc -->
-#### Reinforcement Learning
+<!-- #### Reinforcement Learning -->
 
-{{llm_rl}}
 
 </td>
 </tr>

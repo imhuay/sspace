@@ -2,7 +2,7 @@ Transformer 面试问题整理
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-06 13:48:27
@@ -11,8 +11,8 @@ top: false
 draft: false
 hidden: true
 section_number: true
-level: 2
-tag: [dl_transformer]
+level: -1
+tags: [dl_transformer]
 -->
 
 <!--START_SECTION:keywords-->
