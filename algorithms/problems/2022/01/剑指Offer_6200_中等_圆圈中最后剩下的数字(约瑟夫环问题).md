@@ -1,6 +1,6 @@
 ## 圆圈中最后剩下的数字 (约瑟夫环问题)
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2005%3A37%3A11&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&label_color=gray&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&label_color=gray&color=blue&style=flat-square)](../../../README.md#模拟)

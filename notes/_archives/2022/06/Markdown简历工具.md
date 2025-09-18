@@ -2,7 +2,7 @@ Markdown 简历工具
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-06-xx&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2004%3A11%3A35&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-01%2022%3A32%3A03&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: true
