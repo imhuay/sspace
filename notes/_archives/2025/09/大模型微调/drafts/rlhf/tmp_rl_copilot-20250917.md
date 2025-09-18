@@ -37,7 +37,7 @@
 - **KL 正则与约束:**  
   - 目标鼓励高回报同时惩罚偏离参考：  
     $$
-    \max_\theta \; \mathbb{E}\left[ R(y) - \beta \cdot \mathrm{KL}\left(\pi_\theta(\cdot|x)\;\|\;\pi_{\text{ref}}(\cdot|x)\right) \right]
+    \max_\theta \; \mathbb{E}\left \lbrack R(y) - \beta \cdot \mathrm{KL}\left(\pi_\theta(\cdot|x)\;\|\;\pi_{\text{ref}}(\cdot|x)\right) \right]
     $$
   - 自适应 $\beta$：维持目标 $\mathrm{KL}\approx \text{KL}_{\text{target}}$。
 
@@ -72,7 +72,7 @@
 
 - **策略梯度基式:**  
   $$
-  \nabla_\theta \mathbb{E}_{y\sim \pi_\theta}[R(y)] = \mathbb{E}\left[\nabla_\theta \log \pi_\theta(y|x)\; A\right]
+  \nabla_\theta \mathbb{E}_{y\sim \pi_\theta} \lbrack R(y)] = \mathbb{E}\left \lbrack \nabla_\theta \log \pi_\theta(y|x)\; A\right]
   $$
   - 基线 $b$ 与优势 $A = R - b$ 降方差；序列任务常用令牌级优势分配与归因。
 
@@ -80,7 +80,7 @@
   - 比率 $r_t(\theta)=\frac{\pi_\theta(a_t|s_t)}{\pi_{\text{old}}(a_t|s_t)}$。  
   - 剪切目标：  
     $$
-    \mathcal{L}_{\text{PPO}} = \mathbb{E}\left[\min\left(r_t A_t,\; \text{clip}(r_t,1-\epsilon,1+\epsilon) A_t\right)\right]
+    \mathcal{L}_{\text{PPO}} = \mathbb{E}\left\lbrack\min\left(r_t A_t,\; \text{clip}(r_t,1-\epsilon,1+\epsilon) A_t\right)\right]
     $$
   - 额外项：KL 惩罚、熵奖励、价值函数损失、PTX/LM 维持项。
 
@@ -90,7 +90,7 @@
 - **DPO（Direct Preference Optimization）:**  
   - 从 Bradley–Terry 偏好和最大熵假设推导：  
     $$
-    \mathcal{L}_{\text{DPO}} = -\log \sigma\left(\beta \left[\log \pi_\theta(y^+|x)-\log \pi_\theta(y^-|x) - \log \pi_{\text{ref}}(y^+|x)+\log \pi_{\text{ref}}(y^-|x)\right]\right)
+    \mathcal{L}_{\text{DPO}} = -\log \sigma\left(\beta \left\lbrack\log \pi_\theta(y^+|x)-\log \pi_\theta(y^-|x) - \log \pi_{\text{ref}}(y^+|x)+\log \pi_{\text{ref}}(y^-|x)\right]\right)
     $$
   - 无需单独 RM，显式对比正/负响应相对对数几率并减去参考差。
 

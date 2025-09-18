@@ -2,7 +2,7 @@ Transformer 面试问题整理
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-17%2000%3A32%3A34&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-06 13:48:27
@@ -11,7 +11,7 @@ top: false
 draft: false
 hidden: true
 section_number: true
-level: 98
+level: 2
 tag: [dl_transformer]
 -->
 
@@ -34,7 +34,7 @@ tag: [dl_transformer]
         - [1.3.2. ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?](#132--多头注意力中-多头-的动机是什么-是如何实现的)
         - [1.3.3. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#133--为什么-decoder-中计算自注意力需要-掩码)
     - [1.4. ✅ Cross Attention 中的 Q, K, V 分别来自哪里?](#14--cross-attention-中的-q-k-v-分别来自哪里)
-- [2. **位置编码** 专题](#2-位置编码-专题)
+- [2. **位置编码** (Position Encoding)](#2-位置编码-position-encoding)
 - [3. **训练与推理**](#3-训练与推理)
     - [3.1. ✅ 说明 Decoder 在训练与推理阶段的差异](#31--说明-decoder-在训练与推理阶段的差异)
         - [3.1.1. 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#311-推理阶段-怎么优化随着输出序列越来越长带来的开销)
@@ -197,8 +197,8 @@ def attn(self, x, mask):
 > Q 来自 Decoder 上一层的输出; K, V 来自 Encoder 最后一层的输出;
 >> **作用**: Decoder 在生成当前 token 时, 根据 **Cross-Atternion** 获取与当前生成最相关的源序列信息;
 
-## 2. **位置编码** 专题
-> [位置编码专题](./Transformer面试题-位置编码.md)
+## 2. **位置编码** (Position Encoding)
+> [**位置编码**面试问题整理](./位置编码_QA.md)
 
 ## 3. **训练与推理**
 

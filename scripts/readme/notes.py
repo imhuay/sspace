@@ -61,9 +61,10 @@ class NoteInfo:
     top: bool = False
     draft: bool = False
     hidden: bool = True
+    toc_hidden: bool = False
     section_number: bool = False
     tag: list[str] | None = None
-    level: int | None = 0
+    level: int = 0
     p_title: str | None = None
     date: datetime | None = None
     toc_title: str | None = None
@@ -109,7 +110,7 @@ class Note:
 
         if self.info.section_number:
             self._update_section_number()
-            self._update_toc()
+            self._update_content_toc()
 
         if self._updated:
             with self.path.open('w', encoding='utf8') as f:
@@ -173,8 +174,8 @@ class Note:
             self._text = new_text
             self._updated = True
 
-    def _update_toc(self):
-        """更新章节 TOC"""
+    def _update_content_toc(self):
+        """更新 Markdown 内容 TOC"""
         D = self._max_section_level
         lines = self.text.split('\n')
         toc_lines = []
@@ -200,25 +201,43 @@ class Note:
             self._text = NoteUtils.replace_tag_content('toc', self.text, new_toc_content)
             self._updated = True
 
-    def get_toc_line_relative_to(self, parent_path: Path):
+    def get_recent_toc_line_relative_to(self, parent_path: Path):
+        """更新 README recent 模块内的 TOC"""
         if self.is_top:
             return f'- [`{self.date}` {self.title} 📌]({self.path.relative_to(parent_path)})'
         else:
             return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
 
     @property
-    def keywords(self) -> list[KeywordSection]:
-        if self._keywords is None:
-            keywords = NoteUtils.findall_section('keyword', self.text)
-            self._keywords = [NoteUtils.get_keyword_section(k) for k in keywords]
-        return self._keywords
-
-    @property
-    def toc_line_relative_to_repo(self):
+    def toc_line_for_recent_relative_to_repo(self):
+        """README recent 模块内的 TOC 行 (路径相对于 repo 根目录)"""
         if self.is_top:
             return f'- [`{self.date}` {self.title} 📌]({self.path_relative_to_repo})'
         else:
             return f'- [`{self.date}` {self.title}]({self.path_relative_to_repo})'
+
+    @property
+    def keywords(self) -> list[KeywordSection]:
+        """文章内部的 keywords 列表, 用于生成 TOC 行时附加到引用中
+
+        示例:
+            找出文中所有 keyword 块
+                ...
+                <!--START_SECTION:keyword-->
+                ## keyword1
+                <!--END_SECTION:keyword-->
+                ...
+                <!--START_SECTION:keyword-->
+                ## keyword2
+                <!--END_SECTION:keyword-->
+
+            生成 toc line 时, 附加 keywords:
+                - [title](path)\n  > _keyword1, keyword2_
+        """
+        if self._keywords is None:
+            keyword_sections = NoteUtils.findall_section('keyword', self.text)
+            self._keywords = [NoteUtils.get_keyword_section(k) for k in keyword_sections]
+        return self._keywords
 
     @property
     def text(self) -> str:
@@ -230,7 +249,8 @@ class Note:
             self._title = self.text.split('\n', maxsplit=1)[0].strip()
 
             if self._title == '':
-                self._title = f'Untitled-{self.path_relative_to_repo}'
+                # self._title = f'{self.path.stem}({self.path_relative_to_repo})'
+                self._title = self.path.stem
 
             if self.info.draft:
                 self._title += ' ⏳'
@@ -291,7 +311,7 @@ class Note:
         return self.first_commit_date if self.sort_by_first_commit else self.last_commit_date
 
     @property
-    def tag(self) -> list[str]:
+    def tags(self) -> list[str]:
         if self.info.tag is None:
             return []
         return self.info.tag
@@ -539,6 +559,8 @@ class NotesBuilder(Builder):
         added = set()
 
         def _dfs_add(note: Note, deep: int):
+            if note.info.toc_hidden:
+                return
             if note.path in added:
                 return
             added.add(note.path)
@@ -551,10 +573,13 @@ class NotesBuilder(Builder):
             for sub_note in note.sub_notes:
                 _dfs_add(sub_note, deep + 1)
 
+        # 所有没有父节点的笔记
         no_par_notes = [n for n in notes if not n.par_notes]
         no_par_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
 
         for note in no_par_notes:
+            # if note.info.toc_hidden:
+            #     continue
             _dfs_add(note, 0)
 
         return sort_sub_toc
@@ -566,7 +591,7 @@ class NotesBuilder(Builder):
         tag2notes: dict[str, list[Note]] = defaultdict(list)
 
         for note in self.notes:
-            for tag in note.tag:
+            for tag in note.tags:
                 tag2notes[tag].append(note)
             if note.paper_title_toc_line != _EMPTY:
                 paper_toc.append(note.paper_title_toc_line)
@@ -645,15 +670,17 @@ class NotesBuilder(Builder):
     @property
     def recent_toc(self):
         return TEMP_main_readme_notes_recent_toc.format(
-            toc_top='\n'.join([n.get_toc_line_relative_to(self._fp_notes) for n in self.notes_top]),
-            toc_recent='\n'.join([n.get_toc_line_relative_to(self._fp_notes) for n in self.notes_recent]),
+            toc_top='\n'.join([n.get_recent_toc_line_relative_to(self._fp_notes) for n in self.notes_top]),
+            toc_recent='\n'.join([n.get_recent_toc_line_relative_to(self._fp_notes) for n in self.notes_recent]),
         )
 
     @property
     def recent_toc_append(self):
         return TEMP_main_readme_notes_recent_toc.format(
-            toc_top='\n'.join([n.toc_line_relative_to_repo for n in self.notes_top]),
-            toc_recent='\n'.join([n.toc_line_relative_to_repo for n in self.notes_recent]),
+            # toc_top='\n'.join([n.toc_line_for_recent_relative_to_repo for n in self.notes_top]),
+            # toc_recent='\n'.join([n.toc_line_for_recent_relative_to_repo for n in self.notes_recent]),
+            toc_top='\n'.join([n.get_recent_toc_line_relative_to(args.fp_repo) for n in self.notes_top]),
+            toc_recent='\n'.join([n.get_recent_toc_line_relative_to(args.fp_repo) for n in self.notes_recent]),
         )
 
     @property

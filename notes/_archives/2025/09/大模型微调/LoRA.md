@@ -31,6 +31,7 @@ tag: [llm]
     - [QLoRA](#qlora)
     - [AdaLoRA](#adalora)
     - [DoLA](#dola)
+- [面试问题整理](#面试问题整理)
 <!--END_SECTION:toc-->
 
 ---
@@ -142,8 +143,5 @@ tag: [llm]
 > 将权重分解为幅度与方向, 单独调整, 有时更稳更准;
 
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: ~~QLoRA~~
--->
-<!--END_SECTION:keyword-->
+## 面试问题整理
+> [LoRA 面试问题整理](./LoRA_QA.md)

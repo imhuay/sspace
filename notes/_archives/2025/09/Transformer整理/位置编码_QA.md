@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-17%2000%3A32%3A34&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-06 13:48:27
@@ -10,13 +10,14 @@ toc_title: PE 专题
 top: false
 draft: false
 hidden: true
+toc_hidden: true
 section_number: true
 level: 99
 tag: [dl_transformer]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [Transformer面试题](./Transformer面试题.md)*
+> ***Keywords**: [位置编码](./位置编码.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
