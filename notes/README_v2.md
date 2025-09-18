@@ -69,10 +69,9 @@ Notes
 
 ### Transformer 🤖
 
+- [面试问题整理](_archives/2025/09/Transformer整理/Transformer_QA.md)
 - [模型架构](_archives/2025/09/Transformer整理/README.md)
-  - [位置编码 (PE)](_archives/2025/09/Transformer整理/位置编码.md)
-- [面试问题整理](_archives/2025/09/Transformer整理/Transformer面试题.md)
-  - [PE 专题](_archives/2025/09/Transformer整理/Transformer面试题-位置编码.md)
+- [位置编码 (PE)](_archives/2025/09/Transformer整理/位置编码.md)
 
 <!-- omit in toc -->
 #### BERT
@@ -185,12 +184,12 @@ Notes
 
 ### LLM 🚀
 
-- [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量SFT数据.md)
+- [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
 - [PEFT 整理](_archives/2025/09/大模型微调/PEFT.md)
   - [LoRA](_archives/2025/09/大模型微调/LoRA.md)
-    > _~~QLoRA~~_
+    - [LoRA QA](_archives/2025/09/大模型微调/LoRA_QA.md)
 - [MoE 备忘](_archives/2025/09/MoE备忘/README.md)
-- [面试问题整理](_archives/2025/09/大模型微调/大模型微调面试问题整理.md)
+- [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
 
 <!-- omit in toc -->
 #### Prompt Engineering
@@ -457,13 +456,14 @@ Notes
 - [基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md)
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md)
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md)
+- [偏好学习QA](_archives/2025/09/大模型微调/偏好学习_QA.md)
+- [偏好学习 (RLHF)](_archives/2025/09/大模型微调/偏好学习.md)
 - [低资源训练](_archives/2022/12/低资源训练.md)
 - [requirements.txt 语法备忘](_archives/2022/09/python-requirements语法.md)
 - [query 理解参考资料](_archives/2022/12/query理解相关阅读.md)
 - [huggingface 套件使用备忘](_archives/2023/06/huggingface套件使用备忘.md)
 - [`split` 分割文件](_archives/2022/06/split分割文件.md)
 - [Windows 使用备忘](_archives/2023/01/Windows备忘.md)
-- [Untitled-notes/_archives/2025/09/大模型微调/偏好学习.md](_archives/2025/09/大模型微调/偏好学习.md)
 - [Transformer与长度外推性](_archives/2023/02/Transformer与长度外推性.md)
 - [Transformer/BERT 常见变体](_archives/2022/10/Transformer系列模型.md)
 - [Transformer 的优势与劣势](_archives/2023/02/Transformer的优势与劣势.md)
