@@ -17,7 +17,7 @@ tags: [ml]
     - [AdaBoost 算法](#adaboost-算法)
     - [前向分步算法](#前向分步算法)
     - [目标函数](#目标函数)
-- [学习算法: GBDT](#学习算法gbdt)
+- [学习算法: GBDT](#学习算法-gbdt)
 - [优化](#优化)
 - [CART 树](#cart-树)
 <!--END_SECTION:toc-->

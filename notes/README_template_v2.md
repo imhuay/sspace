@@ -10,11 +10,10 @@ Notes
 
 <!-- TOC -->
 - [Researches](#researches)
-    - [Transformer 🤖](#transformer-)
+    - [Transformer 🪄 LLM 🚀](#transformer--llm-)
+        - [大模型微调 🔥](#大模型微调-)
     - [Deep Learning](#deep-learning)
     - [NLP](#nlp)
-    - [LLM 🚀](#llm-)
-        - [大模型微调](#大模型微调)
     - [Reading List 🔖](#reading-list-)
     - [Machine Learning](#machine-learning)
     - [Algorithms](#algorithms)
@@ -49,16 +48,29 @@ Notes
 
 <!-- row 1 -->
 <tr>
-<td rowspan="4" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
-### Transformer 🤖
+### Transformer 🪄 LLM 🚀
 
-{{dl_transformer}}
+{{transformer}}
+{{llm}}
 
 <!-- omit in toc -->
 #### BERT
 
 {{dl_bert}}
+
+#### 大模型微调 🔥
+
+{{llm_sft}}
+
+<!-- omit in toc -->
+#### Prompt Engineering
+
+{{llm_prompt}}
+
+<!-- omit in toc -->
+<!-- #### Reinforcement Learning -->
 
 </td>
 <td rowspan="8" valign="top" width="1000">
@@ -137,28 +149,7 @@ Notes
 <tr></tr>
 
 <!-- row 5 -->
-<tr>
-<td rowspan="4" valign="top" width="1000">
-
-### LLM 🚀
-
-{{llm}}
-
-#### 大模型微调
-
-{{llm_sft}}
-
-<!-- omit in toc -->
-#### Prompt Engineering
-
-{{llm_prompt}}
-
-<!-- omit in toc -->
-<!-- #### Reinforcement Learning -->
-
-
-</td>
-</tr>
+<tr></tr>
 
 <!-- row 6; 空白行, 用于跳过表格的灰色行 -->
 <tr></tr>
