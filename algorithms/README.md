@@ -104,7 +104,7 @@
 
 ### 其他
 <!--START_SECTION:other-->
-- [模拟 (17)](#模拟)
+- [模拟 (16)](#模拟)
 - [数学 (9)](#数学)
 - [找规律 (2)](#找规律)
 <!--END_SECTION:other-->
@@ -1274,11 +1274,10 @@
 - [`剑指Offer_2000_中等_表示数值的字符串`](problems/2021/11/剑指Offer_2000_中等_表示数值的字符串.md)
 
 ### 模拟
-![total](https://img.shields.io/static/v1?label=total&message=17&label_color=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=16&label_color=gray&color=blue&style=flat-square)
 - [`LeetCode_0352_困难_将数据流变为多个不相交区间`](problems/2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)
 - [`LeetCode_0859_简单_亲密字符串`](problems/2021/11/LeetCode_0859_简单_亲密字符串.md)
 - [`LeetCode_0915_中等_分割数组`](problems/2022/06/LeetCode_0915_中等_分割数组.md)
-- [`剑指Offer_2900_中等_顺时针打印矩阵(3种思路4个写法)`](problems/2021/11/剑指Offer_2900_中等_顺时针打印矩阵(3种思路4个写法).md)
 - [`剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票)`](problems/2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)
 - [`剑指Offer_6100_简单_扑克牌中的顺子`](problems/2022/01/剑指Offer_6100_简单_扑克牌中的顺子.md)
 - [`剑指Offer_6200_中等_圆圈中最后剩下的数字(约瑟夫环问题)`](problems/2022/01/剑指Offer_6200_中等_圆圈中最后剩下的数字(约瑟夫环问题).md)

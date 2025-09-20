@@ -10,11 +10,10 @@ Notes
 
 <!-- TOC -->
 - [Researches](#researches)
-    - [Transformer 🤖](#transformer-)
+    - [Transformer 🪄 LLM 🚀](#transformer--llm-)
+        - [大模型微调 🔥](#大模型微调-)
     - [Deep Learning](#deep-learning)
     - [NLP](#nlp)
-    - [LLM 🚀](#llm-)
-        - [大模型微调](#大模型微调)
     - [Reading List 🔖](#reading-list-)
     - [Machine Learning](#machine-learning)
     - [Algorithms](#algorithms)
@@ -50,7 +49,6 @@ Notes
 - [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 - [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
 - [`2025-07-08` 电商领域的 NER](_archives/2022/12/电商NER.md)
-- [`2025-07-08` 电商搜索](_archives/2022/12/电商搜索.md)
 
 <!--END_SECTION:recent-->
 
@@ -67,14 +65,15 @@ Notes
 
 <!-- row 1 -->
 <tr>
-<td rowspan="4" valign="top" width="1000">
+<td rowspan="8" valign="top" width="1000">
 
-### Transformer 🤖
+### Transformer 🪄 LLM 🚀
 
 - [模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [位置编码 (PE)](_archives/2025/09/Transformer_整理/位置编码.md)
   > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_
 - [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md)
+- [MoE 备忘](_archives/2025/09/MoE_备忘/README.md)
 
 <!-- omit in toc -->
 #### BERT
@@ -82,6 +81,25 @@ Notes
 - [Transformer 常见面试问题 ⏳](_archives/2022/05/Transformer常见问题.md)
 - [Transformer Wiki ⏳](_archives/2022/05/TransformerWiki.md)
 - [BERT + CRF 备忘 ⏳](_archives/2022/04/bert_crf备忘.md)
+
+#### 大模型微调 🔥
+
+- [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
+- [偏好学习 (RLHF)](_archives/2025/09/大模型微调/偏好学习.md)
+  > _[QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_
+- [PEFT 整理](_archives/2025/09/大模型微调/PEFT.md)
+  - [LoRA](_archives/2025/09/大模型微调/LoRA.md)
+    > _[QA](_archives/2025/09/大模型微调/LoRA_QA.md)_
+- [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
+
+<!-- omit in toc -->
+#### Prompt Engineering
+
+- [常用 prompt 备忘](_archives/2025/09/Prompt_记录/常用_prompt_备忘.md)
+- [反思 (Reflection)](_archives/2025/08/Prompt_工程-自反思.md)
+
+<!-- omit in toc -->
+<!-- #### Reinforcement Learning -->
 
 </td>
 <td rowspan="8" valign="top" width="1000">
@@ -182,35 +200,7 @@ Notes
 <tr></tr>
 
 <!-- row 5 -->
-<tr>
-<td rowspan="4" valign="top" width="1000">
-
-### LLM 🚀
-
-- [MoE 备忘](_archives/2025/09/MoE_备忘/README.md)
-
-#### 大模型微调
-
-- [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
-- [偏好学习 (RLHF)](_archives/2025/09/大模型微调/偏好学习.md)
-  > _[QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_
-- [PEFT 整理](_archives/2025/09/大模型微调/PEFT.md)
-  - [LoRA](_archives/2025/09/大模型微调/LoRA.md)
-    > _[QA](_archives/2025/09/大模型微调/LoRA_QA.md)_
-- [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
-
-<!-- omit in toc -->
-#### Prompt Engineering
-
-- [常用 prompt 备忘](_archives/2025/09/Prompt_记录/常用_prompt_备忘.md)
-- [反思 (Reflection)](_archives/2025/08/Prompt_工程-自反思.md)
-
-<!-- omit in toc -->
-<!-- #### Reinforcement Learning -->
-
-
-</td>
-</tr>
+<tr></tr>
 
 <!-- row 6; 空白行, 用于跳过表格的灰色行 -->
 <tr></tr>
@@ -463,7 +453,7 @@ Notes
 - [基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md)
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md)
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md)
-- [偏好学习QA](_archives/2025/09/大模型微调/偏好学习_QA.md)
+- [偏好学习-QA](_archives/2025/09/大模型微调/偏好学习_QA.md)
 - [低资源训练](_archives/2022/12/低资源训练.md)
 - [requirements.txt 语法备忘](_archives/2022/09/python-requirements语法.md)
 - [query 理解参考资料](_archives/2022/12/query理解相关阅读.md)

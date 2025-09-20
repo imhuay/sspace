@@ -1,6 +1,6 @@
 ## 圆圈中最后剩下的数字 (约瑟夫环问题)
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-20%2000%3A17%3A57&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-20%2022%3A04%3A13&label_color=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&label_color=gray&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&label_color=gray&color=green&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&label_color=gray&color=blue&style=flat-square)](../../../README.md#模拟)
@@ -119,7 +119,6 @@ class Solution:
 
 > [[中等, LeetCode] 分割数组](../06/LeetCode_0915_中等_分割数组.md)  
 > [[中等, 剑指Offer] 买卖股票的最佳时机](剑指Offer_6300_中等_买卖股票的最佳时机.md)  
-> [[中等, 剑指Offer] 顺时针打印矩阵 (3种思路4个写法) 🔥](../../2021/11/剑指Offer_2900_中等_顺时针打印矩阵(3种思路4个写法).md)  
 > [[中等, 牛客] 大数乘法](牛客_0010_中等_大数乘法.md)  
 > [[中等, 牛客] 大数加法](牛客_0001_中等_大数加法.md)  
 > [[中等, 牛客] 最长回文子串](牛客_0017_中等_最长回文子串.md)  
