@@ -6,7 +6,7 @@ Time:
 Author:
     huayang (imhuay@163.com)
 Subject:
-    test_mha
+    测试自注意力的 置换不变性 (Permutation Invariance)
 References:
     [设计位置编码](https://huggingface.co/blog/zh/designing-positional-encoding)
 """

@@ -51,7 +51,7 @@ tags: [transformer]
 **三种形态**:
 - **Encoder-Decoder** (原版, Seq2Seq)
 - **Decoder-only** (Causal LM, 如 GPT)
-- **Encoder-only** (如 BERT)
+- **Encoder-only** (Masked LM, 如 BERT)
 
 <div align='center'><img src='./assets/Transformer-architecture.png' height='400'/></div>
 
@@ -150,4 +150,4 @@ tags: [transformer]
 
 
 ## 面试问题整理
-> [Transformer面试题](./Transformer_QA.md)
+> [Transformer QA](./Transformer_QA.md)

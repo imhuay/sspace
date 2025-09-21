@@ -6,7 +6,7 @@ Time:
 Author:
     huayang (imhuay@163.com)
 Subject:
-    test_rope
+    RoPE (旋转位置编码) 演示
 References:
     None
 """

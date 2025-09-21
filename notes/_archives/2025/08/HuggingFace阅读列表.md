@@ -29,7 +29,6 @@ tags: [read]
 > [Hugging Face – 博客](https://huggingface.co/blog/zh)
 
 - [ ] [[2024-11-25] 设计位置编码](https://huggingface.co/blog/zh/designing-positional-encoding)
-    > [笔记 | Transformer位置编码](./Transformer位置编码.md)
 - [ ] [[2024-06-13] 从 DeepSpeed 到 FSDP, 再回到 Hugging Face Accelerate](https://huggingface.co/blog/zh/deepspeed-to-fsdp-and-back)
 - [ ] [[2024-05-28] 用 Sentence Transformers v3 训练和微调嵌入模型](https://huggingface.co/blog/zh/train-sentence-transformers)
 - [ ] [[2024-02-23] 使用 Hugging Face 微调 Gemma 模型](https://huggingface.co/blog/zh/gemma-peft)
