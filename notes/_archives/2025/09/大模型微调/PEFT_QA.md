@@ -1,12 +1,12 @@
-LoRA 面试问题整理
+PEFT 面试问题整理
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A12%3A48&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:58:55
-toc_title: LoRA-QA
+toc_title: QA
 top: false
 draft: false
 hidden: true
@@ -16,7 +16,7 @@ tags: []
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [LoRA](./LoRA.md)*
+> ***Keywords**: [PEFT](./LoRA.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->

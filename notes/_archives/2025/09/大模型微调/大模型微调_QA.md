@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-13&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A12%3A48&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-13 16:23:17
@@ -137,7 +137,7 @@ tags: [llm_sft]
 
 ### 3.3. 🔥 **LoRA (Low-Rank Adaptation)**
 > [LoRA 学习笔记](./LoRA.md)
->> [LoRA 面试问题整理](./LoRA_QA.md)
+>> [LoRA 面试问题整理](./PEFT_QA.md)
 
 
 ---
