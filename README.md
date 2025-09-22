@@ -381,7 +381,7 @@ YAML       2 mins          -------------------------   00.10 %
 ### Machine Learning
 
 - [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md)
-  > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias)_
+  > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias), [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood)_
 - [XGBoost 学习笔记 ⏳](notes/_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md)
 
