@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A12%3A48&label_color=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-24%2005%3A24%3A30&label_color=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:48:03
@@ -86,7 +86,7 @@ tags: []
 > - **训练数据**: $(x, y_j, y_k, l_{y_j \succ y_k})$
 > - **模型结构**: SFT 模型 (移除 `lm_head` 层) + sigmoid 线性层
 > - **损失函数**: $L = -\log \, \sigma (r_j - r_k)$
->> [奖励模型训练](./偏好学习.md#奖励模型-reward-model-rm)
+>> [奖励模型训练流程](./偏好学习.md#奖励模型训练流程)
 
 #### ⬆️ 介绍一下 Bradley-Terry (BT) 模型, 它是如何应用到奖励模型中的?
 > - Bradley-Terry 模型是一种通过 **成对比较** 数据来估计实体强度的概率模型;

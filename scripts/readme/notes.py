@@ -378,9 +378,10 @@ class Note:
 
         rel_path = self.path.relative_to(args.fp_notes)
         title = self.title if self.info.toc_title is None else self.info.toc_title
-        keywords = ', '.join([_get_toc_line(k) for k in self.keywords if k.name])
+        # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
+        keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
         if keywords:
-            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_'
+            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_<br>'
         else:
             return f'- [{title}]({rel_path})'
 

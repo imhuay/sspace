@@ -71,7 +71,7 @@ Notes
 
 - [模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [位置编码 (PE)](_archives/2025/09/Transformer_整理/位置编码.md)
-  > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_
+  > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md)
 - [MoE 备忘](_archives/2025/09/MoE_备忘/README.md)
 - [LLM 训练稳定性](_archives/2025/09/大模型微调/训练稳定性.md)
@@ -88,9 +88,9 @@ Notes
 - [基础概念](_archives/2025/09/大模型微调/README.md)
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
 - [偏好学习 (**RLHF**)](_archives/2025/09/大模型微调/偏好学习.md)
-  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型-reward-model-rm), [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_
+  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/偏好学习.md#强化学习基础) • [PPO,DPO,GRPO,..](_archives/2025/09/大模型微调/策略梯度算法.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
 - [参数高效微调 (**PEFT**)](_archives/2025/09/大模型微调/PEFT.md)
-  > _[LoRA](_archives/2025/09/大模型微调/LoRA.md), [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_
+  > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
 
 <!-- omit in toc -->
@@ -229,7 +229,7 @@ Notes
 ### Machine Learning
 
 - [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
-  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias), [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood)_
+  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
 - [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
 - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
 
@@ -430,7 +430,7 @@ Notes
 
 - [Python Wiki](_archives/2025/08/python_wiki.md)
 - [算法面试问题收录 ⏳](_archives/2025/09/算法面试问题收录.md)
-  > _[Transformer](_archives/2025/09/算法面试问题收录.md#transformer), [LLM](_archives/2025/09/算法面试问题收录.md#llm)_
+  > _[Transformer](_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](_archives/2025/09/算法面试问题收录.md#llm)_<br>
 - [算法面试笔记](_archives/2022/10/算法面试笔记.md)
 - [简历书写技巧 (算法)](_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER](_archives/2022/12/电商NER.md)
