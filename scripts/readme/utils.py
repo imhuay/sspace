@@ -202,6 +202,9 @@ class MarkdownUtils:
             lines[i] = line
 
         new_text = '\n'.join(lines)
+
+        # 5. 在括号内添加空格
+        # new_text = MarkdownUtils.add_spaces_around_parentheses(new_text)
         return new_text
 
     @staticmethod
@@ -225,6 +228,37 @@ class MarkdownUtils:
                 print(f'新内容: {repr(new_seg)}')
                 print('新内容 Unicode:', ' '.join(f'U+{ord(ch):04X}' for ch in new_seg))
                 print()
+
+    @staticmethod
+    def add_spaces_around_parentheses(text: str) -> str:
+        # 1) Protect Markdown links (both [alt](url) and ![alt](url))
+        link_pat = regex.compile(r'!?\[[^\]]*\]\([^)]*\)')
+        placeholders = []
+
+        def protect(m):
+            placeholders.append(m.group(0))
+            return f'@@LINK_{len(placeholders) - 1}@@'
+
+        protected = link_pat.sub(protect, text)
+
+        # 2) Recursive parentheses pattern: matches nested (...) structures
+        paren_pat = regex.compile(r'\((?:[^()]+|(?R))*\)')
+
+        def repl(m):
+            # Extract inner content
+            inner = m.group(0)[1:-1].strip()
+            # Recursively format any nested parentheses inside inner first
+            inner_processed = paren_pat.sub(repl, inner)
+            # Wrap with spaces
+            return f'( {inner_processed} )'
+
+        processed = paren_pat.sub(repl, protected)
+
+        # 3) Restore links
+        def restore(m):
+            return placeholders[int(m.group(1))]
+
+        return regex.sub(r'@@LINK_(\d+)@@', restore, processed)
 
 
 class NoteUtils:

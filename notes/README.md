@@ -12,17 +12,17 @@ Notes
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
         - [大模型微调 🔥](#大模型微调-)
-    - [Deep Learning](#deep-learning)
-    - [NLP](#nlp)
+    - [Machine Learning 🤖](#machine-learning-)
+    - [Deep Learning 🧠](#deep-learning-)
+    - [NLP 🔤](#nlp-)
+    - [Algorithms 🧩](#algorithms-)
     - [Reading List 🔖](#reading-list-)
-    - [Machine Learning](#machine-learning)
-    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
-    - [Big Data](#big-data)
+    - [Big Data 📊](#big-data-)
     - [Tools 🛠️](#tools-️)
-    - [Design Pattern](#design-pattern)
+    - [Design Pattern 🏗️](#design-pattern-️)
 - [Wiki](#wiki)
 - [Drafts](#drafts)
 <!-- TOC -->
@@ -62,15 +62,14 @@ Notes
 ## Researches
 
 <table>
-
 <!-- row 1 -->
 <tr>
-<td rowspan="8" valign="top" width="1000">
+<td rowspan="1" valign="top" width="1000">
 
 ### Transformer 🪄 LLM 🚀
 
 - [模型架构](_archives/2025/09/Transformer_整理/README.md)
-- [位置编码 (PE)](_archives/2025/09/Transformer_整理/位置编码.md)
+- [位置编码 ( PE )](_archives/2025/09/Transformer_整理/位置编码.md)
   > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md)
 - [MoE 备忘](_archives/2025/09/MoE_备忘/README.md)
@@ -87,9 +86,12 @@ Notes
 
 - [基础概念](_archives/2025/09/大模型微调/README.md)
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md)
-- [偏好学习 (**RLHF**)](_archives/2025/09/大模型微调/偏好学习.md)
-  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/偏好学习.md#强化学习基础) • [PPO,DPO,GRPO,..](_archives/2025/09/大模型微调/策略梯度算法.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
-- [参数高效微调 (**PEFT**)](_archives/2025/09/大模型微调/PEFT.md)
+- [偏好学习 ( **RLHF** )](_archives/2025/09/大模型微调/偏好学习.md)
+  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
+  - [强化学习基础 ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础.md)
+  - [策略梯度算法](_archives/2025/09/大模型微调/策略梯度算法.md)
+    > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo-proximal-policy-optimization) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
+- [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md)
   > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md)
 
@@ -97,15 +99,22 @@ Notes
 #### Prompt Engineering
 
 - [常用 prompt 备忘](_archives/2025/09/Prompt_记录/常用_prompt_备忘.md)
-- [反思 (Reflection)](_archives/2025/08/Prompt_工程-自反思.md)
+- [反思 ( Reflection )](_archives/2025/08/Prompt_工程-自反思.md)
 
 <!-- omit in toc -->
 <!-- #### Reinforcement Learning -->
 
 </td>
-<td rowspan="8" valign="top" width="1000">
+<td rowspan="1" valign="top" width="1000">
 
-### Deep Learning
+### Machine Learning 🤖
+
+- [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
+  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
+- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
+- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
+
+### Deep Learning 🧠
 
 - [过拟合与正则化](_archives/2022/05/过拟合与正则化.md)
 - [激活函数 ⏳](_archives/2022/05/激活函数.md)
@@ -129,7 +138,7 @@ Notes
 
 - [基于对比学习的表示学习训练框架 ⏳](_archives/2022/05/基于对比学习的表示学习训练框架.md)
 - [基于互信息的表示学习 ⏳](_archives/2022/05/基于互信息的表示学习.md)
-- [向后兼容 (Backward-Compatible) 的表示学习](_archives/2022/05/向后兼容的表示学习.md)
+- [向后兼容 ( Backward-Compatible ) 的表示学习](_archives/2022/05/向后兼容的表示学习.md)
 - [Sentence-BERT 论文笔记](_archives/2022/05/Sentence-BERT论文笔记.md)
 
 <!-- omit in toc -->
@@ -145,9 +154,16 @@ Notes
 - [综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
 
 </td>
-<td rowspan="8" valign="top" width="1000">
+</tr>
 
-### NLP
+<!-- row 2; 跳过偶数灰色行 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan="4" valign="top" width="1000">
+
+### NLP 🔤
 - [统一视角下的 NLP 任务](_archives/2025/09/统一视角下的NLP任务.md)
 - [语言模型 ⏳](_archives/2022/10/语言模型.md)
 - [NLP 任务与应用](_archives/2022/06/NLP任务与应用.map.md)
@@ -188,55 +204,9 @@ Notes
 - [印尼语 NLP](_archives/2022/07/印尼语NLP.md)
 
 </td>
-</tr>
-
-<!-- row 2; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 3 -->
-<tr>
-</tr>
-
-<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 5 -->
-<tr></tr>
-
-<!-- row 6; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 7 -->
-<tr>
-</tr>
-
-<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 9 -->
-<tr>
 <td rowspan="2" valign="top" width="1000">
 
-### Reading List 🔖
-
-- [强化学习相关](_archives/2025/08/强化学习相关资料.md)
-- [HuggingFace (博客 & 代码)](_archives/2025/08/HuggingFace阅读列表.md)
-- [GitHub (仓库)](_archives/2025/08/GitHub阅读列表.md)
-
-</td>
-<td rowspan="2" valign="top" width="1000">
-
-### Machine Learning
-
-- [机器学习基本概念](_archives/2025/09/机器学习基本概念.md)
-  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
-- [XGBoost 学习笔记 ⏳](_archives/2022/05/XGBoost.md)
-- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md)
-
-</td>
-<td rowspan="2" valign="top" width="1000">
-
-### Algorithms
+### Algorithms 🧩
 
 
 
@@ -253,12 +223,28 @@ Notes
 </td>
 </tr>
 
-<!-- row 10; 空白行, 用于跳过表格的灰色行 -->
+<!-- row 4; 跳过偶数灰色行 -->
 <tr></tr>
 
-<!-- row 11 -->
+<!-- row 5 -->
 <tr>
-<td rowspan="2" colspan="6" valign="top" width="1000">
+<td rowspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+- [强化学习相关](_archives/2025/08/强化学习相关资料.md)
+- [HuggingFace ( 博客 & 代码 )](_archives/2025/08/HuggingFace阅读列表.md)
+- [GitHub ( 仓库 )](_archives/2025/08/GitHub阅读列表.md)
+
+</td>
+</tr>
+
+<!-- row 6; 跳过偶数灰色行 -->
+<tr></tr>
+
+<!-- row 7 -->
+<tr>
+<td rowspan="1" colspan="6" valign="top" width="1000">
 
 ### Paper Notes 📝
 
@@ -266,10 +252,6 @@ Notes
 
 </td>
 </tr>
-
-<!-- row 12; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
 </table>
 
 
@@ -286,7 +268,7 @@ Notes
 - [python 类变量和成员变量的最佳实践](_archives/2022/07/python类变量和成员变量的最佳实践.md)
 - [`dataclass` 使用记录](_archives/2022/09/python-dataclass使用记录.md)
 - [Python 容器基类的使用](_archives/2022/08/Python容器基类的使用.md)
-- [Python 函数声明中单独的正斜杠 (/) 和星号 (*) 是什么意思](_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
+- [Python 函数声明中单独的正斜杠 ( / ) 和星号 ( * ) 是什么意思](_archives/2022/07/python函数声明中单独的正斜杠和星号是什么意思.md)
 
 <!-- omit in toc -->
 #### 工具
@@ -304,7 +286,7 @@ Notes
 </td>
 <td rowspan='2' valign="top" width="1000">
 
-### Big Data
+### Big Data 📊
 
 
 
@@ -327,7 +309,7 @@ Notes
 
 ### Tools 🛠️
 
-- [开发环境配置 (基于 WSL)](_archives/2025/08/WSL开发环境配置.md)
+- [开发环境配置 ( 基于 WSL )](_archives/2025/08/WSL开发环境配置.md)
 - [VSCode 备忘](_archives/2025/08/VSCode备忘.md)
 - [Markdown 备忘](_archives/2022/04/Markdown备忘.md)
   - [Markdown 简历工具](_archives/2022/06/Markdown简历工具.md)
@@ -360,11 +342,11 @@ Notes
 <tr>
 <td rowspan='2' valign="top" width="1000">
 
-### Design Pattern
+### Design Pattern 🏗️
 
 - [设计模式 Wiki](_archives/2022/09/设计模式.md)
-- [建造者模式 (Python 实现) ⏳](_archives/2022/09/设计模式-建造者模式.md)
-- [工厂模式 (Python 实现)](_archives/2022/09/设计模式-工厂模式.md)
+- [建造者模式 ( Python 实现 ) ⏳](_archives/2022/09/设计模式-建造者模式.md)
+- [工厂模式 ( Python 实现 )](_archives/2022/09/设计模式-工厂模式.md)
 
 </td>
 </tr>
@@ -432,7 +414,7 @@ Notes
 - [算法面试问题收录 ⏳](_archives/2025/09/算法面试问题收录.md)
   > _[Transformer](_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](_archives/2025/09/算法面试问题收录.md#llm)_<br>
 - [算法面试笔记](_archives/2022/10/算法面试笔记.md)
-- [简历书写技巧 (算法)](_archives/2022/10/程序员简历技巧.md)
+- [简历书写技巧 ( 算法 )](_archives/2022/10/程序员简历技巧.md)
 - [电商领域的 NER](_archives/2022/12/电商NER.md)
 - [电商搜索](_archives/2022/12/电商搜索.md)
 - [深度学习环境配置](_archives/2022/07/深度学习环境配置.md)
@@ -443,13 +425,13 @@ Notes
 - [搜索相关阅读](_archives/2022/12/搜索相关阅读.md)
 - [搜索指标](_archives/2022/12/搜索指标.md)
 - [快捷键记录](_archives/2022/07/快捷键记录.md)
-- [常见面试问题 (非技术) ⏳](_archives/2022/06/常见面试问题（非技术）.md)
+- [常见面试问题 ( 非技术 ) ⏳](_archives/2022/06/常见面试问题（非技术）.md)
 - [常见的文本相似度计算](_archives/2022/12/文本相似度计算.md)
 - [实验报告模板](_archives/2022/12/实验报告模板.md)
 - [实体链接相关概念](_archives/2022/04/实体链接/实体链接相关概念.md)
 - [大模型解码](_archives/2025/09/Transformer_整理/解码.md)
 - [多轮MRC信息抽取的优缺点 ⏳](_archives/2025/08/多轮MRC信息抽取的优缺点.md)
-- [基于用户行为数据的同义词挖掘方法 (英文)](_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
+- [基于用户行为数据的同义词挖掘方法 ( 英文 )](_archives/2022/12/基于用户行为数据的同义词挖掘方法.md)
 - [基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md)
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md)
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md)
@@ -465,13 +447,13 @@ Notes
 - [Transformer 的优势与劣势](_archives/2023/02/Transformer的优势与劣势.md)
 - [SQL优化之暴力扫描](_archives/2023/02/SQL优化之暴力扫描.md)
 - [SMART Loss ⏳](_archives/2022/06/论文-2019-HaomingJiang.md)
-- [RLHF 及其实现 (PPO, DPO, GRPO 等) ⏳](_archives/2025/08/RLHF.md)
+- [RLHF 及其实现 ( PPO, DPO, GRPO 等 ) ⏳](_archives/2025/08/RLHF.md)
 - [Query 纠错](_archives/2022/12/query纠错.md)
-- [Query 扩展 (电商领域)](_archives/2022/12/query扩展.md)
+- [Query 扩展 ( 电商领域 )](_archives/2022/12/query扩展.md)
 - [Query 分析指南](_archives/2022/12/query分析.md)
 - [Python 标准项目实践 ⏳](_archives/2022/09/python标准项目实践.md)
 - [PySpark 笔记](_archives/2023/01/PySpark笔记.md)
-- [PET (Pattern-Exploiting Training) 模型 ⏳](_archives/2022/07/PET模型实践.md)
+- [PET ( Pattern-Exploiting Training ) 模型 ⏳](_archives/2022/07/PET模型实践.md)
 - [Obsidian ⏳](_archives/2022/05/Obsidian.md)
 - [Node.js 环境搭建](_archives/2022/12/nodejs环境.md)
 - [NLP 领域术语 Wiki](_archives/2022/12/nlp_wiki.md)

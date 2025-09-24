@@ -38,6 +38,7 @@ tags: []
 - [🏷️ **策略梯度算法**](#️-策略梯度算法)
     - [在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?](#在线策略-on-policy-与离线策略-off-policy-的本质差异是什么)
         - [💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](#-ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
+        - [价值模型是怎么训练的?](#价值模型是怎么训练的)
         - [为什么离线算法 (如 DPO) 不需要价值模型?](#为什么离线算法-如-dpo-不需要价值模型)
 <!--END_SECTION:toc-->
 
@@ -101,7 +102,10 @@ tags: []
 > RLHF 场景中 **奖励模型** 固定且基于旧策略训练, 导致实际优化过程可能带有 off-policy 的性质.
 >> [PPO is off-policy in RLHF(LLM)? : r/reinforcementlearning](https://www.reddit.com/r/reinforcementlearning/comments/14p1zaj/ppo_is_offpolicy_in_rlhfllm/)
 
+#### 价值模型是怎么训练的?
+
 #### 为什么离线算法 (如 DPO) 不需要价值模型?
+
 
 <!--
 ### 原因概述

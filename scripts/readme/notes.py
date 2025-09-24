@@ -61,13 +61,13 @@ class NoteInfo:
     top: bool = False
     draft: bool = False
     hidden: bool = True
-    toc_hidden: bool = False
     section_number: bool = False
     tags: list[str] = field(default_factory=list)
     level: int = 0
-    p_title: str | None = None
     date: datetime | None = None
     toc_title: str | None = None
+    # toc_hidden: bool = False
+    omit_in_tag_toc: bool = False
 
     def __post_init__(self):
         """"""
@@ -118,12 +118,6 @@ class Note:
         if self._updated:
             with self.path.open('w', encoding='utf8') as f:
                 f.write(self._text)
-
-    @property
-    def tags(self) -> set[str]:
-        if 'draft' in self._tags and len(self._tags) > 1:
-            self._tags.remove('draft')
-        return self._tags
 
     def add_sub_note(self, note: Note):
         self.sub_notes.append(note)
@@ -224,6 +218,28 @@ class Note:
             return f'- [`{self.date}` {self.title} 📌]({self.path.relative_to(parent_path)})'
         else:
             return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
+
+    def get_tag_toc_line(self, deep: int) -> str:
+        def _get_toc_line(_k):
+            if _k.url:
+                url = (self.path.parent / _k.url).resolve().relative_to(args.fp_notes)
+                return f'[{_k.name}]({url})'
+            elif _k.slugify_name:
+                return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
+            else:
+                return _k.name
+
+        rel_path = self.path.relative_to(args.fp_notes)
+        # title = self.title if self.info.toc_title is None else self.info.toc_title
+        # title = self.tag_toc_title
+        title = re.sub(r'\(\s*(.*?)\s*\)', r'( \1 )', self.tag_toc_title)
+
+        # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
+        keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
+        if keywords:
+            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_<br>'
+        else:
+            return f'- [{title}]({rel_path})'
 
     @property
     def toc_line_for_recent_relative_to_repo(self):
@@ -366,24 +382,20 @@ class Note:
             self._parent_paths = parent_notes
         return self._parent_paths
 
-    def get_tag_toc_line(self, deep: int) -> str:
-        def _get_toc_line(_k):
-            if _k.url:
-                url = (self.path.parent / _k.url).resolve().relative_to(args.fp_notes)
-                return f'[{_k.name}]({url})'
-            elif _k.slugify_name:
-                return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
-            else:
-                return _k.name
+    @property
+    def omit_in_tag_toc(self):
+        return self.info.omit_in_tag_toc
 
-        rel_path = self.path.relative_to(args.fp_notes)
-        title = self.title if self.info.toc_title is None else self.info.toc_title
-        # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
-        keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
-        if keywords:
-            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_<br>'
-        else:
-            return f'- [{title}]({rel_path})'
+    @property
+    def tags(self) -> set[str]:
+        if 'draft' in self._tags and len(self._tags) > 1:
+            self._tags.remove('draft')
+        return self._tags
+
+    @property
+    def tag_toc_title(self) -> str:
+        """用于生成在 tag 标签下 TOC 行时的标题"""
+        return self.info.toc_title if self.info.toc_title else self.title
 
 
 @dataclass
@@ -576,7 +588,8 @@ class NotesBuilder(Builder):
         added = set()
 
         def _dfs_add(note: Note, deep: int):
-            if note.info.toc_hidden:
+            # if note.info.toc_hidden:
+            if note.omit_in_tag_toc:
                 return
             if note.path in added:
                 return
@@ -589,9 +602,9 @@ class NotesBuilder(Builder):
 
             note.sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
             for sub_note in note.sub_notes:
-                # 如果子文档已经在父文档中出现过 (作为引用), 则跳过
+                # 如果子文档已经在父文档中出现过 (作为引用), 且名称也相同, 则跳过
                 rel_path_str = str(sub_note.path.relative_to(args.fp_notes))
-                if rel_path_str in toc_line:
+                if sub_note.omit_in_tag_toc or (rel_path_str in toc_line and sub_note.tag_toc_title in toc_line):
                     continue
                 _dfs_add(sub_note, deep + 1)
 

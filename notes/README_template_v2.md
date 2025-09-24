@@ -12,17 +12,17 @@ Notes
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
         - [大模型微调 🔥](#大模型微调-)
-    - [Deep Learning](#deep-learning)
-    - [NLP](#nlp)
+    - [Machine Learning 🤖](#machine-learning-)
+    - [Deep Learning 🧠](#deep-learning-)
+    - [NLP 🔤](#nlp-)
+    - [Algorithms 🧩](#algorithms-)
     - [Reading List 🔖](#reading-list-)
-    - [Machine Learning](#machine-learning)
-    - [Algorithms](#algorithms)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
-    - [Big Data](#big-data)
+    - [Big Data 📊](#big-data-)
     - [Tools 🛠️](#tools-️)
-    - [Design Pattern](#design-pattern)
+    - [Design Pattern 🏗️](#design-pattern-️)
 - [Wiki](#wiki)
 - [Drafts](#drafts)
 <!-- TOC -->
@@ -45,10 +45,9 @@ Notes
 ## Researches
 
 <table>
-
 <!-- row 1 -->
 <tr>
-<td rowspan="8" valign="top" width="1000">
+<td rowspan="1" valign="top" width="1000">
 
 ### Transformer 🪄 LLM 🚀
 
@@ -73,9 +72,13 @@ Notes
 <!-- #### Reinforcement Learning -->
 
 </td>
-<td rowspan="8" valign="top" width="1000">
+<td rowspan="1" valign="top" width="1000">
 
-### Deep Learning
+### Machine Learning 🤖
+
+{{ml}}
+
+### Deep Learning 🧠
 
 {{dl}}
 
@@ -105,9 +108,16 @@ Notes
 {{dl_unbalanced}}
 
 </td>
-<td rowspan="8" valign="top" width="1000">
+</tr>
 
-### NLP
+<!-- row 2; 跳过偶数灰色行 -->
+<tr></tr>
+
+<!-- row 3 -->
+<tr>
+<td rowspan="4" valign="top" width="1000">
+
+### NLP 🔤
 {{nlp}}
 
 <!-- omit in toc -->
@@ -136,50 +146,9 @@ Notes
 {{nlp_data}}
 
 </td>
-</tr>
-
-<!-- row 2; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 3 -->
-<tr>
-</tr>
-
-<!-- row 4; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 5 -->
-<tr></tr>
-
-<!-- row 6; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 7 -->
-<tr>
-</tr>
-
-<!-- row 8; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
-<!-- row 9 -->
-<tr>
 <td rowspan="2" valign="top" width="1000">
 
-### Reading List 🔖
-
-{{read}}
-
-</td>
-<td rowspan="2" valign="top" width="1000">
-
-### Machine Learning
-
-{{ml}}
-
-</td>
-<td rowspan="2" valign="top" width="1000">
-
-### Algorithms
+### Algorithms 🧩
 
 {{algo}}
 
@@ -194,12 +163,26 @@ Notes
 </td>
 </tr>
 
-<!-- row 10; 空白行, 用于跳过表格的灰色行 -->
+<!-- row 4; 跳过偶数灰色行 -->
 <tr></tr>
 
-<!-- row 11 -->
+<!-- row 5 -->
 <tr>
-<td rowspan="2" colspan="6" valign="top" width="1000">
+<td rowspan="2" valign="top" width="1000">
+
+### Reading List 🔖
+
+{{read}}
+
+</td>
+</tr>
+
+<!-- row 6; 跳过偶数灰色行 -->
+<tr></tr>
+
+<!-- row 7 -->
+<tr>
+<td rowspan="1" colspan="6" valign="top" width="1000">
 
 ### Paper Notes 📝
 
@@ -207,10 +190,6 @@ Notes
 
 </td>
 </tr>
-
-<!-- row 12; 空白行, 用于跳过表格的灰色行 -->
-<tr></tr>
-
 </table>
 
 
@@ -237,7 +216,7 @@ Notes
 </td>
 <td rowspan='2' valign="top" width="1000">
 
-### Big Data
+### Big Data 📊
 
 {{bigdata}}
 
@@ -278,7 +257,7 @@ Notes
 <tr>
 <td rowspan='2' valign="top" width="1000">
 
-### Design Pattern
+### Design Pattern 🏗️
 
 {{design_pattern}}
 
