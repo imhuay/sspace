@@ -564,6 +564,8 @@ JSON       0 secs          -------------------------   00.02 %
 
 ## Drafts
 
+- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md)
+- [使用 LLM 优化简历 ⏳](notes/_archives/2025/08/使用LLM优化简历.md)
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md)
 - [算法面试问题收录 ⏳](notes/_archives/2025/09/算法面试问题收录.md)
   > _[Transformer](notes/_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](notes/_archives/2025/09/算法面试问题收录.md#llm)_<br>
@@ -623,6 +625,4 @@ JSON       0 secs          -------------------------   00.02 %
 - [GitBook 备忘](notes/_archives/2022/04/Gitbook备忘.md)
 - [BERT 常见面试问题](notes/_archives/2022/05/BERT常见面试问题.md)
 - [2015.wsdm.el](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md)
-- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md)
-- [使用 LLM 优化简历 ⏳](notes/_archives/2025/08/使用LLM优化简历.md)
 <!--END_SECTION:notes-->

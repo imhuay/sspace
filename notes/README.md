@@ -411,6 +411,8 @@ Notes
 
 ## Drafts
 
+- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md)
+- [使用 LLM 优化简历 ⏳](_archives/2025/08/使用LLM优化简历.md)
 - [Python Wiki](_archives/2025/08/python_wiki.md)
 - [算法面试问题收录 ⏳](_archives/2025/09/算法面试问题收录.md)
   > _[Transformer](_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](_archives/2025/09/算法面试问题收录.md#llm)_<br>
@@ -470,7 +472,5 @@ Notes
 - [GitBook 备忘](_archives/2022/04/Gitbook备忘.md)
 - [BERT 常见面试问题](_archives/2022/05/BERT常见面试问题.md)
 - [2015.wsdm.el](_archives/2022/04/实体链接/2015.wsdm.el.01.md)
-- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md)
-- [使用 LLM 优化简历 ⏳](_archives/2025/08/使用LLM优化简历.md)
 
 <!--END_SECTION:notes-->
