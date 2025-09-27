@@ -396,10 +396,13 @@ class NoteUtils:
         parameters = {
             'label': quote(str(label)),
             'message': quote(str(message)),
-            'label_color': label_color,
+            'labelColor': label_color,
             'color': color,
             'style': style,
         }
+        if not label:
+            parameters.pop('labelColor')
+
         parameters.update(options)
         # parameters = {k: quote(str(v)) for k, v in parameters.items()}
         badge_url = NoteUtils.TEMP_BADGE_URL.format('&'.join([f'{k}={v}' for k, v in parameters.items()]))
@@ -519,6 +522,8 @@ class args:  # noqa
     fp_tags = fp_notes / '_tags.json'
     notes_top_limit = None
 
+    # template
+    temp_badge_todo_logo = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}
 {toc_recent}

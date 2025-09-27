@@ -47,6 +47,12 @@ class BuildReadme:
             print(data)
 
     def build(self):
+        # 如果 上一次的 commit 提交信息以 "Auto" 开头，则不进行更新
+        code, last_commit_msg = subprocess.getstatusoutput('git log -1 --pretty=%B')
+        if code == 0 and last_commit_msg.startswith('Auto'):
+            print('No changes detected since last auto-update. Skipping build.')
+            return
+
         # build
         build(self.algo, self.note)
 

@@ -95,6 +95,7 @@ class Note:
     _parent_paths: list[Path] | None = None
     _keywords: list[KeywordSection] | None = None
     _updated: bool = False
+    # _num_todo: int | None = None
 
     # ClassVar
     sort_by_first_commit: ClassVar[bool] = True
@@ -233,13 +234,15 @@ class Note:
         # title = self.title if self.info.toc_title is None else self.info.toc_title
         # title = self.tag_toc_title
         title = re.sub(r'\(\s*(.*?)\s*\)', r'( \1 )', self.tag_toc_title)
+        # title = f'{title} {self.toc_title_suffix}'
+        toc_line = f'- [{title}]({rel_path}) {self.toc_title_suffix}'
 
         # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
         keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
         if keywords:
-            return f'- [{title}]({rel_path})\n' + '  ' * deep + f'> _{keywords}_<br>'
-        else:
-            return f'- [{title}]({rel_path})'
+            toc_line += '\n' + '  ' * deep + f'> _{keywords}_<br>'
+
+        return toc_line
 
     @property
     def toc_line_for_recent_relative_to_repo(self):
@@ -285,8 +288,8 @@ class Note:
                 # self._title = f'{self.path.stem}({self.path_relative_to_repo})'
                 self._title = self.path.stem
 
-            if self.info.draft:
-                self._title += ' ⏳'
+            # if self.info.draft:
+            #     self._title += ' ⏳'
         return self._title
 
     @property
@@ -321,6 +324,10 @@ class Note:
     @property
     def is_top(self):
         return self.info.top
+
+    @property
+    def is_draft(self):
+        return self.info.draft
 
     @property
     def is_hidden(self):
@@ -362,7 +369,7 @@ class Note:
     def paper_title_toc_line(self) -> str:
         if self.paper_title == _EMPTY:
             return _EMPTY
-        if self.info.draft:
+        if self.is_draft:
             title = f'{self.paper_title} ⏳'
         else:
             title = self.paper_title
@@ -397,6 +404,33 @@ class Note:
         """用于生成在 tag 标签下 TOC 行时的标题"""
         return self.info.toc_title if self.info.toc_title else self.title
 
+    @property
+    def toc_title_suffix(self) -> str:
+        """toc 标题后缀"""
+        if self.num_todo > 0:
+            # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
+            suffix = args.temp_badge_todo_logo.format(num_todo=self.num_todo)
+        elif self.is_draft:
+            # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
+            # suffix = img_temp.format(src=badge_src)
+            suffix = '⏳'
+        else:
+            suffix = ''
+        return suffix
+
+    @property
+    def num_todo(self):
+        """返回全文有几个 <!-- TODO -->"""
+        return self.text.lower().count('<!-- TODO -->'.lower())
+
+    @property
+    def progress_marker(self) -> str:
+        """返回极简进度标记: 一个emoji + N个□"""
+        if self.num_todo > 0:
+            per = 10 + max(0, 3 - self.num_todo) * 10
+            return f'⏳{per}%'
+        else:
+            return ''
 
 @dataclass
 class SubjectInfo:
