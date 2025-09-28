@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-28%2001%3A25%3A29&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-29%2002%3A16%3A37&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-03 10:26:05
@@ -61,11 +61,14 @@ tags: [llm_prompt]
 - 从二级标题 (##) 开始;
 - 使用 bullet 排版;
 - 对重点进行加粗但不要滥用;
-- 一律使用半角标点;
+- **一律使用半角标点**;
     - 除了句末, 在段落中优先使用 分号(;) 代替 句号(.)
-- 在中文与英文间插入空格, 在括号左右插入空格, 在加粗后的文字左右插入空格;
-    - 标点前不要插入空格;
-- 公式优先使用 LaTeX, 并用 '$' 或 '$$' 包裹;
+    - 在 句末 和 列表项末 使用句号(.)
+- 在中文与 English 或数字 123 之间插入空格;
+- 在括号 (xxx) 左右插入空格, 在 **加粗文字** 左右插入空格;
+    - 但 **遇到标点不加**;
+- 公式优先使用 LaTeX, 并用 $ 或 $$ (单独一行) 包裹;
+- 整体参考以上这段文本的格式.
 
 ---
 

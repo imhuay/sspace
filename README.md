@@ -226,7 +226,7 @@ JSON       0 secs          -------------------------   00.00 %
   > _[QA](notes/_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](notes/_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>
+- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
 
 <!-- omit in toc -->
 #### BERT
@@ -241,9 +241,9 @@ JSON       0 secs          -------------------------   00.00 %
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
 - [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/偏好学习.md) 
   > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](notes/_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
-  - [**强化学习基础** ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础.md) 
-    > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础.md#rl-术语-及其在-rlhf-中的含义) • [价值函数](notes/_archives/2025/09/大模型微调/强化学习基础.md#价值函数-value-function) • [优势函数](notes/_archives/2025/09/大模型微调/强化学习基础.md#优势函数-advantage-function) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础.md#广义优势估计-gae)_<br>
-  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>
+  - [**强化学习基础** ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
+    > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础.md#核心术语体系) • [价值函数](notes/_archives/2025/09/大模型微调/强化学习基础.md#价值函数-value-function) • [优势函数](notes/_archives/2025/09/大模型微调/强化学习基础.md#优势函数-advantage-function) • [RL 优化目标](notes/_archives/2025/09/大模型微调/强化学习基础.md#优化目标) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础.md#广义优势估计-gae)_<br>
+  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
     > _[PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](notes/_archives/2025/09/大模型微调/LoRA.md) • [QA](notes/_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
@@ -564,8 +564,6 @@ JSON       0 secs          -------------------------   00.00 %
 
 ## Drafts
 
-- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
-- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) ⏳
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md) 
 - [算法面试问题收录](notes/_archives/2025/09/算法面试问题收录.md) ⏳
   > _[Transformer](notes/_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](notes/_archives/2025/09/算法面试问题收录.md#llm)_<br>
@@ -624,5 +622,7 @@ JSON       0 secs          -------------------------   00.00 %
 - [Hive 常用 SQL 备忘](notes/_archives/2023/03/Hive常用SQL备忘.md) 
 - [GitBook 备忘](notes/_archives/2022/04/Gitbook备忘.md) 
 - [BERT 常见面试问题](notes/_archives/2022/05/BERT常见面试问题.md) 
-- [2015.wsdm.el](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md)
+- [2015.wsdm.el](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md) 
+- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
+- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) ⏳
 <!--END_SECTION:notes-->

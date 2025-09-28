@@ -73,7 +73,7 @@ Notes
   > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>
+- [LLM 训练稳定性](_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
 
 <!-- omit in toc -->
 #### BERT
@@ -88,9 +88,9 @@ Notes
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
 - [**偏好学习** ( **RLHF** )](_archives/2025/09/大模型微调/偏好学习.md) 
   > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
-  - [**强化学习基础** ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础.md) 
-    > _[基础术语](_archives/2025/09/大模型微调/强化学习基础.md#rl-术语-及其在-rlhf-中的含义) • [价值函数](_archives/2025/09/大模型微调/强化学习基础.md#价值函数-value-function) • [优势函数](_archives/2025/09/大模型微调/强化学习基础.md#优势函数-advantage-function) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础.md#广义优势估计-gae)_<br>
-  - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>
+  - [**强化学习基础** ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
+    > _[基础术语](_archives/2025/09/大模型微调/强化学习基础.md#核心术语体系) • [价值函数](_archives/2025/09/大模型微调/强化学习基础.md#价值函数-value-function) • [优势函数](_archives/2025/09/大模型微调/强化学习基础.md#优势函数-advantage-function) • [RL 优化目标](_archives/2025/09/大模型微调/强化学习基础.md#优化目标) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础.md#广义优势估计-gae)_<br>
+  - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
     > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
@@ -411,8 +411,6 @@ Notes
 
 ## Drafts
 
-- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md) 
-- [使用 LLM 优化简历](_archives/2025/08/使用LLM优化简历.md) ⏳
 - [Python Wiki](_archives/2025/08/python_wiki.md) 
 - [算法面试问题收录](_archives/2025/09/算法面试问题收录.md) ⏳
   > _[Transformer](_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](_archives/2025/09/算法面试问题收录.md#llm)_<br>
@@ -472,5 +470,7 @@ Notes
 - [GitBook 备忘](_archives/2022/04/Gitbook备忘.md) 
 - [BERT 常见面试问题](_archives/2022/05/BERT常见面试问题.md) 
 - [2015.wsdm.el](_archives/2022/04/实体链接/2015.wsdm.el.01.md) 
+- [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md) 
+- [使用 LLM 优化简历](_archives/2025/08/使用LLM优化简历.md) ⏳
 
 <!--END_SECTION:notes-->

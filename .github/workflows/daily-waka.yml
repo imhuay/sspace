@@ -5,8 +5,8 @@ name: daily-waka
 on:
   push:
     branches: [ 'master' ]
-    # paths:
-    #   - '.github/workflows/daily-waka.yml'
+    paths:
+      - '.github/workflows/daily-waka.yml'
   workflow_dispatch: # for manual workflow trigger
   schedule:  # https://docs.github.com/cn/actions/using-workflows/events-that-trigger-workflows#schedule
     - cron: '0 18 * * *' # runs at every 02:00 BeiJing Time

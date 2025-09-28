@@ -409,7 +409,7 @@ class Note:
         """toc 标题后缀"""
         if self.num_todo > 0:
             # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
-            suffix = args.temp_badge_todo_logo.format(num_todo=self.num_todo)
+            suffix = args.temp_badge_todo_logo_edit.format(num_todo=self.num_todo)
         elif self.is_draft:
             # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
             # suffix = img_temp.format(src=badge_src)

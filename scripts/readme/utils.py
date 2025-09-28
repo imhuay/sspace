@@ -523,7 +523,8 @@ class args:  # noqa
     notes_top_limit = None
 
     # template
-    temp_badge_todo_logo = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
+    temp_badge_todo_logo_check = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
+    temp_badge_todo_logo_edit = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>'
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}
 {toc_recent}
