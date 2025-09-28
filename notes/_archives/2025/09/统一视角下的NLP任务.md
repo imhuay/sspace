@@ -1,8 +1,8 @@
 统一视角下的 NLP 任务
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-04&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-06%2015%3A31%3A39&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-04&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-06%2015%3A31%3A39&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-04 16:47:35

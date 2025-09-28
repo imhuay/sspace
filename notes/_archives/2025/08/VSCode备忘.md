@@ -1,8 +1,8 @@
 VSCode 备忘
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-08&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-29%2003%3A21%3A55&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-08&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-29%2003%3A21%3A55&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-08 16:26:03

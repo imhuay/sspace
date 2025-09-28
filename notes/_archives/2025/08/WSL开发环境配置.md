@@ -1,8 +1,8 @@
 开发环境配置 (基于 WSL)
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-06&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-06%2023%3A10%3A23&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-06&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-06%2023%3A10%3A23&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-06 19:40:07

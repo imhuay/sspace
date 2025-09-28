@@ -1,8 +1,8 @@
 多轮MRC信息抽取的优缺点
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-23&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-24%2017%3A30%3A57&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-23&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-24%2017%3A30%3A57&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-23 23:05:36

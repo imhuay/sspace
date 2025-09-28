@@ -1,8 +1,8 @@
 `git` 备忘
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-06-xx&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-08%2020%3A00%3A40&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-06-xx&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-08%2020%3A00%3A40&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: false

@@ -1,8 +1,8 @@
 XGBoost 学习笔记
 ===
 <!--START_SECTION:badge-->
-![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-05-xx&label_color=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2017%3A06%3A45&label_color=gray&color=thistle&style=flat-square)
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-05-xx&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-19%2017%3A06%3A45&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 
 <!--info
