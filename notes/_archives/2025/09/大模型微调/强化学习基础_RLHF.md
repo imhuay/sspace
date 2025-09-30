@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-29%2002%3A16%3A37&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-30%2020%3A54%3A40&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-25 02:59:27
@@ -504,7 +504,7 @@ extra_url: false
 
 #### 在线策略 • 离线策略
 
-<!-- 
+<!--
 > • On-Policy 与 Off-Policy 的 **核心区别**: **用于训练的数据生成方式**;<br>
 > • On-Policy **必须** 使用 当前策略 $\pi$ 最新生成的数据;<br>
 > • Off-Policy **可以** 使用 历史数据 或 其他策略 生成的数据;<br>

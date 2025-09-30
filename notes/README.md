@@ -33,7 +33,7 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-07-08` Markdown 简历工具 📌](./_archives/2022/06/Markdown_简历工具.md)
+- [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown_简历工具.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
@@ -87,9 +87,9 @@ Notes
 - [基础概念](_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
 - [**偏好学习** ( **RLHF** )](_archives/2025/09/大模型微调/偏好学习.md) 
-  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
-  - [**强化学习基础** ( **LLM-based** )](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
-    > _[基础术语](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#价值函数-value-function) • [优势函数](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#优势函数-advantage-function) • [RL 优化目标](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#优化目标) • [贝尔曼方程](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](./_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
+  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
+  - [**强化学习基础** ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
+    > _[基础术语](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4-价值函数--优势函数) • [RL 优化目标](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#优化目标) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
     > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md) 
@@ -312,9 +312,9 @@ Notes
 
 - [开发环境配置 ( 基于 WSL )](_archives/2025/08/WSL开发环境配置.md) 
 - [VSCode 备忘](_archives/2025/08/VSCode备忘.md) 
-- [Markdown 备忘](./_archives/2022/04/Markdown_备忘.md) 
-  - [Markdown 简历工具](./_archives/2022/06/Markdown_简历工具.md) 
-  - [LaTeX in Markdown 备忘](./_archives/2022/04/LaTeX_备忘.md) 
+- [Markdown 备忘](_archives/2022/04/Markdown_备忘.md) 
+  - [Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) 
+  - [LaTeX in Markdown 备忘](_archives/2022/04/LaTeX_备忘.md) 
 - [Github Action 备忘](_archives/2022/08/GithubAction备忘.md) 
 - [Docker 备忘](_archives/2022/08/Docker备忘.md) 
 
