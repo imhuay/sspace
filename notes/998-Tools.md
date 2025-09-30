@@ -11,8 +11,8 @@ toc_id: tools
 ---
 
 - [HiveSQL常用操作](./_archives/2022/04/HiveSQL常用操作.md)
-- [LaTeX备忘](./_archives/2022/04/LaTeX备忘.md)
-- [Markdown备忘](./_archives/2022/04/Markdown备忘.md)
+- [LaTeX备忘](./_archives/2022/04/LaTeX_备忘.md)
+- [Markdown备忘](./_archives/2022/04/Markdown_备忘.md)
 - [`awk` 基本用法](./_archives/2022/06/awk基本用法.md)
 <!-- TOC -->
 

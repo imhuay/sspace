@@ -145,7 +145,7 @@ toc_id: wiki
 
 ### LaTeX
 > 一种可以处理排版和渲染的标记语言，常用于论文编辑；
-- [LaTeX 常用编辑格式](./_archives/2022/04/LaTeX备忘.md)；
+- [LaTeX 常用编辑格式](./_archives/2022/04/LaTeX_备忘.md)；
 
 ### LLM
 > 大型语言模型 (Large Language Model, LLM)
@@ -169,8 +169,8 @@ toc_id: wiki
 ### Markdown
 > Markdown 是一种轻量级标记语言，可以使用纯文本格式来编写文档，然后通过转化为 HTML 来丰富可读性，并在一定程度上兼容 HTML 代码；  
 > 另见：[Obsidian](#obsidian)
-- [Markdown 常用编辑格式](./_archives/2022/04/Markdown备忘.md)
-- [使用 Markdown 编辑简历](./_archives/2022/06/Markdown简历工具.md)
+- [Markdown 常用编辑格式](./_archives/2022/04/Markdown_备忘.md)
+- [使用 Markdown 编辑简历](./_archives/2022/06/Markdown_简历工具.md)
 
 
 ## N

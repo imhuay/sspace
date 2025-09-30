@@ -30,7 +30,7 @@ Notes
 <!-- omit in toc -->
 ## Recently 📖
 <!--START_SECTION:recent-->
-- [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown简历工具.md)
+- [`2025-07-08` Markdown 简历工具 📌](./_archives/2022/06/Markdown_简历工具.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
@@ -176,8 +176,8 @@ Notes
 ---
 
 - [HiveSQL常用操作](./_archives/2022/04/HiveSQL常用操作.md)
-- [LaTeX备忘](./_archives/2022/04/LaTeX备忘.md)
-- [Markdown备忘](./_archives/2022/04/Markdown备忘.md)
+- [LaTeX备忘](./_archives/2022/04/LaTeX_备忘.md)
+- [Markdown备忘](./_archives/2022/04/Markdown_备忘.md)
 - [`awk` 基本用法](./_archives/2022/06/awk基本用法.md)
 
 </td>

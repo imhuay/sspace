@@ -48,6 +48,13 @@ tags: [tool]
 
 ### 表格
 
+
+Column A | Column B | Column C
+---------|----------|---------
+ A1 | B1 | C1
+ A2 | B2 | C2
+ A3 | B3 | C3
+
 ### 参考链接 (Reference-style Links)
 
 ```markdown
@@ -302,8 +309,6 @@ project
 $$
     a+b=3
 $$
-
-> 更多语法见 [Latex 备忘](./LaTeX备忘.md)
 ```
 行内 $a+b=3$ 公式 (保证块前后有空格)
 
@@ -315,7 +320,7 @@ $$
     a+b=3
 $$
 
-> 更多语法见 [Latex 备忘](./LaTeX备忘.md)
+> 更多语法见 [Latex 备忘](./LaTeX_备忘.md)
 
 
 ### 引用

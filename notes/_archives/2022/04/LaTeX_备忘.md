@@ -12,7 +12,7 @@ tags: [tool]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [Markdown](../04/Markdown备忘.md)*
+> ***Keywords**: [Markdown](./Markdown_备忘.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:toc-->

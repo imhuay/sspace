@@ -48,7 +48,7 @@ class KeywordSection:
         tokens = _md.parse(self.content)
         is_heading = False
         for t in tokens:
-            if t.type == 'html_block':
+            if t.type == 'html_block' and 'keyword_info' in t.content:
                 info_str = NoteUtils.get_annotation('keyword_info', t.content)
                 info = yaml.safe_load(info_str) if info_str else {}
                 self.name = info.get('name', '')
