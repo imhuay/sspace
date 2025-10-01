@@ -24,16 +24,18 @@ tags: []
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [**基础概念**](#基础概念)
-    - [核心术语体系](#核心术语体系)
-    - [术语释义及其在 RLHF 中的含义](#术语释义及其在-rlhf-中的含义)
-        - [**1. 智能体 • 环境 • 回合**](#1-智能体--环境--回合)
-        - [**2. 状态 • 动作 • 策略 • 转移概率**](#2-状态--动作--策略--转移概率)
-        - [**3. 奖励 • 回报 • 折扣因子**](#3-奖励--回报--折扣因子)
-        - [**4. 价值函数 • 优势函数**](#4-价值函数--优势函数)
-    - [优化目标](#优化目标)
-    - [策略梯度](#策略梯度)
-        - [在线策略 • 离线策略](#在线策略--离线策略)
+- [核心术语体系](#核心术语体系)
+    - [**1️⃣ 智能体 . 环境 . 回合**](#1️⃣-智能体--环境--回合)
+    - [**2️⃣ 状态 . 动作 . 策略 . 转移概率**](#2️⃣-状态--动作--策略--转移概率)
+    - [**3️⃣ 奖励 . 回报 . 折扣因子**](#3️⃣-奖励--回报--折扣因子)
+    - [**4️⃣ 价值函数 . 优势函数**](#4️⃣-价值函数--优势函数)
+- [策略优化](#策略优化)
+    - [**1️⃣ 目标函数**](#1️⃣-目标函数)
+    - [**2️⃣ 优化方法: 策略梯度**](#2️⃣-优化方法-策略梯度)
+    - [**3️⃣ 策略梯度算法**](#3️⃣-策略梯度算法)
+        - [REINFORCE 算法](#reinforce-算法)
+- [策略梯度](#策略梯度)
+    - [在线策略 • 离线策略](#在线策略--离线策略)
 - [相关概念](#相关概念)
     - [蒙特卡洛估计](#蒙特卡洛估计)
     - [贝尔曼方程 (Bellman Equation)](#贝尔曼方程-bellman-equation)
@@ -43,11 +45,12 @@ tags: []
         - [TD (0) 与 **时序差分误差** (TD Error)](#td-0-与-时序差分误差-td-error)
         - [TD (λ)](#td-λ)
     - [**广义优势估计** (GAE)](#广义优势估计-gae)
+    - [策略梯度定理推导](#策略梯度定理推导)
 <!--END_SECTION:toc-->
 
 ---
 
-## **基础概念**
+<!-- ## **基础概念** -->
 
 <!--
 - 强化学习算法可以分为两大类:
@@ -68,7 +71,7 @@ tags: []
 name: '基础术语'
 extra_url: false
 -->
-### 核心术语体系
+## 核心术语体系
 <!--END_SECTION:keyword-->
 
 <table>
@@ -146,7 +149,7 @@ extra_url: false
 
 
 <!-- omit in toc -->
-#### 📌 术语之间的逻辑关系
+### 📌 术语之间的逻辑关系
 > 构成了强化学习最核心, 最通用, 不依赖于任何特定算法的基础语言;
 
 1. **智能体** 与 **环境** 是交互的两极;
@@ -158,16 +161,17 @@ extra_url: false
 
 ---
 
-### 术语释义及其在 RLHF 中的含义
+<!-- omit in toc -->
+### 以下为术语释义及其在 RLHF 中的含义
 > RL 一般应用于游戏智能体等场景, 其概念或术语在 LLM 背景下需要做相应调整或说明.
 
-> 在描述当前某一术语时, 难免会涉及到之后的某个术语, 注意前后联系.
+> 在描述当前某一术语时, 可能会涉及到之后的某个术语, 注意前后联系.
 
 > **约定**: **大写字母** 表示 **随机变量**, 如 $R_t$; **小写字母** 为随机变量的 **观测值**, 如 $r_t$;
 
 ---
 
-#### **1. 智能体 • 环境 • 回合**
+### **1️⃣ 智能体 . 环境 . 回合**
 
 <table>
 <tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
@@ -217,7 +221,7 @@ extra_url: false
 
 ---
 
-#### **2. 状态 • 动作 • 策略 • 转移概率**
+### **2️⃣ 状态 . 动作 . 策略 . 转移概率**
 
 <table>
 <tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
@@ -325,7 +329,7 @@ extra_url: false
 
 ---
 
-#### **3. 奖励 • 回报 • 折扣因子**
+### **3️⃣ 奖励 . 回报 . 折扣因子**
 
 <table>
 <tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
@@ -361,8 +365,7 @@ extra_url: false
 <!-- • 常用折扣因子 $\gamma$ 计算, 如 $G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$;<br> -->
 • 从时刻 $t$ 起, 直到回合结束所获得的 **累积奖励**, 记 $G_t$: <br>
   $$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$
-• 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br>
-> ◦ [最大化期望回报](#最大化期望回报) <br></td>
+• 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br></td>
 <td>
 
 <!-- • 从当前 Token 位置开始, 到生成结束所能获得的 **累积奖励**<br> -->
@@ -396,7 +399,7 @@ extra_url: false
 name: '价值函数 ↝ 优势函数'
 extra_url: false
 -->
-#### **4. 价值函数 • 优势函数**
+### **4️⃣ 价值函数 . 优势函数**
 <!--END_SECTION:keyword-->
 
 <table>
@@ -465,28 +468,67 @@ extra_url: false
 
 <!--START_SECTION:keyword-->
 <!--keyword_info
-name: 'RL 优化目标'
+name: '策略优化'
 extra_url: false
 -->
-### 优化目标
+## 策略优化
 <!--END_SECTION:keyword-->
-> 强化学习的 **优化目标** 是让智能体学习一个能 **最大化期望 <u>回报 (长期累积奖励)</u>** 的 **策略**.
+<!-- > 强化学习的 **优化目标** 是让智能体学习一个能 **最大化期望 <u>回报 (长期累积奖励)</u>** 的 **策略**. -->
+> 强化学习的目标学习一个能够 **最大化期望回报** 的 **策略**, 这一过程被称为 **策略优化 (Policy Optimization)**.
+
+- 回顾 **奖励** 与 **回报** 的定义:
+    $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...$$
+    <!-- - $\gamma$ : 折扣因子, 表示对未来奖励的衰减 <br> -->
+    > ◦ 主流定义中 $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
+    > ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论;
+<!-- - **RL 的优化目标就是找到一个策略 $\pi_\theta$, 使从初始状态 $G_0$ 开始, 所获得的期望回报最大化**; -->
+
+### **1️⃣ 目标函数**
+- RL 的目标是 **最大化** 整个交互过程中获得的 **期望回报** (即 **期望累积奖励**):
+    $$\begin{align}
+        J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \big\lbrack G(\tau) \big\rbrack
+    \end{align}$$
+    <!-- $$= \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack\ \sum_{t=0}^{T} \gamma^t R(s_t, a_t)\ \right\rbrack$$ -->
+    > $\tau \sim p_{\theta}(\tau)$ 有时也简记为 $\tau \sim \pi_\theta$.
+- 其中:
+    - $\tau = (s_0,a_0,s_1,a_1,...)$ 表示一条从初始状态开始的完整轨迹;
+    - **$\tau$ 服从概率分布 $p_\theta(\tau)$**:
+        > $p_\theta(\tau)$ 是由策略 $\pi_\theta$ 和环境动力学诱导的轨迹分布;
+        $$p_\theta(\tau) = p(s_0)\prod_{t=0}^\infty \pi_\theta(a_t|s_t) P(s_{t+1}|s_t,a_t)$$
+    - $p(s_0)$ : 初始状态分布;
+    - $\pi_\theta(a_t|s_t)$ : 策略在状态 $s_t$ 下选择动作 $a_t$ 的概率;
+    - $P(s_{t+1}|s_t,a_t)$ : 环境在状态 $s_t$ 下执行动作 $a_t$ 后, 转移到状态 $s_{t+1}$ 的概率;
+
+---
+
+### **2️⃣ 优化方法: 策略梯度**
+
+- 定义了目标函数后, 就是经典的优化问题: 
+    $$\max_\theta\ J(\theta)$$
+- 由于环境动态特性未知, 我们无法直接求导, 因此需要 **策略梯度** 方法.
 
 <!-- omit in toc -->
-#### **最大化期望回报**
-- **长期累积奖励** 在 RL 中有一个专有名词 —— **回报**, 一般用 $G$ 表示;
-    $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...$$
-    - 这里引入 **折扣因子** $\gamma \in \lbrack\  0,1 \ \rbrack$, 表示对未来奖励的衰减;
-    > ◦ 主流定义中, $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
-    > ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义式 **等价** 的, 不影响结论;
-- RL的优化目标就是找到一个策略 $\pi$, 使 **从初始状态开始, 所获得的期望回报最大化**;
-- 定义 **目标函数**:
-    $$J(\pi) = \mathbb{E}_{s_0, a_0, s_1, ... \sim \pi_\theta} \lbrack G_0 \rbrack$$
+#### 策略梯度定理
+<!-- > **策略梯度定理** 回答了这个问题: **如何计算目标函数 $J_\theta$ 对策略参数的梯度?** -->
+
+- 定理给出了目标函数梯度 $\nabla_\theta J(\theta)$ 的一个无偏估计; 
+- 其 **基本形式** 为:
+    $$\begin{align}
+        \nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left\lbrack\ \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \cdot G_t \ \right\rbrack
+    \end{align}$$
+    > [_详细推导_](#策略梯度定理推导)
+- 该公式将梯度转化为一个期望, 使我们能够通过 **采样轨迹** 来估计它.
+
+---
+
+### **3️⃣ 策略梯度算法**
+
+#### REINFORCE 算法
 
 ---
 
 <!-- TODO -->
-### 策略梯度
+## 策略梯度
 
 
 
@@ -524,7 +566,7 @@ extra_url: false
 <!-- • **在 RLHF 中, 估计优势函数是策略梯度计算的核心**;<br> -->
 
 
-#### 在线策略 • 离线策略
+### 在线策略 • 离线策略
 
 <!--
 > • On-Policy 与 Off-Policy 的 **核心区别**: **用于训练的数据生成方式**;<br>
@@ -706,3 +748,29 @@ extra_url: false
 - 通过调整 $\lambda$, 可以在 **偏差** 与 **方差** 之间取得平衡;
     - 小 $\lambda$ → 方差较小, 偏差较大;
     - 大 $\lambda$ → 偏差较小, 方差较大.
+
+
+### 策略梯度定理推导
+
+- 首先给出期望回报 (公式-1) 的积分形式:
+    $$J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack G(\tau) \right\rbrack = \int p_\theta(\tau) G(\tau)  d\tau$$
+- 对 $J(\theta)$ 求梯度:
+    $$\nabla_\theta J(\theta) = \nabla_\theta \int p_\theta(\tau) G(\tau) d\tau = \int \nabla_\theta p_\theta(\tau) G(\tau) d\tau$$
+    > 因为轨迹集合 (积分空间) 与策略参数 $\theta$ 无关, 所以可以交换积分和梯度; —— 策略参数 $\theta$ 影响的是轨迹出现的概率;
+- 根据对数求导性质:
+    $$\nabla_\theta p_\theta(\tau) = p_\theta(\tau) \frac{\nabla_\theta p_\theta(\tau)}{p_\theta(\tau)} = p_\theta(\tau) \nabla_\theta \log p_\theta(\tau)$$
+- 代回原式:
+    $$\nabla_\theta J(\theta) = \int p_\theta(\tau) \nabla_\theta \log p_\theta(\tau) G(\tau) d\tau = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack \nabla_\theta \log p_\theta(\tau) \cdot G(\tau) \right\rbrack$$
+- 展开 $\nabla_\theta \log p_\theta(\tau)$:
+    $$\begin{aligned}
+      \nabla_\theta \log p_\theta(\tau) 
+      &= \nabla_\theta \log \left\lbrack p(s_0)\prod_{t=0}^\infty \pi_\theta(a_t|s_t) P(s_{t+1}|s_t,a_t) \right\rbrack \\
+      &= \nabla_\theta \left\lbrack \log p(s_0) + \sum_{t=0}^{T} \Big( \log \pi_\theta(a_t | s_t) + \log P(s_{t+1} | s_t, a_t) \Big) \right\rbrack \\ 
+        &= \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t)
+    \end{aligned}$$
+    > 这里表明我们 **不需要知道环境的转移概率 $P(s_{t+1}|s_t,a_t)$, 只需采样轨迹即可估计梯度**.
+- 代回原式:
+    $$\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left\lbrack \left( \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \right) \cdot G(\tau) \right\rbrack$$
+- 这里可以用 $G_t$ 代替 $G(\tau)$:
+    > 一个更精细的推导可以证明 (这里略), 时刻 $t$ 的动作 $a_t$ 只影响 $t$ 时刻之后的回报, 而与 $t$ 时刻之前的回报无关.
+    $$\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left\lbrack \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \cdot G_t \right\rbrack$$

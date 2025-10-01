@@ -2,9 +2,9 @@ name: daily
 
 on:
   workflow_dispatch: # for manual workflow trigger
-  schedule:
-    # Setting it to 00:00 may cause a huge delay, probably because lots of tasks are being executed at that point.
-    - cron: '0 17 * * *' # runs at every 01:00 BeiJing Time
+  # schedule:
+  #   # Setting it to 00:00 may cause a huge delay, probably because lots of tasks are being executed at that point.
+  #   - cron: '0 17 * * *' # runs at every 01:00 BeiJing Time
   push:
     branches: [ 'master' ]
     paths:
