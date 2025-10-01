@@ -127,7 +127,7 @@
 
 8. PPO 在 RLHF 中的目标形式有哪些写法？KL 正则的作用与自适应调节如何做？  
    $$
-   \max_{\theta}\ \mathbb{E}\big \lbrack R_{\phi}(x)\big]\ -\ \beta\ \mathrm{KL}\big(\pi_{\theta}\,\|\,\pi_{\text{ref}}\big)
+   \max_{\theta}\ \mathbb{E}\big \lbrack R_{\phi}(x)\big]\ -\ \beta\ \mathrm{KL}\big(\pi_{\theta}\ \|\ \pi_{\text{ref}}\big)
    $$
    【可能追问：如何设定目标 KL 与步长】  
 9. 价值模型与奖励模型的角色差异是什么？为何两者都必要？【可能追问：没有 VM 会发生什么】  

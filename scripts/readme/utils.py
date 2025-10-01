@@ -18,7 +18,7 @@ import subprocess
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Tuple
 
 import emoji
 import regex
@@ -140,7 +140,74 @@ class MarkdownUtils:
         return result
 
     @staticmethod
-    def norm_text(text: str) -> str:
+    def normalize_spaces(text: str, comment_markers: List[str] | None = None) -> str:
+        """Normalize spaces in a line of text with configurable comment markers.
+
+        Rules:
+        - Preserve leading spaces as-is.
+        - Preserve the exact number of spaces immediately before and after the first
+        comment marker (from the provided list).
+        - Replace other consecutive spaces inside the code part with a single space.
+        - If the text ends with two or more spaces, preserve exactly two spaces.
+
+        Args:
+            text (str): Input string.
+            comment_markers (List[str], optional): List of comment markers to detect.
+                Defaults to ['#', '//'].
+
+        Returns:
+            str: String with normalized spaces.
+        """
+        if comment_markers is None:
+            comment_markers = ['#', '//', '...']
+
+        # Preserve leading spaces
+        leading_spaces = len(text) - len(text.lstrip(' '))
+        prefix = ' ' * leading_spaces
+        remainder = text[leading_spaces:]
+
+        # Detect trailing spaces for the "keep two" rule
+        trailing_spaces = len(remainder) - len(remainder.rstrip(' '))
+        keep_trailing = trailing_spaces >= 2
+
+        # Work on the core without trailing spaces
+        core = remainder.rstrip(' ')
+
+        # Find the earliest comment marker
+        comment_idx: int = None
+        marker: str = None
+        for m in comment_markers:
+            idx = core.find(m)
+            if idx != -1 and (comment_idx is None or idx < comment_idx):
+                comment_idx, marker = idx, m
+
+        if comment_idx is not None:
+            left = core[:comment_idx]
+            right = core[comment_idx:]  # includes marker and after
+
+            # Find run of spaces before marker
+            space_start = len(left)
+            while space_start > 0 and left[space_start - 1] == ' ':
+                space_start -= 1
+            left_nonspace = left[:space_start]
+            space_run = left[space_start:]  # preserved
+
+            # Compress spaces in left_nonspace
+            left_nonspace = re.sub(r' +', ' ', left_nonspace)
+
+            # Right part (comment marker and after) preserved as-is
+            core = left_nonspace + space_run + right
+        else:
+            # No comment marker: compress everywhere
+            core = re.sub(r' +', ' ', core)
+
+        result = prefix + core
+        if keep_trailing:
+            result += '  '
+        return result
+
+    @staticmethod
+    def normalize_text(text: str) -> str:
         """文本规范化
 
         要求:
@@ -170,16 +237,11 @@ class MarkdownUtils:
         for i in range(len(lines)):
             line = lines[i]
 
-            # 1. 行尾空格处理
             if line.strip() == '':
                 lines[i] = ''
                 continue
-            if line.endswith('  '):
-                line = line.rstrip() + '  '
-            else:
-                line = line.rstrip()
 
-            # 2. 中文标点处理
+            # 1. 中文标点处理
             for cn_punc, en_punc in punc_map.items():
                 line = re.sub(rf'\s*{cn_punc}\s*', f'{en_punc} ', line)
             # 处理成对的中文引号和括号
@@ -189,11 +251,9 @@ class MarkdownUtils:
                 for seg_punc in punc_map.values():
                     line = re.sub(rf'{re.escape(en_right)}\s*{re.escape(seg_punc)}', f'{en_right}{seg_punc}', line)
 
-            # 3. 再次行尾空格处理 (防止中文标点替换后, 行尾出现单个空格)
+            # 2. 空格处理
             if line.endswith('  '):
                 line = line.rstrip() + '  '
-            else:
-                line = line.rstrip()
 
             # 4. 把多余的空格替换为单个空格 (除了行尾)
             # line = re.sub(r'(?<=\S) {2,}(?=\S)', ' ', line)
@@ -201,11 +261,11 @@ class MarkdownUtils:
 
             lines[i] = line
 
-        new_text = '\n'.join(lines)
+        text = '\n'.join(lines)
 
-        # 5. 在括号内添加空格
-        # new_text = MarkdownUtils.add_spaces_around_parentheses(new_text)
-        return new_text
+        # 空格处理
+        # text = MarkdownUtils.normalize_markdown_spaces(text)
+        return text
 
     @staticmethod
     def print_diffs_with_context(a: str, b: str, l_context=0, r_context=10):
@@ -259,6 +319,68 @@ class MarkdownUtils:
             return placeholders[int(m.group(1))]
 
         return regex.sub(r'@@LINK_(\d+)@@', restore, processed)
+
+    @staticmethod
+    def _normalize_text_spaces(text: str) -> str:
+        """Normalize spaces in plain text (not code), preserving leading spaces."""
+        # 保留行首空格
+        leading = len(text) - len(text.lstrip(' '))
+        prefix = ' ' * leading
+        remainder = text[leading:]
+
+        # 检查结尾空格
+        trailing_spaces = len(remainder) - len(remainder.rstrip(' '))
+        keep_two = trailing_spaces >= 2
+
+        core = remainder.rstrip(' ')
+        core = re.sub(r' +', ' ', core)
+
+        if keep_two:
+            core += '  '
+        return prefix + core
+
+    @staticmethod
+    def normalize_markdown_spaces(md_text: str) -> str:
+        """Normalize spaces in Markdown, skipping fenced and inline code regions,
+        and preserving leading spaces.
+
+        - Lines within fenced code blocks (``` ... ```) are left unchanged.
+        - Inline code spans delimited by backticks are preserved unchanged.
+        - Other text lines are normalized by replacing consecutive spaces with one,
+          while preserving two trailing spaces when originally two or more.
+        - Leading spaces are always preserved.
+        """
+        md = MarkdownIt()
+        tokens = md.parse(md_text)
+
+        out_lines: List[str] = []
+
+        for tok in tokens:
+            if tok.type in ('fence', 'code_block', 'code_inline'):
+                # 保持原样
+                if tok.type == 'fence':
+                    # 还原完整围栏
+                    out_lines.append(f'{tok.markup}{tok.info}\n{tok.content}{tok.markup}')
+                else:
+                    out_lines.append(tok.content)
+            elif tok.type == 'inline':
+                parts = []
+                for child in tok.children or []:
+                    if child.type == 'text':
+                        parts.append(MarkdownUtils._normalize_text_spaces(child.content))
+                    else:
+                        parts.append(child.content)
+                out_lines.append(''.join(parts))
+            elif tok.type == 'text':
+                out_lines.append(MarkdownUtils._normalize_text_spaces(tok.content))
+            else:
+                # 其它 token（段落、标题等）
+                if tok.content:
+                    out_lines.append(tok.content)
+                else:
+                    out_lines.append(tok.markup)
+
+        return '\n'.join(out_lines)
 
 
 class NoteUtils:
@@ -525,6 +647,7 @@ class args:  # noqa
     # template
     temp_badge_todo_logo_check = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
     temp_badge_todo_logo_edit = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>'
+
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}
 {toc_recent}

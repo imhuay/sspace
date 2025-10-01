@@ -31,18 +31,18 @@ tags: []
         - [**2. 状态 • 动作 • 策略 • 转移概率**](#2-状态--动作--策略--转移概率)
         - [**3. 奖励 • 回报 • 折扣因子**](#3-奖励--回报--折扣因子)
         - [**4. 价值函数 • 优势函数**](#4-价值函数--优势函数)
+    - [优化目标](#优化目标)
     - [策略梯度](#策略梯度)
         - [在线策略 • 离线策略](#在线策略--离线策略)
-- [优化目标](#优化目标)
-    - [通用优化目标](#通用优化目标)
 - [相关概念](#相关概念)
-- [贝尔曼方程 (Bellman Equation)](#贝尔曼方程-bellman-equation)
-    - [**状态价值函数** 的贝尔曼方程](#状态价值函数-的贝尔曼方程)
-    - [**动作价值函数** 的贝尔曼公式](#动作价值函数-的贝尔曼公式)
-- [时序差分算法 (Temporal Difference, TD)](#时序差分算法-temporal-difference-td)
-    - [TD (0) 与 **时序差分误差** (TD Error)](#td-0-与-时序差分误差-td-error)
-    - [TD (λ)](#td-λ)
-- [**广义优势估计** (GAE)](#广义优势估计-gae)
+    - [蒙特卡洛估计](#蒙特卡洛估计)
+    - [贝尔曼方程 (Bellman Equation)](#贝尔曼方程-bellman-equation)
+        - [**状态价值函数** 的贝尔曼方程](#状态价值函数-的贝尔曼方程)
+        - [**动作价值函数** 的贝尔曼公式](#动作价值函数-的贝尔曼公式)
+    - [时序差分算法 (Temporal Difference, TD)](#时序差分算法-temporal-difference-td)
+        - [TD (0) 与 **时序差分误差** (TD Error)](#td-0-与-时序差分误差-td-error)
+        - [TD (λ)](#td-λ)
+    - [**广义优势估计** (GAE)](#广义优势估计-gae)
 <!--END_SECTION:toc-->
 
 ---
@@ -170,7 +170,7 @@ extra_url: false
 #### **1. 智能体 • 环境 • 回合**
 
 <table>
-<tr><th width='150px'>概念</th><th width='340px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
+<tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
 
 <tr>
 <td>
@@ -220,7 +220,7 @@ extra_url: false
 #### **2. 状态 • 动作 • 策略 • 转移概率**
 
 <table>
-<tr><th width='150px'>概念</th><th width='340px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
+<tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
 <tr>
 <td>
 
@@ -270,7 +270,7 @@ extra_url: false
 <!-- • 策略模型根据当前 **上下文 (状态)** 输出下一个 **Token (动作)** 的概率分布, 即 $\pi(a_t | s_t)$ <br></td> -->
 • 语言模型的前向过程; <br>
 • 即根据当前上下文 (状态) 计算下一个 Token (动作) 的概率分布, 即: <br>
-  $$\pi_{\theta}(\, token \,|\, context \,)$$
+  $$\pi_{\theta}(\  token \ |\  context \ )$$
 </td>
 </tr>
 <tr>
@@ -317,7 +317,7 @@ extra_url: false
         $$P(s_{t+1} | s_t, a_t) = 1$$
     - 则 [贝尔曼方程](#贝尔曼方程-bellman-equation) 中关于下一个状态的期望退化为单点取值:
         $$
-        \mathbb{E}_{S_{t+1}\sim P(\cdot|s_t,a_t)}\big\lbrack\, V(S_{t+1}) \,\big\rbrack
+        \mathbb{E}_{S_{t+1}\sim P(\cdot|s_t,a_t)}\big\lbrack\  V(S_{t+1}) \ \big\rbrack
         = \sum_{s'} P(s'|s_t,a_t)V(s')
         = V(s_{t+1}).
         $$
@@ -328,7 +328,7 @@ extra_url: false
 #### **3. 奖励 • 回报 • 折扣因子**
 
 <table>
-<tr><th width='150px'>概念</th><th width='340px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
+<tr><th width='150px'>概念</th><th width='360px'>RL 中的含义</th><th>RLHF 中对应的含义</th></tr>
 <tr>
 <td>
 
@@ -361,8 +361,8 @@ extra_url: false
 <!-- • 常用折扣因子 $\gamma$ 计算, 如 $G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$;<br> -->
 • 从时刻 $t$ 起, 直到回合结束所获得的 **累积奖励**, 记 $G_t$: <br>
   $$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$
-• 其中 $\gamma$ 为 **折扣因子**, 体现未来奖励的 **衰减**: <br>
-> 长期累积奖励的等价说法; <br></td>
+• 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br>
+> ◦ [最大化期望回报](#最大化期望回报) <br></td>
 <td>
 
 <!-- • 从当前 Token 位置开始, 到生成结束所能获得的 **累积奖励**<br> -->
@@ -376,7 +376,7 @@ extra_url: false
 **折扣因子 (Discount Factor, $\gamma$)** </td>
 <td>
 
-• 用于权衡即时奖励和未来奖励的重要性, 记 $\gamma \in (0,1)$;<br>
+• 用于权衡即时奖励和未来奖励的重要性, 记 $\gamma \in \lbrack\  0,1 \ \rbrack$;<br>
 • $\gamma \to 0$ 时, 更注重短期收益,<br>
 • $\gamma \to 1$ 时, 更注重长期回报.<br>
 
@@ -400,7 +400,7 @@ extra_url: false
 <!--END_SECTION:keyword-->
 
 <table>
-<tr><th width='160px'>概念</th><th width='340px'>RL 中的含义或作用</th><th>RLHF 中对应的含义或作用</th></tr>
+<tr><th width='160px'>概念</th><th width='360px'>RL 中的含义或作用</th><th>RLHF 中对应的含义或作用</th></tr>
 <tr>
 <td>
 
@@ -421,7 +421,7 @@ extra_url: false
 
 • 用于估计一个状态 $s$ 的长期价值; <br>
 • 返回在状态 $s$ 下, 遵循策略 $\pi$ 所能获得的 **期望回报**: <br>
-  $$V^{\pi}(s) = \mathbb{E}_{\pi}\big\lbrack\, G_t \mid S_t = s \,\big\rbrack$$
+  $$V^{\pi}(s) = \mathbb{E}_{\pi}\big\lbrack\  G_t \mid S_t = s \ \big\rbrack$$
 </td>
 <td>
 
@@ -438,7 +438,7 @@ extra_url: false
 
 • 用于估计在状态 $s$ 下采取某个特定动作 $a$ 的长期价值; <br>
 • 返回在状态 $s$ 下执行动作 $a$ 后, 遵循策略 $\pi$ 所能获得的 **期望回报**: <br>
-  $$Q^{\pi}(s, a) = \mathbb{E}_{\pi}\big\lbrack\, G_t \mid S_t = s, A_t = a \,\big\rbrack$$
+  $$Q^{\pi}(s, a) = \mathbb{E}_{\pi}\big\lbrack\  G_t \mid S_t = s, A_t = a \ \big\rbrack$$
 </td>
 <td>
 
@@ -460,6 +460,28 @@ extra_url: false
 • 其值为策略优化提供了直接的梯度信号. <br></td>
 </tr>
 </table>
+
+---
+
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'RL 优化目标'
+extra_url: false
+-->
+### 优化目标
+<!--END_SECTION:keyword-->
+> 强化学习的 **优化目标** 是让智能体学习一个能 **最大化期望 <u>回报 (长期累积奖励)</u>** 的 **策略**.
+
+<!-- omit in toc -->
+#### **最大化期望回报**
+- **长期累积奖励** 在 RL 中有一个专有名词 —— **回报**, 一般用 $G$ 表示;
+    $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...$$
+    - 这里引入 **折扣因子** $\gamma \in \lbrack\  0,1 \ \rbrack$, 表示对未来奖励的衰减;
+    > ◦ 主流定义中, $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
+    > ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义式 **等价** 的, 不影响结论;
+- RL的优化目标就是找到一个策略 $\pi$, 使 **从初始状态开始, 所获得的期望回报最大化**;
+- 定义 **目标函数**:
+    $$J(\pi) = \mathbb{E}_{s_0, a_0, s_1, ... \sim \pi_\theta} \lbrack G_0 \rbrack$$
 
 ---
 
@@ -512,20 +534,17 @@ extra_url: false
 
 ---
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: 'RL 优化目标'
-extra_url: false
--->
-## 优化目标
-<!--END_SECTION:keyword-->
-
-<!-- TODO -->
-### 通用优化目标
->
 
 
 ## 相关概念
+
+
+
+### 蒙特卡洛估计
+
+- **核心思想**:
+    - 通过 **重复随机采样** 来获得数值结果,
+    - 当 **样本数量足够大** 时, 样本均值可以近似代替期望值;
 
 
 <!--START_SECTION:keyword-->
@@ -533,14 +552,14 @@ extra_url: false
 name: '贝尔曼方程'
 extra_url: false
 -->
-## 贝尔曼方程 (Bellman Equation)
+### 贝尔曼方程 (Bellman Equation)
 <!--END_SECTION:keyword-->
 > • 贝尔曼方程描述了价值函数自身的递归关系, 是 **价值函数估计** 的理论基石;<br>
 > • 一句话描述, 即 **当前时刻的价值** = **当前的即时奖励 (的期望)** + **折扣因子** × **下一时刻的价值 (的期望)**.<br>
 
-### **状态价值函数** 的贝尔曼方程
+#### **状态价值函数** 的贝尔曼方程
 - **定义**: 状态价值函数 $V(s_t)$ 表示从状态 $s_t$ 开始, 遵循策略所能获得的**期望回报**:
-    $$V(s_t) = \mathbb{E}\big\lbrack\, G_t \,|\, S_t = s_t\,\big\rbrack$$
+    $$V(s_t) = \mathbb{E}\big\lbrack\  G_t \ |\  S_t = s_t\ \big\rbrack$$
     其中 **回报** $G_t$ 为 **即时奖励** 和所有 **未来折扣奖励** 之和:
     $$\begin{aligned}
     G_t &= R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \dots = \sum_{k=0}^{\infty} \gamma^k R_{t+k} \\
@@ -553,62 +572,62 @@ extra_url: false
     $$G_t = R_t + \gamma G_{t+1}$$
     -->
 - 根据期望的线性性质, 分离出即时奖励和未来奖励:
-    $$V(s_t) = \mathbb{E}\big\lbrack\, R_t \,|\, S_t = s_t\big\rbrack + \gamma \mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_t = s_t\,\big\rbrack$$
+    $$V(s_t) = \mathbb{E}\big\lbrack\  R_t \ |\  S_t = s_t\big\rbrack + \gamma \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_t = s_t\ \big\rbrack$$
 - 根据 **全期望公式 (塔性质)** 以及 **马尔可夫假设**, 有:
     $$
     \begin{aligned}
-    \mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_t = s_t\big\rbrack
-        &= \mathbb{E}\Big\lbrack\,\mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_{t+1}, S_t = s_t\,\big\rbrack \,\Big|\, S_t = s_t \,\Big\rbrack &\ \scriptstyle{//\ 期望迭代法则} \\
-        &= \mathbb{E}\Big\lbrack\, \mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_{t+1}\, \big\rbrack \,\Big|\, S_t = s_t \,\Big\rbrack &\ \scriptstyle{//\ 马尔可夫假设} \\
-        &= \mathbb{E}\Big\lbrack\, V(S_{t+1}) \,\Big|\, S_t = s_t \,\Big\rbrack
+    \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_t = s_t\big\rbrack
+        &= \mathbb{E}\Big\lbrack\ \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}, S_t = s_t\ \big\rbrack \ \Big|\  S_t = s_t \ \Big\rbrack &\ \scriptstyle{//\ 期望迭代法则} \\
+        &= \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}\  \big\rbrack \ \Big|\  S_t = s_t \ \Big\rbrack &\ \scriptstyle{//\ 马尔可夫假设} \\
+        &= \mathbb{E}\Big\lbrack\  V(S_{t+1}) \ \Big|\  S_t = s_t \ \Big\rbrack
     \end{aligned}
     $$
-    > • **全期望公式**: $\mathbb{E}\big\lbrack\,\mathbb{E}\lbrack\,G_{t+1} \,|\, S_{t+1}, S_t\,\rbrack \mid S_t \,\big\rbrack = \mathbb{E}\lbrack\, G_{t+1} \mid S_t\,\rbrack$ —— 先在更多条件下取期望, 再在较少条件下取期望, 结果等于直接在较少条件下取期望;<br>
-    > • **马尔可夫假设**: $\mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_{t+1}, S_t\,\big\rbrack = \mathbb{E}\big\lbrack\, G_{t+1} \,|\, S_{t+1}\,\big\rbrack$ —— 给定当前状态 $S_{t+1}$, 未来回报 $G_{t+1}$ **不再依赖** 过去状态 $S_t$;<br>
+    > • **全期望公式**: $\mathbb{E}\big\lbrack\ \mathbb{E}\lbrack\ G_{t+1} \ |\  S_{t+1}, S_t\ \rbrack \mid S_t \ \big\rbrack = \mathbb{E}\lbrack\  G_{t+1} \mid S_t\ \rbrack$ —— 先在更多条件下取期望, 再在较少条件下取期望, 结果等于直接在较少条件下取期望;<br>
+    > • **马尔可夫假设**: $\mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}, S_t\ \big\rbrack = \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}\ \big\rbrack$ —— 给定当前状态 $S_{t+1}$, 未来回报 $G_{t+1}$ **不再依赖** 过去状态 $S_t$;<br>
 - 综上:
-    $$V(s_t) = \mathbb{E}\big\lbrack\, R_t \,|\, S_t = s_t\,\big\rbrack + \gamma \mathbb{E}\big\lbrack\, V(S_{t+1}) \,|\, S_t = s_t\,\big\rbrack$$
+    $$V(s_t) = \mathbb{E}\big\lbrack\  R_t \ |\  S_t = s_t\ \big\rbrack + \gamma \mathbb{E}\big\lbrack\  V(S_{t+1}) \ |\  S_t = s_t\ \big\rbrack$$
     > • 进一步引入策略 $\pi(a|s)$ 和状态转移概率 $P(s' \mid s, a)$, 可以得到更具体的表达式;<br>
     > • 智能体在状态 $s$ 下选择动作 $a$ 的概率是 $\pi(a|s)$, 执行动作 $a$ 后获得奖励 $\mathcal{R}(s, a, s')$, 并转移到状态 $s'$ 的概率是 $P(s' \mid s, a)$;<br>
     > • 下面是贝尔曼方程的完整形式 (**仅做参考, 具体推导略**):<br>
-    > $$V(s) = \sum_{a} \pi(a | s) \sum_{s'} P(s' \mid s, a) \Big\lbrack\, \mathcal{R}(s, a, s') + \gamma V(s') \,\Big\rbrack$$
+    > $$V(s) = \sum_{a} \pi(a | s) \sum_{s'} P(s' \mid s, a) \Big\lbrack\  \mathcal{R}(s, a, s') + \gamma V(s') \ \Big\rbrack$$
 <!--
 - _引入 **策略** 与 **动作** 的完整式_ (**仅做参考, 具体推导略**):
-    $$V(s) = \sum_{a} \pi(a | s) \Big( \text{RM}(s,a) + \gamma \sum_{s'} P(s' \mid s,a) \, V(s') \Big)$$
+    $$V(s) = \sum_{a} \pi(a | s) \Big( \text{RM}(s,a) + \gamma \sum_{s'} P(s' \mid s,a) \  V(s') \Big)$$
     -->
 - 在 **确定性环境** 下, 方程简化为:
     $$V(s_t) = r_t + \gamma V(s_{t+1})$$
 - 在随机环境下, 可通过 **蒙特卡洛方法** 进行估计:
     - 单步采样 (无偏估计):
-        $$\hat{V}(s_t) \approx r_t + \gamma \, V(s_{t+1})$$
+        $$\hat{V}(s_t) \approx r_t + \gamma \  V(s_{t+1})$$
         其中 $r_t$ 与 $s_{t+1}$ 来自采样轨迹;
     - 多样本平均可降低估计方差:
-        $$\hat{V}(s_t) = \frac{1}{N} \sum_{i=1}^{N} \Big( r_t^{(i)} + \gamma \, V\big(s_{t+1}^{(i)}\big) \Big)$$
+        $$\hat{V}(s_t) = \frac{1}{N} \sum_{i=1}^{N} \Big( r_t^{(i)} + \gamma \  V\big(s_{t+1}^{(i)}\big) \Big)$$
         > 这里 $N$ 条轨迹均从状态 $s_t$ 开始根据策略 $\pi$ 执行.
 
-### **动作价值函数** 的贝尔曼公式
+#### **动作价值函数** 的贝尔曼公式
 > 推导过程基本与 $V(\cdot)$ 相同
 - **定义**: 动作价值函数 $Q(s_t, a_t)$ 表示在状态 $s_t$ 下执行动作 $a_t$ 后, 继续遵循策略 $\pi$ 所能获得的期望回报:
-    $$Q(s_t, a_t) = \mathbb{E}\big\lbrack\, G_t \mid S_t = s_t, A_t = a_t\, \big\rbrack \xlongequal{简记} \mathbb{E}\big\lbrack\, G_t \mid s_t, a_t\, \big\rbrack$$
+    $$Q(s_t, a_t) = \mathbb{E}\big\lbrack\  G_t \mid S_t = s_t, A_t = a_t\  \big\rbrack \xlongequal{简记} \mathbb{E}\big\lbrack\  G_t \mid s_t, a_t\  \big\rbrack$$
   > • 根据 $Q$ 函数的定义和 **全概率公式**, 有:<br>
   > $$\begin{aligned}
     V(s_t)
-        = \mathbb{E}\big\lbrack\, G_t \mid S_t = s_t \,\big\rbrack
-        &= \sum_{a} \pi(a \,|\, s_t)\ \mathbb{E}\big\lbrack G_t \mid S_t = s_t, A_t = a \big\rbrack \\
-        &= \sum_{a} \pi(a \,|\, s_t) Q(s_t,a)
+        = \mathbb{E}\big\lbrack\  G_t \mid S_t = s_t \ \big\rbrack
+        &= \sum_{a} \pi(a \ |\  s_t)\ \mathbb{E}\big\lbrack G_t \mid S_t = s_t, A_t = a \big\rbrack \\
+        &= \sum_{a} \pi(a \ |\  s_t) Q(s_t,a)
     \end{aligned}$$
 - 类似 $V(s)$ 的推导, 应用期望的线性性质, 全期望公式及马尔可夫假设, 有:
     $$\begin{aligned}
     Q(s_t, a_t)
-        &= \mathbb{E}\big\lbrack\, R_t \mid s_t, a_t \,\big\rbrack + \gamma \mathbb{E}\big\lbrack\, G_{t+1} \mid s_t, a_t \,\big\rbrack \\
-        &= \mathbb{E}\big\lbrack\, R_t \mid s_t, a_t \,\big\rbrack + \gamma \mathbb{E}\Big\lbrack\, \mathbb{E}\big\lbrack\, G_{t+1} \mid S_{t+1}, s_t, a_t \,\big\rbrack \,\Big|\, s_t, a_t \,\Big\rbrack \\
-        &= \mathbb{E}\big\lbrack\, R_t \mid s_t, a_t \,\big\rbrack + \gamma \mathbb{E}\Big\lbrack\, \mathbb{E}\big\lbrack\, G_{t+1} \mid S_{t+1} \,\big\rbrack \,\Big|\, s_t, a_t \,\Big\rbrack \\
-        &= \mathbb{E}\big\lbrack\, R_t \mid s_t, a_t \,\big\rbrack + \gamma \mathbb{E}\Big\lbrack\, V(S_{t+1}) \,\Big|\, s_t, a_t \,\Big\rbrack \\
-        &= \mathbb{E}\big\lbrack\, R_t + \gamma V(S_{t+1}) \,\Big|\, s_t, a_t \,\Big\rbrack
+        &= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\big\lbrack\  G_{t+1} \mid s_t, a_t \ \big\rbrack \\
+        &= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \mid S_{t+1}, s_t, a_t \ \big\rbrack \ \Big|\  s_t, a_t \ \Big\rbrack \\
+        &= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \mid S_{t+1} \ \big\rbrack \ \Big|\  s_t, a_t \ \Big\rbrack \\
+        &= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  V(S_{t+1}) \ \Big|\  s_t, a_t \ \Big\rbrack \\
+        &= \mathbb{E}\big\lbrack\  R_t + \gamma V(S_{t+1}) \ \Big|\  s_t, a_t \ \Big\rbrack
         \end{aligned}$$
     > • 引入状态转移概率, 其完整式为 (推导过程略):
-    > $$Q(s, a) = \sum_{s'} P(s' \mid s, a) \Big\lbrack\, \mathcal{R}(s, a, s') + \gamma V(s') \,\Big\rbrack$$
+    > $$Q(s, a) = \sum_{s'} P(s' \mid s, a) \Big\lbrack\  \mathcal{R}(s, a, s') + \gamma V(s') \ \Big\rbrack$$
     > • 代入 $V(s') = \sum_{a'} \pi(a'|s') Q(s', a')$, 得:
-    > $$Q(s, a) = \sum_{s'} P(s' \mid s, a) \Big\lbrack\, \mathcal{R}(s, a, s') + \gamma \sum_{a'} \pi(a'|s') Q(s', a') \,\Big\rbrack$$
+    > $$Q(s, a) = \sum_{s'} P(s' \mid s, a) \Big\lbrack\  \mathcal{R}(s, a, s') + \gamma \sum_{a'} \pi(a'|s') Q(s', a') \ \Big\rbrack$$
 <!--
 - 在 **确定性环境** 可简化为:
     $$Q(s_t, a_t) = r_t + \gamma Q(s_{t+1}, a_{t+1})$$
@@ -625,25 +644,25 @@ extra_url: false
 name: '时序差分算法'
 extra_url: false
 -->
-## 时序差分算法 (Temporal Difference, TD)
+### 时序差分算法 (Temporal Difference, TD)
 <!--END_SECTION:keyword-->
 > 一种结合 **蒙特卡洛采样** 与 **贝尔曼方程** (**动态规划思想**) 的强化学习方法, 通过 **时序差分误差 (TD Error)** 逐步逼近价值函数, 从而在 **无需环境模型** 的情况下高效学习策略.
 
-### TD (0) 与 **时序差分误差** (TD Error)
+#### TD (0) 与 **时序差分误差** (TD Error)
 > 最基础的时序差分算法, 通过 **bootstrap** 方式在线更新价值函数;
 
 - **核心思想**:
     - **当前状态的价值估计 ≈ 即时奖励 + 下一状态的折扣价值**
 - 根据价值函数的贝尔曼方程:
-    $$V(s_t) = \mathbb{E}\big\lbrack\, r_t + \gamma V(s_{t+1}) \,\big\rbrack$$
+    $$V(s_t) = \mathbb{E}\big\lbrack\  r_t + \gamma V(s_{t+1}) \ \big\rbrack$$
 - 在具体实现中, 通过一次采样将 $r_t + \gamma V(s_{t+1})$ 作为 $V(s_t)$ 的 **目标值**;
 - 定义 **时序差分误差 (TD Error)**:
     $$\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)$$
 - 则 **TD(0) 的更新规则** 为:
-    $$V(s_t) \leftarrow V(s_t) + \alpha \big\lbrack\, r_t + \gamma V(s_{t+1}) - V(s_t) \,\big\rbrack$$
+    $$V(s_t) \leftarrow V(s_t) + \alpha \big\lbrack\  r_t + \gamma V(s_{t+1}) - V(s_t) \ \big\rbrack$$
     > 其中 $\alpha$ 为 **学习率**
 
-### TD (λ)
+#### TD (λ)
 > TD(0) 的推广, 考虑了多步预测.
 
 - **定义**: $n$-步 TD 回报:
@@ -665,7 +684,7 @@ extra_url: false
 name: '广义优势估计'
 extra_url: false
 -->
-## **广义优势估计** (GAE)
+### **广义优势估计** (GAE)
 <!--END_SECTION:keyword-->
 > **广义优势估计** (Generalized Advantage Estimation, GAE) 是一种 **平衡偏差与方差** 的优势估计方法.
 

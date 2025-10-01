@@ -72,14 +72,14 @@
 
 - **Q/K旋转：** 将每对维度视作复平面坐标，对位置 \(p\) 按频率向量 \(\boldsymbol{\omega}\) 旋转：  
   \[
-  \text{RoPE}(x_p) = R(p)\,x_p,\quad R(p)=\bigoplus_{i} 
+  \text{RoPE}(x_p) = R(p)\ x_p,\quad R(p)=\bigoplus_{i} 
   \begin{bmatrix}
   \cos(\omega_i p) & -\sin(\omega_i p)\\
   \sin(\omega_i p) & \cos(\omega_i p)
   \end{bmatrix}
   \]
 - **关键性质：**  
-  - **相对性内生：** \(\langle R(p)q,\, R(k)k\rangle = \langle q,\, R(p-k)k\rangle\)，注意力仅与相对位移 \(p-k\) 有关。  
+  - **相对性内生：** \(\langle R(p)q,\  R(k)k\rangle = \langle q,\  R(p-k)k\rangle\)，注意力仅与相对位移 \(p-k\) 有关。  
   - **相位累积：** 频率基覆盖多尺度距离，兼顾近远依赖。  
 - **实践要点：**  
   - **频率基数 \(\theta\)：** 常设定为 \(10{,}000\) 或更大以延长稳定段。  

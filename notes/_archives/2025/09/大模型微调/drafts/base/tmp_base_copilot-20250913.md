@@ -74,7 +74,7 @@
   - **RM 训练:** 拟合偏好分数或成对比较。  
   - **PPO 阶段:** 在 KL 约束下最大化奖励期望：  
     $$
-    \max_\theta \mathbb{E}\_{x,y\sim\pi_\theta}\left \lbrack r(x,y)-\beta \cdot \text{KL}\big(\pi_\theta(\cdot|x)\,\|\,\pi_{\text{ref}}(\cdot|x)\big)\right \rbrack
+    \max_\theta \mathbb{E}\_{x,y\sim\pi_\theta}\left \lbrack r(x,y)-\beta \cdot \text{KL}\big(\pi_\theta(\cdot|x)\ \|\ \pi_{\text{ref}}(\cdot|x)\big)\right \rbrack
     $$
 - **DPO（无 RM 直接偏好优化）:**  
   - **目标:** 让偏好答案优于不偏好答案，相对参考模型：  
@@ -161,7 +161,7 @@
   $$
 - **KL 正则 SFT（稳定风格/避免漂移）:**  
   $$
-  \mathcal{L}=\mathcal{L}_{\text{SFT}}+\lambda\ \text{KL}\big(\pi_\theta(\cdot|x)\,\|\,\pi_{\text{ref}}(\cdot|x)\big)
+  \mathcal{L}=\mathcal{L}_{\text{SFT}}+\lambda\ \text{KL}\big(\pi_\theta(\cdot|x)\ \|\ \pi_{\text{ref}}(\cdot|x)\big)
   $$
 - **PPO 目标（RLHF）：**  
   $$

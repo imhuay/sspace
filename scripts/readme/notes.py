@@ -130,7 +130,7 @@ class Note:
 
     def _norm_text(self):
         """文本规范化"""
-        new_text = MarkdownUtils.norm_text(self._text)
+        new_text = MarkdownUtils.normalize_text(self._text)
         if new_text != self.text:
             self._text = new_text
             self._updated = True
