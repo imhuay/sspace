@@ -50,6 +50,7 @@ class KeywordSection:
         for t in tokens:
             if t.type == 'html_block' and 'keyword_info' in t.content:
                 info_str = NoteUtils.get_annotation('keyword_info', t.content)
+                info_str = '\n'.join([ln.lstrip() for ln in info_str.split('\n')]) if info_str else ''
                 info = yaml.safe_load(info_str) if info_str else {}
                 self.name = info.get('name', '')
                 if info.get('extra_url', False):
@@ -470,7 +471,7 @@ class NoteUtils:
 
     SECTION_START = '<!--START_SECTION:{tag}-->'
     SECTION_END = '<!--END_SECTION:{tag}-->'
-    SECTION_ANNOTATION = r'<!--{tag}\n(.*?)\n-->'
+    SECTION_ANNOTATION = r'<!--{tag}\s*\n(.*?)\n\s*-->'
     TEMP_LAST_MODIFY_BADGE = '![last modify](https://img.shields.io/static/v1?label=last%20modify&message={datetime}&color=yellowgreen&style=flat-square)'  # noqa
     TEMP_BADGE_URL = 'https://img.shields.io/static/v1?{}'
 

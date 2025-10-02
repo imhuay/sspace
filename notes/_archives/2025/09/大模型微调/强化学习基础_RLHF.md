@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-02%2002%3A49%3A23&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-03%2003%3A53%3A38&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-25 02:59:27
@@ -31,11 +31,8 @@ tags: []
     - [**4️⃣ 价值函数 . 优势函数**](#4️⃣-价值函数--优势函数)
 - [策略优化](#策略优化)
     - [**1️⃣ 目标函数**](#1️⃣-目标函数)
-    - [**2️⃣ 优化方法: 策略梯度**](#2️⃣-优化方法-策略梯度)
+    - [**2️⃣ 优化方法: 从值函数到策略梯度**](#2️⃣-优化方法-从值函数到策略梯度)
     - [**3️⃣ 策略梯度算法**](#3️⃣-策略梯度算法)
-        - [REINFORCE 算法](#reinforce-算法)
-- [策略梯度](#策略梯度)
-    - [在线策略 • 离线策略](#在线策略--离线策略)
 - [相关概念](#相关概念)
     - [蒙特卡洛估计](#蒙特卡洛估计)
     - [贝尔曼方程 (Bellman Equation)](#贝尔曼方程-bellman-equation)
@@ -45,7 +42,6 @@ tags: []
         - [TD (0) 与 **时序差分误差** (TD Error)](#td-0-与-时序差分误差-td-error)
         - [TD (λ)](#td-λ)
     - [**广义优势估计** (GAE)](#广义优势估计-gae)
-    - [策略梯度定理推导](#策略梯度定理推导)
 <!--END_SECTION:toc-->
 
 ---
@@ -285,10 +281,10 @@ extra_url: false
 
 • 环境动态的数学模型, 记: <br>
   $$P(s_{t+1} | s_t, a_t)$$
-• 表示在状态 $s_t$ 执行动作 $a_t$ 后, 环境转移到状态 $s_{t+1}$ 的概率. <br></td>
+• 表示在状态 $s_t$ 执行动作 $a_t$ 后, 环境转移到状态 $s_{t+1}$ 的概率. <br>
+  > 这里不严格区分 **概率密度函数** $p(\cdot)$ 和 **概率质量函数** $P(\cdot)$ <br></td>
 <td>
 
-<!-- 新状态 $s_{t+1}$ 是旧状态序列 $s_t$ 与动作 $a_t$ (Token $w_t$) 的拼接, 即 $P(s_{t+1} = s_t \oplus a_t | s_t, a_t) = 1$   -->
 • **在语言生成任务中, 状态转移是一个确定性过程**; <br>
 • 具体来说, 当基于 $t$ 时刻的上下文 $s_t$ 生成出下一个 Token ( $a_t$ ) 后, 在 $t{+1}$ 时刻的上下文就已经确定了, 即 $s_t \oplus a_t$; 即: <br>
   $$P(s_{t+1} | s_t, a_t) = 1$$
@@ -392,6 +388,9 @@ extra_url: false
 </tr>
 </table>
 
+> ◦ 主流定义中 $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
+> ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论;
+
 ---
 
 <!--START_SECTION:keyword-->
@@ -474,62 +473,88 @@ extra_url: false
 ## 策略优化
 <!--END_SECTION:keyword-->
 <!-- > 强化学习的 **优化目标** 是让智能体学习一个能 **最大化期望 <u>回报 (长期累积奖励)</u>** 的 **策略**. -->
-> 强化学习的目标学习一个能够 **最大化期望回报** 的 **策略**, 这一过程被称为 **策略优化 (Policy Optimization)**.
+> 强化学习的目标是学习一个能够 **最大化期望回报** 的 **策略**, 这一过程被称为 **策略优化 (Policy Optimization)**.
 
-- 回顾 **奖励** 与 **回报** 的定义:
-    $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...$$
-    <!-- - $\gamma$ : 折扣因子, 表示对未来奖励的衰减 <br> -->
-    > ◦ 主流定义中 $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
-    > ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论;
-<!-- - **RL 的优化目标就是找到一个策略 $\pi_\theta$, 使从初始状态 $G_0$ 开始, 所获得的期望回报最大化**; -->
 
 ### **1️⃣ 目标函数**
-- RL 的目标是 **最大化** 整个交互过程中获得的 **期望回报** (即 **期望累积奖励**):
+
+<!-- - RL 的目标是 **最大化** 智能体在整个交互过程中获得的 **期望回报** (即 **期望累积奖励**); -->
+- 在强化学习中, 我们关心的是智能体在与环境交互过程中所能获得的 **期望回报** (**长期累积奖励**);
+- 因此, 可以将目标函数形式化为:
     $$\begin{align}
         J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \big\lbrack G(\tau) \big\rbrack
     \end{align}$$
-    <!-- $$= \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack\ \sum_{t=0}^{T} \gamma^t R(s_t, a_t)\ \right\rbrack$$ -->
-    > $\tau \sim p_{\theta}(\tau)$ 有时也简记为 $\tau \sim \pi_\theta$.
-- 其中:
-    - $\tau = (s_0,a_0,s_1,a_1,...)$ 表示一条从初始状态开始的完整轨迹;
+    <!-- > $\tau \sim p_{\theta}(\tau)$ 有时也简记为 $\tau \sim \pi_\theta$. -->
+    其中:
+    - $\tau = (s_0, a_0, s_1, a_1, ...)$ 表示一条从初始状态开始的完整轨迹;
     - **$\tau$ 服从概率分布 $p_\theta(\tau)$**:
         > $p_\theta(\tau)$ 是由策略 $\pi_\theta$ 和环境动力学诱导的轨迹分布;
-        $$p_\theta(\tau) = p(s_0)\prod_{t=0}^\infty \pi_\theta(a_t|s_t) P(s_{t+1}|s_t,a_t)$$
-    - $p(s_0)$ : 初始状态分布;
-    - $\pi_\theta(a_t|s_t)$ : 策略在状态 $s_t$ 下选择动作 $a_t$ 的概率;
-    - $P(s_{t+1}|s_t,a_t)$ : 环境在状态 $s_t$ 下执行动作 $a_t$ 后, 转移到状态 $s_{t+1}$ 的概率;
+        $$p_\theta(\tau) = p(s_0)\prod_{t=0}^T \pi_\theta(a_t|s_t) P(s_{t+1}|s_t, a_t)$$
+    - $p(s_0)$ : **初始状态分布**;
+    - $\pi_\theta(a_t|s_t)$ : **策略**, 表达了在状态 $s_t$ 下选择动作 $a_t$ 的概率;
+    - $P(s_{t+1}|s_t, a_t)$ : **转移概率**, 表达了环境在状态 $s_t$ 下执行动作 $a_t$ 后, 转移到状态 $s_{t+1}$ 的概率;
+- **任务目标**
+    - 强化学习的核心任务就是 **寻找最优策略参数 $\theta^*$**, 使得期望回报最大化:
+    $$\theta^* = \arg \max_\theta\ J(\theta)$$
+    - 换言之, 策略优化问题就是一个典型的 **期望最大化问题**; 
+    - 不同的强化学习算法, 正是围绕如何高效稳定地近似和求解这一优化问题而展开的.
 
 ---
 
-### **2️⃣ 优化方法: 策略梯度**
+### **2️⃣ 优化方法: 从值函数到策略梯度**
 
-- 定义了目标函数后, 就是经典的优化问题: 
-    $$\max_\theta\ J(\theta)$$
-- 由于环境动态特性未知, 我们无法直接求导, 因此需要 **策略梯度** 方法.
+<!-- - 由于环境动态特性未知, 我们无法直接求导, 因此需要 **策略梯度** 方法. -->
+- 在强化学习中, 有两类常见的优化思路.
 
-<!-- omit in toc -->
-#### 策略梯度定理
-<!-- > **策略梯度定理** 回答了这个问题: **如何计算目标函数 $J_\theta$ 对策略参数的梯度?** -->
+    **1. 基于值函数 (Value-based Methods)**<br>
+    - **基本思想**: 通过学习 **状态价值函数 $V^\pi(s)$** 或 **动作价值函数 $Q^\pi(s,a)$**, 再通过贪心或近似贪心策略间接导出最优策略;
+    - **代表方法**: Q-Learning, DQN 等.
+    <!-- - 特点: 策略通常是 **隐式的** (例如 $\epsilon$-greedy), 并非直接参数化. -->
+    - **优点**: 
+        - 适用于离散动作空间;
+    - **缺点**: 
+        - 策略通常是 **隐式的** (例如 $\epsilon$-greedy), 难以直接优化;
+        - **连续动作空间** 或 **动作空间巨大** 时难以应用, 因为无法枚举所有动作;
+        - 更新依赖自举 (bootstrapping), 训练不稳定;
+        - 难以自然表示 **随机策略**, 在博弈或部分可观测环境中表现受限.
 
-- 定理给出了目标函数梯度 $\nabla_\theta J(\theta)$ 的一个无偏估计; 
-- 其 **基本形式** 为:
-    $$\begin{align}
-        \nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left\lbrack\ \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \cdot G_t \ \right\rbrack
-    \end{align}$$
-    > [_详细推导_](#策略梯度定理推导)
-- 该公式将梯度转化为一个期望, 使我们能够通过 **采样轨迹** 来估计它.
+    **2. 基于策略梯度 (Policy Gradient Methods)**<br>
+    - **基本思想**: 直接对参数化策略 $\pi_\theta(a|s)$ 进行优化, 通过计算目标函数 $J(\theta)$ 的梯度来更新参数. 
+    <!-- - **核心思想**: [策略梯度定理](#策略梯度定理-policy-gradient-theorem) -->
+    - **策略梯度定理 (Policy Gradient Theorem)**:
+        $$\begin{align}
+            \nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack\ \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \cdot G_t \ \right\rbrack
+        \end{align}$$
+        > 定理给出了目标函数梯度的一个 **期望形式**, 使我们能够通过 **采样轨迹** 来无偏的估计梯度. <br>
+        > [_推导过程_](./策略梯度定理推导.md)
+    - **代表方法**: 
+        - REINFORCE (蒙特卡洛策略梯度).
+    - **优点**: 
+        - 可以自然处理 **连续动作空间** 和 **随机策略**. 
+    - **缺点**: 
+        - 梯度估计的方差较大, 需要基线 (baseline) 或优势函数 (advantage function) 来降低方差;
+        - 样本效率通常低于值函数方法;
+        - 对学习率, 采样数量等超参数较为敏感.
+
+    **3. 折中方法: Actor-Critic**
+    - **基本思想**:
+        - 将 **策略梯度方法 (Actor)** 与 **值函数方法 (Critic)** 结合:  
+            ▫ **Actor**: 参数化策略 $\pi_\theta(a|s)$, 通过梯度更新直接优化策略; <br>
+            ▫ **Critic**: 学习价值函数 $V^\pi(s)$ 或 $Q^\pi(s,a)$, 用于评估策略表现并降低梯度估计的方差. <br>
+    - **代表方法**: 
+        - TRPO (Trust Region Policy Optimization, 信赖域策略优化)
+        - PPO (Proximal Policy Optimization, 近端策略优化)
+    - **优点**:
+        - 策略直接参数化, 可处理 **连续动作空间** 和 **随机策略**;
+        - Critic 提供价值估计, 能显著降低策略梯度的方差;
+    - **缺点**:
+        - 训练过程更复杂: 需要同时更新 Actor 和 Critic, 存在 **不稳定性** (如 Critic 估计偏差会误导 Actor);
+        - 样本效率低.
 
 ---
 
 ### **3️⃣ 策略梯度算法**
-
-#### REINFORCE 算法
-
----
-
-<!-- TODO -->
-## 策略梯度
-
+> [_Ref._](./策略梯度算法.md)
 
 
 <!--  
@@ -566,8 +591,6 @@ extra_url: false
 <!-- • **在 RLHF 中, 估计优势函数是策略梯度计算的核心**;<br> -->
 
 
-### 在线策略 • 离线策略
-
 <!--
 > • On-Policy 与 Off-Policy 的 **核心区别**: **用于训练的数据生成方式**;<br>
 > • On-Policy **必须** 使用 当前策略 $\pi$ 最新生成的数据;<br>
@@ -577,10 +600,7 @@ extra_url: false
 ---
 
 
-
 ## 相关概念
-
-
 
 ### 蒙特卡洛估计
 
@@ -750,7 +770,9 @@ extra_url: false
     - 大 $\lambda$ → 偏差较小, 方差较大.
 
 
+<!-- omit in toc -->
 ### 策略梯度定理推导
+> [md](./策略梯度定理推导.md)
 
 - 首先给出期望回报 (公式-1) 的积分形式:
     $$J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack G(\tau) \right\rbrack = \int p_\theta(\tau) G(\tau)  d\tau$$
@@ -764,7 +786,7 @@ extra_url: false
 - 展开 $\nabla_\theta \log p_\theta(\tau)$:
     $$\begin{aligned}
       \nabla_\theta \log p_\theta(\tau) 
-      &= \nabla_\theta \log \left\lbrack p(s_0)\prod_{t=0}^\infty \pi_\theta(a_t|s_t) P(s_{t+1}|s_t,a_t) \right\rbrack \\
+      &= \nabla_\theta \log \left\lbrack p(s_0)\prod_{t=0}^T \pi_\theta(a_t|s_t)\ P(s_{t+1}|s_t,a_t) \right\rbrack \\
       &= \nabla_\theta \left\lbrack \log p(s_0) + \sum_{t=0}^{T} \Big( \log \pi_\theta(a_t | s_t) + \log P(s_{t+1} | s_t, a_t) \Big) \right\rbrack \\ 
         &= \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t)
     \end{aligned}$$
