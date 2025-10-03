@@ -241,7 +241,7 @@ Other      1 min           -------------------------   00.07 %
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
 - [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/偏好学习.md) 
   > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](notes/_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
-  - [**强化学习基础** ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
+  - [**强化学习基础** ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
     > _[策略梯度定理推导](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md) • [PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
@@ -564,12 +564,13 @@ Other      1 min           -------------------------   00.07 %
 
 ## Drafts
 
+- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
+- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) ⏳
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md) 
 - [算法面试问题收录](notes/_archives/2025/09/算法面试问题收录.md) ⏳
   > _[Transformer](notes/_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](notes/_archives/2025/09/算法面试问题收录.md#llm)_<br>
 - [算法面试笔记](notes/_archives/2022/10/算法面试笔记.md) 
 - [简历书写技巧 ( 算法 )](notes/_archives/2022/10/程序员简历技巧.md) 
-- [策略梯度定理推导](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md) 
 - [电商领域的 NER](notes/_archives/2022/12/电商NER.md) 
 - [电商搜索](notes/_archives/2022/12/电商搜索.md) 
 - [深度学习环境配置](notes/_archives/2022/07/深度学习环境配置.md) 
@@ -623,7 +624,5 @@ Other      1 min           -------------------------   00.07 %
 - [Hive 常用 SQL 备忘](notes/_archives/2023/03/Hive常用SQL备忘.md) 
 - [GitBook 备忘](notes/_archives/2022/04/Gitbook备忘.md) 
 - [BERT 常见面试问题](notes/_archives/2022/05/BERT常见面试问题.md) 
-- [2015.wsdm.el](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md) 
-- [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
-- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) ⏳
+- [2015.wsdm.el](notes/_archives/2022/04/实体链接/2015.wsdm.el.01.md)
 <!--END_SECTION:notes-->
