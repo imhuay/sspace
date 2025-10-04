@@ -483,6 +483,7 @@ extra_url: false
 - 因此, 可以将目标函数形式化为:
     $$\begin{align}
         J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \big\lbrack G(\tau) \big\rbrack
+        ,\quad G(\tau)=\sum_{t=0}^{T}\gamma^{t}R_{t+1}
     \end{align}$$
     <!-- > $\tau \sim p_{\theta}(\tau)$ 有时也简记为 $\tau \sim \pi_\theta$. -->
     其中:
