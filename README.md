@@ -263,6 +263,8 @@ Git        0 secs          -------------------------   00.03 %
 
 ### Machine Learning 🤖
 
+- [概率论基础](notes/_archives/2025/09/概率论基础.md) 
+  > _[全期望公式](notes/_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
 - [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md) 
   > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
 - [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) ⏳
