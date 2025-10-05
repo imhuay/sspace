@@ -111,7 +111,7 @@ Notes
 ### Machine Learning 🤖
 
 - [概率论基础](_archives/2025/09/概率论基础.md) 
-  > _[全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
+  > _[期望](_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
 - [机器学习基本概念](_archives/2025/09/机器学习基本概念.md) 
   > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
 - [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) ⏳
