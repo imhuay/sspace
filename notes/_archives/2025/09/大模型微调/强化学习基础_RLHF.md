@@ -393,7 +393,7 @@ extra_url: false
 > ##### 注1
 > ◦ 主流定义中 $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
 > ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论; <br>
-> ◦ 有时也定义 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k}R_{k+1}}$ , 对比 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k-t} R_{k+1}}$ ; 两者的区别在于 **折扣基准不同**: 前者从时刻 0 开始, 后者从时刻 t 开始; <br>
+> ◦ 有时也定义为 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k}R_{k+1}}$ , 对比 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k-t} R_{k+1}}$ ; 两者的区别在于 **折扣基准不同**: 前者 **以轨迹起点为基准进行折扣**, 后者 **以当前时刻为基准进行折扣**. <br>
 
 ---
 
