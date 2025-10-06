@@ -2,11 +2,11 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-05%2001%3A17%3A01&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-06%2009%3A23%3A28&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-25 02:59:27
-toc_title: '**强化学习基础** ( **LLM-based** )'
+toc_title: '强化学习基础 ( **LLM-based** )'
 top: false
 draft: false
 hidden: true
@@ -360,8 +360,10 @@ extra_url: false
 <!-- • 从特定时刻的状态开始, 到 **一轮交互完成/一个回合结束** 所能获得的 **累积奖励**;<br> -->
 <!-- • 常用折扣因子 $\gamma$ 计算, 如 $G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$;<br> -->
 • 从时刻 $t$ 起, 直到回合结束所获得的 **累积奖励**, 记 $G_t$: <br>
-  $$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$
-• 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br></td>
+  <!-- $$G_t = \sum_{k=0}^{T} \gamma^k R_{t+k+1}$$ -->
+  $$G_t = \sum_{k=t}^{T} \gamma^{k-t} R_{k+1}$$
+• 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br>
+> [注$^1$](#注1) </td>
 <td>
 
 <!-- • 从当前 Token 位置开始, 到生成结束所能获得的 **累积奖励**<br> -->
@@ -388,8 +390,10 @@ extra_url: false
 </tr>
 </table>
 
+> ##### 注1
 > ◦ 主流定义中 $G_t$ 不包含当前时刻的奖励 $R_t$, 因为一般定义 **奖励** 是 **在状态 $S_t$ 经动作转移到 $S_{t+1}$ 时获得**; <br>
-> ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论;
+> ◦ 如果定义 **奖励** 是 **在进入状态 $S_t$ 时获得**, 那么 $G_t$ 将包含当前时刻的奖励 $R_t$; 不过这两种定义是 **等价** 的, 不影响结论; <br>
+> ◦ 有时也定义 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k}R_{k+1}}$ , 对比 $\boxed{G_t = \displaystyle \sum_{k=t}^{T} \gamma^{k-t} R_{k+1}}$ ; 两者的区别在于 **折扣基准不同**: 前者从时刻 0 开始, 后者从时刻 t 开始; <br>
 
 ---
 
