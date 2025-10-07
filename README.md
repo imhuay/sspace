@@ -54,6 +54,7 @@
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown_简历工具.md)
+- [`2025-10-03` 策略梯度定理](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](notes/_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md)
@@ -68,7 +69,6 @@
 - [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md)
 - [`2025-07-08` 综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md)
 - [`2025-07-08` 类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md)
-- [`2025-07-08` 电商领域的 NER](notes/_archives/2022/12/电商NER.md)
 
 <!--END_SECTION:recent-->
 
@@ -243,8 +243,8 @@ Git        0 secs          -------------------------   00.03 %
   > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](notes/_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
-  - [策略梯度定理推导](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md) 
-    > _[Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md#score-function-恒等式) • [基线不变性证明](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md#-基线不变性证明)_<br>
+  - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md) 
+    > _[Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md#基线不变性)_<br>
   - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
     > _[策略梯度定理推导](notes/_archives/2025/09/大模型微调/策略梯度定理推导.md) • [PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
