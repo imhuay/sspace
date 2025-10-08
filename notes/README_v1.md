@@ -31,7 +31,7 @@ Notes
 ## Recently 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown_简历工具.md)
-- [`2025-10-03` 策略梯度定理](_archives/2025/09/大模型微调/策略梯度定理推导.md)
+- [`2025-10-03` 策略梯度定理](./_archives/2025/09/大模型微调/策略梯度定理.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
