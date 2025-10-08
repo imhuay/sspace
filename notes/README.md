@@ -34,7 +34,7 @@ Notes
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown_简历工具.md)
-- [`2025-10-03` 策略梯度定理](_archives/2025/09/大模型微调/策略梯度定理.md)
+- [`2025-10-03` 策略梯度定理](./_archives/2025/09/大模型微调/策略梯度定理及其推导.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
@@ -90,10 +90,10 @@ Notes
   > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
-  - [策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理.md) 
-    > _[Score Function 恒等式](_archives/2025/09/大模型微调/策略梯度定理.md#score-function-恒等式) • [基线不变性](_archives/2025/09/大模型微调/策略梯度定理.md#基线不变性)_<br>
+  - [策略梯度定理及其推导](./_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 
+    > _[Score Function 恒等式](./_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](./_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
   - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
-    > _[策略梯度定理推导](_archives/2025/09/大模型微调/策略梯度定理.md) • [PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
+    > _[策略梯度定理推导](./_archives/2025/09/大模型微调/策略梯度定理及其推导.md) • [PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md) 

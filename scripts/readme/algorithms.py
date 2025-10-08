@@ -178,11 +178,14 @@ class Problem:
         txt = self._text
 
         # try update title
-        lns = txt.split('\n', maxsplit=1)
+        lns = txt.rstrip().split('\n', maxsplit=1)
+        
         if lns[0].startswith('##'):
             lns[0] = self.head
         else:
             lns.insert(0, self.head)
+
+        lns[-1] = lns[-1].rstrip() + '\n'
 
         # 对没有 badge tag 做的兜底
         if not NoteUtils.get_section_content(self._TAG_BADGE, txt):
@@ -191,8 +194,16 @@ class Problem:
 
         # 对没有 relate tag 做的兜底
         if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
+            lns.append('')
             lns.append(NoteUtils.get_section_begin(self._TAG_RELATE))
             lns.append(NoteUtils.get_section_end(self._TAG_RELATE))
+        else:
+            # 对 section_begin 之前没有空行做兜底
+            _lns = lns[-1].split('\n')
+            _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE))
+            if _idx > 0 and _lns[_idx - 1] != '':
+                _lns.insert(_idx, '')
+            lns[-1] = '\n'.join(_lns)
 
         self._text = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 

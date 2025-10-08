@@ -531,7 +531,7 @@ extra_url: false
             \nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack\ \sum_{t=0}^{T} \nabla_\theta \log \pi_\theta(a_t | s_t) \cdot G_t \ \right\rbrack
         \end{align}$$
         > 定理给出了目标函数梯度的一个 **期望形式**, 使我们能够通过 **采样轨迹** 来无偏的估计梯度. <br>
-        > [_推导过程_](./策略梯度定理.md)
+        > [_推导过程_](./策略梯度定理及其推导.md)
     - **代表方法**: 
         - REINFORCE (蒙特卡洛策略梯度).
     - **优点**: 
@@ -777,7 +777,7 @@ extra_url: false
 
 <!-- omit in toc -->
 ### 策略梯度定理推导
-> [md](./策略梯度定理.md)
+> [md](./策略梯度定理及其推导.md)
 
 - 首先给出期望回报 (公式-1) 的积分形式:
     $$J(\theta) = \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack G(\tau) \right\rbrack = \int p_\theta(\tau) G(\tau)  d\tau$$

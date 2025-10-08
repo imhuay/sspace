@@ -85,10 +85,10 @@ class Solution:
 
 <summary><b>思路2: 动态规划</b></summary>
 
-> [最长不含重复字符的子字符串 (动态规划 / 双指针 + 哈希表, 清晰图解) ](https://
+> [最长不含重复字符的子字符串 (动态规划 / 双指针 + 哈希表, 清晰图解) ](https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solutions/210129/mian-shi-ti-48-zui-chang-bu-han-zhong-fu-zi-fu-d-9)
 
 **状态定义**
-leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/mian-shi-ti-48-zui-chang-bu-han-zhong-fu-zi-fu-d-9/)
+
 - 记 `dp[i] := 以第 i 个字符为结尾的不含重复字符的子串的最大长度`;
 
 **转移方程**
