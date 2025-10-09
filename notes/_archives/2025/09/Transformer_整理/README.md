@@ -9,7 +9,7 @@ date: 2025-09-05 13:47:46
 toc_title: 模型架构
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 level: 1
 tags: [transformer]
 -->

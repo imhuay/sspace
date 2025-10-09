@@ -7,7 +7,7 @@ BERT 常见面试问题
 <!--info
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 tags: []
 -->
 

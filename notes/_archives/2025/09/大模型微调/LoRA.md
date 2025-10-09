@@ -9,7 +9,7 @@ date: 2025-09-15 02:29:31
 toc_title: LoRA
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: false
 level: 0
 tags: [llm_sft]

@@ -9,7 +9,7 @@ date: 2025-09-13 16:23:17
 toc_title: 面试问题整理
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: true
 level: -1
 tags: [llm_sft]

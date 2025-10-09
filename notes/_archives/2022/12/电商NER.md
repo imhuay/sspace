@@ -6,7 +6,7 @@
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > 关键词: e-commerce, named entity recognition (ner), query understanding

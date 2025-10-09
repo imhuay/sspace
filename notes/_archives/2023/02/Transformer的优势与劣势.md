@@ -6,7 +6,7 @@ Transformer 的优势与劣势
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: true
+hidden_in_recent: true
 -->
 
 > ***Keywords**: transformers*

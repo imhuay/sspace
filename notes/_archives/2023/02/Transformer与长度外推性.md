@@ -6,7 +6,7 @@ Transformer与长度外推性
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: true
+hidden_in_recent: true
 -->
 
 > ***Keywords**: Transformer, 长度外推性(Length Extrapolation/Extrapolatable)*

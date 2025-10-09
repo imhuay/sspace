@@ -7,7 +7,7 @@ Python 标准项目实践
 <!--info
 top: false
 draft: true
-hidden: false
+hidden_in_recent: false
 tags: []
 -->
 

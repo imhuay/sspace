@@ -6,7 +6,7 @@ Query 纠错
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 <!-- TOC -->

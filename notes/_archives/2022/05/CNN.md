@@ -7,7 +7,7 @@ CNN 备忘
 <!--info
 top: false
 draft: true
-hidden: true
+hidden_in_recent: true
 tags: [dl_model]
 -->
 

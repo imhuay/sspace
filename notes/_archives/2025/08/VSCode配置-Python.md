@@ -8,7 +8,7 @@ VSCode 配置 for Python
 date: 2025-08-05 13:36:02
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 level: 0
 tags: [python_tool]
 -->

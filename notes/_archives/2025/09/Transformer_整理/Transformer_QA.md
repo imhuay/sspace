@@ -9,7 +9,7 @@ date: 2025-09-06 13:48:27
 toc_title: 面试问题整理
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: true
 level: -1
 tags: [transformer]

@@ -9,7 +9,7 @@ date: 2025-09-06 13:48:27
 toc_title: 位置编码-QA
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: true
 omit_in_tag_toc: true
 level: 0

@@ -7,7 +7,7 @@ Sentence-BERT 论文笔记
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [dl_embed]
 -->
 

@@ -2,14 +2,14 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-08%2009%3A59%3A55&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-09%2003%3A00%3A53&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-25 02:59:27
 toc_title: '强化学习基础 ( **LLM-based** )'
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 omit_in_tag_toc: false
 section_number: false
 level: 99

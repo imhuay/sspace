@@ -7,7 +7,7 @@ GBDT/XGBoost 备忘
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [ml]
 -->
 

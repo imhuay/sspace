@@ -6,7 +6,7 @@ Windows 使用备忘
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > 关键词: Windows 使用技巧

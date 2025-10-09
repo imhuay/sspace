@@ -107,6 +107,7 @@ class Solution:
 
 <details><summary><b>前缀和</b></summary>
 
+> [[中等, LeetCode] 从魔法师身上吸取的最大能量](../../2025/10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)  
 > [[中等, LeetCode] 路径总和III](../06/LeetCode_0437_中等_路径总和III.md)  
 > [[中等, 牛客] 和为K的连续子数组](../05/牛客_0125_中等_和为K的连续子数组.md)  
   > 

@@ -9,7 +9,7 @@ date: 2025-09-17 13:38:07
 toc_title: SFT 数据构建
 top: false
 draft: true
-hidden: true
+hidden_in_recent: true
 section_number: false
 level: 0
 tags: [llm_sft]

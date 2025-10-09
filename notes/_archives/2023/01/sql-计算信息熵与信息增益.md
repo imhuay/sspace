@@ -6,7 +6,7 @@
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > ***Keywords**: SQL, 信息熵 (Information Entropy), 信息增益 (相对熵, KL 散度)*

@@ -7,7 +7,7 @@ SMART Loss
 <!--info
 top: false
 draft: true
-hidden: true
+hidden_in_recent: true
 level: 0
 tags: []
 -->

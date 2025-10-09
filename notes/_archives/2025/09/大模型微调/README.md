@@ -9,7 +9,7 @@ date: 2025-09-13 13:43:39
 toc_title: 基础概念
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: true
 level: 99
 tags: [llm_sft]

@@ -6,7 +6,7 @@ Hive 常用 SQL 备忘
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > ***Keywords**: Hive*

@@ -8,7 +8,7 @@ MoE 备忘
 date: 2025-09-03 08:53:08
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 level: 0
 tags: [llm]
 -->

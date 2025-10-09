@@ -8,7 +8,7 @@
 date: 2025-09-04 16:47:35
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 level: 99
 tags: [nlp]
 -->

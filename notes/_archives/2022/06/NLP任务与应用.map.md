@@ -7,7 +7,7 @@ NLP 任务与应用
 <!--info
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 tags: [nlp]
 -->
 

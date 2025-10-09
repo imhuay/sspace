@@ -8,7 +8,7 @@ HuggingFace (博客 & 代码)
 date: 2025-08-17 04:47:17
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 level: 0
 tags: [read]
 -->

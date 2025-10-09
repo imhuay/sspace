@@ -4,7 +4,7 @@ Paper 路径记录
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: true
+hidden_in_recent: true
 -->
 
 > ***Keywords**: Paper*

@@ -8,7 +8,7 @@ AutoPhrase 备忘
 date: 2025-08-22 12:51:20
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 level: 2
 tags: [nlp_kg]
 -->

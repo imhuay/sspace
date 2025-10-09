@@ -7,7 +7,7 @@ GLiNER 阅读笔记
 <!--info
 top: false
 draft: true
-hidden: true
+hidden_in_recent: true
 tags: [nlp_ner]
 -->
 

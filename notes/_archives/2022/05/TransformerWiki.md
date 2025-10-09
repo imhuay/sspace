@@ -7,7 +7,7 @@ Transformer Wiki
 <!--info
 top: false
 draft: true
-hidden: false
+hidden_in_recent: false
 tags: [dl_bert]
 -->
 

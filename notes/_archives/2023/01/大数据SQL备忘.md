@@ -6,7 +6,7 @@ Hive/Spark/Presto SQL 备忘
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > ***Keywords**: Hive SQL, Spark SQL, Presto SQL*

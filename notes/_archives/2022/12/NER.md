@@ -7,7 +7,7 @@ NER Wiki
 <!--info
 top: false
 draft: true
-hidden: false
+hidden_in_recent: false
 tags: [nlp_ner]
 level: 99
 -->

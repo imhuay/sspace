@@ -9,7 +9,7 @@ date: 2025-09-16 18:31:31
 toc_title: 参数高效微调 (**PEFT**)
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 section_number: false
 level: 0
 tags: [llm_sft]

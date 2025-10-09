@@ -8,7 +8,7 @@ VSCode 备忘
 date: 2025-08-08 16:26:03
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 level: 0
 tags: [tool]
 -->

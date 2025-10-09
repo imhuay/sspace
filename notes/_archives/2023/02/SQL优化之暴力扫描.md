@@ -6,7 +6,7 @@ SQL优化之暴力扫描
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > ***Keywords**: sql优化, hive sql, hql*

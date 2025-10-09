@@ -7,7 +7,7 @@ RNN 备忘
 <!--info
 top: false
 draft: true
-hidden: false
+hidden_in_recent: false
 tags: [dl_model]
 -->
 

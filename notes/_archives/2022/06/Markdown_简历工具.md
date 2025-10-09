@@ -7,7 +7,7 @@ Markdown 简历工具
 <!--info
 top: true
 draft: false
-hidden: false
+hidden_in_recent: false
 level: 2
 tags: [tool]
 -->

@@ -7,7 +7,7 @@ WSL2 使用记录
 <!--info
 top: false
 draft: true
-hidden: false
+hidden_in_recent: false
 tags: [linux]
 -->
 

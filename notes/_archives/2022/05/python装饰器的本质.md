@@ -7,7 +7,7 @@ python 装饰器的本质
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [python]
 -->
 

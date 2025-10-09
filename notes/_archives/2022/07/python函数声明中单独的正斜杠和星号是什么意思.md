@@ -7,7 +7,7 @@ Python 函数声明中单独的正斜杠 (/) 和星号 (*) 是什么意思
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [python]
 -->
 

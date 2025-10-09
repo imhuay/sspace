@@ -7,7 +7,7 @@ synonym.2012.KDD.01 阅读笔记
 <!--info
 top: false
 draft: true
-hidden: true
+hidden_in_recent: true
 tags: [paper]
 -->
 

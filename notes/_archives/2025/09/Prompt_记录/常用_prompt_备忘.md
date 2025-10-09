@@ -8,7 +8,7 @@
 date: 2025-09-03 10:26:05
 top: false
 draft: false
-hidden: true
+hidden_in_recent: true
 level: 0
 tags: [llm_prompt]
 -->

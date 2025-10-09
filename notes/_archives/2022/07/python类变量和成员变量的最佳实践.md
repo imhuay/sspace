@@ -7,7 +7,7 @@ python 类变量和成员变量的最佳实践
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [python]
 -->
 

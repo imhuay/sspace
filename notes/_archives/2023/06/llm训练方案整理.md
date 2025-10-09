@@ -6,7 +6,7 @@ LLM 训练方案整理
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > ***Keywords**: LLM*

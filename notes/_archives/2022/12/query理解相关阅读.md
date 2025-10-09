@@ -6,7 +6,7 @@ query 理解参考资料
 <!--END_SECTION:badge-->
 <!--info
 top: false
-hidden: false
+hidden_in_recent: false
 -->
 
 > *keywords*: *Query 理解*, *查询理解 (QU, Query Understanding)*

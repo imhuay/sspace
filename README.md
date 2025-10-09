@@ -54,7 +54,7 @@
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown_简历工具.md)
-- [`2025-10-03` 策略梯度定理](./notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md)
+- [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md)
 - [`2025-09-09` 位置编码 (Position Encoding)](notes/_archives/2025/09/Transformer_整理/位置编码.md)
 - [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md)
 - [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md)
@@ -118,7 +118,7 @@ Git        0 secs          -------------------------   00.03 %
 ### Subject 📓
 <!--START_SECTION:subject-->
 - [牛客 (131)](algorithms/README.md#牛客)
-- [LeetCode (76)](algorithms/README.md#leetcode)
+- [LeetCode (77)](algorithms/README.md#leetcode)
 - [剑指Offer (75)](algorithms/README.md#剑指offer)
 - [经典 (38)](algorithms/README.md#经典)
 - [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
@@ -137,7 +137,7 @@ Git        0 secs          -------------------------   00.03 %
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (150)](algorithms/README.md#中等)
+- [中等 (151)](algorithms/README.md#中等)
 - [简单 (104)](algorithms/README.md#简单)
 - [困难 (35)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
@@ -155,7 +155,7 @@ Git        0 secs          -------------------------   00.03 %
 - [链表 (30)](algorithms/README.md#链表)
 - [字符串 (17)](algorithms/README.md#字符串)
 - [栈/队列 (16)](algorithms/README.md#栈队列)
-- [数组/矩阵 (10)](algorithms/README.md#数组矩阵)
+- [数组/矩阵 (11)](algorithms/README.md#数组矩阵)
 - [堆/优先队列 (9)](algorithms/README.md#堆优先队列)
 - [设计 (7)](algorithms/README.md#设计)
 - [线段树/树状数组 (1)](algorithms/README.md#线段树树状数组)
@@ -189,8 +189,8 @@ Git        0 secs          -------------------------   00.03 %
 - [滑动窗口 (6)](algorithms/README.md#滑动窗口)
 - [树形递归 (6)](algorithms/README.md#树形递归)
 - [贪心 (5)](algorithms/README.md#贪心)
+- [前缀和 (4)](algorithms/README.md#前缀和)
 - [单调栈/单调队列 (3)](algorithms/README.md#单调栈单调队列)
-- [前缀和 (3)](algorithms/README.md#前缀和)
 - [有限状态自动机 (1)](algorithms/README.md#有限状态自动机)
 <!--END_SECTION:trick-->
 
@@ -243,10 +243,10 @@ Git        0 secs          -------------------------   00.03 %
   > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](notes/_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
-  - [策略梯度定理及其推导](./notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 
-    > _[Score Function 恒等式](./notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](./notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
+  - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 
+    > _[基本形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
   - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
-    > _[策略梯度定理推导](./notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) • [PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
+    > _[策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) • [PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](notes/_archives/2025/09/大模型微调/LoRA.md) • [QA](notes/_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/大模型微调/大模型微调_QA.md) 

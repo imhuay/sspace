@@ -7,7 +7,7 @@ HuggingFace 离线使用
 <!--info
 top: false
 draft: false
-hidden: false
+hidden_in_recent: false
 tags: [dl_frame]
 -->
 
