@@ -6,7 +6,7 @@ Transformer Wiki
 <!--END_SECTION:badge-->
 <!--info
 top: false
-draft: true
+draft: false
 hidden_in_recent: false
 tags: [dl_bert]
 -->

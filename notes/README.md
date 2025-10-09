@@ -86,10 +86,10 @@ Notes
 
 - [基础概念](_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
-- [**偏好学习** ( **RLHF** )](_archives/2025/09/大模型微调/偏好学习.md) 
-  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_QA.md)_<br>
+- [**偏好学习** ( **RLHF** )](_archives/2025/09/大模型微调/偏好学习_RLHF.md) 
+  > _[奖励模型](_archives/2025/09/大模型微调/偏好学习_RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/偏好学习_RLHF.md#bradleyterry-模型介绍) • [策略优化](_archives/2025/09/大模型微调/偏好学习_RLHF.md#3-策略优化-policy-optimization) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](./_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
-    > _[基础术语](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语体系) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
+    > _[基础术语](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 
     > _[基本形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
   - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
@@ -442,7 +442,7 @@ Notes
 - [基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md) 
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md) 
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md) 
-- [偏好学习-QA](_archives/2025/09/大模型微调/偏好学习_QA.md) 
+- [偏好学习-QA](./_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md) 
 - [低资源训练](_archives/2022/12/低资源训练.md) 
 - [requirements.txt 语法备忘](_archives/2022/09/python-requirements语法.md) 
 - [query 理解参考资料](_archives/2022/12/query理解相关阅读.md) 

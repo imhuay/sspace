@@ -23,6 +23,9 @@ tags: [llm_sft]
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
+- [快速回顾](#快速回顾)
+    - [**RLHF (PPO) 的 3 个核心步骤**:](#rlhf-ppo-的-3-个核心步骤)
+    - [其他改进算法()](#其他改进算法)
 - [基础概念](#基础概念)
     - [背景](#背景)
 - [实施流程](#实施流程)
@@ -30,10 +33,83 @@ tags: [llm_sft]
     - [2. **人类反馈收集与奖励模型 (Reward Model)**](#2-人类反馈收集与奖励模型-reward-model)
         - [奖励模型训练流程](#奖励模型训练流程)
         - [Bradley–Terry 模型介绍](#bradleyterry-模型介绍)
-    - [3. **策略优化 (Policy Optimization)**](#3-策略优化-policy-optimization)
+    - [3. **强化学习**](#3-强化学习)
         - [**策略梯度算法**](#策略梯度算法)
 - [面试问题整理](#面试问题整理)
 <!--END_SECTION:toc-->
+
+---
+<!--
+
+<div align='center'><img src='path/to/xxx.png' height='300'/></div>
+
+<details><summary><b>点击展开</b></summary>
+</details>
+
+[xxx - imhuay/studis](https://github.com/imhuay/studies/blob/master/notes/_archives/2022/04/xxx.md)
+
+特殊符号:
+  空格: <&nbsp;>
+  • ◦ ▫ ▪ ∙(更小) ◉ ◎ ◇ ♦ ▷ ▶ ☐ ✓ ✕ ✗ ✘ ★ ☆ ♠ ♣ ♥ ♦ ✦ ✧ ✶ ⭒ ➢ ➔ ➜ ➤ › » → ‐ ⁃ ⌁
+  → ⇒ ↦ ↔ ↝ ↜ ↠ ↣ ➔ ➙ ➛ ➜ ➞ ⟶ ➡ ➤ ➢ ➨ › » ▶ ▷ ∴ ∵ ⇨ ↦ ┈ ╌
+
+Emoji:
+  🚨⚠️🔔📌📍🔖🏷️🚩💡❗‼️🔥✅☑️✔️⭕❌❓
+  📝✨⏳🔍👀🔄⬆️⬇️⬅️➡️↔️
+  0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟
+
+Latex 常用:
+  空白符: '\hspace{1em}/{2pt}/{3cm}', '\quad', '\qquad', '\,', '\:', '\;'
+
+-->
+## 快速回顾
+
+### **RLHF (PPO) 的 3 个核心步骤**:
+> SFT → 奖励模型 → 强化学习 (策略优化)
+- **监督微调 (SFT)**:
+    - **训练数据**: 人类编写高质量的 `(Prompt, Response)` 对;
+    - **训练方法**:
+        - 全参数微调;
+        - 参数高效微调 (PEFT); <br>
+            ▫ **LoRA** (低秩自适应); <br>
+- **奖励模型 $R_{\theta}(x, y)$**:
+    - **训练数据**: 人类偏好数据 `(Prompt, Chosen Response, Rejected Response)`
+    - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
+    - **输出**: 标量分数;
+    - **目标函数**: 
+        - **交叉熵损失**
+        $$\mathcal{L}(\theta) = - \mathbb{E} \left\lbrack\ \log \sigma \big( R_{\theta}(x, y_{\text{chosen}}) - R_{\theta}(x, y_{\text{rejected}}) \big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
+- **强化学习** (**PPO 算法**):
+    - **目标函数** (优势函数):
+        $$\begin{align}
+            \nabla_\theta J(\theta) = \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
+        \end{align}$$
+        > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式)
+    - **A 函数近似**:
+        $$\begin{align}
+            A(s, a) = Q(s, a) - V(s) \approx r_t + \gamma V(s_{t+1}) - V(s)
+        \end{align}$$
+        > [贝尔曼方程](./强化学习基础_RLHF.md#贝尔曼方程-bellman-equation)
+    - **价值模型 $V_{\theta}(s)$**:
+        - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
+        - **训练数据**:
+            - 一条长度为 $T$ 的轨迹, 提供 $T$ 个训练样本: 
+                $$(s_t, R_t), \quad R_t = r, \quad \forall t \in \{1, \dots, T\}$$
+                其中
+                - $T$ : Response 中的 token 数;
+                - $r$ : Reward Model 对完整 prompt + response 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
+                - $s_t$ : prompt + 已生成的前缀 (partial response);
+                - $R_t$ : 每个时间步的奖励, 都取最终奖励; 直观理解：无论在序列的哪个位置，后续都会走向同一个结局.
+        - **目标函数**: 
+            - **均方误差 (MSE) 损失**
+            $$\mathcal{L}(\theta) = \left\lbrack\ \big( V_{\theta}(s_t) - R_t \big)^2 \ \right\rbrack$$
+    - **参考模型 $\pi_{\text{ref}}$**:
+        - 固定参数的 SFT 模型;
+        - PPO-Penalty 需要, 因为要计算 KL;
+        - PPO-Clip 不需要 (主流), 只需要 **旧策略** (即 **上一次迭代的策略**);
+
+### 其他改进算法()
+
 
 ---
 
@@ -292,13 +368,7 @@ extra_url: false
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: '策略优化'
-extra_url: false
--->
-### 3. **策略优化 (Policy Optimization)**
-<!--END_SECTION:keyword-->
+### 3. **强化学习**
 > 基于 **强化学习 (RL) 框架** 进一步优化 SFT 模型, **对齐人类偏好**.
 
 <!--START_SECTION:keyword-->
@@ -350,5 +420,5 @@ name: 'QA'
 extra_url: true
 -->
 ## 面试问题整理
-> _[RLHF 面试问题整理](./偏好学习_QA.md)_
+> _[RLHF 面试问题整理](./偏好学习_RLHF_QA.md)_
 <!--END_SECTION:keyword-->

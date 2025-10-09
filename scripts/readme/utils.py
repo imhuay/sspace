@@ -398,7 +398,6 @@ class NoteUtils:
 
     @staticmethod
     def git_add(fp: Path):
-        """不再使用，通过 git add -u 代替"""
         command = NoteUtils.GIT_ADD_TEMP.format(fp=fp.resolve())
         code = os.system(command)
         NoteUtils._log_command(code, command)
@@ -648,6 +647,13 @@ class args:  # noqa
     # template
     temp_badge_todo_logo_check = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
     temp_badge_todo_logo_edit = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>'
+    temp_badge_todo_logo_edit_h = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/>'
+
+    @staticmethod
+    def get_temp_badge_todo_logo(count: int, height: int, color: str = 'E05D44') -> str:
+        """"""
+        return f'<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/>'
+        
 
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}

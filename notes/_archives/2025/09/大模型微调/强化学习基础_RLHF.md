@@ -17,14 +17,14 @@ tags: []
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [偏好学习](./偏好学习.md)*
+> ***Keywords**: [偏好学习](偏好学习_RLHF.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [核心术语体系](#核心术语体系)
+- [核心术语](#核心术语)
     - [**1️⃣ 智能体 . 环境 . 回合**](#1️⃣-智能体--环境--回合)
     - [**2️⃣ 状态 . 动作 . 策略 . 转移概率**](#2️⃣-状态--动作--策略--转移概率)
     - [**3️⃣ 奖励 . 回报 . 折扣因子**](#3️⃣-奖励--回报--折扣因子)
@@ -67,7 +67,7 @@ tags: []
 name: '基础术语'
 extra_url: false
 -->
-## 核心术语体系
+## 核心术语
 <!--END_SECTION:keyword-->
 
 <table>
@@ -701,8 +701,8 @@ extra_url: false
 -->
 - 在 PPO 等算法中, **通常不会直接建模** $Q(\cdot)$, 比如通过 **蒙特卡洛方法** 近似:
     $$\hat{Q}(s_t, a_t) \approx r_t + \gamma V(s_{t+1})$$
-- 基于此近似, 可以构造 **优势函数** $\mathcal{A}(s_t, a_t)$ 的估计:
-    $$\mathcal{A}(s_t, a_t) = Q(s_t, a_t) - V(s_t) \approx r_t + \gamma V(s_{t+1}) - V(s_t)$$
+- 基于此近似, 可以构造 **优势函数** $A(s_t, a_t)$ 的估计:
+    $$A(s_t, a_t) = Q(s_t, a_t) - V(s_t) \approx r_t + \gamma V(s_{t+1}) - V(s_t)$$
     > 此即 **一阶时序差分误差** (TD Error) 的形式;
 
 

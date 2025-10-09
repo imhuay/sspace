@@ -6,7 +6,7 @@ Attention 备忘
 <!--END_SECTION:badge-->
 <!--info
 top: false
-draft: true
+draft: false
 hidden_in_recent: true
 tags: [dl_model]
 -->

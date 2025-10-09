@@ -140,7 +140,7 @@ class Problem:
     # property
     _text = ''
     _info = None
-    _file_name = None
+    _file_name = ''
     _title = None
     _last_commit_time = None
     _inter_tags = None
@@ -154,7 +154,7 @@ class Problem:
         """"""
         self._path = self._path.resolve()
 
-        with self.path.open(encoding='utf8') as f:
+        with self._path.open(encoding='utf8') as f:
             self._text = f.read()
 
         self._norm_text()
@@ -243,7 +243,7 @@ class Problem:
 
     @property
     def badge_content(self):
-        lns = [NoteUtils.get_last_modify_badge_url(self.path)]
+        lns = [NoteUtils.get_last_modify_badge_url(self._path)]
         used = set()
         lns.append(
             NoteUtils.get_badge(
@@ -318,12 +318,17 @@ class Problem:
 
     @property
     def file_name(self):
-        if self._file_name is None:
-            self._file_name = '{src}_{no}_{level}_{name}.md'.format(src=self.source,
-                                                                    no=self.number,
-                                                                    level=self.level,
-                                                                    name=re.sub(r'\s+', '', self.name))
+        # if self._file_name is None:
+        #     self._file_name = '{src}_{no}_{level}_{name}.md'.format(
+        #         src=self.source, no=self.number, level=self.level, name=re.sub(r'\s+', '', self.name)
+        #     )
         return self._file_name
+
+    def set_file_name(self, max_no_len: int):
+        """"""
+        self._file_name = '{src}_{no}_{level}_{name}.md'.format(
+            src=self.source, no=str.zfill(self.number, max_no_len), level=self.level, name=re.sub(r'\s+', '', self.name)
+        )
 
     @property
     def info(self):
@@ -380,6 +385,7 @@ class Problem:
 
 class AlgorithmsBuilder(Builder):
     """"""
+
     problems: list[Problem]
 
     def __init__(self):
@@ -400,13 +406,21 @@ class AlgorithmsBuilder(Builder):
                 fp = Path(dp) / fn  # each problem.md
                 if fp.suffix != '.md':
                     continue
-                self.problems.append(Problem(fp))
+                p = Problem(fp)
+                self.problems.append(p)
 
         for p in self.problems:
             [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(p.source)]]
             [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(p.level)]]
             for name in p.tags:
                 [tag.add_problem(p) for tag in self.alias2tags[NoteUtils.norm(name)]]
+
+        src_max_no_len = defaultdict(int)
+        for p in self.problems:
+            src_max_no_len[p.source] = max(src_max_no_len[p.source], len(p.info.get('number', '')))
+
+        for p in self.problems:
+            p.set_file_name(src_max_no_len[p.source])
 
     @property
     def hot_toc(self):

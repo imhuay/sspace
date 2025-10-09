@@ -6,7 +6,7 @@ Python 标准项目实践
 <!--END_SECTION:badge-->
 <!--info
 top: false
-draft: true
+draft: false
 hidden_in_recent: false
 tags: []
 -->
@@ -40,7 +40,7 @@ tags: []
 - 申请 `CODECOV_TOKEN`
     - 登录 [Codecov.io](https://app.codecov.io/gh) (关联 Github);
     - 查看 `Not yet setup` 一栏 (默认显示 `Enabled`), 选择需要测试的仓库;
-    - 将 `CODECOV_TOKEN` 添加到 [Actions secrets](#添加-actions-secrets)
+    - 将 `CODECOV_TOKEN` 添加到 [Actions secrets](../08/GithubAction备忘.md#添加-actions-secrets)
 
 示例
 ```yaml

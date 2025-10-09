@@ -60,7 +60,8 @@ class RE:
 class NoteInfo:
     top: bool = False
     draft: bool = False
-    hidden: bool = True
+    thorough: bool = False
+    hidden_in_recent: bool = False
     section_number: bool = False
     tags: list[str] = field(default_factory=list)
     level: int = 0
@@ -110,6 +111,7 @@ class Note:
         self._tags.update(self.info.tags)
 
         self._norm_text()
+        self._update_title()
         self._update_badge()
 
         if self.info.section_number:
@@ -120,19 +122,40 @@ class Note:
             with self.path.open('w', encoding='utf8') as f:
                 f.write(self._text)
 
-    def add_sub_note(self, note: Note):
-        self.sub_notes.append(note)
-        self._tags.update(note._tags)
-
-    def add_par_note(self, note: Note):
-        self.par_notes.append(note)
-        self._tags.update(note._tags)
-
     def _norm_text(self):
         """文本规范化"""
         new_text = MarkdownUtils.normalize_text(self._text)
         if new_text != self.text:
             self._text = new_text
+            self._updated = True
+
+    RE_SUFFIX_BLOCK = re.compile(r'<!-- suffix -->(.*?)<!-- suffix -->')
+
+    def _remove_title_suffix(self, title: str) -> str:
+        """"""
+        return self.RE_SUFFIX_BLOCK.sub('', title).rstrip()
+
+    def _update_title(self):
+        """"""
+        title, context = self.text.split('\n', maxsplit=1)
+
+        title_suffix = self.get_title_suffix(todo_size=25)
+        if not title_suffix and '<!-- suffix -->' in title:
+            # new_title = re.sub(r'<!-- suffix -->(.*?)<!-- suffix -->', '', title).strip()
+            new_title = self._remove_title_suffix(title)
+        elif title_suffix:
+            new_title = title
+            if '<!-- suffix -->' not in new_title:
+                new_title += ' <!-- suffix --> <!-- suffix -->'
+            new_title = self.RE_SUFFIX_BLOCK.sub(
+                f'<!-- suffix --> {title_suffix} <!-- suffix -->',
+                new_title,
+            )
+        else:
+            new_title = title
+
+        if new_title != title:
+            self._text = new_title + '\n' + context
             self._updated = True
 
     def _update_badge(self):
@@ -213,6 +236,14 @@ class Note:
             self._text = NoteUtils.replace_tag_content('toc', self.text, new_toc_content)
             self._updated = True
 
+    def add_sub_note(self, note: Note):
+        self.sub_notes.append(note)
+        self._tags.update(note._tags)
+
+    def add_par_note(self, note: Note):
+        self.par_notes.append(note)
+        self._tags.update(note._tags)
+
     def get_recent_toc_line_relative_to(self, parent_path: Path):
         """更新 README recent 模块内的 TOC"""
         if self.is_top:
@@ -282,14 +313,16 @@ class Note:
     @property
     def title(self):
         if self._title is None:
-            self._title = self.text.split('\n', maxsplit=1)[0].strip()
+            title = self.text.split('\n', maxsplit=1)[0].strip()
 
-            if self._title == '':
+            if title == '':
                 # self._title = f'{self.path.stem}({self.path_relative_to_repo})'
-                self._title = self.path.stem
+                title = self.path.stem
+            
+            if '<!-- suffix -->' in title:
+                title = self._remove_title_suffix(title)
 
-            # if self.info.draft:
-            #     self._title += ' ⏳'
+            self._title = title
         return self._title
 
     @property
@@ -330,10 +363,14 @@ class Note:
         return self.info.draft
 
     @property
-    def is_hidden(self):
+    def is_thorough(self):
+        return self.info.thorough
+
+    @property
+    def is_hidden_in_recent(self):
         if self.info.top:
             return False
-        return self.info.hidden
+        return self.info.hidden_in_recent
 
     @property
     def path_relative_to_repo(self):
@@ -404,19 +441,28 @@ class Note:
         """用于生成在 tag 标签下 TOC 行时的标题"""
         return self.info.toc_title if self.info.toc_title else self.title
 
+    def get_title_suffix(self, todo_size: int = 16) -> str:
+        suffix = ''
+
+        if self.is_draft:
+            # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
+            # suffix = img_temp.format(src=badge_src)
+            suffix = '✒️'
+
+        if self.is_thorough:
+            suffix += '🧣'
+
+        if self.num_todo > 0:
+            # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
+            # suffix += args.temp_badge_todo_logo_edit_h.format(num_todo=self.num_todo, height=todo_size)
+            suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size)
+
+        return suffix
+
     @property
     def toc_title_suffix(self) -> str:
         """toc 标题后缀"""
-        if self.num_todo > 0:
-            # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
-            suffix = args.temp_badge_todo_logo_edit.format(num_todo=self.num_todo)
-        elif self.is_draft:
-            # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
-            # suffix = img_temp.format(src=badge_src)
-            suffix = '⏳'
-        else:
-            suffix = ''
-        return suffix
+        return self.get_title_suffix()
 
     @property
     def num_todo(self):
@@ -431,6 +477,7 @@ class Note:
             return f'⏳{per}%'
         else:
             return ''
+
 
 @dataclass
 class SubjectInfo:
@@ -552,7 +599,7 @@ class NotesBuilder(Builder):
                 note = Note(fp)
                 self.notes.append(note)
                 self.path2note[note.path] = note
-                if not note.is_hidden:
+                if not note.is_hidden_in_recent:
                     if note.is_top:
                         self._notes_top.append(note)
                     else:

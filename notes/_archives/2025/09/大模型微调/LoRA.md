@@ -1,4 +1,4 @@
-LoRA (Low-Rank Adaptation)
+LoRA (Low-Rank Adaptation, `ˈlɔːrə`)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -58,8 +58,8 @@ tags: [llm_sft]
 - 而是 **参数化** 两个小矩阵 $B \in \mathbb{R}^{d_{\text{out}} \times r}$ 和 $A \in \mathbb{R}^{r \times d_{\text{in}}}$, 且 $r \ll \min(d_{\text{out}}, d_{\text{in}})$;
 - 然后通过 **旁路** 的方式学习一个低秩更新矩阵 $\Delta W = B \cdot A$, **间接模拟权重更新**;
 - **推理时**, 将低秩更新与原始权重合并/相加;
-    - 为了在改变秩 $r$ 时灵活调整更新量/**控制更新幅度**, **避免重新调整学习率等训练超参**, 还会引入一个缩放因子 $\frac{\alpha}{r}$ 作用于低秩通路的输出 (**软约束**);
-        > 其中 $\alpha$ 用于控制整体更新强度, $1/r$ 用于 **抵消秩带来的线性放大效应**;
+    - 为了在改变秩 $r$ 时灵活调整更新量/**控制更新幅度**, **避免重新调整学习率等训练超参**, 还会引入一个缩放因子 $\dfrac{\alpha}{r}$ 作用于低秩通路的输出 (**软约束**);
+        > 其中 $\alpha$ 用于控制整体更新强度, $\dfrac{1}{r}$ 用于 **抵消秩带来的线性放大效应**;
     - **前向过程** 为:
     $$
     h = Wx + \frac{\alpha}{r} \Delta W x = Wx + \frac{\alpha}{r}B(Ax)
@@ -68,7 +68,7 @@ tags: [llm_sft]
 ### 实践细节
 
 - **代码示例**:
-    - [LoRA](./code/lora.py)
+    - [LoRA.py](./code/lora.py)
 - **初始化策略**:
     $$
     \Delta W = B \cdot A
@@ -81,7 +81,7 @@ tags: [llm_sft]
         - 控制了更新子空间的参数量和表征能力;
         - **域内单一任务** 一般取 `4-16`;
         - **指令/跨域任务** 可以取 `16-64` 或更高;
-    - $\frac{\alpha}{r}$:
+    - $\dfrac{\alpha}{r}$ (**缩放因子**):
         - 一般取 $\alpha \approx r$, 简化训练时调参, 主要调学习率;
     - dropout:
         - LoRA 路径上的 dropout, 缓解过拟合 (如 0.05–0.2);
