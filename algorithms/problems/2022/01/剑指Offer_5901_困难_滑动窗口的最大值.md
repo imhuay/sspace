@@ -111,6 +111,8 @@ class Solution:
 </details>
 <details><summary><b>单调栈/单调队列</b></summary>
 
+> [[中等, LeetCode] 每日温度](../../2025/10/LeetCode_0739_中等_每日温度.md)  
+  > 
 > [[困难, 牛客] 滑动窗口的最大值](../03/牛客_0082_困难_滑动窗口的最大值.md)  
   > 
 > [[简单, LeetCode] 下一个更大元素](../../2021/11/LeetCode_0496_简单_下一个更大元素.md)  

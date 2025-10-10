@@ -1,6 +1,6 @@
 ## 从魔法师身上吸取的最大能量
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-10%2000%3A37%3A58&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-11%2001%3A47%3A06&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%8D%E7%BC%80%E5%92%8C&color=blue&style=flat-square)](../../../README.md#前缀和)
@@ -102,6 +102,7 @@ class Solution:
 </details>
 <details><summary><b>数组/矩阵</b></summary>
 
+> [[中等, LeetCode] 矩阵置零](LeetCode_0073_中等_矩阵置零.md)  
 > [[中等, 剑指Offer] 栈的压入、弹出序列 🔥](../../2021/11/剑指Offer_3100_中等_栈的压入、弹出序列.md)  
 > [[中等, 剑指Offer] 顺时针打印矩阵 (3种思路4个写法) 🔥](../../2021/11/剑指Offer_2900_中等_顺时针打印矩阵(3种思路4个写法).md)  
 > [[中等, 牛客] 旋转数组](../../2022/04/牛客_0110_中等_旋转数组.md)  

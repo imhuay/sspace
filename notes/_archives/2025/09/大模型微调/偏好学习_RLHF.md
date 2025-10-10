@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-02%2002%3A45%3A21&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-10%2001%3A15%3A17&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -99,7 +99,7 @@ Latex 常用:
                 - $T$ : Response 中的 token 数;
                 - $r$ : Reward Model 对完整 prompt + response 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
                 - $s_t$ : prompt + 已生成的前缀 (partial response);
-                - $R_t$ : 每个时间步的奖励, 都取最终奖励; 直观理解：无论在序列的哪个位置，后续都会走向同一个结局.
+                - $R_t$ : 每个时间步的奖励, 都取最终奖励; 直观理解: 无论在序列的哪个位置, 后续都会走向同一个结局.
         - **目标函数**: 
             - **均方误差 (MSE) 损失**
             $$\mathcal{L}(\theta) = \left\lbrack\ \big( V_{\theta}(s_t) - R_t \big)^2 \ \right\rbrack$$

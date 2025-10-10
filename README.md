@@ -118,7 +118,7 @@ Git        0 secs          -------------------------   00.02 %
 ### Subject 📓
 <!--START_SECTION:subject-->
 - [牛客 (131)](algorithms/README.md#牛客)
-- [LeetCode (77)](algorithms/README.md#leetcode)
+- [LeetCode (79)](algorithms/README.md#leetcode)
 - [剑指Offer (75)](algorithms/README.md#剑指offer)
 - [经典 (38)](algorithms/README.md#经典)
 - [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
@@ -137,7 +137,7 @@ Git        0 secs          -------------------------   00.02 %
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (151)](algorithms/README.md#中等)
+- [中等 (153)](algorithms/README.md#中等)
 - [简单 (104)](algorithms/README.md#简单)
 - [困难 (35)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
@@ -155,7 +155,7 @@ Git        0 secs          -------------------------   00.02 %
 - [链表 (30)](algorithms/README.md#链表)
 - [字符串 (17)](algorithms/README.md#字符串)
 - [栈/队列 (16)](algorithms/README.md#栈队列)
-- [数组/矩阵 (11)](algorithms/README.md#数组矩阵)
+- [数组/矩阵 (12)](algorithms/README.md#数组矩阵)
 - [堆/优先队列 (9)](algorithms/README.md#堆优先队列)
 - [设计 (7)](algorithms/README.md#设计)
 - [线段树/树状数组 (1)](algorithms/README.md#线段树树状数组)
@@ -189,8 +189,8 @@ Git        0 secs          -------------------------   00.02 %
 - [滑动窗口 (6)](algorithms/README.md#滑动窗口)
 - [树形递归 (6)](algorithms/README.md#树形递归)
 - [贪心 (5)](algorithms/README.md#贪心)
+- [单调栈/单调队列 (4)](algorithms/README.md#单调栈单调队列)
 - [前缀和 (4)](algorithms/README.md#前缀和)
-- [单调栈/单调队列 (3)](algorithms/README.md#单调栈单调队列)
 - [有限状态自动机 (1)](algorithms/README.md#有限状态自动机)
 <!--END_SECTION:trick-->
 
@@ -226,27 +226,27 @@ Git        0 secs          -------------------------   00.02 %
   > _[QA](notes/_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](notes/_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
+- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/>
 
 <!-- omit in toc -->
 #### BERT
 
-- [Transformer 常见面试问题](notes/_archives/2022/05/Transformer常见问题.md) ⏳
-- [Transformer Wiki](notes/_archives/2022/05/TransformerWiki.md) ⏳
-- [BERT + CRF 备忘](notes/_archives/2022/04/bert_crf备忘.md) ⏳
+- [Transformer 常见面试问题](notes/_archives/2022/05/Transformer常见问题.md) 
+- [Transformer Wiki](notes/_archives/2022/05/TransformerWiki.md) 
+- [BERT + CRF 备忘](notes/_archives/2022/04/bert_crf备忘.md) 
 
 #### 大模型微调 🔥
 
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
-- [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ⏳
+- [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
 - [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md) 
-  > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#bradleyterry-模型介绍) • [策略优化](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#3-策略优化-policy-optimization) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](./notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
+  > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
-  - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 
+  - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
     > _[基本形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
-  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>
-    > _[策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) • [PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
+  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/>
+    > _[PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](notes/_archives/2025/09/大模型微调/LoRA.md) • [QA](notes/_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/大模型微调/大模型微调_QA.md) 
@@ -267,23 +267,23 @@ Git        0 secs          -------------------------   00.02 %
 
 - [概率论基础](notes/_archives/2025/09/概率论基础.md) 
   > _[期望](notes/_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](notes/_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
-- [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md) 
-  > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood)_<br>
-- [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) ⏳
+- [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md) <img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/>
+  > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](notes/_archives/2025/09/机器学习基本概念.md#正则化-regularization)_<br>
+- [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) 
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md) 
 
 ### Deep Learning 🧠
 
 - [过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md) 
-- [激活函数](notes/_archives/2022/05/激活函数.md) ⏳
-- [损失函数](notes/_archives/2022/05/损失函数.md) ⏳
+- [激活函数](notes/_archives/2022/05/激活函数.md) 
+- [损失函数](notes/_archives/2022/05/损失函数.md) 
 
 <!-- omit in toc -->
 #### 模型
 
-- [RNN 备忘](notes/_archives/2022/05/RNN.md) ⏳
-- [CNN 备忘](notes/_archives/2022/05/CNN.md) ⏳
-- [Attention 备忘](notes/_archives/2022/05/Attention.md) ⏳
+- [RNN 备忘](notes/_archives/2022/05/RNN.md) 
+- [CNN 备忘](notes/_archives/2022/05/CNN.md) 
+- [Attention 备忘](notes/_archives/2022/05/Attention.md) 
 
 <!-- omit in toc -->
 #### 框架
@@ -294,20 +294,20 @@ Git        0 secs          -------------------------   00.02 %
 <!-- omit in toc -->
 #### 表示学习
 
-- [基于对比学习的表示学习训练框架](notes/_archives/2022/05/基于对比学习的表示学习训练框架.md) ⏳
-- [基于互信息的表示学习](notes/_archives/2022/05/基于互信息的表示学习.md) ⏳
+- [基于对比学习的表示学习训练框架](notes/_archives/2022/05/基于对比学习的表示学习训练框架.md) 
+- [基于互信息的表示学习](notes/_archives/2022/05/基于互信息的表示学习.md) 
 - [向后兼容 ( Backward-Compatible ) 的表示学习](notes/_archives/2022/05/向后兼容的表示学习.md) 
 - [Sentence-BERT 论文笔记](notes/_archives/2022/05/Sentence-BERT论文笔记.md) 
 
 <!-- omit in toc -->
 #### 迁移学习/SFT
 
-- [预训练模型的轻量化微调](notes/_archives/2022/05/预训练模型的轻量化微调.md) ⏳
+- [预训练模型的轻量化微调](notes/_archives/2022/05/预训练模型的轻量化微调.md) 
 
 <!-- omit in toc -->
 #### 不平衡学习
 
-- [不平衡学习概述](notes/_archives/2022/05/不平衡学习概述.md) ⏳
+- [不平衡学习概述](notes/_archives/2022/05/不平衡学习概述.md) 
 - [论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md) 
 - [综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md) 
 
@@ -323,15 +323,15 @@ Git        0 secs          -------------------------   00.02 %
 
 ### NLP 🔤
 - [统一视角下的 NLP 任务](notes/_archives/2025/09/统一视角下的NLP任务.md) 
-- [语言模型](notes/_archives/2022/10/语言模型.md) ⏳
+- [语言模型](notes/_archives/2022/10/语言模型.md) 
 - [NLP 任务与应用](notes/_archives/2022/06/NLP任务与应用.map.md) 
 
 <!-- omit in toc -->
 #### NER
 
-- [NER Wiki](notes/_archives/2022/12/NER.md) ⏳
+- [NER Wiki](notes/_archives/2022/12/NER.md) 
 - [商品 NER 标签设计](notes/_archives/2022/12/商品NER标签设计.md) 
-- [GLiNER 阅读笔记](notes/_archives/2024/06/ner.2023.arxiv.01/README.md) ⏳
+- [GLiNER 阅读笔记](notes/_archives/2024/06/ner.2023.arxiv.01/README.md) 
 
 <!-- omit in toc -->
 #### 知识图谱
@@ -406,7 +406,7 @@ Git        0 secs          -------------------------   00.02 %
 
 ### Paper Notes 📝
 
-- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架 ⏳](notes/_archives/2022/12/synonym.2012.KDD.01/README.md)
+- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](notes/_archives/2022/12/synonym.2012.KDD.01/README.md)
 
 </td>
 </tr>
@@ -432,7 +432,7 @@ Git        0 secs          -------------------------   00.02 %
 #### 工具
 
 - [python 国内镜像源](notes/_archives/2022/06/python国内镜像源.md) 
-- [`uv` 备忘](notes/_archives/2025/08/python-uv备忘.md) ⏳
+- [`uv` 备忘](notes/_archives/2025/08/python-uv备忘.md) 
 - [VSCode 配置 for Python](notes/_archives/2025/08/VSCode配置-Python.md) 
 - [PyCharm 配置](notes/_archives/2022/07/PyCharm配置.md) 
 
@@ -477,7 +477,7 @@ Git        0 secs          -------------------------   00.02 %
 
 **Git**
 
-- [`git` 备忘](notes/_archives/2022/06/git备忘.md) ⏳
+- [`git` 备忘](notes/_archives/2022/06/git备忘.md) 
 - [批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md) 
 - [`git-subtree` 的基本用法](notes/_archives/2022/06/git-subtree的基本用法.md) 
 
@@ -486,8 +486,8 @@ Git        0 secs          -------------------------   00.02 %
 - [后台运行](notes/_archives/2022/06/Linux后台运行.md) 
 - [`glob` 备忘](notes/_archives/2022/08/glob语法备忘.md) 
 - [`awk` 备忘](notes/_archives/2022/06/awk基本用法.md) 
-- [WSL2 使用记录](notes/_archives/2022/09/WSL使用记录.md) ⏳
-- [Shell 脚本备忘](notes/_archives/2022/07/Shell脚本使用记录.md) ⏳
+- [WSL2 使用记录](notes/_archives/2022/09/WSL使用记录.md) 
+- [Shell 脚本备忘](notes/_archives/2022/07/Shell脚本使用记录.md) 
 - [Linux 解压缩](notes/_archives/2022/06/Linux解压缩.md) 
 
 </td>
@@ -503,7 +503,7 @@ Git        0 secs          -------------------------   00.02 %
 ### Design Pattern 🏗️
 
 - [设计模式 Wiki](notes/_archives/2022/09/设计模式.md) 
-- [建造者模式 ( Python 实现 )](notes/_archives/2022/09/设计模式-建造者模式.md) ⏳
+- [建造者模式 ( Python 实现 )](notes/_archives/2022/09/设计模式-建造者模式.md) 
 - [工厂模式 ( Python 实现 )](notes/_archives/2022/09/设计模式-工厂模式.md) 
 
 </td>
@@ -569,9 +569,9 @@ Git        0 secs          -------------------------   00.02 %
 ## Drafts
 
 - [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
-- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) ⏳
+- [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) 
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md) 
-- [算法面试问题收录](notes/_archives/2025/09/算法面试问题收录.md) ⏳
+- [算法面试问题收录](notes/_archives/2025/09/算法面试问题收录.md) ✒️
   > _[Transformer](notes/_archives/2025/09/算法面试问题收录.md#transformer) • [LLM](notes/_archives/2025/09/算法面试问题收录.md#llm)_<br>
 - [算法面试笔记](notes/_archives/2022/10/算法面试笔记.md) 
 - [简历书写技巧 ( 算法 )](notes/_archives/2022/10/程序员简历技巧.md) 
@@ -585,17 +585,17 @@ Git        0 secs          -------------------------   00.02 %
 - [搜索相关阅读](notes/_archives/2022/12/搜索相关阅读.md) 
 - [搜索指标](notes/_archives/2022/12/搜索指标.md) 
 - [快捷键记录](notes/_archives/2022/07/快捷键记录.md) 
-- [常见面试问题 ( 非技术 )](notes/_archives/2022/06/常见面试问题（非技术）.md) ⏳
+- [常见面试问题 ( 非技术 )](notes/_archives/2022/06/常见面试问题（非技术）.md) 
 - [常见的文本相似度计算](notes/_archives/2022/12/文本相似度计算.md) 
 - [实验报告模板](notes/_archives/2022/12/实验报告模板.md) 
 - [实体链接相关概念](notes/_archives/2022/04/实体链接/实体链接相关概念.md) 
-- [大模型解码](notes/_archives/2025/09/Transformer_整理/解码.md) ⏳
-- [多轮MRC信息抽取的优缺点](notes/_archives/2025/08/多轮MRC信息抽取的优缺点.md) ⏳
+- [大模型解码](notes/_archives/2025/09/Transformer_整理/解码.md) ✒️
+- [多轮MRC信息抽取的优缺点](notes/_archives/2025/08/多轮MRC信息抽取的优缺点.md) 
 - [基于用户行为数据的同义词挖掘方法 ( 英文 )](notes/_archives/2022/12/基于用户行为数据的同义词挖掘方法.md) 
 - [基于 SQL 计算信息熵与信息增益](notes/_archives/2023/01/sql-计算信息熵与信息增益.md) 
 - [基于 BERT/MLM 的查询扩展方法](notes/_archives/2022/12/qe-mlm.md) 
 - [同义词挖掘](notes/_archives/2025/07/同义词挖掘/README.md) 
-- [偏好学习-QA](./notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md) 
+- [偏好学习-QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md) 
 - [低资源训练](notes/_archives/2022/12/低资源训练.md) 
 - [requirements.txt 语法备忘](notes/_archives/2022/09/python-requirements语法.md) 
 - [query 理解参考资料](notes/_archives/2022/12/query理解相关阅读.md) 
@@ -606,22 +606,22 @@ Git        0 secs          -------------------------   00.02 %
 - [Transformer/BERT 常见变体](notes/_archives/2022/10/Transformer系列模型.md) 
 - [Transformer 的优势与劣势](notes/_archives/2023/02/Transformer的优势与劣势.md) 
 - [SQL优化之暴力扫描](notes/_archives/2023/02/SQL优化之暴力扫描.md) 
-- [SMART Loss](notes/_archives/2022/06/论文-2019-HaomingJiang.md) ⏳
-- [RLHF 及其实现 ( PPO, DPO, GRPO 等 )](notes/_archives/2025/08/RLHF.md) ⏳
+- [SMART Loss](notes/_archives/2022/06/论文-2019-HaomingJiang.md) 
+- [RLHF 及其实现 ( PPO, DPO, GRPO 等 )](notes/_archives/2025/08/RLHF.md) 
 - [Query 纠错](notes/_archives/2022/12/query纠错.md) 
 - [Query 扩展 ( 电商领域 )](notes/_archives/2022/12/query扩展.md) 
 - [Query 分析指南](notes/_archives/2022/12/query分析.md) 
-- [Python 标准项目实践](notes/_archives/2022/09/python标准项目实践.md) ⏳
+- [Python 标准项目实践](notes/_archives/2022/09/python标准项目实践.md) 
 - [PySpark 笔记](notes/_archives/2023/01/PySpark笔记.md) 
-- [PET ( Pattern-Exploiting Training ) 模型](notes/_archives/2022/07/PET模型实践.md) ⏳
-- [Obsidian](notes/_archives/2022/05/Obsidian.md) ⏳
+- [PET ( Pattern-Exploiting Training ) 模型](notes/_archives/2022/07/PET模型实践.md) 
+- [Obsidian](notes/_archives/2022/05/Obsidian.md) 
 - [Node.js 环境搭建](notes/_archives/2022/12/nodejs环境.md) 
 - [NLP 领域术语 Wiki](notes/_archives/2022/12/nlp_wiki.md) 
 - [Mac 环境配置](notes/_archives/2022/07/Mac环境配置.md) 
 - [Label Studio 使用记录](notes/_archives/2022/12/label-studio使用记录.md) 
 - [LLM 训练方案整理](notes/_archives/2023/06/llm训练方案整理.md) 
 - [LLM 应用收集](notes/_archives/2023/06/llm应用收集.md) 
-- [KDD 2022](notes/_archives/2022/06/KDD2022.md) ⏳
+- [KDD 2022](notes/_archives/2022/06/KDD2022.md) 
 - [Jupyter & IPython 使用备忘](notes/_archives/2022/12/jupyter与ipython备忘.md) 
 - [Hive/Spark/Presto SQL 备忘](notes/_archives/2023/01/大数据SQL备忘.md) 
 - [Hive/Spark SQL 常用查询记录](notes/_archives/2023/01/sql-常用查询记录.md) 
