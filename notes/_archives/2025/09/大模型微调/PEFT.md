@@ -48,7 +48,7 @@ extra_url: true
 - **基本思路**:
     - 对需要微调的 **线性层** (如 `nn.Linear`), 冻结其原始权重 $W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$, 引入一个 **低秩更新矩阵** $\Delta W$, 用两个小矩阵参数化:
         $$
-        \Delta W = B \cdot A,\quad B \in \mathbb{R}^{d_{\text{out}} \times r},\; A \in \mathbb{R}^{r \times d_{\text{in}}},\; r \ll \min(d_{\text{out}}, d_{\text{in}})
+        \Delta W = B \cdot A,\quad B \in \mathbb{R}^{d_{\text{out}} \times r},\ A \in \mathbb{R}^{r \times d_{\text{in}}},\ r \ll \min(d_{\text{out}}, d_{\text{in}})
         $$
     - **前向过程** (**旁路相加**):
         $$

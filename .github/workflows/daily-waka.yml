@@ -23,7 +23,7 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #REPOSITORY: ${{ github.repository }}
-          COMMIT_MESSAGE: "Auto-update wakatime"
+          COMMIT_MESSAGE: "Auto-Update Wakatime"
           BLOCKS: ->  # ⣀⣄⣤⣦⣶⣷⣿, ░▒▓█, ->, etc.
           TIME_RANGE: last_7_days  # last_30_days, last_6_months, last_year, all_time
           SHOW_TITLE: false

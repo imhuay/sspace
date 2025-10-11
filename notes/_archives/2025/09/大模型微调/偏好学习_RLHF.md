@@ -25,7 +25,7 @@ tags: [llm_sft]
 <!--START_SECTION:toc-->
 - [快速回顾](#快速回顾)
     - [**RLHF (PPO) 的 3 个核心步骤**:](#rlhf-ppo-的-3-个核心步骤)
-    - [其他改进算法()](#其他改进算法)
+    - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
     - [背景](#背景)
 - [实施流程](#实施流程)
@@ -39,83 +39,87 @@ tags: [llm_sft]
 <!--END_SECTION:toc-->
 
 ---
-<!--
 
-<div align='center'><img src='path/to/xxx.png' height='300'/></div>
-
-<details><summary><b>点击展开</b></summary>
-</details>
-
-[xxx - imhuay/studis](https://github.com/imhuay/studies/blob/master/notes/_archives/2022/04/xxx.md)
-
-特殊符号:
-  空格: <&nbsp;>
-  • ◦ ▫ ▪ ∙(更小) ◉ ◎ ◇ ♦ ▷ ▶ ☐ ✓ ✕ ✗ ✘ ★ ☆ ♠ ♣ ♥ ♦ ✦ ✧ ✶ ⭒ ➢ ➔ ➜ ➤ › » → ‐ ⁃ ⌁
-  → ⇒ ↦ ↔ ↝ ↜ ↠ ↣ ➔ ➙ ➛ ➜ ➞ ⟶ ➡ ➤ ➢ ➨ › » ▶ ▷ ∴ ∵ ⇨ ↦ ┈ ╌
-
-Emoji:
-  🚨⚠️🔔📌📍🔖🏷️🚩💡❗‼️🔥✅☑️✔️⭕❌❓
-  📝✨⏳🔍👀🔄⬆️⬇️⬅️➡️↔️
-  0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟
-
-Latex 常用:
-  空白符: '\hspace{1em}/{2pt}/{3cm}', '\quad', '\qquad', '\,', '\:', '\;'
-
--->
 ## 快速回顾
 
 ### **RLHF (PPO) 的 3 个核心步骤**:
 > SFT → 奖励模型 → 强化学习 (策略优化)
 - **监督微调 (SFT)**:
-    - **训练数据**: 人类编写高质量的 `(Prompt, Response)` 对;
+    - **目标**: <br>
+        🚩 构建基础能力, 使模型具备基本的指令跟随能力, 构建良好基线.
+    - **训练数据**: 
+        - 人类编写的高质量 `(Prompt, Response)` 对;
     - **训练方法**:
         - 全参数微调;
         - 参数高效微调 (PEFT); <br>
-            ▫ **LoRA** (低秩自适应); <br>
-- **奖励模型 $R_{\theta}(x, y)$**:
+          🚩 **LoRA** (低秩自适应): 
+          $$\begin{align}
+              h = W_0{x} + \frac{\alpha}{r}\Delta{W}{x}, \quad \Delta{W}=BA,\ B \in \mathbb{R}^{d_{\text{out}} \times r},\ A \in \mathbb{R}^{r \times d_{\text{in}}},\ r \ll \min(d_{\text{out}}, d_{\text{in}})
+          \end{align}$$
+    - **目标函数**: <br>
+        🚩 **交叉熵损失**
+        $$\begin{align}
+            L_{\scriptscriptstyle \text{SFT}}(\theta) = - \mathbb{E}_{(x,y) \sim \mathcal{D}} \left\lbrack\ \sum_{t} \log \pi_\theta(y_t \mid x, y_{<t}) \ \right\rbrack
+        \end{align}$$
+- **奖励模型 $R_{\phi}(x, y)$**:
+    - **目标**: <br>
+        🚩 将人类偏好转化为标量分数;
+    - **输入输出**: 
+        - 预测时: $(x,y) \rightarrow r$
+        - 训练时: $(x,y^+,y^-) \rightarrow (x,y^+), (x,y^-) \rightarrow (r^+,r^-) \rightarrow \sigma(r^+ - r^-)$
     - **训练数据**: 人类偏好数据 `(Prompt, Chosen Response, Rejected Response)`
     - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
-    - **输出**: 标量分数;
     - **目标函数**: 
-        - **成对排序损失 (Pairwise Ranking Loss)**
-        $$\mathcal{L}(\theta) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \big( R_{\theta}(x, y^+) - R_{\theta}(x, y^-) \big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
+        <!-- - 成对比较概率 (Bradley–Terry 模型)
+            $$\begin{align}
+                P(y^+ \succ y^- \mid x) = \sigma\Big( r_\phi(x,y^+) - r_\phi(x,y^-) \Big), \quad \sigma(z) = \frac{1}{1+e^{-z}}
+            \end{align}$$ -->
+        🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
+        $$\mathcal{L}(\phi) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \Big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \Big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
+        > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.
 - **强化学习** (**PPO 算法**):
-    - **目标函数** (组合目标):
+    - **目标函数** (组合目标): <br>
+        🚩 **策略优化 (PPO-Clip) + 价值函数误差 + KL 正则**
         $$\begin{align}
-            \mathcal{L}_{\scriptscriptstyle Total} = \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) - c_1 \mathcal{L}_{\scriptscriptstyle VF}(\phi) + c_2 \mathcal{L}_{\scriptscriptstyle KL}(\theta)
+            \mathcal{L}_{\scriptscriptstyle Total}(\theta, \phi) = \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) - c_1 \mathcal{L}_{\scriptscriptstyle VF}(\phi) + c_2 \mathcal{L}_{\scriptscriptstyle KL}(\theta)
         \end{align}$$
-        <!-- $$\begin{align}
-            \nabla_\theta J(\theta) = \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
-        \end{align}$$ -->
         <!-- > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式) -->
-        其中
-        $$\begin{align}
-            \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) = 
+    - **策略模型 $\pi_{\theta}(s)$** 📌 <br>
+        $$\begin{align} 
+            \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) &= \hat{\mathbb{E}}_t \left\lbrack\ \min\Big( \underline{r_t(\theta)}\hat{A}_t, \ \underline{\text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)}\hat{A}_t \Big) \ \right\rbrack
         \end{align}$$
-    - **A 函数近似**:
-        $$\begin{align}
-            A(s, a) = Q(s, a) - V(s) \approx r_t + \gamma V(s_{t+1}) - V(s)
-        \end{align}$$
-        > [贝尔曼方程](./强化学习基础_RLHF.md#贝尔曼方程-bellman-equation)
-    - **价值模型 $V_{\theta}(s)$**:
+        - **A 函数近似**:
+            $$\begin{align}
+                \hat{A}_t = \delta_t + \gamma \lambda \ \hat{A}_{t+1} \ , \quad \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
+            \end{align}$$
+            其中
+            $$r_t =
+                \begin{cases}
+                r^{\scriptscriptstyle KL}_t, & t < T \\
+                r^{\scriptscriptstyle KL}_T + R_{\phi}(x,y), & t = T
+                \end{cases} , \quad r^{\scriptscriptstyle KL}_t = -\beta D_{\scriptscriptstyle KL}\big(\pi_\theta(\cdot|s_t)\|\pi_{\text{ref}}(\cdot|s_t)\big)
+            $$
+            > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
+    - **价值模型 $V_{\phi}(s)$**:
         - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
         - **训练数据**:
             - 一条长度为 $T$ 的轨迹, 提供 $T$ 个训练样本: 
                 $$(s_t, R_t), \quad R_t = r, \quad \forall t \in \{1, \dots, T\}$$
                 其中
-                - $T$ : Response 中的 token 数;
-                - $r$ : Reward Model 对完整 prompt + response 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
+                - $T$ : Response 的 token 数;
+                - $r$ : 奖励模型对完整上下文 (prompt + response) 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
                 - $s_t$ : prompt + 已生成的前缀 (partial response);
-                - $R_t$ : 每个时间步的奖励, 都取最终奖励; 直观理解: 无论在序列的哪个位置, 后续都会走向同一个结局.
+                - $R_t$ : 每个时间步的奖励, 都取最终奖励 $r$; 
+                    > 直观理解: 无论在序列的哪个位置, 后续都会走向同一个结果.
         - **目标函数**: 
             - **均方误差 (MSE) 损失**
-            $$\mathcal{L}(\theta) = \left\lbrack\ \big( V_{\theta}(s_t) - R_t \big)^2 \ \right\rbrack$$
+            $$\mathcal{L}(\phi) = \left\lbrack\ \big( V_{\phi}(s_t) - R_t \big)^2 \ \right\rbrack$$
     - **参考模型 $\pi_{\text{ref}}$**:
         - 固定参数的 SFT 模型;
-        - PPO-Penalty 需要, 因为要计算 KL;
-        - PPO-Clip 不需要 (主流), 只需要 **旧策略** (即 **上一次迭代的策略**);
+        - ~~PPO-Penalty 需要, 因为要计算 KL;~~
+        - ~~PPO-Clip 不需要 (主流), 只需要 **旧策略** (即 **上一次迭代的策略**);~~
 
-### 其他改进算法()
+### 其他改进算法
 
 
 ---
@@ -245,8 +249,8 @@ extra_url: false
 <!--END_SECTION:keyword-->
 
 - **目标**:
-    - 将人类的相对偏好转化为一个可优化的 **标量奖励函数** $R_\theta(\cdot)$;
-    - 训练一个模型, 使其能够为给定的 **提示-回答** 对 $(x, y)$ 分配一个 **标量分数** $r = R_\theta(x, y)$;
+    - 将人类的相对偏好转化为一个可优化的 **标量奖励函数** $R_{\phi}(\cdot)$;
+    - 训练一个模型, 使其能够为给定的 **提示-回答** 对 $(x, y)$ 分配一个 **标量分数** $r = R_{\phi}(x, y)$;
 - **训练数据**:
     - **来源**:
         - 使用 **阶段一训练的 SFT 模型** 在同一提示下生成的两个或多个候选输出;
@@ -273,24 +277,24 @@ extra_url: false
             $$
             \begin{aligned}
                 P(y_j \succ y_k)
-                &= \frac{\exp\big(R_\theta(x, y_j)\big)}{\exp\big(R_\theta(x, y_j)\big) + \exp\big(R_\theta(x, y_k)\big)} \\
-                &= \frac{1}{1 + \dfrac{\exp\big(R_\theta(x, y_k)\big)}{\exp\big(R_\theta(x, y_j)\big)}} \\
-                &= \frac{1}{1 + e^{- \big(R_\theta(x, y_j) - R_\theta(x, y_k)\big)}} \\
-                &= \sigma\big(R_\theta(x, y_j) - R_\theta(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
+                &= \frac{\exp\big(R_{\phi}(x, y_j)\big)}{\exp\big(R_{\phi}(x, y_j)\big) + \exp\big(R_{\phi}(x, y_k)\big)} \\
+                &= \frac{1}{1 + \dfrac{\exp\big(R_{\phi}(x, y_k)\big)}{\exp\big(R_{\phi}(x, y_j)\big)}} \\
+                &= \frac{1}{1 + e^{- \big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)}} \\
+                &= \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
             \end{aligned}
             $$
-            <!-- > 其中 $R_\theta(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
+            <!-- > 其中 $R_{\phi}(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
-            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \  \sigma(R_\theta(x, y_j) - R_\theta(x, y_k)) -->
+            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \  \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
             $$
             \mathcal{L}(\theta; D) = -\mathbb{E}_{(x, y_j, y_k) \sim D} \Big \lbrack
-                \log \  \sigma\big(R_\theta(x, y_j) - R_\theta(x, y_k)\big)
+                \log \  \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)
                 \Big \rbrack
             $$
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
         $$
-        \mathcal{L}_{\text{InfoNCE}}(\theta) = -\mathbb{E} \left \lbrack \log \frac{\exp\big(R_\theta(x, y^+)\big)}{\exp\big(R_\theta(x, y^+)\big) + \sum_{i=1}^{N-1} \exp\big(R_\theta(x, y_i^-)\big)} \right \rbrack
+        \mathcal{L}_{\text{InfoNCE}}(\theta) = -\mathbb{E} \left \lbrack \log \frac{\exp\big(R_{\phi}(x, y^+)\big)}{\exp\big(R_{\phi}(x, y^+)\big) + \sum_{i=1}^{N-1} \exp\big(R_{\phi}(x, y_i^-)\big)} \right \rbrack
         $$
     <!--
     - **带边距的排序损失**
@@ -339,11 +343,11 @@ extra_url: false
      -->
 - **目的**:
     -  在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
-    -  学习一个 **评分函数** $R_\theta(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
+    -  学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
     <!-- - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 为每个对象 **估计出一个静态的能力分数** $r$; -->
     <!-- - BT 模型试图通过一系列 **成对比较结果** $(y_j, y_k)$, **为每个对象估算出一个标量分数** $r$, 代表其强度; -->
     <!-- - 两个对象之间的 比较关系/胜负结果 是可以获取/累计的; -->
-    <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $R_\theta(\cdot)$; -->
+    <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $R_{\phi}(\cdot)$; -->
 <!--
 - **定义**:
     - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
@@ -357,20 +361,20 @@ extra_url: false
             = \frac{1}{1 + \exp\big(-(r_j - r_k)\big)}
             = \sigma (r_j - r_k)
         $$
-    - 其中 $r_j = R_\theta(y_j)$, $r_k = R_\theta(y_k)$
+    - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
     - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
 -->
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_\theta(y_j) - R_\theta(y_k)\big) \Big \rbrack
+        \mathcal{L}(\phi;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     <!--
     - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_\theta(y_j) - R_\theta(y_k)\big) \Big \rbrack
+        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->

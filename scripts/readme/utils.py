@@ -148,74 +148,7 @@ class MarkdownUtils:
         return result
 
     @staticmethod
-    def normalize_spaces(text: str, comment_markers: List[str] | None = None) -> str:
-        """Normalize spaces in a line of text with configurable comment markers.
-
-        Rules:
-        - Preserve leading spaces as-is.
-        - Preserve the exact number of spaces immediately before and after the first
-        comment marker (from the provided list).
-        - Replace other consecutive spaces inside the code part with a single space.
-        - If the text ends with two or more spaces, preserve exactly two spaces.
-
-        Args:
-            text (str): Input string.
-            comment_markers (List[str], optional): List of comment markers to detect.
-                Defaults to ['#', '//'].
-
-        Returns:
-            str: String with normalized spaces.
-        """
-        if comment_markers is None:
-            comment_markers = ['#', '//', '...']
-
-        # Preserve leading spaces
-        leading_spaces = len(text) - len(text.lstrip(' '))
-        prefix = ' ' * leading_spaces
-        remainder = text[leading_spaces:]
-
-        # Detect trailing spaces for the "keep two" rule
-        trailing_spaces = len(remainder) - len(remainder.rstrip(' '))
-        keep_trailing = trailing_spaces >= 2
-
-        # Work on the core without trailing spaces
-        core = remainder.rstrip(' ')
-
-        # Find the earliest comment marker
-        comment_idx: int = None
-        marker: str = None
-        for m in comment_markers:
-            idx = core.find(m)
-            if idx != -1 and (comment_idx is None or idx < comment_idx):
-                comment_idx, marker = idx, m
-
-        if comment_idx is not None:
-            left = core[:comment_idx]
-            right = core[comment_idx:]  # includes marker and after
-
-            # Find run of spaces before marker
-            space_start = len(left)
-            while space_start > 0 and left[space_start - 1] == ' ':
-                space_start -= 1
-            left_nonspace = left[:space_start]
-            space_run = left[space_start:]  # preserved
-
-            # Compress spaces in left_nonspace
-            left_nonspace = re.sub(r' +', ' ', left_nonspace)
-
-            # Right part (comment marker and after) preserved as-is
-            core = left_nonspace + space_run + right
-        else:
-            # No comment marker: compress everywhere
-            core = re.sub(r' +', ' ', core)
-
-        result = prefix + core
-        if keep_trailing:
-            result += '  '
-        return result
-
-    @staticmethod
-    def normalize_text(text: str) -> str:
+    def normalize_text(text: str, skip_block: list | None = None) -> str:
         """文本规范化
 
         要求:
@@ -241,9 +174,50 @@ class MarkdownUtils:
             ('（', '）'): ('(', ')'),
         }
 
+        if skip_block is None:
+            skip_block = [
+                '```',  # 代码块
+                '$$',  # 行间公式
+                (r'\[', r'\]'),  # 行间公式
+                ('<!--', '-->'),  # HTML 注释
+            ]
+
+        skip_block = [(it, it) if isinstance(it, str) else it for it in skip_block]
+
         lines = text.split('\n')
+        in_block = False
+        cur_block = None
+        line_block = False
         for i in range(len(lines)):
             line = lines[i]
+
+            for b_start, b_end in skip_block:
+                if (
+                    line.lstrip().startswith(b_start)
+                    and line.rstrip().endswith(b_end)
+                    and len(line.strip()) > len(b_start) + len(b_end)
+                ):
+                    line_block = True
+                    break
+
+            if line_block:
+                line_block = False
+                continue
+
+            if cur_block is None:
+                for b_start, b_end in skip_block:
+                    if line.lstrip().startswith(b_start):
+                        in_block = True
+                        cur_block = (b_start, b_end)
+                        break
+            else:
+                b_start, b_end = cur_block
+                if line.lstrip().endswith(b_end):
+                    in_block = False
+                    cur_block = None
+
+            if in_block:
+                continue
 
             if line.strip() == '':
                 lines[i] = ''
@@ -263,16 +237,24 @@ class MarkdownUtils:
             if line.endswith('  '):
                 line = line.rstrip() + '  '
 
-            # 4. 把多余的空格替换为单个空格 (除了行尾)
-            # line = re.sub(r'(?<=\S) {2,}(?=\S)', ' ', line)
-            # 代码中的缩进不好处理
+            # 3. 为 ##, ### 开头的行添加分割线
+            # if re.match(r'^(#{2,3})\s*', line):
+            #     has_hr = False
+            #     j = i - 1
+            #     while j > 0:
+            #         if lines[j].startswith('---'):
+            #             has_hr = True
+            #             break
+            #         elif lines[j].strip() != '':
+            #             break
+            #         j -= 1
+            #     if not has_hr:
+            #         line = '---\n\n' + line
 
             lines[i] = line
 
         text = '\n'.join(lines)
 
-        # 空格处理
-        # text = MarkdownUtils.normalize_markdown_spaces(text)
         return text
 
     @staticmethod
@@ -661,9 +643,9 @@ class args:  # noqa
     temp_badge_todo_logo_edit_h = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/>'
 
     @staticmethod
-    def get_temp_badge_todo_logo(count: int, height: int, color: str = 'E05D44') -> str:
+    def get_temp_badge_todo_logo(count: int, height: int, color: str = 'E05D44', href: str = '#') -> str:
         """"""
-        return f'<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/>'
+        return f'<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
         
 
 

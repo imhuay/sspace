@@ -450,7 +450,7 @@ class Note:
         """用于生成在 tag 标签下 TOC 行时的标题"""
         return self.info.toc_title if self.info.toc_title else self.title
 
-    def get_title_suffix(self, todo_size: int = 16) -> str:
+    def get_title_suffix(self, todo_size: int = 16, href: str = '#') -> str:
         suffix = ''
 
         if self.is_draft:
@@ -464,7 +464,7 @@ class Note:
         if self.num_todo > 0:
             # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
             # suffix += args.temp_badge_todo_logo_edit_h.format(num_todo=self.num_todo, height=todo_size)
-            suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size)
+            suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
 
         return suffix
 

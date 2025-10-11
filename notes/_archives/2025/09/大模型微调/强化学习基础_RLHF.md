@@ -757,22 +757,22 @@ extra_url: false
 
 - GAE 的推导基于 **时序差分误差 (TD Error)**:
     $$ \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t) $$
-- **$k$-步优势估计** 可以表示为未来 $k$ 步 TD 误差的折扣和:
-    $$ A_t^{(k)} = \delta_t + \gamma \delta_{t+1} + \dots + \gamma^{k-1} \delta_{t+k-1} = \sum_{l=0}^{k-1} \gamma^l \delta_{t+l} $$
-- 当 $k \to \infty$ 时, 即为无限步长的优势估计:
-    $$ A_t^{(\infty)} = \sum_{l=0}^{\infty} \gamma^l \delta_{t+l} $$
+- **$n$-步优势估计** 可以表示为未来 $n$ 步 TD 误差的折扣和:
+    $$ A_t^{(n)} = \delta_t + \gamma \delta_{t+1} + \dots + \gamma^{n-1} \delta_{t+n-1} = \sum_{k=0}^{n-1} \gamma^n \delta_{t+n} $$
+- 当 $n \to \infty$ 时, 即为无限步长的优势估计:
+    $$ A_t^{(\infty)} = \sum_{k=0}^{\infty} \gamma^k \delta_{t+k} $$
 - GAE 引入了参数 $\lambda \in [0, 1)$, 将不同步长的估计进行 **指数加权平均**, 公式如下:
     $$ A_t^{\text{GAE}(\gamma, \lambda)}
         = (1-\lambda) (A_t^{(1)} + \lambda A_t^{(2)} + \lambda^2 A_t^{(3)} + \dots )
         = (1-\lambda) \sum_{k=1}^{\infty} \lambda^{k-1} A_t^{(k)}
     $$
-- 将 **$k$-步估计** 代入并整理, 得其紧凑形式:
-    $$ A_t^{\text{GAE}(\gamma, \lambda)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l} $$
-- 当 $\lambda=0$ 时, GAE **退化为单步优势估计**: $A_t = \delta_t$;
-- 当 $\lambda\to 1$ 时, GAE **等价于无限步长的 TD 误差和**, 即 $A_t^{(\infty)}$;
-- 通过调整 $\lambda$, 可以在 **偏差** 与 **方差** 之间取得平衡;
-    - 小 $\lambda$ → 方差较小, 偏差较大;
-    - 大 $\lambda$ → 偏差较小, 方差较大.
+- 将 **$n$-步估计** 代入并整理, 得其紧凑形式:
+    $$A_t^{\text{GAE}(\gamma, \lambda)} = \sum_{k=0}^{\infty} (\gamma \lambda)^k \delta_{t+k}$$
+    - 当 $\lambda=0$ 时, GAE **退化为单步优势估计**: $A_t = \delta_t$;
+    - 当 $\lambda\to 1$ 时, GAE **等价于无限步长的 TD 误差和**, 即 $A_t^{(\infty)}$;
+    - 通过调整 $\lambda$, 可以在 **偏差** 与 **方差** 之间取得平衡;
+        - 小 $\lambda$ → 方差较小, 偏差较大;
+        - 大 $\lambda$ → 偏差较小, 方差较大.
 
 
 <!-- omit in toc -->
