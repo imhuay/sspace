@@ -54,7 +54,7 @@
   tags:
     分治:
     递归:
-      aliases: [回溯, 递归+回溯, 递归回溯]
+      aliases: [回溯, 递归+回溯, 递归回溯, recur]
     动态规划:
       is_hot: true
       aliases: [dp, 记忆化搜索, 递推, dfs2dp]

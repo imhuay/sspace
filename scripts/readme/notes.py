@@ -64,6 +64,7 @@ class NoteInfo:
     hidden_in_recent: bool = False
     section_number: bool = False
     tags: list[str] = field(default_factory=list)
+    algo_tags: list[str] = field(default_factory=list)
     level: int = 0
     date: datetime | None = None
     toc_title: str | None = None
@@ -373,6 +374,10 @@ class Note:
         return self.info.hidden_in_recent
 
     @property
+    def is_algo_note(self):
+        return self.info.algo_tags or any(tag.startswith('algo') for tag in self._tags)
+
+    @property
     def path_relative_to_repo(self):
         return self.path.relative_to(args.fp_repo)
 
@@ -435,6 +440,10 @@ class Note:
         if 'draft' in self._tags and len(self._tags) > 1:
             self._tags.remove('draft')
         return self._tags
+
+    @property
+    def algo_tags(self) -> set[str]:
+        return set(self.info.algo_tags)
 
     @property
     def tag_toc_title(self) -> str:
@@ -557,6 +566,7 @@ class NotesBuilder(Builder):
     fp2date: dict[Path, str]
 
     notes: list[Note] = []
+    algo_notes: list[Note] = []
     path2note: dict[Path, Note] = dict()
     _notes_top: list[Note] = []
     _notes_recent: list[Note] = []
@@ -599,11 +609,12 @@ class NotesBuilder(Builder):
                 note = Note(fp)
                 self.notes.append(note)
                 self.path2note[note.path] = note
+                if note.is_top:
+                    self._notes_top.append(note)
                 if not note.is_hidden_in_recent:
-                    if note.is_top:
-                        self._notes_top.append(note)
-                    else:
-                        self._notes_recent.append(note)
+                    self._notes_recent.append(note)
+                if note.is_algo_note:
+                    self.algo_notes.append(note)
 
         self._notes_top.sort(key=lambda x: x.sort_key, reverse=True)
         self._notes_recent.sort(key=lambda x: x.sort_key, reverse=True)

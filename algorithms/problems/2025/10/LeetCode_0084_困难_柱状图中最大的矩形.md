@@ -2,11 +2,11 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: []
+tags: [单调栈]
 source: LeetCode
-level: 简单/中等/困难
-number: ''
-name: ''
+level: 困难
+number: '84'
+name: '柱状图中最大的矩形'
 companies: []
 -->
 
@@ -37,10 +37,6 @@ companies: []
 ```
 
 </details>
-
-
-<!--START_SECTION:relate_note-->
-<!--END_SECTION:relate_note-->
 
 
 <!--START_SECTION:relate-->

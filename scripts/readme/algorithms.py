@@ -15,11 +15,14 @@ import re
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import ClassVar
+from typing import TYPE_CHECKING, ClassVar
 
 import yaml
 from _base import Builder
 from utils import MarkdownUtils, NoteUtils, args
+
+if TYPE_CHECKING:
+    from notes import Note
 
 
 @dataclass(unsafe_hash=True)
@@ -149,6 +152,7 @@ class Problem:
 
     _TAG_BADGE = 'badge'
     _TAG_RELATE = 'relate'
+    _TAG_RELATE_NOTE = 'relate_note'
 
     def __post_init__(self):
         """"""
@@ -192,6 +196,21 @@ class Problem:
             lns.insert(1, NoteUtils.get_section_begin(self._TAG_BADGE))
             lns.insert(2, NoteUtils.get_section_end(self._TAG_BADGE))
 
+        # 对没有 relate note 做的兜底
+        # if not NoteUtils.get_section_content(self._TAG_RELATE_NOTE, txt):
+        #     if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
+        #         lns.append('')
+        #         lns.append(NoteUtils.get_section_begin(self._TAG_RELATE_NOTE))
+        #         lns.append(NoteUtils.get_section_end(self._TAG_RELATE_NOTE))
+        #     else:
+        #         _lns = lns[-1].split('\n')
+        #         _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE))
+        #         _lns.insert(_idx, '')
+        #         _lns.insert(_idx, '')
+        #         _lns.insert(_idx, NoteUtils.get_section_end(self._TAG_RELATE_NOTE))
+        #         _lns.insert(_idx, NoteUtils.get_section_begin(self._TAG_RELATE_NOTE))
+        #         lns[-1] = '\n'.join(_lns)
+                
         # 对没有 relate tag 做的兜底
         if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
             lns.append('')
@@ -201,12 +220,34 @@ class Problem:
             # 对 section_begin 之前没有空行做兜底
             _lns = lns[-1].split('\n')
             _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE))
-            if _idx > 0 and _lns[_idx - 1] != '':
+            # 至少两个空行
+            if _idx > 1 and (_lns[_idx - 1] != '' or _lns[_idx - 2] != ''):
                 _lns.insert(_idx, '')
+                if _lns[_idx - 1] != '':
+                    _lns.insert(_idx, '')
             lns[-1] = '\n'.join(_lns)
 
         self._text = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 
+    def set_relate_notes(self, notes: list[Note]):
+        """"""
+        lns = [
+            '---\n',
+            '### 相关笔记\n',
+        ]
+
+        # with self.path.open(encoding='utf8') as f:
+        #     txt = f.read()
+
+        for n in notes:
+            if self.title in n.algo_tags:
+                _p = Path(n.path)
+                lns.append(f'- [{_p.stem}](../notes/_archives/{_p})')
+
+        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, self._text, '\n'.join(lns))
+        with self.path.open('w', encoding='utf8') as f:
+            f.write(txt)
+    
     def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
         """"""
         lns = [
@@ -481,6 +522,14 @@ class AlgorithmsBuilder(Builder):
 
         with self._fp_algo_readme.open('w', encoding='utf8') as f:
             f.write(txt)
+    
+    def add_relate_notes(self, notes: list[Note]):
+        """"""
+        tag2notes = defaultdict(list)
+        for n in notes:
+            for t in n.algo_tags:
+                tag2notes[t].append(n)
+        # for p in self.problems:
 
 
 if __name__ == '__main__':

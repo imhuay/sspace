@@ -13,7 +13,7 @@ from __future__ import annotations
 import os
 import subprocess
 
-from _base import build
+# from _base import build
 from utils import NoteUtils, args, readme_tag
 
 from algorithms import AlgorithmsBuilder
@@ -46,15 +46,24 @@ class BuildReadme:
         if not is_wsl():
             # 如果 上一次的 commit 提交信息以 "Auto" 开头，则不进行更新
             code, last_commit_msg = subprocess.getstatusoutput('git log -1 --pretty=%B')
-            if code == 0 and last_commit_msg.startswith('Auto'):
+            if code == 0 and last_commit_msg.startswith('Auto-Update README'):
                 print('No changes detected since last auto-update. Skipping build.')
                 return
 
         # build
-        build(self.algo, self.note)
+        # build(self.algo, self.note)
+        self.note.build()
+        self.algo.build()
+        # self._cross_build()
 
         # build repo readme
         self._update_homepage()
+    
+    def _cross_build(self):
+        """"""
+        algo_notes = self.note.algo_notes
+        
+        
 
     def _update_homepage(self):
         with open(self._fp_repo_readme, encoding='utf8') as f:
