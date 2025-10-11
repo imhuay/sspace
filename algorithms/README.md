@@ -877,9 +877,6 @@
 - [`牛客_0123_困难_序列化二叉树`](problems/2022/05/牛客_0123_困难_序列化二叉树.md)
 
 ### 链表
-- **相关笔记** 🔗
-    - [链表模板](../notes/_archives/2022/10/链表模板.md)
-
 ![total](https://img.shields.io/static/v1?label=total&message=30&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0019_中等_删除链表的倒数第N个结点`](problems/2022/01/LeetCode_0019_中等_删除链表的倒数第N个结点.md)
@@ -1207,9 +1204,6 @@
 - [`程序员面试金典_0102_简单_判定是否互为字符重排`](problems/2022/09/程序员面试金典_0102_简单_判定是否互为字符重排.md)
 
 ### 暴力递归与动态规划
-- **相关笔记** 🔗
-    - [从暴力递归到动态规划](../notes/_archives/2022/10/从暴力递归到动态规划.md)
-
 ![total](https://img.shields.io/static/v1?label=total&message=11&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0070_简单_爬楼梯`](problems/2022/01/LeetCode_0070_简单_爬楼梯.md)
 - [`LeetCode_0091_中等_解码方法`](problems/2022/02/LeetCode_0091_中等_解码方法.md)
@@ -1236,9 +1230,6 @@
 - [`牛客_0120_简单_二进制中1的个数`](problems/2022/05/牛客_0120_简单_二进制中1的个数.md)
 
 ### 滑动窗口
-- **相关笔记** 🔗
-    - [滑动窗口模板](../notes/_archives/2022/10/滑动窗口模板.md)
-
 ![total](https://img.shields.io/static/v1?label=total&message=6&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
 - [`剑指Offer_5901_困难_滑动窗口的最大值`](problems/2022/01/剑指Offer_5901_困难_滑动窗口的最大值.md)
@@ -1248,9 +1239,6 @@
 - [`牛客_0101_简单_压缩字符串(一)`](problems/2022/04/牛客_0101_简单_压缩字符串(一).md)
 
 ### 树形递归
-- **相关笔记** 🔗
-    - [树形递归技巧](../notes/_archives/2022/10/树形递归技巧.md)
-
 ![total](https://img.shields.io/static/v1?label=total&message=6&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0110_简单_平衡二叉树`](problems/2022/09/LeetCode_0110_简单_平衡二叉树.md)
 - [`LeetCode_0124_困难_二叉树中的最大路径和`](problems/2022/02/LeetCode_0124_困难_二叉树中的最大路径和.md)

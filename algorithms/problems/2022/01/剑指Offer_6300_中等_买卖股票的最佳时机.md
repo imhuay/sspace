@@ -2,7 +2,7 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=green&style=flat-square)](../../../README.md#剑指offer)
+[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=darkcyan&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&color=blue&style=flat-square)](../../../README.md#模拟)
 <!--END_SECTION:badge-->
 <!--info
@@ -78,12 +78,32 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>模拟</b></summary>
+
+<details><summary><b>模拟 (15)</b></summary>
 
 > [[中等, LeetCode] 分割数组](../06/LeetCode_0915_中等_分割数组.md)  
 > [[中等, 剑指Offer] 圆圈中最后剩下的数字 (约瑟夫环问题) 🔥](剑指Offer_6200_中等_圆圈中最后剩下的数字(约瑟夫环问题).md)  

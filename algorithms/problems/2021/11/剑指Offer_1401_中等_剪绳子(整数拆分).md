@@ -2,10 +2,10 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A03%3A22&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=green&style=flat-square)](../../../README.md#剑指offer)
+[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=darkcyan&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#动态规划)
-[![](https://img.shields.io/static/v1?label=&message=%E8%B4%AA%E5%BF%83&color=blue&style=flat-square)](../../../README.md#贪心)
 [![](https://img.shields.io/static/v1?label=&message=%E6%95%B0%E5%AD%A6&color=blue&style=flat-square)](../../../README.md#数学)
+[![](https://img.shields.io/static/v1?label=&message=%E8%B4%AA%E5%BF%83&color=blue&style=flat-square)](../../../README.md#贪心)
 <!--END_SECTION:badge-->
 <!--info
 tags: [动态规划, 贪心, 数学]
@@ -128,12 +128,30 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>动态规划</b></summary>
+
+<details><summary><b>动态规划 (52)</b></summary>
 
 > [[中等, LeetCode] 一和零](../../2022/06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 三角形最小路径和](../../2022/06/LeetCode_0120_中等_三角形最小路径和.md)  
@@ -192,16 +210,8 @@ class Solution:
   > 
 
 </details>
-<details><summary><b>贪心</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../../2022/06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
-> [[中等, LeetCode] 最长递增子序列 🔥](../../2022/06/LeetCode_0300_中等_最长递增子序列.md)  
-> [[中等, LeetCode] 盛最多水的容器 🔥](../10/LeetCode_0011_中等_盛最多水的容器.md)  
-> [[中等, 牛客] 分糖果问题](../../2022/05/牛客_0130_中等_分糖果问题.md)  
-  > 
-
-</details>
-<details><summary><b>数学</b></summary>
+<details><summary><b>数学 (8)</b></summary>
 
 > [[中等, Collection] 划分2N个点](../../2022/01/Collection_20220126_中等_划分2N个点.md)  
 > [[中等, LeetCode] 整数拆分](../12/LeetCode_0343_中等_整数拆分.md)  
@@ -212,6 +222,16 @@ class Solution:
 > [[简单, 牛客] 三个数的最大乘积](../../2022/04/牛客_0106_简单_三个数的最大乘积.md)  
 > [[简单, 牛客] 回文数字](../../2022/03/牛客_0056_简单_回文数字.md)  
 > [[简单, 牛客] 进制转换](../../2022/04/牛客_0112_简单_进制转换.md)  
+  > 
+
+</details>
+
+<details><summary><b>贪心 (4)</b></summary>
+
+> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../../2022/06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 最长递增子序列 🔥](../../2022/06/LeetCode_0300_中等_最长递增子序列.md)  
+> [[中等, LeetCode] 盛最多水的容器 🔥](../10/LeetCode_0011_中等_盛最多水的容器.md)  
+> [[中等, 牛客] 分糖果问题](../../2022/05/牛客_0130_中等_分糖果问题.md)  
   > 
 
 </details>

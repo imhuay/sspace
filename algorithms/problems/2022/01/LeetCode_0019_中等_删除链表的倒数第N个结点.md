@@ -2,10 +2,10 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
-[![](https://img.shields.io/static/v1?label=&message=%E9%93%BE%E8%A1%A8&color=blue&style=flat-square)](../../../README.md#链表)
-[![](https://img.shields.io/static/v1?label=&message=%E5%8F%8C%E6%8C%87%E9%92%88&color=blue&style=flat-square)](../../../README.md#双指针)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
+[![](https://img.shields.io/static/v1?label=&message=%E5%8F%8C%E6%8C%87%E9%92%88&color=blue&style=flat-square)](../../../README.md#双指针)
+[![](https://img.shields.io/static/v1?label=&message=%E9%93%BE%E8%A1%A8&color=blue&style=flat-square)](../../../README.md#链表)
 <!--END_SECTION:badge-->
 <!--info
 tags: [链表, 快慢指针, lc100]
@@ -86,12 +86,95 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>链表</b></summary>
+
+<details><summary><b>LeetCode Hot 100 (25)</b></summary>
+
+> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
+> [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
+> [[中等, LeetCode] 两数相加 🔥](../../2021/10/LeetCode_0002_中等_两数相加.md)  
+> [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
+> [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
+> [[中等, LeetCode] 在排序数组中查找元素的第一个和最后一个位置 🔥](../10/LeetCode_0034_中等_在排序数组中查找元素的第一个和最后一个位置.md)  
+> [[中等, LeetCode] 字母异位词分组 🔥](../10/LeetCode_0049_中等_字母异位词分组.md)  
+> [[中等, LeetCode] 括号生成 🔥](../10/LeetCode_0022_中等_括号生成.md)  
+> [[中等, LeetCode] 搜索旋转排序数组 🔥](../../2021/10/LeetCode_0033_中等_搜索旋转排序数组.md)  
+> [[中等, LeetCode] 数组中的第K个最大元素 🔥](../10/LeetCode_0215_中等_数组中的第K个最大元素.md)  
+> [[中等, LeetCode] 无重复字符的最长子串 🔥](../02/LeetCode_0003_中等_无重复字符的最长子串.md)  
+> [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
+> [[中等, LeetCode] 电话号码的字母组合 🔥](../10/LeetCode_0017_中等_电话号码的字母组合.md)  
+> [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
+> [[中等, LeetCode] 组合总和 🔥](../10/LeetCode_0039_中等_组合总和.md)  
+> [[中等, LeetCode] 组合总和II 🔥](../10/LeetCode_0040_中等_组合总和II.md)  
+  > 
+> [[困难, LeetCode] K个一组翻转链表 🔥](../02/LeetCode_0025_困难_K个一组翻转链表.md)  
+> [[困难, LeetCode] 合并K个升序链表 🔥](../10/LeetCode_0023_困难_合并K个升序链表.md)  
+> [[困难, LeetCode] 寻找两个正序数组的中位数 🔥](../02/LeetCode_0004_困难_寻找两个正序数组的中位数.md)  
+> [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
+> [[困难, LeetCode] 最长有效括号 🔥](../10/LeetCode_0032_困难_最长有效括号.md)  
+> [[困难, LeetCode] 正则表达式匹配 🔥](LeetCode_0010_困难_正则表达式匹配.md)  
+  > 
+> [[简单, LeetCode] 两数之和 🔥](../../2021/10/LeetCode_0001_简单_两数之和.md)  
+> [[简单, LeetCode] 合并两个有序链表 🔥](../../2021/10/LeetCode_0021_简单_合并两个有序链表.md)  
+> [[简单, LeetCode] 有效的括号 🔥](../03/LeetCode_0020_简单_有效的括号.md)  
+  > 
+
+</details>
+
+<details><summary><b>双指针 (24)</b></summary>
+
+> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
+> [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
+> [[中等, LeetCode] 最接近的三数之和](../../2021/10/LeetCode_0016_中等_最接近的三数之和.md)  
+> [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
+> [[中等, LeetCode] 有效三角形的个数](../../2021/10/LeetCode_0611_中等_有效三角形的个数.md)  
+> [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
+> [[中等, 剑指Offer] 最长不含重复字符的子字符串](../../2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  
+> [[中等, 牛客] 三数之和 🔥](../03/牛客_0054_中等_三数之和.md)  
+> [[中等, 牛客] 删除链表的倒数第n个节点](../03/牛客_0053_中等_删除链表的倒数第n个节点.md)  
+> [[中等, 牛客] 合并两个有序的数组](牛客_0022_中等_合并两个有序的数组.md)  
+  > 
+> [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
+> [[困难, 牛客] 接雨水问题 🔥](../05/牛客_0128_困难_接雨水问题.md)  
+  > 
+> [[简单, LeetCode] 两数之和II-输入有序数组](../07/LeetCode_0167_简单_两数之和II-输入有序数组.md)  
+> [[简单, LeetCode] 链表的中间结点](../06/LeetCode_0876_简单_链表的中间结点.md)  
+> [[简单, 剑指Offer] 两个链表的第一个公共节点](剑指Offer_5200_简单_两个链表的第一个公共节点.md)  
+> [[简单, 剑指Offer] 和为s的两个数字](剑指Offer_5701_简单_和为s的两个数字.md)  
+> [[简单, 剑指Offer] 和为s的连续正数序列](剑指Offer_5702_简单_和为s的连续正数序列.md)  
+> [[简单, 剑指Offer] 翻转单词顺序](剑指Offer_5801_简单_翻转单词顺序.md)  
+> [[简单, 剑指Offer] 调整数组顺序使奇数位于偶数前面](../../2021/11/剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面.md)  
+> [[简单, 剑指Offer] 链表中倒数第k个节点](../../2021/11/剑指Offer_2200_简单_链表中倒数第k个节点.md)  
+> [[简单, 牛客] 判断链表中是否有环](牛客_0004_简单_判断链表中是否有环.md)  
+> [[简单, 牛客] 反转字符串](../04/牛客_0103_简单_反转字符串.md)  
+> [[简单, 牛客] 链表中倒数最后k个结点](../03/牛客_0069_简单_链表中倒数最后k个结点.md)  
+> [[简单, 牛客] 链表中环的入口结点](牛客_0003_简单_链表中环的入口结点.md)  
+  > 
+
+</details>
+
+<details><summary><b>链表 (29)</b></summary>
 
 > [[中等, LeetCode] 两数相加 🔥](../../2021/10/LeetCode_0002_中等_两数相加.md)  
 > [[中等, LeetCode] 分隔链表](../../2021/10/LeetCode_0086_中等_分隔链表.md)  
@@ -124,69 +207,6 @@ class Solution:
 > [[简单, 牛客] 反转链表](../03/牛客_0078_简单_反转链表.md)  
 > [[简单, 牛客] 合并两个排序的链表](../02/牛客_0033_简单_合并两个排序的链表.md)  
 > [[简单, 牛客] 链表中环的入口结点](牛客_0003_简单_链表中环的入口结点.md)  
-  > 
-
-</details>
-<details><summary><b>双指针</b></summary>
-
-> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
-> [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
-> [[中等, LeetCode] 最接近的三数之和](../../2021/10/LeetCode_0016_中等_最接近的三数之和.md)  
-> [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
-> [[中等, LeetCode] 有效三角形的个数](../../2021/10/LeetCode_0611_中等_有效三角形的个数.md)  
-> [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
-> [[中等, 剑指Offer] 最长不含重复字符的子字符串](../../2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  
-> [[中等, 牛客] 三数之和 🔥](../03/牛客_0054_中等_三数之和.md)  
-> [[中等, 牛客] 删除链表的倒数第n个节点](../03/牛客_0053_中等_删除链表的倒数第n个节点.md)  
-> [[中等, 牛客] 合并两个有序的数组](牛客_0022_中等_合并两个有序的数组.md)  
-  > 
-> [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
-> [[困难, 牛客] 接雨水问题 🔥](../05/牛客_0128_困难_接雨水问题.md)  
-  > 
-> [[简单, LeetCode] 两数之和II-输入有序数组](../07/LeetCode_0167_简单_两数之和II-输入有序数组.md)  
-> [[简单, LeetCode] 链表的中间结点](../06/LeetCode_0876_简单_链表的中间结点.md)  
-> [[简单, 剑指Offer] 两个链表的第一个公共节点](剑指Offer_5200_简单_两个链表的第一个公共节点.md)  
-> [[简单, 剑指Offer] 和为s的两个数字](剑指Offer_5701_简单_和为s的两个数字.md)  
-> [[简单, 剑指Offer] 和为s的连续正数序列](剑指Offer_5702_简单_和为s的连续正数序列.md)  
-> [[简单, 剑指Offer] 翻转单词顺序](剑指Offer_5801_简单_翻转单词顺序.md)  
-> [[简单, 剑指Offer] 调整数组顺序使奇数位于偶数前面](../../2021/11/剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面.md)  
-> [[简单, 剑指Offer] 链表中倒数第k个节点](../../2021/11/剑指Offer_2200_简单_链表中倒数第k个节点.md)  
-> [[简单, 牛客] 判断链表中是否有环](牛客_0004_简单_判断链表中是否有环.md)  
-> [[简单, 牛客] 反转字符串](../04/牛客_0103_简单_反转字符串.md)  
-> [[简单, 牛客] 链表中倒数最后k个结点](../03/牛客_0069_简单_链表中倒数最后k个结点.md)  
-> [[简单, 牛客] 链表中环的入口结点](牛客_0003_简单_链表中环的入口结点.md)  
-  > 
-
-</details>
-<details><summary><b>LeetCode Hot 100</b></summary>
-
-> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
-> [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
-> [[中等, LeetCode] 两数相加 🔥](../../2021/10/LeetCode_0002_中等_两数相加.md)  
-> [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
-> [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
-> [[中等, LeetCode] 在排序数组中查找元素的第一个和最后一个位置 🔥](../10/LeetCode_0034_中等_在排序数组中查找元素的第一个和最后一个位置.md)  
-> [[中等, LeetCode] 字母异位词分组 🔥](../10/LeetCode_0049_中等_字母异位词分组.md)  
-> [[中等, LeetCode] 括号生成 🔥](../10/LeetCode_0022_中等_括号生成.md)  
-> [[中等, LeetCode] 搜索旋转排序数组 🔥](../../2021/10/LeetCode_0033_中等_搜索旋转排序数组.md)  
-> [[中等, LeetCode] 数组中的第K个最大元素 🔥](../10/LeetCode_0215_中等_数组中的第K个最大元素.md)  
-> [[中等, LeetCode] 无重复字符的最长子串 🔥](../02/LeetCode_0003_中等_无重复字符的最长子串.md)  
-> [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
-> [[中等, LeetCode] 电话号码的字母组合 🔥](../10/LeetCode_0017_中等_电话号码的字母组合.md)  
-> [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
-> [[中等, LeetCode] 组合总和 🔥](../10/LeetCode_0039_中等_组合总和.md)  
-> [[中等, LeetCode] 组合总和II 🔥](../10/LeetCode_0040_中等_组合总和II.md)  
-  > 
-> [[困难, LeetCode] K个一组翻转链表 🔥](../02/LeetCode_0025_困难_K个一组翻转链表.md)  
-> [[困难, LeetCode] 合并K个升序链表 🔥](../10/LeetCode_0023_困难_合并K个升序链表.md)  
-> [[困难, LeetCode] 寻找两个正序数组的中位数 🔥](../02/LeetCode_0004_困难_寻找两个正序数组的中位数.md)  
-> [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
-> [[困难, LeetCode] 最长有效括号 🔥](../10/LeetCode_0032_困难_最长有效括号.md)  
-> [[困难, LeetCode] 正则表达式匹配 🔥](LeetCode_0010_困难_正则表达式匹配.md)  
-  > 
-> [[简单, LeetCode] 两数之和 🔥](../../2021/10/LeetCode_0001_简单_两数之和.md)  
-> [[简单, LeetCode] 合并两个有序链表 🔥](../../2021/10/LeetCode_0021_简单_合并两个有序链表.md)  
-> [[简单, LeetCode] 有效的括号 🔥](../03/LeetCode_0020_简单_有效的括号.md)  
   > 
 
 </details>

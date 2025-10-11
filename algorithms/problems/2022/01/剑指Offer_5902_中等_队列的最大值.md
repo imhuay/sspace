@@ -2,7 +2,7 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=green&style=flat-square)](../../../README.md#剑指offer)
+[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=darkcyan&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A0%88/%E9%98%9F%E5%88%97&color=blue&style=flat-square)](../../../README.md#栈队列)
 [![](https://img.shields.io/static/v1?label=&message=%E8%AE%BE%E8%AE%A1&color=blue&style=flat-square)](../../../README.md#设计)
 <!--END_SECTION:badge-->
@@ -100,12 +100,32 @@ class MaxQueue:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>栈/队列</b></summary>
+
+<details><summary><b>栈/队列 (15)</b></summary>
 
 > [[中等, 剑指Offer] 栈的压入、弹出序列 🔥](../../2021/11/剑指Offer_3100_中等_栈的压入、弹出序列.md)  
 > [[中等, 牛客] 按之字形顺序打印二叉树](牛客_0014_中等_按之字形顺序打印二叉树.md)  
@@ -127,7 +147,8 @@ class MaxQueue:
   > 
 
 </details>
-<details><summary><b>设计</b></summary>
+
+<details><summary><b>设计 (6)</b></summary>
 
 > [[中等, 牛客] 字典树的实现](../05/牛客_0124_中等_字典树的实现.md)  
   > 

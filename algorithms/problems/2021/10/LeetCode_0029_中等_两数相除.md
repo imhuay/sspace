@@ -2,9 +2,9 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
-[![](https://img.shields.io/static/v1?label=&message=%E4%BD%8D%E8%BF%90%E7%AE%97&color=blue&style=flat-square)](../../../README.md#位运算)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE&color=blue&style=flat-square)](../../../README.md#二分查找)
+[![](https://img.shields.io/static/v1?label=&message=%E4%BD%8D%E8%BF%90%E7%AE%97&color=blue&style=flat-square)](../../../README.md#位运算)
 <!--END_SECTION:badge-->
 <!--info
 tags: [位运算, 二分查找]
@@ -98,27 +98,32 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>位运算</b></summary>
 
-> [[中等, LeetCode] 重复的DNA序列](../../2022/07/LeetCode_0187_中等_重复的DNA序列.md)  
-> [[中等, 剑指Offer] 数组中数字出现的次数](../../2022/01/剑指Offer_5601_中等_数组中数字出现的次数.md)  
-> [[中等, 剑指Offer] 数组中数字出现的次数](../../2022/01/剑指Offer_5602_中等_数组中数字出现的次数.md)  
-> [[中等, 牛客] 数组中只出现一次的两个数字 🔥](../../2022/03/牛客_0075_中等_数组中只出现一次的两个数字.md)  
-  > 
-> [[困难, 牛客] N皇后问题](../../2022/03/牛客_0039_困难_N皇后问题.md)  
-  > 
-> [[简单, 剑指Offer] 不用加减乘除做加法](../../2022/01/剑指Offer_6500_简单_不用加减乘除做加法.md)  
-> [[简单, 剑指Offer] 二进制中1的个数](../11/剑指Offer_1500_简单_二进制中1的个数.md)  
-> [[简单, 牛客] 二进制中1的个数 🔥](../../2022/05/牛客_0120_简单_二进制中1的个数.md)  
-  > 
-
-</details>
-<details><summary><b>二分查找</b></summary>
+<details><summary><b>二分查找 (23)</b></summary>
 
 > [[中等, LeetCode] 在排序数组中查找元素的第一个和最后一个位置 🔥](../../2022/10/LeetCode_0034_中等_在排序数组中查找元素的第一个和最后一个位置.md)  
 > [[中等, LeetCode] 搜索二维矩阵 II 🔥](../../2022/07/LeetCode_0240_中等_搜索二维矩阵II.md)  
@@ -145,6 +150,22 @@ class Solution:
 > [[简单, 牛客] 数字在升序数组中出现的次数](../../2022/03/牛客_0074_简单_数字在升序数组中出现的次数.md)  
 > [[简单, 牛客] 旋转数组的最小数字](../../2022/03/牛客_0071_简单_旋转数组的最小数字.md)  
 > [[简单, 牛客] 求平方根 🔥](../../2022/02/牛客_0032_简单_求平方根.md)  
+  > 
+
+</details>
+
+<details><summary><b>位运算 (8)</b></summary>
+
+> [[中等, LeetCode] 重复的DNA序列](../../2022/07/LeetCode_0187_中等_重复的DNA序列.md)  
+> [[中等, 剑指Offer] 数组中数字出现的次数](../../2022/01/剑指Offer_5601_中等_数组中数字出现的次数.md)  
+> [[中等, 剑指Offer] 数组中数字出现的次数](../../2022/01/剑指Offer_5602_中等_数组中数字出现的次数.md)  
+> [[中等, 牛客] 数组中只出现一次的两个数字 🔥](../../2022/03/牛客_0075_中等_数组中只出现一次的两个数字.md)  
+  > 
+> [[困难, 牛客] N皇后问题](../../2022/03/牛客_0039_困难_N皇后问题.md)  
+  > 
+> [[简单, 剑指Offer] 不用加减乘除做加法](../../2022/01/剑指Offer_6500_简单_不用加减乘除做加法.md)  
+> [[简单, 剑指Offer] 二进制中1的个数](../11/剑指Offer_1500_简单_二进制中1的个数.md)  
+> [[简单, 牛客] 二进制中1的个数 🔥](../../2022/05/牛客_0120_简单_二进制中1的个数.md)  
   > 
 
 </details>

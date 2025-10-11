@@ -1,8 +1,8 @@
 ## 将数据流变为多个不相交区间
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
-[![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&color=yellow&style=flat-square)](../../../README.md#困难)
-[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
+[![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&color=red&style=flat-square)](../../../README.md#困难)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE&color=blue&style=flat-square)](../../../README.md#二分查找)
 [![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&color=blue&style=flat-square)](../../../README.md#模拟)
 <!--END_SECTION:badge-->
@@ -176,12 +176,32 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>二分查找</b></summary>
+
+<details><summary><b>二分查找 (23)</b></summary>
 
 > [[中等, LeetCode] 两数相除](LeetCode_0029_中等_两数相除.md)  
 > [[中等, LeetCode] 在排序数组中查找元素的第一个和最后一个位置 🔥](../../2022/10/LeetCode_0034_中等_在排序数组中查找元素的第一个和最后一个位置.md)  
@@ -211,7 +231,8 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
   > 
 
 </details>
-<details><summary><b>模拟</b></summary>
+
+<details><summary><b>模拟 (15)</b></summary>
 
 > [[中等, LeetCode] 分割数组](../../2022/06/LeetCode_0915_中等_分割数组.md)  
 > [[中等, 剑指Offer] 买卖股票的最佳时机](../../2022/01/剑指Offer_6300_中等_买卖股票的最佳时机.md)  

@@ -2,9 +2,9 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
-[![](https://img.shields.io/static/v1?label=&message=%E5%93%88%E5%B8%8C%E8%A1%A8%28Hash%29&color=blue&style=flat-square)](../../../README.md#哈希表hash)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E4%BD%8D%E8%BF%90%E7%AE%97&color=blue&style=flat-square)](../../../README.md#位运算)
+[![](https://img.shields.io/static/v1?label=&message=%E5%93%88%E5%B8%8C%E8%A1%A8%28Hash%29&color=blue&style=flat-square)](../../../README.md#哈希表hash)
 <!--END_SECTION:badge-->
 <!--info
 tags: [哈希表, 位运算]
@@ -145,12 +145,48 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>哈希表(Hash)</b></summary>
+
+<details><summary><b>位运算 (8)</b></summary>
+
+> [[中等, LeetCode] 两数相除](../../2021/10/LeetCode_0029_中等_两数相除.md)  
+> [[中等, 剑指Offer] 数组中数字出现的次数](../01/剑指Offer_5601_中等_数组中数字出现的次数.md)  
+> [[中等, 剑指Offer] 数组中数字出现的次数](../01/剑指Offer_5602_中等_数组中数字出现的次数.md)  
+> [[中等, 牛客] 数组中只出现一次的两个数字 🔥](../03/牛客_0075_中等_数组中只出现一次的两个数字.md)  
+  > 
+> [[困难, 牛客] N皇后问题](../03/牛客_0039_困难_N皇后问题.md)  
+  > 
+> [[简单, 剑指Offer] 不用加减乘除做加法](../01/剑指Offer_6500_简单_不用加减乘除做加法.md)  
+> [[简单, 剑指Offer] 二进制中1的个数](../../2021/11/剑指Offer_1500_简单_二进制中1的个数.md)  
+> [[简单, 牛客] 二进制中1的个数 🔥](../05/牛客_0120_简单_二进制中1的个数.md)  
+  > 
+
+</details>
+
+<details><summary><b>哈希表(Hash) (11)</b></summary>
 
 > [[中等, LeetCode] 字母异位词分组 🔥](../10/LeetCode_0049_中等_字母异位词分组.md)  
 > [[中等, 剑指Offer] 复杂链表的复制 (深拷贝) 🔥](../../2021/12/剑指Offer_3500_中等_复杂链表的复制(深拷贝).md)  
@@ -165,21 +201,6 @@ class Solution:
 > [[简单, 牛客] 两数之和](../03/牛客_0061_简单_两数之和.md)  
 > [[简单, 牛客] 第一个只出现一次的字符](../02/牛客_0031_简单_第一个只出现一次的字符.md)  
 > [[简单, 程序员面试金典] 判定是否互为字符重排](../09/程序员面试金典_0102_简单_判定是否互为字符重排.md)  
-  > 
-
-</details>
-<details><summary><b>位运算</b></summary>
-
-> [[中等, LeetCode] 两数相除](../../2021/10/LeetCode_0029_中等_两数相除.md)  
-> [[中等, 剑指Offer] 数组中数字出现的次数](../01/剑指Offer_5601_中等_数组中数字出现的次数.md)  
-> [[中等, 剑指Offer] 数组中数字出现的次数](../01/剑指Offer_5602_中等_数组中数字出现的次数.md)  
-> [[中等, 牛客] 数组中只出现一次的两个数字 🔥](../03/牛客_0075_中等_数组中只出现一次的两个数字.md)  
-  > 
-> [[困难, 牛客] N皇后问题](../03/牛客_0039_困难_N皇后问题.md)  
-  > 
-> [[简单, 剑指Offer] 不用加减乘除做加法](../01/剑指Offer_6500_简单_不用加减乘除做加法.md)  
-> [[简单, 剑指Offer] 二进制中1的个数](../../2021/11/剑指Offer_1500_简单_二进制中1的个数.md)  
-> [[简单, 牛客] 二进制中1的个数 🔥](../05/牛客_0120_简单_二进制中1的个数.md)  
   > 
 
 </details>

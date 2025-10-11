@@ -2,9 +2,9 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A03%3A22&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=green&style=flat-square)](../../../README.md#剑指offer)
-[![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&color=blue&style=flat-square)](../../../README.md#模拟)
+[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=darkcyan&style=flat-square)](../../../README.md#剑指offer)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#动态规划)
+[![](https://img.shields.io/static/v1?label=&message=%E6%A8%A1%E6%8B%9F&color=blue&style=flat-square)](../../../README.md#模拟)
 [![](https://img.shields.io/static/v1?label=&message=%E7%BB%8F%E5%85%B8&color=blue&style=flat-square)](../../../README.md#经典)
 <!--END_SECTION:badge-->
 <!--info
@@ -111,34 +111,30 @@ class Solution:
 </details>
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>模拟</b></summary>
 
-> [[中等, LeetCode] 分割数组](../06/LeetCode_0915_中等_分割数组.md)  
-> [[中等, 剑指Offer] 买卖股票的最佳时机](剑指Offer_6300_中等_买卖股票的最佳时机.md)  
-> [[中等, 牛客] 大数乘法](牛客_0010_中等_大数乘法.md)  
-> [[中等, 牛客] 大数加法](牛客_0001_中等_大数加法.md)  
-> [[中等, 牛客] 最长回文子串](牛客_0017_中等_最长回文子串.md)  
-> [[中等, 牛客] 螺旋矩阵](../03/牛客_0038_中等_螺旋矩阵.md)  
-  > 
-> [[困难, LeetCode] 将数据流变为多个不相交区间](../../2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)  
-  > 
-> [[简单, LeetCode] 亲密字符串](../../2021/11/LeetCode_0859_简单_亲密字符串.md)  
-> [[简单, 剑指Offer] 扑克牌中的顺子](剑指Offer_6100_简单_扑克牌中的顺子.md)  
-> [[简单, 剑指Offer] 数组中出现次数超过一半的数字 (摩尔投票) 🔥](../../2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)  
-> [[简单, 牛客] 买卖股票的最好时机(一)](牛客_0007_简单_买卖股票的最好时机(一).md)  
-> [[简单, 牛客] 反转数字](../03/牛客_0057_简单_反转数字.md)  
-> [[简单, 牛客] 字符串变形](../04/牛客_0089_简单_字符串变形.md)  
-> [[简单, 牛客] 扑克牌顺子](../03/牛客_0063_简单_扑克牌顺子.md)  
-> [[简单, 牛客] 数组中出现次数超过一半的数字](../03/牛客_0073_简单_数组中出现次数超过一半的数字.md)  
-  > 
-
-</details>
-<details><summary><b>动态规划</b></summary>
+<details><summary><b>动态规划 (52)</b></summary>
 
 > [[中等, LeetCode] 一和零](../06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 三角形最小路径和](../06/LeetCode_0120_中等_三角形最小路径和.md)  
@@ -197,7 +193,31 @@ class Solution:
   > 
 
 </details>
-<details><summary><b>经典</b></summary>
+
+<details><summary><b>模拟 (15)</b></summary>
+
+> [[中等, LeetCode] 分割数组](../06/LeetCode_0915_中等_分割数组.md)  
+> [[中等, 剑指Offer] 买卖股票的最佳时机](剑指Offer_6300_中等_买卖股票的最佳时机.md)  
+> [[中等, 牛客] 大数乘法](牛客_0010_中等_大数乘法.md)  
+> [[中等, 牛客] 大数加法](牛客_0001_中等_大数加法.md)  
+> [[中等, 牛客] 最长回文子串](牛客_0017_中等_最长回文子串.md)  
+> [[中等, 牛客] 螺旋矩阵](../03/牛客_0038_中等_螺旋矩阵.md)  
+  > 
+> [[困难, LeetCode] 将数据流变为多个不相交区间](../../2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)  
+  > 
+> [[简单, LeetCode] 亲密字符串](../../2021/11/LeetCode_0859_简单_亲密字符串.md)  
+> [[简单, 剑指Offer] 扑克牌中的顺子](剑指Offer_6100_简单_扑克牌中的顺子.md)  
+> [[简单, 剑指Offer] 数组中出现次数超过一半的数字 (摩尔投票) 🔥](../../2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)  
+> [[简单, 牛客] 买卖股票的最好时机(一)](牛客_0007_简单_买卖股票的最好时机(一).md)  
+> [[简单, 牛客] 反转数字](../03/牛客_0057_简单_反转数字.md)  
+> [[简单, 牛客] 字符串变形](../04/牛客_0089_简单_字符串变形.md)  
+> [[简单, 牛客] 扑克牌顺子](../03/牛客_0063_简单_扑克牌顺子.md)  
+> [[简单, 牛客] 数组中出现次数超过一半的数字](../03/牛客_0073_简单_数组中出现次数超过一半的数字.md)  
+  > 
+
+</details>
+
+<details><summary><b>经典 (37)</b></summary>
 
 > [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
 > [[中等, LeetCode] 二叉树的完全性检验 🔥](../03/LeetCode_0958_中等_二叉树的完全性检验.md)  

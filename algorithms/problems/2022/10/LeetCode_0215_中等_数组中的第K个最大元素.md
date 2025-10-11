@@ -2,9 +2,9 @@
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
-[![](https://img.shields.io/static/v1?label=&message=%E6%8E%92%E5%BA%8F&color=blue&style=flat-square)](../../../README.md#排序)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
+[![](https://img.shields.io/static/v1?label=&message=%E6%8E%92%E5%BA%8F&color=blue&style=flat-square)](../../../README.md#排序)
 <!--END_SECTION:badge-->
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
@@ -89,33 +89,32 @@ class Solution:
 -->
 
 
+<!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
+<!--END_SECTION:relate_note-->
+
+
 <!--START_SECTION:relate_problem-->
 ---
 
-### 相关主题
+### 相关问题
 
-<details><summary><b>排序</b></summary>
 
-> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
-> [[中等, 剑指Offer2] 数组中的第K大的数字](../09/剑指Offer2_076_中等_数组中的第K大的数字.md)  
-> [[中等, 剑指Offer] 把数组排成最小的数](../../2021/12/剑指Offer_4500_中等_把数组排成最小的数.md)  
-> [[中等, 牛客] 合并区间](../02/牛客_0037_中等_合并区间.md)  
-> [[中等, 牛客] 字符串出现次数的TopK问题](../04/牛客_0097_中等_字符串出现次数的TopK问题.md)  
-> [[中等, 牛客] 寻找第K大](../04/牛客_0088_中等_寻找第K大.md)  
-> [[中等, 牛客] 拼接所有的字符串产生字典序最小的字符串](../04/牛客_0085_中等_拼接所有的字符串产生字典序最小的字符串.md)  
-> [[中等, 牛客] 数组中的逆序对](../05/牛客_0118_中等_数组中的逆序对.md)  
-> [[中等, 牛客] 最大数](../04/牛客_0111_中等_最大数.md)  
-> [[中等, 牛客] 最小的K个数](../05/牛客_0119_中等_最小的K个数.md)  
-  > 
-> [[简单, 剑指Offer] 扑克牌中的顺子](../01/剑指Offer_6100_简单_扑克牌中的顺子.md)  
-> [[简单, 剑指Offer] 数组中出现次数超过一半的数字 (摩尔投票) 🔥](../../2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)  
-> [[简单, 剑指Offer] 最小的k个数 (partition操作) 🔥](../../2021/12/剑指Offer_4000_简单_最小的k个数(partition操作).md)  
-> [[简单, 牛客] 三个数的最大乘积](../04/牛客_0106_简单_三个数的最大乘积.md)  
-> [[简单, 程序员面试金典] 判定字符是否唯一](../09/程序员面试金典_0101_简单_判定字符是否唯一.md)  
-  > 
-
-</details>
-<details><summary><b>LeetCode Hot 100</b></summary>
+<details><summary><b>LeetCode Hot 100 (25)</b></summary>
 
 > [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
 > [[中等, LeetCode] 下一个排列 🔥](LeetCode_0031_中等_下一个排列.md)  
@@ -144,6 +143,28 @@ class Solution:
 > [[简单, LeetCode] 两数之和 🔥](../../2021/10/LeetCode_0001_简单_两数之和.md)  
 > [[简单, LeetCode] 合并两个有序链表 🔥](../../2021/10/LeetCode_0021_简单_合并两个有序链表.md)  
 > [[简单, LeetCode] 有效的括号 🔥](../03/LeetCode_0020_简单_有效的括号.md)  
+  > 
+
+</details>
+
+<details><summary><b>排序 (15)</b></summary>
+
+> [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
+> [[中等, 剑指Offer2] 数组中的第K大的数字](../09/剑指Offer2_076_中等_数组中的第K大的数字.md)  
+> [[中等, 剑指Offer] 把数组排成最小的数](../../2021/12/剑指Offer_4500_中等_把数组排成最小的数.md)  
+> [[中等, 牛客] 合并区间](../02/牛客_0037_中等_合并区间.md)  
+> [[中等, 牛客] 字符串出现次数的TopK问题](../04/牛客_0097_中等_字符串出现次数的TopK问题.md)  
+> [[中等, 牛客] 寻找第K大](../04/牛客_0088_中等_寻找第K大.md)  
+> [[中等, 牛客] 拼接所有的字符串产生字典序最小的字符串](../04/牛客_0085_中等_拼接所有的字符串产生字典序最小的字符串.md)  
+> [[中等, 牛客] 数组中的逆序对](../05/牛客_0118_中等_数组中的逆序对.md)  
+> [[中等, 牛客] 最大数](../04/牛客_0111_中等_最大数.md)  
+> [[中等, 牛客] 最小的K个数](../05/牛客_0119_中等_最小的K个数.md)  
+  > 
+> [[简单, 剑指Offer] 扑克牌中的顺子](../01/剑指Offer_6100_简单_扑克牌中的顺子.md)  
+> [[简单, 剑指Offer] 数组中出现次数超过一半的数字 (摩尔投票) 🔥](../../2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)  
+> [[简单, 剑指Offer] 最小的k个数 (partition操作) 🔥](../../2021/12/剑指Offer_4000_简单_最小的k个数(partition操作).md)  
+> [[简单, 牛客] 三个数的最大乘积](../04/牛客_0106_简单_三个数的最大乘积.md)  
+> [[简单, 程序员面试金典] 判定字符是否唯一](../09/程序员面试金典_0101_简单_判定字符是否唯一.md)  
   > 
 
 </details>
