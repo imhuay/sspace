@@ -146,7 +146,8 @@ class MedianFinder:
 
 </details>
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -179,4 +180,4 @@ class MedianFinder:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

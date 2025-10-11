@@ -87,7 +87,8 @@ class Solution:
 - [47. 全排列 II - 力扣 (LeetCode) ](https://leetcode.cn/problems/permutations-ii/)
     > 存在重复数字
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -174,4 +175,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

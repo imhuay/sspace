@@ -116,7 +116,8 @@ class Solution:
         > 也可以只是用一个数组, 参考: [n个骰子的点数 - 路漫漫我不畏](https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/)
 - 代码同上.
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -256,4 +257,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

@@ -1,6 +1,6 @@
 ## 从魔法师身上吸取的最大能量
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-11%2001%3A47%3A06&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-11%2012%3A02%3A30&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=green&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%8D%E7%BC%80%E5%92%8C&color=blue&style=flat-square)](../../../README.md#前缀和)
@@ -87,7 +87,7 @@ class Solution:
 </details>
 
 
-<!--START_SECTION:relate-->
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -117,8 +117,8 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->
 
 
-<!--START_SECTION:relate-->
-<!--END_SECTION:relate-->
+<!--START_SECTION:relate_problem-->
+<!--END_SECTION:relate_problem-->

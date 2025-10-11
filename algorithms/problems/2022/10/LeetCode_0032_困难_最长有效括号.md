@@ -91,7 +91,8 @@ class Solution:
 
 - 技巧性很强的方法, 临场可能很难写出来, 详见: [最长有效括号 (方法 2) - 力扣官方题解](https://leetcode.cn/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/)
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -209,4 +210,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

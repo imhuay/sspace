@@ -104,7 +104,8 @@ class Solution:
 
 - [40. 组合总和 II - 力扣 (LeetCode) ](https://leetcode.cn/problems/combination-sum-ii/)
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -194,4 +195,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

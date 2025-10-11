@@ -151,7 +151,7 @@ class Problem:
     # _nxt_p = None
 
     _TAG_BADGE = 'badge'
-    _TAG_RELATE = 'relate'
+    _TAG_RELATE_PROBLEM = 'relate_problem'
     _TAG_RELATE_NOTE = 'relate_note'
 
     def __post_init__(self):
@@ -212,14 +212,14 @@ class Problem:
         #         lns[-1] = '\n'.join(_lns)
                 
         # 对没有 relate tag 做的兜底
-        if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
+        if not NoteUtils.get_section_content(self._TAG_RELATE_PROBLEM, txt):
             lns.append('')
-            lns.append(NoteUtils.get_section_begin(self._TAG_RELATE))
-            lns.append(NoteUtils.get_section_end(self._TAG_RELATE))
+            lns.append(NoteUtils.get_section_begin(self._TAG_RELATE_PROBLEM))
+            lns.append(NoteUtils.get_section_end(self._TAG_RELATE_PROBLEM))
         else:
             # 对 section_begin 之前没有空行做兜底
             _lns = lns[-1].split('\n')
-            _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE))
+            _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE_PROBLEM))
             # 至少两个空行
             if _idx > 1 and (_lns[_idx - 1] != '' or _lns[_idx - 2] != ''):
                 _lns.insert(_idx, '')
@@ -244,7 +244,7 @@ class Problem:
                 _p = Path(n.path)
                 lns.append(f'- [{_p.stem}](../notes/_archives/{_p})')
 
-        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, self._text, '\n'.join(lns))
+        txt = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(txt)
     
@@ -278,7 +278,7 @@ class Problem:
                         lns.append('  > ')
                     lns.append('\n</details>')
 
-        txt = NoteUtils.replace_tag_content(self._TAG_RELATE, self._text, '\n'.join(lns))
+        txt = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(txt)
 

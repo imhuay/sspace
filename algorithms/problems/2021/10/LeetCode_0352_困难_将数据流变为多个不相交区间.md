@@ -176,7 +176,7 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
 </details>
 
 
-<!--START_SECTION:relate-->
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -232,4 +232,4 @@ SortedDict({2: 22, 3: 33, 4: 44, 6: 66, 7: 77})
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

@@ -89,7 +89,7 @@ class Solution:
 
 
 
-<!--START_SECTION:relate-->
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -98,9 +98,10 @@ class Solution:
 
 > [[中等, LeetCode] 每日温度](../../2025/10/LeetCode_0739_中等_每日温度.md)  
   > 
+> [[困难, LeetCode] 柱状图中最大的矩形](../../2025/10/LeetCode_0084_困难_柱状图中最大的矩形.md)  
 > [[困难, 剑指Offer] 滑动窗口的最大值](../../2022/01/剑指Offer_5901_困难_滑动窗口的最大值.md)  
 > [[困难, 牛客] 滑动窗口的最大值](../../2022/03/牛客_0082_困难_滑动窗口的最大值.md)  
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

@@ -128,7 +128,8 @@ class Solution:
 
 - [46. 全排列 - 力扣 (LeetCode) ](https://leetcode.cn/problems/permutations/)
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -242,4 +243,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

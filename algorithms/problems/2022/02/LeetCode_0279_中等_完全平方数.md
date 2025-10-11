@@ -182,7 +182,8 @@ class Solution:
     > [四平方和定理](https://baike.baidu.com/item/四平方和定理)证明了任意一个正整数都可以被表示为至多四个正整数的平方和;
 - BFS: [完全平方数 - 自来火](https://leetcode-cn.com/problems/perfect-squares/solution/python3zui-ji-chu-de-bfstao-lu-dai-ma-gua-he-ru-me/)
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -263,4 +264,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->

@@ -118,7 +118,7 @@ YAML       0 secs          -------------------------   00.01 %
 ### Subject 📓
 <!--START_SECTION:subject-->
 - [牛客 (131)](algorithms/README.md#牛客)
-- [LeetCode (79)](algorithms/README.md#leetcode)
+- [LeetCode (80)](algorithms/README.md#leetcode)
 - [剑指Offer (75)](algorithms/README.md#剑指offer)
 - [经典 (38)](algorithms/README.md#经典)
 - [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
@@ -139,7 +139,7 @@ YAML       0 secs          -------------------------   00.01 %
 <!--START_SECTION:level-->
 - [中等 (153)](algorithms/README.md#中等)
 - [简单 (104)](algorithms/README.md#简单)
-- [困难 (35)](algorithms/README.md#困难)
+- [困难 (36)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
 
 </td>
@@ -189,7 +189,7 @@ YAML       0 secs          -------------------------   00.01 %
 - [滑动窗口 (6)](algorithms/README.md#滑动窗口)
 - [树形递归 (6)](algorithms/README.md#树形递归)
 - [贪心 (5)](algorithms/README.md#贪心)
-- [单调栈/单调队列 (4)](algorithms/README.md#单调栈单调队列)
+- [单调栈/单调队列 (5)](algorithms/README.md#单调栈单调队列)
 - [前缀和 (4)](algorithms/README.md#前缀和)
 - [有限状态自动机 (1)](algorithms/README.md#有限状态自动机)
 <!--END_SECTION:trick-->

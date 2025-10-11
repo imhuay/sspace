@@ -128,7 +128,8 @@ class Solution:
 **空间优化** (略)
 > [【宫水三叶】详解如何转换「背包问题」, 以及逐步空间优化 - 一和零 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/ones-and-zeroes/solution/gong-shui-san-xie-xiang-jie-ru-he-zhuan-174wv/)
 
-<!--START_SECTION:relate-->
+
+<!--START_SECTION:relate_problem-->
 ---
 
 ### 相关主题
@@ -209,4 +210,4 @@ class Solution:
   > 
 
 </details>
-<!--END_SECTION:relate-->
+<!--END_SECTION:relate_problem-->
