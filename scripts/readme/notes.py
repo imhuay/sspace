@@ -442,8 +442,8 @@ class Note:
         return self._tags
 
     @property
-    def algo_tags(self) -> set[str]:
-        return set(self.info.algo_tags)
+    def algo_tags(self) -> list[str]:
+        return sorted(set(self.info.algo_tags))
 
     @property
     def tag_toc_title(self) -> str:
@@ -795,6 +795,21 @@ class NotesBuilder(Builder):
         self.build_v2()
 
         shutil.copy2(getattr(self, f'_fp_notes_readme_{version}'), self._fp_notes_readme)
+
+    def set_relate_problems_for_algo_note(self):
+        """"""
+        from algorithms import tag_info
+
+        for note in self.algo_notes:
+            toc = tag_info.get_toc_for_note(note)
+
+            with note.path.open('r', encoding='utf8') as f:
+                txt = f.read()
+
+            txt = NoteUtils.replace_tag_content('related_problems', txt, toc)
+
+            with note.path.open('w', encoding='utf8') as f:
+                f.write(txt)
 
     @property
     def toc_append(self):

@@ -8,6 +8,7 @@ Author:
 Subject:
     algo
 """
+
 from __future__ import annotations
 
 import os
@@ -54,18 +55,23 @@ class Tag:
         return len(self.problems)
 
     @property
+    def toc_title(self):
+        # return f'{self.title} (`{self.count}`)'
+        return self.title
+
+    @property
     def toc_line(self):
-        return f'- [{self.title} ({self.count})](#{MarkdownUtils.slugify(self.title)})'
+        return f'- [{self.title} ({self.count})](#{MarkdownUtils.slugify(self.toc_title)})'
 
     @property
     def toc(self):
-        lns = [f'### {self.title}']
-        if self.notes:
-            lns.append('- **相关笔记** 🔗')
-            for n in self.notes:
-                _p = Path(n)
-                lns.append(f'    - [{_p.stem}](../notes/_archives/{_p})')
-            lns.append('')
+        lns = [f'### {self.toc_title}']
+        # if self.notes:
+        #     lns.append('- **相关笔记** 🔗')
+        #     for n in self.notes:
+        #         _p = Path(n)
+        #         lns.append(f'    - [{_p.stem}](../notes/_archives/{_p})')
+        #     lns.append('')
         lns.append(NoteUtils.get_badge('total', self.count, 'blue'))
         for p in self.problems:
             lns.append(p.toc_line)
@@ -94,7 +100,7 @@ class TagType:
         return sorted(self.tags, key=lambda i: i.sort_key, reverse=True)
 
 
-class _TagInfo:
+class TagInfo:
     # name2key: dict[str, str] = dict()
     # key2tag: dict[str, Tag] = dict()
     tags: list[Tag] = list()
@@ -132,8 +138,52 @@ class _TagInfo:
     def hot_tags_sorted(self):
         return sorted(self.hot_tags, key=lambda i: i.sort_key, reverse=True)
 
+    def get_formal_tags(self, tags: list[str]) -> list[Tag]:
+        used = set()
+        formal_tags = []
+        for t in tags:
+            for tag in self.alias2tags[NoteUtils.norm(t)]:
+                if tag not in used:
+                    used.add(tag)
+                    formal_tags.append(tag)
+        formal_tags = sorted(formal_tags, key=lambda e: e.name)
+        return formal_tags
 
-tag_info = _TagInfo()
+    def get_formal_tags_str(self, tags: list[str]) -> list[str]:
+        return [t.name for t in self.get_formal_tags(tags)]
+
+    def get_toc_lns_from_tags(self, tags: list[str], from_path: Path, skip_self: bool = True) -> list[str]:
+        """"""
+        lns = []
+        for tag in tag_info.get_formal_tags(tags):
+            l2p = defaultdict(list)
+            for p in tag.problems:
+                if skip_self and p.path.resolve() == from_path.resolve():
+                    continue
+                l2p[p.level].append(p)
+
+            if l2p:
+                cnt = tag.count - 1 if skip_self else tag.count
+                lns.append(f'\n<details><summary><b>{tag.name} ({cnt})</b></summary>\n')
+                l2p = sorted(l2p.items(), key=lambda i: i[0])
+                for _, ps in l2p:
+                    ps = sorted(ps, key=lambda i: i.relate_title)
+                    for p in ps:
+                        _p = MarkdownUtils.get_relpath_from_p1_to_p2(from_path, p.path)
+                        lns.append(f'> [{p.relate_title}]({_p})  ')
+                    lns.append('  > ')
+                lns.append('\n</details>')
+
+        return lns
+
+    def get_toc_for_note(self, note: Note):
+        """"""
+        # lns = ['## 相关问题\n']
+        lns = self.get_toc_lns_from_tags(note.algo_tags, note.path, skip_self=False)
+        return '\n'.join(lns)
+
+
+tag_info = TagInfo()
 
 
 @dataclass(unsafe_hash=True)
@@ -146,7 +196,7 @@ class Problem:
     _file_name = ''
     _title = None
     _last_commit_time = None
-    _inter_tags = None
+    _formal_tags = None
     # _pre_p = None
     # _nxt_p = None
 
@@ -183,7 +233,7 @@ class Problem:
 
         # try update title
         lns = txt.rstrip().split('\n', maxsplit=1)
-        
+
         if lns[0].startswith('##'):
             lns[0] = self.head
         else:
@@ -196,23 +246,18 @@ class Problem:
             lns.insert(1, NoteUtils.get_section_begin(self._TAG_BADGE))
             lns.insert(2, NoteUtils.get_section_end(self._TAG_BADGE))
 
-        # 对没有 relate note 做的兜底
-        # if not NoteUtils.get_section_content(self._TAG_RELATE_NOTE, txt):
-        #     if not NoteUtils.get_section_content(self._TAG_RELATE, txt):
-        #         lns.append('')
-        #         lns.append(NoteUtils.get_section_begin(self._TAG_RELATE_NOTE))
-        #         lns.append(NoteUtils.get_section_end(self._TAG_RELATE_NOTE))
-        #     else:
-        #         _lns = lns[-1].split('\n')
-        #         _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE))
-        #         _lns.insert(_idx, '')
-        #         _lns.insert(_idx, '')
-        #         _lns.insert(_idx, NoteUtils.get_section_end(self._TAG_RELATE_NOTE))
-        #         _lns.insert(_idx, NoteUtils.get_section_begin(self._TAG_RELATE_NOTE))
-        #         lns[-1] = '\n'.join(_lns)
-                
-        # 对没有 relate tag 做的兜底
-        if not NoteUtils.get_section_content(self._TAG_RELATE_PROBLEM, txt):
+        # 对没有 relate_note 做的兜底 (假设 relate_problem 一定存在)
+        if not NoteUtils.section_exists(self._TAG_RELATE_NOTE, txt):
+            _lns = lns[-1].split('\n')
+            _idx = _lns.index(NoteUtils.get_section_begin(self._TAG_RELATE_PROBLEM))
+            _lns.insert(_idx, '')
+            _lns.insert(_idx, '')
+            _lns.insert(_idx, NoteUtils.get_section_end(self._TAG_RELATE_NOTE))
+            _lns.insert(_idx, NoteUtils.get_section_begin(self._TAG_RELATE_NOTE))
+            lns[-1] = '\n'.join(_lns)
+
+        # 对没有 relate_problem 做的兜底
+        if not NoteUtils.section_exists(self._TAG_RELATE_PROBLEM, txt):
             lns.append('')
             lns.append(NoteUtils.get_section_begin(self._TAG_RELATE_PROBLEM))
             lns.append(NoteUtils.get_section_end(self._TAG_RELATE_PROBLEM))
@@ -233,81 +278,98 @@ class Problem:
         """"""
         lns = [
             '---\n',
-            '### 相关笔记\n',
+            '### 算法笔记\n',
         ]
 
-        # with self.path.open(encoding='utf8') as f:
-        #     txt = f.read()
+        # 主题相关的笔记
+        relate_notes = []
+        other_notes = []
+        for note in notes:
+            formal_tags_of_note = tag_info.get_formal_tags_str(note.algo_tags)
+            _p = MarkdownUtils.get_relpath_from_p1_to_p2(self.path, note.path)
+            if set(formal_tags_of_note) & set(self.formal_tags):
+                relate_notes.append(f'- [{note.title}]({_p})  ')
+            else:
+                other_notes.append(f'- [{note.title}]({_p})  ')
 
-        for n in notes:
-            if self.title in n.algo_tags:
-                _p = Path(n.path)
-                lns.append(f'- [{_p.stem}](../notes/_archives/{_p})')
+        relate_notes = sorted(relate_notes)
+        other_notes = sorted(other_notes)
 
-        txt = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
+        if relate_notes:
+            lns.extend(relate_notes)
+        else:
+            lns.append('> 🌧️ _暂无主题相关的笔记_\n')
+
+        if other_notes:
+            lns.append('\n<details><summary><b>其他算法笔记</b></summary>\n')
+            lns.extend(other_notes)
+            lns.append('\n</details>')
+
+        self._text = NoteUtils.replace_tag_content(self._TAG_RELATE_NOTE, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
-            f.write(txt)
-    
-    def set_relate_problems(self, alias2tags: dict[str, list[Tag]]):
+            f.write(self._text)
+
+    def set_relate_problems(self):
         """"""
         lns = [
             '---\n',
-            '### 相关主题\n',
+            '### 相关问题\n',
         ]
+        lns += tag_info.get_toc_lns_from_tags(self.tags, self.path, skip_self=True)
 
-        # with self.path.open(encoding='utf8') as f:
-        #     txt = f.read()
-
-        for t in self.tags:
-            for tag in alias2tags[NoteUtils.norm(t)]:
-                # tmp = []
-                l2p = defaultdict(list)
-                for p in tag.problems:
-                    if p == self:
-                        continue
-                    l2p[p.level].append(p)
-                    # tmp.append(f'- [{p.relate_title}]({os.path.relpath(p.path, self.path.parent)})')
-
-                if l2p:
-                    lns.append(f'<details><summary><b>{tag.name}</b></summary>\n')
-                    l2p = sorted(l2p.items(), key=lambda i: i[0])
-                    for _, ps in l2p:
-                        ps = sorted(ps, key=lambda i: i.relate_title)
-                        for p in ps:
-                            lns.append(f'> [{p.relate_title}]({os.path.relpath(p.path, self.path.parent)})  ')
-                        lns.append('  > ')
-                    lns.append('\n</details>')
-
-        txt = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
+        self._text = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
-            f.write(txt)
+            f.write(self._text)
 
     @property
     def badge_content(self):
         lns = [NoteUtils.get_last_modify_badge_url(self._path)]
-        used = set()
+
+        if self.level == '困难':
+            color = 'red'
+        elif self.level == '中等':
+            color = 'yellow'
+        else:
+            color = 'green'
         lns.append(
             NoteUtils.get_badge(
-                '', message=self.level, color='yellow', url=f'../../../README.md#{MarkdownUtils.slugify(self.level)}'
+                '',
+                message=self.level,
+                color=color,
+                url=f'../../../README.md#{MarkdownUtils.slugify(self.level)}',
             )
         )
         lns.append(
             NoteUtils.get_badge(
-                '', message=self.source, color='green', url=f'../../../README.md#{MarkdownUtils.slugify(self.source)}'
+                '',
+                message=self.source,
+                color='darkcyan',
+                url=f'../../../README.md#{MarkdownUtils.slugify(self.source)}',
             )
         )
-        for t in self.tags:
-            for tag in tag_info.alias2tags[NoteUtils.norm(t)]:
-                if tag not in used:
-                    used.add(tag)
-                    lns.append(
-                        NoteUtils.get_badge(
-                            '',
-                            message=tag.name,
-                            color='blue',
-                            url=f'../../../README.md#{MarkdownUtils.slugify(tag.title)}',
-                        )
-                    )
+
+        for tag in tag_info.get_formal_tags(self.tags):
+            lns.append(
+                NoteUtils.get_badge(
+                    '',
+                    message=tag.name,
+                    color='blue',
+                    url=f'../../../README.md#{MarkdownUtils.slugify(tag.title)}',
+                )
+            )
+        # used = set()
+        # for t in self.tags:
+        #     for tag in tag_info.alias2tags[NoteUtils.norm(t)]:
+        #         if tag not in used:
+        #             used.add(tag)
+        #             lns.append(
+        #                 NoteUtils.get_badge(
+        #                     '',
+        #                     message=tag.name,
+        #                     color='blue',
+        #                     url=f'../../../README.md#{MarkdownUtils.slugify(tag.title)}',
+        #                 )
+        #             )
         return '\n'.join(lns)
 
     # @property
@@ -384,13 +446,10 @@ class Problem:
         return self._info
 
     @property
-    def inter_tags(self) -> list[str]:
-        if self._inter_tags is None:
-            inter_tags = []
-            for t in self.tags:
-                inter_tags.extend(tag_info.alias2tags[NoteUtils.norm(t)])
-            self._inter_tags = [t.name for t in inter_tags]
-        return self._inter_tags
+    def formal_tags(self) -> list[str]:
+        if self._formal_tags is None:
+            self._formal_tags = tag_info.get_formal_tags_str(self.tags)
+        return self._formal_tags
 
     _F_TAGS: ClassVar[str] = 'tags'
     _F_SOURCE: ClassVar[str] = 'source'
@@ -518,18 +577,15 @@ class AlgorithmsBuilder(Builder):
 
         # update problems relate
         for p in self.problems:
-            p.set_relate_problems(self.alias2tags)
+            p.set_relate_problems()
 
         with self._fp_algo_readme.open('w', encoding='utf8') as f:
             f.write(txt)
-    
-    def add_relate_notes(self, notes: list[Note]):
+
+    def set_relate_notes(self, notes: list[Note]):
         """"""
-        tag2notes = defaultdict(list)
-        for n in notes:
-            for t in n.algo_tags:
-                tag2notes[t].append(n)
-        # for p in self.problems:
+        for p in self.problems:
+            p.set_relate_notes(notes)
 
 
 if __name__ == '__main__':

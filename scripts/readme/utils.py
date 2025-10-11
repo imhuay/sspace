@@ -76,6 +76,13 @@ class MarkdownUtils:
     """"""
 
     @staticmethod
+    def get_relpath_from_p1_to_p2(p1: Path, p2: Path) -> Path:
+        """"""
+        if p1.is_file():
+            p1 = p1.parent
+        return Path(os.path.relpath(p2, start=p1))
+
+    @staticmethod
     def slugify(value, mode='github', separator='-'):
         if mode == 'github':
             return MarkdownUtils.slugify_github(value)
@@ -473,6 +480,10 @@ class NoteUtils:
     SECTION_ANNOTATION = r'<!--{tag}\s*\n(.*?)\n\s*-->'
     TEMP_LAST_MODIFY_BADGE = '![last modify](https://img.shields.io/static/v1?label=last%20modify&message={datetime}&color=yellowgreen&style=flat-square)'  # noqa
     TEMP_BADGE_URL = 'https://img.shields.io/static/v1?{}'
+
+    @staticmethod
+    def section_exists(tag, txt) -> bool:
+        return NoteUtils.get_section_begin(tag) in txt
 
     @staticmethod
     def get_section_begin(tag):

@@ -54,7 +54,7 @@ class BuildReadme:
         # build(self.algo, self.note)
         self.note.build()
         self.algo.build()
-        # self._cross_build()
+        self._cross_build()
 
         # build repo readme
         self._update_homepage()
@@ -62,8 +62,8 @@ class BuildReadme:
     def _cross_build(self):
         """"""
         algo_notes = self.note.algo_notes
-        
-        
+        self.algo.set_relate_notes(algo_notes)
+        self.note.set_relate_problems_for_algo_note()
 
     def _update_homepage(self):
         with open(self._fp_repo_readme, encoding='utf8') as f:
