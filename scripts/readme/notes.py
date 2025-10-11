@@ -245,13 +245,6 @@ class Note:
         self.par_notes.append(note)
         self._tags.update(note._tags)
 
-    def get_recent_toc_line_relative_to(self, parent_path: Path):
-        """更新 README recent 模块内的 TOC"""
-        if self.is_top:
-            return f'- [`{self.date}` {self.title} 📌]({self.path.relative_to(parent_path)})'
-        else:
-            return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)})'
-
     def get_tag_toc_line(self, deep: int) -> str:
         def _get_toc_line(_k):
             if _k.url:
@@ -276,13 +269,20 @@ class Note:
 
         return toc_line
 
-    @property
-    def toc_line_for_recent_relative_to_repo(self):
-        """README recent 模块内的 TOC 行 (路径相对于 repo 根目录)"""
+    def get_recent_toc_line_relative_to(self, parent_path: Path):
+        """更新 README recent 模块内的 TOC"""
         if self.is_top:
-            return f'- [`{self.date}` {self.title} 📌]({self.path_relative_to_repo})'
+            return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) 📌'
         else:
-            return f'- [`{self.date}` {self.title}]({self.path_relative_to_repo})'
+            return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
+
+    # @property
+    # def toc_line_for_recent_relative_to_repo(self):
+    #     """README recent 模块内的 TOC 行 (路径相对于 repo 根目录)"""
+    #     if self.is_top:
+    #         return f'- [`{self.date}` {self.title} 📌]({self.path_relative_to_repo})'
+    #     else:
+    #         return f'- [`{self.date}` {self.title}]({self.path_relative_to_repo})'
 
     @property
     def keywords(self) -> list[KeywordSection]:

@@ -77,14 +77,21 @@ Latex 常用:
     - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
     - **输出**: 标量分数;
     - **目标函数**: 
-        - **交叉熵损失**
-        $$\mathcal{L}(\theta) = - \mathbb{E} \left\lbrack\ \log \sigma \big( R_{\theta}(x, y_{\text{chosen}}) - R_{\theta}(x, y_{\text{rejected}}) \big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
+        - **成对排序损失 (Pairwise Ranking Loss)**
+        $$\mathcal{L}(\theta) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \big( R_{\theta}(x, y^+) - R_{\theta}(x, y^-) \big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
 - **强化学习** (**PPO 算法**):
-    - **目标函数** (优势函数):
+    - **目标函数** (组合目标):
         $$\begin{align}
-            \nabla_\theta J(\theta) = \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
+            \mathcal{L}_{\scriptscriptstyle Total} = \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) - c_1 \mathcal{L}_{\scriptscriptstyle VF}(\phi) + c_2 \mathcal{L}_{\scriptscriptstyle KL}(\theta)
         \end{align}$$
-        > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式)
+        <!-- $$\begin{align}
+            \nabla_\theta J(\theta) = \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
+        \end{align}$$ -->
+        <!-- > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式) -->
+        其中
+        $$\begin{align}
+            \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) = 
+        \end{align}$$
     - **A 函数近似**:
         $$\begin{align}
             A(s, a) = Q(s, a) - V(s) \approx r_t + \gamma V(s_{t+1}) - V(s)
@@ -238,8 +245,8 @@ extra_url: false
 <!--END_SECTION:keyword-->
 
 - **目标**:
-    - 将人类的相对偏好转化为一个可优化的 **标量奖励函数** $\mathcal{R}_\theta(\cdot)$;
-    - 训练一个模型, 使其能够为给定的 **提示-回答** 对 $(x, y)$ 分配一个 **标量分数** $r = \mathcal{R}_\theta(x, y)$;
+    - 将人类的相对偏好转化为一个可优化的 **标量奖励函数** $R_\theta(\cdot)$;
+    - 训练一个模型, 使其能够为给定的 **提示-回答** 对 $(x, y)$ 分配一个 **标量分数** $r = R_\theta(x, y)$;
 - **训练数据**:
     - **来源**:
         - 使用 **阶段一训练的 SFT 模型** 在同一提示下生成的两个或多个候选输出;
@@ -266,24 +273,24 @@ extra_url: false
             $$
             \begin{aligned}
                 P(y_j \succ y_k)
-                &= \frac{\exp\big(\mathcal{R}_\theta(x, y_j)\big)}{\exp\big(\mathcal{R}_\theta(x, y_j)\big) + \exp\big(\mathcal{R}_\theta(x, y_k)\big)} \\
-                &= \frac{1}{1 + \dfrac{\exp\big(\mathcal{R}_\theta(x, y_k)\big)}{\exp\big(\mathcal{R}_\theta(x, y_j)\big)}} \\
-                &= \frac{1}{1 + e^{- \big(\mathcal{R}_\theta(x, y_j) - \mathcal{R}_\theta(x, y_k)\big)}} \\
-                &= \sigma\big(\mathcal{R}_\theta(x, y_j) - \mathcal{R}_\theta(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
+                &= \frac{\exp\big(R_\theta(x, y_j)\big)}{\exp\big(R_\theta(x, y_j)\big) + \exp\big(R_\theta(x, y_k)\big)} \\
+                &= \frac{1}{1 + \dfrac{\exp\big(R_\theta(x, y_k)\big)}{\exp\big(R_\theta(x, y_j)\big)}} \\
+                &= \frac{1}{1 + e^{- \big(R_\theta(x, y_j) - R_\theta(x, y_k)\big)}} \\
+                &= \sigma\big(R_\theta(x, y_j) - R_\theta(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
             \end{aligned}
             $$
-            <!-- > 其中 $\mathcal{R}_\theta(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
+            <!-- > 其中 $R_\theta(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
-            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \  \sigma(\mathcal{R}_\theta(x, y_j) - \mathcal{R}_\theta(x, y_k)) -->
+            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \  \sigma(R_\theta(x, y_j) - R_\theta(x, y_k)) -->
             $$
             \mathcal{L}(\theta; D) = -\mathbb{E}_{(x, y_j, y_k) \sim D} \Big \lbrack
-                \log \  \sigma\big(\mathcal{R}_\theta(x, y_j) - \mathcal{R}_\theta(x, y_k)\big)
+                \log \  \sigma\big(R_\theta(x, y_j) - R_\theta(x, y_k)\big)
                 \Big \rbrack
             $$
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
         $$
-        \mathcal{L}_{\text{InfoNCE}}(\theta) = -\mathbb{E} \left \lbrack \log \frac{\exp\big(\mathcal{R}_\theta(x, y^+)\big)}{\exp\big(\mathcal{R}_\theta(x, y^+)\big) + \sum_{i=1}^{N-1} \exp\big(\mathcal{R}_\theta(x, y_i^-)\big)} \right \rbrack
+        \mathcal{L}_{\text{InfoNCE}}(\theta) = -\mathbb{E} \left \lbrack \log \frac{\exp\big(R_\theta(x, y^+)\big)}{\exp\big(R_\theta(x, y^+)\big) + \sum_{i=1}^{N-1} \exp\big(R_\theta(x, y_i^-)\big)} \right \rbrack
         $$
     <!--
     - **带边距的排序损失**
@@ -332,11 +339,11 @@ extra_url: false
      -->
 - **目的**:
     -  在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
-    -  学习一个 **评分函数** $\mathcal{R}_\theta(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
+    -  学习一个 **评分函数** $R_\theta(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
     <!-- - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 为每个对象 **估计出一个静态的能力分数** $r$; -->
     <!-- - BT 模型试图通过一系列 **成对比较结果** $(y_j, y_k)$, **为每个对象估算出一个标量分数** $r$, 代表其强度; -->
     <!-- - 两个对象之间的 比较关系/胜负结果 是可以获取/累计的; -->
-    <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $\mathcal{R}_\theta(\cdot)$; -->
+    <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $R_\theta(\cdot)$; -->
 <!--
 - **定义**:
     - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
@@ -350,20 +357,20 @@ extra_url: false
             = \frac{1}{1 + \exp\big(-(r_j - r_k)\big)}
             = \sigma (r_j - r_k)
         $$
-    - 其中 $r_j = \mathcal{R}_\theta(y_j)$, $r_k = \mathcal{R}_\theta(y_k)$
+    - 其中 $r_j = R_\theta(y_j)$, $r_k = R_\theta(y_k)$
     - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
 -->
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(\mathcal{R}_\theta(y_j) - \mathcal{R}_\theta(y_k)\big) \Big \rbrack
+        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_\theta(y_j) - R_\theta(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     <!--
     - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(\mathcal{R}_\theta(y_j) - \mathcal{R}_\theta(y_k)\big) \Big \rbrack
+        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_\theta(y_j) - R_\theta(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->
