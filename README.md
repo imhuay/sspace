@@ -53,22 +53,22 @@
 
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-07-08` Markdown 简历工具 📌](notes/_archives/2022/06/Markdown_简历工具.md)
-- [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md)
-- [`2025-09-09` 位置编码 (Position Encoding)](notes/_archives/2025/09/Transformer_整理/位置编码.md)
-- [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md)
-- [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md)
-- [`2025-08-21` 复合词检测](notes/_archives/2025/08/复合词检测.md)
-- [`2025-08-08` VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md)
-- [`2025-08-06` 开发环境配置 (基于 WSL)](notes/_archives/2025/08/WSL开发环境配置.md)
-- [`2025-08-05` `uv` 备忘](notes/_archives/2025/08/python-uv备忘.md)
-- [`2025-08-02` 批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md)
-- [`2025-07-08` 链表常用操作备忘](notes/_archives/2022/10/链表模板.md)
-- [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md)
-- [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md)
-- [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md)
-- [`2025-07-08` 综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md)
-- [`2025-07-08` 类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md)
+- [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md) 📌
+- [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
+- [`2025-09-09` 位置编码 (Position Encoding)](notes/_archives/2025/09/Transformer_整理/位置编码.md) 
+- [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md) 
+- [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md) 
+- [`2025-08-21` 复合词检测](notes/_archives/2025/08/复合词检测.md) 
+- [`2025-08-08` VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md) 
+- [`2025-08-06` 开发环境配置 (基于 WSL)](notes/_archives/2025/08/WSL开发环境配置.md) 
+- [`2025-08-05` `uv` 备忘](notes/_archives/2025/08/python-uv备忘.md) 
+- [`2025-08-02` 批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md) 
+- [`2025-07-08` 链表常用操作备忘](notes/_archives/2022/10/链表模板.md) 
+- [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md) 
+- [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md) 
+- [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md) 
+- [`2025-07-08` 综述-2019-Johnson](notes/_archives/2022/05/综述-2019-Johnson.md) 
+- [`2025-07-08` 类方法中 `self` 的含义](notes/_archives/2022/06/python类方法中self的含义.md) 
 
 <!--END_SECTION:recent-->
 
@@ -106,7 +106,7 @@ YAML       0 secs          -------------------------   00.01 %
 ### Hot 🔥
 <!--START_SECTION:hot-->
 - [剑指Offer (75)](algorithms/README.md#剑指offer)
-- [动态规划 (53)](algorithms/README.md#动态规划)
+- [动态规划 (54)](algorithms/README.md#动态规划)
 - [经典 (38)](algorithms/README.md#经典)
 - [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
 - [热门 (17)](algorithms/README.md#热门)
@@ -118,7 +118,7 @@ YAML       0 secs          -------------------------   00.01 %
 ### Subject 📓
 <!--START_SECTION:subject-->
 - [牛客 (131)](algorithms/README.md#牛客)
-- [LeetCode (80)](algorithms/README.md#leetcode)
+- [LeetCode (81)](algorithms/README.md#leetcode)
 - [剑指Offer (75)](algorithms/README.md#剑指offer)
 - [经典 (38)](algorithms/README.md#经典)
 - [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
@@ -137,7 +137,7 @@ YAML       0 secs          -------------------------   00.01 %
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (153)](algorithms/README.md#中等)
+- [中等 (154)](algorithms/README.md#中等)
 - [简单 (104)](algorithms/README.md#简单)
 - [困难 (36)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
@@ -168,7 +168,7 @@ YAML       0 secs          -------------------------   00.01 %
 
 ### 算法
 <!--START_SECTION:algo-->
-- [动态规划 (53)](algorithms/README.md#动态规划)
+- [动态规划 (54)](algorithms/README.md#动态规划)
 - [二分查找 (24)](algorithms/README.md#二分查找)
 - [递归 (21)](algorithms/README.md#递归)
 - [深度优先搜索 (20)](algorithms/README.md#深度优先搜索)
@@ -183,8 +183,8 @@ YAML       0 secs          -------------------------   00.01 %
 ### 技巧
 <!--START_SECTION:trick-->
 - [双指针 (25)](algorithms/README.md#双指针)
+- [暴力递归与动态规划 (12)](algorithms/README.md#暴力递归与动态规划)
 - [哈希表(Hash) (12)](algorithms/README.md#哈希表hash)
-- [暴力递归与动态规划 (11)](algorithms/README.md#暴力递归与动态规划)
 - [位运算 (9)](algorithms/README.md#位运算)
 - [滑动窗口 (6)](algorithms/README.md#滑动窗口)
 - [树形递归 (6)](algorithms/README.md#树形递归)

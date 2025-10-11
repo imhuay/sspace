@@ -98,7 +98,7 @@ class Solution:
 ### 相关问题
 
 
-<details><summary><b>动态规划 (52)</b></summary>
+<details><summary><b>动态规划 (53)</b></summary>
 
 > [[中等, LeetCode] 一和零](../06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 三角形最小路径和](../06/LeetCode_0120_中等_三角形最小路径和.md)  
@@ -109,6 +109,7 @@ class Solution:
 > [[中等, LeetCode] 打家劫舍](../06/LeetCode_0198_中等_打家劫舍.md)  
 > [[中等, LeetCode] 打家劫舍II](../06/LeetCode_0213_中等_打家劫舍II.md)  
 > [[中等, LeetCode] 整数拆分](../../2021/12/LeetCode_0343_中等_整数拆分.md)  
+> [[中等, LeetCode] 施咒的最大总伤害](../../2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)  
 > [[中等, LeetCode] 最小路径和](LeetCode_0064_中等_最小路径和.md)  
 > [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
 > [[中等, LeetCode] 最长递增子序列 🔥](../06/LeetCode_0300_中等_最长递增子序列.md)  
@@ -158,11 +159,12 @@ class Solution:
 
 </details>
 
-<details><summary><b>暴力递归与动态规划 (10)</b></summary>
+<details><summary><b>暴力递归与动态规划 (11)</b></summary>
 
 > [[中等, LeetCode] 一和零](../06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 完全平方数](../02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](../06/LeetCode_0198_中等_打家劫舍.md)  
+> [[中等, LeetCode] 施咒的最大总伤害](../../2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)  
 > [[中等, LeetCode] 解码方法](../02/LeetCode_0091_中等_解码方法.md)  
 > [[中等, LeetCode] 零钱兑换](../06/LeetCode_0322_中等_零钱兑换.md)  
 > [[中等, 剑指Offer] n个骰子的点数](剑指Offer_6000_中等_n个骰子的点数.md)  

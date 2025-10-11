@@ -33,22 +33,22 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-07-08` Markdown 简历工具 📌](_archives/2022/06/Markdown_简历工具.md)
-- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md)
-- [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md)
-- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md)
-- [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md)
-- [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md)
-- [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md)
-- [`2025-08-06` 开发环境配置 (基于 WSL)](_archives/2025/08/WSL开发环境配置.md)
-- [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md)
-- [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md)
-- [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md)
-- [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md)
-- [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md)
-- [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md)
-- [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md)
-- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md)
+- [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) 📌
+- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
+- [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md) 
+- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md) 
+- [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md) 
+- [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md) 
+- [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md) 
+- [`2025-08-06` 开发环境配置 (基于 WSL)](_archives/2025/08/WSL开发环境配置.md) 
+- [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md) 
+- [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
+- [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md) 
+- [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) 
+- [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
+- [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md) 
+- [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md) 
+- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md) 
 
 <!--END_SECTION:recent-->
 

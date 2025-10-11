@@ -1,92 +1,88 @@
-## 斐波那契数列-3 (把数字翻译成字符串)
+## 施咒的最大总伤害
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A03%3A22&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-11%2018%3A46%3A34&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
-[![](https://img.shields.io/static/v1?label=&message=%E5%89%91%E6%8C%87Offer&color=darkcyan&style=flat-square)](../../../README.md#剑指offer)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#动态规划)
+[![](https://img.shields.io/static/v1?label=&message=%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#暴力递归与动态规划)
+<!--END_SECTION:badge-->
+<!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [动态规划]
-source: 剑指Offer
+tags: [dfs2dp]
+source: LeetCode
 level: 中等
-number: '4600'
-name: 斐波那契数列-3 (把数字翻译成字符串)
+number: '3186'
+name: '施咒的最大总伤害'
 companies: []
 -->
+
+> [title](#a-url)
 
 <summary><b>问题简述</b></summary>
 
 ```txt
-给定一个数字, 我们按照如下规则把它翻译为字符串: 0 翻译成 "a", 1 翻译成 "b", ……, 11 翻译成 "l", ……, 25 翻译成 "z". 求一个数字有多少种不同的翻译方法.
-```
+一个魔法师有许多不同的咒语. 
+给你一个数组 power, 其中每个元素表示一个咒语的伤害值, 可能会有多个咒语有相同的伤害值. 
 
+已知魔法师使用伤害值为 power[i] 的咒语时, 他们就 不能 使用伤害为 power[i] - 2, power[i] - 1, power[i] + 1 或者 power[i] + 2 的咒语. 
+
+每个咒语最多只能被使用 一次. 
+
+请你返回这个魔法师可以达到的伤害值之和的 最大值. 
+```
+- 简单翻译一下:
+    - 从一个数组中取数, 当你取了某个数 `x` 后, 那么就不能取 `x±1` 和 `x±2` 了, 但是 `x` 本身可以取多次;
+    - 返回能获得的最大值;
+
+<!-- 
 <details><summary><b>详细描述</b></summary>
 
 ```txt
-给定一个数字, 我们按照如下规则把它翻译为字符串: 0 翻译成 "a", 1 翻译成 "b", ……, 11 翻译成 "l", ……, 25 翻译成 "z". 一个数字可能有多个翻译. 请编程实现一个函数, 用来计算一个数字有多少种不同的翻译方法.
-
-示例 1:
-    输入: 12258
-    输出: 5
-    解释: 12258有5种不同的翻译, 分别是"bccfi", "bwfi", "bczi", "mcfi"和"mzi"
-
-提示:
-    0 <= num < 231
-
-来源: 力扣 (LeetCode)
-链接: https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof
-著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 </details>
+-->
 
-<!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
+<!-- <div align='center'><img src='../../../_assets/xxx.png' height='300' /></div> -->
 
-<summary><b>思路: 动态规划</b></summary>
+<summary><b>思路</b></summary>
 
-- 首先要意识到本题是一个有条件的斐波那契数列/跳台阶问题;
-    - 假设不是26个字母, 而是100个不同的字母, 那么是不是 `dp[i] = dp[i-1] + dp[i-2]`? ;
-- 因此本题另一个考察点就是如何实现这个条件判断;
+- 比较典型的 **值域 DP** 问题, 
+    - 因为状态不是按数组下标, 而是按数值大小排序后在值域上转移;
+- 也称 "打家劫舍类 DP" (House Robber–type DP),
+    - 特点: 相邻元素不能同时取 的 一维 DP;
+- 如果值域稀疏, 需要先离散化, 再在离散后的序列上做 DP. 
 
 <details><summary><b>Python</b></summary>
 
 ```python
-import math
-
-
 class Solution:
-    def translateNum(self, num: int) -> int:
+    def maximumTotalDamage(self, power: List[int]) -> int:
 
-        # num 的位数
-        N = int(math.log10(num)) + 1 if num > 0 else 1
+        from collections import Counter
+        from functools import cache
 
-        def slide(i):
-            """截取 num 中的两位数, 效果如下
-            Examples:
-                >>> slide(54321, 1)
-                54
-                >>> slide(54321, 2)
-                43
-                >>> slide(54321, 3)
-                32
-            """
-            return num // 10 ** (N - i - 1) % 100
+        cnt = Counter(power)
+        a = sorted(cnt)
+        n = len(a)
 
-        dp0 = 1
-        dp1 = 2 if slide(1) < 26 else 1
+        @cache
+        def dfs(i):  # a[i:n] 能获得的最大值
+            if i >= n:
+                return 0
 
-        if N == 1:
-            return dp0
-        if N == 2:
-            return dp1
+            x = a[i]
+            j = i + 1
+            while j < n and a[j] <= x + 2:  # 找到 i 之后下一个位置 j, 要求 a[j] > x+2
+                j += 1
 
-        for i in range(2, N):
-            if 9 < slide(i) < 26:  # "01" 不能翻译成 "a", 所以要大于 9
-                dp0, dp1 = dp1, dp0 + dp1
-            else:
-                dp0, dp1 = dp1, dp1
+            take = dfs(j) + x * cnt[x]  # 可能 1: 选了 a[i], 那么下一个位置必须从 j 开始, 因为 a[j] > x+2
+            not_take = dfs(i + 1)       # 可能 2: 没选 a[i], 那么直接从下一个开始
 
-        return dp1
+            return max(take, not_take)
+
+        return dfs(0)
 ```
 
 </details>
@@ -125,20 +121,20 @@ class Solution:
 > [[中等, LeetCode] 完全平方数](../../2022/02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](../../2022/06/LeetCode_0198_中等_打家劫舍.md)  
 > [[中等, LeetCode] 打家劫舍II](../../2022/06/LeetCode_0213_中等_打家劫舍II.md)  
-> [[中等, LeetCode] 整数拆分](LeetCode_0343_中等_整数拆分.md)  
-> [[中等, LeetCode] 施咒的最大总伤害](../../2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)  
+> [[中等, LeetCode] 整数拆分](../../2021/12/LeetCode_0343_中等_整数拆分.md)  
 > [[中等, LeetCode] 最小路径和](../../2022/01/LeetCode_0064_中等_最小路径和.md)  
-> [[中等, LeetCode] 最长回文子串 🔥](../10/LeetCode_0005_中等_最长回文子串.md)  
+> [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
 > [[中等, LeetCode] 最长递增子序列 🔥](../../2022/06/LeetCode_0300_中等_最长递增子序列.md)  
 > [[中等, LeetCode] 解码方法](../../2022/02/LeetCode_0091_中等_解码方法.md)  
 > [[中等, LeetCode] 零钱兑换](../../2022/06/LeetCode_0322_中等_零钱兑换.md)  
 > [[中等, LeetCode] 零钱兑换II](../../2022/06/LeetCode_0518_中等_零钱兑换II.md)  
 > [[中等, 剑指Offer] n个骰子的点数](../../2022/01/剑指Offer_6000_中等_n个骰子的点数.md)  
-> [[中等, 剑指Offer] 丑数 🔥](剑指Offer_4900_中等_丑数.md)  
-> [[中等, 剑指Offer] 剪绳子 (整数拆分)](../11/剑指Offer_1401_中等_剪绳子(整数拆分).md)  
+> [[中等, 剑指Offer] 丑数 🔥](../../2021/12/剑指Offer_4900_中等_丑数.md)  
+> [[中等, 剑指Offer] 剪绳子 (整数拆分)](../../2021/11/剑指Offer_1401_中等_剪绳子(整数拆分).md)  
 > [[中等, 剑指Offer] 圆圈中最后剩下的数字 (约瑟夫环问题) 🔥](../../2022/01/剑指Offer_6200_中等_圆圈中最后剩下的数字(约瑟夫环问题).md)  
-> [[中等, 剑指Offer] 最长不含重复字符的子字符串](剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  
-> [[中等, 剑指Offer] 礼物的最大价值](剑指Offer_4700_中等_礼物的最大价值.md)  
+> [[中等, 剑指Offer] 斐波那契数列-3 (把数字翻译成字符串)](../../2021/12/剑指Offer_4600_中等_斐波那契数列-3(把数字翻译成字符串).md)  
+> [[中等, 剑指Offer] 最长不含重复字符的子字符串](../../2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  
+> [[中等, 剑指Offer] 礼物的最大价值](../../2021/12/剑指Offer_4700_中等_礼物的最大价值.md)  
 > [[中等, 牛客] 01背包 🔥](../../2022/05/牛客_0145_中等_01背包.md)  
 > [[中等, 牛客] 丑数](../../2022/03/牛客_0079_中等_丑数.md)  
 > [[中等, 牛客] 丢棋子问题 (鹰蛋问题) 🔥](../../2022/04/牛客_0087_中等_丢棋子问题(鹰蛋问题).md)  
@@ -154,7 +150,7 @@ class Solution:
 > [[困难, LeetCode] 最长有效括号 🔥](../../2022/10/LeetCode_0032_困难_最长有效括号.md)  
 > [[困难, LeetCode] 正则表达式匹配 🔥](../../2022/01/LeetCode_0010_困难_正则表达式匹配.md)  
 > [[困难, LeetCode] 编辑距离 🔥](../../2022/06/LeetCode_0072_困难_编辑距离.md)  
-> [[困难, 剑指Offer] 正则表达式匹配](../11/剑指Offer_1900_困难_正则表达式匹配.md)  
+> [[困难, 剑指Offer] 正则表达式匹配](../../2021/11/剑指Offer_1900_困难_正则表达式匹配.md)  
 > [[困难, 牛客] 最长上升子序列(三)](../../2022/04/牛客_0091_困难_最长上升子序列(三).md)  
 > [[困难, 牛客] 正则表达式匹配](../../2022/05/牛客_0122_困难_正则表达式匹配.md)  
 > [[困难, 牛客] 编辑距离(二)](../../2022/02/牛客_0035_困难_编辑距离(二).md)  
@@ -163,15 +159,34 @@ class Solution:
 > [[简单, LeetCode] 买卖股票的最佳时机](../../2022/06/LeetCode_0121_简单_买卖股票的最佳时机.md)  
 > [[简单, LeetCode] 最大子数组和](../../2022/01/LeetCode_0053_简单_最大子数组和.md)  
 > [[简单, LeetCode] 爬楼梯](../../2022/01/LeetCode_0070_简单_爬楼梯.md)  
-> [[简单, 剑指Offer] 斐波那契数列](../11/剑指Offer_1001_简单_斐波那契数列.md)  
-> [[简单, 剑指Offer] 跳台阶](../11/剑指Offer_1002_简单_跳台阶.md)  
-> [[简单, 剑指Offer] 连续子数组的最大和](剑指Offer_4200_简单_连续子数组的最大和.md)  
+> [[简单, 剑指Offer] 斐波那契数列](../../2021/11/剑指Offer_1001_简单_斐波那契数列.md)  
+> [[简单, 剑指Offer] 跳台阶](../../2021/11/剑指Offer_1002_简单_跳台阶.md)  
+> [[简单, 剑指Offer] 连续子数组的最大和](../../2021/12/剑指Offer_4200_简单_连续子数组的最大和.md)  
 > [[简单, 华为机试] 放苹果](../../2022/05/华为机试_061_简单_放苹果.md)  
 > [[简单, 牛客] 兑换零钱(一)](../../2022/05/牛客_0126_简单_兑换零钱(一).md)  
 > [[简单, 牛客] 斐波那契数列](../../2022/03/牛客_0065_简单_斐波那契数列.md)  
 > [[简单, 牛客] 求路径](../../2022/02/牛客_0034_简单_求路径.md)  
 > [[简单, 牛客] 跳台阶](../../2022/03/牛客_0068_简单_跳台阶.md)  
 > [[简单, 牛客] 连续子数组的最大和](../../2022/01/牛客_0019_简单_连续子数组的最大和.md)  
+  > 
+
+</details>
+
+<details><summary><b>暴力递归与动态规划 (11)</b></summary>
+
+> [[中等, LeetCode] 一和零](../../2022/06/LeetCode_0474_中等_一和零.md)  
+> [[中等, LeetCode] 完全平方数](../../2022/02/LeetCode_0279_中等_完全平方数.md)  
+> [[中等, LeetCode] 打家劫舍](../../2022/06/LeetCode_0198_中等_打家劫舍.md)  
+> [[中等, LeetCode] 解码方法](../../2022/02/LeetCode_0091_中等_解码方法.md)  
+> [[中等, LeetCode] 零钱兑换](../../2022/06/LeetCode_0322_中等_零钱兑换.md)  
+> [[中等, 剑指Offer] n个骰子的点数](../../2022/01/剑指Offer_6000_中等_n个骰子的点数.md)  
+> [[中等, 牛客] 01背包 🔥](../../2022/05/牛客_0145_中等_01背包.md)  
+> [[中等, 牛客] 最长公共子串](../../2022/05/牛客_0127_中等_最长公共子串.md)  
+  > 
+> [[困难, 牛客] 编辑距离(二)](../../2022/02/牛客_0035_困难_编辑距离(二).md)  
+> [[困难, 牛客] 通配符匹配](../../2022/03/牛客_0044_困难_通配符匹配.md)  
+  > 
+> [[简单, LeetCode] 爬楼梯](../../2022/01/LeetCode_0070_简单_爬楼梯.md)  
   > 
 
 </details>
