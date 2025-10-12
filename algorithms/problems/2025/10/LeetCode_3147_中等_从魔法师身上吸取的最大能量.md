@@ -1,6 +1,6 @@
 ## 从魔法师身上吸取的最大能量
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-11%2023%3A54%3A28&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-13%2000%3A05%3A11&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%89%8D%E7%BC%80%E5%92%8C&color=blue&style=flat-square)](../../../README.md#前缀和)
@@ -97,7 +97,7 @@ class Solution:
 
 <details><summary><b>其他算法笔记</b></summary>
 
-- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
 - [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
 - [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
 - [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  

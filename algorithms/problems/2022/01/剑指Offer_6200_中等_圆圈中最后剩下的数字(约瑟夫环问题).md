@@ -116,7 +116,7 @@ class Solution:
 
 ### 算法笔记
 
-- [从暴力递归到动态规划](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
 
 <details><summary><b>其他算法笔记</b></summary>
 
