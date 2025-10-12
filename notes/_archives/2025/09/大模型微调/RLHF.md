@@ -1,4 +1,4 @@
-偏好学习 (RLHF)
+RLHF (基于人类反馈的强化学习)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -6,9 +6,10 @@
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
-toc_title: '**偏好学习** (**RLHF**)'
+toc_title: '**RLHF** (偏好学习, 对齐学习)'
 top: false
-draft: false
+draft: true
+thorough: true
 hidden_in_recent: true
 section_number: false
 level: 0
@@ -16,14 +17,15 @@ tags: [llm_sft]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: 偏好学习*
+> ***Keywords**: 偏好学习, 对齐学习*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [快速回顾](#快速回顾)
+- [快速回顾 ⏰](#快速回顾-)
+    - [RLHF 伪代码 (轨迹生成 + 梯度传播) 📌](#rlhf-伪代码-轨迹生成--梯度传播-)
     - [**RLHF (PPO) 的 3 个核心步骤**:](#rlhf-ppo-的-3-个核心步骤)
     - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
@@ -40,10 +42,126 @@ tags: [llm_sft]
 
 ---
 
-## 快速回顾
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: '**快速回顾**'
+extra_url: false
+-->
+## 快速回顾 ⏰
+<!--END_SECTION:keyword-->
+
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: '伪代码'
+extra_url: false
+-->
+### RLHF 伪代码 (轨迹生成 + 梯度传播) 📌
+<!--END_SECTION:keyword-->
+
+<details><summary><b>轨迹生成 📌</b></summary>
+
+$$
+\begin{align*}
+& \textbf{Algorithm: Trajectory Generation (One Episode)} \\
+& \begin{alignedat}{2}
+    & \textbf{Input} &&: \mathcal{D},\ \pi_{\theta},\ V_{\psi},\ R_{\phi},\ \pi_{\text{ref}},\ \gamma,\ \beta,\ \lambda \\
+    & \textbf{Output} &&: \tau \\
+\end{alignedat} \\
+& \begin{alignedat}{3}
+    & x && \sim \mathcal{D} && \quad\quad\quad\quad\scriptstyle{\text{// Sample prompt}} \\
+    & s_1 && \gets x && \quad\quad\quad\quad\scriptstyle{\text{// Init State}} \\
+    & y && \gets \text{""} && \quad\quad\quad\quad\scriptstyle{\text{// Init Response}} \\
+    & \mathbf{\tau} && \gets \left\lbrack\ \right\rbrack && \quad\quad\quad\quad\scriptstyle{\text{// Init Trajectory list}} \\
+\end{alignedat} \\
+& terminal \gets False && \scriptstyle{\text{// Terminal Signal}} \\
+& \textbf{for } t = 1 \dots \ \textbf{do} \\
+    & \quad\quad \begin{alignedat}{2}
+        & \text{probs}^{\pi_{\theta}}_{t} && =\ \pi_{\theta}(\cdot | s_t) \\
+        & \text{probs}^{\pi_{\text{ref}}}_{t} && =\ \pi_{\text{ref}}(\cdot | s_t) \\
+    \end{alignedat} \\
+    & \quad\quad a_t,\ \log{p}^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t}) && \scriptstyle{\text{// Sample Action from a Categorical Distribution}} \\
+    & \quad\quad \begin{alignedat}{3}
+        & s_{t+1} = s_t + a_t \\
+        & y = y + a_t
+    \end{alignedat} \\
+    & \quad\quad \textbf{if }\ a_t == \text{\lbrack EOS\rbrack} \ \ \textbf{then} && \scriptstyle{\text{// At this time t=T}} \\
+        & \quad\quad\quad\quad \begin{alignedat}{2}
+            & r_t && = -\beta \, D_{\scriptscriptstyle\text{KL}}({\text{probs}^{\pi_{\theta}}_{t}}\ \|\ {\text{probs}^{\pi_{\text{ref}}}_{t}}) + R_\phi(x,y) \\
+        \end{alignedat} \\
+        & \quad\quad\quad\quad terminal \gets \textbf{True} \\
+    & \quad\quad \textbf{else} \\
+        & \quad\quad\quad\quad r_t = -\beta \, D_{\scriptscriptstyle\text{KL}}({\text{probs}^{\pi_{\theta}}_{t}}\ \|\ {\text{probs}^{\pi_{\text{ref}}}_{t}}) \\
+    & \quad\quad \textbf{end if} \\[4pt]
+    & \quad\quad \text{Append}\big(\tau, \left\lbrack{s_t,a_t,r_t,\log{p}^{a_t}}\right\rbrack\big) \\[4pt]
+    & \quad\quad \textbf{if }\ terminal \ \ \textbf{then} \\
+        & \quad\quad\quad\quad \textbf{break} \\
+    & \quad\quad \textbf{end if} \\
+& \textbf{end for}
+
+\\[6pt]
+& \begin{alignedat}{3}
+    & T && \gets \text{Length}(\tau) \\
+    & \hat{A}_{T+1} && \gets 0 && \quad\quad\quad\quad\scriptstyle{\text{// Bootstrap final advantage}} \\
+\end{alignedat} \\
+& \textbf{for } t = T \dots 1 \ \textbf{do} \\
+    & \quad\quad s_t,\ a_t,\ r_t,\ \_ = \tau\lbrack t \rbrack \\
+    & \quad\quad s_{t+1} = s_t + a_t \\
+    & \quad\quad \begin{alignedat}{3}
+        & \delta_{t} && = r_t + \gamma V_{\psi}(s_{t+1}) - V_{\psi}(s_t) \\
+        & \hat{A}_t && = \delta_{t} + \gamma\lambda{\cdot}{\hat{A}_{t+1}} && \quad\quad\scriptstyle{\text{// GAE}} \\
+        & \hat{R}_t && = \hat{A}_t + V_{\psi}(s_t) && \quad\quad\scriptstyle{\text{// Return estimate}} \\
+    \end{alignedat} \\
+    & \quad\quad \text{Extend}\big(\tau\lbrack t \rbrack, \ \lbrack \hat{A}_t, \hat{R}_t \rbrack \big) && \scriptstyle{\text{// One time step: } \left\lbrack\ s_t,\ a_t,\ r_t,\ \log{p}^{a_t},\ \hat{A}_t,\ \hat{R}_t \ \right\rbrack} \\
+& \textbf{end for}
+\end{align*}
+$$
+
+> 函数说明 (python): 
+> - `Categorical()`: `torch.distributions.Categorical(probs)`
+> - `Append()`: `list.append()`
+> - `Extend()`: `list.extend()`
+> - `Length()`: `list.len()`
+
+</details>
+
+---
+
+<details><summary><b>梯度传播 📌</b></summary>
+
+$$
+\begin{align*}
+& \textbf{Algorithm: Gradient Propagation (Mini-Batch)} \\
+& \begin{alignedat}{2}
+    & \textbf{Input} &&: \{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log p_{a_i})\}_{i=1}^N,\ \pi_{\theta},\ V_{\psi},\ \epsilon,\ c_e,\ c_v \\
+    & \textbf{Output} &&: \theta,\ \psi \\
+\end{alignedat} \\
+& \textbf{for } i = 1 \dots N \ \textbf{do} \\
+& \quad\quad \log \pi_{\theta}(a_i|s_i) \gets \text{CurrentPolicyLogProb}(s_i, a_i) \\
+& \quad\quad r_i(\theta) \gets \exp\!\big(\log \pi_{\theta}(a_i|s_i) - \log p_{a_i}\big) \\
+& \quad\quad L^{actor}_i \gets - \min\!\Big( r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i \Big) \\
+& \quad\quad L^{entropy}_i \gets - \sum_{a} \pi_{\theta}(a|s_i)\,\log \pi_{\theta}(a|s_i) \\
+& \quad\quad L^{critic}_i \gets \tfrac{1}{2}\,\big(V_{\psi}(s_i) - \hat{R}_i\big)^2 \\
+& \textbf{end for} \
+
+\\[6pt]
+& \mathcal{L}^{actor} \gets \tfrac{1}{N}\sum_{i=1}^N L^{actor}_i \\
+& \mathcal{L}^{entropy} \gets \tfrac{1}{N}\sum_{i=1}^N L^{entropy}_i \\
+& \mathcal{L}^{critic} \gets \tfrac{1}{N}\sum_{i=1}^N L^{critic}_i \\
+& \mathcal{L} \gets \mathcal{L}^{actor} + c_e \mathcal{L}^{entropy} + c_v \mathcal{L}^{critic} \
+
+\\[6pt]
+& \theta \gets \theta - \alpha_{\pi}\,\nabla_{\theta}\,\mathcal{L} \\
+& \psi \gets \psi - \alpha_{V}\,\nabla_{\psi}\,\mathcal{L}
+\end{align*}
+
+$$
+
+</details>
+
+---
 
 ### **RLHF (PPO) 的 3 个核心步骤**:
-> SFT → 奖励模型 → 强化学习 (策略优化)
+> 监督微调 → 奖励模型 → 策略优化 (强化学习)
 - **监督微调 (SFT)**:
     - **目标**: <br>
         🚩 构建基础能力, 使模型具备基本的指令跟随能力, 构建良好基线.
@@ -77,27 +195,29 @@ tags: [llm_sft]
         🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
         $$\mathcal{L}(\phi) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \Big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \Big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
         > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.
-- **强化学习** (**PPO 算法**):
+- **策略优化** (**基于 PPO 算法**):
     - **目标函数** (组合目标): <br>
-        🚩 **策略优化 (PPO-Clip) + 价值函数误差 + KL 正则**
+        🚩 **策略优化 (PPO-Clip) + 价值函数误差 + KL 正则项**
         $$\begin{align}
             \mathcal{L}_{\scriptscriptstyle Total}(\theta, \phi) = \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) - c_1 \mathcal{L}_{\scriptscriptstyle VF}(\phi) + c_2 \mathcal{L}_{\scriptscriptstyle KL}(\theta)
         \end{align}$$
         <!-- > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式) -->
     - **策略模型 $\pi_{\theta}(s)$** 📌 <br>
-        $$\begin{align} 
-            \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) &= \hat{\mathbb{E}}_t \left\lbrack\ \min\Big( \underline{r_t(\theta)}\hat{A}_t, \ \underline{\text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)}\hat{A}_t \Big) \ \right\rbrack
-        \end{align}$$
-        - **A 函数近似**:
+        - **损失函数**: 
+            $$\begin{align} 
+                \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) &= \hat{\mathbb{E}}_t \left\lbrack\ \min\Big( \underline{r_t(\theta)}\hat{A}_t, \ \underline{\text{CLIP}(r_t(\theta), 1-\epsilon, 1+\epsilon)}\hat{A}_t \Big) \ \right\rbrack \ ,\quad r_t(\theta)=\frac{\pi_\theta(a_t|s_t)}{\pi_{\text{old}}(a_t|s_t)}
+            \end{align}$$
+        - **优势估计 $\hat{A}_t$**:
             $$\begin{align}
-                \hat{A}_t = \delta_t + \gamma \lambda \ \hat{A}_{t+1} \ , \quad \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
+                \hat{A}_t = \sum_{k=0}^{T-t}{(\gamma\lambda)^k}{\cdot}{\delta_{t+k}} = \delta_t + \gamma \lambda{\cdot}{\hat{A}_{t+1}} \ , \quad \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
             \end{align}$$
             其中
             $$r_t =
                 \begin{cases}
                 r^{\scriptscriptstyle KL}_t, & t < T \\
-                r^{\scriptscriptstyle KL}_T + R_{\phi}(x,y), & t = T
-                \end{cases} , \quad r^{\scriptscriptstyle KL}_t = -\beta D_{\scriptscriptstyle KL}\big(\pi_\theta(\cdot|s_t)\|\pi_{\text{ref}}(\cdot|s_t)\big)
+                r^{\scriptscriptstyle KL}_t + R_{\phi}(x,y), & t = T
+                \end{cases}
+                {\ ,\quad} r^{\scriptscriptstyle KL}_t = -\beta D_{\scriptscriptstyle KL}\Big(\pi_\theta(\cdot|s_t)\|\pi_{\text{ref}}(\cdot|s_t)\Big)
             $$
             > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
     - **价值模型 $V_{\phi}(s)$**:
@@ -139,7 +259,7 @@ tags: [llm_sft]
     - **SFT** 的目标是 **拟合训练数据的条件分布**, 虽然能让模型在 **特定任务** 上更可控,
     - 但其性能上限取决于 **数据的质量和范围**,
     - 对 **未见场景的泛化** 与 **细粒度偏好的对齐** 能力有限;
-    <!-- - 其 **策略空间** 被限制在训练数据附近, **损失函数** (交叉熵损失) 会惩罚模型输出与 **标准答案** 之间的差异;  -->
+    <!-- - 其 **策略空间** 被限制在训练数据附近, **损失函数** (交叉熵损失) 会惩罚模型输出与 **标准答案** 之间的差异; -->
 - **RL 引入难题**:
     - **奖励函数难以定义**:
         - 自然语言的好坏缺少客观标准;
@@ -286,10 +406,10 @@ extra_url: false
             <!-- > 其中 $R_{\phi}(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
-            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \  \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
+            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
             $$
             \mathcal{L}(\theta; D) = -\mathbb{E}_{(x, y_j, y_k) \sim D} \Big \lbrack
-                \log \  \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)
+                \log \ \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)
                 \Big \rbrack
             $$
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
@@ -302,7 +422,7 @@ extra_url: false
     -->
 - **训练阶段**:
     - **在一次前向计算中**, 奖励模型分别对 $(x, y_j)$ 和 $(x, y_k)$ 各跑一遍, 得到两个标量分数 $r_j$ 和 $r_k$;
-    - 若 $y_j \succ y_k$, 则损失为 $l = -\log \  \sigma(r_j - r_k)$
+    - 若 $y_j \succ y_k$, 则损失为 $l = -\log \ \sigma(r_j - r_k)$
 - **推理阶段**:
     - **输入**:
         - Prompt + 单个候选输出;
@@ -342,8 +462,8 @@ extra_url: false
         $$
      -->
 - **目的**:
-    -  在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
-    -  学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
+    - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
+    - 学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
     <!-- - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 为每个对象 **估计出一个静态的能力分数** $r$; -->
     <!-- - BT 模型试图通过一系列 **成对比较结果** $(y_j, y_k)$, **为每个对象估算出一个标量分数** $r$, 代表其强度; -->
     <!-- - 两个对象之间的 比较关系/胜负结果 是可以获取/累计的; -->
@@ -368,13 +488,13 @@ extra_url: false
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\phi;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
+        \mathcal{L}(\phi;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \ \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     <!--
     - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
         $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \  \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
+        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \ \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
         $$
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->

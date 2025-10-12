@@ -17,7 +17,7 @@ tags: []
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [偏好学习](偏好学习_RLHF.md)*
+> ***Keywords**: [偏好学习](RLHF.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -762,18 +762,28 @@ extra_url: false
 - 当 $n \to \infty$ 时, 即为无限步长的优势估计:
     $$ A_t^{(\infty)} = \sum_{k=0}^{\infty} \gamma^k \delta_{t+k} $$
 - GAE 引入了参数 $\lambda \in [0, 1)$, 将不同步长的估计进行 **指数加权平均**, 公式如下:
-    $$ A_t^{\text{GAE}(\gamma, \lambda)}
+    $$
+        A_t^{\scriptscriptstyle{\text{GAE}(\gamma, \lambda)}}
         = (1-\lambda) (A_t^{(1)} + \lambda A_t^{(2)} + \lambda^2 A_t^{(3)} + \dots )
         = (1-\lambda) \sum_{k=1}^{\infty} \lambda^{k-1} A_t^{(k)}
     $$
 - 将 **$n$-步估计** 代入并整理, 得其紧凑形式:
-    $$A_t^{\text{GAE}(\gamma, \lambda)} = \sum_{k=0}^{\infty} (\gamma \lambda)^k \delta_{t+k}$$
+    $$\begin{aligned}
+        A_t^{\scriptscriptstyle{\text{GAE}(\gamma, \lambda)}}
+        &= \sum_{k=0}^{\infty} (\gamma \lambda)^k \delta_{t+k} \\
+        &= \delta_{t} + {\gamma\lambda}{\cdot}{A_{t+1}^{\scriptscriptstyle\text{GAE}(\gamma, \lambda)}}
+    \end{aligned}$$
     - 当 $\lambda=0$ 时, GAE **退化为单步优势估计**: $A_t = \delta_t$;
     - 当 $\lambda\to 1$ 时, GAE **等价于无限步长的 TD 误差和**, 即 $A_t^{(\infty)}$;
     - 通过调整 $\lambda$, 可以在 **偏差** 与 **方差** 之间取得平衡;
         - 小 $\lambda$ → 方差较小, 偏差较大;
         - 大 $\lambda$ → 偏差较小, 方差较大.
-
+- **有限步下的优势估计**: 📌
+    $$\begin{aligned}
+        \hat{A}_t^{\scriptscriptstyle{\text{GAE}(\gamma, \lambda)}}
+        &= \sum_{k=0}^{T} (\gamma \lambda)^k \delta_{t+k} \\
+        &= \delta_{t} + {\gamma\lambda}{\cdot}{\hat{A}_{t+1}^{\scriptscriptstyle\text{GAE}(\gamma, \lambda)}} \ , \quad \hat{A}_{T+1} = 0
+    \end{aligned}$$
 
 <!-- omit in toc -->
 ### 策略梯度定理推导

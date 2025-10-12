@@ -239,8 +239,8 @@ Other      5 mins          -------------------------   00.17 %
 
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
-- [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md) 
-  > _[奖励模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/偏好学习_RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
+- [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/RLHF.md) 
+  > _[奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣

@@ -637,14 +637,9 @@ class args:  # noqa
     fp_tags = fp_notes / '_tags.json'
     notes_top_limit = None
 
-    # template
-    temp_badge_todo_logo_check = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=check-square&logoColor=white" height="17"/>'
-    temp_badge_todo_logo_edit = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="17"/>'
-    temp_badge_todo_logo_edit_h = '<img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={num_todo}&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/>'
-
     @staticmethod
-    def get_temp_badge_todo_logo(count: int, height: int, color: str = 'E05D44', href: str = '#') -> str:
-        """"""
+    def get_temp_badge_todo_logo(count: int, height: int, color: str = 'important', href: str = '#') -> str:
+        """color candidate: orange, E05D44"""
         return f'<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
         
 
