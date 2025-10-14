@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb} % 数学环境支持
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{etoolbox}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{bm}
+
+% 字体
+% \usepackage{inconsolata}
+% \usepackage{XCharter}
+\usepackage{newtxtext}
+% \usepackage{newtxmath}
+% \usepackage{newpxtext}
+% \usepackage{newpxmath}
+% \usepackage{lmodern}
+% \renewcommand{\familydefault}{\sfdefault}
+
+% \usepackage{graphicx}
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman} % 主字体
+% \setsansfont{Arial}           % 无衬线
+% \setmonofont{Consolas}        % 等宽
+
+% 重构 \If 格式
+% \algrenewtext{If}[1]{\algorithmicif\ \ #1\ \ \algorithmicthen} 
+
+% 全局去掉页码
+\pagestyle{empty}
+
+% 设置标题样式
+\captionsetup[algorithm]{font=Large, labelfont=bf}
+
+% 重定义宏指令, 修改 \Require 和 \Ensure 的文本
+\renewcommand{\algorithmicrequire}{\textbf{Inputs}:}
+\renewcommand{\algorithmicensure}{\textbf{Output}:}
+% \renewcommand{\algorithmicrequire}{\textbf{\makebox[3.2em][l]{Inputs}}\textbf{:}}
+% \renewcommand{\algorithmicensure}{\textbf{\makebox[3.2em][l]{Output}}\textbf{:}}
+
+% 在进入 algorithmic 环境时:
+% 设置等宽字体
+\AtBeginEnvironment{algorithmic}{\ttfamily}
+% 设置字号, 行间距
+\AtBeginEnvironment{algorithmic}{\fontsize{12pt}{16pt}\selectfont}
+% 调整间距
+\AtBeginEnvironment{algorithmic}{%
+  \setlength{\thickmuskip}{8mu}     % 调整 关系符号 两侧的距离, 如 =, <, >, \leq 等
+  \setlength{\medmuskip}{4mu}       % 调整 二元运算符 两侧的距离, 如 +, -, \times, \cdot 等
+  \setlength{\thinmuskip}{5mu}      % 调整 关系较弱的符号 两侧的距离, 如 a/b a,b a:b 等
+}
+
+
+\begin{document}
+
+\begin{algorithm}
+\caption*{\textbf{Algorithm:} Trajectory Generation (One Episode)}
+\begin{algorithmic}[1]
+\Require $\pi_{\theta}, V_{\psi}, R_{\phi}, \pi_{\text{ref}}, \mathcal{D}, \gamma, \beta, \lambda$
+\Ensure $\tau$
+
+\State $x \sim \mathcal{D}$ \Comment{Sample prompt}
+\State $s_1 \gets x$ \Comment{Init state}
+\State $y \gets \text{""}$ \Comment{Init response}
+\State $\tau \gets [\ ]$ \Comment{Init trajectory list}
+\State $terminal \gets \text{False}$ \Comment{Terminal signal}
+
+\For{$t = 1,2,\dots$}
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \pi_{\theta}(\cdot \mid s_t)$
+    \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
+    % \State $\text{probs}^{\pi_{\text{ref}}}_{t} = \pi_{\text{ref}}(\cdot \mid s_t)$
+    \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
+    \State $a_t,\, \log p^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t})$ \Comment{Sample action}
+    \State $s_{t+1} = s_t + a_t$
+    \State $y = y + a_t$
+    \If{$a_t == [\text{EOS}]$} \Comment{At this time $t{=}{T}$}
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t}) + R_\phi(x,y)$
+        \State $terminal = \text{True}$
+    \Else
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t})$
+    \EndIf
+    \State Append($\tau,\, [s_t, a_t, r_t, \log p^{a_t}]$)
+    \If{$terminal$}
+        \State \textbf{break}
+    \EndIf
+\EndFor
+
+\State $T \gets \text{Length}(\tau)$
+\State $\hat{A}_{T+1} \gets 0$ \Comment{Bootstrap final advantage}
+
+\For{$t = T, \dots, 1$}
+    \State $(s_t, a_t, r_t, \_) = \tau[t]$
+    \State $s_{t+1} = s_t + a_t$
+    \State $\delta_t = r_t + \gamma V_{\psi}(s_{t+1}) - V_{\psi}(s_t)$
+    \State $\hat{A}_t = \delta_t + \gamma\lambda\,\hat{A}_{t+1}$ \Comment{GAE}
+    \State $\hat{R}_t = \hat{A}_t + V_{\psi}(s_t)$ \Comment{Return estimate}
+    \State Extend($\tau[t],\, [\hat{A}_t, \hat{R}_t]$) \Comment{One step $[s_t,a_t,r_t,\log{p}^{a_t},\hat{A}_t,\hat{R}_t]$}
+\EndFor
+
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}

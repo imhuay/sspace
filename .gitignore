@@ -14,6 +14,15 @@ _book/
 -*
 _test.sh
 
+# Latex 临时文件
+**/*tex*/**/*.aux
+**/*tex*/**/*.fdb_latexmk
+**/*tex*/**/*.fls
+**/*tex*/**/*.log
+**/*tex*/**/*.synctex.gz
+**/*tex*/**/*.pdf
+**/*tex*/**/*.dvi
+
 # 指定文件
 nohup.out
 mt_*

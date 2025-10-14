@@ -26,7 +26,7 @@ tags: [llm_sft]
 <!--START_SECTION:toc-->
 - [快速回顾 ⏰](#快速回顾-)
     - [RLHF 伪代码 (轨迹生成 + 梯度传播) 📌](#rlhf-伪代码-轨迹生成--梯度传播-)
-    - [**RLHF (PPO) 的 3 个核心步骤**:](#rlhf-ppo-的-3-个核心步骤)
+    - [**RLHF (PPO) 的 3 个核心步骤**](#rlhf-ppo-的-3-个核心步骤)
     - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
     - [背景](#背景)
@@ -60,61 +60,16 @@ extra_url: false
 
 <details><summary><b>轨迹生成 📌</b></summary>
 
-$$
-\begin{align*}
-& \textbf{Algorithm: Trajectory Generation (One Episode)} \\
-& \begin{alignedat}{2}
-    & \textbf{Input} &&: \mathcal{D},\ \pi_{\theta},\ V_{\psi},\ R_{\phi},\ \pi_{\text{ref}},\ \gamma,\ \beta,\ \lambda \\
-    & \textbf{Output} &&: \tau \\
-\end{alignedat} \\
-& \begin{alignedat}{3}
-    & x && \sim \mathcal{D} && \quad\quad\quad\quad\scriptstyle{\text{// Sample prompt}} \\
-    & s_1 && \gets x && \quad\quad\quad\quad\scriptstyle{\text{// Init State}} \\
-    & y && \gets \text{""} && \quad\quad\quad\quad\scriptstyle{\text{// Init Response}} \\
-    & \mathbf{\tau} && \gets \left\lbrack\ \right\rbrack && \quad\quad\quad\quad\scriptstyle{\text{// Init Trajectory list}} \\
-\end{alignedat} \\
-& terminal \gets False && \scriptstyle{\text{// Terminal Signal}} \\
-& \textbf{for } t = 1 \dots \ \textbf{do} \\
-    & \quad\quad \begin{alignedat}{2}
-        & \text{probs}^{\pi_{\theta}}_{t} && =\ \pi_{\theta}(\cdot | s_t) \\
-        & \text{probs}^{\pi_{\text{ref}}}_{t} && =\ \pi_{\text{ref}}(\cdot | s_t) \\
-    \end{alignedat} \\
-    & \quad\quad a_t,\ \log{p}^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t}) && \scriptstyle{\text{// Sample Action from a Categorical Distribution}} \\
-    & \quad\quad \begin{alignedat}{3}
-        & s_{t+1} = s_t + a_t \\
-        & y = y + a_t
-    \end{alignedat} \\
-    & \quad\quad \textbf{if }\ a_t == \text{\lbrack EOS\rbrack} \ \ \textbf{then} && \scriptstyle{\text{// At this time t=T}} \\
-        & \quad\quad\quad\quad \begin{alignedat}{2}
-            & r_t && = -\beta \, D_{\scriptscriptstyle\text{KL}}({\text{probs}^{\pi_{\theta}}_{t}}\ \|\ {\text{probs}^{\pi_{\text{ref}}}_{t}}) + R_\phi(x,y) \\
-        \end{alignedat} \\
-        & \quad\quad\quad\quad terminal \gets \textbf{True} \\
-    & \quad\quad \textbf{else} \\
-        & \quad\quad\quad\quad r_t = -\beta \, D_{\scriptscriptstyle\text{KL}}({\text{probs}^{\pi_{\theta}}_{t}}\ \|\ {\text{probs}^{\pi_{\text{ref}}}_{t}}) \\
-    & \quad\quad \textbf{end if} \\[4pt]
-    & \quad\quad \text{Append}\big(\tau, \left\lbrack{s_t,a_t,r_t,\log{p}^{a_t}}\right\rbrack\big) \\[4pt]
-    & \quad\quad \textbf{if }\ terminal \ \ \textbf{then} \\
-        & \quad\quad\quad\quad \textbf{break} \\
-    & \quad\quad \textbf{end if} \\
-& \textbf{end for}
+<!-- algorithm: RLHF_轨迹生成过程.tex -->
+<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
 
-\\[6pt]
-& \begin{alignedat}{3}
-    & T && \gets \text{Length}(\tau) \\
-    & \hat{A}_{T+1} && \gets 0 && \quad\quad\quad\quad\scriptstyle{\text{// Bootstrap final advantage}} \\
-\end{alignedat} \\
-& \textbf{for } t = T \dots 1 \ \textbf{do} \\
-    & \quad\quad s_t,\ a_t,\ r_t,\ \_ = \tau\lbrack t \rbrack \\
-    & \quad\quad s_{t+1} = s_t + a_t \\
-    & \quad\quad \begin{alignedat}{3}
-        & \delta_{t} && = r_t + \gamma V_{\psi}(s_{t+1}) - V_{\psi}(s_t) \\
-        & \hat{A}_t && = \delta_{t} + \gamma\lambda{\cdot}{\hat{A}_{t+1}} && \quad\quad\scriptstyle{\text{// GAE}} \\
-        & \hat{R}_t && = \hat{A}_t + V_{\psi}(s_t) && \quad\quad\scriptstyle{\text{// Return estimate}} \\
-    \end{alignedat} \\
-    & \quad\quad \text{Extend}\big(\tau\lbrack t \rbrack, \ \lbrack \hat{A}_t, \hat{R}_t \rbrack \big) && \scriptstyle{\text{// One time step: } \left\lbrack\ s_t,\ a_t,\ r_t,\ \log{p}^{a_t},\ \hat{A}_t,\ \hat{R}_t \ \right\rbrack} \\
-& \textbf{end for}
-\end{align*}
-$$
+<!--
+latex -output-format=dvi 轨迹生成过程.tex \
+&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o 轨迹生成过程.svg 轨迹生成过程.dvi
+
+latex -output-format=dvi 轨迹生成过程.tex \
+&& dvipng -D 600 -T tight -o 轨迹生成过程.png 轨迹生成过程.dvi
+-->
 
 > 函数说明 (python): 
 > - `Categorical()`: `torch.distributions.Categorical(probs)`
@@ -128,39 +83,19 @@ $$
 
 <details><summary><b>梯度传播 📌</b></summary>
 
-$$
-\begin{align*}
-& \textbf{Algorithm: Gradient Propagation (Mini-Batch)} \\
-& \begin{alignedat}{2}
-    & \textbf{Input} &&: \{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log p_{a_i})\}_{i=1}^N,\ \pi_{\theta},\ V_{\psi},\ \epsilon,\ c_e,\ c_v \\
-    & \textbf{Output} &&: \theta,\ \psi \\
-\end{alignedat} \\
-& \textbf{for } i = 1 \dots N \ \textbf{do} \\
-& \quad\quad \log \pi_{\theta}(a_i|s_i) \gets \text{CurrentPolicyLogProb}(s_i, a_i) \\
-& \quad\quad r_i(\theta) \gets \exp\!\big(\log \pi_{\theta}(a_i|s_i) - \log p_{a_i}\big) \\
-& \quad\quad L^{actor}_i \gets - \min\!\Big( r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i \Big) \\
-& \quad\quad L^{entropy}_i \gets - \sum_{a} \pi_{\theta}(a|s_i)\,\log \pi_{\theta}(a|s_i) \\
-& \quad\quad L^{critic}_i \gets \tfrac{1}{2}\,\big(V_{\psi}(s_i) - \hat{R}_i\big)^2 \\
-& \textbf{end for} \
+<!-- algorithm: RLHF_反向传播过程.tex -->
+<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
 
-\\[6pt]
-& \mathcal{L}^{actor} \gets \tfrac{1}{N}\sum_{i=1}^N L^{actor}_i \\
-& \mathcal{L}^{entropy} \gets \tfrac{1}{N}\sum_{i=1}^N L^{entropy}_i \\
-& \mathcal{L}^{critic} \gets \tfrac{1}{N}\sum_{i=1}^N L^{critic}_i \\
-& \mathcal{L} \gets \mathcal{L}^{actor} + c_e \mathcal{L}^{entropy} + c_v \mathcal{L}^{critic} \
-
-\\[6pt]
-& \theta \gets \theta - \alpha_{\pi}\,\nabla_{\theta}\,\mathcal{L} \\
-& \psi \gets \psi - \alpha_{V}\,\nabla_{\psi}\,\mathcal{L}
-\end{align*}
-
-$$
+<!-- 
+latex -output-format=dvi RLHF_反向传播过程.tex \
+&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_反向传播过程.svg RLHF_反向传播过程.dvi
+-->
 
 </details>
 
 ---
 
-### **RLHF (PPO) 的 3 个核心步骤**:
+### **RLHF (PPO) 的 3 个核心步骤**
 > 监督微调 → 奖励模型 → 策略优化 (强化学习)
 - **监督微调 (SFT)**:
     - **目标**: <br>
