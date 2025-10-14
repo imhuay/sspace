@@ -226,7 +226,7 @@ Other      5 mins          -------------------------   00.17 %
   > _[QA](notes/_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](notes/_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
 
 <!-- omit in toc -->
 #### BERT
@@ -239,13 +239,13 @@ Other      5 mins          -------------------------   00.17 %
 
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
-- [**偏好学习** ( **RLHF** )](notes/_archives/2025/09/大模型微调/RLHF.md) 
-  > _[奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
+- [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
+  > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [伪代码](notes/_archives/2025/09/大模型微调/RLHF.md#rlhf-伪代码-轨迹生成--梯度传播-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
     > _[基本形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
-  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
     > _[PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](notes/_archives/2025/09/大模型微调/LoRA.md) • [QA](notes/_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
@@ -267,7 +267,7 @@ Other      5 mins          -------------------------   00.17 %
 
 - [概率论基础](notes/_archives/2025/09/概率论基础.md) 
   > _[期望](notes/_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](notes/_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
-- [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=E05D44&color=E05D44&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+- [机器学习基本概念](notes/_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
   > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](notes/_archives/2025/09/机器学习基本概念.md#正则化-regularization)_<br>
 - [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) 
 - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md) 
