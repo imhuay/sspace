@@ -19,9 +19,10 @@ tags: [python_tool]
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
+- [命令速查](#命令速查)
 - [背景](#背景)
 - [基础命令](#基础命令)
-    - [更新 `uv`](#更新-uv)
+    - [更新 `uv` 本身](#更新-uv-本身)
     - [换源](#换源)
     - [依赖管理](#依赖管理)
         - [可选依赖](#可选依赖)
@@ -29,6 +30,27 @@ tags: [python_tool]
         - [组依赖](#组依赖)
         - [源代码依赖](#源代码依赖)
 <!--END_SECTION:toc-->
+
+---
+
+## 命令速查
+
+| 场景 | 命令示例 | 对 pyproject.toml 文件的影响 |
+|------|----------|------|
+| 添加/移除普通依赖 | `uv add/remove requests` | 写入到 `[project].dependencies` |
+| 添加/移除开发依赖 | `uv add/remove pytest --dev` | 写入到 `[dependency-groups].dev` |
+| 添加/移除指定组依赖 | `uv add/remove black --group lint` | 写入到 `[dependency-groups].lint` |
+| 添加/移除指定可选依赖 | `uv add/remove torch --optional cpu` | 写入到 `[project.optional-dependencies].cpu` |
+| 指定 `--index` 安装 (对 index 命名) | `uv add/remove torch --optional cpu --index pytorch-cpu=https://download.pytorch.org/whl/cpu` | 增加一项 `[[tool.uv.index]]`, 并将包与 index 的依赖关系写到 `[tool.uv.sources]` (只有命名了 index 才会有)
+| 同步安装 | `uv sync` | 安装 `[project].dependencies` 中的依赖 |
+| 同步安装 + dev | `uv sync --dev` | 安装主依赖 + 开发依赖 |
+| 同步安装 + 组依赖 | `uv sync --group lint`, `uv sync --all-groups` | 安装主依赖 + `lint` 组依赖 |
+| 同步安装 + 可选依赖 | `uv sync --extra cpu`, `uv sync --all-extras` | 安装主依赖 + `cpu` 可选依赖 |
+
+> 🚨 **推荐所有用到了 `--index` 的安装, 都对 index 命名**. 如果不命名的话, 同步时不会从原来的 index 安装.
+
+> 💡 *不深入研究的话, **组依赖 (group)** 和 **可选依赖 (extra)** 当成相同功能的不同命令即可, 形式上都是把一些不需要立即依赖的包放到特定的组中.*
+>> *开发依赖 `--dev` 是一个预设好的组, 跟执行 `--group dev` 的结果是一样的.*
 
 ---
 
@@ -69,14 +91,16 @@ uv init
 
 - `uv.lock`: `uv` 生成的锁文件, 其核心作用是确保 Python 项目的依赖安装具有确定性和可复现性; 该文件由 `uv` 管理, 不需要手动操作;
 
-### 更新 `uv`
+### 更新 `uv` 本身
 
-```
-If you installed uv with pip, brew, or another package manager,
-update uv with `pip install --upgrade`, `brew upgrade`, or similar.
+- 如果是从 `pip` 安装的, 只要 `pip install --upgrade uv` 即可;
+- 如果从源码安装, 则使用 `uv self update`.
+    ```
+    If you installed uv with pip, brew, or another package manager,
+    update uv with `pip install --upgrade`, `brew upgrade`, or similar.
 
-`uv self update` is only available for uv binaries installed via the standalone installation scripts.
-```
+    `uv self update` is only available for uv binaries installed via the standalone installation scripts.
+    ```
 
 
 ### 换源
@@ -88,6 +112,9 @@ index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 
 ### 依赖管理
 > [Managing dependencies | uv](https://docs.astral.sh/uv/concepts/projects/dependencies/)
+
+> - 通过 `uv add` 实际上是增加项目依赖的包, 同时在本地进行安装;
+> - 通过 `uv pip install` 表示在本地安装包, 与项目无关;
 ```bash
 # 添加依赖
 uv add [package]

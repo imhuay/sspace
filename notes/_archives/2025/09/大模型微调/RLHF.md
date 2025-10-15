@@ -25,7 +25,7 @@ tags: [llm_sft]
 
 <!--START_SECTION:toc-->
 - [快速回顾 ⏰](#快速回顾-)
-    - [RLHF 伪代码 (轨迹生成 + 梯度传播) 📌](#rlhf-伪代码-轨迹生成--梯度传播-)
+    - [RLHF 伪代码 (轨迹生成 + 梯度传播) ✨](#rlhf-伪代码-轨迹生成--梯度传播-)
     - [**RLHF (PPO) 的 3 个核心步骤**](#rlhf-ppo-的-3-个核心步骤)
     - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
@@ -55,7 +55,7 @@ extra_url: false
 name: '伪代码'
 extra_url: false
 -->
-### RLHF 伪代码 (轨迹生成 + 梯度传播) 📌
+### RLHF 伪代码 (轨迹生成 + 梯度传播) ✨
 <!--END_SECTION:keyword-->
 
 <details><summary><b>轨迹生成 📌</b></summary>
@@ -64,11 +64,9 @@ extra_url: false
 <div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
 
 <!--
-latex -output-format=dvi 轨迹生成过程.tex \
-&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o 轨迹生成过程.svg 轨迹生成过程.dvi
-
-latex -output-format=dvi 轨迹生成过程.tex \
-&& dvipng -D 600 -T tight -o 轨迹生成过程.png 轨迹生成过程.dvi
+cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
+&& latex -output-format=dvi RLHF_轨迹生成过程.tex \
+&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_轨迹生成过程.svg RLHF_轨迹生成过程.dvi
 -->
 
 > 函数说明 (python): 
@@ -87,7 +85,8 @@ latex -output-format=dvi 轨迹生成过程.tex \
 <div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
 
 <!-- 
-latex -output-format=dvi RLHF_反向传播过程.tex \
+cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
+&& latex -output-format=dvi RLHF_反向传播过程.tex \
 && dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_反向传播过程.svg RLHF_反向传播过程.dvi
 -->
 

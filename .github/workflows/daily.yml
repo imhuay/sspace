@@ -19,27 +19,75 @@ jobs:
     permissions:
       contents: write
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # default 1, 0 indicates all history for all branches and tags.
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 必须 0, 否则无法获取所有历史提交信息 (脚本中有依赖)
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '>=3.12'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '>=3.12'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install uv markdown
-        uv pip install -e . --system
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install uv markdown
+          uv pip install -e . --system
 
-    - name: Update README
-      run: |
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        python scripts/readme/main.py
-        #git add -u
-        #git commit -m 'Auto-Update README'
-        #git push
+      # 缓存 TeX Live 安装目录 (固定 key) 
+      # - name: Cache TeX Live
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/.texlive
+      #       ~/.texlive2025
+      #     key: texlive-${{ runner.os }}-v1
+
+      - name: Install full TeX Live
+        uses: TeX-Live/setup-texlive-action@v3  # 自带 cache
+        with:
+          packages: scheme-full
+      
+      - name: Update README
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          python scripts/readme/main.py
+          git add -u
+          # git commit -m 'Auto-Update README'
+          # git push
+
+      # - name: Test TeX environment
+      #   run: |
+      #     (
+      #       cd examples/tex-live \
+      #         && latex -output-format=dvi demo.tex \
+      #         && dvisvgm --no-fonts --bbox=preview --scale=1.0 -o demo.svg demo.dvi \
+      #         && git add demo.svg \
+      #         && git commit -m 'Auto-Update demo.svg' || echo "No changes to commit." \
+      #         && git push
+      #     )
+
+      - name: Convert all .tex to .svg (recursive, same dir)
+        run: |
+          set -euo pipefail
+          find notes/ -name '*.tex' | while read -r texfile; do
+            dir=$(dirname "$texfile")
+            base=$(basename "$texfile" .tex)
+            echo "Processing $texfile ..."
+            latex -output-format=dvi -output-directory="$dir" "$texfile"
+            dvisvgm --no-fonts --bbox=preview --scale=1.0 -o "$dir/$base.svg" "$dir/$base.dvi"
+          done
+          git add notes/**/*.svg
+
+      - name: Commit and push
+        run: |
+          # git config --global user.name "github-actions[bot]"
+          # git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-Update README"
+            git push
+          fi

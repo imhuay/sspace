@@ -32,7 +32,7 @@
 \pagestyle{empty}
 
 % 设置标题样式
-\captionsetup[algorithm]{font=Large, labelfont=bf}
+\captionsetup[algorithm]{font=large, labelfont=bf}
 
 % 重定义宏指令, 修改 \Require 和 \Ensure 的文本
 \renewcommand{\algorithmicrequire}{\textbf{Inputs}:}
@@ -69,19 +69,24 @@
 
 \For{$t = 1,2,\dots$}
     % \State $\text{probs}^{\pi_{\theta}}_{t} = \pi_{\theta}(\cdot \mid s_t)$
-    \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
+    \State $\pi_\theta(\cdot|s_t) = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
     % \State $\text{probs}^{\pi_{\text{ref}}}_{t} = \pi_{\text{ref}}(\cdot \mid s_t)$
-    \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
-    \State $a_t,\, \log p^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t})$ \Comment{Sample action}
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
+    \State $\pi_\text{ref}(\cdot|s_t) = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
+    % \State $a_t,\, \log p^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t})$ \Comment{Sample action}
+    \State $a_t,\, \log\pi_{\theta}(a_t|s_t) \sim \text{Categorical}(\pi_\theta(\cdot|s_t))$ \Comment{Sample action}
     \State $s_{t+1} = s_t + a_t$
     \State $y = y + a_t$
     \If{$a_t == [\text{EOS}]$} \Comment{At this time $t{=}{T}$}
-        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t}) + R_\phi(x,y)$
+        % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t}) + R_\phi(x,y)$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)) + R_\phi(x,y)$
         \State $terminal = \text{True}$
     \Else
-        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t})$
+        % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t})$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t))$
     \EndIf
-    \State Append($\tau,\, [s_t, a_t, r_t, \log p^{a_t}]$)
+    \State Append\big($\tau,\, [s_t, a_t, r_t, \log\pi_{\theta}(a_t|s_t)]$\big)
     \If{$terminal$}
         \State \textbf{break}
     \EndIf

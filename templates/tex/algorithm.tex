@@ -1,0 +1,122 @@
+\documentclass{article}
+% 数学环境支持包
+% amsmath: 提供高级数学功能 | amssymb: 提供数学符号
+\usepackage{amsmath, amssymb}
+% 算法排版包
+% algorithm: 算法浮动体环境 | algpseudocode: 伪代码排版
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% 宏编程工具包, 用于条件判断和钩子函数
+\usepackage{etoolbox}
+% 调整盒子尺寸和对齐
+\usepackage{adjustbox}
+% 图形插入支持
+\usepackage{graphicx}
+% 标题格式设置
+\usepackage{caption}
+% 页面布局设置: A4 纸张, 2 厘米边距
+\usepackage[a4paper,margin=2cm]{geometry}
+% 粗体数学符号
+\usepackage{bm}
+
+% ================================
+% 字体配置区域 (注释状态)
+% ================================
+%% inconsolata: 等宽字体
+% \usepackage{inconsolata}
+%% XCharter: 衬线字体
+% \usepackage{XCharter}
+%% newtxtext + newtxmath: Times New Roman风格的数学字体
+\usepackage{newtxtext}
+% \usepackage{newtxmath}
+%% newpxtext + newpxmath: Palatino风格的数学字体
+% \usepackage{newpxtext}
+% \usepackage{newpxmath}
+%% lmodern: Latin Modern字体
+% \usepackage{lmodern}
+
+%% 设置默认字体为无衬线字体
+% \renewcommand{\familydefault}{\sfdefault}
+
+%% 使用 fontspec 配置字体 (需要 XeLaTeX 或 LuaLaTeX 编译)
+% \usepackage{graphicx}
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman} % 主字体设置为Times New Roman
+% \setsansfont{Arial}           % 无衬线字体设置为Arial
+% \setmonofont{Consolas}        % 等宽字体设置为Consolas
+
+% ================================
+% 算法格式自定义区域
+% ================================
+% 重构 \If 语句的显示格式 (注释状态)
+% \algrenewtext{If}[1]{\algorithmicif\ \ #1\ \ \algorithmicthen}
+
+% 定义赋值符号 := 
+\newcommand{\coloneqq}{\mathrel{\mathop:}=}
+
+% 全局去掉页码
+\pagestyle{empty}
+
+% 设置算法标题样式: 大号字体, 标签加粗
+\captionsetup[algorithm]{font=large, labelfont=bf}
+
+% 重定义算法输入输出指令
+%% 将 \Require 显示为 Inputs:
+\renewcommand{\algorithmicrequire}{\textbf{Inputs}:}
+%% 将 \Ensure 显示为 Output:
+\renewcommand{\algorithmicensure}{\textbf{Output}:}
+% 替代方案: 固定宽度的输入输出标签 (注释状态)
+% \renewcommand{\algorithmicrequire}{\textbf{\makebox[3.2em][l]{Inputs}}\textbf{:}}
+% \renewcommand{\algorithmicensure}{\textbf{\makebox[3.2em][l]{Output}}\textbf{:}}
+
+% ================================
+% 算法环境样式配置
+% ================================
+% 在进入 algorithmic 环境时应用以下设置:
+% 设置等宽字体
+\AtBeginEnvironment{algorithmic}{\ttfamily}
+% 设置字号为 12 pt, 行间距为 16 pt
+\AtBeginEnvironment{algorithmic}{\fontsize{12pt}{16pt}\selectfont}
+% 调整数学符号间距
+\AtBeginEnvironment{algorithmic}{%
+  \setlength{\thickmuskip}{8mu}     % 调整关系符号两侧的距离, 如 =, <, >, \leq 等
+  \setlength{\medmuskip}{4mu}       % 调整二元运算符两侧的距离, 如 +, -, \times, \cdot 等
+  \setlength{\thinmuskip}{5mu}      % 调整关系较弱的符号两侧的距离, 如 a/b a,b a:b 等
+}
+
+% ================================
+% 文档主体开始
+% ================================
+\begin{document}
+
+\begin{algorithm}
+\caption*{\textbf{Algorithm:} Name} % 在这里填写算法名称
+\begin{algorithmic}[1] % [1] 表示显示行号
+    \Require $x$ % 算法输入参数
+    \Ensure $y$ % 算法输出结果
+
+    \State $a = 1$ \Comment{Init} % 状态语句和注释
+
+    \For{$i = 1, \cdots, N$} % For循环开始
+        \State $a \;{+}{=}\; i$ % 累加操作
+    \EndFor % For循环结束
+    
+    % 可以添加更多算法步骤:
+    % \If{条件}
+    %     \State 执行语句
+    % \ElsIf{其他条件}
+    %     \State 执行其他语句
+    % \Else
+    %     \State 默认执行
+    % \EndIf
+    % \While{条件}
+    %     \State 循环体
+    % \EndWhile
+    % \Function{函数名}{参数}
+    %     \State 函数体
+    %     \State \Return 返回值
+    % \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}

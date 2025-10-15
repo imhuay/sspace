@@ -25,6 +25,7 @@ if __name__ == '__main__':
     """"""
     br = BuildReadme()
     br.build()
-    if not is_wsl():
-        br.git_push()
+    # 放到 CI 里执行
+    # if not is_wsl():
+    #     br.git_push()
     logger.info('Update Success!')

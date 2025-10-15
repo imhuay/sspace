@@ -35,7 +35,7 @@
 \pagestyle{empty}
 
 % 设置标题样式
-\captionsetup[algorithm]{font=Large, labelfont=bf}
+\captionsetup[algorithm]{font=large, labelfont=bf}
 
 % 重定义宏指令, 修改 \Require 和 \Ensure 的文本
 \renewcommand{\algorithmicrequire}{\textbf{Inputs}:}
@@ -59,56 +59,32 @@
 \begin{document}
 
 \begin{algorithm}
-\caption{Gradient Propagation (Mini-Batch, Combined Loss)}
+\caption*{\textbf{Algorithm:} Gradient Propagation (Mini-Batch)}
 \begin{algorithmic}[1]
-    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log{p}^{a_i}_{\text{old}})\}_{i=1}^N,\ \pi_{\theta},\ V_{\psi},\ \epsilon,\ c_e,\ c_v,\ \alpha$
+    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log \pi_{\theta_{\text{old}}}(a_i|s_i))\}_{i=1}^N,\, \pi_{\theta},\, V_{\psi},\, \epsilon,\, c_e,\, c_v,\, \alpha$
     \Ensure $\theta,\ \psi$
 
-    \State $\mathcal{L} \gets 0$ \Comment{Init total loss}
+    \State $\mathcal{L}^{\text{Total}} \gets 0$ \Comment{Init total loss}
 
     \For{$i = 1, \cdots, N$}
-        \State $\text{probs}^{\pi_{\theta}}_{i} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{New distribution $\pi_{\theta}(\cdot|s_i)$}
-        \State $\log{p}^{a_i}_{\text{new}} \coloneqq \log(\text{probs}^{\pi_{\theta}}_{i}[a_i])$
-        \State $r_i(\theta) = \exp\!\big(\log{p}^{a_i}_{\text{new}} - \log{p}^{a_i}_{\text{old}}\big)$
+        % \State $\text{probs}^{\pi_{\theta}}_{s_i} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{Distribution $\pi_\theta(\cdot|s_i)$}
+        \State $\pi_\theta(\cdot|s_i) = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{New Distribution of $a_i$}
+        % \State $\log{\pi_{\theta}}_{\text{new}}^{(a_i|s_i)} \coloneqq \log\text{probs}^{\pi_{\theta}}_{s_i}[a_i]$
+        \State $\pi_{\theta}(a_i|s_i) = \text{Index}(\pi_\theta(\cdot|s_i), a_i)$
+        % \State $r_i(\theta) = \exp\!\big(\log\pi_{\theta}(a_i|s_i) - \log{\pi_{\theta}}_{\text{old}}^{(a_i|s_i)}\big)$
+        \State $r_i(\theta) = \exp\!\big(\log \pi_{\theta}(a_i|s_i) - \log \pi_{\theta_{\text{old}}}(a_i|s_i)\big)$
 
-        \State $L^{\text{CLIP}}_i = \min\!\big( r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i \big)$ \Comment{Policy model}
-        \State $L^{\text{VF}}_i = \tfrac{1}{2}\,\big(V_{\psi}(s_i) - \hat{R}_i\big)^2$ \Comment{Value model}
-        \State $L^{\text{S}}_i = - \sum_{a} \pi_{\theta}(a|s_i)\,\log \pi_{\theta}(a|s_i)$ \Comment{Entropy bonus}
+        \State $L^{\text{CLIP}}_i = \min\!\big( r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i \big)$ \Comment{Maximize Policy objective}
+        \State $L^{\text{VF}}_i = \tfrac{1}{2}\,\big(V_{\psi}(s_i) - \hat{R}_i\big)^2$ \Comment{Minimize Value loss}
+        \State $L^{\text{S}}_i = - \sum_{a} \pi_{\theta}(a|s_i)\log \pi_{\theta}(a|s_i)$ \Comment{Entropy bonus (Optional)}
+        % \State $L^{\text{S}}_i = \text{Entropy}(\pi_\theta(\cdot|s_i))$ \Comment{Entropy bonus (Optional)}
 
-        \State $\mathcal{L} \;{+}{=}\; -\big(L^{\text{CLIP}}_i - c_v L^{\text{VF}}_i + c_e L^{\text{S}}_i\big)$
+        \State $\mathcal{L}^{\text{Total}} \;{+}{=}\; -\big(L^{\text{CLIP}}_i - c_v L^{\text{VF}}_i + c_e L^{\text{S}}_i\big)$ \Comment{Minimize Total loss}
     \EndFor
     
-    \State $\theta \gets \theta - \alpha\,\tfrac{1}{N}\nabla_{\theta,\psi}\,\mathcal{L}$
-    \State $\psi \gets \psi - \alpha\,\tfrac{1}{N}\nabla_{\theta,\psi}\,\mathcal{L}$
-\end{algorithmic}
-\end{algorithm}
-
-
----
-
-\begin{algorithm}
-\caption{Gradient Propagation (Mini-Batch)}
-\begin{algorithmic}[1]
-    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log \pi_{\text{old}}(a_i|s_i))\}_{i=1}^N, \pi_{\theta}, V_{\psi}, \epsilon, c_e, \alpha_{\pi}, \alpha_{\text{VF}}$
-    \Ensure $\theta,\ \psi$
-
-    \State $\mathcal{L}_{\text{CLIP}} \gets 0$ \Comment{policy loss (PPO-Clip)}
-    \State $\mathcal{L}_{\text{ENT}} \gets 0$ \Comment{entropy regularization}
-    \State $\mathcal{L}_{\text{VF}} \gets 0$ \Comment{value function loss (MSE)}
-
-    \For{$i = 1, \cdots, N$}
-        \State $\log \pi_{\theta}(a_i|s_i) \gets \text{LogProb}(\pi_{\theta}, s_i, a_i)$ \Comment{Use existing action $a_i$}
-        \State $\text{probs}_i \gets \pi_{\theta}(\cdot|s_i)$ \Comment{Get full distribution for entropy}
-        \State $r_i(\theta) \gets \exp(\log \pi_{\theta}(a_i|s_i) - \log \pi_{\text{old}}(a_i|s_i))$
-
-        \State $\mathcal{L}_{\text{CLIP}} \gets \mathcal{L}_{\text{CLIP}} - \tfrac{1}{N}\min(r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i)$
-        \State $\mathcal{L}_{\text{ENT}} \gets \mathcal{L}_{\text{ENT}} - \tfrac{1}{N} \cdot \text{Entropy}(\text{probs}_i)$
-        \State $\mathcal{L}_{\text{VF}} \gets \mathcal{L}_{\text{VF}} + \tfrac{1}{N}\cdot \tfrac{1}{2}(V_{\psi}(s_i) - \hat{R}_i)^2$
-    \EndFor
-
-    \State $\mathcal{L}_{\text{policy}} \gets \mathcal{L}_{\text{CLIP}} + c_e \mathcal{L}_{\text{ENT}}$
-    \State $\theta \gets \theta - \alpha_{\pi} \cdot \nabla_{\theta} \mathcal{L}_{\text{policy}}$
-    \State $\psi \gets \psi - \alpha_{\text{VF}} \cdot \nabla_{\psi} \mathcal{L}_{\text{VF}}$
+    \State $\mathcal{L}^{\text{Total}} = \tfrac{1}{N}\mathcal{L}^{\text{Total}}$ \Comment{Average over mini-batch}
+    \State $(\theta,\psi) \gets (\theta,\psi) - \alpha\nabla_{\theta,\psi}\,\mathcal{L}^{\text{Total}}$
+    
 \end{algorithmic}
 \end{algorithm}
 
