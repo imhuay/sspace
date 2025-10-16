@@ -14,11 +14,12 @@ from __future__ import annotations
 import difflib
 import os
 import re
+import shutil
 import subprocess
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import TYPE_CHECKING, List, Tuple
+from typing import TYPE_CHECKING, ClassVar, List, Tuple
 
 import emoji
 import regex
@@ -26,13 +27,358 @@ import yaml
 from markdown.extensions import toc
 from markdown_it import MarkdownIt
 
-from huaytools.utils import get_logger
+from huaytools.utils import get_logger, is_wsl
 
 if TYPE_CHECKING:
     from .notes import Note
 
+DEBUG = False
+if is_wsl():
+    DEBUG = True
+
 logger = get_logger()
 _md = MarkdownIt('commonmark')
+
+
+@dataclass
+class MathBlock:
+    idx: int
+    md_path: Path
+    line_prefix: str
+    tmp_save_dir: Path
+    already_img_block: bool
+    line_start_i: int
+    line_end_i: int = -1
+    content: str | None = None
+    tex_file_path: Path | None = None
+    svg_file_path: Path | None = None
+
+    _tex_ext_name: ClassVar[str] = '.js.tex'
+    _pad_size: ClassVar[int] = 3
+
+    def _zfill(self, _i):
+        return 'f_' + str(_i).zfill(self._pad_size)
+
+    def __post_init__(self):
+        # test.md
+        # notes/_archives/2025/10/_formulas/test_svg/001.svg
+        if self.tex_file_path is not None:
+            shutil.move(self.tex_file_path, self._tex_save_path)
+        self.tex_file_path = self._tex_save_path
+
+        if self.svg_file_path is not None:
+            shutil.move(self.svg_file_path, self._svg_save_path)
+        self.svg_file_path = self._svg_save_path
+
+    @property
+    def tex_name(self):
+        return f'{self._zfill(self.idx)}{self._tex_ext_name}'
+
+    @property
+    def svg_name(self):
+        return f'{self._zfill(self.idx)}.svg'
+
+    @property
+    def _tex_save_path(self):
+        return self.tmp_save_dir / self.tex_name
+
+    @property
+    def _svg_save_path(self):
+        return self.tmp_save_dir / self.svg_name
+
+    @property
+    def _href_prefix(self) -> Path:
+        return Path(MarkdownMath2SvgHelper.save_dir_name) / self.md_path.stem
+
+    @property
+    def tex_href(self) -> str:
+        return str(self._href_prefix / self.tex_name)
+
+    @property
+    def svg_href(self):
+        return str(self._href_prefix / self.svg_name)
+
+    # def save_to_svg(self):
+    #     assert self.tex_file_path is not None
+    #     assert self.content is not None
+
+    #     with open(self.tex_file_path, 'w', encoding='utf8') as fw:
+    #         fw.write(self.content)
+
+
+class MarkdownMath2SvgHelper:
+    """"""
+
+    # 正则：匹配 <div align='center'><a href='xxx'><img src='yyy'/></a></div>
+    _IMG_BLOCK_PATTERN = re.compile(
+        r"""^\s*<div\s+align=['"]center['"]>\s*
+            <a\s+href=['"](?P<tex>[^'"]+)['"]>\s*
+            <img\s+src=['"](?P<svg>[^'"]+)['"]\s*/?>\s*
+            </a>\s*</div>\s*$""",
+        re.VERBOSE,
+    )
+
+    IMG_BLOCK_TEMP = "{line_prefix}<div align='center'><a href='{tex_file_path}'><img src='{svg_file_path}'/></a></div>"
+
+    text: str
+    math_blocks: list[MathBlock]
+    save_dir_name: ClassVar[str] = '_formulas'
+
+    def __init__(
+        self,
+        md_path: Path | str,
+        md_content: str | None = None,
+        tex2svg_script_path: str | Path | None = None,
+        save_mode: bool = True,
+    ) -> None:
+        self.md_path = Path(md_path).resolve()
+        if md_content is not None:
+            self.text = md_content
+        else:
+            self.text = self.md_path.open(encoding='utf8').read()
+
+        self.save_mode = save_mode
+
+        self._md_dir = self.md_path.parent
+
+        self._tmp_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_tmp'
+        self._tmp_save_dir.mkdir(exist_ok=True, parents=True)
+        self._final_save_dir = self._get_save_dir(self.md_path)
+        self._final_save_dir.mkdir(exist_ok=True, parents=True)
+        # print(self._tmp_save_dir)
+        # self._svg_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_svgs'
+        self.changed, old_name = GitUtils.file_changed_or_new(str(self.md_path))
+        self.old_name = Path(old_name) if old_name is not None else None
+        # print(self.changed, self.old_name)
+        if DEBUG:
+            print(f'{self.changed = }, {self.old_name = }')
+
+        if tex2svg_script_path is None:
+            tex2svg_script_path = Path(__file__).parent.parent / 'tex2svg.js'
+        self.tex2svg_script = tex2svg_script_path
+
+    def _get_save_dir(self, md_path: Path) -> Path:
+        """"""
+        return self._md_dir / self.save_dir_name / f'{md_path.stem}'
+
+    def run(self):
+        """"""
+        # self._rename_save_dir()
+        self._get_all_math_blocks()
+        self._save_to_tex_and_svg()
+        self._replace_math_to_svg()
+
+        if self._final_save_dir.exists():
+            shutil.rmtree(self._final_save_dir)
+            shutil.move(self._tmp_save_dir, self._final_save_dir)
+
+        if self.old_name is not None:
+            old_save_dir = self._get_save_dir(self.old_name)
+            if old_save_dir.exists():
+                shutil.rmtree(old_save_dir)
+
+    def _save_to_tex_and_svg(self):
+        """"""
+        for blk in self.math_blocks:
+            if blk.already_img_block:
+                continue
+
+            assert blk.tex_file_path is not None
+            with open(blk.tex_file_path, 'w', encoding='utf8') as fw:
+                assert blk.content is not None
+                fw.write(blk.content)
+
+            os.system(f'node {self.tex2svg_script} {blk.tex_file_path} {blk.svg_file_path}')
+
+    def _replace_math_to_svg(self):
+        """"""
+        lines = self.text.split('\n')
+        blocks = sorted(self.math_blocks, key=lambda b: b.line_start_i, reverse=True)
+
+        for blk in blocks:
+            # 生成替换 HTML
+            html = self.IMG_BLOCK_TEMP.format(
+                line_prefix=blk.line_prefix,
+                tex_file_path=blk.tex_href,
+                svg_file_path=blk.svg_href,
+            )
+            # 替换对应行
+            assert blk.line_end_i != -1
+            # print(blk.line_start_i, blk.line_end_i)
+            lines[blk.line_start_i : blk.line_end_i + 1] = [html]
+
+        self.text = '\n'.join(lines)
+
+        if self.save_mode:
+            with self.md_path.open('w', encoding='utf8') as fw:
+                fw.write(self.text)
+
+    def _rename_save_dir(self):
+        """"""
+        if self.old_name is not None:
+            old_save_dir = self._md_dir / self.save_dir_name / f'{self.old_name.stem}_svgs'
+            if old_save_dir.exists():
+                shutil.move(old_save_dir, self._tmp_save_dir)
+
+    def _split_prefix_and_left(self, _l: str) -> Tuple[str, str]:
+        """
+        拆分一行，返回 (前缀, 剩余内容)
+        前缀包括开头的空格、制表符、引用符号 '>'
+        """
+        m = re.match(r'^([ \t>]*)', _l)
+        prefix = m.group(1) if m else ''
+        left = _l[len(prefix) :].rstrip()
+        return prefix, left
+
+    def _is_img_block(self, _l: str) -> Tuple[bool, str, str]:
+        """
+        判断一行是否是 img block。
+        返回 (is_img_block, tex_file_path, svg_file_path)
+        如果不是 img block，则 tex_file_path 和 svg_file_path 返回空字符串。
+        """
+        false_ret = False, '', ''
+        if 'js.tex' not in _l:
+            return false_ret
+
+        m = self._IMG_BLOCK_PATTERN.match(_l.strip())
+        if m:
+            return True, m.group('tex'), m.group('svg')
+        return false_ret
+
+    def _get_all_math_blocks(self):
+        """"""
+        lines = self.text.split('\n')
+
+        blocks = []
+        idx = 1
+
+        in_block = False
+        content_lines = []
+        block = None
+        for i, line in enumerate(lines):
+            prefix, line = self._split_prefix_and_left(line)
+
+            is_img_block, tex_file_path, svg_file_path = self._is_img_block(line)
+            if is_img_block:
+                tex_file_path = self._md_dir / tex_file_path
+                svg_file_path = self._md_dir / svg_file_path
+                # print(tex_file_path, svg_file_path)
+                blocks.append(
+                    MathBlock(
+                        idx=idx,
+                        md_path=self.md_path,
+                        content=line,
+                        line_start_i=i,
+                        line_end_i=i,
+                        line_prefix=prefix,
+                        tex_file_path=tex_file_path,  # type: ignore
+                        svg_file_path=svg_file_path,  # type: ignore
+                        tmp_save_dir=self._tmp_save_dir,
+                        already_img_block=is_img_block,
+                    )
+                )
+                idx += 1
+                continue
+            elif line.startswith('$$') and line.rstrip().endswith('$$') and len(line) > 3:
+                # 单行公式: $$ ... $$
+                blocks.append(
+                    MathBlock(
+                        idx=idx,
+                        md_path=self.md_path,
+                        line_start_i=i,
+                        line_end_i=i,
+                        line_prefix=prefix,
+                        tmp_save_dir=self._tmp_save_dir,
+                        already_img_block=is_img_block,
+                        content=line.strip()[2:-2].strip(),
+                    )
+                )
+                idx += 1
+                continue
+            elif not in_block and line.startswith('$$'):
+                # 多行公式: 起始行
+                in_block = True
+                assert block is None
+                block = MathBlock(
+                    idx=idx,
+                    md_path=self.md_path,
+                    line_start_i=i,
+                    line_prefix=prefix,
+                    tmp_save_dir=self._tmp_save_dir,
+                    already_img_block=is_img_block,
+                )
+                content_lines.append(line.lstrip('$'))
+                continue
+            elif in_block and line.rstrip().endswith('$$'):
+                # 多行公式: 结尾行
+                content_lines.append(line.rstrip('$').strip())
+                assert block is not None
+                block.content = '\n'.join(content_lines).strip()
+                block.line_end_i = i
+                blocks.append(block)
+                block = None
+                idx += 1
+                in_block = False
+                content_lines.clear()
+                continue
+            elif in_block:
+                # 多行公式: 内容行
+                content_lines.append(line)
+                continue
+
+        self.math_blocks = blocks
+
+
+class GitUtils:
+    """"""
+
+    @staticmethod
+    def normalize_to_repo_relative(file_path: str) -> str:
+        repo_root = subprocess.run(
+            ['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True, check=True
+        ).stdout.strip()
+        repo_root = Path(repo_root)
+        return str(Path(file_path).resolve().relative_to(repo_root))
+
+    @staticmethod
+    def file_changed_or_new(file_path: str) -> tuple[bool, str | None]:
+        """
+        检查文件是否相对于 HEAD 有改动（修改/重命名/新增）
+        :param file_path: 文件路径（相对仓库根目录）
+        :return: (changed, original_name)
+                changed=True 表示有改动或新增
+                如果是重命名，original_name 返回旧名字，否则为 None
+        """
+        file_path = GitUtils.normalize_to_repo_relative(file_path)
+        # 检查 diff
+        result = subprocess.run(
+            ['git', 'diff', '--name-status', 'HEAD^', 'HEAD'],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        for line in result.stdout.splitlines():
+            parts = line.split()
+            status = parts[0]
+
+            if status.startswith('R'):  # 重命名
+                old, new = parts[1], parts[2]
+                if new == file_path:
+                    return True, old
+                if old == file_path:
+                    return True, old  # 旧名也算改动
+            elif status in {'M', 'A'}:  # 修改或新增
+                fname = parts[1]
+                if fname == file_path:
+                    return True, None
+
+        # 如果文件不在 HEAD 中，说明是新增文件
+        result = subprocess.run(['git', 'ls-files', '--error-unmatch', file_path], capture_output=True, text=True)
+        if result.returncode != 0:
+            return True, None
+
+        return False, None
 
 
 @dataclass
@@ -278,99 +624,6 @@ class MarkdownUtils:
                 print(f'新内容: {repr(new_seg)}')
                 print('新内容 Unicode:', ' '.join(f'U+{ord(ch):04X}' for ch in new_seg))
                 print()
-
-    @staticmethod
-    def add_spaces_around_parentheses(text: str) -> str:
-        # 1) Protect Markdown links (both [alt](url) and ![alt](url))
-        link_pat = regex.compile(r'!?\[[^\]]*\]\([^)]*\)')
-        placeholders = []
-
-        def protect(m):
-            placeholders.append(m.group(0))
-            return f'@@LINK_{len(placeholders) - 1}@@'
-
-        protected = link_pat.sub(protect, text)
-
-        # 2) Recursive parentheses pattern: matches nested (...) structures
-        paren_pat = regex.compile(r'\((?:[^()]+|(?R))*\)')
-
-        def repl(m):
-            # Extract inner content
-            inner = m.group(0)[1:-1].strip()
-            # Recursively format any nested parentheses inside inner first
-            inner_processed = paren_pat.sub(repl, inner)
-            # Wrap with spaces
-            return f'( {inner_processed} )'
-
-        processed = paren_pat.sub(repl, protected)
-
-        # 3) Restore links
-        def restore(m):
-            return placeholders[int(m.group(1))]
-
-        return regex.sub(r'@@LINK_(\d+)@@', restore, processed)
-
-    @staticmethod
-    def _normalize_text_spaces(text: str) -> str:
-        """Normalize spaces in plain text (not code), preserving leading spaces."""
-        # 保留行首空格
-        leading = len(text) - len(text.lstrip(' '))
-        prefix = ' ' * leading
-        remainder = text[leading:]
-
-        # 检查结尾空格
-        trailing_spaces = len(remainder) - len(remainder.rstrip(' '))
-        keep_two = trailing_spaces >= 2
-
-        core = remainder.rstrip(' ')
-        core = re.sub(r' +', ' ', core)
-
-        if keep_two:
-            core += '  '
-        return prefix + core
-
-    @staticmethod
-    def normalize_markdown_spaces(md_text: str) -> str:
-        """Normalize spaces in Markdown, skipping fenced and inline code regions,
-        and preserving leading spaces.
-
-        - Lines within fenced code blocks (``` ... ```) are left unchanged.
-        - Inline code spans delimited by backticks are preserved unchanged.
-        - Other text lines are normalized by replacing consecutive spaces with one,
-          while preserving two trailing spaces when originally two or more.
-        - Leading spaces are always preserved.
-        """
-        md = MarkdownIt()
-        tokens = md.parse(md_text)
-
-        out_lines: List[str] = []
-
-        for tok in tokens:
-            if tok.type in ('fence', 'code_block', 'code_inline'):
-                # 保持原样
-                if tok.type == 'fence':
-                    # 还原完整围栏
-                    out_lines.append(f'{tok.markup}{tok.info}\n{tok.content}{tok.markup}')
-                else:
-                    out_lines.append(tok.content)
-            elif tok.type == 'inline':
-                parts = []
-                for child in tok.children or []:
-                    if child.type == 'text':
-                        parts.append(MarkdownUtils._normalize_text_spaces(child.content))
-                    else:
-                        parts.append(child.content)
-                out_lines.append(''.join(parts))
-            elif tok.type == 'text':
-                out_lines.append(MarkdownUtils._normalize_text_spaces(tok.content))
-            else:
-                # 其它 token（段落、标题等）
-                if tok.content:
-                    out_lines.append(tok.content)
-                else:
-                    out_lines.append(tok.markup)
-
-        return '\n'.join(out_lines)
 
 
 class NoteUtils:
@@ -641,7 +894,6 @@ class args:  # noqa
     def get_temp_badge_todo_logo(count: int, height: int, color: str = 'important', href: str = '#') -> str:
         """color candidate: orange, E05D44"""
         return f'<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
-        
 
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}

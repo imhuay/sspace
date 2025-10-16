@@ -63,6 +63,7 @@ class NoteInfo:
     thorough: bool = False
     hidden_in_recent: bool = False
     section_number: bool = False
+    apply_tex2svg: bool = True
     tags: list[str] = field(default_factory=list)
     algo_tags: list[str] = field(default_factory=list)
     level: int = 0
@@ -111,6 +112,7 @@ class Note:
 
         self._tags.update(self.info.tags)
 
+        self._tex2svg()
         self._norm_text()
         self._update_title()
         self._update_badge()
@@ -171,6 +173,16 @@ class Note:
         if new_badge != old_badge:
             self._text = NoteUtils.replace_tag_content('badge', self.text, new_badge)
             self._updated = True
+
+    def _tex2svg(self):
+        if self.apply_tex2svg:
+            from utils import MarkdownMath2SvgHelper
+
+            helper = MarkdownMath2SvgHelper(self.path, self._text, save_mode=False)
+            helper.run()
+            if self._text != helper.text:
+                self._text = helper.text
+                self._updated = True
 
     def _update_section_number(self):
         """为标题添加章节编号
@@ -319,7 +331,7 @@ class Note:
             if title == '':
                 # self._title = f'{self.path.stem}({self.path_relative_to_repo})'
                 title = self.path.stem
-            
+
             if '<!-- suffix -->' in title:
                 title = self._remove_title_suffix(title)
 
@@ -376,6 +388,10 @@ class Note:
     @property
     def is_algo_note(self):
         return self.info.algo_tags or any(tag.startswith('algo') for tag in self._tags)
+
+    @property
+    def apply_tex2svg(self):
+        return self.info.apply_tex2svg
 
     @property
     def path_relative_to_repo(self):

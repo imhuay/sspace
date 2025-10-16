@@ -12,6 +12,7 @@ draft: true
 thorough: true
 hidden_in_recent: true
 section_number: false
+apply_tex2svg: true
 level: 0
 tags: [llm_sft]
 -->
@@ -122,10 +123,6 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
     - **训练数据**: 人类偏好数据 `(Prompt, Chosen Response, Rejected Response)`
     - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
     - **目标函数**: 
-        <!-- - 成对比较概率 (Bradley–Terry 模型)
-            $$\begin{align}
-                P(y^+ \succ y^- \mid x) = \sigma\Big( r_\phi(x,y^+) - r_\phi(x,y^-) \Big), \quad \sigma(z) = \frac{1}{1+e^{-z}}
-            \end{align}$$ -->
         🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
         $$\mathcal{L}(\phi) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \Big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \Big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
         > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.

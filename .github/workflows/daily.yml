@@ -29,11 +29,20 @@ jobs:
         with:
           python-version: '>=3.12'
 
-      - name: Install dependencies
+      - name: Install python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install uv markdown
           uv pip install -e . --system
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      
+      - name: Install nodejs dependencies
+        run: |
+          npm install mathjax-full
 
       # 缓存 TeX Live 安装目录 (固定 key) 
       # - name: Cache TeX Live
@@ -55,6 +64,8 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           python scripts/readme/main.py
           git add -u
+          git add notes/**/*.tex
+          git add notes/**/*.svg
           # git commit -m 'Auto-Update README'
           # git push
 
@@ -69,19 +80,19 @@ jobs:
       #         && git push
       #     )
 
-      - name: Convert all .tex to .svg (recursive, same dir)
+      - name: Convert all .tex to .svg (recursive, not .js.tex)
         run: |
           set -euo pipefail
-          find notes/ -name '*.tex' | while read -r texfile; do
+          find notes/ -name '*.tex' ! -name '*.js.tex' | while read -r texfile; do
             dir=$(dirname "$texfile")
             base=$(basename "$texfile" .tex)
             echo "Processing $texfile ..."
             latex -output-format=dvi -output-directory="$dir" "$texfile"
             dvisvgm --no-fonts --bbox=preview --scale=1.0 -o "$dir/$base.svg" "$dir/$base.dvi"
           done
-          git add notes/**/*.svg
+          git add notes/**/*.tex
 
-      - name: Commit and push
+      - name: Push
         run: |
           # git config --global user.name "github-actions[bot]"
           # git config --global user.email "github-actions[bot]@users.noreply.github.com"
