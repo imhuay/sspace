@@ -53,7 +53,6 @@ class MathBlock:
     tex_file_path: Path | None = None
     svg_file_path: Path | None = None
 
-    _tex_ext_name: ClassVar[str] = '.js.tex'
     _pad_size: ClassVar[int] = 3
 
     def _zfill(self, _i):
@@ -72,11 +71,11 @@ class MathBlock:
 
     @property
     def tex_name(self):
-        return f'{self._zfill(self.idx)}{self._tex_ext_name}'
+        return f'{self._zfill(self.idx)}.js.tex'
 
     @property
     def svg_name(self):
-        return f'{self._zfill(self.idx)}.svg'
+        return f'{self._zfill(self.idx)}.js.svg'
 
     @property
     def _tex_save_path(self):
@@ -149,9 +148,8 @@ class MarkdownMath2SvgHelper:
         # self._svg_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_svgs'
         self.changed, old_name = GitUtils.file_changed_or_new(str(self.md_path))
         self.old_name = Path(old_name) if old_name is not None else None
-        # print(self.changed, self.old_name)
-        if DEBUG:
-            print(f'{self.changed = }, {self.old_name = }')
+        # if DEBUG:
+        #     print(f'{self.changed = }, {self.old_name = }')
 
         if tex2svg_script_path is None:
             tex2svg_script_path = Path(__file__).parent.parent / 'tex2svg.js'
@@ -689,6 +687,31 @@ class NoteUtils:
     @staticmethod
     def get_last_commit_date(fp, fmt='%Y-%m-%d %H:%M:%S') -> str:
         _, date_str = subprocess.getstatusoutput(f'{NoteUtils.TEMP_GIT_LOG_FOLLOW.format(fp=fp)} | head -1')
+        # 优先筛选作者=imhuay 且不含 Auto/AUTO
+        cmd1 = [
+            'git',
+            'log',
+            '--author=imhuay',
+            '--invert-grep',
+            '--grep=Auto\\|AUTO',
+            '--format=%ad',
+            '--date=iso-strict',
+            '--follow',
+            '--',
+            fp,
+        ]
+        result1 = subprocess.run(cmd1, capture_output=True, text=True)
+        lines = result1.stdout.strip().splitlines()
+        if lines:
+            # return lines[0]  # 最近一次符合条件的提交时间
+            return NoteUtils.get_date_str(lines[0], fmt)
+
+        # 否则取最早一次提交
+        cmd2 = ['git', 'log', '--format=%ad', '--date=iso-strict', '--follow', '--', fp]
+        result2 = subprocess.run(cmd2, capture_output=True, text=True)
+        lines = result2.stdout.strip().splitlines()
+        # return lines[-1] if lines else None
+        date_str = lines[-1] if lines else ''
         return NoteUtils.get_date_str(date_str, fmt)
 
     @staticmethod

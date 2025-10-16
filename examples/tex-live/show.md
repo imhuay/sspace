@@ -24,8 +24,21 @@ Latex 常用:
 
 -->
 
+### 效果测试
+
+$$
+\begin{aligned}
+f_t &= \sigma(W_f[h_{t-1},x_t] + b_t) \\
+i_t &= \sigma(W_i[h_{t-1},x_t] + b_i) \\
+\tilde{C}_t &= \tanh(W_C[h_{t-1},x_t] + b_C) \\
+C_t &= f_t * C_{t-1} + i_t * \tilde{C}_t \\
+o_t &= \sigma(W_o[h_{t-1},x_t] + b_o) \\
+h_t &= o_t * \tanh(C_t)
+\end{aligned}
+$$
+
 <div align='center'><img src='test_js.svg'/></div>
-<div align='center'><img src='test_tex-live.svg', height='12'/></div>
 
-
-$$\left($$
+<!-- 
+node scripts/tex2svg.js examples/tex-live/test_js.tex examples/tex-live/test_js.svg
+ -->

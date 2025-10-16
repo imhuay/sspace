@@ -120,7 +120,7 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
     - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
     - **目标函数**: 
         🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
-        <div align='center'><a href='_formulas/RLHF/f_003.js.tex'><img src='_formulas/RLHF/f_003.svg'/></a></div>
+            <div align='center'><a href='_formulas/RLHF/f_003.js.tex'><img src='_formulas/RLHF/f_003.svg'/></a></div>
         > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.
 - **策略优化** (**基于 PPO 算法**):
     - **目标函数** (组合目标): <br>
@@ -131,15 +131,15 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
         - **损失函数**: 
             <div align='center'><a href='_formulas/RLHF/f_005.js.tex'><img src='_formulas/RLHF/f_005.svg'/></a></div>
         - **优势估计 $\hat{A}_t$**:
-            <div align='center'><a href='_formulas/RLHF/f_006.js.tex'><img src='_formulas/RLHF/f_006.svg'/></a></div>
+                <div align='center'><a href='_formulas/RLHF/f_006.js.tex'><img src='_formulas/RLHF/f_006.svg'/></a></div>
             其中
-            <div align='center'><a href='_formulas/RLHF/f_007.js.tex'><img src='_formulas/RLHF/f_007.svg'/></a></div>
+                <div align='center'><a href='_formulas/RLHF/f_007.js.tex'><img src='_formulas/RLHF/f_007.svg'/></a></div>
             > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
     - **价值模型 $V_{\phi}(s)$**:
         - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
         - **训练数据**:
             - 一条长度为 $T$ 的轨迹, 提供 $T$ 个训练样本: 
-                <div align='center'><a href='_formulas/RLHF/f_008.js.tex'><img src='_formulas/RLHF/f_008.svg'/></a></div>
+                    <div align='center'><a href='_formulas/RLHF/f_008.js.tex'><img src='_formulas/RLHF/f_008.svg'/></a></div>
                 其中
                 - $T$ : Response 的 token 数;
                 - $r$ : 奖励模型对完整上下文 (prompt + response) 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
