@@ -104,9 +104,7 @@ PPO 是 RLHF 的经典之选, 由 OpenAI 提出, 首次在 InstructGPT 中大规
 ### 🧮 数学机制
 PPO 的目标函数如下:
 
-$$
-L^{PPO}(\theta) = \mathbb{E}_t \left[ \min \left( r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}_t \right) \right]
-$$
+<div align='center'><a href='_formulas/RLHF/f_001.js.tex'><img src='_formulas/RLHF/f_001.svg'/></a></div>
 
 其中:
 - \( r_t(\theta) \) 是新旧策略概率比;
@@ -132,9 +130,7 @@ $$
 ### 🧮 数学机制
 损失函数如下:
 
-$$
-\mathcal{L}_{DPO} = \log \frac{\exp(\beta f_\theta(x, y^+))}{\exp(\beta f_\theta(x, y^+)) + \exp(\beta f_\theta(x, y^-))}
-$$
+<div align='center'><a href='_formulas/RLHF/f_002.js.tex'><img src='_formulas/RLHF/f_002.svg'/></a></div>
 
 其中:
 - \( f_\theta(x, y) \) 是模型对回答的打分 (logit);
@@ -159,9 +155,7 @@ $$
 ### 🧮 数学机制 (简化)
 GRPO 在 PPO 基础上, 引入 group-wise 相对优势函数:
 
-$$
-L^{GRPO}(\theta) = \sum_{g \in G} \mathbb{E}_{t \in g} \left[ \min \left( r_t(\theta) A_t^g, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) A_t^g \right) \right]
-$$
+<div align='center'><a href='_formulas/RLHF/f_003.js.tex'><img src='_formulas/RLHF/f_003.svg'/></a></div>
 
 其中 \( A_t^g \) 是组别内的相对优势.
 

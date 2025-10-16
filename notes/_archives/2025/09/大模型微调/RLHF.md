@@ -2,7 +2,7 @@ RLHF (基于人类反馈的强化学习) <!-- suffix --> ✒️🧣 <!-- suffix 
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-15%2012%3A31%3A18&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-16%2011%3A41%3A07&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -106,14 +106,10 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
         - 全参数微调;
         - 参数高效微调 (PEFT); <br>
           🚩 **LoRA** (低秩自适应): 
-          $$\begin{align}
-              h = W_0{x} + \frac{\alpha}{r}\Delta{W}{x}, \quad \Delta{W}=BA,\ B \in \mathbb{R}^{d_{\text{out}} \times r},\ A \in \mathbb{R}^{r \times d_{\text{in}}},\ r \ll \min(d_{\text{out}}, d_{\text{in}})
-          \end{align}$$
+          <div align='center'><a href='_formulas/RLHF/f_001.js.tex'><img src='_formulas/RLHF/f_001.svg'/></a></div>
     - **目标函数**: <br>
         🚩 **交叉熵损失**
-        $$\begin{align}
-            L_{\scriptscriptstyle \text{SFT}}(\theta) = - \mathbb{E}_{(x,y) \sim \mathcal{D}} \left\lbrack\ \sum_{t} \log \pi_\theta(y_t \mid x, y_{<t}) \ \right\rbrack
-        \end{align}$$
+        <div align='center'><a href='_formulas/RLHF/f_002.js.tex'><img src='_formulas/RLHF/f_002.svg'/></a></div>
 - **奖励模型 $R_{\phi}(x, y)$**:
     - **目标**: <br>
         🚩 将人类偏好转化为标量分数;
@@ -124,38 +120,26 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
     - **模型结构**: SFT 模型 (移除 `lm_head` 层) + 新线性层;
     - **目标函数**: 
         🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
-        $$\mathcal{L}(\phi) = - \mathbb{E}_{(x,y^+,y^-) \sim \mathcal{D}} \left\lbrack\ \log \sigma \Big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \Big) \ \right\rbrack, \quad \sigma(z) = \frac{1}{1 + e^{-z}}$$
+        <div align='center'><a href='_formulas/RLHF/f_003.js.tex'><img src='_formulas/RLHF/f_003.svg'/></a></div>
         > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.
 - **策略优化** (**基于 PPO 算法**):
     - **目标函数** (组合目标): <br>
         🚩 **策略优化 (PPO-Clip) + 价值函数误差 + KL 正则项**
-        $$\begin{align}
-            \mathcal{L}_{\scriptscriptstyle Total}(\theta, \phi) = \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) - c_1 \mathcal{L}_{\scriptscriptstyle VF}(\phi) + c_2 \mathcal{L}_{\scriptscriptstyle KL}(\theta)
-        \end{align}$$
+        <div align='center'><a href='_formulas/RLHF/f_004.js.tex'><img src='_formulas/RLHF/f_004.svg'/></a></div>
         <!-- > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式) -->
     - **策略模型 $\pi_{\theta}(s)$** 📌 <br>
         - **损失函数**: 
-            $$\begin{align} 
-                \mathcal{L}_{\scriptscriptstyle CLIP}(\theta) &= \hat{\mathbb{E}}_t \left\lbrack\ \min\Big( \underline{r_t(\theta)}\hat{A}_t, \ \underline{\text{CLIP}(r_t(\theta), 1-\epsilon, 1+\epsilon)}\hat{A}_t \Big) \ \right\rbrack \ ,\quad r_t(\theta)=\frac{\pi_\theta(a_t|s_t)}{\pi_{\text{old}}(a_t|s_t)}
-            \end{align}$$
+            <div align='center'><a href='_formulas/RLHF/f_005.js.tex'><img src='_formulas/RLHF/f_005.svg'/></a></div>
         - **优势估计 $\hat{A}_t$**:
-            $$\begin{align}
-                \hat{A}_t = \sum_{k=0}^{T-t}{(\gamma\lambda)^k}{\cdot}{\delta_{t+k}} = \delta_t + \gamma \lambda{\cdot}{\hat{A}_{t+1}} \ , \quad \delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)
-            \end{align}$$
+            <div align='center'><a href='_formulas/RLHF/f_006.js.tex'><img src='_formulas/RLHF/f_006.svg'/></a></div>
             其中
-            $$r_t =
-                \begin{cases}
-                r^{\scriptscriptstyle KL}_t, & t < T \\
-                r^{\scriptscriptstyle KL}_t + R_{\phi}(x,y), & t = T
-                \end{cases}
-                {\ ,\quad} r^{\scriptscriptstyle KL}_t = -\beta D_{\scriptscriptstyle KL}\Big(\pi_\theta(\cdot|s_t)\|\pi_{\text{ref}}(\cdot|s_t)\Big)
-            $$
+            <div align='center'><a href='_formulas/RLHF/f_007.js.tex'><img src='_formulas/RLHF/f_007.svg'/></a></div>
             > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
     - **价值模型 $V_{\phi}(s)$**:
         - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
         - **训练数据**:
             - 一条长度为 $T$ 的轨迹, 提供 $T$ 个训练样本: 
-                $$(s_t, R_t), \quad R_t = r, \quad \forall t \in \{1, \dots, T\}$$
+                <div align='center'><a href='_formulas/RLHF/f_008.js.tex'><img src='_formulas/RLHF/f_008.svg'/></a></div>
                 其中
                 - $T$ : Response 的 token 数;
                 - $r$ : 奖励模型对完整上下文 (prompt + response) 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
@@ -164,7 +148,7 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
                     > 直观理解: 无论在序列的哪个位置, 后续都会走向同一个结果.
         - **目标函数**: 
             - **均方误差 (MSE) 损失**
-            $$\mathcal{L}(\phi) = \left\lbrack\ \big( V_{\phi}(s_t) - R_t \big)^2 \ \right\rbrack$$
+            <div align='center'><a href='_formulas/RLHF/f_009.js.tex'><img src='_formulas/RLHF/f_009.svg'/></a></div>
     - **参考模型 $\pi_{\text{ref}}$**:
         - 固定参数的 SFT 模型;
         - ~~PPO-Penalty 需要, 因为要计算 KL;~~
@@ -325,28 +309,14 @@ extra_url: false
     - **Bradley–Terry Loss / Pairwise Logistic Loss** (成对样本, 一正一负)
         - 对给定 **上下文** $x$ 和 **一对回答** $(y_j, y_k)$, 其中人类标注认为 $y_j$ **优于** $y_k$, 记作 $y_j \succ y_k$;
         - 根据 **Bradley-Terry 模型**, 定义 $y_j \succ y_k$ 的概率为:
-            $$
-            \begin{aligned}
-                P(y_j \succ y_k)
-                &= \frac{\exp\big(R_{\phi}(x, y_j)\big)}{\exp\big(R_{\phi}(x, y_j)\big) + \exp\big(R_{\phi}(x, y_k)\big)} \\
-                &= \frac{1}{1 + \dfrac{\exp\big(R_{\phi}(x, y_k)\big)}{\exp\big(R_{\phi}(x, y_j)\big)}} \\
-                &= \frac{1}{1 + e^{- \big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)}} \\
-                &= \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
-            \end{aligned}
-            $$
+            <div align='center'><a href='_formulas/RLHF/f_010.js.tex'><img src='_formulas/RLHF/f_010.svg'/></a></div>
             <!-- > 其中 $R_{\phi}(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
             <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
-            $$
-            \mathcal{L}(\theta; D) = -\mathbb{E}_{(x, y_j, y_k) \sim D} \Big \lbrack
-                \log \ \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)
-                \Big \rbrack
-            $$
+            <div align='center'><a href='_formulas/RLHF/f_011.js.tex'><img src='_formulas/RLHF/f_011.svg'/></a></div>
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
-        $$
-        \mathcal{L}_{\text{InfoNCE}}(\theta) = -\mathbb{E} \left \lbrack \log \frac{\exp\big(R_{\phi}(x, y^+)\big)}{\exp\big(R_{\phi}(x, y^+)\big) + \sum_{i=1}^{N-1} \exp\big(R_{\phi}(x, y_i^-)\big)} \right \rbrack
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_012.js.tex'><img src='_formulas/RLHF/f_012.svg'/></a></div>
     <!--
     - **带边距的排序损失**
     - **Listwise 损失** (多候选)
@@ -378,9 +348,7 @@ extra_url: false
     - 每个对象 $y$ 存在一个 **不可直接观测的** 的 **标量能力分数** $r$, 用于衡量其 **强度**;
     - 当两个对象 $y_j$ 和 $y_k$ 进行比较时, **结果是一个随机事件**, 其 **概率** 仅取决于它们之间的 **能力分数差**, 即 $r_j - r_k$;
     - 具体地, $y_j$ **战胜** $y_k$ (记 $y_j \succ y_k$) 的概率由以下公式定义:
-        $$
-        P(y_j \succ y_k) = \frac{\exp(r_j)}{\exp(r_j) + \exp(r_k)} = \sigma (r_j - r_k)
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_013.js.tex'><img src='_formulas/RLHF/f_013.svg'/></a></div>
         其中 $\sigma(z) = \dfrac{1}{1 + e^{-z}}$ 为 **Sigmoid 函数**, 显然有 $P(y_j \succ y_k) + P(y_k \succ y_j) = 1$;
     - 因此, BT 模型本质上是通过 **Sigmoid 函数** 将两个对象的 **能力分数差** 映射为其比较的胜率;
     <!-- - 即, **BT 模型** 试图通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率; -->
@@ -388,9 +356,7 @@ extra_url: false
     - 定义一个对象 $y$ 的 **能力分数** 为 $\alpha = \exp(r)$,
     - 则 对象 $y_j$ **击败** 另一个对象 $y_k$ 的 **概率** 可以表示为 $P(y_j \succ y_k) = \dfrac{\alpha_j}{\alpha_j + \alpha_k}$:
     - 为了便于优化和理解, 常写成指数形式, 记 $\alpha = \exp(r)$, 则
-        $$
-        P(y_j \succ y_k) = \frac{\exp(r_j)}{\exp(r_j) + \exp(r_k)}
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_014.js.tex'><img src='_formulas/RLHF/f_014.svg'/></a></div>
      -->
 - **目的**:
     - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
@@ -403,30 +369,20 @@ extra_url: false
 - **定义**:
     - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
     - 则定义 $y_j$ 优于 $y_k$ (记 $y_j \succ y_k$) 的概率为
-        $$
-        P(y_j \succ y_k) = \frac{\exp(r_j)}{\exp(r_j) + \exp(r_k)}
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_015.js.tex'><img src='_formulas/RLHF/f_015.svg'/></a></div>
     - 根据 $\textbf{Sigmoid}$ **函数** $\sigma(z)=\dfrac{1}{1+e^{-z}}$, 即
-        $$
-        P(y_j \succ y_k)
-            = \frac{1}{1 + \exp\big(-(r_j - r_k)\big)}
-            = \sigma (r_j - r_k)
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_016.js.tex'><img src='_formulas/RLHF/f_016.svg'/></a></div>
     - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
     - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
 -->
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
-        $$
-        \mathcal{L}(\phi;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \ \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_017.js.tex'><img src='_formulas/RLHF/f_017.svg'/></a></div>
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     <!--
     - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
-        $$
-        \mathcal{L}(\theta;D) = -\mathbb{E}_{(y_j, y_k) \sim D} \Big \lbrack \log \ \sigma\big(R_{\phi}(y_j) - R_{\phi}(y_k)\big) \Big \rbrack
-        $$
+        <div align='center'><a href='_formulas/RLHF/f_018.js.tex'><img src='_formulas/RLHF/f_018.svg'/></a></div>
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->
 

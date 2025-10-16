@@ -306,9 +306,7 @@ project
 
 单行居中 (保证块前后有空行, 否则可能在一些解释器上失效)
 
-$$
-    a+b=3
-$$
+<div align='center'><a href='_formulas/Markdown_备忘/f_001.js.tex'><img src='_formulas/Markdown_备忘/f_001.svg'/></a></div>
 ```
 行内 $a+b=3$ 公式 (保证块前后有空格)
 
@@ -316,9 +314,7 @@ $$
 
 单行居中 (保证块前后有空行, 否则可能在一些解释器上可能失效)
 
-$$
-    a+b=3
-$$
+<div align='center'><a href='_formulas/Markdown_备忘/f_002.js.tex'><img src='_formulas/Markdown_备忘/f_002.svg'/></a></div>
 
 > 更多语法见 [Latex 备忘](./LaTeX_备忘.md)
 
@@ -340,20 +336,10 @@ $$
 ### 对齐
 
 ```markdown
-$$
-\begin{aligned}
-    a &= 1 \\
-    b &= 2
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/Markdown_备忘/f_003.js.tex'><img src='_formulas/Markdown_备忘/f_003.svg'/></a></div>
 ```
 
-$$
-\begin{aligned}
-    a &= 1 \\
-    b &= 2
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/Markdown_备忘/f_004.js.tex'><img src='_formulas/Markdown_备忘/f_004.svg'/></a></div>
 
 
 ## VSCode 插件

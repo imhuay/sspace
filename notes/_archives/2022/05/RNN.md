@@ -37,22 +37,12 @@ tags: [dl_model]
 
 ### RNN 的前向过程
 
-$$
-\begin{aligned}
-    y_t &= W[h_{t-1},x_t] + b \\
-    h_t &= \tanh(a_t)
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/RNN/f_001.js.tex'><img src='_formulas/RNN/f_001.svg'/></a></div>
 >
 
 或
 
-$$
-\begin{aligned}
-    y_t &= W[y_{t-1},x_t] + b \\
-    h_t &= \tanh(a_t)
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/RNN/f_002.js.tex'><img src='_formulas/RNN/f_002.svg'/></a></div>
 > $[x1,x2]$ 表示**向量拼接**; RNN 为递推结构, 其中 $h_0$ 一般初始化为 0;
 
 > 前者来自 Elman, 后者来自 Jordan; 两个过程的区别仅在于当前步的输入不同, 一般所说的 RNN 指的是前者;
@@ -63,16 +53,7 @@ $$
 
 ### LSTM 的前向过程
 
-$$
-\begin{aligned}
-    f_t &= \sigma(W_f[h_{t-1},x_t] + b_t) \\
-    i_t &= \sigma(W_i[h_{t-1},x_t] + b_i) \\
-    \tilde{C}_t &= \tanh(W_C[h_{t-1},x_t] + b_C) \\
-    C_t &= f_t * C_{t-1} + i_t * \tilde{C}_t \\
-    o_t &= \sigma(W_o[h_{t-1},x_t] + b_o) \\
-    h_t &= o_t * \tanh(C_t)
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/RNN/f_003.js.tex'><img src='_formulas/RNN/f_003.svg'/></a></div>
 > $[x1,x2]$ 表示**向量拼接**; $*$ 表示**按位相乘**;
 > $f_i$: 长期记忆的遗忘比重;
 > $i_i$: 短期记忆的保留比重;
@@ -113,14 +94,7 @@ $$
 
 ### GRU 的前向过程
 
-$$
-\begin{aligned}
-    z_t &= \sigma(W_z[h_{t-1},x_t] + b_z) \\
-    r_t &= \sigma(W_r[h_{t-1},x_t] + b_r) \\
-    \tilde{h}_t &= \tanh(W[r_t*h_{t-1},x_t] + b) \\
-    h_t &= (1-z_t)*h_{t-1} + z_t * \tilde{h}_t
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/RNN/f_004.js.tex'><img src='_formulas/RNN/f_004.svg'/></a></div>
 > $[x1,x2]$ 表示**向量拼接**; $*$ 表示**按位相乘**;
 
 ### 常见问题

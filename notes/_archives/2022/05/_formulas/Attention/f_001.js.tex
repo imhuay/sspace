@@ -1,0 +1,5 @@
+\begin{aligned}
+\text{Attention}(Q,K,V) &= \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V \\
+\text{head}_\text{i} &= \text{Attention}(QW_i^Q,KW_i^K,VW_i^V) \\
+\text{MultiHead}(Q,K,V) &= \text{Concat}(\text{head}_1,..,\text{head}_\text{h})W^O
+\end{aligned}

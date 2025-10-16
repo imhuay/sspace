@@ -267,7 +267,7 @@ if __name__ == "__main__":
 - **做法**:
     - 引入 **负载均衡损失 (Load Balancing Loss, LBL)**, 鼓励 token 在专家间均匀分布;
     - **公式**:
-        $$L_{LB} = \alpha \cdot N_E \sum_{i=1}^{N_E} f_i \cdot P_i$$
+        <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.svg'/></a></div>
     - **说明**:
         - 计算每个专家在一个 batch 中接收到的 token 占比 $f_i$,
         - 与该专家获得的总路由概率 $P_i$ 相乘, 然后在所有专家上求和;
@@ -286,7 +286,7 @@ if __name__ == "__main__":
 - **动机**: MoE 中, Router 会根据 logits 决定 token 分配给哪些专家;
     - 如果 logits 过大, 可能在 MoE 层的大规模矩阵乘法中引发数值溢出, 导致训练不稳定;
 - **公式**:
-    $$L_{RZ}(x) = \beta \cdot \frac{1}{B} \sum_{i=1}^B \left( \log \sum_{j=1}^{N_E} \exp(x^{(i)}_j) \right)^2$$
+    <div align='center'><a href='_formulas/README/f_002.js.tex'><img src='_formulas/README/f_002.svg'/></a></div>
     - 其中 $\beta = 0.001$ (经验值)
 - **作用**: 惩罚路由器 logits 过大, 提升稳定性;
 

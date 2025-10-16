@@ -25,13 +25,7 @@ tags: [dl_model]
 <!--
 ### 前向过程
 
-$$
-\begin{aligned}
-    \text{Attention}(Q,K,V) &= \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V \\
-    \text{head}_\text{i} &= \text{Attention}(QW_i^Q,KW_i^K,VW_i^V) \\
-    \text{MultiHead}(Q,K,V) &= \text{Concat}(\text{head}_1,..,\text{head}_\text{h})W^O
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/Attention/f_001.js.tex'><img src='_formulas/Attention/f_001.svg'/></a></div>
  -->
 
 ### 前向过程 (PyTorch 实现)

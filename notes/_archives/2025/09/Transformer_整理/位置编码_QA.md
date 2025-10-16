@@ -112,12 +112,7 @@ tags: []
 #### 3.2.1. ✅ 解释为何正弦位置编码蕴含了相对位置信息? (给出三角恒等式推导)
 > 根据三角函数的性质 (sin/cos 相位差公式), **任意两个位置的编码可以通过相对位移的线性组合互相推导**, 从而在绝对编码中隐含了相对位置信息;
 
-$$
-\begin{aligned}
-    \sin(\omega_i (p+k)) &= \sin(\omega_i p)\cos(\omega_i k) + \cos(\omega_i p)\sin(\omega_i k) \\
-    \cos(\omega_i (p+k)) &= \cos(\omega_i p)\cos(\omega_i k) - \sin(\omega_i p)\sin(\omega_i k)
-\end{aligned}
-$$
+<div align='center'><a href='_formulas/位置编码_QA/f_001.js.tex'><img src='_formulas/位置编码_QA/f_001.svg'/></a></div>
 
 #### 3.2.2. ✅ 正弦位置编码的 "波长" 是什么意思? 不同维度对应的波长有何不同?
 > 波长 $\lambda$ 由公式中的 $10000^{2i/d_{model}}$ 决定. 随着维度 $i$ 从 $0$ 增加到 $d_{model}/2 - 1$, 波长从 $2π$ (高频, 变化快) 增长到 $10000 * 2π$ (低频, 变化慢); **这使模型能同时捕获近距离和远距离的位置关系**.
@@ -217,9 +212,7 @@ $$
 
 <details><summary><b>关键等式</b></summary>
 
-$$
-\langle \text{RoPE}(q, m), \text{RoPE}(k, n) \rangle = \langle q, \text{RoPE}(k, m - n) \rangle
-$$
+<div align='center'><a href='_formulas/位置编码_QA/f_002.js.tex'><img src='_formulas/位置编码_QA/f_002.svg'/></a></div>
 
 - 第一步: 对 Q/K 分别施加与 **绝对位置** 相关的旋转;
 - 第二步: 利用 **旋转矩阵的正交性**, 将两个绝对位置的 **旋转差** 化为单一的 **相对位移旋转**
@@ -233,7 +226,7 @@ $$
 <details><summary><b>详述</b></summary>
 
 - **旋转角** 公式:
-  $$\omega_i = m \theta_i = \frac{m}{10000^{2i/d}}$$
+  <div align='center'><a href='_formulas/位置编码_QA/f_003.js.tex'><img src='_formulas/位置编码_QA/f_003.svg'/></a></div>
     - 其中
         - $m$ 为 token 位置索引;
         - $i$ 为 向量 的分量索引;

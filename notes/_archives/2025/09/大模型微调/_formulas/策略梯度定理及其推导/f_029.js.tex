@@ -1,0 +1,5 @@
+\begin{align}
+\nabla_\theta J(\theta)
+&= \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \left\lbrack\ \sum_{t=0}^{\infty} \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{\Big( Q^{\pi_\theta}(s, a) - V^{\pi_\theta}(s) \Big)} \ \right\rbrack \\
+&= \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \left\lbrack\ \sum_{t=0}^{\infty} \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \right\rbrack
+\end{align}

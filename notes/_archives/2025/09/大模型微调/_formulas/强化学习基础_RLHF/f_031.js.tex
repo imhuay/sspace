@@ -1,0 +1,8 @@
+\begin{aligned}
+Q(s_t, a_t)
+&= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\big\lbrack\  G_{t+1} \mid s_t, a_t \ \big\rbrack \\
+&= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \mid S_{t+1}, s_t, a_t \ \big\rbrack \ \Big|\  s_t, a_t \ \Big\rbrack \\
+&= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \mid S_{t+1} \ \big\rbrack \ \Big|\  s_t, a_t \ \Big\rbrack \\
+&= \mathbb{E}\big\lbrack\  R_t \mid s_t, a_t \ \big\rbrack + \gamma \mathbb{E}\Big\lbrack\  V(S_{t+1}) \ \Big|\  s_t, a_t \ \Big\rbrack \\
+&= \mathbb{E}\big\lbrack\  R_t + \gamma V(S_{t+1}) \ \Big|\  s_t, a_t \ \Big\rbrack
+\end{aligned}

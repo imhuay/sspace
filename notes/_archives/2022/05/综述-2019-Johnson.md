@@ -37,7 +37,7 @@ tags: [dl_unbalanced]
 
 - 数据不平衡的影响会随着问题复杂度的增加而增加; 简单的线性可分问题不会受到数据不平衡的影响;
 - 一个简单衡量数据集不平衡率的指标:
-    $$\rho = \frac{\max_i\{|C_i|\}}{\min_i\{|C_i|\}}$$
+    <div align='center'><a href='_formulas/综述-2019-Johnson/f_001.js.tex'><img src='_formulas/综述-2019-Johnson/f_001.svg'/></a></div>
     比如最大类别的样本数为 100, 最小的为 10, 则 $\rho = 10$;
 - 需要注意的是, 有时少数类别样本的绝对值比占比更重要; 比如在一个包含 100 万样本的数据集中, 即使某个类别只占 1%, 也有 1 万条样本可供学习;
 - 一些研究将不平衡问题看做是**对困难样本的学习**问题; 在大多数场景下, 可以认为两者的目标是一致的;
@@ -52,22 +52,22 @@ tags: [dl_unbalanced]
         | Predicted positive | True positive (TP)  | False positive (FP) |
         | Predicted negative | False negative (FN) | True negative (TN)  |
     - **Accuracy (准确率) **
-        $$Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_002.js.tex'><img src='_formulas/综述-2019-Johnson/f_002.svg'/></a></div>
     - **Error Rate (错误率) **
-        $$Error Rate = 1 − Accuracy$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_003.js.tex'><img src='_formulas/综述-2019-Johnson/f_003.svg'/></a></div>
     - **Precision (精确率) **
-        $$Precision = \frac{TP}{TP + FP}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_004.js.tex'><img src='_formulas/综述-2019-Johnson/f_004.svg'/></a></div>
     - **Recall (召回率) 或 TPR (True Positive Rate, 真阳率) **
-        $$Recall = TPR = \frac{TP}{TP + FN}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_005.js.tex'><img src='_formulas/综述-2019-Johnson/f_005.svg'/></a></div>
     - **Selectivity 或 TNR (True Negative Rate, 真阴率) **
-        $$Selectivity = TNR = \frac{TN}{TN + FP}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_006.js.tex'><img src='_formulas/综述-2019-Johnson/f_006.svg'/></a></div>
     - **F-Measure**
-        $$F_\beta=(1+\beta^2)\times \frac{Precision \times Recall}{(\beta^2 \times Precision) + Recall}$$
-        $$F_1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_007.js.tex'><img src='_formulas/综述-2019-Johnson/f_007.svg'/></a></div>
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_008.js.tex'><img src='_formulas/综述-2019-Johnson/f_008.svg'/></a></div>
     - **G-Mean**
-        $$G\text{-}Mean = \sqrt{TPR * TRN}$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_009.js.tex'><img src='_formulas/综述-2019-Johnson/f_009.svg'/></a></div>
     - **Balanced Accuracy**
-        $$Balanced Accuracy = \frac{1}{2} \times (TPR + TRN)$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_010.js.tex'><img src='_formulas/综述-2019-Johnson/f_010.svg'/></a></div>
 - TODO: 精读各指标的作用
 
 
@@ -151,7 +151,7 @@ tags: [dl_unbalanced]
     - 实时数据增强: 就是目前 CV 中的常规做法, 在输入层对图片做变换后再 forward;
     - 迁移学习: 基于预训练好的 Inception-V3 模型微调;
     - 动态采样:
-        $$SampleSize(F_i,c_j) = \frac{1-f_{i,j}}{\sum_{c_k\in C}(1-f_{i,k})} \times N^*$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_011.js.tex'><img src='_formulas/综述-2019-Johnson/f_011.svg'/></a></div>
         - 上式用于生成下一轮训练中各类别采样的数量;
         - $F_i$ 是一个向量, 由每个类在第 $i$ 轮迭代后的 F1 分数组成;
         - $f_{i,j}$ 表示类别 $j$ 在第 $i$ 轮迭代后的 F1 分数;
@@ -201,8 +201,8 @@ tags: [dl_unbalanced]
     - 均方误差损失 (MSE Loss) 很难在不平衡条件下捕捉到少数类群体的误差, 此时多数类主导了损失函数;
     - 受到混淆矩阵的启发, 提出 Mean False Error(MFE) Loss 和 Mean Squared False Error(MSFE) Loss, 通过分别计算不同类别的 MSE Loss, 来平衡少数类和多数类的误差;
 - **方法**
-    $$MFE = FPE + FNE$$
-    $$MSFE = \frac{1}{2}((FPE + FNE)^2 + (FPE - FNE)^2) = FPE^2 + FNE^2$$
+    <div align='center'><a href='_formulas/综述-2019-Johnson/f_012.js.tex'><img src='_formulas/综述-2019-Johnson/f_012.svg'/></a></div>
+    <div align='center'><a href='_formulas/综述-2019-Johnson/f_013.js.tex'><img src='_formulas/综述-2019-Johnson/f_013.svg'/></a></div>
     - 其中 $FPE$ 为**假阳误差** (False Positive Error), $FNE$ 为**假阴误差** (False Negative Error), 两者均为 MSE Loss;
 - **存在问题**
     - 无论是 MFE Loss 还是 MSFE Loss, 都是基于 MSE Loss, 但是在分类问题上使用 MSE 损失的效果并不好;
@@ -224,9 +224,9 @@ tags: [dl_unbalanced]
     - 基于交叉熵, 提出 Focal Loss 降低容易分类的样本对损失的影响;
 - **方法**
     - 交叉熵
-        $$CELoss = -\log(p_t)$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_014.js.tex'><img src='_formulas/综述-2019-Johnson/f_014.svg'/></a></div>
     - Focal Loss
-        $$Focal Loss= -\alpha_t(1-p_t)^\gamma\log(p_t)$$
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_015.js.tex'><img src='_formulas/综述-2019-Johnson/f_015.svg'/></a></div>
     - Focal Loss 在交叉熵的基础上加入了**调制系数** $\alpha_t(1-p_t)^\gamma$
     - 其中 $\gamma$ (> 0) 为超参数, 用于调整简单样本的权重的下降率; $\alpha_t$ 为类别权重用于提升少数类的重要性; 论文中取 $\gamma=2, \alpha=0.25$
     - 简单解释: 对于**易分类**的样本, 当其概率 $p_t$ 接近 1, 此时调制系数将趋向于 0, 进而降低其对 loss 的影响;

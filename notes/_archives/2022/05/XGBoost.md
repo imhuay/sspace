@@ -57,8 +57,8 @@ tags: [ml]
     -
 
 回归树
-$$q(x) = j$$
+<div align='center'><a href='_formulas/XGBoost/f_001.js.tex'><img src='_formulas/XGBoost/f_001.svg'/></a></div>
 
 函数表达式
-$$I_j = \{ i | q(x_i) = j \}$$
+<div align='center'><a href='_formulas/XGBoost/f_002.js.tex'><img src='_formulas/XGBoost/f_002.svg'/></a></div>
 

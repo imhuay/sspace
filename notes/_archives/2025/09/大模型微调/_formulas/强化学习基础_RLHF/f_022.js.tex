@@ -1,0 +1,6 @@
+\begin{aligned}
+\mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_t = s_t\big\rbrack
+&= \mathbb{E}\Big\lbrack\ \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}, S_t = s_t\ \big\rbrack \ \Big|\  S_t = s_t \ \Big\rbrack &\ \scriptstyle{//\ 期望迭代法则} \\
+&= \mathbb{E}\Big\lbrack\  \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}\  \big\rbrack \ \Big|\  S_t = s_t \ \Big\rbrack &\ \scriptstyle{//\ 马尔可夫假设} \\
+&= \mathbb{E}\Big\lbrack\  V(S_{t+1}) \ \Big|\  S_t = s_t \ \Big\rbrack
+\end{aligned}

@@ -1,0 +1,4 @@
+\begin{align}
+\_ &= \sum_{t=0}^{\infty} \underline{\sum_{s_t,a_t} p_t(s_t) \cdot \pi_\theta(a_t|s_t)} \ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t Q^{\pi_\theta}(s_t, a_t) \\
+&= \sum_{t=0}^{\infty} \underline{\sum_{s_t} p_t(s_t) \sum_{a_t} \pi_\theta(a_t|s_t)} \ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t Q^{\pi_\theta}(s_t, a_t)
+\end{align}

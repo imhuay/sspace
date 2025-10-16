@@ -1,0 +1,6 @@
+\begin{aligned}
+V(s_t)
+= \mathbb{E}\big\lbrack\  G_t \mid S_t = s_t \ \big\rbrack
+&= \sum_{a} \pi(a \ |\  s_t)\ \mathbb{E}\big\lbrack G_t \mid S_t = s_t, A_t = a \big\rbrack \\
+&= \sum_{a} \pi(a \ |\  s_t) Q(s_t,a)
+\end{aligned}

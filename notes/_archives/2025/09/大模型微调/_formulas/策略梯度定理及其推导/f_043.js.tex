@@ -1,0 +1,6 @@
+\begin{aligned}
+&\mathbb{E}_{\tau=(h_t,a_t,f_t)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\ b(\cdot) \Big\rbrack \\
+=\ \ & \mathbb{E}_{h_t} \bigg\lbrack\ \mathbb{E}_{a_t,f_t|h_t} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\ {\color{blue}b(\cdot)} \ \Big|\ h_t \Big\rbrack \bigg\rbrack &&\ \scriptstyle //\ 全期望公式(条件形式) \\
+=\ \ & \mathbb{E}_{h_t} \bigg\lbrack {\color{blue}b(\cdot)} \ \underline{\mathbb{E}_{a_t,f_t|h_t}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t) \ \Big|\ h_t \Big\rbrack \bigg\rbrack &&\ \scriptstyle //\ h_t\ 条件下,\ b(\cdot)\ 为常数 \\
+=\ \ & \mathbb{E}_{h_t} \bigg\lbrack {\color{blue}b(\cdot)} \ \underline{\mathbb{E}_{a_t|h_t}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\ \Big|\ h_t \Big\rbrack \bigg\rbrack &&\ \scriptstyle //\ 未来轨迹的独立性
+\end{aligned}

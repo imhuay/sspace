@@ -1,0 +1,5 @@
+\begin{align}
+\_ &= \frac{1}{1 - \gamma} \ \underline{\sum_{s} d^{\pi_\theta}(s) \sum_{a} \pi_\theta(a|s)} \ \nabla_\theta \log \pi_\theta(a|s) \cdot Q^{\pi_\theta}(s, a) \\
+&= \frac{1}{1 - \gamma} \ \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{Q^{\pi_\theta}(s, a)} \ \Big\rbrack \\
+&\propto \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{Q^{\pi_\theta}(s, a)} \ \Big\rbrack
+\end{align}

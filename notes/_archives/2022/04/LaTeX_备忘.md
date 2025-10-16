@@ -32,9 +32,7 @@ tags: [tool]
 
 ## 常用符号
 
-$$
-    \sum_{a}^{e}
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_001.js.tex'><img src='_formulas/LaTeX_备忘/f_001.svg'/></a></div>
 
 
 ## 多行公式对齐
@@ -45,55 +43,29 @@ $$
 
 **单独一行**:  
 
-$$
-\begin{align*}
- a &= 1+2 \\
-   &= 2+1
-\end{align*}
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_002.js.tex'><img src='_formulas/LaTeX_备忘/f_002.svg'/></a></div>
 
 **左括号**:  
 
-$$
-\left \lbrace
-    \begin{aligned}
-    a &= 1+2 &// 说明1  \\
-    b &= 2+1 &// 说明2
-    \end{aligned}
-\right.
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_003.js.tex'><img src='_formulas/LaTeX_备忘/f_003.svg'/></a></div>
 
 ### 有编号
 
-$$
-\begin{align}
- a &= 1+1 &// 说明1 \\
- b &= 2+2 &// 说明2
-\end{align}
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_004.js.tex'><img src='_formulas/LaTeX_备忘/f_004.svg'/></a></div>
 
 
 ## 括号
 
 **绝对值**  
 
-$$
-\left | a \right |
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_005.js.tex'><img src='_formulas/LaTeX_备忘/f_005.svg'/></a></div>
 
 **各种括号的名称表示** (用途: 比如直接使用 \[ 和 \] 在 VSCode 中有警告)  
 
-$$
-\lparen \rparen, \lbrack \rbrack, \lbrace \rbrace, \lBrace \rBrace, \llbracket \rrbracket, \lceil \rceil, \lfloor \rfloor, \langle \rangle
-$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_006.js.tex'><img src='_formulas/LaTeX_备忘/f_006.svg'/></a></div>
 
 
 ## 标记
 
 **转置**  
-$$\begin{align*}
-& \mathbf{A}^\mathrm{T}                 \\
-& \mathbf{A}^\top           &// 推荐     \\
-& \mathbf{A}^\mathsf{T}                 \\
-& \mathbf{A}^\intercal                  \\
-\end{align*}$$
+<div align='center'><a href='_formulas/LaTeX_备忘/f_007.js.tex'><img src='_formulas/LaTeX_备忘/f_007.svg'/></a></div>

@@ -1,0 +1,10 @@
+\begin{align}
+P(e|s)
+&= \sum\limits_{c_i} P(c_i|s) \cdot P(e|s,c_i) \\
+&= \sum\limits_{c_i} \dfrac {n_{(s,c_i)}} {\sum\limits_{c_i} n_{(s,c_i)}} \cdot P(e|s,c_i) \\
+&= \sum\limits_{c_i} \dfrac {n_{(s,c_i)}} {\sum\limits_{c_i} n_{(s,c_i)}} \cdot P(a_{s}=1|s,c_i) \cdot P(e|a_{s}=1,s,c_i) \\
+&= \sum\limits_{c_i} \dfrac {n_{(s,c_i)}} {\sum\limits_{c_i} n_{(s,c_i)}} \cdot \dfrac{n_{(s,c_i,a_{s}=1)}}{n_{(s,c_i)}} \cdot \dfrac{n_{(s,e,c_i)}}{n_{(s,c_i,a_{s}=1)}} \\
+&= \dfrac {\sum\limits_{c_i} n_{(s,e,c_i)}} {\sum\limits_{c_i} n_{(s,c_i)}} \\
+&= \sum\limits_{c_i} \dfrac {n_{(s,c_i)}} {\sum\limits_{c_i} n_{(s,c_i)}} \cdot \dfrac{n_{(s,c_i,a_{s}=1)}}{n_{(s,c_i)}} \cdot \dfrac{n_{(s,e,c_i)} + \mu \cdot P(e|c_i)}{\mu + n_{(s,c_i,a_{s}=1)}} \quad \textrm{// 加入平滑系数} \\
+&= \sum\limits_{c_i} \dfrac {n_{(s,c_i,a_{s}=1)}} {\sum\limits_{c_i} n_{(s,c_i)}} \cdot \dfrac{n_{(s,e,c_i)} + \mu \cdot P(e|c_i)}{\mu + n_{(s,c_i,a_{s}=1)}}
+\end{align}

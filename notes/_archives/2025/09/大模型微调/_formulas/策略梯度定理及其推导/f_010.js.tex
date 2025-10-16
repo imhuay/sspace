@@ -1,0 +1,6 @@
+\begin{align}
+\nabla_\theta \log p_\theta(\tau)
+&= \nabla_\theta \log \left\lbrack p(s_0)\prod_{t=0}^{\infty} \pi_\theta(a_t|s_t)\ P(s_{t+1}|s_t,a_t) \right\rbrack \\
+&= \nabla_\theta \left\lbrack \log p(s_0)+\sum_{t=0}^{\infty}\log \pi_\theta(a_t|s_t)+\sum_{t=0}^{\infty}\log P(s_{t+1}|s_t,a_t) \right\rbrack  \\
+&= \sum_{t=0}^{\infty} \nabla_\theta \log \pi_\theta(a_t | s_t)
+\end{align}

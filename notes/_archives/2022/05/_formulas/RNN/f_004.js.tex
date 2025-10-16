@@ -1,0 +1,6 @@
+\begin{aligned}
+z_t &= \sigma(W_z[h_{t-1},x_t] + b_z) \\
+r_t &= \sigma(W_r[h_{t-1},x_t] + b_r) \\
+\tilde{h}_t &= \tanh(W[r_t*h_{t-1},x_t] + b) \\
+h_t &= (1-z_t)*h_{t-1} + z_t * \tilde{h}_t
+\end{aligned}

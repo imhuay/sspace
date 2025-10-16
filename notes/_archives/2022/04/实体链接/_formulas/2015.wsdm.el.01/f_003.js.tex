@@ -1,0 +1,8 @@
+\begin{align}
+P(e|s)
+= \underset{=1}{\underbrace{P(c_i|s)}} \cdot \underset{=P(e|s)}{\underbrace{P(e|s,c_i)}}
+&= P(a_{s}=1|s) \cdot P(e|a_{s}=1,s) \\
+&= \dfrac{n_{(s,a_{s}=1)}}{n_{(s)}} \cdot \dfrac{n_{(s,e)}}{n_{(s,a_{s}=1)}} \\
+&= \dfrac{n_{(s,e)}}{n_{s}} \\
+&= \dfrac{n_{(s,a_{s}=1)}}{n_{s}} \cdot \dfrac{n_{(s,e)} + \mu \cdot P(e)}{\mu + n_{(s,a_{s}=1)}} \quad \textrm{// 加入平滑系数}
+\end{align}

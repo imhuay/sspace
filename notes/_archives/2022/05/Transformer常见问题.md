@@ -211,24 +211,11 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
         - 定义 $Q=[\vec{q_1}, \vec{q_2}, .., \vec{q_n}]^T$, $K=[\vec{k_1}, \vec{k_2}, .., \vec{k_n}]^T$, 其中 $\vec{q_i}$ 和 $\vec{k_i}$ 都是 $d$ 维向量;
         - 假设 $\vec{q_i}$ 和 $\vec{k_i}$ 的各分量都是服从标准正态分布 (均值为 0, 方差为 1) 的随机变量, 且相互独立, 记 $q_i$ 和 $k_i$, 即 $E(q_i)=E(k_i)=0$, $D(q_i)=D(k_i)=1$;
         - 根据期望与方差的性质, 有 $E(q_ik_i)=0$ 和 $D(q_ik_i)=1$, 推导如下:
-            $$\begin{align*}
-                E(q_ik_i) &= E(q_i)E(k_i) = 0 \times 0 = 0 \\
-                D(q_ik_i) &= E(q_i^2k_i^2) - E^2(q_ik_i) \\
-                &= E(q_i^2)E(k_i^2) - E^2(q_i)E^2(k_i) \\
-                &= \left [E(q_i^2) - E^2(q_i) \right ] \left [E(k_i^2) - E^2(k_i) \right ] - 0^2 \times 0^2 \\
-                &= D(q_i)D(k_i) - 0 \\
-                &= 1
-            \end{align*}$$
+            <div align='center'><a href='_formulas/Transformer常见问题/f_001.js.tex'><img src='_formulas/Transformer常见问题/f_001.svg'/></a></div>
         - 进一步, 有 $E(\vec{q_i}\vec{k_i}^T)=0$ 和 $D(\vec{q_i}\vec{k_i}^T)=d$, 推导如下:
-            $$\begin{align*}
-                E(\vec{q_i}\vec{k_i}^T) &= E(\sum_{i=1}^d q_ik_i) = \sum_{i=1}^d E(q_ik_i) = 0 \\
-                D(\vec{q_i}\vec{k_i}^T) &= D(\sum_{i=1}^d q_ik_i) = \sum_{i=1}^d D(q_ik_i) = d
-            \end{align*}$$
+            <div align='center'><a href='_formulas/Transformer常见问题/f_002.js.tex'><img src='_formulas/Transformer常见问题/f_002.svg'/></a></div>
         - 根据 attention 的计算公式 (softmax 前), $A'=\frac{QK^T}{\sqrt{d}}=[\frac{\vec{q_1}\vec{k_1}^T}{\sqrt{d}}, \frac{\vec{q_2}\vec{k_2}^T}{\sqrt{d}}, .., \frac{\vec{q_n}\vec{k_n}^T}{\sqrt{d}}]=[\vec{a_1}, \vec{a_2}, .., \vec{a_n}]$, 可知 $E(\vec{a_i})=0$, $D(\vec{a_i})=1$, 推导如下:
-            $$\begin{align*}
-                E(\vec{a_i}) &= E(\frac{\vec{q_i}\vec{k_i}^T}{\sqrt{d}}) = \frac{E(\vec{q_i}\vec{k_i}^T)}{\sqrt{d}} = \frac{0}{\sqrt{d}} = 0 \\
-                D(\vec{a_i}) &= D(\frac{\vec{q_i}\vec{k_i}^T}{\sqrt{d}}) = \frac{D(\vec{q_i}\vec{k_i}^T)}{(\sqrt{d})^2} = \frac{d}{d} = 1
-            \end{align*}$$
+            <div align='center'><a href='_formulas/Transformer常见问题/f_003.js.tex'><img src='_formulas/Transformer常见问题/f_003.svg'/></a></div>
     - **代码验证**
         ```python
         import torch
@@ -275,12 +262,12 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 #### Pre-LN 和 Post-LN 的区别
 
 - Post-LN (BERT 实现):
-    $$x_{n+1} = \text{LN}(x_n + f(x_n))$$
+    <div align='center'><a href='_formulas/Transformer常见问题/f_004.js.tex'><img src='_formulas/Transformer常见问题/f_004.svg'/></a></div>
     - 先做完残差连接, 再归一化;
     - 优点: 保持主干网络的方程比较稳定, 是模型泛化能力更强, 性能更好;
     - 缺点: 把恒等路径放在 norm 里, 使模型收敛更难 (反向传播时梯度变小, 残差的作用被减弱)
 - Pre-LN:
-    $$x_{n+1} = x_n + f(\text{LN}(x_n))$$
+    <div align='center'><a href='_formulas/Transformer常见问题/f_005.js.tex'><img src='_formulas/Transformer常见问题/f_005.svg'/></a></div>
     - 先归一化, 再做残差连接;
     - 优点: 加速收敛
     - 缺点: 效果减弱
@@ -288,7 +275,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 ### Feed-Forward Network
 
 - 前向公式
-    $$W_2 \cdot \text{ReLU}(W_1x + b_1) + b_2$$
+    <div align='center'><a href='_formulas/Transformer常见问题/f_006.js.tex'><img src='_formulas/Transformer常见问题/f_006.svg'/></a></div>
 
 #### FFN 层的作用是什么?
 - 功能与 1*1 卷积类似: 1) 跨通道的特征融合/信息交互; 2) 通过激活函数增加非线性;

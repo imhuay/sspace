@@ -47,11 +47,9 @@ hidden_in_recent: true
 > [从熵不变性看Attention的Scale操作 - 科学空间|Scientific Spaces](https://kexue.fm/archives/8823)
 
 - 即将 $Attention(Q,K,V)=softmax\left(\frac{QK^⊤}{\sqrt{d}}\right)V$ 修改为
-    $$ Attention(Q,K,V)=softmax\left(\frac{\log_mn}{\sqrt{d}}QK^⊤ \right)V
-    $$
+    <div align='center'><a href='_formulas/Transformer与长度外推性/f_001.js.tex'><img src='_formulas/Transformer与长度外推性/f_001.svg'/></a></div>
     或
-    $$ Attention(Q,K,V)=softmax\left(\frac{κ\log n}{d}QK^⊤ \right)V
-    $$
+    <div align='center'><a href='_formulas/Transformer与长度外推性/f_002.js.tex'><img src='_formulas/Transformer与长度外推性/f_002.svg'/></a></div>
     > 其中 $m$ 为**训练长度**, $n$ 为**预测长度**; 这两个值可以根据具体任务使用常量, 或引入超参数 $κ$;
 
 

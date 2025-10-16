@@ -1,0 +1,5 @@
+q_i k_j^\top
+= \underbrace{x_i W_Q W_K^\top x_j^\top}_{\text{1.输入–输入}}
++ \underbrace{x_i W_Q W_K^\top p_j^\top}_{\text{2.输入–位置}}
++ \underbrace{p_i W_Q W_K^\top x_j^\top}_{\text{3.位置–输入}}
++ \underbrace{p_i W_Q W_K^\top p_j^\top}_{\text{4.位置–位置}}
