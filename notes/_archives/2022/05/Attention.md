@@ -25,7 +25,7 @@ tags: [dl_model]
 <!--
 ### 前向过程
 
-<div align='center'><a href='_formulas/Attention/f_001.js.tex'><img src='_formulas/Attention/f_001.svg'/></a></div>
+<div align='center'><a href='_formulas/Attention/f_001.js.tex'><img src='_formulas/Attention/f_001.js.svg'/></a></div>
  -->
 
 ### 前向过程 (PyTorch 实现)

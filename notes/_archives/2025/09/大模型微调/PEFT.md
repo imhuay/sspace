@@ -47,9 +47,9 @@ extra_url: true
 
 - **基本思路**:
     - 对需要微调的 **线性层** (如 `nn.Linear`), 冻结其原始权重 $W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$, 引入一个 **低秩更新矩阵** $\Delta W$, 用两个小矩阵参数化:
-        <div align='center'><a href='_formulas/PEFT/f_001.js.tex'><img src='_formulas/PEFT/f_001.svg'/></a></div>
+        <div align='center'><a href='_formulas/PEFT/f_001.js.tex'><img src='_formulas/PEFT/f_001.js.svg'/></a></div>
     - **前向过程** (**旁路相加**):
-        <div align='center'><a href='_formulas/PEFT/f_002.js.tex'><img src='_formulas/PEFT/f_002.svg'/></a></div>
+        <div align='center'><a href='_formulas/PEFT/f_002.js.tex'><img src='_formulas/PEFT/f_002.js.svg'/></a></div>
         - 缩放因子 $\dfrac{\alpha}{r}$ 控制 $\Delta W$ 的幅度, 避免训练初期过大扰动;
 - **代码 Demo**:
     - [LoRA](./code/lora.py)

@@ -211,11 +211,11 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
         - 定义 $Q=[\vec{q_1}, \vec{q_2}, .., \vec{q_n}]^T$, $K=[\vec{k_1}, \vec{k_2}, .., \vec{k_n}]^T$, 其中 $\vec{q_i}$ 和 $\vec{k_i}$ 都是 $d$ 维向量;
         - 假设 $\vec{q_i}$ 和 $\vec{k_i}$ 的各分量都是服从标准正态分布 (均值为 0, 方差为 1) 的随机变量, 且相互独立, 记 $q_i$ 和 $k_i$, 即 $E(q_i)=E(k_i)=0$, $D(q_i)=D(k_i)=1$;
         - 根据期望与方差的性质, 有 $E(q_ik_i)=0$ 和 $D(q_ik_i)=1$, 推导如下:
-            <div align='center'><a href='_formulas/Transformer常见问题/f_001.js.tex'><img src='_formulas/Transformer常见问题/f_001.svg'/></a></div>
+            <div align='center'><a href='_formulas/Transformer常见问题/f_001.js.tex'><img src='_formulas/Transformer常见问题/f_001.js.svg'/></a></div>
         - 进一步, 有 $E(\vec{q_i}\vec{k_i}^T)=0$ 和 $D(\vec{q_i}\vec{k_i}^T)=d$, 推导如下:
-            <div align='center'><a href='_formulas/Transformer常见问题/f_002.js.tex'><img src='_formulas/Transformer常见问题/f_002.svg'/></a></div>
+            <div align='center'><a href='_formulas/Transformer常见问题/f_002.js.tex'><img src='_formulas/Transformer常见问题/f_002.js.svg'/></a></div>
         - 根据 attention 的计算公式 (softmax 前), $A'=\frac{QK^T}{\sqrt{d}}=[\frac{\vec{q_1}\vec{k_1}^T}{\sqrt{d}}, \frac{\vec{q_2}\vec{k_2}^T}{\sqrt{d}}, .., \frac{\vec{q_n}\vec{k_n}^T}{\sqrt{d}}]=[\vec{a_1}, \vec{a_2}, .., \vec{a_n}]$, 可知 $E(\vec{a_i})=0$, $D(\vec{a_i})=1$, 推导如下:
-            <div align='center'><a href='_formulas/Transformer常见问题/f_003.js.tex'><img src='_formulas/Transformer常见问题/f_003.svg'/></a></div>
+            <div align='center'><a href='_formulas/Transformer常见问题/f_003.js.tex'><img src='_formulas/Transformer常见问题/f_003.js.svg'/></a></div>
     - **代码验证**
         ```python
         import torch
@@ -262,12 +262,12 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 #### Pre-LN 和 Post-LN 的区别
 
 - Post-LN (BERT 实现):
-    <div align='center'><a href='_formulas/Transformer常见问题/f_004.js.tex'><img src='_formulas/Transformer常见问题/f_004.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer常见问题/f_004.js.tex'><img src='_formulas/Transformer常见问题/f_004.js.svg'/></a></div>
     - 先做完残差连接, 再归一化;
     - 优点: 保持主干网络的方程比较稳定, 是模型泛化能力更强, 性能更好;
     - 缺点: 把恒等路径放在 norm 里, 使模型收敛更难 (反向传播时梯度变小, 残差的作用被减弱)
 - Pre-LN:
-    <div align='center'><a href='_formulas/Transformer常见问题/f_005.js.tex'><img src='_formulas/Transformer常见问题/f_005.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer常见问题/f_005.js.tex'><img src='_formulas/Transformer常见问题/f_005.js.svg'/></a></div>
     - 先归一化, 再做残差连接;
     - 优点: 加速收敛
     - 缺点: 效果减弱
@@ -275,7 +275,7 @@ assert torch.allclose(model(x, mask), traced_model(x, mask))
 ### Feed-Forward Network
 
 - 前向公式
-    <div align='center'><a href='_formulas/Transformer常见问题/f_006.js.tex'><img src='_formulas/Transformer常见问题/f_006.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer常见问题/f_006.js.tex'><img src='_formulas/Transformer常见问题/f_006.js.svg'/></a></div>
 
 #### FFN 层的作用是什么?
 - 功能与 1*1 卷积类似: 1) 跨通道的特征融合/信息交互; 2) 通过激活函数增加非线性;

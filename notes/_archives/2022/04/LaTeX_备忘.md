@@ -32,7 +32,7 @@ tags: [tool]
 
 ## 常用符号
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_001.js.tex'><img src='_formulas/LaTeX_备忘/f_001.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_001.js.tex'><img src='_formulas/LaTeX_备忘/f_001.js.svg'/></a></div>
 
 
 ## 多行公式对齐
@@ -43,29 +43,29 @@ tags: [tool]
 
 **单独一行**:  
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_002.js.tex'><img src='_formulas/LaTeX_备忘/f_002.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_002.js.tex'><img src='_formulas/LaTeX_备忘/f_002.js.svg'/></a></div>
 
 **左括号**:  
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_003.js.tex'><img src='_formulas/LaTeX_备忘/f_003.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_003.js.tex'><img src='_formulas/LaTeX_备忘/f_003.js.svg'/></a></div>
 
 ### 有编号
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_004.js.tex'><img src='_formulas/LaTeX_备忘/f_004.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_004.js.tex'><img src='_formulas/LaTeX_备忘/f_004.js.svg'/></a></div>
 
 
 ## 括号
 
 **绝对值**  
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_005.js.tex'><img src='_formulas/LaTeX_备忘/f_005.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_005.js.tex'><img src='_formulas/LaTeX_备忘/f_005.js.svg'/></a></div>
 
 **各种括号的名称表示** (用途: 比如直接使用 \[ 和 \] 在 VSCode 中有警告)  
 
-<div align='center'><a href='_formulas/LaTeX_备忘/f_006.js.tex'><img src='_formulas/LaTeX_备忘/f_006.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_006.js.tex'><img src='_formulas/LaTeX_备忘/f_006.js.svg'/></a></div>
 
 
 ## 标记
 
 **转置**  
-<div align='center'><a href='_formulas/LaTeX_备忘/f_007.js.tex'><img src='_formulas/LaTeX_备忘/f_007.svg'/></a></div>
+<div align='center'><a href='_formulas/LaTeX_备忘/f_007.js.tex'><img src='_formulas/LaTeX_备忘/f_007.js.svg'/></a></div>

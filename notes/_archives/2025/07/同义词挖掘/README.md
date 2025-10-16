@@ -39,7 +39,7 @@ HTML 空格: &nbsp;
     - Query A -> 实体 X
     - **(可选)** 当 $P(X|Q_A) ≈ P(X|Q_B)$ 时视为候选对
 
-    <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.svg'/></a></div>
+    <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.js.svg'/></a></div>
 
 **基于文本相似度**
 1. 中文拼音相似度 (如"麦当劳" vs "麦当当");

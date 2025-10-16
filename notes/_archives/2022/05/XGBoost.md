@@ -57,8 +57,8 @@ tags: [ml]
     -
 
 回归树
-<div align='center'><a href='_formulas/XGBoost/f_001.js.tex'><img src='_formulas/XGBoost/f_001.svg'/></a></div>
+<div align='center'><a href='_formulas/XGBoost/f_001.js.tex'><img src='_formulas/XGBoost/f_001.js.svg'/></a></div>
 
 函数表达式
-<div align='center'><a href='_formulas/XGBoost/f_002.js.tex'><img src='_formulas/XGBoost/f_002.svg'/></a></div>
+<div align='center'><a href='_formulas/XGBoost/f_002.js.tex'><img src='_formulas/XGBoost/f_002.js.svg'/></a></div>
 
