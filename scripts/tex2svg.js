@@ -13,7 +13,7 @@ const { AllPackages } = require('mathjax-full/js/input/tex/AllPackages.js');
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 
-console.log(mathjax.version);
+// console.log(mathjax.version);
 
 const tex = new TeX({ packages: AllPackages });
 // const svg = new SVG({fontCache: 'none'});

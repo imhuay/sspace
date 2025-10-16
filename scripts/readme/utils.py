@@ -52,6 +52,7 @@ class MathBlock:
     content: str | None = None
     tex_file_path: Path | None = None
     svg_file_path: Path | None = None
+    need_regen: bool = False
 
     _pad_size: ClassVar[int] = 3
 
@@ -59,8 +60,11 @@ class MathBlock:
         return 'f_' + str(_i).zfill(self._pad_size)
 
     def __post_init__(self):
-        # test.md
-        # notes/_archives/2025/10/_formulas/test_svg/001.svg
+        """"""
+        if self.already_img_block:
+            if self._needs_regeneration(self.tex_file_path, self.svg_file_path):  # type: ignore
+                self.need_regen = True
+
         if self.tex_file_path is not None:
             shutil.move(self.tex_file_path, self._tex_save_path)
         self.tex_file_path = self._tex_save_path
@@ -103,6 +107,17 @@ class MathBlock:
 
     #     with open(self.tex_file_path, 'w', encoding='utf8') as fw:
     #         fw.write(self.content)
+
+    @staticmethod
+    def _needs_regeneration(tex_file_path: str, svg_file_path: str):
+        """"""
+        last_tex = GitUtils.last_commit_date(tex_file_path)
+        last_svg = GitUtils.last_commit_date(svg_file_path)
+
+        # 比较时间戳, tex 晚于 svg, 则需要更新
+        dt_tex = datetime.fromisoformat(last_tex)  # type: ignore
+        dt_svg = datetime.fromisoformat(last_svg)  # type: ignore
+        return dt_tex > dt_svg
 
 
 class MarkdownMath2SvgHelper:
@@ -178,15 +193,14 @@ class MarkdownMath2SvgHelper:
     def _save_to_tex_and_svg(self):
         """"""
         for blk in self.math_blocks:
-            if blk.already_img_block:
-                continue
+            if not blk.already_img_block:
+                assert blk.tex_file_path is not None
+                with open(blk.tex_file_path, 'w', encoding='utf8') as fw:
+                    assert blk.content is not None
+                    fw.write(blk.content)
 
-            assert blk.tex_file_path is not None
-            with open(blk.tex_file_path, 'w', encoding='utf8') as fw:
-                assert blk.content is not None
-                fw.write(blk.content)
-
-            os.system(f'node {self.tex2svg_script} {blk.tex_file_path} {blk.svg_file_path}')
+            if blk.need_regen:
+                os.system(f'node {self.tex2svg_script} {blk.tex_file_path} {blk.svg_file_path}')
 
     def _replace_math_to_svg(self):
         """"""
@@ -329,6 +343,15 @@ class MarkdownMath2SvgHelper:
 
 class GitUtils:
     """"""
+
+    @staticmethod
+    def last_commit_date(fp: str) -> str | None:
+        """
+        获取文件的最后一次提交时间 (ISO 格式)，如果文件没有提交过则返回 None
+        """
+        cmd = ['git', 'log', '-1', '--format=%ad', '--date=iso-strict', '--follow', '--', fp]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        return result.stdout.strip() or None
 
     @staticmethod
     def normalize_to_repo_relative(file_path: str) -> str:

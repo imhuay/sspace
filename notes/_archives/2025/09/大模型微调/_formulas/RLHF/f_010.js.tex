@@ -3,5 +3,5 @@ P(y_j \succ y_k)
 &= \frac{\exp\big(R_{\phi}(x, y_j)\big)}{\exp\big(R_{\phi}(x, y_j)\big) + \exp\big(R_{\phi}(x, y_k)\big)} \\
 &= \frac{1}{1 + \dfrac{\exp\big(R_{\phi}(x, y_k)\big)}{\exp\big(R_{\phi}(x, y_j)\big)}} \\
 &= \frac{1}{1 + e^{- \big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big)}} \\
-&= \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big) \quad \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
+&= \sigma\big(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)\big) \quad \scriptsize \text{(根据 Sigmoid 函数定义 } \sigma(z) = \frac{1}{1+e^{-z}} \text{)}
 \end{aligned}
