@@ -19,9 +19,9 @@ tags: [dl_unbalanced]
     - [机器学习中的一般方法](#机器学习中的一般方法)
 - [深度学习中常见的解决方法](#深度学习中常见的解决方法)
     - [数据层](#数据层)
-        - [ROS (上采样) ](#ros上采样)
-        - [Two‑phase learning (两阶段学习) ](#twophase-learning两阶段学习)
-        - [Dynamic sampling (动态采样) ](#dynamic-sampling动态采样)
+        - [ROS (上采样)](#ros-上采样)
+        - [Two‑phase learning (两阶段学习)](#twophase-learning-两阶段学习)
+        - [Dynamic sampling (动态采样)](#dynamic-sampling-动态采样)
         - [ROS, RUS, and two‑phase learning](#ros-rus-and-twophase-learning)
     - [算法层](#算法层)
         - [Mean Squared False Error (MFE) loss](#mean-squared-false-error-mfe-loss)
@@ -51,15 +51,15 @@ tags: [dl_unbalanced]
         | ------------------ | ------------------- | ------------------- |
         | Predicted positive | True positive (TP)  | False positive (FP) |
         | Predicted negative | False negative (FN) | True negative (TN)  |
-    - **Accuracy (准确率) **
+    - **Accuracy (准确率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_002.js.tex'><img src='_formulas/综述-2019-Johnson/f_002.js.svg'/></a></div>
-    - **Error Rate (错误率) **
+    - **Error Rate (错误率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_003.js.tex'><img src='_formulas/综述-2019-Johnson/f_003.js.svg'/></a></div>
-    - **Precision (精确率) **
+    - **Precision (精确率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_004.js.tex'><img src='_formulas/综述-2019-Johnson/f_004.js.svg'/></a></div>
-    - **Recall (召回率) 或 TPR (True Positive Rate, 真阳率) **
+    - **Recall (召回率) 或 TPR (True Positive Rate, 真阳率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_005.js.tex'><img src='_formulas/综述-2019-Johnson/f_005.js.svg'/></a></div>
-    - **Selectivity 或 TNR (True Negative Rate, 真阴率) **
+    - **Selectivity 或 TNR (True Negative Rate, 真阴率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_006.js.tex'><img src='_formulas/综述-2019-Johnson/f_006.js.svg'/></a></div>
     - **F-Measure**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_007.js.tex'><img src='_formulas/综述-2019-Johnson/f_007.js.svg'/></a></div>
@@ -151,7 +151,7 @@ tags: [dl_unbalanced]
     - 实时数据增强: 就是目前 CV 中的常规做法, 在输入层对图片做变换后再 forward;
     - 迁移学习: 基于预训练好的 Inception-V3 模型微调;
     - 动态采样:
-        <div align='center'><a href='_formulas/综述-2019-Johnson/f_011.js.tex'><img src='_formulas/综述-2019-Johnson/f_011.js.svg'/></a></div>
+            <div align='center'><a href='_formulas/综述-2019-Johnson/f_011.js.tex'><img src='_formulas/综述-2019-Johnson/f_011.js.svg'/></a></div>
         - 上式用于生成下一轮训练中各类别采样的数量;
         - $F_i$ 是一个向量, 由每个类在第 $i$ 轮迭代后的 F1 分数组成;
         - $f_{i,j}$ 表示类别 $j$ 在第 $i$ 轮迭代后的 F1 分数;
@@ -201,8 +201,8 @@ tags: [dl_unbalanced]
     - 均方误差损失 (MSE Loss) 很难在不平衡条件下捕捉到少数类群体的误差, 此时多数类主导了损失函数;
     - 受到混淆矩阵的启发, 提出 Mean False Error(MFE) Loss 和 Mean Squared False Error(MSFE) Loss, 通过分别计算不同类别的 MSE Loss, 来平衡少数类和多数类的误差;
 - **方法**
-    <div align='center'><a href='_formulas/综述-2019-Johnson/f_012.js.tex'><img src='_formulas/综述-2019-Johnson/f_012.js.svg'/></a></div>
-    <div align='center'><a href='_formulas/综述-2019-Johnson/f_013.js.tex'><img src='_formulas/综述-2019-Johnson/f_013.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_012.js.tex'><img src='_formulas/综述-2019-Johnson/f_012.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/综述-2019-Johnson/f_013.js.tex'><img src='_formulas/综述-2019-Johnson/f_013.js.svg'/></a></div>
     - 其中 $FPE$ 为**假阳误差** (False Positive Error), $FNE$ 为**假阴误差** (False Negative Error), 两者均为 MSE Loss;
 - **存在问题**
     - 无论是 MFE Loss 还是 MSFE Loss, 都是基于 MSE Loss, 但是在分类问题上使用 MSE 损失的效果并不好;

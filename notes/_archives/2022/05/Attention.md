@@ -6,7 +6,7 @@ Attention 备忘
 <!--END_SECTION:badge-->
 <!--info
 top: false
-draft: false
+draft: true
 hidden_in_recent: true
 tags: [dl_model]
 -->
@@ -15,7 +15,7 @@ tags: [dl_model]
 
 <!--START_SECTION:toc-->
 - [Multi-head Self Attention](#multi-head-self-attention)
-    - [前向过程 (PyTorch 实现) ](#前向过程pytorch-实现)
+    - [前向过程 (PyTorch 实现)](#前向过程-pytorch-实现)
 <!--END_SECTION:toc-->
 
 ---

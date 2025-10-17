@@ -10,7 +10,7 @@ toc_title: '**RLHF** (偏好学习, 对齐学习)'
 top: false
 draft: true
 thorough: true
-hidden_in_recent: true
+hidden_in_recent: false
 section_number: false
 apply_tex2svg: true
 level: 0
@@ -51,13 +51,7 @@ extra_url: false
 ## 快速回顾 ⏰
 <!--END_SECTION:keyword-->
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: '伪代码'
-extra_url: false
--->
 ### RLHF 伪代码 (轨迹生成 + 梯度传播) ✨
-<!--END_SECTION:keyword-->
 
 <details><summary><b>轨迹生成 📌</b></summary>
 

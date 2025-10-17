@@ -6,7 +6,7 @@ synonym.2012.KDD.01 阅读笔记
 <!--END_SECTION:badge-->
 <!--info
 top: false
-draft: false
+draft: true
 hidden_in_recent: true
 tags: [paper]
 -->
@@ -16,7 +16,7 @@ tags: [paper]
 <!-- > 论文: [A framework for robust discovery of entity synonyms](https://dl.acm.org/doi/10.1145/2339530.2339743) - [PDF](./[synonym.2012.KDD.01]%20A%20Framework%20for%20Robust%20Discovery%20of%20Entity%20Synonyms.pdf) -->
 
 <!--START_SECTION:paper_title-->
-> [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](https://dl.acm.org/doi/10.1145/2339530.2339743) || [PDF](./[synonym.2012.KDD.01]%20A%20Framework%20for%20Robust%20Discovery%20of%20Entity%20Synonyms.pdf)
+> [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](https://dl.acm.org/doi/10.1145/2339530.2339743) || [*PDF*](./[synonym.2012.KDD.01]%20A%20Framework%20for%20Robust%20Discovery%20of%20Entity%20Synonyms.pdf)
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->

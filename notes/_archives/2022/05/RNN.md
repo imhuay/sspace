@@ -21,8 +21,8 @@ tags: [dl_model]
     - [常见问题](#常见问题)
         - [LSTM 和 RNN 的区别](#lstm-和-rnn-的区别)
         - [Cell state 和 Hidden state 的关系](#cell-state-和-hidden-state-的关系)
-        - [LSTM 中各个门的作用是什么? ](#lstm-中各个门的作用是什么)
-        - [LSTM 前向过程 (门的顺序) ](#lstm-前向过程门的顺序)
+        - [LSTM 中各个门的作用是什么?](#lstm-中各个门的作用是什么)
+        - [LSTM 前向过程 (门的顺序)](#lstm-前向过程-门的顺序)
 - [GRU](#gru)
     - [GRU 的前向过程](#gru-的前向过程)
     - [常见问题](#常见问题-1)
@@ -38,11 +38,11 @@ tags: [dl_model]
 ### RNN 的前向过程
 
 <div align='center'><a href='_formulas/RNN/f_001.js.tex'><img src='_formulas/RNN/f_001.js.svg'/></a></div>
->
 
 或
 
 <div align='center'><a href='_formulas/RNN/f_002.js.tex'><img src='_formulas/RNN/f_002.js.svg'/></a></div>
+
 > $[x1,x2]$ 表示**向量拼接**; RNN 为递推结构, 其中 $h_0$ 一般初始化为 0;
 
 > 前者来自 Elman, 后者来自 Jordan; 两个过程的区别仅在于当前步的输入不同, 一般所说的 RNN 指的是前者;
@@ -54,6 +54,7 @@ tags: [dl_model]
 ### LSTM 的前向过程
 
 <div align='center'><a href='_formulas/RNN/f_003.js.tex'><img src='_formulas/RNN/f_003.js.svg'/></a></div>
+
 > $[x1,x2]$ 表示**向量拼接**; $*$ 表示**按位相乘**;
 > $f_i$: 长期记忆的遗忘比重;
 > $i_i$: 短期记忆的保留比重;
@@ -95,6 +96,7 @@ tags: [dl_model]
 ### GRU 的前向过程
 
 <div align='center'><a href='_formulas/RNN/f_004.js.tex'><img src='_formulas/RNN/f_004.js.svg'/></a></div>
+
 > $[x1,x2]$ 表示**向量拼接**; $*$ 表示**按位相乘**;
 
 ### 常见问题

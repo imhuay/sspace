@@ -11,7 +11,9 @@ hidden_in_recent: false
 tags: [ml]
 -->
 
-> ***Keywords**: XGBoost*
+<!--START_SECTION:keywords-->
+> ***Keywords**: [XGBoost](../05/XGBoost.md)*
+<!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
 <!--END_SECTION:paper_title-->
@@ -19,7 +21,7 @@ tags: [ml]
 <!--START_SECTION:toc-->
 - [概述](#概述)
 - [常见面试问题](#常见面试问题)
-    - [GBDT 为什么用 CART 回归树做基学习器? ](#gbdt-为什么用-cart-回归树做基学习器)
+    - [GBDT 为什么用 CART 回归树做基学习器?](#gbdt-为什么用-cart-回归树做基学习器)
     - [XGBoost 和 GBDT 的区别](#xgboost-和-gbdt-的区别)
 - [参考](#参考)
 <!--END_SECTION:toc-->
