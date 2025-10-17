@@ -37,6 +37,7 @@ Notes
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
 - [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md) 
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md) 
+- [`2025-09-18` RLHF (基于人类反馈的强化学习)](_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md) 
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md) 
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md) 
@@ -44,11 +45,10 @@ Notes
 - [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md) 
 - [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
 - [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md) 
-- [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) 
+- [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) ✒️
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md) 
 - [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md) 
-- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md) 
 
 <!--END_SECTION:recent-->
 
@@ -87,7 +87,7 @@ Notes
 - [基础概念](_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
 - [**RLHF** ( 偏好学习, 对齐学习 )](_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
-  > _[**快速回顾**](_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [伪代码](_archives/2025/09/大模型微调/RLHF.md#rlhf-伪代码-轨迹生成--梯度传播-) • [奖励模型](_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
+  > _[**快速回顾**](_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
@@ -116,12 +116,12 @@ Notes
   > _[期望](_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
 - [机器学习基本概念](_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
   > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基本概念.md#正则化-regularization)_<br>
-- [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) 
-- [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md) 
+- [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) ✒️
+  - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md) 
 
 ### Deep Learning 🧠
 
-- [过拟合与正则化](_archives/2022/05/过拟合与正则化.md) 
+- [过拟合与正则化](_archives/2022/05/过拟合与正则化.md) ✒️
 - [激活函数](_archives/2022/05/激活函数.md) 
 - [损失函数](_archives/2022/05/损失函数.md) 
 
@@ -130,7 +130,7 @@ Notes
 
 - [RNN 备忘](_archives/2022/05/RNN.md) 
 - [CNN 备忘](_archives/2022/05/CNN.md) 
-- [Attention 备忘](_archives/2022/05/Attention.md) 
+- [Attention 备忘](_archives/2022/05/Attention.md) ✒️
 
 <!-- omit in toc -->
 #### 框架
@@ -253,7 +253,8 @@ Notes
 
 ### Paper Notes 📝
 
-- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架](_archives/2022/12/synonym.2012.KDD.01/README.md)
+- [[synonym.2012.KDD.01] A framework for robust discovery of entity synonyms | 基于统计方法的通用同义词挖掘框架 ⏳](_archives/2022/12/synonym.2012.KDD.01/README.md)
+- [[el.2015.WSDM.01] Fast and Space-Efficient Entity Linking for Queries | 高效的 Query 实体链接](_archives/2022/04/实体链接/2015.wsdm.el.01.md)
 
 </td>
 </tr>
@@ -473,7 +474,6 @@ Notes
 - [Hive 常用 SQL 备忘](_archives/2023/03/Hive常用SQL备忘.md) 
 - [GitBook 备忘](_archives/2022/04/Gitbook备忘.md) 
 - [BERT 常见面试问题](_archives/2022/05/BERT常见面试问题.md) 
-- [2015.wsdm.el](_archives/2022/04/实体链接/2015.wsdm.el.01.md) 
 - [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md) 
 - [使用 LLM 优化简历](_archives/2025/08/使用LLM优化简历.md) 
 

@@ -227,6 +227,7 @@ tags: []
 
 - **旋转角** 公式:
   <div align='center'><a href='_formulas/位置编码_QA/f_003.js.tex'><img src='_formulas/位置编码_QA/f_003.js.svg'/></a></div>
+
     - 其中
         - $m$ 为 token 位置索引;
         - $i$ 为 向量 的分量索引;

@@ -1,8 +1,8 @@
-Attention 备忘
+Attention 备忘 <!-- suffix --> ✒️ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-05-xx&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-10%2001%3A15%3A17&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2011%3A02%3A05&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: false
@@ -26,6 +26,7 @@ tags: [dl_model]
 ### 前向过程
 
 <div align='center'><a href='_formulas/Attention/f_001.js.tex'><img src='_formulas/Attention/f_001.js.svg'/></a></div>
+
  -->
 
 ### 前向过程 (PyTorch 实现)

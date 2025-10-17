@@ -124,8 +124,10 @@ AutoPhrase 是一种**半监督的短语挖掘算法/工具**, 由韩家炜团�
 #### 方案 2: **多元 PMI** (二元版本的高阶扩展)
 - 定义:
     <div align='center'><a href='_formulas/AutoPhrase备忘/f_002.js.tex'><img src='_formulas/AutoPhrase备忘/f_002.js.svg'/></a></div>
+
     更常见的条件式:
     <div align='center'><a href='_formulas/AutoPhrase备忘/f_003.js.tex'><img src='_formulas/AutoPhrase备忘/f_003.js.svg'/></a></div>
+
 - 分母代表这三个词在"假设部分独立"条件下的期望共现概率, 分子是真实三元组概率;
 - 缺点是**三元共现概率稀疏**, 低频组合噪声大, 需要设较高的频次下限;
 
@@ -133,6 +135,7 @@ AutoPhrase 是一种**半监督的短语挖掘算法/工具**, 由韩家炜团�
 #### 方案 3: **链式 PMI**
 - 示例
     <div align='center'><a href='_formulas/AutoPhrase备忘/f_004.js.tex'><img src='_formulas/AutoPhrase备忘/f_004.js.svg'/></a></div>
+
 - 这样可以直接复用二元统计逻辑, 并且对 (w1,w2) 先合并成"词块"再与 w3 计算 PMI, 相当于做了一次层次化评估;
 
 
@@ -181,6 +184,7 @@ AutoPhrase 是一种**半监督的短语挖掘算法/工具**, 由韩家炜团�
 
 - 带入公式:
 <div align='center'><a href='_formulas/AutoPhrase备忘/f_006.js.tex'><img src='_formulas/AutoPhrase备忘/f_006.js.svg'/></a></div>
+
 - 这个值越大, 说明 nasi goreng 的上下文分布越 "特殊", 越可能是一个语义独立的短语;
 
 
@@ -193,6 +197,7 @@ IDF (Inverse Document Frequency, 逆文档频率) 是衡量一个词在整个语
 
 **公式**:
 <div align='center'><a href='_formulas/AutoPhrase备忘/f_007.js.tex'><img src='_formulas/AutoPhrase备忘/f_007.js.svg'/></a></div>
+
 其中
 - $t$: 目标词项 (term)
 - $N$: 语料库中的总文档数

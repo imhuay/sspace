@@ -2,7 +2,7 @@ Markdown 备忘
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-04-xx&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-30%2020%3A54%3A40&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2016%3A40%3A00&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: false
@@ -305,7 +305,7 @@ project
 
 单行居中 (保证块前后有空行, 否则可能在一些解释器上可能失效)
 
-<div align='center'><a href='_formulas/Markdown_备忘/f_002.js.tex'><img src='_formulas/Markdown_备忘/f_002.js.svg'/></a></div>
+<div align='center'><a href='_formulas/Markdown_备忘/f_001.js.tex'><img src='_formulas/Markdown_备忘/f_001.js.svg'/></a></div>
 
 > 更多语法见 [Latex 备忘](./LaTeX_备忘.md)
 
@@ -326,7 +326,7 @@ project
 
 ### 对齐
 
-<div align='center'><a href='_formulas/Markdown_备忘/f_004.js.tex'><img src='_formulas/Markdown_备忘/f_004.js.svg'/></a></div>
+<div align='center'><a href='_formulas/Markdown_备忘/f_002.js.tex'><img src='_formulas/Markdown_备忘/f_002.js.svg'/></a></div>
 
 
 ## VSCode 插件

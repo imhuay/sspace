@@ -66,6 +66,7 @@ tags: [transformer]
 - **作用**: 自注意力机制让模型能够评估输入序列中 **不同 token 的重要性**, 并动态调整它们对输出的影响;
 - **公式 (缩放点积注意力)**:
     <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.js.svg'/></a></div>
+
     - 其中:
         <!-- - $Q=X_QW^Q$, $K=X_KW^K$, $V=X_VW^V$; -->
         - $M$: **掩码**, 用于屏蔽无效位置 (未来 token 或 padding token), 屏蔽处 $M = \text{-inf}$ (或极大负数), 其余处 $M = 0$
@@ -88,6 +89,7 @@ tags: [transformer]
     - 将 $Q$, $K$, $V$ 通过 $h$ 个不同的线性投影, 然后对每个头独立进行注意力计算, 得到 $h$ 个输出, 最后将这些输出拼接起来后, 再做一次线性投影;
 - **公式**:
     <div align='center'><a href='_formulas/README/f_002.js.tex'><img src='_formulas/README/f_002.js.svg'/></a></div>
+
     - 其中
         <div align='center'><a href='_formulas/README/f_003.js.tex'><img src='_formulas/README/f_003.js.svg'/></a></div>
 
@@ -100,6 +102,7 @@ tags: [transformer]
 - **结构**: 两层线性层 + 非线性激活 (ReLU/GELU/SwiGLU 等)
 - **公式**:
     <div align='center'><a href='_formulas/README/f_004.js.tex'><img src='_formulas/README/f_004.js.svg'/></a></div>
+
     - 张量形状变化: `[batch, seq_len, d_model] -> [batch, seq_len, d_ff] -> [batch, seq_len, d_model]`
     - 中间扩展维度 (`d_ff`) 通常是隐藏维度 (`d_model`) 的 **3~4 倍** (原文为 4 倍: `d_model = 512, d_ff = 2048`)
 

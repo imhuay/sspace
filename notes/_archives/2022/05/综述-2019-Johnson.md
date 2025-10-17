@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-05-xx&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-03%2022%3A42%3A16&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2011%3A02%3A05&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 top: false
@@ -38,6 +38,7 @@ tags: [dl_unbalanced]
 - 数据不平衡的影响会随着问题复杂度的增加而增加; 简单的线性可分问题不会受到数据不平衡的影响;
 - 一个简单衡量数据集不平衡率的指标:
     <div align='center'><a href='_formulas/综述-2019-Johnson/f_001.js.tex'><img src='_formulas/综述-2019-Johnson/f_001.js.svg'/></a></div>
+
     比如最大类别的样本数为 100, 最小的为 10, 则 $\rho = 10$;
 - 需要注意的是, 有时少数类别样本的绝对值比占比更重要; 比如在一个包含 100 万样本的数据集中, 即使某个类别只占 1%, 也有 1 万条样本可供学习;
 - 一些研究将不平衡问题看做是**对困难样本的学习**问题; 在大多数场景下, 可以认为两者的目标是一致的;
@@ -53,21 +54,30 @@ tags: [dl_unbalanced]
         | Predicted negative | False negative (FN) | True negative (TN)  |
     - **Accuracy (准确率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_002.js.tex'><img src='_formulas/综述-2019-Johnson/f_002.js.svg'/></a></div>
+
     - **Error Rate (错误率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_003.js.tex'><img src='_formulas/综述-2019-Johnson/f_003.js.svg'/></a></div>
+
     - **Precision (精确率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_004.js.tex'><img src='_formulas/综述-2019-Johnson/f_004.js.svg'/></a></div>
+
     - **Recall (召回率) 或 TPR (True Positive Rate, 真阳率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_005.js.tex'><img src='_formulas/综述-2019-Johnson/f_005.js.svg'/></a></div>
+
     - **Selectivity 或 TNR (True Negative Rate, 真阴率)**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_006.js.tex'><img src='_formulas/综述-2019-Johnson/f_006.js.svg'/></a></div>
+
     - **F-Measure**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_007.js.tex'><img src='_formulas/综述-2019-Johnson/f_007.js.svg'/></a></div>
+
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_008.js.tex'><img src='_formulas/综述-2019-Johnson/f_008.js.svg'/></a></div>
+
     - **G-Mean**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_009.js.tex'><img src='_formulas/综述-2019-Johnson/f_009.js.svg'/></a></div>
+
     - **Balanced Accuracy**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_010.js.tex'><img src='_formulas/综述-2019-Johnson/f_010.js.svg'/></a></div>
+
 - TODO: 精读各指标的作用
 
 
@@ -152,6 +162,7 @@ tags: [dl_unbalanced]
     - 迁移学习: 基于预训练好的 Inception-V3 模型微调;
     - 动态采样:
             <div align='center'><a href='_formulas/综述-2019-Johnson/f_011.js.tex'><img src='_formulas/综述-2019-Johnson/f_011.js.svg'/></a></div>
+
         - 上式用于生成下一轮训练中各类别采样的数量;
         - $F_i$ 是一个向量, 由每个类在第 $i$ 轮迭代后的 F1 分数组成;
         - $f_{i,j}$ 表示类别 $j$ 在第 $i$ 轮迭代后的 F1 分数;
@@ -202,7 +213,9 @@ tags: [dl_unbalanced]
     - 受到混淆矩阵的启发, 提出 Mean False Error(MFE) Loss 和 Mean Squared False Error(MSFE) Loss, 通过分别计算不同类别的 MSE Loss, 来平衡少数类和多数类的误差;
 - **方法**
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_012.js.tex'><img src='_formulas/综述-2019-Johnson/f_012.js.svg'/></a></div>
+
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_013.js.tex'><img src='_formulas/综述-2019-Johnson/f_013.js.svg'/></a></div>
+
     - 其中 $FPE$ 为**假阳误差** (False Positive Error), $FNE$ 为**假阴误差** (False Negative Error), 两者均为 MSE Loss;
 - **存在问题**
     - 无论是 MFE Loss 还是 MSFE Loss, 都是基于 MSE Loss, 但是在分类问题上使用 MSE 损失的效果并不好;
@@ -225,8 +238,10 @@ tags: [dl_unbalanced]
 - **方法**
     - 交叉熵
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_014.js.tex'><img src='_formulas/综述-2019-Johnson/f_014.js.svg'/></a></div>
+
     - Focal Loss
         <div align='center'><a href='_formulas/综述-2019-Johnson/f_015.js.tex'><img src='_formulas/综述-2019-Johnson/f_015.js.svg'/></a></div>
+
     - Focal Loss 在交叉熵的基础上加入了**调制系数** $\alpha_t(1-p_t)^\gamma$
     - 其中 $\gamma$ (> 0) 为超参数, 用于调整简单样本的权重的下降率; $\alpha_t$ 为类别权重用于提升少数类的重要性; 论文中取 $\gamma=2, \alpha=0.25$
     - 简单解释: 对于**易分类**的样本, 当其概率 $p_t$ 接近 1, 此时调制系数将趋向于 0, 进而降低其对 loss 的影响;

@@ -2,7 +2,7 @@ RLHF (基于人类反馈的强化学习) <!-- suffix --> ✒️🧣 <!-- suffix 
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2000%3A33%3A31&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2011%3A02%3A05&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -101,9 +101,11 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
         - 参数高效微调 (PEFT); <br>
           🚩 **LoRA** (低秩自适应): 
           <div align='center'><a href='_formulas/RLHF/f_001.js.tex'><img src='_formulas/RLHF/f_001.js.svg'/></a></div>
+
     - **目标函数**: <br>
         🚩 **交叉熵损失**
         <div align='center'><a href='_formulas/RLHF/f_002.js.tex'><img src='_formulas/RLHF/f_002.js.svg'/></a></div>
+
 - **奖励模型 $R_{\phi}(x, y)$**:
     - **目标**: <br>
         🚩 将人类偏好转化为标量分数;
@@ -115,25 +117,31 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
     - **目标函数**: 
         🚩 **成对排序损失 (Pairwise Ranking Loss)** / **负对数似然损失**
             <div align='center'><a href='_formulas/RLHF/f_003.js.tex'><img src='_formulas/RLHF/f_003.js.svg'/></a></div>
+
         > 其中 $\boxed{\sigma \big( R_{\phi}(x, y^+) - R_{\phi}(x, y^-) \big) = P(y^+ \succ y^- \mid x)}$ 为 **成对比较概率** (Bradley–Terry 模型), 表达了 $y^+$ 优于 $y^-$ 的概率.
 - **策略优化** (**基于 PPO 算法**):
     - **目标函数** (组合目标): <br>
         🚩 **策略优化 (PPO-Clip) + 价值函数误差 + KL 正则项**
         <div align='center'><a href='_formulas/RLHF/f_004.js.tex'><img src='_formulas/RLHF/f_004.js.svg'/></a></div>
+
         <!-- > [策略梯度定理 - $A$ 函数形式](./策略梯度定理及其推导.md#a-函数形式) -->
     - **策略模型 $\pi_{\theta}(s)$** 📌 <br>
         - **损失函数**: 
             <div align='center'><a href='_formulas/RLHF/f_005.js.tex'><img src='_formulas/RLHF/f_005.js.svg'/></a></div>
+
         - **优势估计 $\hat{A}_t$**:
                 <div align='center'><a href='_formulas/RLHF/f_006.js.tex'><img src='_formulas/RLHF/f_006.js.svg'/></a></div>
+
             其中
                 <div align='center'><a href='_formulas/RLHF/f_007.js.tex'><img src='_formulas/RLHF/f_007.js.svg'/></a></div>
+
             > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
     - **价值模型 $V_{\phi}(s)$**:
         - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
         - **训练数据**:
             - 一条长度为 $T$ 的轨迹, 提供 $T$ 个训练样本: 
                     <div align='center'><a href='_formulas/RLHF/f_008.js.tex'><img src='_formulas/RLHF/f_008.js.svg'/></a></div>
+
                 其中
                 - $T$ : Response 的 token 数;
                 - $r$ : 奖励模型对完整上下文 (prompt + response) 给出的最终奖励 (可能含 KL 惩罚, 折扣因子等修正);
@@ -143,6 +151,7 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
         - **目标函数**: 
             - **均方误差 (MSE) 损失**
             <div align='center'><a href='_formulas/RLHF/f_009.js.tex'><img src='_formulas/RLHF/f_009.js.svg'/></a></div>
+
     - **参考模型 $\pi_{\text{ref}}$**:
         - 固定参数的 SFT 模型;
         - ~~PPO-Penalty 需要, 因为要计算 KL;~~
@@ -304,13 +313,16 @@ extra_url: false
         - 对给定 **上下文** $x$ 和 **一对回答** $(y_j, y_k)$, 其中人类标注认为 $y_j$ **优于** $y_k$, 记作 $y_j \succ y_k$;
         - 根据 **Bradley-Terry 模型**, 定义 $y_j \succ y_k$ 的概率为:
             <div align='center'><a href='_formulas/RLHF/f_010.js.tex'><img src='_formulas/RLHF/f_010.js.svg'/></a></div>
+
             <!-- > 其中 $R_{\phi}(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
             <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
             <div align='center'><a href='_formulas/RLHF/f_011.js.tex'><img src='_formulas/RLHF/f_011.js.svg'/></a></div>
+
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
         <div align='center'><a href='_formulas/RLHF/f_012.js.tex'><img src='_formulas/RLHF/f_012.js.svg'/></a></div>
+
     <!--
     - **带边距的排序损失**
     - **Listwise 损失** (多候选)
@@ -343,6 +355,7 @@ extra_url: false
     - 当两个对象 $y_j$ 和 $y_k$ 进行比较时, **结果是一个随机事件**, 其 **概率** 仅取决于它们之间的 **能力分数差**, 即 $r_j - r_k$;
     - 具体地, $y_j$ **战胜** $y_k$ (记 $y_j \succ y_k$) 的概率由以下公式定义:
         <div align='center'><a href='_formulas/RLHF/f_013.js.tex'><img src='_formulas/RLHF/f_013.js.svg'/></a></div>
+
         其中 $\sigma(z) = \dfrac{1}{1 + e^{-z}}$ 为 **Sigmoid 函数**, 显然有 $P(y_j \succ y_k) + P(y_k \succ y_j) = 1$;
     - 因此, BT 模型本质上是通过 **Sigmoid 函数** 将两个对象的 **能力分数差** 映射为其比较的胜率;
     <!-- - 即, **BT 模型** 试图通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率; -->
@@ -351,6 +364,7 @@ extra_url: false
     - 则 对象 $y_j$ **击败** 另一个对象 $y_k$ 的 **概率** 可以表示为 $P(y_j \succ y_k) = \dfrac{\alpha_j}{\alpha_j + \alpha_k}$:
     - 为了便于优化和理解, 常写成指数形式, 记 $\alpha = \exp(r)$, 则
         <div align='center'><a href='_formulas/RLHF/f_014.js.tex'><img src='_formulas/RLHF/f_014.js.svg'/></a></div>
+
      -->
 - **目的**:
     - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
@@ -364,8 +378,10 @@ extra_url: false
     - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
     - 则定义 $y_j$ 优于 $y_k$ (记 $y_j \succ y_k$) 的概率为
         <div align='center'><a href='_formulas/RLHF/f_015.js.tex'><img src='_formulas/RLHF/f_015.js.svg'/></a></div>
+
     - 根据 $\textbf{Sigmoid}$ **函数** $\sigma(z)=\dfrac{1}{1+e^{-z}}$, 即
         <div align='center'><a href='_formulas/RLHF/f_016.js.tex'><img src='_formulas/RLHF/f_016.js.svg'/></a></div>
+
     - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
     - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
 -->
@@ -373,10 +389,12 @@ extra_url: false
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
         <div align='center'><a href='_formulas/RLHF/f_017.js.tex'><img src='_formulas/RLHF/f_017.js.svg'/></a></div>
+
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     <!--
     - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
         <div align='center'><a href='_formulas/RLHF/f_018.js.tex'><img src='_formulas/RLHF/f_018.js.svg'/></a></div>
+
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
     -->
 

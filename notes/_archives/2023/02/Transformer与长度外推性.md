@@ -48,8 +48,10 @@ hidden_in_recent: true
 
 - 即将 $Attention(Q,K,V)=softmax\left(\frac{QK^⊤}{\sqrt{d}}\right)V$ 修改为
     <div align='center'><a href='_formulas/Transformer与长度外推性/f_001.js.tex'><img src='_formulas/Transformer与长度外推性/f_001.js.svg'/></a></div>
+
     或
     <div align='center'><a href='_formulas/Transformer与长度外推性/f_002.js.tex'><img src='_formulas/Transformer与长度外推性/f_002.js.svg'/></a></div>
+
     > 其中 $m$ 为**训练长度**, $n$ 为**预测长度**; 这两个值可以根据具体任务使用常量, 或引入超参数 $κ$;
 
 

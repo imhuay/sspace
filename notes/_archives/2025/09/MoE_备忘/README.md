@@ -268,6 +268,7 @@ if __name__ == "__main__":
     - 引入 **负载均衡损失 (Load Balancing Loss, LBL)**, 鼓励 token 在专家间均匀分布;
     - **公式**:
         <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.js.svg'/></a></div>
+
     - **说明**:
         - 计算每个专家在一个 batch 中接收到的 token 占比 $f_i$,
         - 与该专家获得的总路由概率 $P_i$ 相乘, 然后在所有专家上求和;
@@ -287,6 +288,7 @@ if __name__ == "__main__":
     - 如果 logits 过大, 可能在 MoE 层的大规模矩阵乘法中引发数值溢出, 导致训练不稳定;
 - **公式**:
     <div align='center'><a href='_formulas/README/f_002.js.tex'><img src='_formulas/README/f_002.js.svg'/></a></div>
+
     - 其中 $\beta = 0.001$ (经验值)
 - **作用**: 惩罚路由器 logits 过大, 提升稳定性;
 
