@@ -48,21 +48,21 @@ class MathBlock:
     tmp_save_dir: Path
     already_img_block: bool
     line_start_i: int
-    line_end_i: int = -1
+    line_end_i: int
+    pre_line: str = ''
+    nxt_line: str = ''
     content: str | None = None
     tex_file_path: Path | None = None
     svg_file_path: Path | None = None
     need_regen: bool = False
 
     _pad_size: ClassVar[int] = 3
-
-    def _zfill(self, _i):
-        return 'f_' + str(_i).zfill(self._pad_size)
+    IMG_BLOCK_TEMP = "{line_prefix}<div align='center'><a href='{tex_file_path}'><img src='{svg_file_path}'/></a></div>"
 
     def __post_init__(self):
         """"""
         if self.already_img_block:
-            if self._needs_regeneration(self.tex_file_path, self.svg_file_path):  # type: ignore
+            if self._need_regeneration(self.tex_file_path, self.svg_file_path):  # type: ignore
                 self.need_regen = True
 
         if self.tex_file_path is not None:
@@ -72,6 +72,55 @@ class MathBlock:
         if self.svg_file_path is not None:
             shutil.move(self.svg_file_path, self._svg_save_path)
         self.svg_file_path = self._svg_save_path
+
+    def _zfill(self, _i):
+        return 'f_' + str(_i).zfill(self._pad_size)
+
+    @staticmethod
+    def _need_regeneration(tex_file_path: str, svg_file_path: str):
+        """"""
+        last_tex = GitUtils.last_commit_date(tex_file_path)
+        last_svg = GitUtils.last_commit_date(svg_file_path)
+
+        # 比较时间戳, tex 晚于 svg, 则需要更新
+        dt_tex = datetime.fromisoformat(last_tex)  # type: ignore
+        dt_svg = datetime.fromisoformat(last_svg)  # type: ignore
+        return dt_tex > dt_svg
+
+    def _need_add_empty_line(self) -> bool:
+        """是否需要添加空行"""
+        if self.prefix_has_quote():
+            nxt_prefix, nxt_left = MarkdownMath2SvgHelper.split_prefix_and_left(self.nxt_line)
+            if '>' in nxt_prefix and nxt_left.strip():
+                return True
+        else:
+            if self.nxt_line.strip():
+                return True
+        return False
+
+    def prefix_has_quote(self):
+        return '>' in self.line_prefix
+
+    @property
+    def img_line(self) -> str:
+        # prefix = self.line_prefix
+        # if self._need_indent():
+        #     prefix += '    '
+        line = self.IMG_BLOCK_TEMP.format(
+            line_prefix=self.line_prefix,
+            tex_file_path=self.tex_href,
+            svg_file_path=self.svg_href,
+        )
+        if self._need_add_empty_line():
+            if self.prefix_has_quote():
+                line += '\n>'
+            else:
+                line += '\n'
+        # if self._nxt_is_code or self.is_pre_empty_and_nxt_not_emplt:
+        #     line += '\n'
+        # if self.is_pre_not_quote_and_nxt_not_emplt:
+        #     line += '\n>'
+        return line
 
     @property
     def tex_name(self):
@@ -101,6 +150,22 @@ class MathBlock:
     def svg_href(self):
         return str(self._href_prefix / self.svg_name)
 
+    # @property
+    # def _nxt_is_code(self):
+    #     return self.nxt_line and self.nxt_line.lstrip().startswith('```')
+
+    # @property
+    # def _nxt_is_comment(self):
+    #     return self.nxt_line and self.nxt_line.lstrip().startswith('<!--')
+
+    # @property
+    # def _pre_is_code(self):
+    #     return self.pre_line and self.pre_line.lstrip().startswith('```')
+
+    # @property
+    # def _pre_is_comment(self):
+    #     return self.pre_line and self.pre_line.lstrip().startswith('<!--')
+
     # def save_to_svg(self):
     #     assert self.tex_file_path is not None
     #     assert self.content is not None
@@ -108,23 +173,80 @@ class MathBlock:
     #     with open(self.tex_file_path, 'w', encoding='utf8') as fw:
     #         fw.write(self.content)
 
-    @staticmethod
-    def _needs_regeneration(tex_file_path: str, svg_file_path: str):
-        """"""
-        last_tex = GitUtils.last_commit_date(tex_file_path)
-        last_svg = GitUtils.last_commit_date(svg_file_path)
+    # @property
+    # def is_pre_not_quote_and_nxt_not_emplt(self) -> bool:
+    #     """一种特殊情况:
+    #     ...
+    #     > <img_block>
+    #     > ...
+    #     """
+    #     # 如果前缀中有 >, 且上一行没有 >, 且下一行不是空白 >
+    #     if self.prefix_has_quote:
+    #         if self.pre_line and not self.pre_line.lstrip().startswith('>'):
+    #             if self.nxt_line:
+    #                 _, nxt_left = MarkdownMath2SvgHelper.split_prefix_and_left(self.nxt_line)
+    #                 if nxt_left:
+    #                     return True
+    #     return False
 
-        # 比较时间戳, tex 晚于 svg, 则需要更新
-        dt_tex = datetime.fromisoformat(last_tex)  # type: ignore
-        dt_svg = datetime.fromisoformat(last_svg)  # type: ignore
-        return dt_tex > dt_svg
+    # @property
+    # def is_pre_empty_and_nxt_not_emplt(self) -> bool:
+    #     if self.line_prefix == '':
+    #         if not self.pre_line.strip():
+    #             if self.nxt_line.strip():
+    #                 return True
+    #     return False
+
+    # def _need_indent(self) -> bool:
+    #     """"""
+    #     if self.is_pre_not_quote_and_nxt_not_emplt:
+    #         return False
+    #     if self.is_pre_empty_and_nxt_not_emplt:
+    #         return False
+
+    #     def _check_line(ln: str):
+    #         _is_code_block = ln.lstrip().startswith('```')
+    #         _is_comment = ln.lstrip().startswith('<!--')
+    #         if _is_code_block or _is_comment:
+    #             return False
+
+    #         _ln_prefix, _ln_left = MarkdownMath2SvgHelper.split_prefix_and_left(ln)
+
+    #         if not _ln_left:
+    #             return False
+
+    #         _is_img_blk, _, _ = MarkdownMath2SvgHelper.is_img_block(_ln_left)
+    #         _leading_spaces = MarkdownMath2SvgHelper.count_leading_spaces(ln)
+    #         if prefix_has_quote:
+    #             if len(prefix) == len(_ln_prefix) and (not _is_img_blk):
+    #                 return True
+    #         else:
+    #             if ln.strip() and (not _is_img_blk) and cur_leading_spaces == _leading_spaces:
+    #                 return True
+    #         return False
+
+    #     prefix = self.line_prefix
+    #     nxt_line = self.nxt_line
+    #     pre_line = self.pre_line
+
+    #     prefix_has_quote = '>' in prefix
+    #     cur_leading_spaces = len(prefix)
+    #     if nxt_line:
+    #         if _check_line(nxt_line):
+    #             return True
+
+    #     if pre_line:
+    #         if _check_line(pre_line):
+    #             return True
+
+    #     return False
 
 
 class MarkdownMath2SvgHelper:
     """"""
 
     # 正则：匹配 <div align='center'><a href='xxx'><img src='yyy'/></a></div>
-    _IMG_BLOCK_PATTERN = re.compile(
+    IMG_BLOCK_PATTERN = re.compile(
         r"""^\s*<div\s+align=['"]center['"]>\s*
             <a\s+href=['"](?P<tex>[^'"]+)['"]>\s*
             <img\s+src=['"](?P<svg>[^'"]+)['"]\s*/?>\s*
@@ -132,7 +254,7 @@ class MarkdownMath2SvgHelper:
         re.VERBOSE,
     )
 
-    IMG_BLOCK_TEMP = "{line_prefix}<div align='center'><a href='{tex_file_path}'><img src='{svg_file_path}'/></a></div>"
+    # IMG_BLOCK_TEMP = "{line_prefix}<div align='center'><a href='{tex_file_path}'><img src='{svg_file_path}'/></a></div>"
 
     text: str
     math_blocks: list[MathBlock]
@@ -209,15 +331,14 @@ class MarkdownMath2SvgHelper:
 
         for blk in blocks:
             # 生成替换 HTML
-            html = self.IMG_BLOCK_TEMP.format(
-                line_prefix=blk.line_prefix,
-                tex_file_path=blk.tex_href,
-                svg_file_path=blk.svg_href,
-            )
+            # html = self.IMG_BLOCK_TEMP.format(
+            #     line_prefix=blk.line_prefix,
+            #     tex_file_path=blk.tex_href,
+            #     svg_file_path=blk.svg_href,
+            # )
             # 替换对应行
             assert blk.line_end_i != -1
-            # print(blk.line_start_i, blk.line_end_i)
-            lines[blk.line_start_i : blk.line_end_i + 1] = [html]
+            lines[blk.line_start_i : blk.line_end_i + 1] = [blk.img_line]
 
         self.text = '\n'.join(lines)
 
@@ -232,7 +353,12 @@ class MarkdownMath2SvgHelper:
             if old_save_dir.exists():
                 shutil.move(old_save_dir, self._tmp_save_dir)
 
-    def _split_prefix_and_left(self, _l: str) -> Tuple[str, str]:
+    # @staticmethod
+    # def count_leading_spaces(line: str) -> int:
+    #     return len(line) - len(line.lstrip(' '))
+
+    @staticmethod
+    def split_prefix_and_left(_l: str) -> Tuple[str, str]:
         """
         拆分一行，返回 (前缀, 剩余内容)
         前缀包括开头的空格、制表符、引用符号 '>'
@@ -242,7 +368,8 @@ class MarkdownMath2SvgHelper:
         left = _l[len(prefix) :].rstrip()
         return prefix, left
 
-    def _is_img_block(self, _l: str) -> Tuple[bool, str, str]:
+    @staticmethod
+    def is_img_block(_l: str) -> Tuple[bool, str, str]:
         """
         判断一行是否是 img block。
         返回 (is_img_block, tex_file_path, svg_file_path)
@@ -252,10 +379,47 @@ class MarkdownMath2SvgHelper:
         if 'js.tex' not in _l:
             return false_ret
 
-        m = self._IMG_BLOCK_PATTERN.match(_l.strip())
+        m = MarkdownMath2SvgHelper.IMG_BLOCK_PATTERN.match(_l.strip())
         if m:
             return True, m.group('tex'), m.group('svg')
         return false_ret
+
+    # @staticmethod
+    # def _need_indent(lines: list[str], i: int) -> bool:
+    #     """"""
+
+    #     def _check_line(ln: str):
+    #         _is_code_block = ln.lstrip().startswith('```')
+    #         _is_comment = ln.lstrip().startswith('<!--')
+    #         if _is_code_block or _is_comment:
+    #             return False
+
+    #         _ln_prefix, _ln_left = MarkdownMath2SvgHelper.split_prefix_and_left(ln)
+    #         _is_img_blk, _, _ = MarkdownMath2SvgHelper.is_img_block(_ln_left)
+    #         _leading_spaces = MarkdownMath2SvgHelper.count_leading_spaces(ln)
+    #         if prefix_has_quote:
+    #             if len(prefix) == len(_ln_prefix) and (not _is_img_blk):
+    #                 return True
+    #         else:
+    #             if ln.strip() and (not _is_img_blk) and cur_leading_spaces == _leading_spaces:
+    #                 return True
+    #         return False
+
+    #     line = lines[i]
+    #     prefix, _ = MarkdownMath2SvgHelper.split_prefix_and_left(line)
+    #     prefix_has_quote = '>' in prefix
+    #     cur_leading_spaces = MarkdownMath2SvgHelper.count_leading_spaces(line)
+    #     if i + 1 < len(lines):
+    #         nxt_line = lines[i + 1]
+    #         if _check_line(nxt_line):
+    #             return True
+
+    #     if i > 0:
+    #         pre_line = lines[i - 1]
+    #         if _check_line(pre_line):
+    #             return True
+
+    #     return False
 
     def _get_all_math_blocks(self):
         """"""
@@ -268,10 +432,13 @@ class MarkdownMath2SvgHelper:
         content_lines = []
         block = None
         for i, line in enumerate(lines):
-            prefix, line = self._split_prefix_and_left(line)
+            prefix, line = self.split_prefix_and_left(line)
+            pre_line = lines[i - 1] if i > 0 else ''
+            nxt_line = lines[i + 1] if i < len(lines) - 1 else ''
 
-            is_img_block, tex_file_path, svg_file_path = self._is_img_block(line)
+            is_img_block, tex_file_path, svg_file_path = self.is_img_block(line)
             if is_img_block:
+                # img 块
                 tex_file_path = self._md_dir / tex_file_path
                 svg_file_path = self._md_dir / svg_file_path
                 # print(tex_file_path, svg_file_path)
@@ -282,6 +449,8 @@ class MarkdownMath2SvgHelper:
                         content=line,
                         line_start_i=i,
                         line_end_i=i,
+                        pre_line=pre_line,
+                        nxt_line=nxt_line,
                         line_prefix=prefix,
                         tex_file_path=tex_file_path,  # type: ignore
                         svg_file_path=svg_file_path,  # type: ignore
@@ -299,6 +468,8 @@ class MarkdownMath2SvgHelper:
                         md_path=self.md_path,
                         line_start_i=i,
                         line_end_i=i,
+                        pre_line=pre_line,
+                        nxt_line=nxt_line,
                         line_prefix=prefix,
                         tmp_save_dir=self._tmp_save_dir,
                         already_img_block=is_img_block,
@@ -315,6 +486,8 @@ class MarkdownMath2SvgHelper:
                     idx=idx,
                     md_path=self.md_path,
                     line_start_i=i,
+                    line_end_i=-1,
+                    pre_line=pre_line,
                     line_prefix=prefix,
                     tmp_save_dir=self._tmp_save_dir,
                     already_img_block=is_img_block,
@@ -327,6 +500,7 @@ class MarkdownMath2SvgHelper:
                 assert block is not None
                 block.content = '\n'.join(content_lines).strip()
                 block.line_end_i = i
+                block.nxt_line = nxt_line
                 blocks.append(block)
                 block = None
                 idx += 1

@@ -299,15 +299,6 @@ project
 ## Latex
 > 为确保在 GitHub 上生效, 在块前后增加空格或空行
 
-```markdown
-行内 $a+b=3$ 公式 (保证块前后有空格)
-
-行内$a+b=3$公式 (没有空格可能会在一些解释器上失效)
-
-单行居中 (保证块前后有空行, 否则可能在一些解释器上失效)
-
-<div align='center'><a href='_formulas/Markdown_备忘/f_001.js.tex'><img src='_formulas/Markdown_备忘/f_001.js.svg'/></a></div>
-```
 行内 $a+b=3$ 公式 (保证块前后有空格)
 
 行内$a+b=3$公式 (没有空格可能在一些解释器上可能失效)
@@ -334,10 +325,6 @@ project
 <a name="ref1"> $[1]$ </a> [百度一下](https://www.baidu.com) <br/>
 
 ### 对齐
-
-```markdown
-<div align='center'><a href='_formulas/Markdown_备忘/f_003.js.tex'><img src='_formulas/Markdown_备忘/f_003.js.svg'/></a></div>
-```
 
 <div align='center'><a href='_formulas/Markdown_备忘/f_004.js.tex'><img src='_formulas/Markdown_备忘/f_004.js.svg'/></a></div>
 
