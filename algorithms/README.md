@@ -19,8 +19,8 @@
 </td>
 <td colspan="2" rowspan="3" valign="top" width="1000">
 
-### Subject 📓
-<!--START_SECTION:subject-->
+### Collections 🗂️
+<!--START_SECTION:collection-->
 - [牛客 (131)](#牛客)
 - [LeetCode (81)](#leetcode)
 - [剑指Offer (75)](#剑指offer)
@@ -31,7 +31,7 @@
 - [程序员面试金典 (2)](#程序员面试金典)
 - [牛客-华为机试 (1)](#牛客-华为机试)
 - [Collections (1)](#collections)
-<!--END_SECTION:subject-->
+<!--END_SECTION:collection-->
 
 </td>
 </tr>
@@ -48,7 +48,12 @@
 
 </td>
 </tr>
-<tr></tr>
+</table>
+
+## Algorithm Topics
+
+<table>
+
 <tr>  <!-- loop TMP_TOC_TD_CATEGORY -->
 
 <td width="1000" valign="top">
@@ -110,7 +115,6 @@
 <!--END_SECTION:other-->
 
 </td>
-
 </tr>
 </table>
 

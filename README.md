@@ -76,7 +76,7 @@
 </tr>
 </table>
 
-## Last 7 days
+### Last 7 days
 
 <!--START_SECTION:waka-->
 

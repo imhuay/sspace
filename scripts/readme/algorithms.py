@@ -548,6 +548,10 @@ class AlgorithmsBuilder(Builder):
         with self._fp_algo_readme.open(encoding='utf8') as f:
             txt = f.read()
         section = NoteUtils.get_section_content('toc', txt)
+        section = section.replace(  # type: ignore
+            '## Algorithm Topics', '<details><summary><b>More Algorithm Topics 📚🧩🎲💡🚨</b></summary>', count=1
+        )
+        section += '\n</details>\n\n---'
         return section.replace('](', f']({self._fp_algo_readme.relative_to(args.fp_repo)}')  # type: ignore
 
     @property

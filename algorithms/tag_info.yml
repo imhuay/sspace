@@ -1,5 +1,5 @@
 -
-  tag_type: subject
+  tag_type: collection
   priority: 1
   tags:
     牛客:
@@ -8,8 +8,7 @@
     LeetCode:
     剑指Offer2:
     程序员面试金典:
-    Collections:
-      aliases: [Coll, Collection]
+    网络收集:
     牛客-华为机试:
       aliases: [华为机试]
     热门:
