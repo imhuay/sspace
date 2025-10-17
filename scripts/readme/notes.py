@@ -730,7 +730,7 @@ class NotesBuilder(Builder):
 
     def _get_sub_toc(self):
         """"""
-        paper_toc = []
+        paper_toc: list[str] = []
         tag2toc: dict[str, list[str]] = dict()
         tag2notes: dict[str, list[Note]] = defaultdict(list)
 
@@ -751,6 +751,7 @@ class NotesBuilder(Builder):
         # for tag, notes in tag2notes.items():
         #     tag2toc[tag] = [e.tag_toc_line for e in notes]
 
+        paper_toc = sorted(paper_toc)
         return tag2toc, paper_toc
 
     def build_v2(self):
@@ -795,7 +796,7 @@ class NotesBuilder(Builder):
 
             txt = txt.replace(f'{{{{{tag}}}}}', toc_str)
 
-        txt = txt.replace('{{draft}}', '\n'.join(draft))
+        txt = txt.replace('{{draft}}', '\n'.join(sorted(draft)))
         txt = re.sub(r'\{\{.*?\}\}', '', txt)
 
         for s in self.subjects:

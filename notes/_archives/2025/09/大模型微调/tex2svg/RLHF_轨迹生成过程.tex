@@ -56,7 +56,7 @@
 \begin{document}
 
 \begin{algorithm}
-\caption*{\textbf{Algorithm:} Trajectory Generation (One Episode)}
+\caption*{\textbf{Algorithm:} Trajectory Sampling (Step-wise)}
 \begin{algorithmic}[1]
 \Require $\pi_{\theta}, V_{\psi}, R_{\phi}, \pi_{\text{ref}}, \mathcal{D}, \gamma, \beta, \lambda$
 \Ensure $\tau$
@@ -75,18 +75,18 @@
     % \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
     \State $\pi_\text{ref}(\cdot|s_t) = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
     % \State $a_t,\, \log p^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t})$ \Comment{Sample action}
-    \State $a_t,\, \log\pi_{\theta}(a_t|s_t) \sim \text{Categorical}(\pi_\theta(\cdot|s_t))$ \Comment{Sample action}
+    \State $a_t,\, \log\pi_{\theta}(a_t|s_t) \sim \text{Categorical}\big(\pi_\theta(\cdot|s_t)\big)$ \Comment{Sample action}
     \State $s_{t+1} = s_t + a_t$
     \State $y = y + a_t$
     \If{$a_t == [\text{EOS}]$} \Comment{At this time $t{=}{T}$}
         % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t}) + R_\phi(x,y)$
-        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)) + R_\phi(x,y)$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}\big(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)\big) + R_\phi(x,y)$
         \State $terminal = \text{True}$
     \Else
         % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t})$
-        \State $r_t = -\beta{\cdot}D_{\text{KL}}(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t))$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}\big(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)\big)$
     \EndIf
-    \State Append\big($\tau,\, [s_t, a_t, r_t, \log\pi_{\theta}(a_t|s_t)]$\big)
+    \State Append\big($\tau,\, [s_t, a_t, r_t, \log\pi_{\theta}(a_t|s_t)]$\big) \Comment{Add one}
     \If{$terminal$}
         \State \textbf{break}
     \EndIf
@@ -101,7 +101,7 @@
     \State $\delta_t = r_t + \gamma V_{\psi}(s_{t+1}) - V_{\psi}(s_t)$
     \State $\hat{A}_t = \delta_t + \gamma\lambda\,\hat{A}_{t+1}$ \Comment{GAE}
     \State $\hat{R}_t = \hat{A}_t + V_{\psi}(s_t)$ \Comment{Return estimate}
-    \State Extend($\tau[t],\, [\hat{A}_t, \hat{R}_t]$) \Comment{One step $[s_t,a_t,r_t,\log{p}^{a_t},\hat{A}_t,\hat{R}_t]$}
+    \State Extend\big($\tau[t],\, [\hat{A}_t, \hat{R}_t]$\big) \Comment{One step $[s_t,a_t,r_t,\log\pi_{\theta}(a_t|s_t),\hat{A}_t,\hat{R}_t]$}
 \EndFor
 
 \end{algorithmic}

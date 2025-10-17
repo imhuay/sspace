@@ -26,8 +26,8 @@ tags: [llm_sft]
 
 <!--START_SECTION:toc-->
 - [快速回顾 ⏰](#快速回顾-)
-    - [RLHF 伪代码 (轨迹生成 + 梯度传播) ✨](#rlhf-伪代码-轨迹生成--梯度传播-)
-    - [**RLHF (PPO) 的 3 个核心步骤**](#rlhf-ppo-的-3-个核心步骤)
+    - [**PPO 的三个核心步骤** (监督微调 → 奖励模型 → 策略优化)](#ppo-的三个核心步骤-监督微调--奖励模型--策略优化)
+    - [**优化过程** (轨迹采样 + 梯度传播) ✨](#优化过程-轨迹采样--梯度传播-)
     - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
     - [背景](#背景)
@@ -51,45 +51,7 @@ extra_url: false
 ## 快速回顾 ⏰
 <!--END_SECTION:keyword-->
 
-### RLHF 伪代码 (轨迹生成 + 梯度传播) ✨
-
-<details><summary><b>轨迹生成 📌</b></summary>
-
-<!-- algorithm: RLHF_轨迹生成过程.tex -->
-<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
-
-<!--
-cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
-&& latex -output-format=dvi RLHF_轨迹生成过程.tex \
-&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_轨迹生成过程.svg RLHF_轨迹生成过程.dvi
--->
-
-> 函数说明 (python): 
-> - `Categorical()`: `torch.distributions.Categorical(probs)`
-> - `Append()`: `list.append()`
-> - `Extend()`: `list.extend()`
-> - `Length()`: `list.len()`
-
-</details>
-
----
-
-<details><summary><b>梯度传播 📌</b></summary>
-
-<!-- algorithm: RLHF_反向传播过程.tex -->
-<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
-
-<!-- 
-cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
-&& latex -output-format=dvi RLHF_反向传播过程.tex \
-&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_反向传播过程.svg RLHF_反向传播过程.dvi
--->
-
-</details>
-
----
-
-### **RLHF (PPO) 的 3 个核心步骤**
+### **PPO 的三个核心步骤** (监督微调 → 奖励模型 → 策略优化)
 > 监督微调 → 奖励模型 → 策略优化 (强化学习)
 - **监督微调 (SFT)**:
     - **目标**: <br>
@@ -156,6 +118,49 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
         - 固定参数的 SFT 模型;
         - ~~PPO-Penalty 需要, 因为要计算 KL;~~
         - ~~PPO-Clip 不需要 (主流), 只需要 **旧策略** (即 **上一次迭代的策略**);~~
+
+---
+
+### **优化过程** (轨迹采样 + 梯度传播) ✨
+
+<details><summary><b>轨迹采样 📌</b></summary>
+
+<!-- algorithm: RLHF_轨迹生成过程.tex -->
+<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
+
+<!--
+cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
+&& latex -output-format=dvi RLHF_轨迹生成过程.tex \
+&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_轨迹生成过程.svg RLHF_轨迹生成过程.dvi
+-->
+
+> 部分函数说明 (python): 
+> - `Categorical()`: `torch.distributions.Categorical(probs)`
+> - `Append()`: `list.append()`
+> - `Extend()`: `list.extend()`
+> - `Length()`: `list.len()`
+
+</details>
+
+---
+
+<details><summary><b>梯度传播 📌</b></summary>
+
+<!-- algorithm: RLHF_反向传播过程.tex -->
+<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
+
+<!-- 
+cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
+&& latex -output-format=dvi RLHF_反向传播过程.tex \
+&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_反向传播过程.svg RLHF_反向传播过程.dvi
+-->
+
+> 部分函数说明 (python): 
+> - `Gather()`: `torch.gather()`
+
+</details>
+
+---
 
 ### 其他改进算法
 
@@ -317,8 +322,8 @@ extra_url: false
             <!-- > 其中 $R_{\phi}(x, y)$ 是奖励模型为 $x$ 和 $y$ 预测的标量分数; $\sigma(\cdot)$ 是 $\text{Sigmoid}$ 函数; -->
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
-            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
             <div align='center'><a href='_formulas/RLHF/f_011.js.tex'><img src='_formulas/RLHF/f_011.js.svg'/></a></div>
+            <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
 
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
         <div align='center'><a href='_formulas/RLHF/f_012.js.tex'><img src='_formulas/RLHF/f_012.js.svg'/></a></div>

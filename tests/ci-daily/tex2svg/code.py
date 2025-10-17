@@ -5,6 +5,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from pprint import pprint
 
+from sympy import im
+
 sys.path.append('/home/huay/workspace/git/my/sspace/scripts/readme')
 
 from utils import GitUtils, MarkdownMath2SvgHelper, MarkdownUtils
@@ -144,6 +146,13 @@ def test_file_changed():
     print(ret)
 
 
+def test_run_path():
+    from utils import GitUtils
+
+    ret = GitUtils.last_commit_date(Path('/home/huay/workspace/git/my/sspace/README.md'))
+    print(ret)
+
+
 # 示例：读取 md 文件并提取
 if __name__ == '__main__':
     # cur_dir = Path(__file__).parent
@@ -153,4 +162,4 @@ if __name__ == '__main__':
     # blocks = extract_math_blocks(md_file, pad=3)
     # for b in blocks:
     #     print(f'{b.file_name}:\n{b.content}\n{"-" * 30}')
-    test_get_math_blocks()
+    test_run_path()

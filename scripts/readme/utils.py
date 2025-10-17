@@ -45,8 +45,8 @@ class MathBlock:
     idx: int
     md_path: Path
     line_prefix: str
-    tmp_save_dir: Path
     already_img_block: bool
+    tmp_save_dir: Path
     line_start_i: int
     line_end_i: int
     pre_line: str = ''
@@ -61,11 +61,16 @@ class MathBlock:
 
     def __post_init__(self):
         """"""
-        if self.already_img_block:
-            if self._need_regeneration(self.tex_file_path, self.svg_file_path):  # type: ignore
+        if not self.already_img_block:
+            self.need_regen = True
+        else:
+            assert self.tex_file_path and self.svg_file_path
+            if self._need_regeneration(self.tex_file_path, self.svg_file_path):
                 self.need_regen = True
 
-        if self.tex_file_path is not None:
+        if self.tex_file_path is not None and self.tex_file_path.exists():
+            assert self.content is None
+            self.content = self.tex_file_path.read_text(encoding='utf8')
             shutil.move(self.tex_file_path, self._tex_save_path)
         self.tex_file_path = self._tex_save_path
 
@@ -77,15 +82,18 @@ class MathBlock:
         return 'f_' + str(_i).zfill(self._pad_size)
 
     @staticmethod
-    def _need_regeneration(tex_file_path: str, svg_file_path: str):
+    def _need_regeneration(tex_file_path: str | Path, svg_file_path: str | Path):
         """"""
         last_tex = GitUtils.last_commit_date(tex_file_path)
         last_svg = GitUtils.last_commit_date(svg_file_path)
 
-        # 比较时间戳, tex 晚于 svg, 则需要更新
-        dt_tex = datetime.fromisoformat(last_tex)  # type: ignore
-        dt_svg = datetime.fromisoformat(last_svg)  # type: ignore
-        return dt_tex > dt_svg
+        try:
+            # 比较时间戳, tex 晚于 svg, 则需要更新
+            dt_tex = datetime.fromisoformat(last_tex)  # type: ignore
+            dt_svg = datetime.fromisoformat(last_svg)  # type: ignore
+            return dt_tex > dt_svg
+        except:  # noqa: E722
+            return True
 
     def _need_add_empty_line(self) -> bool:
         """是否需要添加空行"""
@@ -101,6 +109,10 @@ class MathBlock:
     def prefix_has_quote(self):
         return '>' in self.line_prefix
 
+    # @property
+    # def already_img_block(self) -> bool:
+    #     return self.tex_file_path is not None and self.tex_file_path.exists()
+
     @property
     def img_line(self) -> str:
         # prefix = self.line_prefix
@@ -111,6 +123,10 @@ class MathBlock:
             tex_file_path=self.tex_href,
             svg_file_path=self.svg_href,
         )
+        # 添加注释行
+        # assert self.content
+        # math_flat = ' '.join([ln.strip() for ln in self.content.split('\n')])
+        # line += f'\n{self.line_prefix}<!-- $${math_flat}$$ -->'
         if self._need_add_empty_line():
             if self.prefix_has_quote():
                 line += '\n>'
@@ -271,19 +287,17 @@ class MarkdownMath2SvgHelper:
         if md_content is not None:
             self.text = md_content
         else:
-            self.text = self.md_path.open(encoding='utf8').read()
+            self.text = self.md_path.read_text(encoding='utf8')
 
         self.save_mode = save_mode
 
         self._md_dir = self.md_path.parent
 
-        self._tmp_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_tmp'
-        self._tmp_save_dir.mkdir(exist_ok=True, parents=True)
+        self._tmp_save_dir = self._get_save_dir(self.md_path, is_tmp=True)
         self._final_save_dir = self._get_save_dir(self.md_path)
-        self._final_save_dir.mkdir(exist_ok=True, parents=True)
         # print(self._tmp_save_dir)
         # self._svg_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_svgs'
-        self.changed, old_name = GitUtils.file_changed_or_new(str(self.md_path))
+        self.changed, old_name = GitUtils.file_changed_or_new(self.md_path)
         self.old_name = Path(old_name) if old_name is not None else None
         # if DEBUG:
         #     print(f'{self.changed = }, {self.old_name = }')
@@ -292,9 +306,14 @@ class MarkdownMath2SvgHelper:
             tex2svg_script_path = Path(__file__).parent.parent / 'tex2svg.js'
         self.tex2svg_script = tex2svg_script_path
 
-    def _get_save_dir(self, md_path: Path) -> Path:
+    def _get_save_dir(self, md_path: Path, is_tmp: bool = False) -> Path:
         """"""
-        return self._md_dir / self.save_dir_name / f'{md_path.stem}'
+        dir_name = md_path.stem
+        if is_tmp:
+            dir_name += '_tmp'
+        save_dir = self._md_dir / self.save_dir_name / f'{dir_name}'
+        save_dir.mkdir(exist_ok=True, parents=True)
+        return save_dir
 
     def run(self):
         """"""
@@ -431,8 +450,11 @@ class MarkdownMath2SvgHelper:
         in_block = False
         content_lines = []
         block = None
-        for i, line in enumerate(lines):
-            prefix, line = self.split_prefix_and_left(line)
+        for i, raw_line in enumerate(lines):
+            if raw_line.startswith('<!--'):
+                continue
+
+            prefix, line = self.split_prefix_and_left(raw_line)
             pre_line = lines[i - 1] if i > 0 else ''
             nxt_line = lines[i + 1] if i < len(lines) - 1 else ''
 
@@ -446,7 +468,6 @@ class MarkdownMath2SvgHelper:
                     MathBlock(
                         idx=idx,
                         md_path=self.md_path,
-                        content=line,
                         line_start_i=i,
                         line_end_i=i,
                         pre_line=pre_line,
@@ -519,7 +540,7 @@ class GitUtils:
     """"""
 
     @staticmethod
-    def last_commit_date(fp: str) -> str | None:
+    def last_commit_date(fp: str | Path) -> str | None:
         """
         获取文件的最后一次提交时间 (ISO 格式)，如果文件没有提交过则返回 None
         """
@@ -528,7 +549,7 @@ class GitUtils:
         return result.stdout.strip() or None
 
     @staticmethod
-    def normalize_to_repo_relative(file_path: str) -> str:
+    def normalize_to_repo_relative(file_path: str | Path) -> str:
         repo_root = subprocess.run(
             ['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True, check=True
         ).stdout.strip()
@@ -536,7 +557,7 @@ class GitUtils:
         return str(Path(file_path).resolve().relative_to(repo_root))
 
     @staticmethod
-    def file_changed_or_new(file_path: str) -> tuple[bool, str | None]:
+    def file_changed_or_new(file_path: str | Path) -> tuple[bool, str | None]:
         """
         检查文件是否相对于 HEAD 有改动（修改/重命名/新增）
         :param file_path: 文件路径（相对仓库根目录）
@@ -544,7 +565,7 @@ class GitUtils:
                 changed=True 表示有改动或新增
                 如果是重命名，original_name 返回旧名字，否则为 None
         """
-        file_path = GitUtils.normalize_to_repo_relative(file_path)
+        _file_path = GitUtils.normalize_to_repo_relative(file_path)
         # 检查 diff
         result = subprocess.run(
             ['git', 'diff', '--name-status', 'HEAD^', 'HEAD'],
@@ -559,17 +580,17 @@ class GitUtils:
 
             if status.startswith('R'):  # 重命名
                 old, new = parts[1], parts[2]
-                if new == file_path:
+                if new == _file_path:
                     return True, old
-                if old == file_path:
+                if old == _file_path:
                     return True, old  # 旧名也算改动
             elif status in {'M', 'A'}:  # 修改或新增
                 fname = parts[1]
-                if fname == file_path:
+                if fname == _file_path:
                     return True, None
 
         # 如果文件不在 HEAD 中，说明是新增文件
-        result = subprocess.run(['git', 'ls-files', '--error-unmatch', file_path], capture_output=True, text=True)
+        result = subprocess.run(['git', 'ls-files', '--error-unmatch', _file_path], capture_output=True, text=True)
         if result.returncode != 0:
             return True, None
 
@@ -716,14 +737,16 @@ class MarkdownUtils:
         }
 
         if skip_block is None:
+            # 1: 只应用到单行, 0: 单行或多行
             skip_block = [
-                '```',  # 代码块
-                '$$',  # 行间公式
-                (r'\[', r'\]'),  # 行间公式
-                ('<!--', '-->'),  # HTML 注释
+                ('```', '```', 0),  # 代码块
+                ('$$', '$$', 0),  # 多行公式
+                # (r'\[', r'\]'),  # 多行公式
+                ('<!--', '-->', 0),  # HTML 注释
+                ('<div', '/div>', 1),  # 主要是图片块
             ]
 
-        skip_block = [(it, it) if isinstance(it, str) else it for it in skip_block]
+        # skip_block = [(it, it) if isinstance(it, str) else it for it in skip_block]
 
         lines = text.split('\n')
         in_block = False
@@ -732,7 +755,8 @@ class MarkdownUtils:
         for i in range(len(lines)):
             line = lines[i]
 
-            for b_start, b_end in skip_block:
+            # 单行块
+            for b_start, b_end, _ in skip_block:
                 if (
                     line.lstrip().startswith(b_start)
                     and line.rstrip().endswith(b_end)
@@ -740,13 +764,15 @@ class MarkdownUtils:
                 ):
                     line_block = True
                     break
-
             if line_block:
                 line_block = False
                 continue
 
+            # 多行块
             if cur_block is None:
-                for b_start, b_end in skip_block:
+                for b_start, b_end, only_single_line in skip_block:
+                    if only_single_line:
+                        continue
                     if line.lstrip().startswith(b_start):
                         in_block = True
                         cur_block = (b_start, b_end)
@@ -756,7 +782,6 @@ class MarkdownUtils:
                 if line.lstrip().endswith(b_end):
                     in_block = False
                     cur_block = None
-
             if in_block:
                 continue
 

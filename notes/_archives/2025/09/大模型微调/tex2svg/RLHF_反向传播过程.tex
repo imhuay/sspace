@@ -61,7 +61,7 @@
 \begin{algorithm}
 \caption*{\textbf{Algorithm:} Gradient Propagation (Mini-Batch)}
 \begin{algorithmic}[1]
-    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log \pi_{\theta_{\text{old}}}(a_i|s_i))\}_{i=1}^N,\, \pi_{\theta},\, V_{\psi},\, \epsilon,\, c_e,\, c_v,\, \alpha$
+    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log \pi_{\theta_{\text{old}}}(a_i|s_i))\}_{i=1}^N,\, \pi_{\theta},\, V_{\psi},\, \epsilon,\, c_v,\, c_e,\, \alpha$
     \Ensure $\theta,\ \psi$
 
     \State $\mathcal{L}^{\text{Total}} \gets 0$ \Comment{Init total loss}
@@ -70,7 +70,7 @@
         % \State $\text{probs}^{\pi_{\theta}}_{s_i} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{Distribution $\pi_\theta(\cdot|s_i)$}
         \State $\pi_\theta(\cdot|s_i) = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{New Distribution of $a_i$}
         % \State $\log{\pi_{\theta}}_{\text{new}}^{(a_i|s_i)} \coloneqq \log\text{probs}^{\pi_{\theta}}_{s_i}[a_i]$
-        \State $\pi_{\theta}(a_i|s_i) = \text{Index}(\pi_\theta(\cdot|s_i), a_i)$
+        \State $\pi_{\theta}(a_i|s_i) = \text{Gather}(\pi_\theta(\cdot|s_i), a_i)$
         % \State $r_i(\theta) = \exp\!\big(\log\pi_{\theta}(a_i|s_i) - \log{\pi_{\theta}}_{\text{old}}^{(a_i|s_i)}\big)$
         \State $r_i(\theta) = \exp\!\big(\log \pi_{\theta}(a_i|s_i) - \log \pi_{\theta_{\text{old}}}(a_i|s_i)\big)$
 
