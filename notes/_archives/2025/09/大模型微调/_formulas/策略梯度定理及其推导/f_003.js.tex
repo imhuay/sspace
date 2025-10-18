@@ -1,1 +1,4 @@
-\nabla_\theta J(\theta) = \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
+\begin{align*}
+J(\theta) &= \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ A^{\pi_\theta}(s, a) \ \Big\rbrack \\
+\nabla_\theta J(\theta) &= \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot A^{\pi_\theta}(s, a) \ \Big\rbrack
+\end{align*}

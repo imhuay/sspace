@@ -1,1 +1,9 @@
-L^{CLIP}(\theta) = \mathbb{E}_t \Big\lbrack \min \big( r_t(\theta) \hat{A}_t,\; \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon)\hat{A}_t \big) \Big\rbrack
+\begin{align*}
+\theta^\star \,&=\; \arg\max_{\theta} J^{\scriptscriptstyle\text{PPO}}(\theta) \\
+J^{\scriptscriptstyle\text{PPO}}(\theta, \psi) \;&=\;
+\mathbb{\hat{E}}_t \Big[
+J^{\scriptscriptstyle\text{CLIP}}(\theta)
+\;-\; c_v \, L^{\scriptscriptstyle\text{VF}}(\psi)
+\;+\; c_e \, S[\pi_\theta](s_t)
+\Big]
+\end{align*}

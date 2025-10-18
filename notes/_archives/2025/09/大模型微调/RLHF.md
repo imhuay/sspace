@@ -2,7 +2,7 @@ RLHF (基于人类反馈的强化学习) <!-- suffix --> ✒️🧣 <!-- suffix 
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-17%2011%3A02%3A05&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-18%2000%3A26%3A30&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -323,6 +323,7 @@ extra_url: false
         <!-- - 训练目标是 **最大化似然函数** $\mathcal{L}(\theta; D)$, 对应的损失函数为 **负对数似然损失**: -->
         - 训练目标是 **最大化似然函数** $L$, 或最小化对应的 **负对数似然损失**:
             <div align='center'><a href='_formulas/RLHF/f_011.js.tex'><img src='_formulas/RLHF/f_011.js.svg'/></a></div>
+
             <!-- \mathcal{L}(\theta; D) = -\sum_{i=1}^N \log \ \sigma(R_{\phi}(x, y_j) - R_{\phi}(x, y_k)) -->
 
     - **InfoNCE Loss** (候选回答大于 2 时, 一正多负)
