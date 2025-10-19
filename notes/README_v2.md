@@ -93,7 +93,7 @@ Notes
   - [策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
     > _[基本形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
   - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=4&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
-    > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo-direct-preference-optimization) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
+    > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo-group-relative-policy-optimization)_<br>
 - [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md) 
@@ -114,8 +114,8 @@ Notes
 
 - [概率论基础](_archives/2025/09/概率论基础.md) 
   > _[期望](_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
-- [机器学习基本概念](_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
-  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基本概念.md#正则化-regularization)_<br>
+- [机器学习基础](_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+  > _[归纳偏置](_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基本概念.md#正则化-regularization) • [重要性采样](_archives/2025/09/机器学习基本概念.md#重要性采样-importance-sampling-is)_<br>
 - [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) ✒️
   - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md) 
 

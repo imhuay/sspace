@@ -1,0 +1,11 @@
+\begin{aligned}
+\theta^\star \,&=\, \arg\max_{\theta} J^{\scriptscriptstyle\text{DPO}}(\theta) \\
+J^{\scriptscriptstyle\text{DPO}}(\theta) \,&=\, \mathbb{E}_{(x,\,y^{+},\,y^{-})}\left[
+\begin{alignedat}{3}
+\log \sigma \color{red}\Big(
+&\beta&&\big(\log \pi_\theta(y^{+}\!\mid x) - \log \pi_\theta(y^{-}\!\mid x)\big) \\
+&-&&\big(\log \pi_{\text{ref}}(y^{+}\!\mid x) - \log \pi_{\text{ref}}(y^{-}\!\mid x)\big)
+\color{red}\Big)
+\end{alignedat}
+\right]
+\end{aligned}
