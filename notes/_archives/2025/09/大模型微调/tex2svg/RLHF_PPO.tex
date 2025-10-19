@@ -1,0 +1,191 @@
+\documentclass{article}
+% 数学环境支持包
+% amsmath: 提供高级数学功能 | amssymb: 提供数学符号
+\usepackage{amsmath, amssymb}
+% 算法排版包
+% algorithm: 算法浮动体环境 | algpseudocode: 伪代码排版
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% 宏编程工具包, 用于条件判断和钩子函数
+\usepackage{etoolbox}
+% 调整盒子尺寸和对齐
+\usepackage{adjustbox}
+% 图形插入支持
+\usepackage{graphicx}
+% 标题格式设置
+\usepackage{caption}
+% 页面布局设置: A4 纸张, 2 厘米边距
+\usepackage[paperheight=100cm,margin=2cm]{geometry}
+% 粗体数学符号
+\usepackage{bm}
+
+% ================================
+% 字体配置区域 (注释状态)
+% ================================
+%% inconsolata: 等宽字体
+% \usepackage{inconsolata}
+%% XCharter: 衬线字体
+% \usepackage{XCharter}
+%% newtxtext + newtxmath: Times New Roman风格的数学字体
+\usepackage{newtxtext}
+% \usepackage{newtxmath}
+%% newpxtext + newpxmath: Palatino风格的数学字体
+% \usepackage{newpxtext}
+% \usepackage{newpxmath}
+%% lmodern: Latin Modern字体
+% \usepackage{lmodern}
+
+%% 设置默认字体为无衬线字体
+% \renewcommand{\familydefault}{\sfdefault}
+
+%% 使用 fontspec 配置字体 (需要 XeLaTeX 或 LuaLaTeX 编译)
+% \usepackage{graphicx}
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman} % 主字体设置为Times New Roman
+% \setsansfont{Arial}           % 无衬线字体设置为Arial
+% \setmonofont{Consolas}        % 等宽字体设置为Consolas
+
+% ================================
+% 算法格式自定义区域
+% ================================
+% 重构 \If 语句的显示格式 (注释状态)
+% \algrenewtext{If}[1]{\algorithmicif\ \ #1\ \ \algorithmicthen}
+
+% 定义赋值符号 := 
+\newcommand{\coloneqq}{\mathrel{\mathop:}=}
+
+% 全局去掉页码
+\pagestyle{empty}
+
+% 设置算法标题样式: 大号字体, 标签加粗
+\captionsetup[algorithm]{font=large, labelfont=bf}
+
+% 重定义算法输入输出指令
+%% 将 \Require 显示为 Inputs:
+\renewcommand{\algorithmicrequire}{\textbf{Inputs}:}
+%% 将 \Ensure 显示为 Output:
+\renewcommand{\algorithmicensure}{\textbf{Output}:}
+% 替代方案: 固定宽度的输入输出标签 (注释状态)
+% \renewcommand{\algorithmicrequire}{\textbf{\makebox[3.2em][l]{Inputs}}\textbf{:}}
+% \renewcommand{\algorithmicensure}{\textbf{\makebox[3.2em][l]{Output}}\textbf{:}}
+
+% ================================
+% 算法环境样式配置
+% ================================
+% 在进入 algorithmic 环境时应用以下设置:
+% 设置等宽字体
+\AtBeginEnvironment{algorithmic}{\ttfamily}
+% 设置字号为 12 pt, 行间距为 16 pt
+\AtBeginEnvironment{algorithmic}{\fontsize{12pt}{16pt}\selectfont}
+% 调整数学符号间距
+\AtBeginEnvironment{algorithmic}{%
+  \setlength{\thickmuskip}{8mu}     % 调整关系符号两侧的距离, 如 =, <, >, \leq 等
+  \setlength{\medmuskip}{4mu}       % 调整二元运算符两侧的距离, 如 +, -, \times, \cdot 等
+  \setlength{\thinmuskip}{5mu}      % 调整关系较弱的符号两侧的距离, 如 a/b a,b a:b 等
+}
+
+% 定义算法之间的分割线
+\newcommand{\algoseparator}{
+    \vspace{-0.5em}
+    \centerline{\raisebox{1.25ex}{\rule{0.5cm}{0.4pt} \, \raisebox{-0.65ex}{\textbullet} \, \rule{0.5cm}{0.4pt}}}
+    \vspace{-0.5em}
+}
+
+
+\begin{document}
+
+% ================================
+% 算法主体开始
+% ================================
+
+\begin{algorithm}
+\caption*{\textbf{Algorithm 1:} Step-wise Trajectory Sampling}
+\begin{algorithmic}[1]
+\Require $\pi_{\theta}, V_{\psi}, R_{\phi}, \pi_{\text{ref}}, \mathcal{D}, \gamma, \beta, \lambda$
+\Ensure $\tau$
+
+\State $x \sim \mathcal{D}$ \Comment{Sample prompt}
+\State $s_1 \gets x$ \Comment{Init state}
+\State $y \gets \text{""}$ \Comment{Init response}
+\State $\tau \gets [\ ]$ \Comment{Init trajectory list}
+\State $terminal \gets \text{False}$ \Comment{Terminal signal}
+
+\For{$t = 1,2,\dots$}
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \pi_{\theta}(\cdot \mid s_t)$
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
+    \State $\pi_\theta(\cdot|s_t) = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_t)\big)$
+    % \State $\text{probs}^{\pi_{\text{ref}}}_{t} = \pi_{\text{ref}}(\cdot \mid s_t)$
+    % \State $\text{probs}^{\pi_{\theta}}_{t} = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
+    \State $\pi_\text{ref}(\cdot|s_t) = \text{Softmax}\big(\text{Forward}(\pi_{\text{ref}}, s_t)\big)$
+    % \State $a_t,\, \log p^{a_t} \sim \text{Categorical}(\text{probs}^{\pi_{\theta}}_{t})$ \Comment{Sample action}
+    \State $a_t,\, \log\pi_{\theta}(a_t|s_t) \sim \text{Categorical}\big(\pi_\theta(\cdot|s_t)\big)$ \Comment{Sample action}
+    \State $s_{t+1} = s_t + a_t$
+    \State $y = y + a_t$
+    \If{$a_t == [\text{EOS}]$} \Comment{At this time $t{=}{T}$}
+        % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t}) + R_\phi(x,y)$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}\big(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)\big) + R_\phi(x,y)$
+        \State $terminal = \text{True}$
+    \Else
+        % \State $r_t = -\beta{\cdot}D_{\text{KL}}(\text{probs}^{\pi_{\theta}}_{t}\,\|\,\text{probs}^{\pi_{\text{ref}}}_{t})$
+        \State $r_t = -\beta{\cdot}D_{\text{KL}}\big(\pi_\theta(\cdot|s_t) \,\|\, \pi_\text{ref}(\cdot|s_t)\big)$
+    \EndIf
+    \State Append\big($\tau,\, [s_t, a_t, r_t, \log\pi_{\theta}(a_t|s_t)]$\big) \Comment{Add one}
+    \If{$terminal$}
+        \State \textbf{break}
+    \EndIf
+\EndFor
+
+\State $T \gets \text{Length}(\tau)$
+\State $\hat{A}_{T+1} \gets 0$ \Comment{Bootstrap final advantage}
+
+\For{$t = T, \dots, 1$}
+    \State $(s_t, a_t, r_t, \_) = \tau[t]$
+    \State $s_{t+1} = s_t + a_t$
+    \State $\delta_t = r_t + \gamma V_{\psi}(s_{t+1}) - V_{\psi}(s_t)$
+    \State $\hat{A}_t = \delta_t + \gamma\lambda\,\hat{A}_{t+1}$ \Comment{GAE}
+    \State $\hat{R}_t = \hat{A}_t + V_{\psi}(s_t)$ \Comment{Return estimate}
+    \State Extend\big($\tau[t],\, [\hat{A}_t, \hat{R}_t]$\big) \Comment{One step $[s_t,a_t,r_t,\log\pi_{\theta}(a_t|s_t),\hat{A}_t,\hat{R}_t]$}
+\EndFor
+
+\end{algorithmic}
+\end{algorithm}
+
+% === 分割线 ===
+\algoseparator
+
+
+\begin{algorithm}
+\caption*{\textbf{Algorithm 2:} Policy Gradient Update (Mini-Batch)}
+\begin{algorithmic}[1]
+    \Require $\{(s_i, a_i, \hat{A}_i, \hat{R}_i, \log \pi_{\theta_{\text{old}}}(a_i|s_i))\}_{i=1}^N,\, \pi_{\theta},\, V_{\psi},\, \epsilon,\, c_v,\, c_e,\, \alpha$
+    \Ensure $\theta,\ \psi$
+
+    \State $\mathcal{L}^{\text{Total}} \gets 0$ \Comment{Init total loss}
+
+    \For{$i = 1, \cdots, N$}
+        % \State $\text{probs}^{\pi_{\theta}}_{s_i} = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{Distribution $\pi_\theta(\cdot|s_i)$}
+        \State $\pi_\theta(\cdot|s_i) = \text{Softmax}\big(\text{Forward}(\pi_{\theta}, s_i)\big)$ \Comment{New Distribution of $a_i$}
+        % \State $\log{\pi_{\theta}}_{\text{new}}^{(a_i|s_i)} \coloneqq \log\text{probs}^{\pi_{\theta}}_{s_i}[a_i]$
+        \State $\pi_{\theta}(a_i|s_i) = \text{Gather}(\pi_\theta(\cdot|s_i), a_i)$
+        % \State $r_i(\theta) = \exp\!\big(\log\pi_{\theta}(a_i|s_i) - \log{\pi_{\theta}}_{\text{old}}^{(a_i|s_i)}\big)$
+        \State $r_i(\theta) = \exp\!\big(\log \pi_{\theta}(a_i|s_i) - \log \pi_{\theta_{\text{old}}}(a_i|s_i)\big)$
+
+        \State $L^{\text{CLIP}}_i = \min\!\big( r_i(\theta)\hat{A}_i,\ \text{clip}(r_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i \big)$ \Comment{Maximize Policy objective}
+        \State $L^{\text{VF}}_i = \tfrac{1}{2}\,\big(V_{\psi}(s_i) - \hat{R}_i\big)^2$ \Comment{Minimize Value loss}
+        \State $L^{\text{S}}_i = - \sum_{a} \pi_{\theta}(a|s_i)\log \pi_{\theta}(a|s_i)$ \Comment{Entropy bonus (Optional)}
+        % \State $L^{\text{S}}_i = \text{Entropy}(\pi_\theta(\cdot|s_i))$ \Comment{Entropy bonus (Optional)}
+
+        \State $\mathcal{L}^{\text{Total}} \;{+}{=}\; -\big(L^{\text{CLIP}}_i - c_v L^{\text{VF}}_i + c_e L^{\text{S}}_i\big)$ \Comment{Minimize Total loss}
+    \EndFor
+    
+    \State $\mathcal{L}^{\text{Total}} = \tfrac{1}{N}\mathcal{L}^{\text{Total}}$ \Comment{Average over mini-batch}
+    \State $(\theta,\psi) \gets (\theta,\psi) - \alpha\nabla_{\theta,\psi}\,\mathcal{L}^{\text{Total}}$
+    
+\end{algorithmic}
+\end{algorithm}
+
+% ================================
+% 算法主体结束
+% ================================
+
+\end{document}

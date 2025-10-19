@@ -14,8 +14,9 @@
 \usepackage{graphicx}
 % 标题格式设置
 \usepackage{caption}
-% 页面布局设置: A4 纸张, 2 厘米边距
-\usepackage[a4paper,margin=2cm]{geometry}
+% 页面布局设置: 2 厘米边距
+% \usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[paperheight=100cm,margin=2cm]{geometry}
 % 粗体数学符号
 \usepackage{bm}
 
@@ -84,13 +85,14 @@
   \setlength{\thinmuskip}{5mu}      % 调整关系较弱的符号两侧的距离, 如 a/b a,b a:b 等
 }
 
-% ================================
-% 文档主体开始
-% ================================
 \begin{document}
 
+% ================================
+% 算法主体开始
+% ================================
+
 \begin{algorithm}
-\caption*{\textbf{Algorithm:} Name} % 在这里填写算法名称
+\caption*{\textbf{Algorithm 1:} Name} % 在这里填写算法名称
 \begin{algorithmic}[1] % [1] 表示显示行号
     \Require $x$ % 算法输入参数
     \Ensure $y$ % 算法输出结果
@@ -119,4 +121,46 @@
 \end{algorithmic}
 \end{algorithm}
 
+% ========= 分割线 =========
+\centerline{\raisebox{1.25ex}{\rule{0.5cm}{0.4pt} \, \raisebox{-0.65ex}{\textbullet} \, \rule{0.5cm}{0.4pt}}}
+
+\begin{algorithm}
+\caption*{\textbf{Algorithm 2:} Name} % 在这里填写算法名称
+\begin{algorithmic}[1] % [1] 表示显示行号
+    \Require $x$ % 算法输入参数
+    \Ensure $y$ % 算法输出结果
+
+    \State $a = 1$ \Comment{Init} % 状态语句和注释
+
+    \For{$i = 1, \cdots, N$} % For循环开始
+        \State $a \;{+}{=}\; i$ % 累加操作
+    \EndFor % For循环结束
+    
+    % 可以添加更多算法步骤:
+    % \If{条件}
+    %     \State 执行语句
+    % \ElsIf{其他条件}
+    %     \State 执行其他语句
+    % \Else
+    %     \State 默认执行
+    % \EndIf
+    % \While{条件}
+    %     \State 循环体
+    % \EndWhile
+    % \Function{函数名}{参数}
+    %     \State 函数体
+    %     \State \Return 返回值
+    % \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+% ================================
+% 算法主体结束
+% ================================
+
 \end{document}
+
+
+% 导出命令
+% latex -output-format=dvi -output-directory="$dir" "$texfile"
+% dvisvgm --no-fonts --bbox=preview --scale=1.0 -o "$dir/$base.svg" "$dir/$base.dvi"

@@ -26,8 +26,8 @@ tags: [llm_sft]
 
 <!--START_SECTION:toc-->
 - [快速回顾 ⏰](#快速回顾-)
-    - [**PPO 的三个核心步骤** (监督微调 → 奖励模型 → 策略优化)](#ppo-的三个核心步骤-监督微调--奖励模型--策略优化)
-    - [**优化过程** (轨迹采样 + 梯度传播) ✨](#优化过程-轨迹采样--梯度传播-)
+    - [**三个核心步骤** (监督微调 . 奖励模型 . 策略优化)](#三个核心步骤-监督微调--奖励模型--策略优化)
+    - [**优化过程** (轨迹采样 . 策略更新)](#优化过程-轨迹采样--策略更新)
     - [其他改进算法](#其他改进算法)
 - [基础概念](#基础概念)
     - [背景](#背景)
@@ -51,7 +51,7 @@ extra_url: false
 ## 快速回顾 ⏰
 <!--END_SECTION:keyword-->
 
-### **PPO 的三个核心步骤** (监督微调 → 奖励模型 → 策略优化)
+### **三个核心步骤** (监督微调 . 奖励模型 . 策略优化)
 > 监督微调 → 奖励模型 → 策略优化 (强化学习)
 - **监督微调 (SFT)**:
     - **目标**: <br>
@@ -121,12 +121,12 @@ extra_url: false
 
 ---
 
-### **优化过程** (轨迹采样 + 梯度传播) ✨
+### **优化过程** (轨迹采样 . 策略更新)
 
-<details><summary><b>轨迹采样 📌</b></summary>
+<details><summary><b>伪代码 📌</b></summary>
 
 <!-- algorithm: RLHF_轨迹生成过程.tex -->
-<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
+<div align='center'><a href='./tex2svg/RLHF_PPO.tex'><img src='./tex2svg/RLHF_PPO.svg'/></a></div>
 
 <!--
 cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
@@ -139,26 +139,19 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
 > - `Append()`: `list.append()`
 > - `Extend()`: `list.extend()`
 > - `Length()`: `list.len()`
-
-</details>
-
----
-
-<details><summary><b>梯度传播 📌</b></summary>
-
-<!-- algorithm: RLHF_反向传播过程.tex -->
-<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
-
-<!-- 
-cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
-&& latex -output-format=dvi RLHF_反向传播过程.tex \
-&& dvisvgm --no-fonts --bbox=preview --scale=1.0 -o RLHF_反向传播过程.svg RLHF_反向传播过程.dvi
--->
-
-> 部分函数说明 (python): 
 > - `Gather()`: `torch.gather()`
 
 </details>
+
+> _💡 [要点说明](./策略梯度算法.md#优化过程-轨迹采样--策略更新)_
+
+<!-- 
+
+<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
+
+<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
+
+-->
 
 ---
 
