@@ -325,6 +325,8 @@ class MarkdownMath2SvgHelper:
         if self._final_save_dir.exists():
             shutil.rmtree(self._final_save_dir)
             shutil.move(self._tmp_save_dir, self._final_save_dir)
+            if not any(self._final_save_dir.iterdir()):
+                shutil.rmtree(self._final_save_dir)
 
         if self.old_name is not None:
             old_save_dir = self._get_save_dir(self.old_name)
@@ -440,22 +442,6 @@ class MarkdownMath2SvgHelper:
 
     #     return False
 
-    @staticmethod
-    def _remove_min_prefix_spaces(lines: List[str]) -> List[str]:
-        # 过滤掉空行, 避免 min 出错
-        non_empty = [line for line in lines if line.strip() != '']
-        if not non_empty:
-            return lines
-
-        # 计算每行前缀空格数
-        def count_leading_spaces(s: str) -> int:
-            return len(s) - len(s.lstrip(' '))
-
-        min_spaces = min(count_leading_spaces(line) for line in non_empty)
-
-        # 去掉最小前缀空格
-        return [line[min_spaces:] if len(line) >= min_spaces else '' for line in lines]
-
     def _get_all_math_blocks(self):
         """"""
         lines = self.text.split('\n')
@@ -536,7 +522,7 @@ class MarkdownMath2SvgHelper:
                 # 多行公式: 结尾行
                 content_lines.append(prefix_norm + line.rstrip('$').rstrip())
                 assert block is not None
-                content_lines = self._remove_min_prefix_spaces(content_lines)
+                content_lines = MarkdownUtils.remove_min_prefix_spaces(content_lines)
                 block.content = '\n'.join(content_lines).strip()
                 block.line_end_i = i
                 block.nxt_line = nxt_line
@@ -654,6 +640,61 @@ class KeywordSection:
 
 class MarkdownUtils:
     """"""
+
+    @staticmethod
+    def remove_min_prefix_spaces(lines: List[str]) -> List[str]:
+        # 过滤掉空行, 避免 min 出错
+        non_empty = [line for line in lines if line.strip() != '']
+        if not non_empty:
+            return lines
+
+        # 计算每行前缀空格数
+        def count_leading_spaces(s: str) -> int:
+            return len(s) - len(s.lstrip(' '))
+
+        min_spaces = min(count_leading_spaces(line) for line in non_empty)
+
+        # 去掉最小前缀空格
+        return [line[min_spaces:] if len(line) >= min_spaces else '' for line in lines]
+
+    @staticmethod
+    def update_section_number(
+        txt: str,
+        *,
+        max_section_level: int = 4,
+        min_section_level: int = 2,
+    ):
+        """"""
+        L, H = min_section_level, max_section_level
+        re_line = re.compile(r'^(#+)\s*(\d+(\.\d+)*\.)?\s*(.*)$')
+        section_counts = [0] * H
+
+        lines = txt.split('\n')
+        for i, line in enumerate(lines):
+            m = re_line.match(line)
+            if not m:
+                continue
+
+            hashes, _, _, title = m.groups()
+            level = len(hashes)
+
+            # 不在编号范围 → 不编号, 且清除已有编号
+            if level < L or level > H:
+                lines[i] = f'{hashes} {title.strip()}'
+                continue
+
+            # 更新当前级别的计数器, 并重置更低级别的计数器
+            section_counts[level - 1] += 1
+            for j in range(level, H):
+                section_counts[j] = 0
+
+            # 构建章节编号字符串
+            section_number = '.'.join(str(section_counts[k]) for k in range(level) if section_counts[k] > 0) + '.'
+
+            # 更新标题行
+            lines[i] = f'{hashes} {section_number} {title.strip()}'
+
+        return '\n'.join(lines)
 
     @staticmethod
     def get_relpath_from_p1_to_p2(p1: Path, p2: Path) -> Path:
@@ -841,6 +882,12 @@ class MarkdownUtils:
 
         return text
 
+    RE_BRACKET = re.compile(r'\(\s*(.*?)\s*\)')
+
+    @staticmethod
+    def add_space_in_bracket(txt):
+        return MarkdownUtils.RE_BRACKET.sub(r'( \1 )', txt)
+
     @staticmethod
     def print_diffs_with_context(a: str, b: str, l_context=0, r_context=10):
         # 使用 SequenceMatcher 找出差异块
@@ -992,10 +1039,10 @@ class NoteUtils:
         return NoteUtils.SECTION_END.format(tag=tag)
 
     @staticmethod
-    def replace_tag_content(tag, txt, content, count=1) -> str:
+    def replace_section_content(section_key, txt, new_content, count=1) -> str:
         """"""
-        re_pattern = NoteUtils._get_section_re_pattern(tag)
-        repl = f'{NoteUtils.get_section_begin(tag)}\n{content}\n{NoteUtils.get_section_end(tag)}'
+        re_pattern = NoteUtils._get_section_re_pattern(section_key)
+        repl = f'{NoteUtils.get_section_begin(section_key)}\n{new_content}\n{NoteUtils.get_section_end(section_key)}'
         return re_pattern.sub(repl, txt, count=count)
 
     @staticmethod
@@ -1151,6 +1198,9 @@ class args:  # noqa
     fp_notes_readme_v2 = fp_notes / 'README_v2.md'
     fp_notes_readme_temp_v2 = fp_notes / 'README_template_v2.md'
     fp_tags = fp_notes / '_tags.json'
+
+    fp_qa_collection = fp_notes_archives / '2025/10/QA_合集.md'
+
     notes_top_limit = None
 
     @staticmethod

@@ -272,7 +272,7 @@ class Problem:
                     _lns.insert(_idx, '')
             lns[-1] = '\n'.join(_lns)
 
-        self._text = NoteUtils.replace_tag_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
+        self._text = NoteUtils.replace_section_content(self._TAG_BADGE, '\n'.join(lns), self.badge_content)
 
     def set_relate_notes(self, notes: list[Note]):
         """"""
@@ -305,7 +305,7 @@ class Problem:
             lns.extend(other_notes)
             lns.append('\n</details>')
 
-        self._text = NoteUtils.replace_tag_content(self._TAG_RELATE_NOTE, self._text, '\n'.join(lns))
+        self._text = NoteUtils.replace_section_content(self._TAG_RELATE_NOTE, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(self._text)
 
@@ -317,7 +317,7 @@ class Problem:
         ]
         lns += tag_info.get_toc_lns_from_tags(self.tags, self.path, skip_self=True)
 
-        self._text = NoteUtils.replace_tag_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
+        self._text = NoteUtils.replace_section_content(self._TAG_RELATE_PROBLEM, self._text, '\n'.join(lns))
         with self.path.open('w', encoding='utf8') as f:
             f.write(self._text)
 
@@ -567,17 +567,17 @@ class AlgorithmsBuilder(Builder):
             txt = f.read()
 
         # title
-        txt = NoteUtils.replace_tag_content('head', txt, self.head)
+        txt = NoteUtils.replace_section_content('head', txt, self.head)
 
         # hot
-        txt = NoteUtils.replace_tag_content('hot', txt, self.hot_toc)
+        txt = NoteUtils.replace_section_content('hot', txt, self.hot_toc)
 
         # tags toc
         for tag_type, info in self.type2tags.items():
-            txt = NoteUtils.replace_tag_content(tag_type, txt, info.toc)
+            txt = NoteUtils.replace_section_content(tag_type, txt, info.toc)
 
         # problems toc
-        txt = NoteUtils.replace_tag_content('problems', txt, self.problems_toc)
+        txt = NoteUtils.replace_section_content('problems', txt, self.problems_toc)
 
         # update problems relate
         for p in self.problems:

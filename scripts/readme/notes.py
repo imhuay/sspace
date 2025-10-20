@@ -25,6 +25,7 @@ from typing import ClassVar
 
 import yaml
 from _base import Builder
+from sections.qa_section import QaSection
 from utils import KeywordSection, MarkdownUtils, NoteUtils, TEMP_main_readme_notes_recent_toc, args
 
 # TMP_subject_toc = '''### {title}
@@ -84,9 +85,10 @@ class NoteInfo:
 @dataclass
 class Note:
     path: Path
-    sub_notes: list[Note] = field(default_factory=list)
-    par_notes: list[Note] = field(default_factory=list)
+    _sub_notes: list[Note] = field(default_factory=list)
+    _par_notes: list[Note] = field(default_factory=list)
     _tags: set[str] = field(default_factory=set)
+    _qa_section: QaSection | None = None
 
     _text: str = ''
     _info: NoteInfo | None = None
@@ -117,7 +119,14 @@ class Note:
         self._update_title()
         self._update_badge()
 
-        if self.info.section_number:
+        if self.qa_section is not None:
+            self._text = NoteUtils.replace_section_content(
+                QaSection.SECTION_KEY,
+                self._text,
+                self.qa_section.new_content,
+            )
+        elif self.info.section_number:
+            # 如果存在 qa_section, 就不应用全局 section_number 了
             self._update_section_number()
             self._update_content_toc()
 
@@ -171,7 +180,7 @@ class Note:
         new_badge = '\n'.join(badges)
         old_badge = NoteUtils.get_section_content(badge_tag, self._text)
         if new_badge != old_badge:
-            self._text = NoteUtils.replace_tag_content('badge', self.text, new_badge)
+            self._text = NoteUtils.replace_section_content('badge', self.text, new_badge)
             self._updated = True
 
     def _tex2svg(self):
@@ -246,16 +255,19 @@ class Note:
         toc_content = NoteUtils.get_section_content('toc', self.text)
         if new_toc_content != toc_content:
             # MarkdownUtils.print_diffs_with_context(new_toc_content, toc_content or '')
-            self._text = NoteUtils.replace_tag_content('toc', self.text, new_toc_content)
+            self._text = NoteUtils.replace_section_content('toc', self.text, new_toc_content)
             self._updated = True
 
     def add_sub_note(self, note: Note):
-        self.sub_notes.append(note)
+        self._sub_notes.append(note)
         self._tags.update(note._tags)
 
     def add_par_note(self, note: Note):
-        self.par_notes.append(note)
+        self._par_notes.append(note)
         self._tags.update(note._tags)
+
+    def sort_sub_notes(self):
+        self._sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
 
     def get_tag_toc_line(self, deep: int) -> str:
         def _get_toc_line(_k):
@@ -270,7 +282,8 @@ class Note:
         rel_path = self.path.relative_to(args.fp_notes)
         # title = self.title if self.info.toc_title is None else self.info.toc_title
         # title = self.tag_toc_title
-        title = re.sub(r'\(\s*(.*?)\s*\)', r'( \1 )', self.tag_toc_title)
+        # title = re.sub(r'\(\s*(.*?)\s*\)', r'( \1 )', self.tag_toc_title)  # 扩号内侧加空格
+        title = MarkdownUtils.add_space_in_bracket(self.tag_toc_title)
         # title = f'{title} {self.toc_title_suffix}'
         toc_line = f'- [{title}]({rel_path}) {self.toc_title_suffix}'
 
@@ -283,10 +296,15 @@ class Note:
 
     def get_recent_toc_line_relative_to(self, parent_path: Path):
         """更新 README recent 模块内的 TOC"""
+        title = MarkdownUtils.add_space_in_bracket(self.title)  # 扩号内侧加空格
+        toc_line = f'- [`{self.date}` {title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
         if self.is_top:
-            return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) 📌'
-        else:
-            return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
+            toc_line += ' 📌'
+        return toc_line
+        # if self.is_top:
+        #     return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) 📌'
+        # else:
+        #     return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
 
     # @property
     # def toc_line_for_recent_relative_to_repo(self):
@@ -452,6 +470,14 @@ class Note:
         return self.info.omit_in_tag_toc
 
     @property
+    def sub_notes(self):
+        return self._sub_notes
+
+    @property
+    def par_notes(self):
+        return self._par_notes
+
+    @property
     def tags(self) -> set[str]:
         if 'draft' in self._tags and len(self._tags) > 1:
             self._tags.remove('draft')
@@ -502,6 +528,14 @@ class Note:
             return f'⏳{per}%'
         else:
             return ''
+
+    @property
+    def qa_section(self):
+        if self._qa_section is None:
+            c = NoteUtils.get_section_content(QaSection.SECTION_KEY, self.text)
+            if c is not None:
+                self._qa_section = QaSection(self.path, c, topic=self.tag_toc_title)
+        return self._qa_section
 
 
 @dataclass
@@ -615,6 +649,8 @@ class NotesBuilder(Builder):
         # recent_limit = len(self.toc_append.split('\n'))
         return self._notes_recent[: self._recent_limit - len(self.notes_top)]
 
+    _qa_sections: list[QaSection] = []
+
     def _load_all_notes(self):
         """"""
         for dp, _, fns in os.walk(self._fp_notes_archives):
@@ -627,10 +663,13 @@ class NotesBuilder(Builder):
                 self.path2note[note.path] = note
                 if note.is_top:
                     self._notes_top.append(note)
-                if not note.is_hidden_in_recent:
+                elif not note.is_hidden_in_recent:
+                    # 加到 top 就不要再放到 recent 了
                     self._notes_recent.append(note)
                 if note.is_algo_note:
                     self.algo_notes.append(note)
+                if note.qa_section is not None:
+                    self._qa_sections.append(note.qa_section)
 
         self._notes_top.sort(key=lambda x: x.sort_key, reverse=True)
         self._notes_recent.sort(key=lambda x: x.sort_key, reverse=True)
@@ -676,7 +715,7 @@ class NotesBuilder(Builder):
             txt = f.read()
             self._set_recent_limit(txt)
 
-        txt = NoteUtils.replace_tag_content('recent', txt, self.recent_toc)
+        txt = NoteUtils.replace_section_content('recent', txt, self.recent_toc)
 
         # contents = {s.toc_id: s.toc for s in self.subjects}
         # txt = txt.format(**contents)
@@ -708,7 +747,8 @@ class NotesBuilder(Builder):
             # if DEBUG and n_deep > 0:
             #     print(f'{note.path}')
 
-            note.sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
+            # note._sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
+            note.sort_sub_notes()
             for sub_note in note.sub_notes:
                 # 如果子文档已经在父文档中出现过 (作为引用), 且名称也相同, 则跳过
                 rel_path_str = str(sub_note.path.relative_to(args.fp_notes))
@@ -754,6 +794,29 @@ class NotesBuilder(Builder):
         paper_toc = sorted(paper_toc)
         return tag2toc, paper_toc
 
+    def _update_qa_coll(self, md_path: Path):
+        """"""
+        ss = sorted(self._qa_sections, key=lambda s: s.sort_key)
+        # md_path = Path('/home/huay/workspace/git/my/sspace/notes/_archives/2025/10/QA_合集.md')
+
+        txt = md_path.read_text(encoding='utf8')
+
+        toc_lines = []
+        sub_toc_blocks = []
+
+        for s in ss:
+            prefix = MarkdownUtils.get_relpath_from_p1_to_p2(md_path, s.md_path)
+            toc_blk = s.get_toc(prefix, with_subject_title=True)
+            sub_toc_blocks.append(toc_blk)
+            toc_lines.append(s.subject_toc_line)
+
+        toc = '\n'.join(toc_lines)
+        sub_tocs = '\n\n'.join(sub_toc_blocks)
+
+        txt = NoteUtils.replace_section_content('toc', txt, toc)
+        txt = NoteUtils.replace_section_content('sub_tocs', txt, sub_tocs)
+        md_path.write_text(txt, encoding='utf8')
+
     def build_v2(self):
         with self._fp_notes_readme_temp_v2.open(encoding='utf8') as f:
             txt = f.read()
@@ -780,7 +843,7 @@ class NotesBuilder(Builder):
         #             print(n)
 
         # replace template
-        txt = NoteUtils.replace_tag_content('recent', txt, self.recent_toc)
+        txt = NoteUtils.replace_section_content('recent', txt, self.recent_toc)
         draft = []
         for tag, toc in tag2toc.items():
             if tag not in available_tags or tag == 'draft':
@@ -811,6 +874,8 @@ class NotesBuilder(Builder):
         self.build_v1()
         self.build_v2()
 
+        self._update_qa_coll(Path(args.fp_qa_collection))
+
         shutil.copy2(getattr(self, f'_fp_notes_readme_{version}'), self._fp_notes_readme)
 
     def set_relate_problems_for_algo_note(self):
@@ -823,7 +888,7 @@ class NotesBuilder(Builder):
             with note.path.open('r', encoding='utf8') as f:
                 txt = f.read()
 
-            txt = NoteUtils.replace_tag_content('related_problems', txt, toc)
+            txt = NoteUtils.replace_section_content('related_problems', txt, toc)
 
             with note.path.open('w', encoding='utf8') as f:
                 f.write(txt)

@@ -70,10 +70,10 @@ class BuildReadme:
             txt = f.read()
 
         txt_index = f'<!-- no toc -->\n{self.algo.toc_append}\n{self.note.toc_append}'
-        txt = NoteUtils.replace_tag_content(readme_tag.index, txt, txt_index)
-        txt = NoteUtils.replace_tag_content(readme_tag.recent, txt, self.note.recent_toc_append)
-        txt = NoteUtils.replace_tag_content(readme_tag.algorithms, txt, self.algo.readme_append)
-        txt = NoteUtils.replace_tag_content(readme_tag.notes, txt, self.note.readme_append)
+        txt = NoteUtils.replace_section_content(readme_tag.index, txt, txt_index)
+        txt = NoteUtils.replace_section_content(readme_tag.recent, txt, self.note.recent_toc_append)
+        txt = NoteUtils.replace_section_content(readme_tag.algorithms, txt, self.algo.readme_append)
+        txt = NoteUtils.replace_section_content(readme_tag.notes, txt, self.note.readme_append)
 
         with open(self._fp_repo_readme, 'w', encoding='utf8') as f:
             f.write(txt)
