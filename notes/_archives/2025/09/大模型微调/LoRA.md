@@ -131,6 +131,7 @@ tags: [llm_sft]
 ### DoLA
 > 将权重分解为幅度与方向, 单独调整, 有时更稳更准;
 
+> [PDF](./_paper/DoRA.pdf)
 
 <!--START_SECTION:keyword-->
 <!--keyword_info

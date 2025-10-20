@@ -449,5 +449,5 @@ name: 'QA'
 extra_url: true
 -->
 ## 面试问题整理
-> _[RLHF 面试问题整理](./偏好学习_RLHF_QA.md)_
+> _[RLHF 面试问题整理](./RLHF_QA.md)_
 <!--END_SECTION:keyword-->

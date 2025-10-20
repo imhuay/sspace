@@ -247,7 +247,7 @@ YAML          1 hr 43 mins    >------------------------   03.16 %
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
 - [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
-  > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md)_<br>
+  > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](./notes/_archives/2025/09/大模型微调/RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
@@ -274,8 +274,8 @@ YAML          1 hr 43 mins    >------------------------   03.16 %
 
 - [概率论基础](notes/_archives/2025/09/概率论基础.md) 
   > _[期望](notes/_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](notes/_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
-- [机器学习基础](notes/_archives/2025/09/机器学习基本概念.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
-  > _[归纳偏置](notes/_archives/2025/09/机器学习基本概念.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基本概念.md#似然-likelihood) • [正则化](notes/_archives/2025/09/机器学习基本概念.md#正则化-regularization) • [重要性采样](notes/_archives/2025/09/机器学习基本概念.md#重要性采样-importance-sampling-is)_<br>
+- [机器学习基础](notes/_archives/2025/09/机器学习基础.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+  > _[归纳偏置](notes/_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](notes/_archives/2025/09/机器学习基础.md#正则化-regularization) • [重要性采样](notes/_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is)_<br>
 - [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) ✒️
   - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md) 
 
@@ -611,7 +611,7 @@ YAML          1 hr 43 mins    >------------------------   03.16 %
 - [低资源训练](notes/_archives/2022/12/低资源训练.md) 
 - [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) 
 - [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 
-- [偏好学习-QA](notes/_archives/2025/09/大模型微调/偏好学习_RLHF_QA.md) 
+- [偏好学习-QA](./notes/_archives/2025/09/大模型微调/RLHF_QA.md) 
 - [同义词挖掘](notes/_archives/2025/07/同义词挖掘/README.md) 
 - [基于 BERT/MLM 的查询扩展方法](notes/_archives/2022/12/qe-mlm.md) 
 - [基于 SQL 计算信息熵与信息增益](notes/_archives/2023/01/sql-计算信息熵与信息增益.md) 

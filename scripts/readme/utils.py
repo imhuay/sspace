@@ -440,6 +440,22 @@ class MarkdownMath2SvgHelper:
 
     #     return False
 
+    @staticmethod
+    def _remove_min_prefix_spaces(lines: List[str]) -> List[str]:
+        # 过滤掉空行, 避免 min 出错
+        non_empty = [line for line in lines if line.strip() != '']
+        if not non_empty:
+            return lines
+
+        # 计算每行前缀空格数
+        def count_leading_spaces(s: str) -> int:
+            return len(s) - len(s.lstrip(' '))
+
+        min_spaces = min(count_leading_spaces(line) for line in non_empty)
+
+        # 去掉最小前缀空格
+        return [line[min_spaces:] if len(line) >= min_spaces else '' for line in lines]
+
     def _get_all_math_blocks(self):
         """"""
         lines = self.text.split('\n')
@@ -455,6 +471,7 @@ class MarkdownMath2SvgHelper:
                 continue
 
             prefix, line = self.split_prefix_and_left(raw_line)
+            prefix_norm = prefix.replace('>', ' ')
             pre_line = lines[i - 1] if i > 0 else ''
             nxt_line = lines[i + 1] if i < len(lines) - 1 else ''
 
@@ -513,12 +530,13 @@ class MarkdownMath2SvgHelper:
                     tmp_save_dir=self._tmp_save_dir,
                     already_img_block=is_img_block,
                 )
-                content_lines.append(line.lstrip('$'))
+                content_lines.append(prefix_norm + line.lstrip('$').rstrip())
                 continue
             elif in_block and line.rstrip().endswith('$$'):
                 # 多行公式: 结尾行
-                content_lines.append(line.rstrip('$').strip())
+                content_lines.append(prefix_norm + line.rstrip('$').rstrip())
                 assert block is not None
+                content_lines = self._remove_min_prefix_spaces(content_lines)
                 block.content = '\n'.join(content_lines).strip()
                 block.line_end_i = i
                 block.nxt_line = nxt_line
@@ -530,7 +548,7 @@ class MarkdownMath2SvgHelper:
                 continue
             elif in_block:
                 # 多行公式: 内容行
-                content_lines.append(line)
+                content_lines.append(prefix_norm + line.rstrip())
                 continue
 
         self.math_blocks = blocks
