@@ -1,0 +1,30 @@
+\begin{alignedat}{3}
+    \theta^\star
+        &\;=\; \arg\max_{\theta} J^{\scriptscriptstyle\text{GRPO}}(\theta)
+
+    \\
+    J^{\scriptscriptstyle\text{GRPO}}(\theta)
+        &\;=\; \mathbb{E}_{q\sim\mathcal{Q},\, \{o_i\}_{i=1}^{G}\sim\pi_{\theta_{\text{old}}}(\cdot\mid q)}
+            \Bigg[
+                \frac{1}{G}\sum_{i=1}^{G} \frac{1}{|o_i|}\sum_{t=1}^{|o_i|}
+                    \Big(
+                        J^{\scriptscriptstyle\text{CLIP}}\big(\theta;\,\hat{A}_{i,t}\big)
+                        \,-\, \beta{\cdot}D_{\scriptscriptstyle\text{KL}}^{\text{token}}\!\big(\pi_\theta\,\|\,\pi_{\text{ref}}\big)
+                    \Big)
+            \Bigg]
+
+    \\
+    J^{\scriptscriptstyle\text{CLIP}}\big(\theta;\,\hat{A}_{i,t}\big)
+        &\;=\; \min\!\Big(
+                    r_{i,t}(\theta)\cdot \hat{A}_{i,t},\;
+                    \operatorname{clip}\big(r_{i,t}(\theta),\,1-\varepsilon,\,1+\varepsilon\big)\cdot \hat{A}_{i,t}
+                \Big)
+    \\
+    r_{i,t}(\theta)
+    &\;=\; \frac{\pi_\theta(o_{i,t} \mid x, o_{i,<t})}{\pi_{\theta_{\text{old}}}(o_{i,t} \mid q, o_{i,<t})}
+
+    \\
+    \hat{A}_{i,t}
+        &\;=\; \hat{r}_i
+        \;=\; \boxed{\frac{r_i - \mathrm{mean}(\{r_j\}_{j=1}^G)}{\mathrm{std}(\{r_j\}_{j=1}^G)}} \, \quad \text{for all } t \in \{1,2,\dots,|o_i|\}
+\end{alignedat}
