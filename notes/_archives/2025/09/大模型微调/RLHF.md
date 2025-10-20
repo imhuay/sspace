@@ -126,7 +126,7 @@ extra_url: false
 <details><summary><b>伪代码 📌</b></summary>
 
 <!-- algorithm: RLHF_轨迹生成过程.tex -->
-<div align='center'><a href='./tex2svg/RLHF_PPO.tex'><img src='./tex2svg/RLHF_PPO.svg'/></a></div>
+<div align='center'><a href='./_tex/RLHF_PPO.tex'><img src='./_tex/RLHF_PPO.svg'/></a></div>
 
 <!--
 cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/tex2svg \
@@ -143,13 +143,13 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/大模型微调/te
 
 </details>
 
-> _💡 [要点说明](./策略梯度算法.md#优化过程-轨迹采样--策略更新)_
+> _💡 [要点说明](./策略梯度算法.md#训练过程-轨迹采样--策略更新)_
 
 <!-- 
 
-<div align='center'><a href='./tex2svg/RLHF_轨迹生成过程.tex'><img src='./tex2svg/RLHF_轨迹生成过程.svg'/></a></div>
+<div align='center'><a href='./_tex/RLHF_轨迹生成过程.tex'><img src='./_tex/RLHF_轨迹生成过程.svg'/></a></div>
 
-<div align='center'><a href='./tex2svg/RLHF_反向传播过程.tex'><img src='./tex2svg/RLHF_反向传播过程.svg'/></a></div>
+<div align='center'><a href='./_tex/RLHF_反向传播过程.tex'><img src='./_tex/RLHF_反向传播过程.svg'/></a></div>
 
 -->
 

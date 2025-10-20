@@ -54,13 +54,13 @@ extra_url: true
 
         - 缩放因子 $\dfrac{\alpha}{r}$ 控制 $\Delta W$ 的幅度, 避免训练初期过大扰动;
 - **代码 Demo**:
-    - [LoRA](./code/lora.py)
+    - [LoRA](./_code/lora.py)
 
 ### Adapter
 - **思路**:
     - 在 Transformer 每层的前馈网络 (或注意力输出) 后插入一个小型可训练的 **瓶颈层** (bottleneck)
 - **代码 Demo**
-    - [Adapter](./code/adapter.py)
+    - [Adapter](./_code/adapter.py)
 
 ### Prefix/Prompt Tuning
 
@@ -68,8 +68,8 @@ extra_url: true
     - Prefix Tuning 在 **Transformer 每一层的注意力机制** 中, 为 Key/Value 拼接可训练的 **前缀向量**;
     - Prompt Tuning 仅在 **输入嵌入层** 前拼接可训练的软提示向量;
 - **代码 Demo**
-    - [Prefix Tuning](./code/prefix_tuning.py)
-    - [Prompt Tuning](./code/prompt_tuning.py)
+    - [Prefix Tuning](./_code/prefix_tuning.py)
+    - [Prompt Tuning](./_code/prompt_tuning.py)
 
 ### P-Tuning V1/V2
 
@@ -78,8 +78,8 @@ extra_url: true
     - 这些向量通过一个提示编码器 (Prompt Encoder)  (通常是 LSTM + MLP) 生成;
     - V1/V2 的区别类似 Prefix/Prompt Tuning, **仅作用于输入层 vs 作用于每一个 TransformerBlock**;
 - **代码 Demo**
-    - [P-Tuning V1](./code/p_tuning.py)
-    - [P-Tuning V2](./code/p_tuning_v2.py)
+    - [P-Tuning V1](./_code/p_tuning.py)
+    - [P-Tuning V2](./_code/p_tuning_v2.py)
 
 ### BitFit (Bias Fine-Tuning)
 
@@ -90,7 +90,7 @@ extra_url: true
 - **缺点**:
     - 表达能力有限, 对需要大幅调整特征空间的任务效果可能不如 LoRA 等方法;
 - **代码 Demo**
-    - [BitFit](./code/bitfit.py)
+    - [BitFit](./_code/bitfit.py)
 
 ---
 

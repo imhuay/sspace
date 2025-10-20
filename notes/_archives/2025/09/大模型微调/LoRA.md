@@ -65,7 +65,7 @@ tags: [llm_sft]
 ### 实践细节
 
 - **代码示例**:
-    - [LoRA.py](./code/lora.py)
+    - [LoRA.py](./_code/lora.py)
 - **初始化策略**:
     <div align='center'><a href='_formulas/LoRA/f_003.js.tex'><img src='_formulas/LoRA/f_003.js.svg'/></a></div>
 
@@ -107,7 +107,7 @@ tags: [llm_sft]
     - **收益与风险**:
         - 提升表达灵活性, 参数利用率高; 过拟合;
     - **代码**:
-        - [group_lora](./code/group_lora.py)
+        - [group_lora](./_code/group_lora.py)
 - **分头 LoRA**:
     - 分组 LoRA 的一种特殊情况, 对 `head` 维进行分组;
 - **门控 LoRA**:
