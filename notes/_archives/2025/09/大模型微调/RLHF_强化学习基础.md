@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-13%2000%3A21%3A41&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-21%2020%3A57%3A58&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-25 02:59:27
@@ -270,7 +270,7 @@ extra_url: false
 <!-- • 策略模型根据当前 **上下文 (状态)** 输出下一个 **Token (动作)** 的概率分布, 即 $\pi(a_t | s_t)$ <br></td> -->
 • 语言模型的前向过程; <br>
 • 即根据当前上下文 (状态) 计算下一个 Token (动作) 的概率分布, 即: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_001.js.tex'><img src='_formulas/强化学习基础_RLHF/f_001.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_001.js.tex'><img src='_formulas/RLHF_强化学习基础/f_001.js.svg'/></a></div>
 
 </td>
 </tr>
@@ -281,7 +281,7 @@ extra_url: false
 <td>
 
 • 环境动态的数学模型, 记: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_002.js.tex'><img src='_formulas/强化学习基础_RLHF/f_002.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_002.js.tex'><img src='_formulas/RLHF_强化学习基础/f_002.js.svg'/></a></div>
 
 • 表示在状态 $s_t$ 执行动作 $a_t$ 后, 环境转移到状态 $s_{t+1}$ 的概率. <br>
   > 这里不严格区分 **概率密度函数** $p(\cdot)$ 和 **概率质量函数** $P(\cdot)$ <br></td>
@@ -289,7 +289,7 @@ extra_url: false
 
 • **在语言生成任务中, 状态转移是一个确定性过程**; <br>
 • 具体来说, 当基于 $t$ 时刻的上下文 $s_t$ 生成出下一个 Token ( $a_t$ ) 后, 在 $t{+1}$ 时刻的上下文就已经确定了, 即 $s_t \oplus a_t$; 即: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_003.js.tex'><img src='_formulas/强化学习基础_RLHF/f_003.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_003.js.tex'><img src='_formulas/RLHF_强化学习基础/f_003.js.svg'/></a></div>
 
 • **这是序列生成任务与经典 RL 问题的一个根本区别**; <br>
 > [_核心影响_](#-rlhf-中转移概率确定带来的影响) <br></td>
@@ -317,10 +317,10 @@ extra_url: false
         - PPO 等策略梯度算法与优势估计 (如 GAE) 正是解决此挑战的关键工具.
 - **价值估计的简化**
     - 在计算价值函数时, 由于下一个状态 $s_{t+1}$ 是唯一确定的, 即
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_004.js.tex'><img src='_formulas/强化学习基础_RLHF/f_004.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_004.js.tex'><img src='_formulas/RLHF_强化学习基础/f_004.js.svg'/></a></div>
 
     - 则 [贝尔曼方程](#贝尔曼方程-bellman-equation) 中关于下一个状态的期望退化为单点取值:
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_005.js.tex'><img src='_formulas/强化学习基础_RLHF/f_005.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_005.js.tex'><img src='_formulas/RLHF_强化学习基础/f_005.js.svg'/></a></div>
 
     - 这在一定程度上降低了价值函数估计的复杂度.
 
@@ -362,7 +362,7 @@ extra_url: false
 <!-- • 常用折扣因子 $\gamma$ 计算, 如 $G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$;<br> -->
 • 从时刻 $t$ 起, 直到回合结束所获得的 **累积奖励**, 记 $G_t$: <br>
   <!-- $$G_t = \sum_{k=0}^{T} \gamma^k R_{t+k+1}$$ -->
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_006.js.tex'><img src='_formulas/强化学习基础_RLHF/f_006.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_006.js.tex'><img src='_formulas/RLHF_强化学习基础/f_006.js.svg'/></a></div>
 
 • 其中 $\gamma$ 为 **折扣因子**, 体现对未来奖励的 **衰减**; <br>
 > [注$^1$](#注1) </td>
@@ -429,7 +429,7 @@ extra_url: false
 
 • 用于估计一个状态 $s$ 的长期价值; <br>
 • 返回在状态 $s$ 下, 遵循策略 $\pi$ 所能获得的 **期望回报**: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_007.js.tex'><img src='_formulas/强化学习基础_RLHF/f_007.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_007.js.tex'><img src='_formulas/RLHF_强化学习基础/f_007.js.svg'/></a></div>
 
 </td>
 <td>
@@ -447,7 +447,7 @@ extra_url: false
 
 • 用于估计在状态 $s$ 下采取某个特定动作 $a$ 的长期价值; <br>
 • 返回在状态 $s$ 下执行动作 $a$ 后, 遵循策略 $\pi$ 所能获得的 **期望回报**: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_008.js.tex'><img src='_formulas/强化学习基础_RLHF/f_008.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_008.js.tex'><img src='_formulas/RLHF_强化学习基础/f_008.js.svg'/></a></div>
 
 </td>
 <td>
@@ -462,7 +462,7 @@ extra_url: false
 <td>
 
 • 用于衡量在状态 $s$ 下采取动作 $a$ 相对于所有动作 **平均水平** 的优势, 即: <br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_009.js.tex'><img src='_formulas/强化学习基础_RLHF/f_009.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_009.js.tex'><img src='_formulas/RLHF_强化学习基础/f_009.js.svg'/></a></div>
 
 </td>
 <td>
@@ -490,21 +490,21 @@ extra_url: false
 <!-- - RL 的目标是 **最大化** 智能体在整个交互过程中获得的 **期望回报** (即 **期望累积奖励**); -->
 - 在强化学习中, 我们关心的是智能体在与环境交互过程中所能获得的 **期望回报** (**长期累积奖励**);
 - 因此, 可以将目标函数形式化为:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_010.js.tex'><img src='_formulas/强化学习基础_RLHF/f_010.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_010.js.tex'><img src='_formulas/RLHF_强化学习基础/f_010.js.svg'/></a></div>
 
     <!-- > $\tau \sim p_{\theta}(\tau)$ 有时也简记为 $\tau \sim \pi_\theta$. -->
     其中:
     - $\tau = (s_0, a_0, s_1, a_1, ...)$ 表示一条从初始状态开始的完整轨迹;
     - **$\tau$ 服从概率分布 $p_\theta(\tau)$**:
         > $p_\theta(\tau)$ 是由策略 $\pi_\theta$ 和环境动力学诱导的轨迹分布;
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_011.js.tex'><img src='_formulas/强化学习基础_RLHF/f_011.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_011.js.tex'><img src='_formulas/RLHF_强化学习基础/f_011.js.svg'/></a></div>
 
     - $p(s_0)$ : **初始状态分布**;
     - $\pi_\theta(a_t|s_t)$ : **策略**, 表达了在状态 $s_t$ 下选择动作 $a_t$ 的概率;
     - $P(s_{t+1}|s_t, a_t)$ : **转移概率**, 表达了环境在状态 $s_t$ 下执行动作 $a_t$ 后, 转移到状态 $s_{t+1}$ 的概率;
 - **任务目标**
     - 强化学习的核心任务就是 **寻找最优策略参数 $\theta^*$**, 使得期望回报最大化:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_012.js.tex'><img src='_formulas/强化学习基础_RLHF/f_012.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_012.js.tex'><img src='_formulas/RLHF_强化学习基础/f_012.js.svg'/></a></div>
 
     - 换言之, 策略优化问题就是一个典型的 **期望最大化问题**; 
     - 不同的强化学习算法, 正是围绕如何高效稳定地近似和求解这一优化问题而展开的.
@@ -532,7 +532,7 @@ extra_url: false
     - **基本思想**: 直接对参数化策略 $\pi_\theta(a|s)$ 进行优化, 通过计算目标函数 $J(\theta)$ 的梯度来更新参数. 
     <!-- - **核心思想**: [策略梯度定理](#策略梯度定理-policy-gradient-theorem) -->
     - **策略梯度定理 (Policy Gradient Theorem)**:
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_013.js.tex'><img src='_formulas/强化学习基础_RLHF/f_013.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_013.js.tex'><img src='_formulas/RLHF_强化学习基础/f_013.js.svg'/></a></div>
 
         > 定理给出了目标函数梯度的一个 **期望形式**, 使我们能够通过 **采样轨迹** 来无偏的估计梯度. <br>
         > [_推导过程_](./策略梯度定理及其推导.md)
@@ -571,7 +571,7 @@ extra_url: false
 • 其特点是 **使用当前策略生成的数据来优化策略本身**;<br>
 • 在这类算法中, 通常会训练一个 **价值模型 (Critic)** 来近似估计状态价值函数 $V(\cdot)$, 作为评价策略好坏的基线;<br>
 • 但一般 **不直接建模** $Q(\cdot)$; 而是通过 **即时奖励** 和 **下一状态的价值函数** 来估计动作价值, 其关系由 [**贝尔曼方程**](#贝尔曼方程-bellman-equation) 定义:<br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_014.js.tex'><img src='_formulas/强化学习基础_RLHF/f_014.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_014.js.tex'><img src='_formulas/RLHF_强化学习基础/f_014.js.svg'/></a></div>
 
 ---
 
@@ -592,10 +592,10 @@ extra_url: false
 <!--  
 • 在 LLM 语境下, 即评估给定上下文生成某个 Token 的相对好坏;<br>
 • 根据 [**贝尔曼方程**](#贝尔曼方程-bellman-equation) 与 [**时序差分 (TD) 算法**](#时序差分算法-temporal-difference-td) 有:<br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_015.js.tex'><img src='_formulas/强化学习基础_RLHF/f_015.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_015.js.tex'><img src='_formulas/RLHF_强化学习基础/f_015.js.svg'/></a></div>
 
 • **一个更通用的形式是** [**广义优势估计 (GAE)**](#广义优势估计-gae):<br>
-  <div align='center'><a href='_formulas/强化学习基础_RLHF/f_016.js.tex'><img src='_formulas/强化学习基础_RLHF/f_016.js.svg'/></a></div>
+  <div align='center'><a href='_formulas/RLHF_强化学习基础/f_016.js.tex'><img src='_formulas/RLHF_强化学习基础/f_016.js.svg'/></a></div>
 
 -->
 <!-- • 其中 $\delta_t = r_t + \gamma V(s_{t+1}) - V(s_t)$ 为 **时序差分误差**, $\lambda \in \lbrack 0, 1\rbrack$ 为 GAE 参数; 当 $\lambda = 0$ 时, 即退化为单步优势估计;<br> -->
@@ -632,76 +632,76 @@ extra_url: false
 
 #### **状态价值函数** 的贝尔曼方程
 - **定义**: 状态价值函数 $V(s_t)$ 表示从状态 $s_t$ 开始, 遵循策略所能获得的**期望回报**:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_017.js.tex'><img src='_formulas/强化学习基础_RLHF/f_017.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_017.js.tex'><img src='_formulas/RLHF_强化学习基础/f_017.js.svg'/></a></div>
 
     其中 **回报** $G_t$ 为 **即时奖励** 和所有 **未来折扣奖励** 之和:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_018.js.tex'><img src='_formulas/强化学习基础_RLHF/f_018.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_018.js.tex'><img src='_formulas/RLHF_强化学习基础/f_018.js.svg'/></a></div>
 
 <!--
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_019.js.tex'><img src='_formulas/强化学习基础_RLHF/f_019.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_019.js.tex'><img src='_formulas/RLHF_强化学习基础/f_019.js.svg'/></a></div>
 
     或写作递归形式:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_020.js.tex'><img src='_formulas/强化学习基础_RLHF/f_020.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_020.js.tex'><img src='_formulas/RLHF_强化学习基础/f_020.js.svg'/></a></div>
 
     -->
 - 根据期望的线性性质, 分离出即时奖励和未来奖励:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_021.js.tex'><img src='_formulas/强化学习基础_RLHF/f_021.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_021.js.tex'><img src='_formulas/RLHF_强化学习基础/f_021.js.svg'/></a></div>
 
 - 根据 **全期望公式 (塔性质)** 以及 **马尔可夫假设**, 有:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_022.js.tex'><img src='_formulas/强化学习基础_RLHF/f_022.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_022.js.tex'><img src='_formulas/RLHF_强化学习基础/f_022.js.svg'/></a></div>
 
     > • **全期望公式**: $\mathbb{E}\big\lbrack\ \mathbb{E}\lbrack\ G_{t+1} \ |\  S_{t+1}, S_t\ \rbrack \mid S_t \ \big\rbrack = \mathbb{E}\lbrack\  G_{t+1} \mid S_t\ \rbrack$ —— 先在更多条件下取期望, 再在较少条件下取期望, 结果等于直接在较少条件下取期望;<br>
     > • **马尔可夫假设**: $\mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}, S_t\ \big\rbrack = \mathbb{E}\big\lbrack\  G_{t+1} \ |\  S_{t+1}\ \big\rbrack$ —— 给定当前状态 $S_{t+1}$, 未来回报 $G_{t+1}$ **不再依赖** 过去状态 $S_t$;<br>
 - 综上:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_023.js.tex'><img src='_formulas/强化学习基础_RLHF/f_023.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_023.js.tex'><img src='_formulas/RLHF_强化学习基础/f_023.js.svg'/></a></div>
 
     > • 进一步引入策略 $\pi(a|s)$ 和状态转移概率 $P(s' \mid s, a)$, 可以得到更具体的表达式;<br>
     > • 智能体在状态 $s$ 下选择动作 $a$ 的概率是 $\pi(a|s)$, 执行动作 $a$ 后获得奖励 $\mathcal{R}(s, a, s')$, 并转移到状态 $s'$ 的概率是 $P(s' \mid s, a)$;<br>
     > • 下面是贝尔曼方程的完整形式 (**仅做参考, 具体推导略**):<br>
-    > <div align='center'><a href='_formulas/强化学习基础_RLHF/f_024.js.tex'><img src='_formulas/强化学习基础_RLHF/f_024.js.svg'/></a></div>
+    > <div align='center'><a href='_formulas/RLHF_强化学习基础/f_024.js.tex'><img src='_formulas/RLHF_强化学习基础/f_024.js.svg'/></a></div>
 <!--
 - _引入 **策略** 与 **动作** 的完整式_ (**仅做参考, 具体推导略**):
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_025.js.tex'><img src='_formulas/强化学习基础_RLHF/f_025.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_025.js.tex'><img src='_formulas/RLHF_强化学习基础/f_025.js.svg'/></a></div>
 
     -->
 - 在 **确定性环境** 下, 方程简化为:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_026.js.tex'><img src='_formulas/强化学习基础_RLHF/f_026.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_026.js.tex'><img src='_formulas/RLHF_强化学习基础/f_026.js.svg'/></a></div>
 
 - 在随机环境下, 可通过 **蒙特卡洛方法** 进行估计:
     - 单步采样 (无偏估计):
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_027.js.tex'><img src='_formulas/强化学习基础_RLHF/f_027.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_027.js.tex'><img src='_formulas/RLHF_强化学习基础/f_027.js.svg'/></a></div>
 
         其中 $r_t$ 与 $s_{t+1}$ 来自采样轨迹;
     - 多样本平均可降低估计方差:
-        <div align='center'><a href='_formulas/强化学习基础_RLHF/f_028.js.tex'><img src='_formulas/强化学习基础_RLHF/f_028.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF_强化学习基础/f_028.js.tex'><img src='_formulas/RLHF_强化学习基础/f_028.js.svg'/></a></div>
 
         > 这里 $N$ 条轨迹均从状态 $s_t$ 开始根据策略 $\pi$ 执行.
 
 #### **动作价值函数** 的贝尔曼公式
 > 推导过程基本与 $V(\cdot)$ 相同
 - **定义**: 动作价值函数 $Q(s_t, a_t)$ 表示在状态 $s_t$ 下执行动作 $a_t$ 后, 继续遵循策略 $\pi$ 所能获得的期望回报:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_029.js.tex'><img src='_formulas/强化学习基础_RLHF/f_029.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_029.js.tex'><img src='_formulas/RLHF_强化学习基础/f_029.js.svg'/></a></div>
 
   > • 根据 $Q$ 函数的定义和 **全概率公式**, 有:<br>
-  > <div align='center'><a href='_formulas/强化学习基础_RLHF/f_030.js.tex'><img src='_formulas/强化学习基础_RLHF/f_030.js.svg'/></a></div>
+  > <div align='center'><a href='_formulas/RLHF_强化学习基础/f_030.js.tex'><img src='_formulas/RLHF_强化学习基础/f_030.js.svg'/></a></div>
 - 类似 $V(s)$ 的推导, 应用期望的线性性质, 全期望公式及马尔可夫假设, 有:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_031.js.tex'><img src='_formulas/强化学习基础_RLHF/f_031.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_031.js.tex'><img src='_formulas/RLHF_强化学习基础/f_031.js.svg'/></a></div>
 
     > • 引入状态转移概率, 其完整式为 (推导过程略):
-    > <div align='center'><a href='_formulas/强化学习基础_RLHF/f_032.js.tex'><img src='_formulas/强化学习基础_RLHF/f_032.js.svg'/></a></div>
+    > <div align='center'><a href='_formulas/RLHF_强化学习基础/f_032.js.tex'><img src='_formulas/RLHF_强化学习基础/f_032.js.svg'/></a></div>
 >
     > • 代入 $V(s') = \sum_{a'} \pi(a'|s') Q(s', a')$, 得:
-    > <div align='center'><a href='_formulas/强化学习基础_RLHF/f_033.js.tex'><img src='_formulas/强化学习基础_RLHF/f_033.js.svg'/></a></div>
+    > <div align='center'><a href='_formulas/RLHF_强化学习基础/f_033.js.tex'><img src='_formulas/RLHF_强化学习基础/f_033.js.svg'/></a></div>
 <!--
 - 在 **确定性环境** 可简化为:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_034.js.tex'><img src='_formulas/强化学习基础_RLHF/f_034.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_034.js.tex'><img src='_formulas/RLHF_强化学习基础/f_034.js.svg'/></a></div>
 
 -->
 - 在 PPO 等算法中, **通常不会直接建模** $Q(\cdot)$, 比如通过 **蒙特卡洛方法** 近似:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_035.js.tex'><img src='_formulas/强化学习基础_RLHF/f_035.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_035.js.tex'><img src='_formulas/RLHF_强化学习基础/f_035.js.svg'/></a></div>
 
 - 基于此近似, 可以构造 **优势函数** $A(s_t, a_t)$ 的估计:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_036.js.tex'><img src='_formulas/强化学习基础_RLHF/f_036.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_036.js.tex'><img src='_formulas/RLHF_强化学习基础/f_036.js.svg'/></a></div>
 
     > 此即 **一阶时序差分误差** (TD Error) 的形式;
 
@@ -721,14 +721,14 @@ extra_url: false
 - **核心思想**:
     - **当前状态的价值估计 ≈ 即时奖励 + 下一状态的折扣价值**
 - 根据价值函数的贝尔曼方程:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_037.js.tex'><img src='_formulas/强化学习基础_RLHF/f_037.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_037.js.tex'><img src='_formulas/RLHF_强化学习基础/f_037.js.svg'/></a></div>
 
 - 在具体实现中, 通过一次采样将 $r_t + \gamma V(s_{t+1})$ 作为 $V(s_t)$ 的 **目标值**;
 - 定义 **时序差分误差 (TD Error)**:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_038.js.tex'><img src='_formulas/强化学习基础_RLHF/f_038.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_038.js.tex'><img src='_formulas/RLHF_强化学习基础/f_038.js.svg'/></a></div>
 
 - 则 **TD(0) 的更新规则** 为:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_039.js.tex'><img src='_formulas/强化学习基础_RLHF/f_039.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_039.js.tex'><img src='_formulas/RLHF_强化学习基础/f_039.js.svg'/></a></div>
 
     > 其中 $\alpha$ 为 **学习率**
 
@@ -736,18 +736,18 @@ extra_url: false
 > TD(0) 的推广, 考虑了多步预测.
 
 - **定义**: $n$-步 TD 回报:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_040.js.tex'><img src='_formulas/强化学习基础_RLHF/f_040.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_040.js.tex'><img src='_formulas/RLHF_强化学习基础/f_040.js.svg'/></a></div>
 
 - 特别地, 当 $n \to \infty$ 时, 得到 **完整轨迹回报** (蒙特卡洛方法)
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_041.js.tex'><img src='_formulas/强化学习基础_RLHF/f_041.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_041.js.tex'><img src='_formulas/RLHF_强化学习基础/f_041.js.svg'/></a></div>
 
 - **TD(λ)** 将这些 $n$-步回报进行 **指数加权平均**:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_042.js.tex'><img src='_formulas/强化学习基础_RLHF/f_042.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_042.js.tex'><img src='_formulas/RLHF_强化学习基础/f_042.js.svg'/></a></div>
 
     ◦ 当 $\lambda = 0$ 时: $G_t^{\lambda} = G_t^{(1)} = r_t + \gamma V(s_{t+1})$, 退化为 TD(0);<br>
     ◦ 当 $\lambda \to 1$ 时: $G_t^{\lambda} = G_t^{(\infty)} = \sum_{k=0}^{\infty} \gamma^k r_{t+k}$, 即蒙特卡洛方法;<br>
     > ▪ 加权和系数 $(1-\lambda)\lambda^{n-1}$ 构成一个概率分布: <br>
-    > <div align='center'><a href='_formulas/强化学习基础_RLHF/f_043.js.tex'><img src='_formulas/强化学习基础_RLHF/f_043.js.svg'/></a></div>
+    > <div align='center'><a href='_formulas/RLHF_强化学习基础/f_043.js.tex'><img src='_formulas/RLHF_强化学习基础/f_043.js.svg'/></a></div>
 - **λ-回报的直观理解**:
     - $G_t^{\lambda}$ 是不同预测步长的加权平均, λ 控制了"向前看"的程度, λ 越小越依赖短期估计 (低方差但可能有偏), λ 越大越依赖长期回报 (无偏但高方差).
 
@@ -762,19 +762,19 @@ extra_url: false
 > **广义优势估计** (Generalized Advantage Estimation, GAE) 是一种 **平衡偏差与方差** 的优势估计方法.
 
 - GAE 的推导基于 **时序差分误差 (TD Error)**:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_044.js.tex'><img src='_formulas/强化学习基础_RLHF/f_044.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_044.js.tex'><img src='_formulas/RLHF_强化学习基础/f_044.js.svg'/></a></div>
 
 - **$n$-步优势估计** 可以表示为未来 $n$ 步 TD 误差的折扣和:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_045.js.tex'><img src='_formulas/强化学习基础_RLHF/f_045.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_045.js.tex'><img src='_formulas/RLHF_强化学习基础/f_045.js.svg'/></a></div>
 
 - 当 $n \to \infty$ 时, 即为无限步长的优势估计:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_046.js.tex'><img src='_formulas/强化学习基础_RLHF/f_046.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_046.js.tex'><img src='_formulas/RLHF_强化学习基础/f_046.js.svg'/></a></div>
 
 - GAE 引入了参数 $\lambda \in [0, 1)$, 将不同步长的估计进行 **指数加权平均**, 公式如下:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_047.js.tex'><img src='_formulas/强化学习基础_RLHF/f_047.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_047.js.tex'><img src='_formulas/RLHF_强化学习基础/f_047.js.svg'/></a></div>
 
 - 将 **$n$-步估计** 代入并整理, 得其紧凑形式:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_048.js.tex'><img src='_formulas/强化学习基础_RLHF/f_048.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_048.js.tex'><img src='_formulas/RLHF_强化学习基础/f_048.js.svg'/></a></div>
 
     - 当 $\lambda=0$ 时, GAE **退化为单步优势估计**: $A_t = \delta_t$;
     - 当 $\lambda\to 1$ 时, GAE **等价于无限步长的 TD 误差和**, 即 $A_t^{(\infty)}$;
@@ -782,32 +782,32 @@ extra_url: false
         - 小 $\lambda$ → 方差较小, 偏差较大;
         - 大 $\lambda$ → 偏差较小, 方差较大.
 - **有限步下的优势估计**: 📌
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_049.js.tex'><img src='_formulas/强化学习基础_RLHF/f_049.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_049.js.tex'><img src='_formulas/RLHF_强化学习基础/f_049.js.svg'/></a></div>
 
 <!-- omit in toc -->
 ### 策略梯度定理推导
 > [md](./策略梯度定理及其推导.md)
 
 - 首先给出期望回报 (公式-1) 的积分形式:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_050.js.tex'><img src='_formulas/强化学习基础_RLHF/f_050.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_050.js.tex'><img src='_formulas/RLHF_强化学习基础/f_050.js.svg'/></a></div>
 
 - 对 $J(\theta)$ 求梯度:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_051.js.tex'><img src='_formulas/强化学习基础_RLHF/f_051.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_051.js.tex'><img src='_formulas/RLHF_强化学习基础/f_051.js.svg'/></a></div>
 
     > 因为轨迹集合 (积分空间) 与策略参数 $\theta$ 无关, 所以可以交换积分和梯度; —— 策略参数 $\theta$ 影响的是轨迹出现的概率;
 - 根据对数求导性质:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_052.js.tex'><img src='_formulas/强化学习基础_RLHF/f_052.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_052.js.tex'><img src='_formulas/RLHF_强化学习基础/f_052.js.svg'/></a></div>
 
 - 代回原式:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_053.js.tex'><img src='_formulas/强化学习基础_RLHF/f_053.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_053.js.tex'><img src='_formulas/RLHF_强化学习基础/f_053.js.svg'/></a></div>
 
 - 展开 $\nabla_\theta \log p_\theta(\tau)$:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_054.js.tex'><img src='_formulas/强化学习基础_RLHF/f_054.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_054.js.tex'><img src='_formulas/RLHF_强化学习基础/f_054.js.svg'/></a></div>
 
     > 这里表明我们 **不需要知道环境的转移概率 $P(s_{t+1}|s_t,a_t)$, 只需采样轨迹即可估计梯度**.
 - 代回原式:
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_055.js.tex'><img src='_formulas/强化学习基础_RLHF/f_055.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_055.js.tex'><img src='_formulas/RLHF_强化学习基础/f_055.js.svg'/></a></div>
 
 - 这里可以用 $G_t$ 代替 $G(\tau)$:
     > 一个更精细的推导可以证明 (这里略), 时刻 $t$ 的动作 $a_t$ 只影响 $t$ 时刻之后的回报, 而与 $t$ 时刻之前的回报无关.
-    <div align='center'><a href='_formulas/强化学习基础_RLHF/f_056.js.tex'><img src='_formulas/强化学习基础_RLHF/f_056.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/RLHF_强化学习基础/f_056.js.tex'><img src='_formulas/RLHF_强化学习基础/f_056.js.svg'/></a></div>
