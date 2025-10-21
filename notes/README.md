@@ -33,22 +33,22 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) 📌
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) 🧣 📌
+- [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md)  📌
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
-- [`2025-09-09` 位置编码 (Position Encoding)](_archives/2025/09/Transformer_整理/位置编码.md) 
+- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) 
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md) 
-- [`2025-09-18` RLHF (基于人类反馈的强化学习)](_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
+- [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md) 
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md) 
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md) 
-- [`2025-08-06` 开发环境配置 (基于 WSL)](_archives/2025/08/WSL开发环境配置.md) 
+- [`2025-08-06` 开发环境配置 ( 基于 WSL )](_archives/2025/08/WSL开发环境配置.md) 
 - [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md) 
 - [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
 - [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) ✒️
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md) 
-- [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md) 
 
 <!--END_SECTION:recent-->
 
@@ -115,7 +115,7 @@ Notes
 - [概率论基础](_archives/2025/09/概率论基础.md) 
   > _[期望](_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
 - [机器学习 Wiki](_archives/2025/09/机器学习基础.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
-  > _[归纳偏置](_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基础.md#正则化-regularization) • [KL 散度 (相对熵)](_archives/2025/09/机器学习基础.md#kl-散度-kullbackleibler-divergence) • [蒙特卡洛方法](_archives/2025/09/机器学习基础.md#蒙特卡洛方法-monte-carlo-method) • [重要性采样](_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is) • [拒绝采样](_archives/2025/09/机器学习基础.md#拒绝采样-rejection-sampling) • [MCMC 采样](_archives/2025/09/机器学习基础.md#马尔可夫链蒙特卡洛采样-mcmc-sampling)_<br>
+  > _[归纳偏置](_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基础.md#正则化-regularization) • [KL 散度](_archives/2025/09/机器学习基础.md#kl-散度-kullbackleibler-divergence) • [蒙特卡洛方法](_archives/2025/09/机器学习基础.md#蒙特卡洛方法-monte-carlo-method) • [重要性采样](_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is) • [拒绝采样](_archives/2025/09/机器学习基础.md#拒绝采样-rejection-sampling) • [MCMC 采样](_archives/2025/09/机器学习基础.md#马尔可夫链蒙特卡洛采样-mcmc-sampling)_<br>
 - [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) ✒️
   - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md) 
 
@@ -434,6 +434,7 @@ Notes
 - [PySpark 笔记](_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](_archives/2022/09/python标准项目实践.md) 
+- [QA 合集](_archives/2025/10/QA_合集.md) 🧣
 - [Query 分析指南](_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](_archives/2022/12/query扩展.md) 
 - [Query 纠错](_archives/2022/12/query纠错.md) 
