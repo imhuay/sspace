@@ -97,7 +97,7 @@ extra_url: false
             其中
                 <div align='center'><a href='_formulas/RLHF/f_007.js.tex'><img src='_formulas/RLHF/f_007.js.svg'/></a></div>
 
-            > [*广义优势估计*](./强化学习基础_RLHF.md#广义优势估计-gae)
+            > [*广义优势估计*](./RLHF_强化学习基础.md#广义优势估计-gae)
     - **价值模型 $V_{\phi}(s)$**:
         - **训练方法**: **自举 (Bootstrapping)**, 监督信号由 **奖励模型** 提供;
         - **训练数据**:
@@ -406,7 +406,7 @@ name: 'RL 基础'
 extra_url: true
 -->
 - **强化学习基础**
-    > _[RL 基础 (基于 LLM 背景)](./强化学习基础_RLHF.md)_
+    > _[RL 基础 (基于 LLM 背景)](./RLHF_强化学习基础.md)_
 <!--END_SECTION:keyword-->
 - **动机**:
     - SFT 模型的学习受限于静态数据, 缺乏主动探索能力;

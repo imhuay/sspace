@@ -247,9 +247,9 @@ JavaScript    1 hr 22 mins    >------------------------   02.59 %
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
 - [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
-  > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) • [QA](notes/_archives/2025/09/大模型微调/RLHF_QA.md)_<br>
-  - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md) 
-    > _[基础术语](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/强化学习基础_RLHF.md#广义优势估计-gae)_<br>
+  > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md) • [QA](notes/_archives/2025/09/大模型微调/RLHF_QA.md)_<br>
+  - [强化学习基础 ( **LLM-based** )](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md) 
+    > _[基础术语](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](./notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
     > _[基本形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
   - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=5&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
