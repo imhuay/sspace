@@ -53,12 +53,13 @@
 
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣 📌
-- [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md)  📌
+- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣📌
+- [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md) 📌
 - [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
 - [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_整理/位置编码.md) 
 - [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md) 
-- [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
+- [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](notes/_archives/2025/09/大模型微调/策略梯度算法.md) 🧣[✒️](_archives/2025/09/大模型微调/策略梯度算法.md#todo)$\color{Gray}^{5}$[📋](_archives/2025/09/大模型微调/策略梯度算法.md#qa)$\color{Brown}^{4}$
+- [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) 🧣✒️
 - [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md) 
 - [`2025-08-21` 复合词检测](notes/_archives/2025/08/复合词检测.md) 
 - [`2025-08-08` VSCode 备忘](notes/_archives/2025/08/VSCode备忘.md) 
@@ -68,7 +69,6 @@
 - [`2025-07-08` 链表常用操作备忘](notes/_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md) ✒️
 - [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md) 
-- [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md) 
 
 <!--END_SECTION:recent-->
 
@@ -233,7 +233,7 @@ JavaScript    1 hr 22 mins    >------------------------   02.59 %
   > _[QA](notes/_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](notes/_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=1&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+- [LLM 训练稳定性](notes/_archives/2025/09/大模型微调/训练稳定性.md) [✒️](notes/_archives/2025/09/大模型微调/训练稳定性.md#todo)$\color{Gray}^{1}$
 
 <!-- omit in toc -->
 #### BERT
@@ -246,13 +246,13 @@ JavaScript    1 hr 22 mins    >------------------------   02.59 %
 
 - [基础概念](notes/_archives/2025/09/大模型微调/README.md) 
 - [SFT 数据构建](notes/_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) ✒️
-- [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) ✒️🧣
+- [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) 🧣✒️
   > _[**快速回顾**](notes/_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md) • [QA](notes/_archives/2025/09/大模型微调/RLHF_QA.md)_<br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md) 
     > _[基础术语](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/大模型微调/RLHF_强化学习基础.md#广义优势估计-gae)_<br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
     > _[基本形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
-  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) ✒️🧣<a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=5&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+  - [**策略梯度算法**](notes/_archives/2025/09/大模型微调/策略梯度算法.md) 🧣[✒️](notes/_archives/2025/09/大模型微调/策略梯度算法.md#todo)$\color{Gray}^{5}$[📋](notes/_archives/2025/09/大模型微调/策略梯度算法.md#qa)$\color{Brown}^{4}$
     > _[PPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#dpo) • [GRPO](notes/_archives/2025/09/大模型微调/策略梯度算法.md#grpo)_<br>
 - [参数高效微调 ( **PEFT** )](notes/_archives/2025/09/大模型微调/PEFT.md) 
   > _[**LoRA**](notes/_archives/2025/09/大模型微调/LoRA.md) • [QA](notes/_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
@@ -274,7 +274,7 @@ JavaScript    1 hr 22 mins    >------------------------   02.59 %
 
 - [概率论基础](notes/_archives/2025/09/概率论基础.md) 
   > _[期望](notes/_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](notes/_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)_<br>
-- [机器学习 Wiki](notes/_archives/2025/09/机器学习基础.md) <a href="#"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message=2&labelColor=important&color=important&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="16"/></a>
+- [机器学习 Wiki](notes/_archives/2025/09/机器学习基础.md) [✒️](notes/_archives/2025/09/机器学习基础.md#todo)$\color{Gray}^{2}$
   > _[归纳偏置](notes/_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](notes/_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](notes/_archives/2025/09/机器学习基础.md#正则化-regularization) • [KL 散度](notes/_archives/2025/09/机器学习基础.md#kl-散度-kullbackleibler-divergence) • [蒙特卡洛方法](notes/_archives/2025/09/机器学习基础.md#蒙特卡洛方法-monte-carlo-method) • [重要性采样](notes/_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is) • [拒绝采样](notes/_archives/2025/09/机器学习基础.md#拒绝采样-rejection-sampling) • [MCMC 采样](notes/_archives/2025/09/机器学习基础.md#马尔可夫链蒙特卡洛采样-mcmc-sampling)_<br>
 - [XGBoost 学习笔记](notes/_archives/2022/05/XGBoost.md) ✒️
   - [GBDT/XGBoost 备忘](notes/_archives/2022/10/XGBoost备忘.md) 
