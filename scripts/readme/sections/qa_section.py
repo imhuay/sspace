@@ -147,14 +147,18 @@ class QaSection:
         return toc
 
     @property
-    def new_content(self):
+    def new_content(self) -> str:
         new_content = NoteUtils.replace_section_content(self._TOC_SECTION_KEY, self.content, self.get_toc())
         return new_content
 
     @property
-    def sort_key(self):
+    def sort_key(self) -> tuple[str, int]:
         return (self._info.subject, -self._info.sort_level)
 
     @property
-    def subject(self):
+    def subject(self) -> str:
         return self._info.subject
+
+    @property
+    def qa_count(self) -> int:
+        return len(self.toc_lines)

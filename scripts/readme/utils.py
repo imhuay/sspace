@@ -16,6 +16,7 @@ import os
 import re
 import shutil
 import subprocess
+import urllib.parse
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -1043,7 +1044,7 @@ class NoteUtils:
         """"""
         re_pattern = NoteUtils._get_section_re_pattern(section_key)
         repl = f'{NoteUtils.get_section_begin(section_key)}\n{new_content}\n{NoteUtils.get_section_end(section_key)}'
-        return re_pattern.sub(repl, txt, count=count)
+        return re_pattern.sub(lambda m: repl, txt, count=count)
 
     @staticmethod
     def get_last_modify_badge_url(fp: Path, color: str = 'thistle') -> str:
@@ -1208,6 +1209,45 @@ class args:  # noqa
         """color candidate: orange, E05D44"""
         return f'<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
 
+    @staticmethod
+    def get_img_badge(
+        message: str,
+        *,
+        label: str = '',
+        height: int = 25,
+        color: str = 'important',
+        labelColor: str = 'important',
+        style: str = 'flat-square',
+        logoSource: str = 'feather',
+        logo: str = '',
+        logoColor: str = 'white',
+        href: str = '#',
+    ) -> str:
+        """生成一个带链接的自定义徽章 (badge) HTML 片段"""
+        # 基础参数
+        args = {
+            'label': label,
+            'message': message,
+            'color': color,
+            'labelColor': labelColor,
+            'style': style,
+        }
+
+        # 如果指定了 logoSource 和 logo, 就加上
+        if logoSource and logo:
+            args['logoSource'] = logoSource
+            args['logo'] = logo
+            args['logoColor'] = logoColor
+
+        # 拼接 query string
+        query = urllib.parse.urlencode(args)
+
+        # 构造最终 HTML
+        return (
+            f'<a href="{href}">'
+            f'<img src="https://custom-icon-badges.demolab.com/static/v1?{query}" '
+            f'height="{height}"/></a>'
+        )
 
 TEMP_main_readme_notes_recent_toc = """{toc_top}
 {toc_recent}

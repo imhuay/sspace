@@ -141,7 +141,8 @@ class Note:
             self._text = new_text
             self._updated = True
 
-    RE_SUFFIX_BLOCK = re.compile(r'<!-- suffix -->(.*?)<!-- suffix -->')
+    SUFFIX_FLAG: str = '<!-- suffix -->'
+    RE_SUFFIX_BLOCK = re.compile(rf'{SUFFIX_FLAG}(.*?){SUFFIX_FLAG}')
 
     def _remove_title_suffix(self, title: str) -> str:
         """"""
@@ -151,16 +152,15 @@ class Note:
         """"""
         title, context = self.text.split('\n', maxsplit=1)
 
-        title_suffix = self.get_title_suffix(todo_size=25)
-        if not title_suffix and '<!-- suffix -->' in title:
-            # new_title = re.sub(r'<!-- suffix -->(.*?)<!-- suffix -->', '', title).strip()
+        title_suffix = self.get_title_suffix_v2()
+        if not title_suffix and self.SUFFIX_FLAG in title:
             new_title = self._remove_title_suffix(title)
         elif title_suffix:
             new_title = title
-            if '<!-- suffix -->' not in new_title:
-                new_title += ' <!-- suffix --> <!-- suffix -->'
+            if self.SUFFIX_FLAG not in new_title:
+                new_title += f' {self.SUFFIX_FLAG} {self.SUFFIX_FLAG}'
             new_title = self.RE_SUFFIX_BLOCK.sub(
-                f'<!-- suffix --> {title_suffix} <!-- suffix -->',
+                lambda m: f'{self.SUFFIX_FLAG} {title_suffix} {self.SUFFIX_FLAG}',
                 new_title,
             )
         else:
@@ -299,7 +299,7 @@ class Note:
         title = MarkdownUtils.add_space_in_bracket(self.title)  # 扩号内侧加空格
         toc_line = f'- [`{self.date}` {title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
         if self.is_top:
-            toc_line += ' 📌'
+            toc_line += '📌'
         return toc_line
         # if self.is_top:
         #     return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) 📌'
@@ -350,7 +350,7 @@ class Note:
                 # self._title = f'{self.path.stem}({self.path_relative_to_repo})'
                 title = self.path.stem
 
-            if '<!-- suffix -->' in title:
+            if self.SUFFIX_FLAG in title:
                 title = self._remove_title_suffix(title)
 
             self._title = title
@@ -414,6 +414,10 @@ class Note:
     @property
     def path_relative_to_repo(self):
         return self.path.relative_to(args.fp_repo)
+
+    @property
+    def path_relative_to_note(self):
+        return self.path.relative_to(args.fp_notes)
 
     @property
     def sort_key(self):
@@ -495,30 +499,53 @@ class Note:
     def get_title_suffix(self, todo_size: int = 16, href: str = '#') -> str:
         suffix = ''
 
-        if self.is_draft:
-            # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
-            # suffix = img_temp.format(src=badge_src)
-            suffix = '✒️'
+        if self.is_thorough:
+            suffix += '🧣'
+
+        if self.is_draft or self.num_todo > 0:
+            suffix += '✒️'
+
+        if self.num_todo > 0:
+            suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
+
+        return suffix
+
+    def get_title_suffix_v2(self, href: str | Path = '') -> str:
+        suffix = ''
 
         if self.is_thorough:
             suffix += '🧣'
 
-        if self.num_todo > 0:
-            # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
-            # suffix += args.temp_badge_todo_logo_edit_h.format(num_todo=self.num_todo, height=todo_size)
-            suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
+        if self.is_draft or self.num_todo > 0:
+            # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
+            # suffix = img_temp.format(src=badge_src)
+            if self.num_todo > 0:
+                suffix += f'[✒️]({href}#todo)' + rf'$\color{{Gray}}^{{{self.num_todo}}}$'
+            else:
+                suffix += '✒️'
+
+        if self.qa_section is not None:
+            # title = '📋' + f'$^{{{self.qa_section.qa_count}}}$'
+            suffix += f'[📋]({href}#qa)' + rf'$\color{{Brown}}^{{{self.qa_section.qa_count}}}$'
+
+        # if self.num_todo > 0:
+        #     # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
+        #     # suffix += args.temp_badge_todo_logo_edit_h.format(num_todo=self.num_todo, height=todo_size)
+        #     suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
 
         return suffix
 
     @property
     def toc_title_suffix(self) -> str:
         """toc 标题后缀"""
-        return self.get_title_suffix()
+        return self.get_title_suffix_v2(href=self.path_relative_to_note)
+
+    TODO_FLAG = '> ##### TODO'
 
     @property
-    def num_todo(self):
-        """返回全文有几个 <!-- TODO -->"""
-        return self.text.lower().count('<!-- TODO -->'.lower())
+    def num_todo(self) -> int:
+        """返回全文有几个 TODO"""
+        return self.text.lower().count(self.TODO_FLAG.lower())
 
     @property
     def progress_marker(self) -> str:
@@ -530,12 +557,20 @@ class Note:
             return ''
 
     @property
-    def qa_section(self):
+    def qa_section(self) -> QaSection | None:
+        """"""
         if self._qa_section is None:
             c = NoteUtils.get_section_content(QaSection.SECTION_KEY, self.text)
             if c is not None:
                 self._qa_section = QaSection(self.path, c, topic=self.tag_toc_title)
         return self._qa_section
+
+    QA_BADGE_COLOR: str = ''
+    QA_BADGE_TEMP = '<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=QA&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
+
+    @property
+    def qa_badge(self):
+        """"""
 
 
 @dataclass
