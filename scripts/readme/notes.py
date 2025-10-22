@@ -116,7 +116,7 @@ class Note:
 
         self._tex2svg()
         self._norm_text()
-        self._update_title()
+        self._update_title(self.get_title_suffix_v2())
         self._update_badge()
 
         if self.qa_section is not None:
@@ -148,11 +148,11 @@ class Note:
         """"""
         return self.RE_SUFFIX_BLOCK.sub('', title).rstrip()
 
-    def _update_title(self):
+    def _update_title(self, title_suffix: str):
         """"""
         title, context = self.text.split('\n', maxsplit=1)
 
-        title_suffix = self.get_title_suffix_v2()
+        # title_suffix = self.get_title_suffix_v2(qa_count=qa_count)
         if not title_suffix and self.SUFFIX_FLAG in title:
             new_title = self._remove_title_suffix(title)
         elif title_suffix:
@@ -169,6 +169,13 @@ class Note:
         if new_title != title:
             self._text = new_title + '\n' + context
             self._updated = True
+
+    def update_title(self, add_href: bool):
+        """"""
+        title_suffix = self.get_title_suffix_v2(add_href=add_href)
+        self._update_title(title_suffix)
+        with self.path.open('w', encoding='utf8') as f:
+            f.write(self._text)
 
     def _update_badge(self):
         """"""
@@ -297,7 +304,9 @@ class Note:
     def get_recent_toc_line_relative_to(self, parent_path: Path):
         """更新 README recent 模块内的 TOC"""
         title = MarkdownUtils.add_space_in_bracket(self.title)  # 扩号内侧加空格
-        toc_line = f'- [`{self.date}` {title}]({self.path.relative_to(parent_path)}) {self.toc_title_suffix}'
+        rel_path = self.path.relative_to(parent_path)
+        title_suffix = self.get_title_suffix_v2(href=rel_path)
+        toc_line = f'- [`{self.date}` {title}]({rel_path}) {title_suffix}'
         if self.is_top:
             toc_line += '📌'
         return toc_line
@@ -510,7 +519,16 @@ class Note:
 
         return suffix
 
-    def get_title_suffix_v2(self, href: str | Path = '') -> str:
+    _is_qa_coll: bool = False
+
+    @property
+    def is_qa_coll(self) -> bool:
+        return self._is_qa_coll
+
+    def set_is_qa_coll(self, v: bool):
+        self._is_qa_coll = v
+
+    def get_title_suffix_v2(self, *, add_href: bool = True, href: str | Path = '') -> str:
         suffix = ''
 
         if self.is_thorough:
@@ -524,9 +542,16 @@ class Note:
             else:
                 suffix += '✒️'
 
-        if self.qa_section is not None:
+        if self.qa_count > 0:
             # title = '📋' + f'$^{{{self.qa_section.qa_count}}}$'
-            suffix += f'[📋]({href}#qa)' + rf'$\color{{Brown}}^{{{self.qa_section.qa_count}}}$'
+            if add_href:
+                if self.is_qa_coll:
+                    a = f'[📋]({href})'
+                else:
+                    a = f'[📋]({href}#qa)'
+                suffix += f'{a}' + rf'$\color{{Brown}}^{{{self.qa_count}}}$'
+            else:
+                suffix += rf'📋$\color{{Brown}}^{{{self.qa_count}}}$'
 
         # if self.num_todo > 0:
         #     # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
@@ -535,10 +560,20 @@ class Note:
 
         return suffix
 
+    _toc_title_suffix: str = ''
+
+    def update_toc_title_suffix(self, *, href: str | Path | None = None):
+        """"""
+        if href is None:
+            href = self.path_relative_to_note
+        self._toc_title_suffix = self.get_title_suffix_v2(href=href)
+
     @property
     def toc_title_suffix(self) -> str:
         """toc 标题后缀"""
-        return self.get_title_suffix_v2(href=self.path_relative_to_note)
+        if not self._toc_title_suffix:
+            self._toc_title_suffix = self.get_title_suffix_v2(href=self.path_relative_to_note)
+        return self._toc_title_suffix
 
     TODO_FLAG = '> ##### TODO'
 
@@ -564,6 +599,21 @@ class Note:
             if c is not None:
                 self._qa_section = QaSection(self.path, c, topic=self.tag_toc_title)
         return self._qa_section
+
+    _qa_count: int = 0
+
+    def set_qa_count(self, v: int):
+        assert v > 0
+        self._qa_count = v
+
+    @property
+    def qa_count(self) -> int:
+        """"""
+        if self._qa_count == 0:
+            if self.qa_section is not None:
+                self._qa_count = self.qa_section.qa_count
+                assert self._qa_count > 0
+        return self._qa_count
 
     QA_BADGE_COLOR: str = ''
     QA_BADGE_TEMP = '<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=QA&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
@@ -688,6 +738,7 @@ class NotesBuilder(Builder):
 
     def _load_all_notes(self):
         """"""
+        qa_note = None
         for dp, _, fns in os.walk(self._fp_notes_archives):
             for fn in fns:
                 fp = Path(dp) / fn
@@ -705,6 +756,9 @@ class NotesBuilder(Builder):
                     self.algo_notes.append(note)
                 if note.qa_section is not None:
                     self._qa_sections.append(note.qa_section)
+                if note.path.samefile(args.fp_qa_collection):
+                    qa_note = note
+                    qa_note.set_is_qa_coll(True)
 
         self._notes_top.sort(key=lambda x: x.sort_key, reverse=True)
         self._notes_recent.sort(key=lambda x: x.sort_key, reverse=True)
@@ -722,6 +776,9 @@ class NotesBuilder(Builder):
                         note.add_par_note(p_note)
                     else:
                         raise ValueError(f'Parent note not found: {p_path}')
+
+        assert qa_note is not None
+        self._update_qa_coll(qa_note)
 
     def _load_note_indexes(self):
         """deprecated"""
@@ -829,7 +886,19 @@ class NotesBuilder(Builder):
         paper_toc = sorted(paper_toc)
         return tag2toc, paper_toc
 
-    def _update_qa_coll(self, md_path: Path):
+    total_qa_count: int = 0
+
+    def _update_qa_coll(self, note: Note):
+        """"""
+        # 更新 qa_coll note
+        self._update_qa_coll_content(note.path)
+        # 更新 qa_coll note 相关的标题
+        self.total_qa_count = sum(s.qa_count for s in self._qa_sections)
+        note.set_qa_count(self.total_qa_count)
+        note.update_toc_title_suffix()
+        note.update_title(add_href=False)
+
+    def _update_qa_coll_content(self, md_path: Path):
         """"""
         ss = sorted(self._qa_sections, key=lambda s: s.sort_key)
         # md_path = Path('/home/huay/workspace/git/my/sspace/notes/_archives/2025/10/QA_合集.md')
@@ -909,7 +978,7 @@ class NotesBuilder(Builder):
         self.build_v1()
         self.build_v2()
 
-        self._update_qa_coll(Path(args.fp_qa_collection))
+        # self._update_qa_coll(Path(args.fp_qa_collection))
 
         shutil.copy2(getattr(self, f'_fp_notes_readme_{version}'), self._fp_notes_readme)
 
