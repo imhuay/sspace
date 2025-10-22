@@ -121,9 +121,9 @@ class QaSection:
     @property
     def toc_title(self):
         """"""
-        toc_title = self.topic
+        toc_title = f'**{self.topic.strip("*").strip()}**'
         if self.subject:
-            toc_title = f'{self.subject} . ' + toc_title
+            toc_title = f'{self.subject} · ' + toc_title
         return toc_title.strip()
 
     @property

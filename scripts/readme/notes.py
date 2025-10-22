@@ -85,12 +85,12 @@ class NoteInfo:
 @dataclass
 class Note:
     path: Path
+    text: str = ''
     _sub_notes: list[Note] = field(default_factory=list)
     _par_notes: list[Note] = field(default_factory=list)
     _tags: set[str] = field(default_factory=set)
     _qa_section: QaSection | None = None
 
-    _text: str = ''
     _info: NoteInfo | None = None
     _title: str | None = None
     _first_commit_date: str | None = None
@@ -110,7 +110,7 @@ class Note:
         self.path = self.path.resolve()
 
         with self.path.open(encoding='utf8') as f:
-            self._text = f.read()
+            self.text = f.read()
 
         self._tags.update(self.info.tags)
 
@@ -120,9 +120,9 @@ class Note:
         self._update_badge()
 
         if self.qa_section is not None:
-            self._text = NoteUtils.replace_section_content(
+            self.text = NoteUtils.replace_section_content(
                 QaSection.SECTION_KEY,
-                self._text,
+                self.text,
                 self.qa_section.new_content,
             )
         elif self.info.section_number:
@@ -131,14 +131,17 @@ class Note:
             self._update_content_toc()
 
         if self._updated:
-            with self.path.open('w', encoding='utf8') as f:
-                f.write(self._text)
+            self.write_text()
+
+    def write_text(self):
+        """"""
+        self.path.write_text(self.text, encoding='utf8')
 
     def _norm_text(self):
         """文本规范化"""
-        new_text = MarkdownUtils.normalize_text(self._text)
+        new_text = MarkdownUtils.normalize_text(self.text)
         if new_text != self.text:
-            self._text = new_text
+            self.text = new_text
             self._updated = True
 
     SUFFIX_FLAG: str = '<!-- suffix -->'
@@ -167,15 +170,14 @@ class Note:
             new_title = title
 
         if new_title != title:
-            self._text = new_title + '\n' + context
+            self.text = new_title + '\n' + context
             self._updated = True
 
     def update_title(self, add_href: bool):
         """"""
         title_suffix = self.get_title_suffix_v2(add_href=add_href)
         self._update_title(title_suffix)
-        with self.path.open('w', encoding='utf8') as f:
-            f.write(self._text)
+        # self.write_text()
 
     def _update_badge(self):
         """"""
@@ -185,19 +187,19 @@ class Note:
         ]
         badge_tag = 'badge'
         new_badge = '\n'.join(badges)
-        old_badge = NoteUtils.get_section_content(badge_tag, self._text)
+        old_badge = NoteUtils.get_section_content(badge_tag, self.text)
         if new_badge != old_badge:
-            self._text = NoteUtils.replace_section_content('badge', self.text, new_badge)
+            self.text = NoteUtils.replace_section_content('badge', self.text, new_badge)
             self._updated = True
 
     def _tex2svg(self):
         if self.apply_tex2svg:
             from utils import MarkdownMath2SvgHelper
 
-            helper = MarkdownMath2SvgHelper(self.path, self._text, save_mode=False)
+            helper = MarkdownMath2SvgHelper(self.path, self.text, save_mode=False)
             helper.run()
-            if self._text != helper.text:
-                self._text = helper.text
+            if self.text != helper.text:
+                self.text = helper.text
                 self._updated = True
 
     def _update_section_number(self):
@@ -235,7 +237,7 @@ class Note:
 
         new_text = '\n'.join(lines)
         if new_text != self.text:
-            self._text = new_text
+            self.text = new_text
             self._updated = True
 
     def _update_content_toc(self):
@@ -262,7 +264,7 @@ class Note:
         toc_content = NoteUtils.get_section_content('toc', self.text)
         if new_toc_content != toc_content:
             # MarkdownUtils.print_diffs_with_context(new_toc_content, toc_content or '')
-            self._text = NoteUtils.replace_section_content('toc', self.text, new_toc_content)
+            self.text = NoteUtils.replace_section_content('toc', self.text, new_toc_content)
             self._updated = True
 
     def add_sub_note(self, note: Note):
@@ -346,9 +348,9 @@ class Note:
             self._keywords = [NoteUtils.get_keyword_section(k) for k in keyword_sections]
         return self._keywords
 
-    @property
-    def text(self) -> str:
-        return self._text
+    # @property
+    # def text(self) -> str:
+    #     return self.text
 
     @property
     def title(self):
@@ -551,7 +553,8 @@ class Note:
                     a = f'[📋]({href}#qa)'
                 suffix += f'{a}' + rf'$\color{{Brown}}^{{{self.qa_count}}}$'
             else:
-                suffix += rf'📋$\color{{Brown}}^{{{self.qa_count}}}$'
+                # GitHub 上 📋$..$ 紧挨时公式会解析失败
+                suffix += rf'[📋](#)$\color{{Brown}}^{{{self.qa_count}}}$'
 
         # if self.num_todo > 0:
         #     # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
@@ -890,20 +893,25 @@ class NotesBuilder(Builder):
 
     def _update_qa_coll(self, note: Note):
         """"""
-        # 更新 qa_coll note
-        self._update_qa_coll_content(note.path)
         # 更新 qa_coll note 相关的标题
         self.total_qa_count = sum(s.qa_count for s in self._qa_sections)
         note.set_qa_count(self.total_qa_count)
         note.update_toc_title_suffix()
         note.update_title(add_href=False)
+        # 更新 qa_coll note
+        self._update_qa_coll_content(note)
 
-    def _update_qa_coll_content(self, md_path: Path):
+        # Update content
+        note.write_text()
+
+    def _update_qa_coll_content(self, note: Note):
         """"""
+        # txt = md_path.read_text(encoding='utf8')
+        md_path = note.path
+        # txt = note.text
+
         ss = sorted(self._qa_sections, key=lambda s: s.sort_key)
         # md_path = Path('/home/huay/workspace/git/my/sspace/notes/_archives/2025/10/QA_合集.md')
-
-        txt = md_path.read_text(encoding='utf8')
 
         toc_lines = []
         sub_toc_blocks = []
@@ -917,9 +925,11 @@ class NotesBuilder(Builder):
         toc = '\n'.join(toc_lines)
         sub_tocs = '\n\n'.join(sub_toc_blocks)
 
-        txt = NoteUtils.replace_section_content('toc', txt, toc)
-        txt = NoteUtils.replace_section_content('sub_tocs', txt, sub_tocs)
-        md_path.write_text(txt, encoding='utf8')
+        note.text = NoteUtils.replace_section_content('toc', note.text, toc)
+        note.text = NoteUtils.replace_section_content('sub_tocs', note.text, sub_tocs)
+
+        # md_path.write_text(note.text, encoding='utf8')
+        # note.write_text()
 
     def build_v2(self):
         with self._fp_notes_readme_temp_v2.open(encoding='utf8') as f:
