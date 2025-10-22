@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> 🧣 <!-- suffix -->
+QA 合集 <!-- suffix --> 🧣📋$\color{Brown}^{4}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)

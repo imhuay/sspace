@@ -53,7 +53,7 @@ tags: [transformer]
 - **Decoder-only** (Causal LM, 如 GPT)
 - **Encoder-only** (Masked LM, 如 BERT)
 
-<div align='center'><img src='./assets/Transformer-architecture.png' height='400'/></div>
+<div align='center'><img src='./_assets/Transformer-architecture.png' height='400'/></div>
 
 
 ### 注意力机制 (Attention Mechanism)
