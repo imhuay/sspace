@@ -33,10 +33,10 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) 🧣[📋](_archives/2025/10/QA_合集.md)$\color{Brown}^{4}$📌
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) 🧣[📋](_archives/2025/10/QA_合集.md)$\color{Brown}^{9}$📌
 - [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) 📌
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
-- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) 
+- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{5}$
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md) 
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/大模型微调/策略梯度算法.md) 🧣[✒️](_archives/2025/09/大模型微调/策略梯度算法.md#todo)$\color{Gray}^{5}$[📋](_archives/2025/09/大模型微调/策略梯度算法.md#qa)$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/大模型微调/RLHF.md) 🧣✒️
@@ -69,7 +69,7 @@ Notes
 ### Transformer 🪄 LLM 🚀
 
 - [模型架构](_archives/2025/09/Transformer_整理/README.md) 
-- [位置编码 ( PE )](_archives/2025/09/Transformer_整理/位置编码.md) 
+- [位置编码](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{5}$
   > _[QA](_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](_archives/2025/09/MoE_备忘/README.md) 
@@ -434,7 +434,7 @@ Notes
 - [PySpark 笔记](_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](_archives/2022/09/python标准项目实践.md) 
-- [QA 合集](_archives/2025/10/QA_合集.md) 🧣[📋](_archives/2025/10/QA_合集.md)$\color{Brown}^{4}$
+- [QA 合集](_archives/2025/10/QA_合集.md) 🧣[📋](_archives/2025/10/QA_合集.md)$\color{Brown}^{9}$
 - [Query 分析指南](_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](_archives/2022/12/query扩展.md) 
 - [Query 纠错](_archives/2022/12/query纠错.md) 
