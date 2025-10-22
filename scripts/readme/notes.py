@@ -310,7 +310,7 @@ class Note:
         title_suffix = self.get_title_suffix_v2(href=rel_path)
         toc_line = f'- [`{self.date}` {title}]({rel_path}) {title_suffix}'
         if self.is_top:
-            toc_line += '📌'
+            toc_line += self._get_title_span(self.TIP_TOP, self.EMOJI_TOP)
         return toc_line
         # if self.is_top:
         #     return f'- [`{self.date}` {self.title}]({self.path.relative_to(parent_path)}) 📌'
@@ -511,10 +511,10 @@ class Note:
         suffix = ''
 
         if self.is_thorough:
-            suffix += '🧣'
+            suffix += f'{self.EMOJI_THOROUGH}'
 
         if self.is_draft or self.num_todo > 0:
-            suffix += '✒️'
+            suffix += f'{self.EMOJI_TODO}'
 
         if self.num_todo > 0:
             suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
@@ -530,31 +530,60 @@ class Note:
     def set_is_qa_coll(self, v: bool):
         self._is_qa_coll = v
 
+    TIP_QA = '面试问题整理'
+    EMOJI_QA = '📋'
+
+    TIP_TODO = 'TODO'
+    EMOJI_TODO = '✒️'
+
+    TIP_THOROUGH = '特别关注'
+    EMOJI_THOROUGH = '🧣'
+
+    TIP_TOP = '置顶'
+    EMOJI_TOP = '📌'
+
+    @staticmethod
+    def _get_title_span(title: str, content: str):
+        """"""
+        return f'<span title="{title}">{content}</span>'
+
+    @property
+    def qa_section_title(self):
+        """"""
+        if self.qa_section is not None:
+            return self.qa_section.section_title
+        return ''
+
     def get_title_suffix_v2(self, *, add_href: bool = True, href: str | Path = '') -> str:
         suffix = ''
 
         if self.is_thorough:
-            suffix += '🧣'
+            suffix += self._get_title_span(self.TIP_THOROUGH, self.EMOJI_THOROUGH)
 
         if self.is_draft or self.num_todo > 0:
             # badge_src = 'https://img.shields.io/static/v1?label=&message=TODO&color=critical&style=flat-square'
             # suffix = img_temp.format(src=badge_src)
+            tip_todo = f'{self.TIP_TODO}({self.num_todo})' if self.num_todo > 0 else self.TIP_TODO
             if self.num_todo > 0:
-                suffix += f'[✒️]({href}#todo)' + rf'$\color{{Gray}}^{{{self.num_todo}}}$'
+                suffix += f'[{self.EMOJI_TODO}]({href}#todo "{tip_todo}")' + rf'$\color{{Gray}}^{{{self.num_todo}}}$'
             else:
-                suffix += '✒️'
+                suffix += self._get_title_span(tip_todo, self.EMOJI_TODO)
+
+        if not self.qa_section_title:
+            add_href = False
 
         if self.qa_count > 0:
-            # title = '📋' + f'$^{{{self.qa_section.qa_count}}}$'
+            tip_qa = f'{self.TIP_QA}({self.qa_count})'
             if add_href:
-                if self.is_qa_coll:
-                    a = f'[📋]({href})'
+                if self.is_qa_coll or not self.qa_section_title:
+                    _a = f'[{self.EMOJI_QA}]({href} "{tip_qa}")'
                 else:
-                    a = f'[📋]({href}#qa)'
-                suffix += f'{a}' + rf'$\color{{Brown}}^{{{self.qa_count}}}$'
+                    _a = f'[{self.EMOJI_QA}]({href}#{MarkdownUtils.slugify(self.qa_section_title)} "{tip_qa}")'
+                suffix += f'{_a}' + rf'$\color{{Brown}}^{{{self.qa_count}}}$'
             else:
-                # GitHub 上 📋$..$ 紧挨时公式会解析失败
-                suffix += rf'[📋](#)$\color{{Brown}}^{{{self.qa_count}}}$'
+                # GitHub 上 "EMOJI$..$" emoji与公式紧挨时会解析失败
+                _span = self._get_title_span(tip_qa, self.EMOJI_QA)
+                suffix += rf'{_span}$\color{{Brown}}^{{{self.qa_count}}}$'
 
         # if self.num_todo > 0:
         #     # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
@@ -600,7 +629,7 @@ class Note:
         if self._qa_section is None:
             c = NoteUtils.get_section_content(QaSection.SECTION_KEY, self.text)
             if c is not None:
-                self._qa_section = QaSection(self.path, c, topic=self.tag_toc_title)
+                self._qa_section = QaSection(content=c, md_path=self.path, md_toc_title=self.tag_toc_title)
         return self._qa_section
 
     _qa_count: int = 0
@@ -904,11 +933,24 @@ class NotesBuilder(Builder):
         # Update content
         note.write_text()
 
+    def _update_qa_section_subject_level(self):
+        """"""
+        qa_sections = self._qa_sections
+        subject2level = defaultdict(int)
+
+        for s in qa_sections:
+            subject2level[s.info.subject] = max(subject2level[s.info.subject], s.info.subject_level)
+
+        for s in qa_sections:
+            s.info.subject_level = subject2level[s.info.subject]
+
     def _update_qa_coll_content(self, note: Note):
         """"""
         # txt = md_path.read_text(encoding='utf8')
         md_path = note.path
         # txt = note.text
+
+        self._update_qa_section_subject_level()
 
         ss = sorted(self._qa_sections, key=lambda s: s.sort_key)
         # md_path = Path('/home/huay/workspace/git/my/sspace/notes/_archives/2025/10/QA_合集.md')

@@ -1,1 +1,11 @@
-{}
+{
+    "configurations": [
+        {
+            "name": "readme.main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/readme/main.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

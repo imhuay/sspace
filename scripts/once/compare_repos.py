@@ -46,6 +46,7 @@ def collect_files(root, exclude_dirs=None):
             files.append(os.path.relpath(os.path.join(dirpath, f), root))
     return set(files)
 
+
 def main(old_repo, new_repo, exclude_dirs=None):
     old_files = collect_files(old_repo, exclude_dirs)
     new_files = collect_files(new_repo, exclude_dirs)
@@ -64,22 +65,23 @@ def main(old_repo, new_repo, exclude_dirs=None):
         if not filecmp.cmp(old_path, new_path, shallow=False):
             diff_files.append(f)
 
-    print("=== 差异文件 ===")
+    print('=== 差异文件 ===')
     for f in diff_files:
         print(f)
 
-    print("\n=== 仅在旧仓库存在 ===")
+    print('\n=== 仅在旧仓库存在 ===')
     for f in only_in_old:
         print(f)
 
-    print("\n=== 仅在新仓库存在 ===")
+    print('\n=== 仅在新仓库存在 ===')
     for f in only_in_new:
         print(f)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     # 修改为你的路径
-    old_repo_path = "/home/huay/workspace/git/my/space"
-    new_repo_path = "/home/huay/workspace/git/my/sspace"
+    old_repo_path = '/home/huay/workspace/git/my/sspace_git_break/'
+    new_repo_path = '/home/huay/workspace/git/my/sspace'
     # 自定义需要排除的目录
     exclude = ['.git', '.venv', '.idea', '__pycache__']
 

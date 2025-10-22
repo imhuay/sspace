@@ -56,23 +56,26 @@ class TocLine:
 
 @dataclass
 class QaInfo:
-    use_section_number: bool = False
-    sort_level: int = 0
     subject: str = ''
+    subject_level: int = 0
+    topic: str = ''
+    topic_level: int = 0
+    with_section_title: bool = True
+    use_section_number: bool = True
 
 
 @dataclass
 class QaSection:
     """"""
 
-    md_path: Path
     content: str
-    topic: str = ''
-    # content_lines: list[str] = field(default_factory=list)
+    md_path: Path
+    md_toc_title: str = ''
+    section_title: str = ''
     toc_lines: list[TocLine] = field(default_factory=list)
     max_section_level: int = 4
     min_section_level: int = 3
-    _info: QaInfo = field(default_factory=QaInfo)
+    info: QaInfo = field(default_factory=QaInfo)
     _tokens: list[Token] = field(default_factory=list)
 
     def __post_init__(self):
@@ -80,18 +83,36 @@ class QaSection:
         self._tokens = _md.parse(self.content)
         self._parse_info()
 
-        if self._info.use_section_number:
+        if self.info.use_section_number:
             self.content = MarkdownUtils.update_section_number(
                 self.content,
                 min_section_level=self.min_section_level,
                 max_section_level=self.max_section_level,
             )
 
+        self._set_section_title()
         self._parse_toc_lines()
 
     SECTION_KEY: ClassVar[str] = 'qa'
     _TOC_SECTION_KEY: ClassVar[str] = 'qa_toc'
     _INFO_KEY: ClassVar[str] = 'qa_info'
+
+    def _set_section_title(self):
+        """"""
+        if not self.info.with_section_title:
+            return
+
+        is_heading = False
+        for t in self._tokens:
+            if t.type == 'heading_open' and t.tag == 'h2':
+                is_heading = True
+            elif t.type == 'heading_close':
+                is_heading = False
+            elif is_heading and t.type == 'inline':
+                self.section_title = t.content
+                break
+
+        assert self.section_title
 
     def _parse_info(self):
         """"""
@@ -100,7 +121,7 @@ class QaSection:
                 info_str = NoteUtils.get_annotation(self._INFO_KEY, t.content)
                 info_str = '\n'.join([ln.lstrip() for ln in info_str.split('\n')]) if info_str else ''
                 _info = yaml.safe_load(info_str) if info_str else {}
-                self._info = QaInfo(**_info)
+                self.info = QaInfo(**_info)
                 break
 
     def _parse_toc_lines(self):
@@ -124,6 +145,10 @@ class QaSection:
         toc_title = f'**{self.topic.strip("*").strip()}**'
         if self.subject:
             toc_title = f'{self.subject} · ' + toc_title
+
+        if self.qa_count > 0:
+            toc_title += f' · `{self.qa_count}`'
+
         return toc_title.strip()
 
     @property
@@ -142,7 +167,7 @@ class QaSection:
         lines = MarkdownUtils.remove_min_prefix_spaces(lines)
         toc = '\n'.join(lines)
         if with_subject_title:
-            return f'{"#" * head_level} {self.toc_title}\n\n{toc}'
+            return f'{"#" * head_level} {self.toc_title}<!-- {self.subject_level} -->\n\n{toc}'
 
         return toc
 
@@ -152,13 +177,22 @@ class QaSection:
         return new_content
 
     @property
-    def sort_key(self) -> tuple[str, int]:
-        return (self._info.subject, -self._info.sort_level)
+    def sort_key(self):
+        return (-self.info.subject_level, self.info.subject, -self.info.topic_level)
 
     @property
     def subject(self) -> str:
-        return self._info.subject
+        return self.info.subject
 
     @property
     def qa_count(self) -> int:
-        return len(self.toc_lines)
+        # 有 🏷️ 标签的行不是具体问题
+        return len(self.toc_lines) - sum('🏷️' in ln.title for ln in self.toc_lines)
+
+    @property
+    def subject_level(self):
+        return self.info.subject_level
+
+    @property
+    def topic(self):
+        return self.info.topic or self.md_toc_title

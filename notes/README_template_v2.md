@@ -11,7 +11,7 @@ Notes
 <!-- TOC -->
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
-        - [大模型微调 🔥](#大模型微调-)
+        - [大模型微调 (RLHF) 💥](#大模型微调-rlhf-)
     - [Machine Learning 🤖](#machine-learning-)
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
@@ -23,8 +23,8 @@ Notes
     - [Big Data 📊](#big-data-)
     - [Tools 🛠️](#tools-️)
     - [Design Pattern 🏗️](#design-pattern-️)
+- [Other · Drafts](#other--drafts)
 - [Wiki](#wiki)
-- [Drafts](#drafts)
 <!-- TOC -->
 
 </td>
@@ -59,7 +59,7 @@ Notes
 
 {{dl_bert}}
 
-#### 大模型微调 🔥
+#### 大模型微调 (RLHF) 💥
 
 {{llm_sft}}
 
@@ -267,13 +267,12 @@ Notes
 </table>
 
 
+## Other · Drafts
+
+{{draft}}
+
 ## Wiki
 
 {wiki}
-
-
-## Drafts
-
-{{draft}}
 
 <!--END_SECTION:notes-->
