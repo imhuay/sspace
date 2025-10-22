@@ -1,4 +1,5 @@
 q_i k_j^\top
 = x_i W_Q W_K^\top x_j^\top
-+ x_i W_Q W_K^\top R_{i,j}^\top
-+ R_{j,i} W_Q W_K^\top x_j^\top
++ x_i W_Q W_{K,R}^\top R_{i-j}^\top
++ u\  W_K^\top x_j^\top
++ v\  W_{K,R}^\top R_{i-j}^\top

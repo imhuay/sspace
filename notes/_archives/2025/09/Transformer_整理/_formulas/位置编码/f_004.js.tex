@@ -1,5 +1,10 @@
-q_i k_j^\top
-= x_i W_Q W_K^\top x_j^\top
-+ x_i W_Q W_{K,R}^\top R_{i-j}^\top
-+ u\  W_K^\top x_j^\top
-+ v\  W_{K,R}^\top R_{i-j}^\top
+\begin{align*}
+    q_i k_j^\top
+        &= (x_i W_Q + p_i W_Q)(x_j W_K + p_j W_K)^\top
+    
+    \\
+        &= \underbrace{x_i W_Q W_K^\top x_j^\top}_{\text{1.输入–输入}}
+        + \underbrace{x_i W_Q W_K^\top p_j^\top}_{\text{2.输入–位置}}
+        + \underbrace{p_i W_Q W_K^\top x_j^\top}_{\text{3.位置–输入}}
+        + \underbrace{p_i W_Q W_K^\top p_j^\top}_{\text{4.位置–位置}}
+\end{align*}

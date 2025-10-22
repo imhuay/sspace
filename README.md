@@ -53,10 +53,10 @@
 
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣[📋](notes/_archives/2025/10/QA_合集.md)$\color{Brown}^{9}$📌
+- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣[📋](notes/_archives/2025/10/QA_合集.md)$\color{Brown}^{20}$📌
 - [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md) 📌
 - [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) 🧣
-- [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_整理/位置编码.md) [📋](notes/_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{5}$
+- [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_整理/位置编码.md) [📋](notes/_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{16}$
 - [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer_整理/README.md) 
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](notes/_archives/2025/09/大模型微调/策略梯度算法.md) 🧣[✒️](notes/_archives/2025/09/大模型微调/策略梯度算法.md#todo)$\color{Gray}^{5}$[📋](notes/_archives/2025/09/大模型微调/策略梯度算法.md#qa)$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](notes/_archives/2025/09/大模型微调/RLHF.md) 🧣✒️
@@ -229,7 +229,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 ### Transformer 🪄 LLM 🚀
 
 - [模型架构](notes/_archives/2025/09/Transformer_整理/README.md) 
-- [位置编码](notes/_archives/2025/09/Transformer_整理/位置编码.md) [📋](notes/_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{5}$
+- [位置编码](notes/_archives/2025/09/Transformer_整理/位置编码.md) [📋](notes/_archives/2025/09/Transformer_整理/位置编码.md#qa)$\color{Brown}^{16}$
   > _[QA](notes/_archives/2025/09/Transformer_整理/位置编码_QA.md)_<br>
 - [面试问题整理](notes/_archives/2025/09/Transformer_整理/Transformer_QA.md) 
 - [MoE 备忘](notes/_archives/2025/09/MoE_备忘/README.md) 
@@ -594,7 +594,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 - [PySpark 笔记](notes/_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](notes/_archives/2022/09/python标准项目实践.md) 
-- [QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣[📋](notes/_archives/2025/10/QA_合集.md)$\color{Brown}^{9}$
+- [QA 合集](notes/_archives/2025/10/QA_合集.md) 🧣[📋](notes/_archives/2025/10/QA_合集.md)$\color{Brown}^{20}$
 - [Query 分析指南](notes/_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](notes/_archives/2022/12/query扩展.md) 
 - [Query 纠错](notes/_archives/2022/12/query纠错.md) 
