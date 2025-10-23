@@ -34,7 +34,7 @@ Notes
 - [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) <span title="置顶">📌</span>
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
-- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/README.md) 
+- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/Transformer.md) 
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/大模型微调/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/大模型微调/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/大模型微调/策略梯度算法.md#qa "面试问题整理(4)")$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/大模型微调/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md) 

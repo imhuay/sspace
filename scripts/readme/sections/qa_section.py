@@ -74,7 +74,7 @@ class QaSection:
     section_title: str = ''
     toc_lines: list[TocLine] = field(default_factory=list)
     max_section_level: int = 4
-    min_section_level: int = 3
+    min_section_level: int = 2
     info: QaInfo = field(default_factory=QaInfo)
     _tokens: list[Token] = field(default_factory=list)
 
@@ -82,6 +82,7 @@ class QaSection:
         """"""
         self._tokens = _md.parse(self.content)
         self._parse_info()
+        self._set_section_title()
 
         if self.info.use_section_number:
             self.content = MarkdownUtils.update_section_number(
@@ -90,7 +91,6 @@ class QaSection:
                 max_section_level=self.max_section_level,
             )
 
-        self._set_section_title()
         self._parse_toc_lines()
 
     SECTION_KEY: ClassVar[str] = 'qa'
@@ -104,7 +104,8 @@ class QaSection:
 
         is_heading = False
         for t in self._tokens:
-            if t.type == 'heading_open' and t.tag == 'h2':
+            if t.type == 'heading_open':
+                self.min_section_level = int(t.tag[1:]) + 1
                 is_heading = True
             elif t.type == 'heading_close':
                 is_heading = False
