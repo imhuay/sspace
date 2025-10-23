@@ -1,4 +1,1 @@
-\begin{aligned}
-\sin(\omega_i (p+k)) &= \sin(\omega_i p)\cos(\omega_i k) + \cos(\omega_i p)\sin(\omega_i k) \\
-\cos(\omega_i (p+k)) &= \cos(\omega_i p)\cos(\omega_i k) - \sin(\omega_i p)\sin(\omega_i k)
-\end{aligned}
+\langle \text{RoPE}_{\theta}(q, m), \text{RoPE}_{\theta}(k, n) \rangle = \langle q, \text{RoPE}_{\theta}(k, m - n) \rangle

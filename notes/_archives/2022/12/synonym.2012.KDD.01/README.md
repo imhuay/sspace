@@ -1,4 +1,4 @@
-synonym.2012.KDD.01 阅读笔记 <!-- suffix --> ✒️ <!-- suffix -->
+synonym.2012.KDD.01 阅读笔记 <!-- suffix --> <span title="TODO">✒️</span> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2022-12-xx&labelColor=gray&color=lightsteelblue&style=flat-square)

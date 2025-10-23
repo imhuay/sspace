@@ -2,7 +2,7 @@ AutoPhrase 备忘
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-08-22&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-08-22%2003%3A35%3A56&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-23%2003%3A01%3A24&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-08-22 12:51:20
@@ -210,7 +210,7 @@ IDF (Inverse Document Frequency, 逆文档频率) 是衡量一个词在整个语
 假设语料库中总共有 $N = 1000$ 篇文档:
 
 - 词 "机器学习" 出现在 50 篇文档中:
-  $$\text{IDF("机器学习")} = \log \left( \frac{1000}{50 + 1} \right) \approx \log(19.6) \approx 1.29$$
+  <div align='center'><a href='_formulas/AutoPhrase备忘/f_008.js.tex'><img src='_formulas/AutoPhrase备忘/f_008.js.svg'/></a></div>
 
 - 词 "的" 出现在 950 篇文档中:
   <div align='center'><a href='_formulas/AutoPhrase备忘/f_009.js.tex'><img src='_formulas/AutoPhrase备忘/f_009.js.svg'/></a></div>
