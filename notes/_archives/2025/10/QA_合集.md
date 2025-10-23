@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(29)">📋</span>$\color{Brown}^{29}$ <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -28,7 +28,7 @@ algo_tags: []
 <!--START_SECTION:toc-->
 - [Transformer · **位置编码** · `24`](#transformer--位置编码--24)
 - [RLHF · **策略梯度算法** · `4`](#rlhf--策略梯度算法--4)
-- [Other · **一些有趣的问题 (非专业)** · `1`](#other--一些有趣的问题-非专业--1)
+- [Other · **一些有趣的问题 (非专业)** · `2`](#other--一些有趣的问题-非专业--2)
 <!--END_SECTION:toc-->
 
 ---
@@ -73,7 +73,10 @@ algo_tags: []
 - [3. 💡 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?](../09/大模型微调/策略梯度算法.md#3--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么)
     - [3.1. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](../09/大模型微调/策略梯度算法.md#31--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
 
-## Other · **一些有趣的问题 (非专业)** · `1`<!-- 0 -->
+## Other · **一些有趣的问题 (非专业)** · `2`<!-- 0 -->
 
-- [1. ✅ 从 1~100 取 2 个不同数字相加, 求结果为偶数的概率](有意思的问题收集.md#1--从-1100-取-2-个不同数字相加-求结果为偶数的概率)
+- [1. 🏷️ 概率题](有意思的问题收集.md#1-️-概率题)
+    - [1.1. ✅ 从 1~100 取 2 个不同数字相加, 求结果为偶数的概率](有意思的问题收集.md#11--从-1100-取-2-个不同数字相加-求结果为偶数的概率)
+- [2. 🏷️ 其他](有意思的问题收集.md#2-️-其他)
+    - [2.1. ✅ 平面上有 2N 个点, 是否存在一条直线将这 2N 个点一分为二](有意思的问题收集.md#21--平面上有-2n-个点-是否存在一条直线将这-2n-个点一分为二)
 <!--END_SECTION:sub_tocs-->

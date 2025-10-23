@@ -30,7 +30,7 @@ Notes
 <!-- omit in toc -->
 ## Recently 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(29)">📋</span>$\color{Brown}^{29}$<span title="置顶">📌</span>
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$<span title="置顶">📌</span>
 - [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) <span title="置顶">📌</span>
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$

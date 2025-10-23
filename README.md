@@ -53,7 +53,7 @@
 
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(29)">📋</span>$\color{Brown}^{29}$<span title="置顶">📌</span>
+- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$<span title="置顶">📌</span>
 - [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md) <span title="置顶">📌</span>
 - [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/大模型微调/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_整理/位置编码.md) [📋](notes/_archives/2025/09/Transformer_整理/位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
@@ -125,8 +125,8 @@ JavaScript    55 mins         -------------------------   01.79 %
 - [热门 (17)](algorithms/README.md#热门)
 - [剑指Offer2 (3)](algorithms/README.md#剑指offer2)
 - [程序员面试金典 (2)](algorithms/README.md#程序员面试金典)
-- [网络收集 (1)](algorithms/README.md#网络收集)
 - [牛客-华为机试 (1)](algorithms/README.md#牛客-华为机试)
+- [网络收集 (0)](algorithms/README.md#网络收集)
 <!--END_SECTION:collection-->
 
 </td>
@@ -137,7 +137,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (154)](algorithms/README.md#中等)
+- [中等 (153)](algorithms/README.md#中等)
 - [简单 (104)](algorithms/README.md#简单)
 - [困难 (36)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
@@ -206,7 +206,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 ### 其他
 <!--START_SECTION:other-->
 - [模拟 (16)](algorithms/README.md#模拟)
-- [数学 (9)](algorithms/README.md#数学)
+- [数学 (8)](algorithms/README.md#数学)
 - [找规律 (2)](algorithms/README.md#找规律)
 <!--END_SECTION:other-->
 
@@ -540,7 +540,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 - [PySpark 笔记](notes/_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](notes/_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](notes/_archives/2022/09/python标准项目实践.md) 
-- [QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(29)">📋</span>$\color{Brown}^{29}$
+- [QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$
 - [Query 分析指南](notes/_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](notes/_archives/2022/12/query扩展.md) 
 - [Query 纠错](notes/_archives/2022/12/query纠错.md) 
@@ -555,7 +555,7 @@ JavaScript    55 mins         -------------------------   01.79 %
 - [huggingface 套件使用备忘](notes/_archives/2023/06/huggingface套件使用备忘.md) 
 - [query 理解参考资料](notes/_archives/2022/12/query理解相关阅读.md) 
 - [requirements.txt 语法备忘](notes/_archives/2022/09/python-requirements语法.md) 
-- [一些有趣的问题](notes/_archives/2025/10/有意思的问题收集.md) <span title="面试问题整理(1)">📋</span>$\color{Brown}^{1}$
+- [一些有趣的问题](notes/_archives/2025/10/有意思的问题收集.md) <span title="面试问题整理(2)">📋</span>$\color{Brown}^{2}$
 - [低资源训练](notes/_archives/2022/12/低资源训练.md) 
 - [使用 LLM 优化简历](notes/_archives/2025/08/使用LLM优化简历.md) 
 - [使用 LLM 阅读论文](notes/_archives/2024/01/使用LLM阅读论文.md) 

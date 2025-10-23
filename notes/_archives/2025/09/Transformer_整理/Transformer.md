@@ -2,7 +2,7 @@ Transformer 模型架构
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-22%2017%3A58%3A22&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2001%3A38%3A24&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -65,7 +65,7 @@ tags: [transformer]
     - 支持**并行计算**;
 - **作用**: 自注意力机制让模型能够评估输入序列中 **不同 token 的重要性**, 并动态调整它们对输出的影响;
 - **公式 (缩放点积注意力)**:
-    <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer/f_001.js.tex'><img src='_formulas/Transformer/f_001.js.svg'/></a></div>
 
     - 其中:
         <!-- - $Q=X_QW^Q$, $K=X_KW^K$, $V=X_VW^V$; -->
@@ -88,10 +88,10 @@ tags: [transformer]
 - **做法**:
     - 将 $Q$, $K$, $V$ 通过 $h$ 个不同的线性投影, 然后对每个头独立进行注意力计算, 得到 $h$ 个输出, 最后将这些输出拼接起来后, 再做一次线性投影;
 - **公式**:
-    <div align='center'><a href='_formulas/README/f_002.js.tex'><img src='_formulas/README/f_002.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer/f_002.js.tex'><img src='_formulas/Transformer/f_002.js.svg'/></a></div>
 
     - 其中
-        <div align='center'><a href='_formulas/README/f_003.js.tex'><img src='_formulas/README/f_003.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer/f_003.js.tex'><img src='_formulas/Transformer/f_003.js.svg'/></a></div>
 
 ### 逐位置前馈网络 (Position-wise FFN)
 
@@ -101,7 +101,7 @@ tags: [transformer]
     - **逐位置 (position-wise)**: 对序列中每一个 token 的向量表示, 独立地应用同一个前馈网络 (**共享参数**);
 - **结构**: 两层线性层 + 非线性激活 (ReLU/GELU/SwiGLU 等)
 - **公式**:
-    <div align='center'><a href='_formulas/README/f_004.js.tex'><img src='_formulas/README/f_004.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer/f_004.js.tex'><img src='_formulas/Transformer/f_004.js.svg'/></a></div>
 
     - 张量形状变化: `[batch, seq_len, d_model] -> [batch, seq_len, d_ff] -> [batch, seq_len, d_model]`
     - 中间扩展维度 (`d_ff`) 通常是隐藏维度 (`d_model`) 的 **3~4 倍** (原文为 4 倍: `d_model = 512, d_ff = 2048`)

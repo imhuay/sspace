@@ -29,8 +29,8 @@
 - [热门 (17)](#热门)
 - [剑指Offer2 (3)](#剑指offer2)
 - [程序员面试金典 (2)](#程序员面试金典)
-- [网络收集 (1)](#网络收集)
 - [牛客-华为机试 (1)](#牛客-华为机试)
+- [网络收集 (0)](#网络收集)
 <!--END_SECTION:collection-->
 
 </td>
@@ -41,7 +41,7 @@
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (154)](#中等)
+- [中等 (153)](#中等)
 - [简单 (104)](#简单)
 - [困难 (36)](#困难)
 <!--END_SECTION:level-->
@@ -110,7 +110,7 @@
 ### 其他
 <!--START_SECTION:other-->
 - [模拟 (16)](#模拟)
-- [数学 (9)](#数学)
+- [数学 (8)](#数学)
 - [找规律 (2)](#找规律)
 <!--END_SECTION:other-->
 
@@ -520,16 +520,15 @@
 - [`程序员面试金典_0101_简单_判定字符是否唯一`](problems/2022/09/程序员面试金典_0101_简单_判定字符是否唯一.md)
 - [`程序员面试金典_0102_简单_判定是否互为字符重排`](problems/2022/09/程序员面试金典_0102_简单_判定是否互为字符重排.md)
 
-### 网络收集
-![total](https://img.shields.io/static/v1?label=total&message=1&labelColor=gray&color=blue&style=flat-square)
-- [`网络收集_20220126_中等_划分2N个点`](problems/2022/01/网络收集_20220126_中等_划分2N个点.md)
-
 ### 牛客-华为机试
 ![total](https://img.shields.io/static/v1?label=total&message=1&labelColor=gray&color=blue&style=flat-square)
 - [`华为机试_061_简单_放苹果`](problems/2022/05/华为机试_061_简单_放苹果.md)
 
+### 网络收集
+![total](https://img.shields.io/static/v1?label=total&message=0&labelColor=gray&color=blue&style=flat-square)
+
 ### 中等
-![total](https://img.shields.io/static/v1?label=total&message=154&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=153&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
 - [`LeetCode_0005_中等_最长回文子串`](problems/2021/10/LeetCode_0005_中等_最长回文子串.md)
@@ -683,7 +682,6 @@
 - [`牛客_0129_中等_阶乘末尾0的数量`](problems/2022/05/牛客_0129_中等_阶乘末尾0的数量.md)
 - [`牛客_0130_中等_分糖果问题`](problems/2022/05/牛客_0130_中等_分糖果问题.md)
 - [`牛客_0145_中等_01背包`](problems/2022/05/牛客_0145_中等_01背包.md)
-- [`网络收集_20220126_中等_划分2N个点`](problems/2022/01/网络收集_20220126_中等_划分2N个点.md)
 
 ### 简单
 ![total](https://img.shields.io/static/v1?label=total&message=104&labelColor=gray&color=blue&style=flat-square)
@@ -1302,7 +1300,7 @@
 - [`牛客_0089_简单_字符串变形`](problems/2022/04/牛客_0089_简单_字符串变形.md)
 
 ### 数学
-![total](https://img.shields.io/static/v1?label=total&message=9&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=8&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0343_中等_整数拆分`](problems/2021/12/LeetCode_0343_中等_整数拆分.md)
 - [`LeetCode_0441_简单_排列硬币`](problems/2021/10/LeetCode_0441_简单_排列硬币.md)
 - [`剑指Offer_1401_中等_剪绳子(整数拆分)`](problems/2021/11/剑指Offer_1401_中等_剪绳子(整数拆分).md)
@@ -1311,7 +1309,6 @@
 - [`牛客_0106_简单_三个数的最大乘积`](problems/2022/04/牛客_0106_简单_三个数的最大乘积.md)
 - [`牛客_0112_简单_进制转换`](problems/2022/04/牛客_0112_简单_进制转换.md)
 - [`牛客_0129_中等_阶乘末尾0的数量`](problems/2022/05/牛客_0129_中等_阶乘末尾0的数量.md)
-- [`网络收集_20220126_中等_划分2N个点`](problems/2022/01/网络收集_20220126_中等_划分2N个点.md)
 
 ### 找规律
 ![total](https://img.shields.io/static/v1?label=total&message=2&labelColor=gray&color=blue&style=flat-square)
