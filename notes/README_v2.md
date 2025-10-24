@@ -11,7 +11,7 @@ Notes
 <!-- TOC -->
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
-        - [大模型微调 (RLHF) 💥](#大模型微调-rlhf-)
+        - [大模型微调 (SFT · RLHF) 💥](#大模型微调-sft--rlhf-)
     - [Machine Learning 🤖](#machine-learning-)
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
@@ -33,13 +33,13 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$<span title="置顶">📌</span>
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(56)">📋</span>$\color{Brown}^{56}$<span title="置顶">📌</span>
 - [`2025-07-08` Markdown 简历工具](_archives/2022/06/Markdown_简历工具.md) <span title="置顶">📌</span>
-- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
-- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
-- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer_整理/Transformer.md) 
-- [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/大模型微调/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/大模型微调/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/大模型微调/策略梯度算法.md#qa "面试问题整理(4)")$\color{Brown}^{4}$
-- [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/大模型微调/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>
+- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
+- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
+- [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [📋](_archives/2025/09/Transformer.md#qa "面试问题整理(16)")$\color{Brown}^{16}$
+- [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "面试问题整理(4)")$\color{Brown}^{4}$
+- [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>
 - [`2025-08-22` AutoPhrase 备忘](_archives/2025/08/AutoPhrase备忘.md) 
 - [`2025-08-21` 复合词检测](_archives/2025/08/复合词检测.md) 
 - [`2025-08-08` VSCode 备忘](_archives/2025/08/VSCode备忘.md) 
@@ -68,12 +68,11 @@ Notes
 
 ### Transformer 🪄 LLM 🚀
 
-- [模型架构](_archives/2025/09/Transformer_整理/Transformer.md) 
-- [位置编码](_archives/2025/09/Transformer_整理/位置编码.md) [📋](_archives/2025/09/Transformer_整理/位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
-  > _[绝对位置编码](_archives/2025/09/Transformer_整理/位置编码.md#绝对位置编码) • [相对位置编码](_archives/2025/09/Transformer_整理/位置编码.md#相对位置编码) • [旋转位置编码🔥](_archives/2025/09/Transformer_整理/位置编码.md#旋转位置编码)_<br>
-- [面试问题整理](_archives/2025/09/Transformer_整理/Transformer_QA.md) 
-- [MoE 备忘](_archives/2025/09/MoE_备忘/README.md) 
-- [LLM 训练稳定性](_archives/2025/09/大模型微调/训练稳定性.md) [✒️](_archives/2025/09/大模型微调/训练稳定性.md#todo "TODO(1)")$\color{Gray}^{1}$
+- [模型架构](_archives/2025/09/Transformer.md) [📋](_archives/2025/09/Transformer.md#qa "面试问题整理(16)")$\color{Brown}^{16}$
+- [位置编码](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "面试问题整理(24)")$\color{Brown}^{24}$
+  > _[绝对位置编码](_archives/2025/09/Transformer_位置编码.md#绝对位置编码) • [相对位置编码](_archives/2025/09/Transformer_位置编码.md#相对位置编码) • [旋转位置编码🔥](_archives/2025/09/Transformer_位置编码.md#旋转位置编码)_<br>
+- [MoE ( Mixture of Experts )](_archives/2025/09/LLM_MoE.md) [✒️](_archives/2025/09/LLM_MoE.md#todo "TODO(1)")$\color{Gray}^{1}$
+- [LLM 训练稳定性](_archives/2025/09/RLHF/训练稳定性.md) [✒️](_archives/2025/09/RLHF/训练稳定性.md#todo "TODO(1)")$\color{Gray}^{1}$
 
 <!-- omit in toc -->
 #### BERT
@@ -82,26 +81,26 @@ Notes
 - [Transformer Wiki](_archives/2022/05/TransformerWiki.md) 
 - [BERT + CRF 备忘](_archives/2022/04/bert_crf备忘.md) 
 
-#### 大模型微调 (RLHF) 💥
+#### 大模型微调 (SFT · RLHF) 💥
 
-- [基础概念](_archives/2025/09/大模型微调/README.md) 
-- [SFT 数据构建](_archives/2025/09/大模型微调/构建高质量_SFT_数据.md) <span title="TODO">✒️</span>
-- [**RLHF** ( 偏好学习, 对齐学习 )](_archives/2025/09/大模型微调/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>
-  > _[**快速回顾**](_archives/2025/09/大模型微调/RLHF.md#快速回顾-) • [奖励模型](_archives/2025/09/大模型微调/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/大模型微调/RLHF.md#bradleyterry-模型介绍) • [RL 基础](_archives/2025/09/大模型微调/RLHF_强化学习基础.md) • [QA](_archives/2025/09/大模型微调/RLHF_QA.md)_<br>
-  - [强化学习基础 ( **LLM-based** )](_archives/2025/09/大模型微调/RLHF_强化学习基础.md) 
-    > _[基础术语](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/大模型微调/RLHF_强化学习基础.md#广义优势估计-gae)_<br>
-  - [策略梯度定理及其推导](_archives/2025/09/大模型微调/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
-    > _[基本形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基本形式) • [Q函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](_archives/2025/09/大模型微调/策略梯度定理及其推导.md#基线不变性)_<br>
-  - [**策略梯度算法**](_archives/2025/09/大模型微调/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/大模型微调/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/大模型微调/策略梯度算法.md#qa "面试问题整理(4)")$\color{Brown}^{4}$
-    > _[PPO](_archives/2025/09/大模型微调/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/大模型微调/策略梯度算法.md#dpo) • [GRPO](_archives/2025/09/大模型微调/策略梯度算法.md#grpo)_<br>
-- [参数高效微调 ( **PEFT** )](_archives/2025/09/大模型微调/PEFT.md) 
-  > _[**LoRA**](_archives/2025/09/大模型微调/LoRA.md) • [QA](_archives/2025/09/大模型微调/PEFT_QA.md)_<br>
-- [面试问题整理](_archives/2025/09/大模型微调/大模型微调_QA.md) 
+- [SFT 基础概念](_archives/2025/09/SFT.md) 
+  - [参数高效微调 ( **PEFT** )](_archives/2025/09/SFT_PEFT.md) [📋](_archives/2025/09/SFT_PEFT.md#qa "面试问题整理(10)")$\color{Brown}^{10}$
+    > _[**LoRA**](_archives/2025/09/SFT_LoRA.md)_<br>
+  - [训练数据构建](_archives/2025/09/SFT_构建高质量训练数据.md) <span title="TODO">✒️</span>
+- [**RLHF** ( 偏好学习, 对齐学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>
+  > _[**快速回顾**](_archives/2025/09/RLHF/RLHF.md#快速回顾-) • [奖励模型](_archives/2025/09/RLHF/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/RLHF/RLHF.md#bradleyterry-模型介绍) • [RL 基础](_archives/2025/09/RLHF/RLHF_强化学习基础.md) • [QA](_archives/2025/09/RLHF/RLHF_QA.md)_<br>
+  - [强化学习基础 ( **LLM-based** )](_archives/2025/09/RLHF/RLHF_强化学习基础.md) 
+    > _[基础术语](_archives/2025/09/RLHF/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](_archives/2025/09/RLHF/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/RLHF/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](_archives/2025/09/RLHF/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/RLHF/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/RLHF/RLHF_强化学习基础.md#广义优势估计-gae)_<br>
+  - [策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
+    > _[基本形式](_archives/2025/09/RLHF/策略梯度定理及其推导.md#基本形式) • [Q函数形式](_archives/2025/09/RLHF/策略梯度定理及其推导.md#q-函数形式) • [A函数形式](_archives/2025/09/RLHF/策略梯度定理及其推导.md#a-函数形式) • [Score Function 恒等式](_archives/2025/09/RLHF/策略梯度定理及其推导.md#score-function-恒等式) • [基线不变性](_archives/2025/09/RLHF/策略梯度定理及其推导.md#基线不变性)_<br>
+  - [**策略梯度算法**](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "面试问题整理(4)")$\color{Brown}^{4}$
+    > _[PPO](_archives/2025/09/RLHF/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/RLHF/策略梯度算法.md#dpo) • [GRPO](_archives/2025/09/RLHF/策略梯度算法.md#grpo)_<br>
+- [面试问题整理](_archives/2025/09/RLHF/大模型微调_QA.md) 
 
 <!-- omit in toc -->
 #### Prompt Engineering
 
-- [常用 prompt 备忘](_archives/2025/09/Prompt_记录/常用_prompt_备忘.md) 
+- [常用 prompt 备忘](_archives/2025/09/常用_prompt_备忘.md) 
 - [反思 ( Reflection )](_archives/2025/08/Prompt_工程-自反思.md) 
 
 <!-- omit in toc -->
@@ -380,7 +379,7 @@ Notes
 - [PySpark 笔记](_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](_archives/2022/09/python标准项目实践.md) 
-- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(30)">📋</span>$\color{Brown}^{30}$
+- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(56)">📋</span>$\color{Brown}^{56}$
 - [Query 分析指南](_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](_archives/2022/12/query扩展.md) 
 - [Query 纠错](_archives/2022/12/query纠错.md) 
@@ -399,13 +398,12 @@ Notes
 - [低资源训练](_archives/2022/12/低资源训练.md) 
 - [使用 LLM 优化简历](_archives/2025/08/使用LLM优化简历.md) 
 - [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md) 
-- [偏好学习-QA](_archives/2025/09/大模型微调/RLHF_QA.md) 
+- [偏好学习-QA](_archives/2025/09/RLHF/RLHF_QA.md) 
 - [同义词挖掘](_archives/2025/07/同义词挖掘/README.md) 
 - [基于 BERT/MLM 的查询扩展方法](_archives/2022/12/qe-mlm.md) 
 - [基于 SQL 计算信息熵与信息增益](_archives/2023/01/sql-计算信息熵与信息增益.md) 
 - [基于用户行为数据的同义词挖掘方法 ( 英文 )](_archives/2022/12/基于用户行为数据的同义词挖掘方法.md) 
 - [多轮MRC信息抽取的优缺点](_archives/2025/08/多轮MRC信息抽取的优缺点.md) 
-- [大模型解码](_archives/2025/09/Transformer_整理/解码.md) <span title="TODO">✒️</span>
 - [实体链接相关概念](_archives/2022/04/实体链接/实体链接相关概念.md) 
 - [实验报告模板](_archives/2022/12/实验报告模板.md) 
 - [常见的文本相似度计算](_archives/2022/12/文本相似度计算.md) 

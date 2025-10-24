@@ -299,7 +299,7 @@ class MarkdownMath2SvgHelper:
         # print(self._tmp_save_dir)
         # self._svg_save_dir = self._md_dir / self.save_dir_name / f'{self.md_path.stem}_svgs'
         self.changed, old_name = GitUtils.file_changed_or_new(self.md_path)
-        self.old_name = Path(old_name) if old_name is not None else None
+        self.old_path = Path(old_name) if old_name is not None else None
         # if DEBUG:
         #     print(f'{self.changed = }, {self.old_name = }')
 
@@ -329,9 +329,9 @@ class MarkdownMath2SvgHelper:
             if not any(self._final_save_dir.iterdir()):
                 shutil.rmtree(self._final_save_dir)
 
-        if self.old_name is not None:
-            old_save_dir = self._get_save_dir(self.old_name)
-            if old_save_dir.exists():
+        if self.old_path is not None and self.old_path:
+            old_save_dir = self._get_save_dir(self.old_path)
+            if old_save_dir.exists() and not old_save_dir.samefile(self._final_save_dir):
                 shutil.rmtree(old_save_dir)
 
     def _save_to_tex_and_svg(self):
@@ -370,8 +370,8 @@ class MarkdownMath2SvgHelper:
 
     def _rename_save_dir(self):
         """"""
-        if self.old_name is not None:
-            old_save_dir = self._md_dir / self.save_dir_name / f'{self.old_name.stem}_svgs'
+        if self.old_path is not None:
+            old_save_dir = self._md_dir / self.save_dir_name / f'{self.old_path.stem}_svgs'
             if old_save_dir.exists():
                 shutil.move(old_save_dir, self._tmp_save_dir)
 

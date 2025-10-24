@@ -2,7 +2,7 @@ LoRA (Low-Rank Adaptation, `ˈlɔːrə`)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-21%2001%3A01%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-15 02:29:31
@@ -16,7 +16,7 @@ tags: [llm_sft]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [PEFT](./PEFT.md)*
+> ***Keywords**: [PEFT](./SFT_PEFT.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -46,7 +46,7 @@ tags: [llm_sft]
     - 研究发现, 模型在适应下游任务时, 并 **不需要在完整的高维空间中更新权重矩阵** $W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$;
     - 真正有效的更新具有明显 **结构和模式** (**低秩性/低秩结构**), 即 **微调过程中真正重要的变化是低维的**;
     - 这意味着在微调时, **权重更新矩阵** $\Delta W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$ 可以用一个 **低秩分解** 来有效近似:
-        <div align='center'><a href='_formulas/LoRA/f_001.js.tex'><img src='_formulas/LoRA/f_001.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/SFT_LoRA/f_001.js.tex'><img src='_formulas/SFT_LoRA/f_001.js.svg'/></a></div>
 
         其中 $B \in \mathbb{R}^{d_{\text{out}} \times r}, \quad A \in \mathbb{R}^{r \times d_{\text{in}}}$, 且 **秩** $r \ll \min(d_{\text{out}}, d_{\text{in}})$
     - **这个假设被实践证明是正确的**;
@@ -60,14 +60,14 @@ tags: [llm_sft]
     - 为了在改变秩 $r$ 时灵活调整更新量/**控制更新幅度**, **避免重新调整学习率等训练超参**, 还会引入一个缩放因子 $\dfrac{\alpha}{r}$ 作用于低秩通路的输出 (**软约束**);
         > 其中 $\alpha$ 用于控制整体更新强度, $\dfrac{1}{r}$ 用于 **抵消秩带来的线性放大效应**;
     - **前向过程** 为:
-    <div align='center'><a href='_formulas/LoRA/f_002.js.tex'><img src='_formulas/LoRA/f_002.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/SFT_LoRA/f_002.js.tex'><img src='_formulas/SFT_LoRA/f_002.js.svg'/></a></div>
 
 ### 实践细节
 
 - **代码示例**:
     - [LoRA.py](./_code/lora.py)
 - **初始化策略**:
-    <div align='center'><a href='_formulas/LoRA/f_003.js.tex'><img src='_formulas/LoRA/f_003.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/SFT_LoRA/f_003.js.tex'><img src='_formulas/SFT_LoRA/f_003.js.svg'/></a></div>
 
     - $A$: **正态分布** 或 Kaiming/Xavier 初始化;
     - $B$: 全零, 使训练开始时等价于无适配器 (即使 $\Delta W = 0$)
@@ -89,7 +89,7 @@ tags: [llm_sft]
         >> $\text{MLP}(x) = W_{\text{down}} \cdot (\text{Swish}(xW_{\text{gate}}) \otimes (xW_{\text{up}}))$
     - **归一化与嵌入层:** 很少, 主流收益集中在注意力与 MLP 层;
 - **参数比例 (LoRA 参数 / 全量参数)**:
-    <div align='center'><a href='_formulas/LoRA/f_004.js.tex'><img src='_formulas/LoRA/f_004.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/SFT_LoRA/f_004.js.tex'><img src='_formulas/SFT_LoRA/f_004.js.svg'/></a></div>
 
 - **合并与可拔插**:
     - 推理时可将 $\Delta W$ 合并进 $W$ 得到 $W' = W + \dfrac{\alpha}{r} BA$, 不增加推理延迟; 也可保持 **可拔插** 以多任务切换;
@@ -100,7 +100,7 @@ tags: [llm_sft]
 - **分组 LoRA**:
     - **思路**: 将大矩阵按 **维度/轴** 分块, 对每个分组独立应用低秩分解, 提升低秩近似的灵活性;
     - **前向公式**:
-        <div align='center'><a href='_formulas/LoRA/f_005.js.tex'><img src='_formulas/LoRA/f_005.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/SFT_LoRA/f_005.js.tex'><img src='_formulas/SFT_LoRA/f_005.js.svg'/></a></div>
 
     - **细节**:
         - 组间参数独立初始化;
@@ -113,7 +113,7 @@ tags: [llm_sft]
 - **门控 LoRA**:
     - **思路**: 为 LoRA 分支增加一个 **可学习的** 标量或向量门 $g$, 控制注入强度与时机
     - **前向公式**:
-        <div align='center'><a href='_formulas/LoRA/f_006.js.tex'><img src='_formulas/LoRA/f_006.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/SFT_LoRA/f_006.js.tex'><img src='_formulas/SFT_LoRA/f_006.js.svg'/></a></div>
 
     - **收益与风险**:
         - 提升稳定性与可控性; 过强的门稀疏可能造成欠拟合, 需配合学习率与正则退火;
@@ -131,7 +131,7 @@ tags: [llm_sft]
 ### DoLA
 > 将权重分解为幅度与方向, 单独调整, 有时更稳更准;
 
-> [PDF](./_paper/DoRA.pdf)
+> [PDF](./_assets/DoRA.pdf)
 
 <!--START_SECTION:keyword-->
 <!--keyword_info
@@ -139,5 +139,5 @@ name: 'QA'
 extra_url: true
 -->
 ## 面试问题整理
-> [LoRA 面试问题整理](./PEFT_QA.md)
+> [LoRA 面试问题整理](./SFT_PEFT.md#qa)
 <!--END_SECTION:keyword-->

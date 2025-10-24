@@ -11,7 +11,7 @@ Notes
 <!-- TOC -->
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
-        - [大模型微调 (RLHF) 💥](#大模型微调-rlhf-)
+        - [大模型微调 (SFT · RLHF) 💥](#大模型微调-sft--rlhf-)
     - [Machine Learning 🤖](#machine-learning-)
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
@@ -59,7 +59,7 @@ Notes
 
 {{dl_bert}}
 
-#### 大模型微调 (RLHF) 💥
+#### 大模型微调 (SFT · RLHF) 💥
 
 {{llm_sft}}
 

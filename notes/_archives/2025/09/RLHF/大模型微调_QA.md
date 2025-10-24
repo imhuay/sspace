@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-13&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A12%3A48&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-13 16:23:17
@@ -84,7 +84,7 @@ tags: [llm_sft]
 
 ### 1.4. 💡 如何设计高质量 SFT 数据? 如何保证 **覆盖率**/**多样性**/**一致性**?
 > - **高质量**: 多样性, 覆盖率; 一致性;
->> [构建高质量SFT数据](./构建高质量_SFT_数据.md)
+>> [构建高质量SFT数据](../SFT_构建高质量训练数据.md)
 
 <details><summary><b>简述</b></summary>
 
@@ -127,7 +127,7 @@ tags: [llm_sft]
 
 ### 3.2. ✅ 介绍常见的 **PEFT** 技术
 > LoRA/QLoRA, Adapter, Prefix/Prompt Tuning, P-Tuning V1/V2, BitFit
->> [PEFT 整理](./PEFT.md)
+>> [PEFT 整理](../SFT_PEFT.md)
 
 #### 3.2.1. 💡 比较 **LoRA** / **Prefix Tuning** / **P-Tuning V2** / **Adapter** / **BitFit**
 > 几个关键维度: 表示能力, 推理延迟, 可训练参数量
@@ -136,8 +136,7 @@ tags: [llm_sft]
 > - **参数量**: BitFit < P‑Tuning V2 ≈ Prefix Tuning < LoRA < Adapter
 
 ### 3.3. 🔥 **LoRA (Low-Rank Adaptation)**
-> [LoRA 学习笔记](./LoRA.md)
->> [LoRA 面试问题整理](./PEFT_QA.md)
+> [LoRA 学习笔记](../SFT_LoRA.md)
 
 
 ---

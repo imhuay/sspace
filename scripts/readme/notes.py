@@ -104,7 +104,7 @@ class Note:
 
     # ClassVar
     sort_by_first_commit: ClassVar[bool] = True
-    _max_section_level: ClassVar[int] = 6
+    max_section_level: ClassVar[int] = 6
 
     def __post_init__(self):
         self.path = self.path.resolve()
@@ -211,7 +211,7 @@ class Note:
             ### 二级标题 => ### 1.1. 二级标题
             #### 三级标题 => ### 1.1.1. 二级标题
         """
-        D = self._max_section_level
+        D = self.max_section_level
         lines = self.text.split('\n')
         section_counts = [0] * D
 
@@ -242,7 +242,7 @@ class Note:
 
     def _update_content_toc(self):
         """更新 Markdown 内容 TOC"""
-        D = self._max_section_level
+        D = self.max_section_level
         lines = self.text.split('\n')
         toc_lines = []
 

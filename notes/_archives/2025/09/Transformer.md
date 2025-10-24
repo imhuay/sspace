@@ -1,8 +1,8 @@
-Transformer 模型架构
+Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(16)")$\color{Brown}^{16}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2001%3A38%3A24&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -136,15 +136,7 @@ tags: [transformer]
         - 有一定**外推性**, 可以表示比训练集中更长的序列位置;
 
 #### 位置编码的演进
-> [Transformer位置编码](./位置编码.md)
-
-**参考资料**
-- 各种**绝对**/**相对位置编码**
-    > [让研究人员绞尽脑汁的Transformer位置编码 - 科学空间|Scientific Spaces](https://kexue.fm/archives/8130)
-- **旋转位置编码 (Rotary Postional Encoding, RoPE)**
-    > [Transformer升级之路: 2、博采众长的旋转式位置编码 - 科学空间|Scientific Spaces](https://kexue.fm/archives/8265)  
-    > [设计位置编码 - HuggingFace Blog](https://huggingface.co/blog/zh/designing-positional-encoding)  
-
+> [Transformer 位置编码](./Transformer_位置编码.md)
 
 ---
 
@@ -160,26 +152,50 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
+- [1. 🏷️ 模型框架](#1-️-模型框架)
+    - [1.1. ✅ 简要阐述 Transformer 的核心思想](#11--简要阐述-transformer-的核心思想)
+    - [1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#12--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
+    - [1.3. ✅ 为什么 Transformer 比 RNN/LSTM 更好](#13--为什么-transformer-比-rnnlstm-更好)
+    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.5. ✅ 为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?](#15--为什么大多数通用大模型选择-decoder-only-causallm-架构)
+    - [1.6. ✅ 说明自注意力机制的计算过程](#16--说明自注意力机制的计算过程)
+    - [1.7. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#17--为什么要对-qk-的点积进行缩放-缩放因子是)
+    - [1.8. ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?](#18--多头注意力中-多头-的动机是什么-是如何实现的)
+    - [1.9. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#19--为什么-decoder-中计算自注意力需要-掩码)
+    - [1.10. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#110--decoder-中的-attention-与-encoder-有什么不同)
+    - [1.11. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#111--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
+- [2. 🏷️ 训练与推理](#2-️-训练与推理)
+    - [2.1. ✅ 说明 Decoder 在训练与推理阶段的差异](#21--说明-decoder-在训练与推理阶段的差异)
+    - [2.2. ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#22--推理阶段-怎么优化随着输出序列越来越长带来的开销)
+    - [2.3. ✅ 🚨 描述 **KV Cache** 的动机, 方法, 效果](#23---描述-kv-cache-的动机-方法-效果)
+    - [2.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 解释 "曝光偏差", 怎么引起的, 怎么缓解?](#24------️-️-解释-曝光偏差-怎么引起的-怎么缓解)
+- [3. 🏷️ 解码相关](#3-️-解码相关)
+    - [3.1. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 介绍常见的序列生成策略](#31------️-️-介绍常见的序列生成策略)
+    - [3.2. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 对比 BeamSearch 和 贪心搜索 的优劣](#32------️-️-️-对比-beamsearch-和-贪心搜索-的优劣)
+    - [3.3. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#33------️-️-️-为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
+    - [3.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 如何控制生成序列的长度和终止?](#34------️-️-️-如何控制生成序列的长度和终止)
+    - [3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 怎么抑制 LLM 生成过程中的 重复问题?](#35------️-️-️-怎么抑制-llm-生成过程中的-重复问题)
+    - [3.6. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 非自回归模型是如何解码的? 与自回归解码的优劣](#36------️-️-️-非自回归模型是如何解码的-与自回归解码的优劣)
 <!--END_SECTION:qa_toc-->
 
 ---
 
 <!-- omit in toc -->
-### 🏷️ 模型框架
+### 1. 🏷️ 模型框架
 
 <!-- omit in toc -->
-#### ✅ 简要阐述 Transformer 的核心思想
+#### 1.1. ✅ 简要阐述 Transformer 的核心思想
 > 多头自注意机制 → 全局依赖关系
 
 <!-- omit in toc -->
-#### ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
+#### 1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
 > **Transformer (位置编码 + 全局依赖)** / **CNN (局部性 + 平移不变性)** / **RNN (顺序性 + 马尔可夫假设)**
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - 在机器学习中, **归纳偏置** 是指模型在学习之前**对数据分布或任务结构的先验假设**;
-        > [归纳偏置](../机器学习基础.md#归纳偏置-inductive-bias)? 
-    
+        > [归纳偏置](./机器学习基础.md#归纳偏置-inductive-bias)
+
     - **Transformer**
         - **最小结构假设**: 除位置编码, 无强结构先验;
         - **全局依赖**: 依赖自注意力机制学习任意位置间的关系;
@@ -190,20 +206,20 @@ use_section_number: true
         - Transformer: 弱先验, 几乎不假设输入的内在结构 (位置关系通过显式编码输入);
             - **优点**: 灵活, 可以学习更丰富的模式
             - **缺点**: 需要更多数据和计算
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 为什么 Transformer 比 RNN/LSTM 更好
+#### 1.3. ✅ 为什么 Transformer 比 RNN/LSTM 更好
 > • 1) 长程依赖/全局交互, 2) 并行计算/训练速度
 
 <!-- omit in toc -->
-#### ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
+#### 1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
 > • **Encoder**: (文本表示, 自注意力 → FFN); <br>
 > • **Decoder**: (自回归, 掩码自注意力 → 交叉注意力 → FFN). <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **Encoder**:
         - **作用**: 对输入序列编码, 将其表示为 **富含上下文信息的隐状态序列**;  
         - **结构**: $N$ 个相同的层堆叠结构, 每个层包含 2 个子层:  
@@ -219,15 +235,15 @@ use_section_number: true
             3. **前馈网络** → **残差** → **层归一化**;
         - **输入**: 目标序列右移一位的嵌入 + 位置编码 + Encoder 输出;
         - **输出**: 对下一个 token 的概率分布;
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?
+#### 1.5. ✅ 为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?
 > • **LLM 的核心能力** 是自回归生成, 与 Decoder 的的工作模式相匹配; <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     > 💡 **Decoder-Only 相较于 Encoder-Decoder 的优势主要来源于现实中的实践** 
     - **任务匹配**
         - LLM 的核心能力是 **"给定上下文, 预测下一个 token"**, 这与 Decoder 的工作模式匹配;
@@ -247,37 +263,37 @@ use_section_number: true
         - [解码器仅架构: 探究大语言模型 (LLM) 采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
         - [为什么当前的大型语言模型 (LLMs) 普遍采用 "仅解码器" (Decoder-only) 架构? _decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
         - [面试官问我: 大模型为何都用 Decoder only 架构? _大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
-        
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 说明自注意力机制的计算过程
+#### 1.6. ✅ 说明自注意力机制的计算过程
 > • Q/K/V 投影 → 计算注意力分数 → 缩放与归一化 → 加权求和 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     $Q, K, V = XW^Q, XW^K, XW^V → QK^\top → \text{softmax}(\frac{QK^\top}{\sqrt{d_k}}) → \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V$
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
+#### 1.7. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
 > • 防止点积 ($QK^\top$) 的数值过大引发梯度消失; 缩放因子是 $\sqrt{d_k}$ (其中 $d_k$ 为输入向量 $K$ 的维度) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **数学解释**: **两个均值为 0、方差为 1 的 d 维向量, 其点积的均值为 0、方差为 d**; 
     - 直接 softmax 会出现数值极小的分量, 反向传播时这些分量的梯度会趋于零, 导致梯度消失;
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?
+#### 1.8. ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?
 > • **动机**: 将特征空间切分成多个独立的低维子空间 → 学习不同的注意力分布/不同的依赖关系; <br>
 > • **实现**: 将 Q/K/V 投影到多个低维子空间 → 每个头独立执行 Attention → 将结果拼接后再整体投影; <br>
 
 -   <details><summary><b> 代码演示 ⬇️ </b></summary>
-    
+
     > 实际并不会真的独立执行多个 Attention, 而是利用 **张量操作和广播机制** 一次完成;
     ```python
     def attn(self, x, mask):
@@ -305,15 +321,15 @@ use_section_number: true
         O = self.W_O(O)
         return O
     ```
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
+#### 1.9. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
 > • 维持自回归特性, 防止数据泄露 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **核心目的: 维持自回归特性, 防止数据泄露**;
         - Decoder 的任务是 **自回归生成 (auto-regressive generation)**, 即逐个预测下一个 token;
         - 在生成第 `t` 个 token 时, 模型只能依据 **已经生成的 `1` 到 `t-1` 个 token**;
@@ -323,27 +339,27 @@ use_section_number: true
         - 掩码通常是一个 **下三角矩阵 (lower triangular matrix)**, 其对角线及左侧元素为 `0` (允许参与计算), 右上角元素为 `-inf` (被遮蔽);
         - 经过 softmax 后, 被遮蔽位置的权重变为 `0`, 从而在计算加权和时忽略这些未来信息;
     - **一句话总结**: 掩码通过遮蔽未来信息, 确保 Decoder 在训练时只能基于历史上下文进行预测, 从而模拟推理时的自回归生成过程, 防止作弊;
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
+#### 1.10. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
 > • Encoder 只有 Self-Attention; <br>
 > • Decoder 包括 Masked Self-Attention 和 Cross-Attention; <br>
 
 <!-- omit in toc -->
-#### ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
+#### 1.11. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
 > • Q 来自 Decoder 上一层的输出; K, V 来自 Encoder 最后一层的输出 (不再变化); <br>
 
 <!-- omit in toc -->
-### 🏷️ 训练与推理
+### 2. 🏷️ 训练与推理
 
 <!-- omit in toc -->
-#### ✅ 说明 Decoder 在训练与推理阶段的差异
+#### 2.1. ✅ 说明 Decoder 在训练与推理阶段的差异
 > • **核心差异**: 对 **目标序列** 的 **可见性** 不同; <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **训练阶段**:
         - **模式**: **教师强制 (Teacher Forcing)**
         - **过程**:
@@ -364,19 +380,19 @@ use_section_number: true
             - **串行计算**, 效率低;
         - **优化**:
             - **KV Cache**
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
+#### 2.2. ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
 > • **方法**: KV Cache; **效果**: $O(n^2) → O(n)$ <br>
 
 <!-- omit in toc -->
-#### ✅ 🚨 描述 **KV Cache** 的动机, 方法, 效果
+#### 2.3. ✅ 🚨 描述 **KV Cache** 的动机, 方法, 效果
 > • **动机** (重复计算) → **方法** (缓存历史 K/V, 增量计算) → **效果** (降低计算复杂度) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **背景/动机**
         - 在**自回归**生成中, 第 `i` 个 token 的注意力计算需基于前 `i` 个 token `K/V` (含开始符);
         - 其中前 `i-1` 个 token 的 `K/V` 在之前步骤中已计算过, 可以通过 **缓存** 避免重复计算;
@@ -411,81 +427,79 @@ use_section_number: true
         # 经过 FFN 等操作, 生成第 i 个token
         ...
         ```
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 解释 "曝光偏差", 怎么引起的, 怎么缓解?
+#### 2.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 解释 "曝光偏差", 怎么引起的, 怎么缓解?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-### 🏷️ 解码相关
+### 3. 🏷️ 解码相关
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 介绍常见的序列生成策略
+#### 3.1. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 介绍常见的序列生成策略
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 对比 BeamSearch 和 贪心搜索 的优劣
+#### 3.2. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 对比 BeamSearch 和 贪心搜索 的优劣
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
+#### 3.3. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 如何控制生成序列的长度和终止?
+#### 3.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 如何控制生成序列的长度和终止?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 怎么抑制 LLM 生成过程中的 重复问题?
+#### 3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 怎么抑制 LLM 生成过程中的 重复问题?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 非自回归模型是如何解码的? 与自回归解码的优劣
+#### 3.6. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 非自回归模型是如何解码的? 与自回归解码的优劣
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
-
-
 <!--END_SECTION:qa-->

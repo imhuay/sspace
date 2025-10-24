@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-09&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-23%2003%3A01%3A24&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-09 11:03:29
@@ -100,7 +100,7 @@ extra_url: false
     - 唯一, 确定, 无需学习 (节省参数);
     - 具备一定的 **外推能力 (extrapolation)**, 可处理比训练更长的序列;
         > 根据三角函数的性质 (sin/cos 相位差公式), **任意两个位置的编码可以通过相对位移的线性组合互相推导**, 从而在绝对编码中隐含了相对位置信息;
-        > <div align='center'><a href='_formulas/位置编码/f_001.js.tex'><img src='_formulas/位置编码/f_001.js.svg'/></a></div>
+        > <div align='center'><a href='_formulas/Transformer_位置编码/f_001.js.tex'><img src='_formulas/Transformer_位置编码/f_001.js.svg'/></a></div>
 
     - 其数学特性 **蕴含相对位置信息**, 即 $PE(pos+k)$ 可表示为 $PE(pos)$ 的线性函数;
 - **缺点**:
@@ -131,17 +131,17 @@ extra_url: false
 
 - **思路**: 
     - 相对位置编码本质就是实现 **平移不变性**, 即:
-        <div align='center'><a href='_formulas/位置编码/f_002.js.tex'><img src='_formulas/位置编码/f_002.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_002.js.tex'><img src='_formulas/Transformer_位置编码/f_002.js.svg'/></a></div>
 
         其中 $x_{i\ »\ c}$ 表示平移 $c$ 个位置;
     - 一个最简单的实现:
-        <div align='center'><a href='_formulas/位置编码/f_003.js.tex'><img src='_formulas/位置编码/f_003.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_003.js.tex'><img src='_formulas/Transformer_位置编码/f_003.js.svg'/></a></div>
 
         > 实际上, ALiBi 就是基于该实现.
 
 - **实现方法**:
     - 将带有 **绝对位置编码** 的注意力打分公式展开:
-        <div align='center'><a href='_formulas/位置编码/f_004.js.tex'><img src='_formulas/位置编码/f_004.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_004.js.tex'><img src='_formulas/Transformer_位置编码/f_004.js.svg'/></a></div>
 
     > 🚨 **相对位置编码做的, 实际上就是将其中 $2,3,4$ 项替换为只与相对位置 $i{-}j$ 有关的函数 $R(i{-}j)$**:
 
@@ -154,23 +154,23 @@ extra_url: false
 ### SHAW
 > _SHAW 是作者名_
 - **思路**: 去掉 $p_i W_Q$, 并将 $p_j W_K$ 替换为相对位置向量 $R^K_{i,j}$, 其中 $R^K_{i,j}$ 依赖于相对距离 $i-j$:
-    <div align='center'><a href='_formulas/位置编码/f_005.js.tex'><img src='_formulas/位置编码/f_005.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_005.js.tex'><img src='_formulas/Transformer_位置编码/f_005.js.svg'/></a></div>
 
 ### XLNet
 - **思路**: 将 $p_j$ 替换为相对位置向量 $R_{i-j}$, 将 $p_i$ 替换为可训练向量 $u, v$, 其中 $R_{i-j}$ 用正弦位置编码生成:
-    <div align='center'><a href='_formulas/位置编码/f_006.js.tex'><img src='_formulas/位置编码/f_006.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_006.js.tex'><img src='_formulas/Transformer_位置编码/f_006.js.svg'/></a></div>
 
 ### T5
 - **思路**: 去掉 **2, 3** 两项, 并用可训练偏置 $\beta_{i,j}$ 代替 **4** 项, 其中 $\beta_{i,j}$ 通过 **分桶** 映射相对距离后查表得到:
-    <div align='center'><a href='_formulas/位置编码/f_007.js.tex'><img src='_formulas/位置编码/f_007.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_007.js.tex'><img src='_formulas/Transformer_位置编码/f_007.js.svg'/></a></div>
 
 ### DeBERTa
 - **思路**: 去掉 **4** 项, 保留 **2, 3** 两项, 并替换为相对位置向量, 其中 $R_{i,j}$ 依赖相对距离:
-    <div align='center'><a href='_formulas/位置编码/f_008.js.tex'><img src='_formulas/位置编码/f_008.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_008.js.tex'><img src='_formulas/Transformer_位置编码/f_008.js.svg'/></a></div>
 
 ### ALiBi
 - **思路**: 去掉 **2, 3** 两项, 并用 **固定线性偏置** 代替 **4** 项, 其中 $m$ 为第 $h$ 个注意力头的常数斜率:
-    <div align='center'><a href='_formulas/位置编码/f_009.js.tex'><img src='_formulas/位置编码/f_009.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_009.js.tex'><img src='_formulas/Transformer_位置编码/f_009.js.svg'/></a></div>
 
 
 
@@ -193,7 +193,7 @@ extra_url: false
 - **思路/动机**:
     <!-- - 数学上, 如果有一种变换, 使对两个元素 **相乘** 可以表达成它们 **差的形式**, 理论上就达成了目标; -->
     - 从数学上看, 设计目标可以转化为: 寻找一种作用于向量的变换 $f$, 使得对于位置 $m$/$n$ 的向量 $q$/$k$, 即: 
-        <div align='center'><a href='_formulas/位置编码/f_010.js.tex'><img src='_formulas/位置编码/f_010.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_010.js.tex'><img src='_formulas/Transformer_位置编码/f_010.js.svg'/></a></div>
 
     - **二维旋转变换恰好可以满足这一性质**;
         - 在二维平面上, 将一个向量旋转角度 $\theta$, 其模长不变;
@@ -209,7 +209,7 @@ extra_url: false
     - 对于每个位置, 根据其位置索引计算出一个 **旋转角度**;
     - 通过 **旋转矩阵** 对 Q 和 K 向量的每一组二维分量进行旋转变换;
     - 经过此变换后, Q 和 K 的内积结果 **仅依赖于** 它们所对应 token 的 **相对位置**;
-        <div align='center'><a href='_formulas/位置编码/f_011.js.tex'><img src='_formulas/位置编码/f_011.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_011.js.tex'><img src='_formulas/Transformer_位置编码/f_011.js.svg'/></a></div>
 
         > $\text{RoPE}_{\theta}(v, p)$: 对位于 $p$ 的向量 $v$ 旋转 $p \cdot \theta$ 度;
 
@@ -236,7 +236,7 @@ extra_url: false
     ```
 - **旋转角度** 计算:
     - 因 **两两分组**, 对第 $m$ 和 $m+1$ 个 token, 其在第 $i$ 个维度 ($i \in {1,2,..,d/2}$) 上的旋转角度为:
-    <div align='center'><a href='_formulas/位置编码/f_012.js.tex'><img src='_formulas/位置编码/f_012.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_012.js.tex'><img src='_formulas/Transformer_位置编码/f_012.js.svg'/></a></div>
 
     - 其中
         - $m$ 为 token 位置索引;
@@ -388,7 +388,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    <div align='center'><a href='_formulas/位置编码/f_013.js.tex'><img src='_formulas/位置编码/f_013.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_013.js.tex'><img src='_formulas/Transformer_位置编码/f_013.js.svg'/></a></div>
 
     </details>
 
@@ -494,7 +494,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [旋转位置编码](./位置编码.md#旋转位置编码)
+    > [旋转位置编码](#旋转位置编码)
 
     </details>
 
@@ -505,7 +505,7 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - **关键等式**:
-        <div align='center'><a href='_formulas/位置编码/f_014.js.tex'><img src='_formulas/位置编码/f_014.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_014.js.tex'><img src='_formulas/Transformer_位置编码/f_014.js.svg'/></a></div>
 
     - 第一步: 对 Q/K 分别施加与 **绝对位置** 相关的旋转;
     - 第二步: 利用 **旋转矩阵的正交性**, 将两个绝对位置的 **旋转差** 化为单一的 **相对位移旋转**
@@ -520,7 +520,7 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - **旋转角** 公式:
-        <div align='center'><a href='_formulas/位置编码/f_015.js.tex'><img src='_formulas/位置编码/f_015.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_015.js.tex'><img src='_formulas/Transformer_位置编码/f_015.js.svg'/></a></div>
 
         - 其中
             - $p$ 为 token 位置索引;

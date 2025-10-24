@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-18%2000%3A26%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-03 10:26:05
@@ -51,7 +51,7 @@ tags: [llm_prompt]
 - **用法**: 在需要长期记忆的 Prompt 前使用 **"请记住:/记忆保持:"** 等类似提示, 就可以将后续内容保存到 **内存中**:
     - 实际使用中, Copilot 似乎还会抓取历史对话摘要作为 **记忆**;
 - **示例**:
-    <div align='center'><img src='./assets/Copilot-记忆保持.png' /></div>
+    <div align='center'><img src='./_assets/Copilot-记忆保持.png' height='350'/></div>
 
 ## 补充 Prompt
 

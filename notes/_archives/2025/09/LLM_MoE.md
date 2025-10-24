@@ -1,11 +1,12 @@
-MoE 备忘
+MoE 备忘 <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-23%2002%3A03%3A22&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-03 08:53:08
+toc_title: 'MoE (Mixture of Experts)'
 top: false
 draft: false
 hidden_in_recent: true
@@ -14,7 +15,7 @@ tags: [llm]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: MoE*
+> ***Keywords**: MoE (Mixture of Experts, 混合专家模型)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -31,7 +32,7 @@ tags: [llm]
     - [Expert Choice vs Token Choice](#expert-choice-vs-token-choice)
     - [Load Balancing Loss (负载均衡损失)](#load-balancing-loss-负载均衡损失)
     - [Router Z-loss](#router-z-loss)
-- [MoE 的训练 (TODO)](#moe-的训练-todo)
+- [MoE 的训练](#moe-的训练)
 - [参考资料](#参考资料)
 <!--END_SECTION:toc-->
 
@@ -76,7 +77,7 @@ MoE 涉及的几个主要部分:
         - MoE 通过稀疏路由, 将输入动态分配给最相关的 Expert, 从而在保持计算量可控的前提下提升**学习效率**;
     - 这种设计本质上是一种 **人为引入稀疏性的归纳偏置 (Inductive Bias)**;
 
-    <div align='center'><img src='assets/moe-activate.png' height='300'/></div>
+    <div align='center'><img src='_assets/MoE/moe-activate.png' height='300'/></div>
 
     > [OLMoE](https://arxiv.org/abs/2409.02060): 大部分情况下的领域问题不需要用到所有专家
 
@@ -92,7 +93,7 @@ MoE 涉及的几个主要部分:
     - 通过**辅助损失**, 避免专家利用率失衡;
 - **嵌入方式**:
     - MoE 层通常替代 Transformer 中的 FFN 层, 其余结构保持不变;
-        >  <div align='center'><img src='assets/moe-layer.png' height='300'/></div>
+        >  <div align='center'><img src='_assets/MoE/moe-layer.png' height='300'/></div>
 
 <details><summary><b>PyTorch 代码</b></summary>
 
@@ -185,7 +186,7 @@ if __name__ == "__main__":
 
 ### MoE 的优势
 
-> 以下结论来自 [OLMoE](assets/[moe.2025.arxiv.01]%20OLMoE.pdf)
+> 以下结论来自 [OLMoE](_assets/MoE/[moe.2025.arxiv.01]%20OLMoE.pdf)
 - 在所有任务上, **MoE 模型** (OLMoE‑1B‑7B) 都能用**更少的计算量** (FLOPs) 达到**更高的性能**;
 - MoE 在达到稠密模型同等性能时,
     > 基于 **OLMoE‑1B‑7B** vs **OLMo‑1B**, 激活参数量接近, 但 MoE 的总参数量更大;
@@ -193,7 +194,7 @@ if __name__ == "__main__":
     - **训练时间约为 1/2**;
         > 由于 MoE 总参数量较大, 训练时的显存开销更高, 导致每秒处理 token 数低于稠密模型;
 
-> 以下结论来自 [Switch Transformers](assets/[moe.2022.arxiv.01]%20Switch%20Transformers.pdf)
+> 以下结论来自 [Switch Transformers](_assets/MoE/[moe.2022.arxiv.01]%20Switch%20Transformers.pdf)
 - **扩展性** (Scaling properties)
     - 随着专家数量的增加, 模型总参数量显著上升, Test Loss 在不断降低, 但每个样本的计算量 (FLOPs) 保持不变;
     - **结论**: 在相同计算量下, 增加专家数可以降低测试损失, 说明**增加稀疏参数规模能提升模型性能**;
@@ -219,9 +220,9 @@ if __name__ == "__main__":
     - **专家专化提升**: 每个专家聚焦于更窄的知识领域,
     - **组合灵活性增强**: 提升知识获取的精准度与灵活性;
 
-> [OLMoE](assets/[moe.2025.arxiv.01]%20OLMoE.pdf) 证实了 **Fine-grained Expert** 是一个有效的策略, 但是 N 也不是越大越好, 存在上限 (Sweet Point);
+> [OLMoE](_assets/MoE/[moe.2025.arxiv.01]%20OLMoE.pdf) 证实了 **Fine-grained Expert** 是一个有效的策略, 但是 N 也不是越大越好, 存在上限 (Sweet Point);
 
-<div align='center'><img src='assets/DeepSeekMoE-Expert.png' height='300'/></div>
+<div align='center'><img src='_assets/MoE/DeepSeekMoE-Expert.png' height='300'/></div>
 
 ### Shared Expert (共享专家)
 > 共享专家隔离 (Shared Expert Isolation), DeepSeekMoE
@@ -235,7 +236,7 @@ if __name__ == "__main__":
 - **效果**:
     - 公共知识集中存储, 减少冗余; 路由专家聚焦差异化知识, 提升参数效率与专化度;
 
-> [OLMoE](assets/[moe.2025.arxiv.01]%20OLMoE.pdf) 指出 **Shared Expert** 在 N 不是很大时, 会大幅降低组合空间的数量, 导致性能反而降低; 作者认为这是一个人为注入的先验, 或许把 **公共专家** 交给模型自己学习会更好, 因此没有采用这个改动;
+> [OLMoE](_assets/MoE/[moe.2025.arxiv.01]%20OLMoE.pdf) 指出 **Shared Expert** 在 N 不是很大时, 会大幅降低组合空间的数量, 导致性能反而降低; 作者认为这是一个人为注入的先验, 或许把 **公共专家** 交给模型自己学习会更好, 因此没有采用这个改动;
 >> 取 $N = 32, K=4, K_s=1$, 有 $\binom{32}{4} = 35960 \rightarrow \binom{31}{3} = 4495$, 组合数减少了 ~90%;
 
 
@@ -256,7 +257,7 @@ if __name__ == "__main__":
     - **缺点**: 可能导致大量 token 选择同一个专家, 从而降低训练效率;
         - **常见做法**: 配合负载均衡损失, 鼓励 token 在专家间均匀分布;
 - (Decoder-only 架构) **在相同 token 预算下, TC 在所有任务上都优于 EC**;
-    > 以上结论来自 [OLMoE](assets/[moe.2025.arxiv.01]%20OLMoE.pdf)
+    > 以上结论来自 [OLMoE](_assets/MoE/[moe.2025.arxiv.01]%20OLMoE.pdf)
 
 ### Load Balancing Loss (负载均衡损失)
 > 本质是一个鼓励 Router 输出均匀分布的熵正则化项;
@@ -267,7 +268,7 @@ if __name__ == "__main__":
 - **做法**:
     - 引入 **负载均衡损失 (Load Balancing Loss, LBL)**, 鼓励 token 在专家间均匀分布;
     - **公式**:
-        <div align='center'><a href='_formulas/README/f_001.js.tex'><img src='_formulas/README/f_001.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/LLM_MoE/f_001.js.tex'><img src='_formulas/LLM_MoE/f_001.js.svg'/></a></div>
 
     - **说明**:
         - 计算每个专家在一个 batch 中接收到的 token 占比 $f_i$,
@@ -287,13 +288,14 @@ if __name__ == "__main__":
 - **动机**: MoE 中, Router 会根据 logits 决定 token 分配给哪些专家;
     - 如果 logits 过大, 可能在 MoE 层的大规模矩阵乘法中引发数值溢出, 导致训练不稳定;
 - **公式**:
-    <div align='center'><a href='_formulas/README/f_002.js.tex'><img src='_formulas/README/f_002.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/LLM_MoE/f_002.js.tex'><img src='_formulas/LLM_MoE/f_002.js.svg'/></a></div>
 
     - 其中 $\beta = 0.001$ (经验值)
 - **作用**: 惩罚路由器 logits 过大, 提升稳定性;
 
 
-## MoE 的训练 (TODO)
+## MoE 的训练
+> ##### TODO
 
 MoE 的思想早有提出 (1991年), Switch Transformer 也是在 2022 年就出现了, 但是 MoE 真正流行却是在 LLM 出现后 (Mixtral‑8x7B 2024), 其中的主要原因就是 MoE 训练困难;
 

@@ -2,11 +2,11 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-17&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-18%2016%3A07%3A56&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-17 13:38:07
-toc_title: SFT 数据构建
+toc_title: 训练数据构建
 top: false
 draft: true
 hidden_in_recent: true
@@ -16,7 +16,7 @@ tags: [llm_sft]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: 构建高质量SFT数据*
+> ***Keywords**: [SFT](./SFT.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
