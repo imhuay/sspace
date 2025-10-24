@@ -15,7 +15,7 @@ tags: [transformer]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: Transformer*
+> ***Keywords**: [Transformer 改进](./Transformer_改进.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -60,13 +60,7 @@ tags: [transformer]
 
 ---
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: ''
-extra_url: false
--->
 ## 绝对位置编码
-<!--END_SECTION:keyword-->
 
 ### 正弦位置编码
 

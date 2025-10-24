@@ -25,8 +25,9 @@ from typing import ClassVar
 
 import yaml
 from _base import Builder
+from sections.keyword_section import KeywordSection
 from sections.qa_section import QaSection
-from utils import KeywordSection, MarkdownUtils, NoteUtils, TEMP_main_readme_notes_recent_toc, args
+from utils import MarkdownUtils, NoteUtils, TEMP_main_readme_notes_recent_toc, args
 
 # TMP_subject_toc = '''### {title}
 #
@@ -278,31 +279,41 @@ class Note:
     def sort_sub_notes(self):
         self._sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
 
+    def _get_toc_keyword_block(self, _k: KeywordSection):
+        """"""
+        if _k.url:
+            _k_note_path = (self.path.parent / _k.url).resolve()
+            url = _k_note_path.relative_to(args.fp_notes)
+            base_keyword = f'[{_k.name}]({url})'
+            _k_note = path2note[_k_note_path]
+            if _k_note.toc_title_suffix:
+                base_keyword += f'</i>{_k_note.toc_title_suffix}<i>'
+            if _k_note.keywords and _k.with_keywords:
+                base_keyword += ' • ' + _k_note.keywords_suffix
+            return base_keyword
+        elif _k.head_name:
+            return f'[{_k.name}]({self.path_relative_to_note}#{MarkdownUtils.slugify(_k.head_name)})'
+        else:
+            return _k.name
+
+    @property
+    def keywords_suffix(self):
+        return ' • '.join([self._get_toc_keyword_block(k) for k in self.keywords if k.name])
+
     def get_tag_toc_line(self, deep: int) -> str:
         global path2note
         assert path2note
 
-        def _get_toc_line(_k: KeywordSection):
-            if _k.url:
-                _k_note_path = (self.path.parent / _k.url).resolve()
-                _k_note = path2note[_k_note_path]
-                url = _k_note_path.relative_to(args.fp_notes)
-                return f'[{_k.name}]({url})</i>{_k_note.toc_title_suffix}<i>'
-            elif _k.slugify_name:
-                return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
-            else:
-                return _k.name
-
-        rel_path = self.path.relative_to(args.fp_notes)
+        # rel_path = self.path.relative_to(args.fp_notes)
         # title = self.title if self.info.toc_title is None else self.info.toc_title
         # title = self.tag_toc_title
         # title = re.sub(r'\(\s*(.*?)\s*\)', r'( \1 )', self.tag_toc_title)  # 扩号内侧加空格
         title = MarkdownUtils.add_space_in_bracket(self.tag_toc_title)
         # title = f'{title} {self.toc_title_suffix}'
-        toc_line = f'- [{title}]({rel_path}) {self.toc_title_suffix}'
+        toc_line = f'- [{title}]({self.path_relative_to_note}) {self.toc_title_suffix}'
 
         # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
-        keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
+        keywords = ' • '.join([self._get_toc_keyword_block(k) for k in self.keywords if k.name])
         if keywords:
             toc_line += '\n' + '  ' * deep + f'> <i>{keywords}</i><br>'
 
@@ -350,7 +361,7 @@ class Note:
         """
         if self._keywords is None:
             keyword_sections = NoteUtils.findall_section('keyword', self.text)
-            self._keywords = [NoteUtils.get_keyword_section(k) for k in keyword_sections]
+            self._keywords = [KeywordSection(k) for k in keyword_sections]
         return self._keywords
 
     # @property

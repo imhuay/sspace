@@ -4,7 +4,7 @@
   tags:
     牛客:
     剑指Offer:
-      is_hot: true
+      # is_hot: true
     LeetCode:
     剑指Offer2:
     程序员面试金典:
@@ -40,6 +40,7 @@
     线段树/树状数组:
       aliases: [线段树, 树状数组]
     二叉树/树:
+      add_to_collection: true
       aliases: [二叉树, 树, 二叉搜索树]
     栈/队列:
       aliases: [栈, 队列]
@@ -55,7 +56,7 @@
     递归:
       aliases: [回溯, 递归+回溯, 递归回溯, recur]
     动态规划:
-      is_hot: true
+      add_to_collection: true
       aliases: [dp, 记忆化搜索, 递推, dfs2dp]
     排序:
       aliases: [快排, 归并排序]
@@ -76,6 +77,7 @@
     前缀和:
     有限状态自动机:
     双指针:
+      add_to_collection: true
       aliases: [快慢指针, 快慢双指针, 首尾双指针]
     暴力递归与动态规划:
       aliases: [dfs2dp]

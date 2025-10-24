@@ -8,7 +8,7 @@ HuggingFace 离线使用
 top: false
 draft: false
 hidden_in_recent: false
-tags: [dl_frame]
+tags: [dl_tool]
 -->
 
 > ***Keywords**: HuggingFace离线使用*

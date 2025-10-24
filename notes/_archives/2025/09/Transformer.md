@@ -6,7 +6,7 @@ Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(16)")$\c
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
-toc_title: '模型架构'
+toc_title: 'Transformer 基础架构'
 top: false
 draft: false
 hidden_in_recent: false
@@ -25,12 +25,12 @@ tags: [transformer]
 - [背景](#背景)
 - [核心架构](#核心架构)
     - [Encoder-Decoder 框架](#encoder-decoder-框架)
-    - [注意力机制 (Attention Mechanism)](#注意力机制-attention-mechanism)
-    - [多头注意力 (Multi-Head Attention)](#多头注意力-multi-head-attention)
+    - [多头注意力机制 (Multi-Head Attention Mechanism)](#多头注意力机制-multi-head-attention-mechanism)
+        - [注意力机制 (Attention Mechanism)](#注意力机制-attention-mechanism)
+        - [多头注意力 (Multi-Head Attention) 📌](#多头注意力-multi-head-attention-)
     - [逐位置前馈网络 (Position-wise FFN)](#逐位置前馈网络-position-wise-ffn)
     - [残差与归一化](#残差与归一化)
     - [正弦位置编码](#正弦位置编码)
-        - [位置编码的演进](#位置编码的演进)
 - [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
@@ -43,7 +43,13 @@ tags: [transformer]
 
 ## 核心架构
 
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'Encoder-Decoder'
+extra_url: false
+-->
 ### Encoder-Decoder 框架
+<!--END_SECTION:keyword-->
 
 - Encoder 层 = **多头自注意力** → **前馈网络** (每层配 **残差连接** 与 **层归一化**)
 - Decoder 层 = **掩码自注意力** (因果掩码) → **交叉注意力** (Q 来自解码器, K/V 来自编码器) → **前馈网络** (每层配 **残差连接** 与 **层归一化**)
@@ -51,12 +57,22 @@ tags: [transformer]
 **三种形态**:
 - **Encoder-Decoder** (原版, Seq2Seq)
 - **Decoder-only** (Causal LM, 如 GPT)
-- **Encoder-only** (Masked LM, 如 BERT)
+    > 此外还衍生出了 Prefix LM, 由 UniLM 提出;
+- **Encoder-only** (Masked LM 或 Bidirectional LM, 如 BERT)
 
 <div align='center'><img src='./_assets/Transformer-architecture.png' height='400'/></div>
 
+---
 
-### 注意力机制 (Attention Mechanism)
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: '注意力机制 (MHA)'
+extra_url: false
+-->
+### 多头注意力机制 (Multi-Head Attention Mechanism)
+<!--END_SECTION:keyword-->
+
+#### 注意力机制 (Attention Mechanism)
 
 - **动机/思想**:
     > 针对传统序列模型 (如 RNN) 的 **长程依赖建模困难** 和 **无法并行计算** 的瓶颈;
@@ -80,7 +96,9 @@ tags: [transformer]
     - **交叉注意力 (Cross-Attention)**:
         - **Decoder** 使用, $Q$ 来自**解码器**上一输出, $K$, $V$ 来自**编码器**最终输出;
 
-### 多头注意力 (Multi-Head Attention)
+---
+
+#### 多头注意力 (Multi-Head Attention) 📌
 
 - **动机/直觉**:
     - 不同头学习不同关系子空间 (语法、共指、位置相对性等) → 增强了模型的表达能力;
@@ -93,7 +111,15 @@ tags: [transformer]
     - 其中
         <div align='center'><a href='_formulas/Transformer/f_003.js.tex'><img src='_formulas/Transformer/f_003.js.svg'/></a></div>
 
+---
+
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'FFN'
+extra_url: false
+-->
 ### 逐位置前馈网络 (Position-wise FFN)
+<!--END_SECTION:keyword-->
 
 - **作用**:
     - 提供非线性变换, 增加模型的容量 (capacity);
@@ -106,6 +132,7 @@ tags: [transformer]
     - 张量形状变化: `[batch, seq_len, d_model] -> [batch, seq_len, d_ff] -> [batch, seq_len, d_model]`
     - 中间扩展维度 (`d_ff`) 通常是隐藏维度 (`d_model`) 的 **3~4 倍** (原文为 4 倍: `d_model = 512, d_ff = 2048`)
 
+---
 
 ### 残差与归一化
 
@@ -120,9 +147,16 @@ tags: [transformer]
 - **编码端**: 输入 tokens → **令牌嵌入** + **位置编码** → \[Encoder Layer\] × N → **上下文表示**
 - **解码端**: 输出 tokens (shifted right) → **令牌嵌入** + **位置编码** → \[Decoder Layer\] × N → **输出分布** (下一个 token 概率)
 
+---
 
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: '正弦位置编码'
+extra_url: false
+-->
 ### 正弦位置编码
-> Sinusoidal position encoding
+<!--END_SECTION:keyword-->
+> Sinusoidal Position Encoding
 
 - **背景/动机**: 自注意力机制具有 **置换不变/等变性**; 因此需要显式地注入 **位置信息** 来区分不同顺序的序列;
 - **方法**: 为输入嵌入 (Input Embedding) 添加一个包含位置信息的编码
@@ -135,8 +169,7 @@ tags: [transformer]
         - 计算简单;
         - 有一定**外推性**, 可以表示比训练集中更长的序列位置;
 
-#### 位置编码的演进
-> [Transformer 位置编码](./Transformer_位置编码.md)
+> [_位置编码改进_](./Transformer_位置编码.md)
 
 ---
 
@@ -239,8 +272,12 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.5. ✅ 为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?
+#### 1.5. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?
 > • **LLM 的核心能力** 是自回归生成, 与 Decoder 的的工作模式相匹配; <br>
+> • **低秩问题**: Decoder-Only 中的下三角注意力矩阵天然避免了低秩塌缩, 保证了更强的表达能力; <br>
+> • **参数效率**: Encoder-Decoder vs Decoder-Only; <br>
+> • **训练效率**: 单任务 vs 多任务; <br>
+> • **工程优势**: 软硬件生态; <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
@@ -248,18 +285,27 @@ use_section_number: true
     - **任务匹配**
         - LLM 的核心能力是 **"给定上下文, 预测下一个 token"**, 这与 Decoder 的工作模式匹配;
         - Encoder-Decoder 架构是为 **Seq2Seq** 任务设计的 —— **先对输入进行编码, 再解码到输出** —— 对于单纯的生成任务, Encoder 部分可能并非必要, 实践中这种更复杂的架构也没有表现出优势;
-    - **效率优势**:
-        - **参数效率**
-            - Decoder-Only 中所有参数专注于核心任务; Encoder-Decoder 中参数分散在编码和解码两部分;
-            - **在给定参数量预算下**, 将所有参数都投入到 Decoder 的上限更高 —— 更符合 **Scaling Laws**;
-            - 在海量数据上训练后, Decoder-Only 模型展现出强大的 **涌现能力**; 在零样本泛化上优于 Encoder-Decoder;
-                > **Causal Decoder** 严格遵守从左到右, 只看历史, 不看未来 (包括 Prompt 部分)
-        - **训练效率**
-            - **Decoder-Only 的训练目标只有一个**: Next Token 预测;
-            - Encoder-Decoder 往往是**多任务联合训练**, 更容易出现训练不稳定的情况, 需要平衡各任务的 Loss;
-        - **工程优势**
-            - 所有主流大模型 (GPT, LLaMA等) 都采用此架构, 整个软硬件生态都针对其进行了极度优化;
+    - **参数效率**
+        - Decoder-Only 中所有参数专注于核心任务; Encoder-Decoder 中参数分散在编码和解码两部分;
+        - **在给定参数量预算下**, 将所有参数都投入到 Decoder 的上限更高 —— 更符合 **Scaling Laws**;
+        - 在海量数据上训练后, Decoder-Only 模型展现出强大的 **涌现能力**; 在零样本泛化上优于 Encoder-Decoder;
+            > **Causal Decoder** 严格遵守从左到右, 只看历史, 不看未来 (包括 Prompt 部分)
+    - **训练效率**
+        - **Decoder-Only 的训练目标只有一个**: Next Token 预测;
+        - Encoder-Decoder 往往是**多任务联合训练**, 更容易出现训练不稳定的情况, 需要平衡各任务的 Loss;
+    - **工程优势**
+        - 所有主流大模型 (GPT, LLaMA等) 都采用此架构, 整个软硬件生态都针对其进行了极度优化;
+    - **低秩问题**:
+        - 双向注意力在深层堆叠时更容易出现 "近似低秩", 导致表达能力受限;
+            > 观察注意力矩阵: $\displaystyle\text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)$
+            > - $QK^T$ 的秩最多为 $\min(n,d)$, 而通常 $n \gg d$, 所以天然存在低秩倾向;
+            > - softmax 虽然可能 "升秩", 但奇异值分布往往极度不均衡 → **有效秩** 下降 → 信息交互不足;
+        - Decoder-only 的 Attention 矩阵是一个 **三角阵**, 即使在深层堆叠中也不会出现严格低秩塌缩;
+            > - 下三角矩阵性质: 行列式 = 对角线元素之积; 
+            > - softmax 保证对角线元素始终 $> 0$ → 行列式非零 → 矩阵严格满秩;
+            > - 奇异值分布更均匀, 有效秩下降速度慢, 保持较强的表达能力;
     - **参考资料**
+        - [为什么现在的LLM都是Decoder-only的架构？ - 科学空间|Scientific Spaces](https://kexue.fm/archives/9529)
         - [解码器仅架构: 探究大语言模型 (LLM) 采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
         - [为什么当前的大型语言模型 (LLMs) 普遍采用 "仅解码器" (Decoder-only) 架构? _decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
         - [面试官问我: 大模型为何都用 Decoder only 架构? _大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
@@ -288,10 +334,22 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.8. ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?
+#### 1.8. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?
 > • **动机**: 将特征空间切分成多个独立的低维子空间 → 学习不同的注意力分布/不同的依赖关系; <br>
+> • **本质**: **Multi-Head 的本质是 _ensemble_ (集成学习)**; <br>
 > • **实现**: 将 Q/K/V 投影到多个低维子空间 → 每个头独立执行 Attention → 将结果拼接后再整体投影; <br>
+>> 具体实现时会利用向量操作进行简化: `[B, L, d_model] → [B, L, H*d_k] → [B, H, L, d_k]`
 
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+
+    - **独立视角**: 每个 head 就像一个弱学习器, 专注于不同的模式 (语法、语义、长程依赖等);
+    - **并行学习**: 这些 head 是并行计算的, 而不是顺序依赖, 类似于 Bagging 中的多个树;
+    - **结果融合**: 拼接 + 线性变换的过程, 相当于把多个子模型的输出集成成一个更强的表示;
+    - **泛化能力**: 就像 ensemble 能减少单一模型的偏差, 多头注意力也能避免单一注意力模式的局限;
+
+    > [为什么Transformer 需要进行 Multi-head Attention？ - 知乎 | 香侬科技 | stone 用户的评论](https://www.zhihu.com/question/341222779/answer/814111138)
+
+    </details>
 -   <details><summary><b> 代码演示 ⬇️ </b></summary>
 
     > 实际并不会真的独立执行多个 Attention, 而是利用 **张量操作和广播机制** 一次完成;

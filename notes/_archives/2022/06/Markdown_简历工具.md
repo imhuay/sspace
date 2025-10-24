@@ -5,7 +5,7 @@ Markdown 简历工具
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-09-30%2020%3A54%3A40&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
-top: true
+top: false
 draft: false
 hidden_in_recent: false
 level: 2

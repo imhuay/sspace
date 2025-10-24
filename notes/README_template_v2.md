@@ -88,9 +88,9 @@ Notes
 {{dl_model}}
 
 <!-- omit in toc -->
-#### 框架
+#### 工具
 
-{{dl_frame}}
+{{dl_tool}}
 
 <!-- omit in toc -->
 #### 表示学习

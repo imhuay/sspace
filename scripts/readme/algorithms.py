@@ -31,6 +31,7 @@ class Tag:
     name: str
     type: str
     is_hot: bool = False
+    add_to_collection: bool = False
     aliases: list[str] = field(default_factory=list, hash=False)
     notes: list[str] = field(default_factory=list, hash=False)
     _problems: list[Problem] = field(default_factory=list, hash=False)
@@ -108,6 +109,8 @@ class TagInfo:
     type2tags: dict[str, TagType] = dict()
     hot_tags: list[Tag] = []
 
+    TYPE_COLLECTION: str = 'collection'
+
     def __init__(self):
         self._fp_tag_info = args.fp_algorithms_tag_info
 
@@ -131,6 +134,8 @@ class TagInfo:
                 self.type2tags[tag_type].tags.append(tag)
                 if tag.is_hot:
                     self.hot_tags.append(tag)
+                if tag.add_to_collection:
+                    self.type2tags[self.TYPE_COLLECTION].tags.append(tag)
                 for alias in tag.aliases:
                     self.alias2tags[NoteUtils.norm(alias)].append(tag)
 
@@ -562,6 +567,8 @@ class AlgorithmsBuilder(Builder):
     def head(self):
         return f'## {self.title}'
 
+    COLL_TOP_LIMIT: int = 3
+
     def build(self):
         with self._fp_algo_readme.open(encoding='utf8') as f:
             txt = f.read()
@@ -574,7 +581,17 @@ class AlgorithmsBuilder(Builder):
 
         # tags toc
         for tag_type, info in self.type2tags.items():
-            txt = NoteUtils.replace_section_content(tag_type, txt, info.toc)
+            toc = info.toc
+            if tag_type == TagInfo.TYPE_COLLECTION:
+                lns = toc.split('\n')
+                hot_lns = self.hot_toc.split('\n')
+                coll_lines = [ln for ln in lns if ln not in hot_lns]
+                coll_top3 = '\n'.join(coll_lines[: self.COLL_TOP_LIMIT])
+                coll_left = '\n'.join(coll_lines[self.COLL_TOP_LIMIT :])
+                txt = NoteUtils.replace_section_content(tag_type, txt, coll_top3)
+                txt = NoteUtils.replace_section_content(f'{tag_type}_more', txt, coll_left)
+            else:
+                txt = NoteUtils.replace_section_content(tag_type, txt, toc)
 
         # problems toc
         txt = NoteUtils.replace_section_content('problems', txt, self.problems_toc)

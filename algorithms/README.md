@@ -5,39 +5,7 @@
 
 <table>  <!-- invalid: frame="void", style="width: 100%; border: none; background: none" -->
 <tr>
-<td colspan="2" valign="top" width="1000">
-
-### Hot 🔥
-<!--START_SECTION:hot-->
-- [剑指Offer (75)](#剑指offer)
-- [动态规划 (54)](#动态规划)
-- [经典 (38)](#经典)
-- [LeetCode Hot 100 (26)](#leetcode-hot-100)
-- [热门 (17)](#热门)
-<!--END_SECTION:hot-->
-
-</td>
-<td colspan="2" rowspan="3" valign="top" width="1000">
-
-### Collections 🗂️
-<!--START_SECTION:collection-->
-- [牛客 (131)](#牛客)
-- [LeetCode (81)](#leetcode)
-- [剑指Offer (75)](#剑指offer)
-- [经典 (38)](#经典)
-- [LeetCode Hot 100 (26)](#leetcode-hot-100)
-- [热门 (17)](#热门)
-- [剑指Offer2 (3)](#剑指offer2)
-- [程序员面试金典 (2)](#程序员面试金典)
-- [牛客-华为机试 (1)](#牛客-华为机试)
-- [网络收集 (0)](#网络收集)
-<!--END_SECTION:collection-->
-
-</td>
-</tr>
-<tr></tr>
-<tr>
-<td colspan="2" valign="top">
+<td valign="top" width="1000">
 
 ### Level 📈
 <!--START_SECTION:level-->
@@ -46,8 +14,45 @@
 - [困难 (36)](#困难)
 <!--END_SECTION:level-->
 
+
+</td>
+<td valign="top" width="1000">
+
+### Hot 🔥
+<!--START_SECTION:hot-->
+- [经典 (38)](#经典)
+- [LeetCode Hot 100 (26)](#leetcode-hot-100)
+- [热门 (17)](#热门)
+<!--END_SECTION:hot-->
+
+</td>
+<td valign="top" width="1000">
+
+### Collections 🗂️
+
+<!--START_SECTION:collection-->
+- [牛客 (131)](#牛客)
+- [LeetCode (81)](#leetcode)
+- [剑指Offer (75)](#剑指offer)
+<!--END_SECTION:collection-->
+
+<details><summary><b> More 🗃️ </b></summary>
+
+<!--START_SECTION:collection_more-->
+- [动态规划 (54)](#动态规划)
+- [二叉树/树 (48)](#二叉树树)
+- [双指针 (25)](#双指针)
+- [剑指Offer2 (3)](#剑指offer2)
+- [程序员面试金典 (2)](#程序员面试金典)
+- [牛客-华为机试 (1)](#牛客-华为机试)
+- [网络收集 (0)](#网络收集)
+<!--END_SECTION:collection_more-->
+
+</details>
+
 </td>
 </tr>
+
 </table>
 
 ## Algorithm Topics

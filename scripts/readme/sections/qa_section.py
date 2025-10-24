@@ -55,7 +55,7 @@ class TocLine:
 
 
 @dataclass
-class QaInfo:
+class QaSectionInfo:
     subject: str = ''
     subject_level: int = 0
     topic: str = ''
@@ -75,7 +75,7 @@ class QaSection:
     toc_lines: list[TocLine] = field(default_factory=list)
     max_section_level: int = 4
     min_section_level: int = 2
-    info: QaInfo = field(default_factory=QaInfo)
+    info: QaSectionInfo = field(default_factory=QaSectionInfo)
     _tokens: list[Token] = field(default_factory=list)
 
     def __post_init__(self):
@@ -122,7 +122,7 @@ class QaSection:
                 info_str = NoteUtils.get_annotation(self._INFO_KEY, t.content)
                 info_str = '\n'.join([ln.lstrip() for ln in info_str.split('\n')]) if info_str else ''
                 _info = yaml.safe_load(info_str) if info_str else {}
-                self.info = QaInfo(**_info)
+                self.info = QaSectionInfo(**_info)
                 break
 
     def _parse_toc_lines(self):

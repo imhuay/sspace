@@ -404,6 +404,7 @@ extra_url: false
 <!--keyword_info
 name: 'RL 基础'
 extra_url: true
+with_keywords: false
 -->
 - **强化学习基础**
     > _[RL 基础 (基于 LLM 背景)](./RLHF_强化学习基础.md)_
