@@ -1,8 +1,8 @@
-LoRA (Low-Rank Adaptation, `ˈlɔːrə`)
+LoRA (Low-Rank Adaptation, `ˈlɔːrə`) <!-- suffix --> [📋](#qa "面试问题整理(10)")$\color{Brown}^{10}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2018%3A18%3A57&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-15 02:29:31
@@ -147,6 +147,18 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
+- [1. 🏷️ LoRA 相关](#1-️-lora-相关)
+    - [1.1. ✅ 什么是 LoRA? 它解决了什么问题? 适用什么场景?](#11--什么是-lora-它解决了什么问题-适用什么场景)
+    - [1.2. ✅ 与全参微调相比, LoRA 的 **表达上限** 如何?](#12--与全参微调相比-lora-的-表达上限-如何)
+    - [1.3. ✅ LoRA 的参数量如何计算? 与原参数量的比例?](#13--lora-的参数量如何计算-与原参数量的比例)
+    - [1.4. ✅ LoRA 一般作用于哪些层?](#14--lora-一般作用于哪些层)
+    - [1.5. 💡 写出 LoRA 的 **数学形式**, 并解释各参数的含义与约束](#15--写出-lora-的-数学形式-并解释各参数的含义与约束)
+    - [1.6. ✅ 为何需要 **缩放项** `α/r`? 去掉会怎样?](#16--为何需要-缩放项-αr-去掉会怎样)
+    - [1.7. ✅ 为什么常将 `A` 正态初始化, `B` 初始化为 `0`? 如果不这么做会怎么样?](#17--为什么常将-a-正态初始化-b-初始化为-0-如果不这么做会怎么样)
+    - [1.8. ✅ 如何选择 `r` (Rank)? 不同任务/数据规模下的建议是什么?](#18--如何选择-r-rank-不同任务数据规模下的建议是什么)
+    - [1.9. 💡 如果希望逼近全参微调效果, 除了增大 r 还能做什么?](#19--如果希望逼近全参微调效果-除了增大-r-还能做什么)
+- [2. 🏷️ LoRA 的变体](#2-️-lora-的变体)
+    - [2.1. ✅ QLoRA/AdaLoRA/DoRA 的核心思路是什么?](#21--qloraadaloradora-的核心思路是什么)
 <!--END_SECTION:qa_toc-->
 
 ---
@@ -238,5 +250,4 @@ use_section_number: true
     - **DoRA**: 将原始权重分解为幅度与方向 ($W_0 = m \frac{V}{\|V\|_c}$), 幅度由独立可训练参数控制 ($m$), LoRA 仅作用于方向部分的更新 ($\Delta V$), 避免低秩更新浪费在幅度缩放上;
 
     </details>
-
 <!--END_SECTION:qa-->

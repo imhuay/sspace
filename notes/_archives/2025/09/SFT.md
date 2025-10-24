@@ -1,8 +1,8 @@
-大模型微调
+大模型微调 <!-- suffix --> [📋](#qa "面试问题整理(9)")$\color{Brown}^{9}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-13&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2018%3A18%3A57&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-13 13:43:39
@@ -105,10 +105,10 @@ extra_url: true
 
 - **基本思路**:
     - 对需要微调的 **线性层** (如 `nn.Linear`), 冻结其原始权重 $W \in \mathbb{R}^{d_{\text{out}} \times d_{\text{in}}}$, 引入一个 **低秩更新矩阵** $\Delta W$, 用两个小矩阵参数化:
-        <div align='center'><a href='_formulas/SFT_PEFT/f_001.js.tex'><img src='_formulas/SFT_PEFT/f_001.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/SFT/f_001.js.tex'><img src='_formulas/SFT/f_001.js.svg'/></a></div>
 
     - **前向过程** (**旁路相加**):
-        <div align='center'><a href='_formulas/SFT_PEFT/f_002.js.tex'><img src='_formulas/SFT_PEFT/f_002.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/SFT/f_002.js.tex'><img src='_formulas/SFT/f_002.js.svg'/></a></div>
 
         - 缩放因子 $\dfrac{\alpha}{r}$ 控制 $\Delta W$ 的幅度, 避免训练初期过大扰动;
 - **代码 Demo**:
@@ -164,24 +164,35 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
+- [1. 🏷️ 基础概念](#1-️-基础概念)
+    - [1.1. ✅ 什么是 **大模型微调**? 为什么需要 **微调**?](#11--什么是-大模型微调-为什么需要-微调)
+    - [1.2. ✅ **微调** 与 **预训练** 的区别](#12--微调-与-预训练-的区别)
+    - [1.3. ✅ 说明大模型微调的 **一般流程**](#13--说明大模型微调的-一般流程)
+    - [1.4. ✅ 什么是 **灾难性遗忘**? 如何缓解?](#14--什么是-灾难性遗忘-如何缓解)
+    - [1.5. ✅ 如何设计高质量 SFT 数据? 如何保证 **覆盖率**/**多样性**/**一致性**?](#15--如何设计高质量-sft-数据-如何保证-覆盖率多样性一致性)
+    - [1.6. ❓ 有哪些提高 **训练稳定性** 的技巧?](#16--有哪些提高-训练稳定性-的技巧)
+- [2. 🏷️ PEFT](#2-️-peft)
+    - [2.1. ✅ 比较 **全量微调** 和 **参数高效微调 (PEFT)**](#21--比较-全量微调-和-参数高效微调-peft)
+    - [2.2. ✅ 介绍常见的 **PEFT** 技术](#22--介绍常见的-peft-技术)
+    - [2.3. 💡 比较 **LoRA** / **Prefix Tuning** / **P-Tuning V2** / **Adapter** / **BitFit**](#23--比较-lora--prefix-tuning--p-tuning-v2--adapter--bitfit)
 <!--END_SECTION:qa_toc-->
 
 ---
 
 <!-- omit in toc -->
-### 🏷️ 基础概念
+### 1. 🏷️ 基础概念
 
 <!-- omit in toc -->
-#### ✅ 什么是 **大模型微调**? 为什么需要 **微调**?
+#### 1.1. ✅ 什么是 **大模型微调**? 为什么需要 **微调**?
 > • 大模型微调是利用 **特定数据** 对 **通用预训练模型** 进行 **再训练**, 以高效地让其 **适配下游任务** 的关键技术; <br>
 > • **优势**: 高适配, 低成本, 高效率 <br>
 
 <!-- omit in toc -->
-#### ✅ **微调** 与 **预训练** 的区别
+#### 1.2. ✅ **微调** 与 **预训练** 的区别
 > • 训练目标不同, 数据规模不同, 训练成本不同, 模型能力侧重不同 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     | 维度 | 预训练 | 微调 |
     | --- | --- | --- |
     | 训练目标不同 | 学习通用语言模式与知识表示, 构建广泛的基础能力 | 适配特定任务或领域, 提升在该场景下的性能 |
@@ -189,16 +200,16 @@ use_section_number: true
     | 训练成本不同 | 需要极高的计算资源与时间成本 | 在已有模型基础上进行, 成本显著降低 |
     | 模型能力侧重不同 | 获得广泛的通用能力 | 强化特定任务能力, 可能牺牲部分通用性 |
 
-    
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 说明大模型微调的 **一般流程**
+#### 1.3. ✅ 说明大模型微调的 **一般流程**
 > • 1.需求分析, 2.数据准备, 3.模型选择, 4.微调策略, 5.训练与监控, 6.模型评估, 7.部署与持续优化 <br>
 >> 大模型把所有任务统一到了 **生成任务**, 因此确定 **输入输出形式** 比 **任务类型** 更重要;
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     1\. **需求分析**: 确定 **输入输出** 形式, 评价指标; <br>
     2\. **数据准备/预处理**: 收集高质量数据, 清洗, 去噪, 格式化; 数据集划分; <br>
     3\. **模型选择**: 考虑因素包括 **模型能力** (通用/领域), **参数量** 和 **计算资源**; <br>
@@ -210,12 +221,12 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### ✅ 什么是 **灾难性遗忘**? 如何缓解?
+#### 1.4. ✅ 什么是 **灾难性遗忘**? 如何缓解?
 > • **含义**: 模型在新数据上学习时, 覆盖了之前学到的知识; <br>
 > • **缓解方法**: PEFT, 混合训练数据, 更小的学习率, 正则化约束, 参数隔离, 渐进式微调 <br>
 
 <!-- omit in toc -->
-#### ✅ 如何设计高质量 SFT 数据? 如何保证 **覆盖率**/**多样性**/**一致性**?
+#### 1.5. ✅ 如何设计高质量 SFT 数据? 如何保证 **覆盖率**/**多样性**/**一致性**?
 > • **高质量**: 多样性, 覆盖率; 一致性; <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -235,20 +246,20 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### ❓ 有哪些提高 **训练稳定性** 的技巧?
+#### 1.6. ❓ 有哪些提高 **训练稳定性** 的技巧?
 > • 数据质量, 模型结构, 初始化策略, 优化器, 训练策略, 调试与监控 <br>
 
 
 <!-- omit in toc -->
-### 🏷️ PEFT
+### 2. 🏷️ PEFT
 
 <!-- omit in toc -->
-#### ✅ 比较 **全量微调** 和 **参数高效微调 (PEFT)**
+#### 2.1. ✅ 比较 **全量微调** 和 **参数高效微调 (PEFT)**
 > • 参数更新范围, 资源成本/训练速度, 数据需求, 灾难性遗忘, 适用场景 <br>
 > • **总结**: 全量微调追求极致性能但成本高, PEFT 以低成本实现高适配性并保留通用能力 (减轻灾难性遗忘); <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     | 对比维度 | 全量微调 | 参数高效微调 (PEFT) |
     |---|---|---|
     | **参数更新范围** | **全部参数** | **少量新增或选定的参数** |
@@ -260,25 +271,24 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### ✅ 介绍常见的 **PEFT** 技术
+#### 2.2. ✅ 介绍常见的 **PEFT** 技术
 > • LoRA/QLoRA, Adapter, Prefix/Prompt Tuning, P-Tuning V1/V2, BitFit <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     > [PEFT](#peft)
-    
+
     </details>
 
 <!-- omit in toc -->
-#### 💡 比较 **LoRA** / **Prefix Tuning** / **P-Tuning V2** / **Adapter** / **BitFit**
+#### 2.3. 💡 比较 **LoRA** / **Prefix Tuning** / **P-Tuning V2** / **Adapter** / **BitFit**
 > • 几个关键维度: 表示能力, 推理延迟, 可训练参数量 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **表示能力**: Adapter ≥ LoRA ≥ P‑Tuning V2 > Prefix Tuning > BitFit
     - **推理延迟**: LoRA ≈ BitFit < P‑Tuning V2 ≈ Prefix Tuning < Adapter
     - **参数量**: BitFit < P‑Tuning V2 ≈ Prefix Tuning < LoRA < Adapter
-    
-    </details>
 
+    </details>
 <!--END_SECTION:qa-->
