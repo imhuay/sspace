@@ -26,9 +26,8 @@ tags: [llm_sft]
 - [背景](#背景)
 - [覆盖率](#覆盖率)
     - [**构建数据类别体系**](#构建数据类别体系)
-- [多样性/复杂性](#多样性复杂性)
+- [多样性](#多样性)
 - [一致性](#一致性)
-- [复杂性](#复杂性)
 <!--END_SECTION:toc-->
 
 ---
@@ -36,10 +35,16 @@ tags: [llm_sft]
 ## 背景
 
 - **高质量数据是决定模型微调性能上限的关键**
-- **核心维度**: 覆盖率, 多样性/复杂性, 一致性;
-- **其他维度**: 准确性, 流畅性, 安全性, 时效性;
+- **核心维度**: 覆盖率, 多样性, 一致性;
+- **其他维度**: 准确性, 复杂度, 流畅性, 安全性, 时效性;
 
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: ''
+extra_url: false
+-->
 ## 覆盖率
+<!--END_SECTION:keyword-->
 
 - **一般流程**:
     1. 构建数据类别体系;
@@ -109,7 +114,13 @@ tags: [llm_sft]
 
     </details>
 
-## 多样性/复杂性
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: ''
+extra_url: false
+-->
+## 多样性
+<!--END_SECTION:keyword-->
 
 - **指令多样性**
     - 模板参数化;
@@ -131,14 +142,16 @@ tags: [llm_sft]
 - **任务复杂性**
     - 单一任务, 组合任务;
 
-
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: ''
+extra_url: false
+-->
 ## 一致性
+<!--END_SECTION:keyword-->
 
 - **多源标注**
     - 多人标注
     - 多 Agent 标注
     - 多 Prompt 标注
-
-
-## 复杂性
 

@@ -38,7 +38,7 @@ tags: [llm_sft]
         - [Bradley–Terry 模型介绍](#bradleyterry-模型介绍)
     - [3. **强化学习**](#3-强化学习)
         - [**策略梯度算法**](#策略梯度算法)
-- [面试问题整理](#面试问题整理)
+- [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
 ---
@@ -443,11 +443,164 @@ extra_url: true
 
 ---
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: 'QA'
-extra_url: true
+<!--START_SECTION:qa-->
+<!--qa_info
+subject: 'RLHF'
+subject_level: 0
+topic: '基础'
+topic_level: 2
+with_section_title: true
+use_section_number: true
 -->
-## 面试问题整理
-> _[RLHF 面试问题整理](./RLHF_QA.md)_
-<!--END_SECTION:keyword-->
+## Q&A
+
+<!--START_SECTION:qa_toc-->
+<!--END_SECTION:qa_toc-->
+
+---
+
+<!-- omit in toc -->
+### 🏷️ 基础概念
+
+<!-- omit in toc -->
+#### ✅ 什么是 RLHF? 它的背景/动机是什么? 相比 SFT 的优势在哪里? 怎么实现的?
+> • RLHF (Reinforcement Learning from Human Feedback, 基于人类反馈的强化学习), 是一种通过结合 **人类偏好** 与 **强化学习** 来 **微调大语言模型** 的技术; <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    > [RLHF 基础概念](#基础概念)
+    
+    </details>
+
+<!-- omit in toc -->
+#### ⬆️ 什么是 **对齐**? RLHF 是如何实现大模型与人类意图对齐的?
+> • **对齐**: 让 AI 模型的目标与 **人类偏好** (价值观和意图) 保持一致; <br>
+> • 通过 **奖励模型** 将人类偏好作为优化目标, 使用 **强化学习** 驱动模型行为向这个目标靠近, 从而实现对齐; <br>
+
+<!-- omit in toc -->
+#### ⬆️ 为什么说 RLHF 比 SFT 具有 **更大的策略搜索空间**?
+> • **SFT**: 拟合示范数据, 搜索空间被限制在其附近; <br>
+> • **RLHF**: 对齐人类偏好, 鼓励模型探索高奖励回答; <br>
+
+<!-- omit in toc -->
+#### ⬆️ 为什么说 RLHF 比 SFT 更容易 **对齐抽象偏好**?
+> • **SFT**: 基于示范数据, 抽象偏好的数据难以构造; <br>
+> • **RLHF**: 基于奖励模型, 将抽象偏好转化为 **比较信号**; <br>
+
+<!-- omit in toc -->
+#### ✅ RLHF 的一般流程是什么? 每一步的目的? 分别解决什么问题?
+> • 1.SFT (构建基础能力) → 2.奖励模型 (量化人类偏好) → 3.策略优化/RL (对齐人类偏好) <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    > [RLHF 核心流程](#实施流程)
+    
+    </details>
+
+<!-- omit in toc -->
+#### ⬆️ 指出每阶段的 **输入**, **输出** 与 **失败模式**
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    > [RLHF 的 3 个阶段](#实施流程)
+    
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 若 SFT 质量不高, RLHF 会发生什么连锁反应?
+> • 基础能力弱 → 奖励模型失真 → RL 优化失败; <br>
+
+<!-- omit in toc -->
+#### ✅ 什么是 **奖励黑客 (Reward Hacking)**/**奖励过度**/**模式坍缩**?
+> • **奖励黑客**: 发现奖励模型漏洞, 使用奖励模型偏好的回答获得高分; <br>
+> • **奖励过度** (过拟合): 在奖励模型上得分越来越高, 但实际输出质量下降; <br>
+> • **模式坍缩**: 输出模式单一, 失去多样性; <br>
+>> 本质是 **奖励模型失真, RL 过度依赖奖励模型**;
+
+
+<!-- omit in toc -->
+### 🏷️ 奖励模型
+
+<!-- omit in toc -->
+#### ✅ 详细说明 **奖励模型** 是如何训练的? 包括 **训练数据/模型结构/损失函数** 等方面
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **训练数据**: $(x, y_j, y_k, l_{y_j \succ y_k})$
+    - **模型结构**: SFT 模型 (移除 `lm_head` 层) + sigmoid 线性层
+    - **损失函数**: $L = -\log \  \sigma (r_j - r_k)$
+    > [奖励模型训练流程](RLHF.md#奖励模型训练流程)
+    
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 介绍一下 Bradley-Terry (BT) 模型, 它是如何应用到奖励模型中的?
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - Bradley-Terry 模型是一种通过 **成对比较** 数据来估计实体强度的概率模型;
+        - 通过一系列成对的比较结果 ($x_j \succ x_k$), 为每个对象估算出一个标量分数, 代表其强度;
+    - 在 RLHF 中, 我们给出对同一 Prompt 下两个不同回答的偏好标注结果, 将 BT 模型应用到损失函数中, 来训练奖励模型;
+    
+    </details>
+
+<!-- omit in toc -->
+### 🏷️ 价值模型
+
+<!-- omit in toc -->
+#### ✅ 价值模型是如何训练的? 
+> • 在轨迹采样过程中收集奖励信号, 然后在策略优化时与策略模型一起训练; <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    > [PPO 训练过程](./策略梯度算法.md#训练过程-轨迹采样--策略更新) 
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 PPO 中的 **价值模型** 存在什么问题?
+> • 1.奖励稀疏; 2.资源消耗 <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **奖励稀疏/奖励分配**: 
+        - LLM 场景下, 奖励模型通常只在 **序列末尾** 给出一个整体分数;
+            - 这意味着中间每个 token 没有直接的监督信号;
+            - 因此价值函数很难学到逐 token 的精确信号, 导致 baseline 不准确, 进而影响 PPO 的稳定性;
+    - **资源消耗**:
+        - 在 PPO 中, 价值函数通常是一个与策略模型同规模的网络;
+        - 对于 7B, 13B 甚至更大的模型, 这意味着需要额外维护这样一个庞大的模型, 显著增加存储和计算成本.
+        
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?
+> • RLHF 场景中 **奖励模型** 固定且基于旧策略训练, 导致实际优化过程可能带有 off-policy 的性质. <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    > [PPO is off-policy in RLHF(LLM)? : r/reinforcementlearning](https://www.reddit.com/r/reinforcementlearning/comments/14p1zaj/ppo_is_offpolicy_in_rlhfllm/)
+    
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么离线算法 (如 DPO) 不需要价值模型?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+<!--END_SECTION:qa-->

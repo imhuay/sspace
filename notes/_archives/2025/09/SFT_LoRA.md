@@ -11,12 +11,12 @@ top: false
 draft: false
 hidden_in_recent: true
 section_number: false
-level: 0
+level: 2
 tags: [llm_sft]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: [PEFT](./SFT_PEFT.md)*
+> ***Keywords**: [SFT](./SFT.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -31,7 +31,7 @@ tags: [llm_sft]
     - [QLoRA](#qlora)
     - [AdaLoRA](#adalora)
     - [DoLA](#dola)
-- [面试问题整理](#面试问题整理)
+- [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
 ---
@@ -133,11 +133,110 @@ tags: [llm_sft]
 
 > [PDF](./_assets/DoRA.pdf)
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: 'QA'
-extra_url: true
+---
+
+<!--START_SECTION:qa-->
+<!--qa_info
+subject: 'SFT · PEFT'
+subject_level: 0
+topic: 'LoRA'
+topic_level: 0
+with_section_title: true
+use_section_number: true
 -->
-## 面试问题整理
-> [LoRA 面试问题整理](./SFT_PEFT.md#qa)
-<!--END_SECTION:keyword-->
+## Q&A
+
+<!--START_SECTION:qa_toc-->
+<!--END_SECTION:qa_toc-->
+
+---
+
+<!-- omit in toc -->
+### 1. 🏷️ LoRA 相关
+
+<!-- omit in toc -->
+#### 1.1. ✅ 什么是 LoRA? 它解决了什么问题? 适用什么场景?
+> • **LoRA** 是一种当前非常流行的 **参数高效微调 (PEFT)** 技术; <br>
+> • **优势/解决的问题**: 全参数微调成本高, 多任务存储冗余, 部署灵活性不足, 减少灾难性遗忘; <br>
+> • **适用场景**: 资源受限, 快速迭代, 多任务部署, 避免灾难性遗忘; <br>
+
+<!-- omit in toc -->
+#### 1.2. ✅ 与全参微调相比, LoRA 的 **表达上限** 如何?
+> • **表达上限**: LoRA 的权重更新被约束在了一个 **低秩子空间** 内, 其复杂性受限于 **秩 ($r$)** 的大小; <br>
+> • 对于 **与预训练分布差异大** 的任务, 表达上限可能会低于全参微调; <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+
+    - 从数学角度看, 当 $r$ 设置的足够大时, 模型完全有可能在新任务上重塑特征空间 (虽然这与 LoRA 设计的初衷不符);
+
+    </details>
+
+<!-- omit in toc -->
+#### 1.3. ✅ LoRA 的参数量如何计算? 与原参数量的比例?
+> • **参数量**: $r(d_{in}+d_{out})$; **参数比**: $\dfrac{r(d_{in}+d_{out})}{d_{in} \times d_{out}}$; 通常能压缩到百分之一到千分之一的量级; <br>
+
+-   <details><summary><b> 显存减少量计算 ⬇️ </b></summary>
+
+    - **计算公式**:
+        - 显存占用 (字节) = `参数量 * 字节数 (byte)`
+    - 主流精度的字节数:
+        - `FP32 (32-bit)`: `4 bytes`
+        - `FP16 (16-bit)`: `2 bytes`
+        - `BF16 (16-bit)`: `2 bytes`
+        - `INT8 (8-bit)`: `1 byte`
+        - `INT4 (4-bit)`: `0.5 byte5`
+            - 相比 `FP32` 降低 8 倍,
+            - 相比 `FP16/BF16` 降低 4 倍,
+
+    </details>
+
+<!-- omit in toc -->
+#### 1.4. ✅ LoRA 一般作用于哪些层?
+> • 大部分线性层 `nn.Linear`: **1.** 注意力层中的 $W_q, W_k, W_v, W_o$; **2.** MLP 层中的 $W_{up}, W_{down}, W_{gate}$<br>
+
+<!-- omit in toc -->
+#### 1.5. 💡 写出 LoRA 的 **数学形式**, 并解释各参数的含义与约束
+> • $h = Wx + \dfrac{\alpha}{r}B(Ax)$ <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+
+    > [LoRA](./SFT_LoRA.md#基础概念)
+
+    </details>
+
+<!-- omit in toc -->
+#### 1.6. ✅ 为何需要 **缩放项** `α/r`? 去掉会怎样?
+> • **作用**: 稳定训练并控制更新幅度; 去掉会让更新量随秩变化而失控, 增加训练不稳定与调参难度; <br>
+
+<!-- omit in toc -->
+#### 1.7. ✅ 为什么常将 `A` 正态初始化, `B` 初始化为 `0`? 如果不这么做会怎么样?
+> • **`A` 正态初始化**: 保证了各方向的更新潜力均衡, 避免某些方向先天缺乏梯度信号; <br>
+> • **`B` 初始化为 `0`**: 在 **训练开始** 时保持与原模型一致, 确保模型从 **安全可控** 的状态开始学习; <br>
+> • 不这么做: **梯度爆炸**, **训练震荡**, **收敛困难**, **灾难性遗忘**; <br>
+
+<!-- omit in toc -->
+#### 1.8. ✅ 如何选择 `r` (Rank)? 不同任务/数据规模下的建议是什么?
+> • 简单任务/小数据从 r=4/8 开始, 中等任务从 r=16/32 开始, 复杂任务/大数据可尝试 r=64/128, 并配合缩放项与验证集监控动态调整; <br>
+
+<!-- omit in toc -->
+#### 1.9. 💡 如果希望逼近全参微调效果, 除了增大 r 还能做什么?
+> • [改进 LoRA 结构](./SFT_LoRA.md#结构改进); **多位置接入** (MLP 层); **逐步解冻**/**混合训练**; **超参优化**(学习率/eopch 等); 更先进的算法 (DoRA 等); <br>
+
+
+<!-- omit in toc -->
+### 2. 🏷️ LoRA 的变体
+
+<!-- omit in toc -->
+#### 2.1. ✅ QLoRA/AdaLoRA/DoRA 的核心思路是什么?
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+
+    - **QLoRA**: 低比特量化加载基座模型; LoRA 部分使用全精度 (FP16/BF16);
+    - **AdaLoRA**: 在训练过程中 **动态调整** 每层 LoRA 的秩 $r$;
+      - 初期用较高秩训练, 通过奇异值分布或梯度范数评估各层重要性;
+      - 对重要层保留较高秩, 对不重要层降低秩;
+    - **DoRA**: 将原始权重分解为幅度与方向 ($W_0 = m \frac{V}{\|V\|_c}$), 幅度由独立可训练参数控制 ($m$), LoRA 仅作用于方向部分的更新 ($\Delta V$), 避免低秩更新浪费在幅度缩放上;
+
+    </details>
+
+<!--END_SECTION:qa-->

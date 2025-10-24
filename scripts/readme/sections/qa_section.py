@@ -186,6 +186,10 @@ class QaSection:
         return self.info.subject
 
     @property
+    def top_subject(self) -> str:
+        return self.info.subject.split(' · ')[0]
+
+    @property
     def qa_count(self) -> int:
         # 有 🏷️ 标签的行不是具体问题
         return len(self.toc_lines) - sum('🏷️' in ln.title for ln in self.toc_lines)
@@ -196,4 +200,4 @@ class QaSection:
 
     @property
     def topic(self):
-        return self.info.topic or self.md_toc_title
+        return self.info.topic or self.md_toc_title.replace('**', '')

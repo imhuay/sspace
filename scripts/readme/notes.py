@@ -116,7 +116,7 @@ class Note:
 
         self._tex2svg()
         self._norm_text()
-        self._update_title(self.get_title_suffix_v2())
+        self._update_title(self.get_title_suffix_v2(add_tip_prefix=False))
         self._update_badge()
 
         if self.qa_section is not None:
@@ -175,7 +175,7 @@ class Note:
 
     def update_title(self, add_href: bool):
         """"""
-        title_suffix = self.get_title_suffix_v2(add_href=add_href)
+        title_suffix = self.get_title_suffix_v2(add_href=add_href, add_tip_prefix=False)
         self._update_title(title_suffix)
         # self.write_text()
 
@@ -279,10 +279,15 @@ class Note:
         self._sub_notes.sort(key=lambda x: (x.info.level, x.title), reverse=True)
 
     def get_tag_toc_line(self, deep: int) -> str:
-        def _get_toc_line(_k):
+        global path2note
+        assert path2note
+
+        def _get_toc_line(_k: KeywordSection):
             if _k.url:
-                url = (self.path.parent / _k.url).resolve().relative_to(args.fp_notes)
-                return f'[{_k.name}]({url})'
+                _k_note_path = (self.path.parent / _k.url).resolve()
+                _k_note = path2note[_k_note_path]
+                url = _k_note_path.relative_to(args.fp_notes)
+                return f'[{_k.name}]({url})</i>{_k_note.toc_title_suffix}<i>'
             elif _k.slugify_name:
                 return f'[{_k.name}]({rel_path}#{_k.slugify_name})'
             else:
@@ -299,7 +304,7 @@ class Note:
         # keywords = ' '.join([f'• {_get_toc_line(k)}' for k in self.keywords if k.name])
         keywords = ' • '.join([_get_toc_line(k) for k in self.keywords if k.name])
         if keywords:
-            toc_line += '\n' + '  ' * deep + f'> _{keywords}_<br>'
+            toc_line += '\n' + '  ' * deep + f'> <i>{keywords}</i><br>'
 
         return toc_line
 
@@ -554,7 +559,7 @@ class Note:
             return self.qa_section.section_title
         return ''
 
-    def get_title_suffix_v2(self, *, add_href: bool = True, href: str | Path = '') -> str:
+    def get_title_suffix_v2(self, *, add_href: bool = True, href: str | Path = '', add_tip_prefix: bool = True) -> str:
         suffix = ''
 
         if self.is_thorough:
@@ -573,7 +578,13 @@ class Note:
             add_href = False
 
         if self.qa_count > 0:
-            tip_qa = f'{self.TIP_QA}({self.qa_count})'
+            if self.qa_section is not None and add_tip_prefix:
+                # tip_topic = self.tag_toc_title
+                # tip_topic = f'{self.qa_section.subject} · {self.qa_section.topic} · '
+                tip_topic = f'{self.qa_section.topic} · '
+            else:
+                tip_topic = ''
+            tip_qa = f'{tip_topic}{self.TIP_QA}({self.qa_count})'
             if add_href:
                 if self.is_qa_coll or not self.qa_section_title:
                     _a = f'[{self.EMOJI_QA}]({href} "{tip_qa}")'
@@ -727,6 +738,7 @@ class SubjectInfo:
     def toc_id(self):
         return self.info['toc_id']
 
+path2note: dict[Path, Note] = dict()
 
 class NotesBuilder(Builder):
     subjects: list[SubjectInfo]
@@ -770,6 +782,8 @@ class NotesBuilder(Builder):
 
     def _load_all_notes(self):
         """"""
+        global path2note
+        path2note = self.path2note
         qa_note = None
         for dp, _, fns in os.walk(self._fp_notes_archives):
             for fn in fns:
@@ -939,10 +953,10 @@ class NotesBuilder(Builder):
         subject2level = defaultdict(int)
 
         for s in qa_sections:
-            subject2level[s.info.subject] = max(subject2level[s.info.subject], s.info.subject_level)
+            subject2level[s.top_subject] = max(subject2level[s.top_subject], s.subject_level)
 
         for s in qa_sections:
-            s.info.subject_level = subject2level[s.info.subject]
+            s.info.subject_level = subject2level[s.top_subject]
 
     def _update_qa_coll_content(self, note: Note):
         """"""
