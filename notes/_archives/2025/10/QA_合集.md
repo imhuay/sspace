@@ -13,8 +13,8 @@ thorough: true
 hidden_in_recent: false
 section_number: false
 omit_in_tag_toc: false
-level: 0
-tags: []
+level: 99
+tags: [read]
 algo_tags: []
 -->
 

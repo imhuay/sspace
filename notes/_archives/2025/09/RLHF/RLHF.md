@@ -26,17 +26,16 @@ tags: [llm_sft]
 
 <!--START_SECTION:toc-->
 - [快速回顾 ⏰](#快速回顾-)
-    - [**三个核心步骤** (监督微调 . 奖励模型 . 策略优化)](#三个核心步骤-监督微调--奖励模型--策略优化)
+    - [**核心步骤** (监督微调 . 奖励模型 . 策略优化)](#核心步骤-监督微调--奖励模型--策略优化)
     - [**优化过程** (轨迹采样 . 策略更新)](#优化过程-轨迹采样--策略更新)
     - [其他改进算法](#其他改进算法)
-- [基础概念](#基础概念)
-    - [背景](#背景)
-- [实施流程](#实施流程)
+- [背景 . 动机 . 优势](#背景--动机--优势)
+- [实施流程 (三个核心步骤)](#实施流程-三个核心步骤)
     - [1. **监督微调 (SFT)**](#1-监督微调-sft)
     - [2. **人类反馈收集与奖励模型 (Reward Model)**](#2-人类反馈收集与奖励模型-reward-model)
         - [奖励模型训练流程](#奖励模型训练流程)
         - [Bradley–Terry 模型介绍](#bradleyterry-模型介绍)
-    - [3. **强化学习**](#3-强化学习)
+    - [3. **策略优化** (Policy Optimization)](#3-策略优化-policy-optimization)
         - [**策略梯度算法**](#策略梯度算法)
 - [Q\&A](#qa)
 <!--END_SECTION:toc-->
@@ -51,7 +50,7 @@ extra_url: false
 ## 快速回顾 ⏰
 <!--END_SECTION:keyword-->
 
-### **三个核心步骤** (监督微调 . 奖励模型 . 策略优化)
+### **核心步骤** (监督微调 . 奖励模型 . 策略优化)
 > 监督微调 → 奖励模型 → 策略优化 (强化学习)
 - **监督微调 (SFT)**:
     - **目标**: <br>
@@ -160,14 +159,11 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/RLHF/tex2svg \
 
 ---
 
-## 基础概念
+## 背景 . 动机 . 优势
 
 - **RLHF** (**R**einforcement **L**earning from **H**uman **F**eedback, 基于人类反馈的强化学习)
     - 是一种通过结合 **人类偏好** 与 **强化学习** 来微调大语言模型的 **技术** 或 **范式**;
     - **RLHF 是建立在 SFT 基础上的进一步微调**;
-    <!-- - 是一种通过结合 **人类偏好** 与 **强化学习**, **在 SFT 的基础上进一步微调大语言模型** 的 **技术** 或 **范式**; -->
-
-### 背景
 - **预训练的局限**:
     - **大规模无监督语料预训练** 虽然能使 **LLM** 获得强大的 **语言建模能力**,
     - 但输出内容可能与 **人类价值观**, **安全性要求** 或 **交互习惯** 等不一致;
@@ -228,7 +224,7 @@ cd /home/huay/workspace/git/my/sspace/notes/_archives/2025/09/RLHF/tex2svg \
     - 更好的泛化性和安全性; RLHF 通过奖励模型可以对 "胡说八道", 有害或有偏见的内容给予低分惩罚, 从而在整个输出空间内 **约束模型行为**, 使其在未见过的输入上也能表现出更高的安全性和可靠性;
     -->
 
-## 实施流程
+## 实施流程 (三个核心步骤)
 > RLHF 通常包含三个核心步骤: **SFT → RM → RL**
 
 ### 1. **监督微调 (SFT)**
@@ -367,48 +363,37 @@ extra_url: false
      -->
 - **目的**:
     - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
-    - 学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其能力分数;
+    - 学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其静态能力分数;
     <!-- - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 为每个对象 **估计出一个静态的能力分数** $r$; -->
     <!-- - BT 模型试图通过一系列 **成对比较结果** $(y_j, y_k)$, **为每个对象估算出一个标量分数** $r$, 代表其强度; -->
     <!-- - 两个对象之间的 比较关系/胜负结果 是可以获取/累计的; -->
     <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $R_{\phi}(\cdot)$; -->
-<!--
-- **定义**:
-    - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
-    - 则定义 $y_j$ 优于 $y_k$ (记 $y_j \succ y_k$) 的概率为
-        <div align='center'><a href='_formulas/RLHF/f_015.js.tex'><img src='_formulas/RLHF/f_015.js.svg'/></a></div>
+    <!--
+    - **定义**:
+        - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
+        - 则定义 $y_j$ 优于 $y_k$ (记 $y_j \succ y_k$) 的概率为
+            <div align='center'><a href='_formulas/RLHF/f_015.js.tex'><img src='_formulas/RLHF/f_015.js.svg'/></a></div>
 
-    - 根据 $\textbf{Sigmoid}$ **函数** $\sigma(z)=\dfrac{1}{1+e^{-z}}$, 即
-        <div align='center'><a href='_formulas/RLHF/f_016.js.tex'><img src='_formulas/RLHF/f_016.js.svg'/></a></div>
+        - 根据 $\textbf{Sigmoid}$ **函数** $\sigma(z)=\dfrac{1}{1+e^{-z}}$, 即
+            <div align='center'><a href='_formulas/RLHF/f_016.js.tex'><img src='_formulas/RLHF/f_016.js.svg'/></a></div>
 
-    - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
-    - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
--->
+        - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
+        - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
+    -->
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
         <div align='center'><a href='_formulas/RLHF/f_017.js.tex'><img src='_formulas/RLHF/f_017.js.svg'/></a></div>
 
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
-    <!--
-    - 综上, 可以通过 **最大化 模型预测出的强度关系 与 真实比较结果 的似然** 来优化模型, 其对应的 **负对数似然损失函数** 为:
-        <div align='center'><a href='_formulas/RLHF/f_018.js.tex'><img src='_formulas/RLHF/f_018.js.svg'/></a></div>
 
-    - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
-    -->
+---
 
-### 3. **强化学习**
+### 3. **策略优化** (Policy Optimization)
 > 基于 **强化学习 (RL) 框架** 进一步优化 SFT 模型, **对齐人类偏好**.
 
-<!--START_SECTION:keyword-->
-<!--keyword_info
-name: 'RL 基础'
-extra_url: true
-with_keywords: false
--->
 - **强化学习基础**
     > _[RL 基础 (基于 LLM 背景)](./RLHF_强化学习基础.md)_
-<!--END_SECTION:keyword-->
 - **动机**:
     - SFT 模型的学习受限于静态数据, 缺乏主动探索能力;
     - 策略优化旨在让模型通过与 **环境** 的交互, 在 **更大的策略空间** 中寻找更优的行为;
@@ -487,7 +472,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [RLHF 基础概念](#基础概念)
+    > [RLHF 基础概念](#背景--动机--优势)
 
     </details>
 
@@ -512,7 +497,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [RLHF 核心流程](#实施流程)
+    > [RLHF 核心流程](#实施流程-三个核心步骤)
 
     </details>
 
@@ -521,7 +506,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [RLHF 的 3 个阶段](#实施流程)
+    > [RLHF 的 3 个阶段](#实施流程-三个核心步骤)
 
     </details>
 
