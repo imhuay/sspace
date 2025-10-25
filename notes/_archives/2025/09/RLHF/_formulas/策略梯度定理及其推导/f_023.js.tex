@@ -1,3 +1,5 @@
 \begin{align}
-\_ = \sum_{s} \ \underline{\sum_{t=0}^{\infty} \gamma^t p_t(s)} \sum_{a_t} \pi_\theta(a_t|s_t) \ \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot Q^{\pi_\theta}(s_t, a_t)
+\_
+&= \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \Big\lbrack\ \underline{\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t} \ \mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack\ G_t \mid {s_t, a_t} \ \right\rbrack \Big\rbrack \\
+&= \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t \ \underline{Q^{\pi_\theta}(s_t, a_t)} \ \Big\rbrack
 \end{align}

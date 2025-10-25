@@ -1,3 +1,5 @@
 \begin{align}
-p_t(s_t, a_t) = p_t(s_t) \cdot \pi_\theta(a_t|s_t)
+\nabla_\theta J(\theta)
+&= \mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack\ \sum_{t=0}^{\infty} \ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t G_t \ \right\rbrack \\
+&= \sum_{t=0}^{\infty} \ \mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t G_t \ \right\rbrack
 \end{align}

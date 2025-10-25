@@ -1,7 +1,3 @@
-\begin{aligned}
-\mathbb{E}_{x \sim p_\theta(x)} \left\lbrack\ \nabla_\theta \log p_\theta(x) \ \right\rbrack
-&= \int p_\theta(x) \nabla_\theta \log p_\theta(x) \ dx \\
-&= \int \nabla_\theta p_\theta(x) \ dx \quad && \scriptstyle\text{// 对数微分性质}& \\
-&= \nabla_\theta \int p_\theta(x) \ dx \quad && \scriptstyle\text{// 正则条件下, 积分和求导可交换}& \\
-&= \nabla_\theta 1 = 0
-\end{aligned}
+\begin{align}
+\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{V^{\pi_\theta}(s)} \ \Big\rbrack = 0
+\end{align}

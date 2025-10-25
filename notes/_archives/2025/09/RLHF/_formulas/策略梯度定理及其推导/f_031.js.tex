@@ -1,1 +1,3 @@
-s(\theta) = \nabla_\theta \log p_\theta(x)
+\begin{align}\boxed{
+\nabla_\theta J(\theta) = \mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{A^{\pi_\theta}(s, a)} \ \Big\rbrack
+}\end{align}

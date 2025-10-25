@@ -1,4 +1,1 @@
-\begin{align}
-\nabla_\theta J(\theta) &= \sum_{t=0}^{\infty} \underline{\mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)}} \left\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t Q^{\pi_\theta}(s_t, a_t) \ \right\rbrack \\
-&= \sum_{t=0}^{\infty} \underline{\sum_{s_t,a_t} \ p_t(s_t, a_t)} \ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t Q^{\pi_\theta}(s_t, a_t)
-\end{align}
+d^{\pi_\theta}(s) = (1 - \gamma) \sum_{t=0}^{\infty} \gamma^t \ p_t(s_t = s | \pi_\theta)

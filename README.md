@@ -54,7 +54,6 @@
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$<span title="置顶">📌</span>
-- [`2025-07-08` Markdown 简历工具](notes/_archives/2022/06/Markdown_简历工具.md) <span title="置顶">📌</span>
 - [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_位置编码.md) [📋](notes/_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$
 - [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer.md) [📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
@@ -69,6 +68,7 @@
 - [`2025-07-08` 链表常用操作备忘](notes/_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
 - [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md) 
+- [`2025-07-08` 论文-2022-YiboYang](notes/_archives/2022/05/论文-2022-YiboYang.md) 
 
 <!--END_SECTION:recent-->
 
@@ -101,39 +101,7 @@ JSON          7 mins          -------------------------   00.27 %
 
 <table>  <!-- invalid: frame="void", style="width: 100%; border: none; background: none" -->
 <tr>
-<td colspan="2" valign="top" width="1000">
-
-### Hot 🔥
-<!--START_SECTION:hot-->
-- [剑指Offer (75)](algorithms/README.md#剑指offer)
-- [动态规划 (54)](algorithms/README.md#动态规划)
-- [经典 (38)](algorithms/README.md#经典)
-- [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
-- [热门 (17)](algorithms/README.md#热门)
-<!--END_SECTION:hot-->
-
-</td>
-<td colspan="2" rowspan="3" valign="top" width="1000">
-
-### Collections 🗂️
-<!--START_SECTION:collection-->
-- [牛客 (131)](algorithms/README.md#牛客)
-- [LeetCode (81)](algorithms/README.md#leetcode)
-- [剑指Offer (75)](algorithms/README.md#剑指offer)
-- [经典 (38)](algorithms/README.md#经典)
-- [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
-- [热门 (17)](algorithms/README.md#热门)
-- [剑指Offer2 (3)](algorithms/README.md#剑指offer2)
-- [程序员面试金典 (2)](algorithms/README.md#程序员面试金典)
-- [牛客-华为机试 (1)](algorithms/README.md#牛客-华为机试)
-- [网络收集 (0)](algorithms/README.md#网络收集)
-<!--END_SECTION:collection-->
-
-</td>
-</tr>
-<tr></tr>
-<tr>
-<td colspan="2" valign="top">
+<td valign="top" width="1000">
 
 ### Level 📈
 <!--START_SECTION:level-->
@@ -142,8 +110,45 @@ JSON          7 mins          -------------------------   00.27 %
 - [困难 (36)](algorithms/README.md#困难)
 <!--END_SECTION:level-->
 
+
+</td>
+<td valign="top" width="1000">
+
+### Hot 🔥
+<!--START_SECTION:hot-->
+- [经典 (38)](algorithms/README.md#经典)
+- [LeetCode Hot 100 (26)](algorithms/README.md#leetcode-hot-100)
+- [热门 (17)](algorithms/README.md#热门)
+<!--END_SECTION:hot-->
+
+</td>
+<td valign="top" width="1000">
+
+### Collections 🗂️
+
+<!--START_SECTION:collection-->
+- [牛客 (131)](algorithms/README.md#牛客)
+- [LeetCode (81)](algorithms/README.md#leetcode)
+- [剑指Offer (75)](algorithms/README.md#剑指offer)
+<!--END_SECTION:collection-->
+
+<details><summary><b> More 🗃️ </b></summary>
+
+<!--START_SECTION:collection_more-->
+- [动态规划 (54)](algorithms/README.md#动态规划)
+- [二叉树/树 (48)](algorithms/README.md#二叉树树)
+- [双指针 (25)](algorithms/README.md#双指针)
+- [剑指Offer2 (3)](algorithms/README.md#剑指offer2)
+- [程序员面试金典 (2)](algorithms/README.md#程序员面试金典)
+- [牛客-华为机试 (1)](algorithms/README.md#牛客-华为机试)
+- [网络收集 (0)](algorithms/README.md#网络收集)
+<!--END_SECTION:collection_more-->
+
+</details>
+
 </td>
 </tr>
+
 </table>
 
 <details><summary><b>More Algorithm Topics 📚🧩🎲💡🚨</b></summary>
@@ -228,9 +233,10 @@ JSON          7 mins          -------------------------   00.27 %
 
 ### Transformer 🪄 LLM 🚀
 
-- [模型架构](notes/_archives/2025/09/Transformer.md) [📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
-- [位置编码](notes/_archives/2025/09/Transformer_位置编码.md) [📋](notes/_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$
-  > <i>[绝对位置编码](notes/_archives/2025/09/Transformer_位置编码.md#绝对位置编码) • [相对位置编码](notes/_archives/2025/09/Transformer_位置编码.md#相对位置编码) • [旋转位置编码🔥](notes/_archives/2025/09/Transformer_位置编码.md#旋转位置编码)</i><br>
+- [Transformer 基础架构](notes/_archives/2025/09/Transformer.md) [📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
+  > <i>[Encoder-Decoder](notes/_archives/2025/09/Transformer.md#encoder-decoder-框架) • [注意力机制 (MHA)](notes/_archives/2025/09/Transformer.md#多头注意力机制-multi-head-attention-mechanism) • [FFN](notes/_archives/2025/09/Transformer.md#逐位置前馈网络-position-wise-ffn) • [正弦位置编码](notes/_archives/2025/09/Transformer.md#正弦位置编码)</i><br>
+  - [Transformer 改进](notes/_archives/2025/09/Transformer_改进.md) [✒️](notes/_archives/2025/09/Transformer_改进.md#todo "TODO(1)")$\color{Gray}^{1}$
+    > <i>[位置编码](notes/_archives/2025/09/Transformer_位置编码.md)</i>[📋](notes/_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$<i> • [相对位置编码](notes/_archives/2025/09/Transformer_位置编码.md#相对位置编码) • [旋转位置编码🔥](notes/_archives/2025/09/Transformer_位置编码.md#旋转位置编码)</i><br>
 - [MoE ( Mixture of Experts )](notes/_archives/2025/09/LLM_MoE.md) [✒️](notes/_archives/2025/09/LLM_MoE.md#todo "TODO(1)")$\color{Gray}^{1}$
 - [LLM 训练稳定性](notes/_archives/2025/09/RLHF/训练稳定性.md) [✒️](notes/_archives/2025/09/RLHF/训练稳定性.md#todo "TODO(1)")$\color{Gray}^{1}$
 
@@ -248,7 +254,7 @@ JSON          7 mins          -------------------------   00.27 %
   - [训练数据构建](notes/_archives/2025/09/SFT_构建高质量训练数据.md) <span title="TODO">✒️</span>
     > <i>[覆盖率](notes/_archives/2025/09/SFT_构建高质量训练数据.md#覆盖率) • [多样性](notes/_archives/2025/09/SFT_构建高质量训练数据.md#多样性) • [一致性](notes/_archives/2025/09/SFT_构建高质量训练数据.md#一致性)</i><br>
 - [**RLHF** ( 偏好学习, 对齐学习 )](notes/_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](notes/_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")$\color{Brown}^{13}$
-  > <i>[**快速回顾**](notes/_archives/2025/09/RLHF/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/RLHF/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/RLHF/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md)</i><i></i><br>
+  > <i>[**快速回顾**](notes/_archives/2025/09/RLHF/RLHF.md#快速回顾-) • [奖励模型](notes/_archives/2025/09/RLHF/RLHF.md#奖励模型训练流程) • [BT 模型](notes/_archives/2025/09/RLHF/RLHF.md#bradleyterry-模型介绍) • [RL 基础](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md)</i><br>
   - [强化学习基础 ( **LLM-based** )](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md) 
     > <i>[基础术语](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](notes/_archives/2025/09/RLHF/RLHF_强化学习基础.md#广义优势估计-gae)</i><br>
   - [策略梯度定理及其推导](notes/_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
@@ -291,7 +297,7 @@ JSON          7 mins          -------------------------   00.27 %
 - [Attention 备忘](notes/_archives/2022/05/Attention.md) <span title="TODO">✒️</span>
 
 <!-- omit in toc -->
-#### 框架
+#### 工具
 
 - [爱因斯坦标记法](notes/_archives/2022/05/爱因斯坦标记法.md) 
 - [HuggingFace 离线使用](notes/_archives/2022/06/HuggingFace离线使用.md) 

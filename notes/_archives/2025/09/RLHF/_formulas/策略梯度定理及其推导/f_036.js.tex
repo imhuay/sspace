@@ -1,1 +1,7 @@
-\mathbb{E}_{\tau\sim p_\theta(\tau)} \left\lbrack\ \sum_{t=0}^{\infty}\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot G(\tau) \ \right\rbrack = \mathbb{E}_{\tau\sim p_\theta(\tau)} \left\lbrack\ \sum_{t=0}^{\infty}\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t G_t \right\rbrack
+\begin{aligned}
+\mathbb{E}_{x \sim p_\theta(x)} \left\lbrack\ \nabla_\theta \log p_\theta(x) \ \right\rbrack
+&= \int p_\theta(x) \nabla_\theta \log p_\theta(x) \ dx \\
+&= \int \nabla_\theta p_\theta(x) \ dx \quad && \scriptstyle\text{// 对数微分性质}& \\
+&= \nabla_\theta \int p_\theta(x) \ dx \quad && \scriptstyle\text{// 正则条件下, 积分和求导可交换}& \\
+&= \nabla_\theta 1 = 0
+\end{aligned}

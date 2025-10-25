@@ -1,3 +1,5 @@
 \begin{align}
-\nabla_\theta p_\theta(\tau) = p_\theta(\tau) \frac{\nabla_\theta p_\theta(\tau)}{p_\theta(\tau)} = p_\theta(\tau) \nabla_\theta \log p_\theta(\tau)
+\nabla_\theta J(\theta) = \nabla_\theta \mathbb{E}_{\tau \sim p_{\theta}(\tau)} \left\lbrack\ G(\tau) \ \right\rbrack
+&= \nabla_\theta \int_{\mathcal{T}} p_\theta(\tau) \underline{G(\tau)} d\tau \\
+&= \int_{\mathcal{T}} \nabla_\theta\ p_\theta(\tau) \underline{G(\tau)} d\tau
 \end{align}

@@ -1,1 +1,1 @@
-p(a_t|h_t) = \pi_\theta(a_t|s_t)
+\mathbb{E}_{\tau\sim p_\theta(\tau)} \left\lbrack\ \sum_{t=0}^{\infty}\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot b(\cdot) \ \right\rbrack = \sum_{t=0}^{\infty} \mathbb{E}_{\tau\sim p_\theta(\tau)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot b(\cdot) \ \Big\rbrack

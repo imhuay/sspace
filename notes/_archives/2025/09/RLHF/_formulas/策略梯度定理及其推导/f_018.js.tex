@@ -1,3 +1,1 @@
-\begin{align}
-\_ = \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \Big\lbrack\ \mathbb{E}_{\tau \sim p_\theta(\tau)} \big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t G_t \ \big|\ {s_t, a_t} \ \big\rbrack \Big\rbrack
-\end{align}
+\ Q^{\pi_\theta}(s_t, a_t) = \mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack\ G_t \ |\ s_t, a_t \ \right\rbrack

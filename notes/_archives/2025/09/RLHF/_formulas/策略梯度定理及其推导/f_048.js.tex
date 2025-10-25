@@ -1,1 +1,6 @@
-b_t = G_0 - \gamma^t G_t = \sum_{k=0}^{\infty} \gamma^{k}\ R_{k+1} - \gamma^t \sum_{k=t}^{\infty} \gamma^{k-t}\ R_{k+1} = \sum_{k=0}^{t-1} \gamma^{k} R_{k+1}
+\begin{aligned}
+\mathbb{E}_{a_t|h_t} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\ \Big|\ h_t \Big\rbrack
+&= \underline{\sum_{a_t} p(a_t|h_t)} \nabla_\theta\log \pi_\theta(a_t|s_t) \\
+&= \underline{\sum_{a_t} \pi_\theta(a_t|s_t)} \nabla_\theta\log \pi_\theta(a_t|s_t) &&\quad \scriptstyle{//\ p(a_t|h_t) \ =\ \pi_\theta(a_t|s_t)} \\
+&= \mathbb{E}_{a_t \sim \pi_\theta(a_t|s_t)} \left\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t) \right\rbrack = 0 &&\quad \scriptstyle\text{// Score Function 恒等式}
+\end{aligned}

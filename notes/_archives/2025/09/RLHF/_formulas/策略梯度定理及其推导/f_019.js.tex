@@ -1,5 +1,3 @@
-\begin{align}
-\_
-&= \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \Big\lbrack\ \underline{\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t} \ \mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack\ G_t \mid {s_t, a_t} \ \right\rbrack \Big\rbrack \\
-&= \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \gamma^t \ \underline{Q^{\pi_\theta}(s_t, a_t)} \ \Big\rbrack
-\end{align}
+\begin{align}\boxed{
+\nabla_\theta J(\theta) \propto \underline{\mathbb{E}_{s \sim d^{\pi_\theta},\ a \sim \pi_\theta(\cdot|s)}} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a|s)\cdot \underline{Q^{\pi_\theta}(s, a)} \ \Big\rbrack
+}\end{align}

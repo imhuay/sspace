@@ -2,7 +2,7 @@ Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(16)")$\c
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2016%3A35%3A33&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-25%2001%3A19%3A29&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -190,10 +190,10 @@ use_section_number: true
     - [1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#12--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
     - [1.3. ✅ 为什么 Transformer 比 RNN/LSTM 更好](#13--为什么-transformer-比-rnnlstm-更好)
     - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.5. ✅ 为什么大多数通用大模型选择 Decoder-Only (CausalLM) 架构?](#15--为什么大多数通用大模型选择-decoder-only-causallm-架构)
+    - [1.5. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?](#15--为什么大多数-llm-选择-decoder-only-causallm-架构)
     - [1.6. ✅ 说明自注意力机制的计算过程](#16--说明自注意力机制的计算过程)
     - [1.7. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#17--为什么要对-qk-的点积进行缩放-缩放因子是)
-    - [1.8. ✅ 多头注意力中 "多头" 的动机是什么, 是如何实现的?](#18--多头注意力中-多头-的动机是什么-是如何实现的)
+    - [1.8. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](#18--multi-head-的动机是什么-本质是什么-是如何实现的)
     - [1.9. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#19--为什么-decoder-中计算自注意力需要-掩码)
     - [1.10. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#110--decoder-中的-attention-与-encoder-有什么不同)
     - [1.11. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#111--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
@@ -305,7 +305,7 @@ use_section_number: true
             > - softmax 保证对角线元素始终 $> 0$ → 行列式非零 → 矩阵严格满秩;
             > - 奇异值分布更均匀, 有效秩下降速度慢, 保持较强的表达能力;
     - **参考资料**
-        - [为什么现在的LLM都是Decoder-only的架构？ - 科学空间|Scientific Spaces](https://kexue.fm/archives/9529)
+        - [为什么现在的LLM都是Decoder-only的架构? - 科学空间|Scientific Spaces](https://kexue.fm/archives/9529)
         - [解码器仅架构: 探究大语言模型 (LLM) 采用Decoder-only架构的原因-百度开发者中心](https://developer.baidu.com/article/detail.html?id=2145079)
         - [为什么当前的大型语言模型 (LLMs) 普遍采用 "仅解码器" (Decoder-only) 架构? _decoder-only自回归模型架构-CSDN博客](https://blog.csdn.net/Listennnn/article/details/147934482)
         - [面试官问我: 大模型为何都用 Decoder only 架构? _大模型为什么是基于decoder-CSDN博客](https://blog.csdn.net/2401_84033492/article/details/143260251)
@@ -347,7 +347,7 @@ use_section_number: true
     - **结果融合**: 拼接 + 线性变换的过程, 相当于把多个子模型的输出集成成一个更强的表示;
     - **泛化能力**: 就像 ensemble 能减少单一模型的偏差, 多头注意力也能避免单一注意力模式的局限;
 
-    > [为什么Transformer 需要进行 Multi-head Attention？ - 知乎 | 香侬科技 | stone 用户的评论](https://www.zhihu.com/question/341222779/answer/814111138)
+    > [为什么Transformer 需要进行 Multi-head Attention? - 知乎 | 香侬科技 | stone 用户的评论](https://www.zhihu.com/question/341222779/answer/814111138)
 
     </details>
 -   <details><summary><b> 代码演示 ⬇️ </b></summary>

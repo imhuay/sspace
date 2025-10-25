@@ -1,3 +1,3 @@
-\begin{align}\boxed{
-\nabla_\theta J(\theta) = \underline{\mathbb{E}_{\tau \sim p_\theta(\tau)}} \left\lbrack\ \sum_{t=0}^{\infty} \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot \underline{\gamma^t G_t} \ \right\rbrack
-}\end{align}
+\begin{align}
+\mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack \sum_{t=0}^{\infty} \nabla_\theta \log \pi_\theta(a_t | s_t) \Big( \underline{G(\tau) - \gamma^t G_t} \Big) \right\rbrack = 0
+\end{align}

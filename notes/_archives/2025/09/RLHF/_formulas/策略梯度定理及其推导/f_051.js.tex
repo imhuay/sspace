@@ -1,8 +1,1 @@
-\begin{align}
-\mathbb{E}_{\tau} \left\lbrack\ \sum_{t=0}^{\infty} f_t(s_t,a_t) \ \right\rbrack
-&= \sum_{\tau} p_\theta(\tau) \cdot \sum_{t=0}^{\infty} f_t(s_t,a_t) \\
-&= \sum_{t=0}^{\infty} \sum_{s_0,a_0,\dots,s_t,a_t,\dots} p_\theta(\tau) \cdot f_t(s_t,a_t) \\
-&= \sum_{t=0}^{\infty} \sum_{s_t,a_t} \left\lbrack\ \underline{\sum_{s_0,a_0,\dots,s_{t-1},a_{t-1},s_{t+1},a_{t+1},\dots} p_\theta(\tau)} \ \right\rbrack f_t(s_t,a_t) \\
-&= \sum_{t=0}^{\infty} \sum_{s_t,a_t} \underline{p_t(s_t,a_t)} \cdot f_t(s_t,a_t) \\
-&= \sum_{t=0}^{\infty} \mathbb{E}_{s_t,a_t \sim p_t(s_t,a_t)} \left\lbrack\ f_t(s_t,a_t) \ \right\rbrack
-\end{align}
+\mathbb{E}_{\tau \sim p_\theta(\tau)} \left\lbrack \sum_{t=0}^{\infty} \nabla_\theta \log \pi_\theta(a_t | s_t) \big(G_0 - \gamma^t G_t\big) \right\rbrack = 0

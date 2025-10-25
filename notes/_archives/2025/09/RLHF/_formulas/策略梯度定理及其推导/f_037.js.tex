@@ -1,1 +1,1 @@
-\mathbb{E}_{\tau\sim p_\theta(\tau)} \left\lbrack\ \sum_{t=0}^{\infty}\nabla_\theta\log \pi_\theta(a_t|s_t)\cdot b(\cdot) \ \right\rbrack = \sum_{t=0}^{\infty} \mathbb{E}_{\tau\sim p_\theta(\tau)} \Big\lbrack\ \nabla_\theta\log \pi_\theta(a_t|s_t)\cdot b(\cdot) \ \Big\rbrack
+\nabla_\theta \mathbb{E}_{x \sim p_\theta(x)} \big\lbrack\ f(x) \ \big\rbrack = \mathbb{E}_{x \sim p_\theta(x)} \big\lbrack\ f(x) \nabla_\theta \log p_\theta(x) \ \big\rbrack
