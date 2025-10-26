@@ -34,8 +34,6 @@ Notes
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$<span title="置顶">📌</span>
-- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
-- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [📋](_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "策略梯度算法 · 面试问题整理(4)")$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")$\color{Brown}^{13}$
@@ -49,6 +47,8 @@ Notes
 - [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md) 
+- [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md) 
+- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md) 
 
 <!--END_SECTION:recent-->
 
@@ -89,7 +89,7 @@ Notes
   - [训练数据构建](_archives/2025/09/SFT_构建高质量训练数据.md) <span title="TODO">✒️</span>
     > <i>[覆盖率](_archives/2025/09/SFT_构建高质量训练数据.md#覆盖率) • [多样性](_archives/2025/09/SFT_构建高质量训练数据.md#多样性) • [一致性](_archives/2025/09/SFT_构建高质量训练数据.md#一致性)</i><br>
 - [**RLHF** ( 偏好学习, 对齐学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")$\color{Brown}^{13}$
-  > <i>[**快速回顾**](_archives/2025/09/RLHF/RLHF.md#快速回顾-) • [奖励模型](_archives/2025/09/RLHF/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/RLHF/RLHF.md#bradleyterry-模型介绍) • [RL 基础](_archives/2025/09/RLHF/RLHF_强化学习基础.md)</i><br>
+  > <i>[**快速回顾**](_archives/2025/09/RLHF/RLHF.md#快速回顾-) • [奖励模型](_archives/2025/09/RLHF/RLHF.md#奖励模型训练流程) • [BT 模型](_archives/2025/09/RLHF/RLHF.md#bradleyterry-模型介绍)</i><br>
   - [强化学习基础 ( **LLM-based** )](_archives/2025/09/RLHF/RLHF_强化学习基础.md) 
     > <i>[基础术语](_archives/2025/09/RLHF/RLHF_强化学习基础.md#核心术语) • [价值函数 ↝ 优势函数](_archives/2025/09/RLHF/RLHF_强化学习基础.md#4️⃣-价值函数--优势函数) • [策略优化](_archives/2025/09/RLHF/RLHF_强化学习基础.md#策略优化) • [贝尔曼方程](_archives/2025/09/RLHF/RLHF_强化学习基础.md#贝尔曼方程-bellman-equation) • [时序差分算法](_archives/2025/09/RLHF/RLHF_强化学习基础.md#时序差分算法-temporal-difference-td) • [广义优势估计](_archives/2025/09/RLHF/RLHF_强化学习基础.md#广义优势估计-gae)</i><br>
   - [策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
@@ -114,7 +114,7 @@ Notes
 - [概率论基础](_archives/2025/09/概率论基础.md) 
   > <i>[期望](_archives/2025/09/概率论基础.md#期望相关) • [全期望公式](_archives/2025/09/概率论基础.md#全期望公式-law-of-total-expectation)</i><br>
 - [机器学习 Wiki](_archives/2025/09/机器学习基础.md) [✒️](_archives/2025/09/机器学习基础.md#todo "TODO(2)")$\color{Gray}^{2}$
-  > <i>[归纳偏置](_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基础.md#正则化-regularization) • [KL 散度](_archives/2025/09/机器学习基础.md#kl-散度-kullbackleibler-divergence) • [蒙特卡洛方法](_archives/2025/09/机器学习基础.md#蒙特卡洛方法-monte-carlo-method) • [重要性采样](_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is) • [拒绝采样](_archives/2025/09/机器学习基础.md#拒绝采样-rejection-sampling) • [MCMC 采样](_archives/2025/09/机器学习基础.md#马尔可夫链蒙特卡洛采样-mcmc-sampling)</i><br>
+  > <i>[归纳偏置](_archives/2025/09/机器学习基础.md#归纳偏置-inductive-bias) • [似然](_archives/2025/09/机器学习基础.md#似然-likelihood) • [正则化](_archives/2025/09/机器学习基础.md#正则化-regularization) • [KL 散度](_archives/2025/09/机器学习基础.md#kl-散度-kullbackleibler-divergence) • [蒙特卡洛方法](_archives/2025/09/机器学习基础.md#蒙特卡洛方法-monte-carlo-method) • [重要性采样](_archives/2025/09/机器学习基础.md#重要性采样-importance-sampling-is) • [拒绝采样](_archives/2025/09/机器学习基础.md#拒绝采样-rejection-sampling) • [MCMC 采样 ✒️](_archives/2025/09/机器学习基础.md#马尔可夫链蒙特卡洛采样-mcmc-sampling)</i><br>
 - [XGBoost 学习笔记](_archives/2022/05/XGBoost.md) <span title="TODO">✒️</span>
   - [GBDT/XGBoost 备忘](_archives/2022/10/XGBoost备忘.md) 
 
@@ -236,6 +236,7 @@ Notes
 
 ### Reading List 🔖
 
+- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$
 - [强化学习相关](_archives/2025/08/强化学习相关资料.md) 
 - [HuggingFace ( 博客 & 代码 )](_archives/2025/08/HuggingFace阅读列表.md) 
 - [GitHub ( 仓库 )](_archives/2025/08/GitHub阅读列表.md) 
@@ -379,7 +380,6 @@ Notes
 - [PySpark 笔记](_archives/2023/01/PySpark笔记.md) 
 - [Python Wiki](_archives/2025/08/python_wiki.md) 
 - [Python 标准项目实践](_archives/2022/09/python标准项目实践.md) 
-- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$
 - [Query 分析指南](_archives/2022/12/query分析.md) 
 - [Query 扩展 ( 电商领域 )](_archives/2022/12/query扩展.md) 
 - [Query 纠错](_archives/2022/12/query纠错.md) 

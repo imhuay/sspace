@@ -31,8 +31,6 @@ Notes
 ## Recently 📖
 <!--START_SECTION:recent-->
 - [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$<span title="置顶">📌</span>
-- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
-- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [📋](_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "策略梯度算法 · 面试问题整理(4)")$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")$\color{Brown}^{13}$
@@ -43,6 +41,8 @@ Notes
 - [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md) 
 - [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
 - [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md) 
+- [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
+- [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 
 <!--END_SECTION:recent-->
 
