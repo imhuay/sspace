@@ -13,10 +13,10 @@
       aliases: [华为机试]
     热门:
       is_hot: true
-      aliases: [热门]
+      # aliases: [热门]
     经典:
       is_hot: true
-      aliases: [经典]
+      # aliases: [经典]
     LeetCode Hot 100:
       is_hot: true
       aliases: [lc100]

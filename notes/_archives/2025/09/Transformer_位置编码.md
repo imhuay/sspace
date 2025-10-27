@@ -9,7 +9,7 @@ date: 2025-09-09 11:03:29
 toc_title: 位置编码
 top: false
 draft: false
-hidden_in_recent: true
+hidden_in_recent: false
 level: 0
 tags: [transformer]
 -->
