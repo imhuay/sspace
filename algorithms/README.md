@@ -9,7 +9,7 @@
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 (153)](#中等)
+- [中等 (154)](#中等)
 - [简单 (104)](#简单)
 - [困难 (36)](#困难)
 <!--END_SECTION:level-->
@@ -32,7 +32,7 @@
 
 <!--START_SECTION:collection-->
 - [牛客 (131)](#牛客)
-- [LeetCode (81)](#leetcode)
+- [LeetCode (82)](#leetcode)
 - [剑指Offer (75)](#剑指offer)
 <!--END_SECTION:collection-->
 
@@ -66,7 +66,7 @@
 ### 数据结构
 <!--START_SECTION:data_struct-->
 - [二叉树/树 (48)](#二叉树树)
-- [链表 (30)](#链表)
+- [链表 (31)](#链表)
 - [字符串 (17)](#字符串)
 - [栈/队列 (16)](#栈队列)
 - [数组/矩阵 (12)](#数组矩阵)
@@ -263,7 +263,7 @@
 - [`牛客_0145_中等_01背包`](problems/2022/05/牛客_0145_中等_01背包.md)
 
 ### LeetCode
-![total](https://img.shields.io/static/v1?label=total&message=81&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=82&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0001_简单_两数之和`](problems/2021/10/LeetCode_0001_简单_两数之和.md)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
@@ -340,6 +340,7 @@
 - [`LeetCode_0915_中等_分割数组`](problems/2022/06/LeetCode_0915_中等_分割数组.md)
 - [`LeetCode_0958_中等_二叉树的完全性检验`](problems/2022/03/LeetCode_0958_中等_二叉树的完全性检验.md)
 - [`LeetCode_0988_中等_从叶结点开始的最小字符串`](problems/2022/07/LeetCode_0988_中等_从叶结点开始的最小字符串.md)
+- [`LeetCode_0237_中等_删除链表中的节点`](problems/2025/10/LeetCode_0237_中等_删除链表中的节点.md)
 - [`LeetCode_3147_中等_从魔法师身上吸取的最大能量`](problems/2025/10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)
 - [`LeetCode_3186_中等_施咒的最大总伤害`](problems/2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)
 - [`LeetCode_0073_中等_矩阵置零`](problems/2025/10/LeetCode_0073_中等_矩阵置零.md)
@@ -669,7 +670,7 @@
 ![total](https://img.shields.io/static/v1?label=total&message=0&labelColor=gray&color=blue&style=flat-square)
 
 ### 中等
-![total](https://img.shields.io/static/v1?label=total&message=153&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=154&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
 - [`LeetCode_0005_中等_最长回文子串`](problems/2021/10/LeetCode_0005_中等_最长回文子串.md)
@@ -716,6 +717,7 @@
 - [`LeetCode_0915_中等_分割数组`](problems/2022/06/LeetCode_0915_中等_分割数组.md)
 - [`LeetCode_0958_中等_二叉树的完全性检验`](problems/2022/03/LeetCode_0958_中等_二叉树的完全性检验.md)
 - [`LeetCode_0988_中等_从叶结点开始的最小字符串`](problems/2022/07/LeetCode_0988_中等_从叶结点开始的最小字符串.md)
+- [`LeetCode_0237_中等_删除链表中的节点`](problems/2025/10/LeetCode_0237_中等_删除链表中的节点.md)
 - [`LeetCode_3147_中等_从魔法师身上吸取的最大能量`](problems/2025/10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)
 - [`LeetCode_3186_中等_施咒的最大总伤害`](problems/2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)
 - [`LeetCode_0073_中等_矩阵置零`](problems/2025/10/LeetCode_0073_中等_矩阵置零.md)
@@ -1022,7 +1024,7 @@
 - [`牛客_0123_困难_序列化二叉树`](problems/2022/05/牛客_0123_困难_序列化二叉树.md)
 
 ### 链表
-![total](https://img.shields.io/static/v1?label=total&message=30&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=31&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0019_中等_删除链表的倒数第N个结点`](problems/2022/01/LeetCode_0019_中等_删除链表的倒数第N个结点.md)
 - [`LeetCode_0021_简单_合并两个有序链表`](problems/2021/10/LeetCode_0021_简单_合并两个有序链表.md)
@@ -1032,6 +1034,7 @@
 - [`LeetCode_0143_中等_重排链表`](problems/2022/06/LeetCode_0143_中等_重排链表.md)
 - [`LeetCode_0206_简单_反转链表`](problems/2022/10/LeetCode_0206_简单_反转链表.md)
 - [`LeetCode_0876_简单_链表的中间结点`](problems/2022/06/LeetCode_0876_简单_链表的中间结点.md)
+- [`LeetCode_0237_中等_删除链表中的节点`](problems/2025/10/LeetCode_0237_中等_删除链表中的节点.md)
 - [`剑指Offer_0600_简单_从尾到头打印链表`](problems/2021/11/剑指Offer_0600_简单_从尾到头打印链表.md)
 - [`剑指Offer_1800_简单_删除链表的节点`](problems/2021/11/剑指Offer_1800_简单_删除链表的节点.md)
 - [`剑指Offer_2200_简单_链表中倒数第k个节点`](problems/2021/11/剑指Offer_2200_简单_链表中倒数第k个节点.md)

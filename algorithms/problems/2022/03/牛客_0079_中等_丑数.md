@@ -75,7 +75,7 @@ class Solution:
 
 - [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
 - [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
-- [链表常用操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+- [链表操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
 
 </details>
 <!--END_SECTION:relate_note-->

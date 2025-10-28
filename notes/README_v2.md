@@ -34,6 +34,8 @@ Notes
 ## Recent 📖
 <!--START_SECTION:recent-->
 - [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$<span title="置顶">📌</span>
+- [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
+- [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")$\color{Brown}^{24}$
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [📋](_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(16)")$\color{Brown}^{16}$
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")$\color{Gray}^{2}$[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "策略梯度算法 · 面试问题整理(4)")$\color{Brown}^{4}$
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")$\color{Brown}^{13}$
@@ -43,12 +45,10 @@ Notes
 - [`2025-08-06` 开发环境配置 ( 基于 WSL )](_archives/2025/08/WSL开发环境配置.md) 
 - [`2025-08-05` `uv` 备忘](_archives/2025/08/python-uv备忘.md) 
 - [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
-- [`2025-07-08` 链表常用操作备忘](_archives/2022/10/链表模板.md) 
+- [`2025-07-08` 链表操作备忘](_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
 - [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 - [`2025-07-08` 论文-2022-YiboYang](_archives/2022/05/论文-2022-YiboYang.md) 
-- [`2025-07-08` 综述-2019-Johnson](_archives/2022/05/综述-2019-Johnson.md) 
-- [`2025-07-08` 类方法中 `self` 的含义](_archives/2022/06/python类方法中self的含义.md) 
 
 <!--END_SECTION:recent-->
 
@@ -221,7 +221,7 @@ Notes
 
 **模板**
 
-- [链表常用操作备忘](_archives/2022/10/链表模板.md) 
+- [链表操作备忘](_archives/2022/10/链表模板.md) 
 - [滑动窗口模板](_archives/2022/10/滑动窗口模板.md) 
 
 </td>
@@ -394,7 +394,7 @@ Notes
 - [huggingface 套件使用备忘](_archives/2023/06/huggingface套件使用备忘.md) 
 - [query 理解参考资料](_archives/2022/12/query理解相关阅读.md) 
 - [requirements.txt 语法备忘](_archives/2022/09/python-requirements语法.md) 
-- [一些有趣的问题](_archives/2025/10/有意思的问题收集.md) <span title="一些有趣的问题 (非专业) · 面试问题整理(2)">📋</span>$\color{Brown}^{2}$
+- [一些有趣的问题](_archives/2025/10/有意思的问题收集.md) <span title="非专业问题 · 面试问题整理(2)">📋</span>$\color{Brown}^{2}$
 - [低资源训练](_archives/2022/12/低资源训练.md) 
 - [使用 LLM 优化简历](_archives/2025/08/使用LLM优化简历.md) 
 - [使用 LLM 阅读论文](_archives/2024/01/使用LLM阅读论文.md) 
