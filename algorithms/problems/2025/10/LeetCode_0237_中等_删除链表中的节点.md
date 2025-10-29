@@ -1,6 +1,6 @@
 ## 删除链表中的节点
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-27%2015%3A27%3A36&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E9%93%BE%E8%A1%A8&color=blue&style=flat-square)](../../../README.md#链表)
@@ -70,6 +70,7 @@ class Solution:
 
 <details><summary><b>其他算法笔记</b></summary>
 
+- [二分查找相关](../../../../notes/_archives/2025/10/二分查找备忘.md)  
 - [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
 - [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
 - [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  

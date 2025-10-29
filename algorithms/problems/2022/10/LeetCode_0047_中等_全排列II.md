@@ -139,6 +139,7 @@ class Solution:
 
 <details><summary><b>其他算法笔记</b></summary>
 
+- [二分查找相关](../../../../notes/_archives/2025/10/二分查找备忘.md)  
 - [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
 - [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
 - [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  

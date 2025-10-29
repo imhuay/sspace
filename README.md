@@ -388,6 +388,7 @@ JSON         18 mins         -------------------------   00.92 %
 
 - [链表操作备忘](notes/_archives/2022/10/链表模板.md) 
 - [滑动窗口模板](notes/_archives/2022/10/滑动窗口模板.md) 
+- [二分查找相关](notes/_archives/2025/10/二分查找备忘.md) [✒️](notes/_archives/2025/10/二分查找备忘.md#todo "TODO(1)")$\color{Gray}^{1}$
 
 </td>
 </tr>

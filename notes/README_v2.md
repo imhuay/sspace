@@ -223,6 +223,7 @@ Notes
 
 - [链表操作备忘](_archives/2022/10/链表模板.md) 
 - [滑动窗口模板](_archives/2022/10/滑动窗口模板.md) 
+- [二分查找相关](_archives/2025/10/二分查找备忘.md) [✒️](_archives/2025/10/二分查找备忘.md#todo "TODO(1)")$\color{Gray}^{1}$
 
 </td>
 </tr>
