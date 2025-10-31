@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(78)">📋</span>$\color{Brown}^{78}$ <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(79)">📋</span>$\color{Brown}^{79}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -29,7 +29,7 @@ algo_tags: []
 - [Transformer · **基础模型** · `16`](#transformer--基础模型--16)
 - [Transformer · **位置编码** · `24`](#transformer--位置编码--24)
 - [RLHF · **基础** · `13`](#rlhf--基础--13)
-- [RLHF · **策略梯度算法** · `4`](#rlhf--策略梯度算法--4)
+- [RLHF · **策略梯度算法** · `5`](#rlhf--策略梯度算法--5)
 - [SFT · **基础概念** · `9`](#sft--基础概念--9)
 - [SFT · PEFT · **LoRA** · `10`](#sft--peft--lora--10)
 - [Other · **非专业问题** · `2`](#other--非专业问题--2)
@@ -118,12 +118,16 @@ algo_tags: []
     - [3.4. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](../09/RLHF/RLHF.md#34--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
     - [3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么离线算法 (如 DPO) 不需要价值模型?](../09/RLHF/RLHF.md#35------️-️-️-为什么离线算法-如-dpo-不需要价值模型)
 
-## RLHF · **策略梯度算法** · `4`<!-- 98 -->
+## RLHF · **策略梯度算法** · `5`<!-- 98 -->
 
-- [1. ✅ PPO 中的 **价值模型** 是怎么训练的?](../09/RLHF/策略梯度算法.md#1--ppo-中的-价值模型-是怎么训练的)
-- [2. 🚩 PPO 中的 **价值模型** 存在什么问题?](../09/RLHF/策略梯度算法.md#2--ppo-中的-价值模型-存在什么问题)
-- [3. 💡 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?](../09/RLHF/策略梯度算法.md#3--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么)
-    - [3.1. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](../09/RLHF/策略梯度算法.md#31--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
+- [1. 🏷️ 基础概念](../09/RLHF/策略梯度算法.md#1-️-基础概念)
+    - [1.1. 💡 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么? PPO 属于哪种?](../09/RLHF/策略梯度算法.md#11--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么-ppo-属于哪种)
+- [2. 🏷️ PPO 相关](../09/RLHF/策略梯度算法.md#2-️-ppo-相关)
+    - [2.1. ✅ PPO 中的 **价值模型** 是怎么训练的?](../09/RLHF/策略梯度算法.md#21--ppo-中的-价值模型-是怎么训练的)
+    - [2.2. 🚩 PPO 中的 **价值模型** 存在什么问题?](../09/RLHF/策略梯度算法.md#22--ppo-中的-价值模型-存在什么问题)
+- [3. 🏷️ GRPO 相关](../09/RLHF/策略梯度算法.md#3-️-grpo-相关)
+    - [3.1. ✅ 详细解释 GRPO 的核心思想, 与 PPO 的主要区别](../09/RLHF/策略梯度算法.md#31--详细解释-grpo-的核心思想-与-ppo-的主要区别)
+    - [3.2. ✅ GRPO 的 **优势信号** 是怎么计算的?](../09/RLHF/策略梯度算法.md#32--grpo-的-优势信号-是怎么计算的)
 
 ## SFT · **基础概念** · `9`<!-- 97 -->
 
