@@ -14,7 +14,7 @@ hidden_in_recent: true
 section_number: false
 omit_in_tag_toc: false
 level: 0
-tags: []
+tags: [transformer]
 algo_tags: []
 -->
 
@@ -28,6 +28,7 @@ algo_tags: []
 <!--START_SECTION:toc-->
 - [**位置编码**相关改进](#位置编码相关改进)
 - [**注意力机制**相关改进](#注意力机制相关改进)
+- [MoE (Mixture of Experts)](#moe-mixture-of-experts)
 - [参考](#参考)
 <!--END_SECTION:toc-->
 
@@ -40,14 +41,28 @@ extra_url: true
 with_keywords: true
 -->
 ## **位置编码**相关改进
-> [_note_](./Transformer_位置编码.md)
+> [_笔记详情_](./Transformer_位置编码.md)
 <!--END_SECTION:keyword-->
 
 ---
 
 ## **注意力机制**相关改进
 > ##### TODO
-> MLA
+> 从 MHA 到 MQA → GQA → MLA 等
+> > [Transformer升级之路：20、MLA好在哪里?（上） - 科学空间|Scientific Spaces](https://www.kexue.fm/archives/10907)
+
+---
+
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'MoE (混合专家)'
+extra_url: true
+with_keywords: true
+-->
+## MoE (Mixture of Experts)
+> [_笔记详情_](./Transformer_MoE.md)
+<!--END_SECTION:keyword-->
+
 
 ---
 

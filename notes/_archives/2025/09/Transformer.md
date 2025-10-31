@@ -217,8 +217,15 @@ use_section_number: true
 ### 1. 🏷️ 模型框架
 
 <!-- omit in toc -->
-#### 1.1. ✅ 简要阐述 Transformer 的核心思想
-> 多头自注意机制 → 全局依赖关系
+#### 1.1. ✅ 简述 Transformer 的核心思想, 它解决了 RNN/CNN 的哪些瓶颈?
+> • **核心思想**: 通过自注意机制和位置编码, 实现全局依赖建模和完全并行化; <br>
+> • 解决了 RNN 的串行计算与长依赖问题, 和 CNN 的局部感受野限制; <br>
+
+<!-- omit in toc -->
+#### ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?
+> • **并行计算**: 通过矩阵化自注意力, 所有 token 同时处理; <br>
+> • **全局依赖**: 每个 token 与所有 token 直接交互, 单层即可捕获长程关系; 通过 **位置编码** 保留序列结构 <br>
+
 
 <!-- omit in toc -->
 #### 1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
@@ -446,8 +453,8 @@ use_section_number: true
 > • **方法**: KV Cache; **效果**: $O(n^2) → O(n)$ <br>
 
 <!-- omit in toc -->
-#### 2.3. ✅ 🚨 描述 **KV Cache** 的动机, 方法, 效果
-> • **动机** (重复计算) → **方法** (缓存历史 K/V, 增量计算) → **效果** (降低计算复杂度) <br>
+#### 2.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果
+> • **动机** (减少重复计算) → **方法** (缓存历史 K/V, 增量计算) → **效果** (降低计算复杂度) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
@@ -489,7 +496,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 2.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 解释 "曝光偏差", 怎么引起的, 怎么缓解?
+#### 2.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 解释 "曝光偏差", 怎么引起的, 怎么缓解?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -502,7 +509,7 @@ use_section_number: true
 ### 3. 🏷️ 解码相关
 
 <!-- omit in toc -->
-#### 3.1. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 介绍常见的序列生成策略
+#### 3.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 介绍常见的序列生成策略
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -512,7 +519,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.2. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 对比 BeamSearch 和 贪心搜索 的优劣
+#### 3.2. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比 BeamSearch 和 贪心搜索 的优劣
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -522,7 +529,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.3. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
+#### 3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -532,7 +539,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 如何控制生成序列的长度和终止?
+#### 3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -542,7 +549,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 怎么抑制 LLM 生成过程中的 重复问题?
+#### 3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -552,7 +559,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.6. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 非自回归模型是如何解码的? 与自回归解码的优劣
+#### 3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>

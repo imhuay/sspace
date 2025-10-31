@@ -8,6 +8,7 @@ Transformer Wiki
 top: false
 draft: false
 hidden_in_recent: false
+out_of_date: True
 tags: [dl_bert]
 -->
 

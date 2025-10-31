@@ -52,11 +52,6 @@ Notes
 ### Transformer 🪄 LLM 🚀
 
 {{transformer}}
-{{llm}}
-
-<!-- omit in toc -->
-#### BERT
-
 {{dl_bert}}
 
 #### 大模型微调 (SFT · RLHF) 💥

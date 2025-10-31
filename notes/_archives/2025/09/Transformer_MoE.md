@@ -11,11 +11,11 @@ top: false
 draft: false
 hidden_in_recent: true
 level: 0
-tags: [llm]
+tags: [transformer]
 -->
 
 <!--START_SECTION:keywords-->
-> ***Keywords**: MoE (Mixture of Experts, 混合专家模型)*
+> ***Keywords**: MoE (Mixture of Experts, 混合专家模型), [Transformer 改进](./Transformer_改进.md)*
 <!--END_SECTION:keywords-->
 
 <!--START_SECTION:paper_title-->
@@ -29,11 +29,12 @@ tags: [llm]
 - [MoE 的常见优化](#moe-的常见优化)
     - [Fine-grained Expert (细粒度专家)](#fine-grained-expert-细粒度专家)
     - [Shared Expert (共享专家)](#shared-expert-共享专家)
-    - [Expert Choice vs Token Choice](#expert-choice-vs-token-choice)
+    - [Expert Choice \& Token Choice](#expert-choice--token-choice)
     - [Load Balancing Loss (负载均衡损失)](#load-balancing-loss-负载均衡损失)
     - [Router Z-loss](#router-z-loss)
 - [MoE 的训练](#moe-的训练)
 - [参考资料](#参考资料)
+- [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
 ---
@@ -240,7 +241,7 @@ if __name__ == "__main__":
 >> 取 $N = 32, K=4, K_s=1$, 有 $\binom{32}{4} = 35960 \rightarrow \binom{31}{3} = 4495$, 组合数减少了 ~90%;
 
 
-### Expert Choice vs Token Choice
+### Expert Choice & Token Choice
 > Token 与 Expert 之间匹配的方式: **Expert 选择 Token** 还是 **Token 选择 Expert**?
 
 - **专家选择 (Expert Choice, EC)**:
@@ -312,3 +313,233 @@ MoE 的思想早有提出 (1991年), Switch Transformer 也是在 2022 年就出
 - [\[大模型面试\] 主流LLM为何选用MoE架构? MoE相较Dense的核心优点? LLM不可能三角_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1vThYz1Ef7/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=ba096786da8fb76742390c0bcea38a01)
 - [一文弄懂 Mixture of Experts (MoE) 的前世今生 - 文章 - 开发者社区 - 火山引擎](https://developer.volcengine.com/articles/7390576064247889958)
 
+---
+
+<!--START_SECTION:qa-->
+<!--qa_info
+subject: ''  # Transformer, RLHF, SFT, Other
+subject_level: 0  # subject 间的排序信号; 对已经设置过的 subject, 取最大值
+topic: ''  # 默认取文档的 toc_title, 如果有层级结构, 用 · 分隔, 如 'SFT · PEFT'
+topic_level: 0  # 同一个 subject 下的排序信号
+with_section_title: true  # 如果不需要 section_title
+use_section_number: true
+-->
+## Q&A
+
+<!--START_SECTION:qa_toc-->
+<!--END_SECTION:qa_toc-->
+
+---
+
+<!-- omit in toc -->
+### 🏷️ MoE 基础
+
+<!-- omit in toc -->
+#### ✅ 什么是 MoE (Mixture of Experts)? 它与传统稠密 Transformer 的主要区别是什么?
+> • MoE（混合专家）是一种在 Transformer 基础上引入 "专家网络 + 路由" 的稀疏化架构; <br>
+> • **区别**: 稠密模型每次激活所有参数, MoE 只为每个输入 token 动态选择少数几个专家参与计算，从而在保持超大参数规模的同时显著降低计算成本. <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **MoE 的核心概念**
+        - 专家网络 (Experts): 即多个并行的前馈子网络, 每个子网络 (专家) 可以学习不同的特征或任务模式;
+        - 路由 (Router/Gating Network): 根据输入 token 的特征, 计算各专家的得分, 并选择 Top‑k 个专家来处理该 token;
+        - 稀疏激活 (Sparse Activation): 每个 token 只激活少量专家, 其余专家不参与计算, 从而减少计算量;
+    
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 为什么 MoE 能在保持计算成本相对可控的情况下扩展到万亿参数规模?
+> • 通过 **稀疏激活 (Sparse Activation)** 与 **条件计算 (Conditional Computation)**, 每个 token 在前向传播时只 **激活少量专家** (通常 Top‑1 或 Top‑2), 其余专家保持休眠; 因此 **总参数量可以无限扩展, 但每次实际计算的 FLOPs 与稠密模型相当**. <br>
+
+
+<!-- omit in toc -->
+#### ✅ 路由 (Router) / 门控网络 (Gating Network) 是如何为每个 token 选择合适的专家的?
+> • 线性层 + Softmax + Top-k 策略 <br>
+
+<!-- omit in toc -->
+#### ✅ 为什么 MoE 中的 **稀疏激活** 通常只选择少量专家 ( Top-1 或 Top-2 )?
+> • 计算成本与效率; 通信与系统开销; 梯度与负载均衡; 经验与实证结果 <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **计算成本与效率**
+        - 如果每个 token 激活过多专家, 计算量会接近稠密模型, 失去 MoE 的稀疏优势;
+    - **通信与系统开销**
+        - 在分布式训练中, 专家往往分布在不同设备;
+        - 激活多个专家意味着需要跨设备传输更多 token, 通信瓶颈急剧增加;
+    - **梯度与负载均衡**
+        - 如果选择过多专家, 每个专家的梯度更新会变得稀释, 导致学习效率下降;
+    - **经验与实证结果**
+        - 当 `k>2` 时, 计算和通信成本急剧上升, 性能提升有限, 因此很少采用.
+    
+    </details>
+
+
+---
+
+<!-- omit in toc -->
+### 🏷️ MoE 架构的路由与负载均衡
+
+<!-- omit in toc -->
+#### ✅ **Top-k 路由** 与 **Switch 路由** 的差异
+> • Top‑k 路由为每个输入选择多个专家; Switch 路由只选择一个专家; <br>
+> • 前者能更好利用专家多样性，但计算和通信开销大；后者效率更高，但可能牺牲部分表达能力 <br>
+
+<!-- omit in toc -->
+#### ✅ 为什么需要 **负载均衡 (Load Balancing)**? 没有会出现什么问题?
+> • 防止路由时偏向少数专家; <br>
+> • 如果没有负载均衡, 会导致部分专家过载、其他专家闲置, 进而造成 **计算资源浪费**、**训练不稳定**、**专家塌陷** 和 **模型性能下降** 等问题; <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **计算资源浪费**
+        - 少数专家持续被选择, 其余专家几乎闲置;
+        - GPU/TPU 资源利用率下降, 吞吐量降低;
+    - **训练不稳定**
+        - 过载专家的梯度会主导更新, 导致训练震荡或收敛变慢;
+    - **专家塌陷**
+        - 路由器总是选择少数专家, 其他专家得不到训练信号, 无法形成专长;
+    - **模型性能下降**
+        - 未被使用的专家缺乏训练, 无法学到有效表示;
+        - 模型整体表达能力受限, 泛化性能下降;
+    
+    </details>
+
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 介绍几种常见的负载均衡方法, 并比较
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - 辅助损失 (Auxiliary Loss, 如 GShard 的平方和损失)
+    - 全局均衡 (Global-Batch Balance)
+    - 动态偏置 (Dynamic Expert Bias, 如 DeepSeek V3)
+    - 本地性约束 (Locality Loss, 如华为 LocMoE)
+
+    > [MoE (Mixture of Experts) 模型中的 Balance Loss](https://www.ymshici.com/tech/2410.html)
+    
+    </details>
+
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 负载均衡损失项如何设计以避免专家塌陷?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### ✅ 使用辅助损失解决负载均衡会存在什么问题?
+> • 辅助损失 (auxiliary loss) 虽然能缓解专家塌陷，但也带来 **梯度干扰**, **超参敏感**, **任务性能下降**, **通信开销增加** 等问题; <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - **梯度干扰**
+        - 与主任务梯度方向冲突
+        - 收敛慢, 不稳定
+    - **超参敏感**
+        - 权重难调, 需大量实验
+        - 迁移性差; 初期有用, 后期拖累; 需动态调整
+    - **任务性能下降**
+        - 专家无法自由专化
+        - 下游效果变差
+    - **通信开销增加**
+        - 需统计/同步专家分配
+        - 通信负担重
+
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 什么是 "无辅助损失均衡 (aux-free balancing)"?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+
+---
+
+<!-- omit in toc -->
+### 🏷️ MoE 的工程与实现
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何设计实验来验证某个 MoE 路由策略是否真正提升了专家的 **"专长分工 (specialization)"**?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 在推理阶段, 所有专家参数仍需加载到显存, 可以如何优化显存占用?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 什么是 "专家容量 (Expert Capacity)"? 为什么需要? 当 token 超过容量时, 常见的处理策略有哪些?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ MoE 在小数据集下微调时, 为什么容易过拟合或不如稠密模型稳定? 有哪些改进思路?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如果路由器在训练中出现 **专家塌陷**, 你会如何诊断与修复?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+<!-- omit in toc -->
+#### 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 假设你要在一个多模态任务 (文本+图像) 上设计 MoE, 你会如何划分专家?
+> •  <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+
+<!-- omit in toc -->
+#### ✅ 给定 8 专家, Top-2 策略, 400B 参数的 MoE 层, 估算单 token 实际激活的参数量和 batch size = 1024 时平均每个专家分配的 token 数.
+> • 100B 和 256 个 <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    - 实际激活的参数量: $400\text{B} \cdot \dfrac{2}{8} = 100\text{B}$
+    - 平均每个专家分配的 token 数: $\dfrac{1024 * 2}{8} = 256$
+    
+    </details>
+
+
+
+
+
+<!--END_SECTION:qa-->

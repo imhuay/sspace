@@ -578,7 +578,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.3. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?
+#### 3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -598,7 +598,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么离线算法 (如 DPO) 不需要价值模型?
+#### 3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>

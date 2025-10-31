@@ -66,6 +66,7 @@ class NoteInfo:
     hidden_in_recent: bool = False
     section_number: bool = False
     apply_tex2svg: bool = True
+    out_of_date: bool = False
     tags: list[str] = field(default_factory=list)
     algo_tags: list[str] = field(default_factory=list)
     level: int = 0
@@ -558,6 +559,9 @@ class Note:
     TIP_TOP = '置顶'
     EMOJI_TOP = '📌'
 
+    TIP_OUTDATED = 'Out-of-Date'
+    EMOJI_OUTDATED = '💾'  # 📦
+
     @staticmethod
     def _get_title_span(title: str, content: str):
         """"""
@@ -621,6 +625,9 @@ class Note:
         #     # suffix += args.temp_badge_todo_logo_edit_h.format(num_todo=self.num_todo, height=todo_size)
         #     suffix += args.get_temp_badge_todo_logo(self.num_todo, height=todo_size, href=href)
 
+        if self.out_of_date:
+            suffix += self._get_title_span(self.TIP_OUTDATED, self.EMOJI_OUTDATED)
+
         return suffix
 
     _toc_title_suffix: str = ''
@@ -682,8 +689,9 @@ class Note:
     QA_BADGE_TEMP = '<a href="{href}"><img src="https://custom-icon-badges.demolab.com/static/v1?label=QA&message={count}&labelColor={color}&color={color}&style=flat-square&logoSource=feather&logo=edit&logoColor=white" height="{height}"/></a>'
 
     @property
-    def qa_badge(self):
+    def out_of_date(self):
         """"""
+        return self.info.out_of_date
 
 
 @dataclass
