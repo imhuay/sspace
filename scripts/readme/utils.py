@@ -20,7 +20,7 @@ import urllib.parse
 from dataclasses import dataclass, fields
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import TYPE_CHECKING, ClassVar, List, Tuple
+from typing import TYPE_CHECKING, ClassVar, List, Literal, Tuple
 
 import emoji
 import regex
@@ -609,6 +609,14 @@ class GitUtils:
 
 class MarkdownUtils:
     """"""
+
+    @staticmethod
+    def get_count_sup(cnt: int, *, color: str = 'Gray', style: Literal['math', 'html'] = 'html'):
+        """"""
+        if style == 'math':
+            return rf'$\color{{{color}}}^{{{cnt}}}$'
+        else:
+            return f'<sup style="color:{color}">{cnt}</sup>'  # 在 GitHub 上, 颜色会失效
 
     @staticmethod
     def remove_min_prefix_spaces(lines: List[str]) -> List[str]:

@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from logging import DEBUG
 from pathlib import Path
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 import yaml
 from _base import Builder
@@ -117,7 +117,7 @@ class Note:
 
         self._tex2svg()
         self._norm_text()
-        self._update_title(self.get_title_suffix_v2(add_tip_prefix=False))
+        self._update_title(self.get_title_suffix_v2(add_tip_prefix=False, style='math'))
         self._update_badge()
 
         if self.qa_section is not None:
@@ -176,7 +176,7 @@ class Note:
 
     def update_title(self, add_href: bool):
         """"""
-        title_suffix = self.get_title_suffix_v2(add_href=add_href, add_tip_prefix=False)
+        title_suffix = self.get_title_suffix_v2(add_href=add_href, add_tip_prefix=False, style='math')
         self._update_title(title_suffix)
         # self.write_text()
 
@@ -570,7 +570,14 @@ class Note:
             return self.qa_section.section_title
         return ''
 
-    def get_title_suffix_v2(self, *, add_href: bool = True, href: str | Path = '', add_tip_prefix: bool = True) -> str:
+    def get_title_suffix_v2(
+        self,
+        *,
+        add_href: bool = True,
+        href: str | Path = '',
+        add_tip_prefix: bool = True,
+        style: Literal['math', 'html'] = 'html',
+    ) -> str:
         suffix = ''
 
         if self.is_thorough:
@@ -581,7 +588,9 @@ class Note:
             # suffix = img_temp.format(src=badge_src)
             tip_todo = f'{self.TIP_TODO}({self.num_todo})' if self.num_todo > 0 else self.TIP_TODO
             if self.num_todo > 0:
-                suffix += f'[{self.EMOJI_TODO}]({href}#todo "{tip_todo}")' + rf'$\color{{Gray}}^{{{self.num_todo}}}$'
+                suffix += f'[{self.EMOJI_TODO}]({href}#todo "{tip_todo}")' + MarkdownUtils.get_count_sup(
+                    self.num_todo, style=style
+                )
             else:
                 suffix += self._get_title_span(tip_todo, self.EMOJI_TODO)
 
@@ -601,11 +610,11 @@ class Note:
                     _a = f'[{self.EMOJI_QA}]({href} "{tip_qa}")'
                 else:
                     _a = f'[{self.EMOJI_QA}]({href}#{MarkdownUtils.slugify(self.qa_section_title)} "{tip_qa}")'
-                suffix += f'{_a}' + rf'$\color{{Brown}}^{{{self.qa_count}}}$'
+                suffix += f'{_a}' + MarkdownUtils.get_count_sup(self.qa_count, color='Brown', style=style)
             else:
                 # GitHub 上 "EMOJI$..$" emoji与公式紧挨时会解析失败
                 _span = self._get_title_span(tip_qa, self.EMOJI_QA)
-                suffix += rf'{_span}$\color{{Brown}}^{{{self.qa_count}}}$'
+                suffix += _span + MarkdownUtils.get_count_sup(self.qa_count, color='Brown', style=style)
 
         # if self.num_todo > 0:
         #     # badge_src = f'https://img.shields.io/static/v1?label=✓&message={self.num_todo}&labelColor=critical&color=gray&style=flat-square'
