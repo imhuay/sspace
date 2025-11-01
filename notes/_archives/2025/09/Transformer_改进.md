@@ -2,7 +2,7 @@ Transformer 改进 <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$ <
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-25&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-25%2001%3A19%3A29&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-01%2003%3A20%3A21&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-10-25 14:47:27
@@ -49,7 +49,7 @@ with_keywords: true
 ## **注意力机制**相关改进
 > ##### TODO
 > 从 MHA 到 MQA → GQA → MLA 等
-> > [Transformer升级之路：20、MLA好在哪里?（上） - 科学空间|Scientific Spaces](https://www.kexue.fm/archives/10907)
+> > [Transformer升级之路: 20、MLA好在哪里? (上) - 科学空间|Scientific Spaces](https://www.kexue.fm/archives/10907)
 
 ---
 

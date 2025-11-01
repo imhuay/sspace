@@ -1,8 +1,8 @@
-Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(16)")$\color{Brown}^{16}$ <!-- suffix -->
+Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(15)")$\color{Brown}^{15}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-25%2001%3A19%3A29&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-01%2003%3A20%3A21&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -186,29 +186,30 @@ use_section_number: true
 
 <!--START_SECTION:qa_toc-->
 - [1. 🏷️ 模型框架](#1-️-模型框架)
-    - [1.1. ✅ 简要阐述 Transformer 的核心思想](#11--简要阐述-transformer-的核心思想)
-    - [1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#12--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
-    - [1.3. ✅ 为什么 Transformer 比 RNN/LSTM 更好](#13--为什么-transformer-比-rnnlstm-更好)
-    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.5. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?](#15--为什么大多数-llm-选择-decoder-only-causallm-架构)
-    - [1.6. ✅ 说明自注意力机制的计算过程](#16--说明自注意力机制的计算过程)
-    - [1.7. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#17--为什么要对-qk-的点积进行缩放-缩放因子是)
-    - [1.8. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](#18--multi-head-的动机是什么-本质是什么-是如何实现的)
-    - [1.9. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#19--为什么-decoder-中计算自注意力需要-掩码)
-    - [1.10. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#110--decoder-中的-attention-与-encoder-有什么不同)
-    - [1.11. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#111--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
+    - [1.1. ✅ 简述 Transformer 的核心思想, 它解决了 RNN/CNN 的哪些瓶颈?](#11--简述-transformer-的核心思想-它解决了-rnncnn-的哪些瓶颈)
+    - [1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](#12--说明-transformer-的并行计算与全局依赖是如何实现的)
+    - [1.3. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#13--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
+    - [1.4. ✅ 为什么 Transformer 比 RNN/LSTM 更好](#14--为什么-transformer-比-rnnlstm-更好)
+    - [1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#15--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.6. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?](#16--为什么大多数-llm-选择-decoder-only-causallm-架构)
+    - [1.7. ✅ 说明自注意力机制的计算过程](#17--说明自注意力机制的计算过程)
+    - [1.8. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#18--为什么要对-qk-的点积进行缩放-缩放因子是)
+    - [1.9. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](#19--multi-head-的动机是什么-本质是什么-是如何实现的)
+    - [1.10. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#110--为什么-decoder-中计算自注意力需要-掩码)
+    - [1.11. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#111--decoder-中的-attention-与-encoder-有什么不同)
+    - [1.12. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#112--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
 - [2. 🏷️ 训练与推理](#2-️-训练与推理)
     - [2.1. ✅ 说明 Decoder 在训练与推理阶段的差异](#21--说明-decoder-在训练与推理阶段的差异)
     - [2.2. ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#22--推理阶段-怎么优化随着输出序列越来越长带来的开销)
-    - [2.3. ✅ 🚨 描述 **KV Cache** 的动机, 方法, 效果](#23---描述-kv-cache-的动机-方法-效果)
-    - [2.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 解释 "曝光偏差", 怎么引起的, 怎么缓解?](#24------️-️-解释-曝光偏差-怎么引起的-怎么缓解)
+    - [2.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果](#23--描述-kv-cache-的动机-方法-效果)
+    - [2.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 解释 "曝光偏差", 怎么引起的, 怎么缓解?](#24-----️-️-️--解释-曝光偏差-怎么引起的-怎么缓解)
 - [3. 🏷️ 解码相关](#3-️-解码相关)
-    - [3.1. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 介绍常见的序列生成策略](#31------️-️-介绍常见的序列生成策略)
-    - [3.2. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 对比 BeamSearch 和 贪心搜索 的优劣](#32------️-️-️-对比-beamsearch-和-贪心搜索-的优劣)
-    - [3.3. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#33------️-️-️-为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
-    - [3.4. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 如何控制生成序列的长度和终止?](#34------️-️-️-如何控制生成序列的长度和终止)
-    - [3.5. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 怎么抑制 LLM 生成过程中的 重复问题?](#35------️-️-️-怎么抑制-llm-生成过程中的-重复问题)
-    - [3.6. ✅ 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ 非自回归模型是如何解码的? 与自回归解码的优劣](#36------️-️-️-非自回归模型是如何解码的-与自回归解码的优劣)
+    - [3.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 介绍常见的序列生成策略](#31-----️-️-️--介绍常见的序列生成策略)
+    - [3.2. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比 BeamSearch 和 贪心搜索 的优劣](#32-----️-️-️--对比-beamsearch-和-贪心搜索-的优劣)
+    - [3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#33-----️-️-️--为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
+    - [3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?](#34-----️-️-️--如何控制生成序列的长度和终止)
+    - [3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?](#35-----️-️-️--怎么抑制-llm-生成过程中的-重复问题)
+    - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣](#36-----️-️-️--非自回归模型是如何解码的-与自回归解码的优劣)
 <!--END_SECTION:qa_toc-->
 
 ---
@@ -222,13 +223,13 @@ use_section_number: true
 > • 解决了 RNN 的串行计算与长依赖问题, 和 CNN 的局部感受野限制; <br>
 
 <!-- omit in toc -->
-#### ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?
+#### 1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?
 > • **并行计算**: 通过矩阵化自注意力, 所有 token 同时处理; <br>
 > • **全局依赖**: 每个 token 与所有 token 直接交互, 单层即可捕获长程关系; 通过 **位置编码** 保留序列结构 <br>
 
 
 <!-- omit in toc -->
-#### 1.2. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
+#### 1.3. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?
 > **Transformer (位置编码 + 全局依赖)** / **CNN (局部性 + 平移不变性)** / **RNN (顺序性 + 马尔可夫假设)**
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -250,11 +251,11 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.3. ✅ 为什么 Transformer 比 RNN/LSTM 更好
+#### 1.4. ✅ 为什么 Transformer 比 RNN/LSTM 更好
 > • 1) 长程依赖/全局交互, 2) 并行计算/训练速度
 
 <!-- omit in toc -->
-#### 1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
+#### 1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
 > • **Encoder**: (文本表示, 自注意力 → FFN); <br>
 > • **Decoder**: (自回归, 掩码自注意力 → 交叉注意力 → FFN). <br>
 
@@ -279,7 +280,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.5. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?
+#### 1.6. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?
 > • **LLM 的核心能力** 是自回归生成, 与 Decoder 的的工作模式相匹配; <br>
 > • **低秩问题**: Decoder-Only 中的下三角注意力矩阵天然避免了低秩塌缩, 保证了更强的表达能力; <br>
 > • **参数效率**: Encoder-Decoder vs Decoder-Only; <br>
@@ -320,7 +321,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.6. ✅ 说明自注意力机制的计算过程
+#### 1.7. ✅ 说明自注意力机制的计算过程
 > • Q/K/V 投影 → 计算注意力分数 → 缩放与归一化 → 加权求和 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -330,7 +331,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.7. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
+#### 1.8. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
 > • 防止点积 ($QK^\top$) 的数值过大引发梯度消失; 缩放因子是 $\sqrt{d_k}$ (其中 $d_k$ 为输入向量 $K$ 的维度) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -341,7 +342,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.8. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?
+#### 1.9. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?
 > • **动机**: 将特征空间切分成多个独立的低维子空间 → 学习不同的注意力分布/不同的依赖关系; <br>
 > • **本质**: **Multi-Head 的本质是 _ensemble_ (集成学习)**; <br>
 > • **实现**: 将 Q/K/V 投影到多个低维子空间 → 每个头独立执行 Attention → 将结果拼接后再整体投影; <br>
@@ -390,7 +391,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.9. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
+#### 1.10. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
 > • 维持自回归特性, 防止数据泄露 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -408,12 +409,12 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.10. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
+#### 1.11. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
 > • Encoder 只有 Self-Attention; <br>
 > • Decoder 包括 Masked Self-Attention 和 Cross-Attention; <br>
 
 <!-- omit in toc -->
-#### 1.11. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
+#### 1.12. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
 > • Q 来自 Decoder 上一层的输出; K, V 来自 Encoder 最后一层的输出 (不再变化); <br>
 
 <!-- omit in toc -->
