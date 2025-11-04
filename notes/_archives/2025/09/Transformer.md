@@ -1,8 +1,8 @@
-Transformer 模型架构 <!-- suffix --> [📋](#qa "面试问题整理(15)")$\color{Brown}^{15}$ <!-- suffix -->
+Transformer 模型架构 <!-- suffix --> [✒️](#todo "TODO(3)")$\color{Gray}^{3}$[📋](#qa "面试问题整理(22)")$\color{Brown}^{22}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-01%2003%3A20%3A21&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -208,31 +208,37 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
-- [1. 🏷️ 模型框架](#1-️-模型框架)
-    - [1.1. ✅ 简述 Transformer 的核心思想, 它解决了 RNN/CNN 的哪些瓶颈?](#11--简述-transformer-的核心思想-它解决了-rnncnn-的哪些瓶颈)
+- [1. 🏷️ 模型总览](#1-️-模型总览)
+    - [1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](#11--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
     - [1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](#12--说明-transformer-的并行计算与全局依赖是如何实现的)
-    - [1.3. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](#13--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
-    - [1.4. ✅ 为什么 Transformer 比 RNN/LSTM 更好](#14--为什么-transformer-比-rnnlstm-更好)
-    - [1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#15--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.6. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?](#16--为什么大多数-llm-选择-decoder-only-causallm-架构)
-    - [1.7. ✅ 说明自注意力机制的计算过程](#17--说明自注意力机制的计算过程)
-    - [1.8. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#18--为什么要对-qk-的点积进行缩放-缩放因子是)
-    - [1.9. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](#19--multi-head-的动机是什么-本质是什么-是如何实现的)
-    - [1.10. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#110--为什么-decoder-中计算自注意力需要-掩码)
-    - [1.11. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#111--decoder-中的-attention-与-encoder-有什么不同)
-    - [1.12. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#112--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
-- [2. 🏷️ 训练与推理](#2-️-训练与推理)
-    - [2.1. ✅ 说明 Decoder 在训练与推理阶段的差异](#21--说明-decoder-在训练与推理阶段的差异)
-    - [2.2. ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#22--推理阶段-怎么优化随着输出序列越来越长带来的开销)
-    - [2.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果](#23--描述-kv-cache-的动机-方法-效果)
-    - [2.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 解释 "曝光偏差", 怎么引起的, 怎么缓解?](#24-----️-️-️--解释-曝光偏差-怎么引起的-怎么缓解)
-- [3. 🏷️ 解码相关](#3-️-解码相关)
-    - [3.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 介绍常见的序列生成策略](#31-----️-️-️--介绍常见的序列生成策略)
-    - [3.2. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比 BeamSearch 和 贪心搜索 的优劣](#32-----️-️-️--对比-beamsearch-和-贪心搜索-的优劣)
-    - [3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](#33-----️-️-️--为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
-    - [3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?](#34-----️-️-️--如何控制生成序列的长度和终止)
-    - [3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?](#35-----️-️-️--怎么抑制-llm-生成过程中的-重复问题)
-    - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣](#36-----️-️-️--非自回归模型是如何解码的-与自回归解码的优劣)
+    - [1.3. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](#13--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
+    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](#15--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
+    - [1.6. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](#16--为什么主流-llm-选择-decoder-only-causal-lm-架构)
+- [2. 🏷️ 模型细节](#2-️-模型细节)
+    - [2.1. ✅ 说明自注意力机制的计算过程](#21--说明自注意力机制的计算过程)
+    - [2.2. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#22--为什么要对-qk-的点积进行缩放-缩放因子是)
+    - [2.3. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](#23--multi-head-的动机是什么-本质是什么-是如何实现的)
+    - [2.4. 💡 给定 embed dim 与 num heads, 如何估算 head dim、显存占用与吞吐的关系?](#24--给定-embed-dim-与-num-heads-如何估算-head-dim显存占用与吞吐的关系)
+    - [2.5. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](#25--为什么-decoder-中计算自注意力需要-掩码)
+    - [2.6. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](#26--decoder-中的-attention-与-encoder-有什么不同)
+    - [2.7. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](#27--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
+    - [2.8. ✅ 为什么 FFN 需要先升维再降维?](#28--为什么-ffn-需要先升维再降维)
+- [3. 🏷️ 训练与推理差异](#3-️-训练与推理差异)
+    - [3.1. ✅ 说明 Decoder 在训练与推理阶段对 **目标可见性** 的差异](#31--说明-decoder-在训练与推理阶段对-目标可见性-的差异)
+    - [3.2. ✅ 什么是 "曝光偏差", 如何缓解?](#32--什么是-曝光偏差-如何缓解)
+    - [3.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果, 代价](#33--描述-kv-cache-的动机-方法-效果-代价)
+    - [3.4. ⬆️ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](#34-️-推理阶段-怎么优化随着输出序列越来越长带来的开销)
+    - [3.5. ✅ KV cache 带来的显存占用线性增长要如何管理?](#35--kv-cache-带来的显存占用线性增长要如何管理)
+- [4. 🏷️ 解码相关](#4-️-解码相关)
+    - [4.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比常见的解码策略 (Beam Search, 贪心, 采样)](#41-----️-️-️--对比常见的解码策略-beam-search-贪心-采样)
+    - [4.2. ✅ 为什么 LLM 在文本创作中倾向于使用采样策略?](#42--为什么-llm-在文本创作中倾向于使用采样策略)
+    - [4.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?](#43-----️-️-️--如何控制生成序列的长度和终止)
+    - [4.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?](#44-----️-️-️--怎么抑制-llm-生成过程中的-重复问题)
+    - [4.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣](#45-----️-️-️--非自回归模型是如何解码的-与自回归解码的优劣)
+- [5. 🏷️ 工程优化、失败模式与诊断](#5-️-工程优化失败模式与诊断)
+    - [5.1. ✅ 比较 Pre‑LN 与 Post‑LN 的优缺点](#51--比较-preln-与-postln-的优缺点)
+    - [5.2. ✅ Pre‑LN 存在的问题与解决方法](#52--preln-存在的问题与解决方法)
 <!--END_SECTION:qa_toc-->
 
 ---
@@ -266,13 +272,13 @@ use_section_number: true
         - **显式位置编码**: 注意力机制本身是置换不变的, 必须显式注入位置信息;
         > 弱结构假设: 没有内置的强归纳偏置, 更多依赖数据驱动;
     - **CNN**
-        - **局部性** (Locality)：卷积核只关注局部区域；
-        - **平移不变性** (Translation Invariance)：同一卷积核在不同位置共享参数；
-        > 层次化特征：通过堆叠卷积层逐步扩大感受野, 适合图像等具有空间局部相关性的任务
+        - **局部性** (Locality): 卷积核只关注局部区域; 
+        - **平移不变性** (Translation Invariance): 同一卷积核在不同位置共享参数; 
+        > 层次化特征: 通过堆叠卷积层逐步扩大感受野, 适合图像等具有空间局部相关性的任务
     - **RNN**
-        - **顺序性** (Sequential Order)：隐状态按时间步递归更新；
-        - **马尔可夫式依赖：当前状态依赖于前一状态；**
-        > 时间一致性：天然适合建模时间序列、语音、文本等逐步展开的信号, 适合流式输入和强时间依赖的任务
+        - **顺序性** (Sequential Order): 隐状态按时间步递归更新; 
+        - **马尔可夫式依赖: 当前状态依赖于前一状态; **
+        > 时间一致性: 天然适合建模时间序列、语音、文本等逐步展开的信号, 适合流式输入和强时间依赖的任务
 
     **优缺点**
     - Transformer: 弱先验, 几乎不假设输入的内在结构 (位置关系通过显式编码输入);
@@ -285,7 +291,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
+#### 1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
 > • **Encoder**: (文本表示, 自注意力 → FFN); <br>
 > • **Decoder**: (自回归, 掩码自注意力 → 交叉注意力 → FFN). <br>
 
@@ -310,13 +316,13 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式
+#### 1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式
 > • Encoder–Decoder: 输入输出强依赖的 Seq2Seq 任务; 条件生成 (Conditional LM), 输入序列 → 输出序列 <br>
 > • Decoder-only: 通用生成与大模型预训练; 因果语言建模 (Causal LM), 预测下一个 token <br>
 > • Encoder-only: 理解与判别类任务; **掩码语言建模** (Masked LM), 随机 mask 输入 token 预测缺失部分 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - Encoder–Decoder
         - **模型结构**: 编码器对输入双向建模 → 解码器单向生成输出, 并通过 cross-attn 融合输入;
         - **训练范式**: 条件生成 (Conditional LM), 输入序列 → 输出序列;
@@ -326,7 +332,7 @@ use_section_number: true
         - **劣势**
             - **训练和推理复杂度较高**.
         - 典型代表: 原版 Transformer, T5, BART;
-    
+
     - Decoder-only
         - **模型结构**: 只有解码器, 使用 **Causal Mask** 保证单向生成;
         - **训练范式**: **因果语言建模** (Causal LM), 预测下一个 token;
@@ -340,7 +346,7 @@ use_section_number: true
             - 输入和输出混在同一序列中, **条件建模** 效率可能不如 Encoder–Decoder;
             - 对 **理解类任务** 不如 Encoder-only 高效.
         - 典型代表: GPT 系列, LLaMA, ChatGPT 等;
-    
+
     - Encoder-only
         - **模型结构**: 只有编码器, 双向自注意力;
         - **训练范式**: **掩码语言建模** (Masked LM) - 随机 mask 输入 token 预测缺失部分;
@@ -353,7 +359,7 @@ use_section_number: true
         - **劣势**
             - 不具备自然的生成能力
         - 典型代表: BERT, RoBERTa, DeBERTa 等;
-    
+
     </details>
 
 
@@ -403,24 +409,20 @@ use_section_number: true
 ---
 
 <!-- omit in toc -->
-### 🏷️ 模型细节
+### 2. 🏷️ 模型细节
 
 <!-- omit in toc -->
-#### 1.7. ✅ 说明自注意力机制的计算过程
+#### 2.1. ✅ 说明自注意力机制的计算过程
 > • Q/K/V 线性投影 → 计算注意力分数 → 缩放与归一化 → 加权求和 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    $$\begin{align*}
-                & Q, K, V = XW^Q, XW^K, XW^V  && \quad \scriptstyle ▷\; \text{Q/K/V 线性投影} \\
-        → \quad & QK^\top \;→\;\; \text{softmax}(\frac{QK^\top}{\sqrt{d_k}}) && \quad \scriptstyle ▷\; \text{计算注意力分数 → 缩放与归一化} \\
-        → \quad & \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V && \quad \scriptstyle ▷\; \text{加权求和} 
-    \end{align*}$$
+    <div align='center'><a href='_formulas/Transformer/f_005.js.tex'><img src='_formulas/Transformer/f_005.js.svg'/></a></div>
 
     </details>
 
 <!-- omit in toc -->
-#### 1.8. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
+#### 2.2. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?
 > • 防止点积 ($QK^\top$) 的数值过大引发梯度消失; 缩放因子是 $\sqrt{d_k}$ (其中 $d_k$ 为输入向量 $K$ 的维度) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -431,14 +433,14 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.9. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?
+#### 2.3. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?
 > • **动机**: 将特征空间切分成多个独立的低维子空间 → 学习不同的注意力分布/不同的依赖关系; <br>
 > • **本质**: **Multi-Head 的本质是 _ensemble_ (集成学习)**; <br>
 > • **实现**: 将 Q/K/V 投影到多个低维子空间 → 每个头独立执行 Attention → 将结果拼接后再整体投影; <br>
 >> 具体实现时会利用向量操作进行简化: `[B, L, d_model] → [B, L, H*d_k] → [B, H, L, d_k]`
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     > [示例代码](./_code/transformer_demo.py#L35)
 
     - **独立视角**: 每个 head 就像一个弱学习器, 专注于不同的模式 (语法、语义、长程依赖等);
@@ -451,11 +453,11 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 💡 给定 embed dim 与 num heads, 如何估算 head dim、显存占用与吞吐的关系?
-> • 一般来说，更多 heads → 更小 head_dim → 参数量/KV Cache不变, 显存占用增加; 矩阵乘法效率下降, 吞吐下降. <br>
+#### 2.4. 💡 给定 embed dim 与 num heads, 如何估算 head dim、显存占用与吞吐的关系?
+> • 一般来说, 更多 heads → 更小 head_dim → 参数量/KV Cache不变, 显存占用增加; 矩阵乘法效率下降, 吞吐下降. <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     **更多 heads 时**:
     - 参数量与 head 数无关
         - 因为 Q/K/V 投影矩阵的维度始终是 `[d_model, d_model]`;
@@ -464,11 +466,11 @@ use_section_number: true
     - 显存占用随 head 数增加而线性增长
         - Attention logits: `[B, H, L, L]`, 显存随 head 数 H 线性增加
     - head_dim 更小, 矩阵乘法效率下降, 吞吐降低;
-    
+
     </details>
 
 <!-- omit in toc -->
-#### 1.10. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
+#### 2.5. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?
 > • 维持自回归特性, 防止数据泄露 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -486,34 +488,34 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.11. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
+#### 2.6. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?
 > • Encoder 只有 Self-Attention; <br>
 > • Decoder 包括 Masked Self-Attention 和 Cross-Attention; <br>
 
 <!-- omit in toc -->
-#### 1.12. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
+#### 2.7. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?
 > • Q 来自 Decoder 上一层的输出; K, V 来自 Encoder 最后一层的输出 (不再变化); <br>
 
 <!-- omit in toc -->
-#### ✅ 为什么 FFN 需要先升维再降维?
+#### 2.8. ✅ 为什么 FFN 需要先升维再降维?
 > • **表达能力** 与 **计算效率** 的折中. <br>
 > • **升维**: 增强模型表达能力, 捕捉更复杂的特征关系; **降维**: 控制模型复杂度, 保持输入输出一致. <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     > [【面试总结】FFN 在 Transformer 模型中先升维再降维的原因 - CSDN博客](https://blog.csdn.net/hhhhhhhhhhwwwwwwwwww/article/details/145299992)
-    
-    > [为什么transformer的 FFN 需要先升维再降维？ - 知乎](https://www.zhihu.com/question/665731716)
+
+    > [为什么transformer的 FFN 需要先升维再降维? - 知乎](https://www.zhihu.com/question/665731716)
 
     </details>
 
 ---
 
 <!-- omit in toc -->
-### 2. 🏷️ 训练与推理差异
+### 3. 🏷️ 训练与推理差异
 
 <!-- omit in toc -->
-#### 2.1. ✅ 说明 Decoder 在训练与推理阶段对 **目标可见性** 的差异
+#### 3.1. ✅ 说明 Decoder 在训练与推理阶段对 **目标可见性** 的差异
 > • **训练阶段**: Decoder 使用 **教师强制 (teacher forcing)**, 目标序列整体可见, 但通过 Causal Mask 限制每个位置只能看到过去和当前 token; <br>
 > • **推理阶段**: Decoder 是自回归的, 每次只输入已生成的 token, 天然保证了因果性; <br>
 
@@ -543,7 +545,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 2.4. ✅ 什么是 "曝光偏差", 如何缓解?
+#### 3.2. ✅ 什么是 "曝光偏差", 如何缓解?
 > • **曝光偏差**: 训练阶段与推理阶段输入分布不一致 <br>
 > • **缓解方法**: 计划采样 (Scheduled sampling), 对比学习, 强化学习 <br>
 >> 在大模型时代, 曝光偏差问题的重要性被弱化了: **大规模预训练 + RLHF + 采样解码策略** 在实践中缓解了训练/推理分布不一致的问题.
@@ -551,10 +553,10 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - 计划采样 (Scheduled sampling)
-        - 在训练中逐步用模型预测替代真实 token，缩小训练/推理差距
-        - 缺点：可能引入训练不稳定
+        - 在训练中逐步用模型预测替代真实 token, 缩小训练/推理差距
+        - 缺点: 可能引入训练不稳定
     - 对比学习 + 对抗扰动
-        - 通过对比正负样本，提升模型在“非黄金输入”下的鲁棒性
+        - 通过对比正负样本, 提升模型在 "非黄金输入" 下的鲁棒性
             > [ICLR 2021 @ 利用对比学习缓解文本生成中的曝光偏差问题 - 知乎](https://zhuanlan.zhihu.com/p/400444415)
     - 强化学习
         - 训练目标不再是逐 token 的交叉熵, 减少了对 teacher forcing 的依赖
@@ -562,7 +564,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 2.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果, 代价
+#### 3.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果, 代价
 > • **动机** (减少重复计算) → **方法** (缓存历史 K/V, 增量计算) → **效果** (降低计算复杂度) → **代价** (显存占用线性增长) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -605,84 +607,84 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 2.2. ⬆️ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
+#### 3.4. ⬆️ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?
 > • **方法**: KV Cache; **效果**: $O(n^2) → O(n)$ <br>
 
 <!-- omit in toc -->
-#### ✅ KV cache 带来的显存占用线性增长要如何管理?
+#### 3.5. ✅ KV cache 带来的显存占用线性增长要如何管理?
 > • 低精度存储, 分块存储 / Paged Attention, 滑动窗口 / Streaming Attention, 分层裁剪 (Layer-wise Eviction), 异构存储 (Offloading) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     1. **低精度存储**  
-        - 将 KV Cache 从 FP16 压缩到 INT8/INT4，显存占用减少 2–4 倍。  
-        - 常见于推理引擎 (如 FasterTransformer, vLLM)。  
+        - 将 KV Cache 从 FP16 压缩到 INT8/INT4, 显存占用减少 2–4 倍. 
+        - 常见于推理引擎 (如 FasterTransformer, vLLM). 
 
     2. **分块存储 / Paged Attention**  
-        - 将 KV Cache 按页管理，避免大块连续内存分配；  
-        - 支持动态回收和共享，提高多请求并发能力。  
+        - 将 KV Cache 按页管理, 避免大块连续内存分配; 
+        - 支持动态回收和共享, 提高多请求并发能力. 
 
     3. **滑动窗口 / Streaming Attention**  
-        - 只保留最近的上下文 (如 4K tokens)，丢弃远端 KV；  
-        - 适合对长程依赖不敏感的任务 (对话、代码补全)。  
+        - 只保留最近的上下文 (如 4K tokens), 丢弃远端 KV; 
+        - 适合对长程依赖不敏感的任务 (对话、代码补全). 
 
     4. **分层裁剪 (Layer-wise Eviction)**  
-        - 对不同层采用不同保留策略：浅层丢弃远端 KV，深层保留全局。  
+        - 对不同层采用不同保留策略: 浅层丢弃远端 KV, 深层保留全局. 
 
     5. **异构存储 (Offloading)**  
-        - 将部分 KV Cache 放到 CPU 内存或 NVMe，再按需调入；  
-        - 典型方案：DeepSpeed ZeRO-Inference, vLLM 的异步 KV 管理。  
-    
+        - 将部分 KV Cache 放到 CPU 内存或 NVMe, 再按需调入; 
+        - 典型方案: DeepSpeed ZeRO-Inference, vLLM 的异步 KV 管理. 
+
     </details>
 
 <!-- omit in toc -->
-### 3. 🏷️ 解码相关
+### 4. 🏷️ 解码相关
 
 <!-- omit in toc -->
-#### 3.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比常见的解码策略 (Beam Search, 贪心, 采样)
-> • **Beam Search**: 保留多个候选路径 (beam)，逐步扩展并选择累计概率最高的序列 <br>
+#### 4.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比常见的解码策略 (Beam Search, 贪心, 采样)
+> • **Beam Search**: 保留多个候选路径 (beam), 逐步扩展并选择累计概率最高的序列 <br>
 > • **贪心**: 每一步都选取概率最大的 token <br>
 > • **采样**: 直接按概率分布采样 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - #### 1. Beam Search
-        - **机制**：保留多个候选路径 (beam)，逐步扩展并选择累计概率最高的序列。  
-        - **优点**：比贪心更全局，能找到更优解；常用于机器翻译、摘要。  
-        - **缺点**：仍然偏向高概率 token，输出趋同，容易生成模式化、冗长或重复的文本。  
-        - **适用场景**：需要高精度、低随机性的任务。  
+        - **机制**: 保留多个候选路径 (beam), 逐步扩展并选择累计概率最高的序列. 
+        - **优点**: 比贪心更全局, 能找到更优解; 常用于机器翻译、摘要. 
+        - **缺点**: 仍然偏向高概率 token, 输出趋同, 容易生成模式化、冗长或重复的文本. 
+        - **适用场景**: 需要高精度、低随机性的任务. 
 
     - #### 2. 贪心 (Greedy Search)
-        - **机制**：每一步都选取概率最大的 token。  
-        - **优点**：简单高效，生成速度快。  
-        - **缺点**：容易陷入局部最优，输出单一、缺乏多样性。  
-        - **适用场景**：快速推理、对结果唯一性要求高的任务。  
+        - **机制**: 每一步都选取概率最大的 token. 
+        - **优点**: 简单高效, 生成速度快. 
+        - **缺点**: 容易陷入局部最优, 输出单一、缺乏多样性. 
+        - **适用场景**: 快速推理、对结果唯一性要求高的任务. 
 
     - #### 3. 采样 (Sampling)
-        - **随机采样**：直接按概率分布采样，随机性过大。  
-        - **Top‑k 采样**：只在概率前 k 个 token 中采样，避免低概率噪声。  
-        - **Nucleus (Top‑p) 采样**：在累计概率达到 p 的最小集合中采样，动态调整候选集，更灵活。  
-        - **优点**：引入受控随机性，生成结果多样、富有创造性。  
-        - **缺点**：可能生成不够稳定或偶尔不合理的输出。  
-        - **适用场景**：对话、故事、诗歌、广告文案等创作类任务。  
+        - **随机采样**: 直接按概率分布采样, 随机性过大. 
+        - **Top‑k 采样**: 只在概率前 k 个 token 中采样, 避免低概率噪声. 
+        - **Nucleus (Top‑p) 采样**: 在累计概率达到 p 的最小集合中采样, 动态调整候选集, 更灵活. 
+        - **优点**: 引入受控随机性, 生成结果多样、富有创造性. 
+        - **缺点**: 可能生成不够稳定或偶尔不合理的输出. 
+        - **适用场景**: 对话、故事、诗歌、广告文案等创作类任务. 
 
     </details>
 
 <!-- omit in toc -->
-#### 3.3. ✅ 为什么 LLM 在文本创作中倾向于使用采样策略?
+#### 4.2. ✅ 为什么 LLM 在文本创作中倾向于使用采样策略?
 > • 避免模式化, 引入多样性, 控制随机性, 用户体验 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    1. **避免模式化**：贪心/Beam 会反复选择高概率词，导致输出千篇一律；采样能打破这种模式。  
-    2. **引入多样性**：创作任务需要“意料之外但合理”的表达，采样能在合理范围内探索低概率词。  
-    3. **控制随机性**：Top‑k / Nucleus 提供了“可控的创造力”，既不会完全随机，也不会过于死板。  
-    4. **用户体验**：创作类应用（小说、对话、广告文案）更看重新颖性和多样性，而不是唯一正确答案。  
+    1. **避免模式化**: 贪心/Beam 会反复选择高概率词, 导致输出千篇一律; 采样能打破这种模式. 
+    2. **引入多样性**: 创作任务需要 "意料之外但合理" 的表达, 采样能在合理范围内探索低概率词. 
+    3. **控制随机性**: Top‑k / Nucleus 提供了 "可控的创造力", 既不会完全随机, 也不会过于死板. 
+    4. **用户体验**: 创作类应用 (小说、对话、广告文案) 更看重新颖性和多样性, 而不是唯一正确答案. 
 
     </details>
 
 <!-- omit in toc -->
-#### 3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?
+#### 4.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -692,7 +694,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?
+#### 4.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -702,7 +704,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣
+#### 4.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -715,7 +717,7 @@ use_section_number: true
 ---
 
 <!-- omit in toc -->
-### 🏷️ 工程优化、失败模式与诊断
+### 5. 🏷️ 工程优化、失败模式与诊断
 
 > ##### TODO
 > - 何时选择 RMSNorm?
@@ -725,14 +727,14 @@ use_section_number: true
 > - 
 
 <!-- omit in toc -->
-#### ✅ 比较 Pre‑LN 与 Post‑LN 的优缺点
-> • Pre‑LN：训练更稳定，梯度流动顺畅，适合深层/大模型；但可能导致激活方差累积，最终性能略逊 <br>
-> • Post‑LN：原始设计，浅层模型表现好，输出分布更稳定；但深层训练不稳，需长 warm‑up <br>
+#### 5.1. ✅ 比较 Pre‑LN 与 Post‑LN 的优缺点
+> • Pre‑LN: 训练更稳定, 梯度流动顺畅, 适合深层/大模型; 但可能导致激活方差累积, 最终性能略逊 <br>
+> • Post‑LN: 原始设计, 浅层模型表现好, 输出分布更稳定; 但深层训练不稳, 需长 warm‑up <br>
 <!-- > • Post‑LN (归一化在子层之后) 是原始 Transformer 设计，浅层模型可收敛，但深层时容易出现梯度消失/爆炸，需要较长 warm‑up <br> -->
 <!-- > • Pre‑LN (归一化在子层之前) 训练更稳定，梯度流动顺畅，适合深层/大模型 <br> -->
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     <!-- - #### 稳定性差异
         1. **梯度流动**  
             - Post‑LN：梯度必须穿过子层和 LN 才能回传到输入，深层时容易衰减或爆炸  
@@ -742,81 +744,78 @@ use_section_number: true
             - Pre‑LN：即使在较大学习率下也能稳定收敛  
         3. **深层扩展性**  
             - Post‑LN：在 >100 层时几乎无法稳定训练  
-            - Pre‑LN：已成为主流大模型 (如 GPT‑3, LLaMA, GLM) 的默认选择   -->
-    
+            - Pre‑LN: 已成为主流大模型 (如 GPT‑3, LLaMA, GLM) 的默认选择   -->
+
     <!-- omit in toc -->
     #### Pre‑LN (前置 LayerNorm)
     - 优点  
-        - **训练稳定性强**：梯度能直接通过残差路径传播，不易消失或爆炸。  
-        - **收敛更快**：不依赖长时间 warm‑up，初期即可稳定训练。  
-        - **可扩展性好**：支持百层以上的深层 Transformer，是 GPT‑2/3、LLaMA 等大模型的主流选择。  
+        - **训练稳定性强**: 梯度能直接通过残差路径传播, 不易消失或爆炸. 
+        - **收敛更快**: 不依赖长时间 warm‑up, 初期即可稳定训练. 
+        - **可扩展性好**: 支持百层以上的深层 Transformer, 是 GPT‑2/3、LLaMA 等大模型的主流选择. 
     - 缺点  
-        - **激活方差累积**：每层残差直接叠加，可能导致输出方差逐层放大。  
-        - **性能略差**：在浅层或中等规模模型中，Pre‑LN 的收敛效果通常不如 Post‑LN 精细。  
-        - **需额外技巧**：常结合 DeepNorm、RMSNorm、残差缩放等方法缓解方差膨胀。  
+        - **激活方差累积**: 每层残差直接叠加, 可能导致输出方差逐层放大. 
+        - **性能略差**: 在浅层或中等规模模型中, Pre‑LN 的收敛效果通常不如 Post‑LN 精细. 
+        - **需额外技巧**: 常结合 DeepNorm、RMSNorm、残差缩放等方法缓解方差膨胀. 
 
     <!-- omit in toc -->
     #### Post‑LN (后置 LayerNorm)
     - 优点  
-        - **输出分布稳定**：每次残差相加后立即归一化，保证层间激活尺度一致。  
-        - **浅层性能好**：在小规模任务或浅层网络中，Post‑LN 收敛后往往优于 Pre‑LN。  
-        - **原始 Transformer 架构**：机器翻译、摘要等早期任务中表现良好。  
+        - **输出分布稳定**: 每次残差相加后立即归一化, 保证层间激活尺度一致. 
+        - **浅层性能好**: 在小规模任务或浅层网络中, Post‑LN 收敛后往往优于 Pre‑LN. 
+        - **原始 Transformer 架构**: 机器翻译、摘要等早期任务中表现良好. 
     - 缺点  
-        - **训练不稳定**：深层时梯度可能消失或爆炸。  
-        - **强依赖 warm‑up**：需要较长的学习率预热才能稳定训练。  
-        - **难以扩展**：在百层以上的深层网络中几乎无法收敛。  
+        - **训练不稳定**: 深层时梯度可能消失或爆炸. 
+        - **强依赖 warm‑up**: 需要较长的学习率预热才能稳定训练. 
+        - **难以扩展**: 在百层以上的深层网络中几乎无法收敛. 
 
     </details>
 
 <!-- omit in toc -->
-#### ✅ Pre‑LN 存在的问题与解决方法
+#### 5.2. ✅ Pre‑LN 存在的问题与解决方法
 > • **问题**: 方差累积, 表示退化, 收敛性能差 <br>
 > • **方法**: 残差缩放 (DeepNorm), 归一化替代 (RMSNorm), 正则化技巧 (DropPath, Stochastic Depth), 学习率/初始化策略优化 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     <!-- omit in toc -->
     #### Pre‑LN 的主要问题
     1. **方差累积 (Variance Explosion)**  
-        - 每层残差直接叠加，缺乏归一化约束，导致激活方差逐层放大；  
-        - 在超深网络中，可能出现输出分布不稳定。  
+        - 每层残差直接叠加, 缺乏归一化约束, 导致激活方差逐层放大; 
+        - 在超深网络中, 可能出现输出分布不稳定. 
 
     2. **表示退化 (Representation Collapse)**  
-        - 由于 LayerNorm 在输入端，残差路径几乎是“恒等映射”；  
-        - 模型可能过度依赖残差直通，子层贡献减弱，导致表示能力下降。  
+        - 由于 LayerNorm 在输入端, 残差路径几乎是 "恒等映射"; 
+        - 模型可能过度依赖残差直通, 子层贡献减弱, 导致表示能力下降. 
 
     3. **收敛性能差**  
-        - 在浅层或中等规模模型中，Pre‑LN 的最终性能往往不如 Post‑LN；  
-        - 主要体现在 BLEU/ROUGE 等指标上。  
+        - 在浅层或中等规模模型中, Pre‑LN 的最终性能往往不如 Post‑LN; 
+        - 主要体现在 BLEU/ROUGE 等指标上. 
 
     4. **训练动态问题**  
-        - Pre‑LN 虽然稳定，但可能导致梯度过早饱和；  
-        - 需要额外技巧来保持梯度多样性。  
+        - Pre‑LN 虽然稳定, 但可能导致梯度过早饱和; 
+        - 需要额外技巧来保持梯度多样性. 
 
     <!-- omit in toc -->
     #### 解决方法
     1. **残差缩放 (Residual Scaling)**  
-        - **DeepNorm** 提出在残差连接前后引入缩放因子 (如 $\alpha = (2N)^{1/4} $)；  
-        - 有效控制方差膨胀，使得 Transformer 可扩展到上千层。  
+        - **DeepNorm** 提出在残差连接前后引入缩放因子 (如 $\alpha = (2N)^{1/4} $); 
+        - 有效控制方差膨胀, 使得 Transformer 可扩展到上千层. 
 
     2. **归一化替代**  
-        - **RMSNorm**：去掉均值归一化，仅保留方差归一化，减少方差累积；  
-        - **ScaleNorm**：直接用向量范数缩放，计算更简洁。  
+        - **RMSNorm**: 去掉均值归一化, 仅保留方差归一化, 减少方差累积; 
+        - **ScaleNorm**: 直接用向量范数缩放, 计算更简洁. 
 
     3. **正则化技巧**  
-        - **DropPath / Stochastic Depth**：随机丢弃部分残差路径，缓解退化问题；  
-        - **Attention Dropout**：减少注意力过度集中，提升梯度多样性。  
+        - **DropPath / Stochastic Depth**: 随机丢弃部分残差路径, 缓解退化问题; 
+        - **Attention Dropout**: 减少注意力过度集中, 提升梯度多样性. 
 
     4. **优化与初始化**  
-        - **学习率调度**：Pre‑LN 可用更大学习率，但仍需 warm‑up；  
-        - **参数初始化**：如 Xavier/He 初始化 + 残差缩放，避免初期梯度过大。  
+        - **学习率调度**: Pre‑LN 可用更大学习率, 但仍需 warm‑up; 
+        - **参数初始化**: 如 Xavier/He 初始化 + 残差缩放, 避免初期梯度过大. 
 
     5. **混合范式**  
-        - 部分工作采用 **Hybrid Norm**：浅层用 Pre‑LN 保证稳定，深层用 Post‑LN 保证性能；  
-        - 或在不同子层 (Attention vs FFN) 使用不同归一化策略。  
-    
+        - 部分工作采用 **Hybrid Norm**: 浅层用 Pre‑LN 保证稳定, 深层用 Post‑LN 保证性能; 
+        - 或在不同子层 (Attention vs FFN) 使用不同归一化策略. 
+
     </details>
-
-
-
 <!--END_SECTION:qa-->

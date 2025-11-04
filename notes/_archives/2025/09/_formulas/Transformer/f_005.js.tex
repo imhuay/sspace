@@ -1,0 +1,5 @@
+\begin{align*}
+            & Q, K, V = XW^Q, XW^K, XW^V  && \quad \scriptstyle ▷\; \text{Q/K/V 线性投影} \\
+    → \quad & QK^\top \;→\;\; \text{softmax}(\frac{QK^\top}{\sqrt{d_k}}) && \quad \scriptstyle ▷\; \text{计算注意力分数 → 缩放与归一化} \\
+    → \quad & \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V && \quad \scriptstyle ▷\; \text{加权求和}
+\end{align*}

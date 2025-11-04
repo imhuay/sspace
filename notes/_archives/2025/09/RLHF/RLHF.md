@@ -2,7 +2,7 @@ RLHF (基于人类反馈的强化学习) <!-- suffix --> <span title="特别关�
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-01%2003%3A20%3A21&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -456,9 +456,8 @@ use_section_number: true
 - [3. 🏷️ 价值模型](#3-️-价值模型)
     - [3.1. ✅ 价值模型是如何训练的?](#31--价值模型是如何训练的)
     - [3.2. 🚨 PPO 中的 **价值模型** 存在什么问题?](#32--ppo-中的-价值模型-存在什么问题)
-    - [3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?](#33-----️-️-️--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么)
-    - [3.4. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](#34--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
-    - [3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?](#35-----️-️-️--为什么离线算法-如-dpo-不需要价值模型)
+    - [3.3. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](#33--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
+    - [3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?](#34-----️-️-️--为什么离线算法-如-dpo-不需要价值模型)
 <!--END_SECTION:qa_toc-->
 
 ---
@@ -578,7 +577,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.4. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?
+#### 3.3. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?
 > • RLHF 场景中 **奖励模型** 固定且基于旧策略训练, 导致实际优化过程可能带有 off-policy 的性质. <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -588,7 +587,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?
+#### 3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?
 > •  <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>

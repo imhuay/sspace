@@ -1,6 +1,8 @@
-BERT 系列模型 (Encoder-only 架构)
+BERT 系列模型 (Encoder-only 架构) <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$[📋](#qa "面试问题整理(7)")$\color{Brown}^{7}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-04&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-04 01:02:50
@@ -88,85 +90,87 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
+- [1. 🏷️ BERT 改进模型比较](#1-️-bert-改进模型比较)
+    - [1.1. ✅ 说明 RoBERTa 相比 BERT 的改进](#11--说明-roberta-相比-bert-的改进)
+    - [1.2. ✅ 比较 DeBERTa 和 BERT 在架构与预训练目标上的差异](#12--比较-deberta-和-bert-在架构与预训练目标上的差异)
+    - [1.3. ✅ 解释一下 DeBERTa 的优点及原因](#13--解释一下-deberta-的优点及原因)
+- [2. 🏷️ 表示学习](#2-️-表示学习)
+    - [2.1. ✅ 说明 SentenceBERT (SBERT) 与 SimCSE 的核心思想?](#21--说明-sentencebert-sbert-与-simcse-的核心思想)
+    - [2.2. ✅ 为什么对比学习能提升句向量的判别力?](#22--为什么对比学习能提升句向量的判别力)
+    - [2.3. ✅ 说明 SBERT 的双塔结构](#23--说明-sbert-的双塔结构)
+    - [2.4. ✅ 为什么拼接形式的双塔结构中, 通常还会加入 `|u-v|`?](#24--为什么拼接形式的双塔结构中-通常还会加入-u-v)
 <!--END_SECTION:qa_toc-->
 
 ---
 
 <!-- omit in toc -->
-### 🏷️ BERT 改进模型比较
+### 1. 🏷️ BERT 改进模型比较
 
 <!-- omit in toc -->
-#### ✅ 说明 RoBERTa 相比 BERT 的改进
-> RoBERTa 在架构上与 BERT 基本一致，但在 **预训练方法** 上做了系统优化, 显著提升了模型性能与泛化能力 <br>
+#### 1.1. ✅ 说明 RoBERTa 相比 BERT 的改进
+> RoBERTa 在架构上与 BERT 基本一致, 但在 **预训练方法** 上做了系统优化, 显著提升了模型性能与泛化能力 <br>
 > • **主要改进**: 移除 NSP 任务 🔸 动态 Mask 🔸 更多训练数据; <br>
 
 <!-- omit in toc -->
-#### ✅ 比较 DeBERTa 和 BERT 在架构与预训练目标上的差异
+#### 1.2. ✅ 比较 DeBERTa 和 BERT 在架构与预训练目标上的差异
 > • BERT 使用静态 Mask + NSP <br>
 > • DeBERTa 引入 **解耦注意力 (Disentangled Attention)** 与 **增强的 Mask 解码器 (EMD)** <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 解释一下 DeBERTa 的优点及原因
-> • **优点**: 语义理解更精细，长程依赖更好，预训练效率更高 (相比 BERT/RoBERTa) <br>
+#### 1.3. ✅ 解释一下 DeBERTa 的优点及原因
+> • **优点**: 语义理解更精细, 长程依赖更好, 预训练效率更高 (相比 BERT/RoBERTa) <br>
 > • **原因**: 更精细的语义–位置建模, 更高效的预训练目标 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
 
 
 ---
 
 <!-- omit in toc -->
-### 🏷️ 表示学习
+### 2. 🏷️ 表示学习
 
 <!-- omit in toc -->
-#### ✅ 说明 SentenceBERT (SBERT) 与 SimCSE 的核心思想?
+#### 2.1. ✅ 说明 SentenceBERT (SBERT) 与 SimCSE 的核心思想?
 > • 引入 **对比学习**, 在 **语义相似任务** 上微调, 使语义相近的句子在向量空间中靠近, 语义不相关的句子远离; <br>
 > • **SimCSE** 额外利用 batch 内其他句子作为负样本来提升学习效率, 同时利用 dropout 构造正样本带来 **无监督版本**. <br>
 
 <!-- omit in toc -->
-#### ✅ 为什么对比学习能提升句向量的判别力?
+#### 2.2. ✅ 为什么对比学习能提升句向量的判别力?
 > • 通过 **正负样本约束** 显式地塑造了句向量空间: 语义相似的句子被拉近, 不相似的句子被推远 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    - **显式几何约束**：对比学习直接优化“相似句子近, 不相似句子远”，使得向量空间更符合语义结构。  
-    - **避免塌缩 (collapse)**：负样本的存在防止所有句子映射到同一向量。  
-    - **增强鲁棒性**：通过 dropout 或数据增强生成的正样本对，迫使模型学习到语义不变性。  
-    - **缓解各向异性**：对比学习能让句向量分布更均匀，提升余弦相似度的判别性。  
-        
+
+    - **显式几何约束**: 对比学习直接优化 "相似句子近, 不相似句子远", 使得向量空间更符合语义结构. 
+    - **避免塌缩 (collapse)**: 负样本的存在防止所有句子映射到同一向量. 
+    - **增强鲁棒性**: 通过 dropout 或数据增强生成的正样本对, 迫使模型学习到语义不变性. 
+    - **缓解各向异性**: 对比学习能让句向量分布更均匀, 提升余弦相似度的判别性. 
+
     </details>
 
 <!-- omit in toc -->
-#### ✅ 说明 SBERT 的双塔结构
+#### 2.3. ✅ 说明 SBERT 的双塔结构
 > • SBERT 的双塔结构本质是 **参数共享** 的 Siamese/Triplet 网络; <br>
 > • 两个完全相同且参数共享的 BERT 编码器分别处理两个句子, 得到各自的句向量后, 再通过相似度函数 (如余弦、曼哈顿、欧氏距离) 或拼接后接分类器来完成语义相似度/匹配等任务; <br>
 
 
 <!-- omit in toc -->
-#### ✅ 为什么拼接形式的双塔结构中, 通常还会加入 `|u-v|`?
+#### 2.4. ✅ 为什么拼接形式的双塔结构中, 通常还会加入 `|u-v|`?
 > • $|u-v|$ 提供了对称、直观的差异特征, 增强了模型对相似度的判别力 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - 余弦相似度、欧氏距离等常用度量, 本质上都依赖向量差异;
     - 加入 $|u-v|$ 等价于在输入层显式提供这些度量的近似特征;
-    
+
     </details>
-
-
-
-
-
-
-
 <!--END_SECTION:qa-->

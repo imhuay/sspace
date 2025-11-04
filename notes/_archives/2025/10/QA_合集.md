@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(88)">📋</span>$\color{Brown}^{88}$ <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(108)">📋</span>$\color{Brown}^{108}$ <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -26,13 +26,15 @@ algo_tags: []
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [Transformer · **基础模型** · `15`](#transformer--基础模型--15)
+- [Transformer · **基础模型** · `22`](#transformer--基础模型--22)
 - [Transformer · **位置编码** · `24`](#transformer--位置编码--24)
+- [Transformer · **BERT (Encoder-only)** · `7`](#transformer--bert-encoder-only--7)
 - [RLHF · **基础** · `13`](#rlhf--基础--13)
-- [RLHF · **策略梯度算法** · `5`](#rlhf--策略梯度算法--5)
+- [RLHF · **策略梯度算法** · `6`](#rlhf--策略梯度算法--6)
 - [SFT · **基础概念** · `9`](#sft--基础概念--9)
 - [SFT · PEFT · **LoRA** · `10`](#sft--peft--lora--10)
 - [**MoE (Mixture of Experts)** · `8`](#moe-mixture-of-experts--8)
+- [**LLM 基座模型** · `5`](#llm-基座模型--5)
 - [**LLM 训练优化** · `2`](#llm-训练优化--2)
 - [Other · **非专业问题** · `2`](#other--非专业问题--2)
 <!--END_SECTION:toc-->
@@ -43,33 +45,39 @@ algo_tags: []
 ---
 
 <!--START_SECTION:sub_tocs-->
-## Transformer · **基础模型** · `15`<!-- 99 -->
+## Transformer · **基础模型** · `22`<!-- 99 -->
 
-- [1. 🏷️ 模型框架](../09/Transformer.md#1-️-模型框架)
-    - [1.1. ✅ 简述 Transformer 的核心思想, 它解决了 RNN/CNN 的哪些瓶颈?](../09/Transformer.md#11--简述-transformer-的核心思想-它解决了-rnncnn-的哪些瓶颈)
+- [1. 🏷️ 模型总览](../09/Transformer.md#1-️-模型总览)
+    - [1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](../09/Transformer.md#11--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
     - [1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](../09/Transformer.md#12--说明-transformer-的并行计算与全局依赖是如何实现的)
-    - [1.3. ✅ Transformer 的归纳偏置是什么? 与 CNN/RNN 有何不同?](../09/Transformer.md#13--transformer-的归纳偏置是什么-与-cnnrnn-有何不同)
-    - [1.4. ✅ 为什么 Transformer 比 RNN/LSTM 更好](../09/Transformer.md#14--为什么-transformer-比-rnnlstm-更好)
-    - [1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](../09/Transformer.md#15--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.6. 🚩 为什么大多数 LLM 选择 Decoder-Only (CausalLM) 架构?](../09/Transformer.md#16--为什么大多数-llm-选择-decoder-only-causallm-架构)
-    - [1.7. ✅ 说明自注意力机制的计算过程](../09/Transformer.md#17--说明自注意力机制的计算过程)
-    - [1.8. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](../09/Transformer.md#18--为什么要对-qk-的点积进行缩放-缩放因子是)
-    - [1.9. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](../09/Transformer.md#19--multi-head-的动机是什么-本质是什么-是如何实现的)
-    - [1.10. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](../09/Transformer.md#110--为什么-decoder-中计算自注意力需要-掩码)
-    - [1.11. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](../09/Transformer.md#111--decoder-中的-attention-与-encoder-有什么不同)
-    - [1.12. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](../09/Transformer.md#112--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
-- [2. 🏷️ 训练与推理](../09/Transformer.md#2-️-训练与推理)
-    - [2.1. ✅ 说明 Decoder 在训练与推理阶段的差异](../09/Transformer.md#21--说明-decoder-在训练与推理阶段的差异)
-    - [2.2. ✅ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](../09/Transformer.md#22--推理阶段-怎么优化随着输出序列越来越长带来的开销)
-    - [2.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果](../09/Transformer.md#23--描述-kv-cache-的动机-方法-效果)
-    - [2.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 解释 "曝光偏差", 怎么引起的, 怎么缓解?](../09/Transformer.md#24-----️-️-️--解释-曝光偏差-怎么引起的-怎么缓解)
-- [3. 🏷️ 解码相关](../09/Transformer.md#3-️-解码相关)
-    - [3.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 介绍常见的序列生成策略](../09/Transformer.md#31-----️-️-️--介绍常见的序列生成策略)
-    - [3.2. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比 BeamSearch 和 贪心搜索 的优劣](../09/Transformer.md#32-----️-️-️--对比-beamsearch-和-贪心搜索-的优劣)
-    - [3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么 LLM 在文本创作中倾向于使用 Sampling, 而不是 BeamSearch?](../09/Transformer.md#33-----️-️-️--为什么-llm-在文本创作中倾向于使用-sampling-而不是-beamsearch)
-    - [3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?](../09/Transformer.md#34-----️-️-️--如何控制生成序列的长度和终止)
-    - [3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?](../09/Transformer.md#35-----️-️-️--怎么抑制-llm-生成过程中的-重复问题)
-    - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣](../09/Transformer.md#36-----️-️-️--非自回归模型是如何解码的-与自回归解码的优劣)
+    - [1.3. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](../09/Transformer.md#13--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
+    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](../09/Transformer.md#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](../09/Transformer.md#15--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
+    - [1.6. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](../09/Transformer.md#16--为什么主流-llm-选择-decoder-only-causal-lm-架构)
+- [2. 🏷️ 模型细节](../09/Transformer.md#2-️-模型细节)
+    - [2.1. ✅ 说明自注意力机制的计算过程](../09/Transformer.md#21--说明自注意力机制的计算过程)
+    - [2.2. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](../09/Transformer.md#22--为什么要对-qk-的点积进行缩放-缩放因子是)
+    - [2.3. 🚩 **Multi-Head** 的动机是什么? 本质是什么? 是如何实现的?](../09/Transformer.md#23--multi-head-的动机是什么-本质是什么-是如何实现的)
+    - [2.4. 💡 给定 embed dim 与 num heads, 如何估算 head dim、显存占用与吞吐的关系?](../09/Transformer.md#24--给定-embed-dim-与-num-heads-如何估算-head-dim显存占用与吞吐的关系)
+    - [2.5. ✅ 为什么 Decoder 中计算自注意力需要 "掩码"?](../09/Transformer.md#25--为什么-decoder-中计算自注意力需要-掩码)
+    - [2.6. ✅ Decoder 中的 Attention 与 Encoder 有什么不同?](../09/Transformer.md#26--decoder-中的-attention-与-encoder-有什么不同)
+    - [2.7. ✅ Decoder 中的 Cross Attention 中的 Q, K, V 分别来自哪里?](../09/Transformer.md#27--decoder-中的-cross-attention-中的-q-k-v-分别来自哪里)
+    - [2.8. ✅ 为什么 FFN 需要先升维再降维?](../09/Transformer.md#28--为什么-ffn-需要先升维再降维)
+- [3. 🏷️ 训练与推理差异](../09/Transformer.md#3-️-训练与推理差异)
+    - [3.1. ✅ 说明 Decoder 在训练与推理阶段对 **目标可见性** 的差异](../09/Transformer.md#31--说明-decoder-在训练与推理阶段对-目标可见性-的差异)
+    - [3.2. ✅ 什么是 "曝光偏差", 如何缓解?](../09/Transformer.md#32--什么是-曝光偏差-如何缓解)
+    - [3.3. ✅ 描述 **KV Cache** 的动机, 方法, 效果, 代价](../09/Transformer.md#33--描述-kv-cache-的动机-方法-效果-代价)
+    - [3.4. ⬆️ 推理阶段, 怎么优化随着输出序列越来越长带来的开销?](../09/Transformer.md#34-️-推理阶段-怎么优化随着输出序列越来越长带来的开销)
+    - [3.5. ✅ KV cache 带来的显存占用线性增长要如何管理?](../09/Transformer.md#35--kv-cache-带来的显存占用线性增长要如何管理)
+- [4. 🏷️ 解码相关](../09/Transformer.md#4-️-解码相关)
+    - [4.1. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 对比常见的解码策略 (Beam Search, 贪心, 采样)](../09/Transformer.md#41-----️-️-️--对比常见的解码策略-beam-search-贪心-采样)
+    - [4.2. ✅ 为什么 LLM 在文本创作中倾向于使用采样策略?](../09/Transformer.md#42--为什么-llm-在文本创作中倾向于使用采样策略)
+    - [4.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 如何控制生成序列的长度和终止?](../09/Transformer.md#43-----️-️-️--如何控制生成序列的长度和终止)
+    - [4.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 怎么抑制 LLM 生成过程中的 重复问题?](../09/Transformer.md#44-----️-️-️--怎么抑制-llm-生成过程中的-重复问题)
+    - [4.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 非自回归模型是如何解码的? 与自回归解码的优劣](../09/Transformer.md#45-----️-️-️--非自回归模型是如何解码的-与自回归解码的优劣)
+- [5. 🏷️ 工程优化、失败模式与诊断](../09/Transformer.md#5-️-工程优化失败模式与诊断)
+    - [5.1. ✅ 比较 Pre‑LN 与 Post‑LN 的优缺点](../09/Transformer.md#51--比较-preln-与-postln-的优缺点)
+    - [5.2. ✅ Pre‑LN 存在的问题与解决方法](../09/Transformer.md#52--preln-存在的问题与解决方法)
 
 ## Transformer · **位置编码** · `24`<!-- 99 -->
 
@@ -103,6 +111,18 @@ algo_tags: []
     - [5.3. 💡 如何将已有绝对位置模型迁移到 RoPE? 或者 ALiBi?](../09/Transformer_位置编码.md#53--如何将已有绝对位置模型迁移到-rope-或者-alibi)
     - [5.4. 💡 在视觉Transformer (ViT) 中, 是如何处理位置编码的?](../09/Transformer_位置编码.md#54--在视觉transformer-vit-中-是如何处理位置编码的)
 
+## Transformer · **BERT (Encoder-only)** · `7`<!-- 99 -->
+
+- [1. 🏷️ BERT 改进模型比较](../11/Transformer_BERT.md#1-️-bert-改进模型比较)
+    - [1.1. ✅ 说明 RoBERTa 相比 BERT 的改进](../11/Transformer_BERT.md#11--说明-roberta-相比-bert-的改进)
+    - [1.2. ✅ 比较 DeBERTa 和 BERT 在架构与预训练目标上的差异](../11/Transformer_BERT.md#12--比较-deberta-和-bert-在架构与预训练目标上的差异)
+    - [1.3. ✅ 解释一下 DeBERTa 的优点及原因](../11/Transformer_BERT.md#13--解释一下-deberta-的优点及原因)
+- [2. 🏷️ 表示学习](../11/Transformer_BERT.md#2-️-表示学习)
+    - [2.1. ✅ 说明 SentenceBERT (SBERT) 与 SimCSE 的核心思想?](../11/Transformer_BERT.md#21--说明-sentencebert-sbert-与-simcse-的核心思想)
+    - [2.2. ✅ 为什么对比学习能提升句向量的判别力?](../11/Transformer_BERT.md#22--为什么对比学习能提升句向量的判别力)
+    - [2.3. ✅ 说明 SBERT 的双塔结构](../11/Transformer_BERT.md#23--说明-sbert-的双塔结构)
+    - [2.4. ✅ 为什么拼接形式的双塔结构中, 通常还会加入 `|u-v|`?](../11/Transformer_BERT.md#24--为什么拼接形式的双塔结构中-通常还会加入-u-v)
+
 ## RLHF · **基础** · `13`<!-- 98 -->
 
 - [1. 🏷️ 基础概念](../09/RLHF/RLHF.md#1-️-基础概念)
@@ -120,17 +140,17 @@ algo_tags: []
 - [3. 🏷️ 价值模型](../09/RLHF/RLHF.md#3-️-价值模型)
     - [3.1. ✅ 价值模型是如何训练的?](../09/RLHF/RLHF.md#31--价值模型是如何训练的)
     - [3.2. 🚨 PPO 中的 **价值模型** 存在什么问题?](../09/RLHF/RLHF.md#32--ppo-中的-价值模型-存在什么问题)
-    - [3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?](../09/RLHF/RLHF.md#33-----️-️-️--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么)
-    - [3.4. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](../09/RLHF/RLHF.md#34--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
-    - [3.5. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?](../09/RLHF/RLHF.md#35-----️-️-️--为什么离线算法-如-dpo-不需要价值模型)
+    - [3.3. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?](../09/RLHF/RLHF.md#33--ppo-是典型的-在线策略-on-policy-算法-但为什么有人说-rlhf-中使用的-ppo-是-off-policy-的)
+    - [3.4. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 为什么离线算法 (如 DPO) 不需要价值模型?](../09/RLHF/RLHF.md#34-----️-️-️--为什么离线算法-如-dpo-不需要价值模型)
 
-## RLHF · **策略梯度算法** · `5`<!-- 98 -->
+## RLHF · **策略梯度算法** · `6`<!-- 98 -->
 
 - [1. 🏷️ 基础概念](../09/RLHF/策略梯度算法.md#1-️-基础概念)
     - [1.1. 💡 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么? PPO 属于哪种?](../09/RLHF/策略梯度算法.md#11--在线策略-on-policy-与离线策略-off-policy-的本质差异是什么-ppo-属于哪种)
 - [2. 🏷️ PPO 相关](../09/RLHF/策略梯度算法.md#2-️-ppo-相关)
-    - [2.1. ✅ PPO 中的 **价值模型** 是怎么训练的?](../09/RLHF/策略梯度算法.md#21--ppo-中的-价值模型-是怎么训练的)
-    - [2.2. 🚩 PPO 中的 **价值模型** 存在什么问题?](../09/RLHF/策略梯度算法.md#22--ppo-中的-价值模型-存在什么问题)
+    - [2.1. ✅ 解释 PPO 算法的核心思想, 及其实现方法](../09/RLHF/策略梯度算法.md#21--解释-ppo-算法的核心思想-及其实现方法)
+    - [2.2. ✅ PPO 中的 **价值模型** 是怎么训练的?](../09/RLHF/策略梯度算法.md#22--ppo-中的-价值模型-是怎么训练的)
+    - [2.3. 🚩 PPO 中的 **价值模型** 存在什么问题?](../09/RLHF/策略梯度算法.md#23--ppo-中的-价值模型-存在什么问题)
 - [3. 🏷️ GRPO 相关](../09/RLHF/策略梯度算法.md#3-️-grpo-相关)
     - [3.1. ✅ 详细解释 GRPO 的核心思想, 与 PPO 的主要区别](../09/RLHF/策略梯度算法.md#31--详细解释-grpo-的核心思想-与-ppo-的主要区别)
     - [3.2. ✅ GRPO 的 **优势信号** 是怎么计算的?](../09/RLHF/策略梯度算法.md#32--grpo-的-优势信号-是怎么计算的)
@@ -187,15 +207,24 @@ algo_tags: []
     - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 假设你要在一个多模态任务 (文本+图像) 上设计 MoE, 你会如何划分专家?](../09/Transformer_MoE.md#36-----️-️-️--假设你要在一个多模态任务-文本图像-上设计-moe-你会如何划分专家)
     - [3.7. ✅ 给定 8 专家, Top-2 策略, 400B 参数的 MoE 层, 估算单 token 实际激活的参数量和 batch size = 1024 时平均每个专家分配的 token 数.](../09/Transformer_MoE.md#37--给定-8-专家-top-2-策略-400b-参数的-moe-层-估算单-token-实际激活的参数量和-batch-size--1024-时平均每个专家分配的-token-数)
 
+## **LLM 基座模型** · `5`<!-- 0 -->
+
+- [1. 🏷️ LLaMA 相关](../11/LLM_基座模型.md#1-️-llama-相关)
+    - [1.1. ✅ LLaMA 属于哪类架构? 与原版 Transformer 的差异? 改进的目的/效果](../11/LLM_基座模型.md#11--llama-属于哪类架构-与原版-transformer-的差异-改进的目的效果)
+    - [1.2. ✅ LLaMA 系列为何偏向 Pre‑Norm 与 RMSNorm? 与 LayerNorm 的数值与性能差异](../11/LLM_基座模型.md#12--llama-系列为何偏向-prenorm-与-rmsnorm-与-layernorm-的数值与性能差异)
+    - [1.3. ✅ SwiGLU 取代 ReLU 的动机是什么, 如何做到的?](../11/LLM_基座模型.md#13--swiglu-取代-relu-的动机是什么-如何做到的)
+    - [1.4. ✅ LLaMA 为何采用 RoPE (旋转位置编码)? 与正弦编码相比的优势](../11/LLM_基座模型.md#14--llama-为何采用-rope-旋转位置编码-与正弦编码相比的优势)
+    - [1.5. ✅ GQA/MQA 的动机是什么, 如何做的?](../11/LLM_基座模型.md#15--gqamqa-的动机是什么-如何做的)
+
 ## **LLM 训练优化** · `2`<!-- 0 -->
 
-- [1. 🏷️ 数据层优化](LLM_训练优化.md#1-️-数据层优化)
-- [2. 🏷️ 模型结构优化](LLM_训练优化.md#2-️-模型结构优化)
-- [3. 🏷️ 优化算法与超参数优化](LLM_训练优化.md#3-️-优化算法与超参数优化)
-- [4. 🏷️ 正则与泛化性优化](LLM_训练优化.md#4-️-正则与泛化性优化)
-    - [4.1. ✅ Dropout 的原理作用](LLM_训练优化.md#41--dropout-的原理作用)
-    - [4.2. ✅ 为什么现代 LLM 中一般不使用 Dropout?](LLM_训练优化.md#42--为什么现代-llm-中一般不使用-dropout)
-- [5. 🏷️ 计算与系统层优化](LLM_训练优化.md#5-️-计算与系统层优化)
+- [1. 🏷️ 数据层优化](../11/LLM_训练优化.md#1-️-数据层优化)
+- [2. 🏷️ 模型结构优化](../11/LLM_训练优化.md#2-️-模型结构优化)
+- [3. 🏷️ 优化算法与超参数优化](../11/LLM_训练优化.md#3-️-优化算法与超参数优化)
+- [4. 🏷️ 正则与泛化性优化](../11/LLM_训练优化.md#4-️-正则与泛化性优化)
+    - [4.1. ✅ Dropout 的原理作用](../11/LLM_训练优化.md#41--dropout-的原理作用)
+    - [4.2. ✅ 为什么现代 LLM 中一般不使用 Dropout?](../11/LLM_训练优化.md#42--为什么现代-llm-中一般不使用-dropout)
+- [5. 🏷️ 计算与系统层优化](../11/LLM_训练优化.md#5-️-计算与系统层优化)
 
 ## Other · **非专业问题** · `2`<!-- 0 -->
 
