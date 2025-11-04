@@ -119,7 +119,7 @@ class Note:
 
         self._tex2svg()
         self._norm_text()
-        self._update_title(self.get_title_suffix_v2(add_tip_prefix=False, style='math'))
+        self._update_title(self.get_title_suffix_v2(add_tip_prefix=False))
         self._update_badge()
 
         if self.qa_section is not None:
@@ -178,7 +178,7 @@ class Note:
 
     def update_title(self, add_href: bool):
         """"""
-        title_suffix = self.get_title_suffix_v2(add_href=add_href, add_tip_prefix=False, style='math')
+        title_suffix = self.get_title_suffix_v2(add_href=add_href, add_tip_prefix=False)
         self._update_title(title_suffix)
         # self.write_text()
 

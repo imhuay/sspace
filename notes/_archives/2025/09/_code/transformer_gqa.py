@@ -64,10 +64,10 @@ class GqaSelfAttn(nn.Module):
 
 def demo():
     # MHA: 8 头
-    attn_mha = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=8)
+    attn_mha = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=8)  # noqa
 
     # MQA: 8 个 Q 头，共享 1 组 KV
-    attn_mqa = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=1)
+    attn_mqa = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=1)  # noqa
 
     # GQA: 8 个 Q 头，2 组 KV（每组服务 4 个 Q 头）
-    attn_gqa = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=2)
+    attn_gqa = GqaSelfAttn(d_model=1024, n_head_q=8, n_kv_head=2)  # noqa
