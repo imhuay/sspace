@@ -578,16 +578,6 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 3.3. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 在线策略 (On-Policy) 与离线策略 (Off-Policy) 的本质差异是什么?
-> •  <br>
-
--   <details><summary><b> 展开详情 ⬇️ </b></summary>
-
-
-
-    </details>
-
-<!-- omit in toc -->
 #### 3.4. 💡 PPO 是典型的 在线策略 (On-Policy) 算法, 但为什么有人说 RLHF 中使用的 PPO 是 Off-Policy 的?
 > • RLHF 场景中 **奖励模型** 固定且基于旧策略训练, 导致实际优化过程可能带有 off-policy 的性质. <br>
 

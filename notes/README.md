@@ -75,7 +75,7 @@ Notes
 - [LLM 训练优化](_archives/2025/10/LLM_训练优化.md) [📋](_archives/2025/10/LLM_训练优化.md#qa "LLM 训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
 - [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md) <span title="Out-of-Date">💾</span>
 - [Transformer Wiki](_archives/2022/05/TransformerWiki.md) <span title="Out-of-Date">💾</span>
-- [BERT + CRF 备忘](_archives/2022/04/bert_crf备忘.md) <span title="Out-of-Date">💾</span>
+- [BERT + CRF 备忘](_archives/2022/04/bert_crf备忘.md) <span title="Out-of-Date">🧣</span>
 
 #### 大模型微调 (SFT · RLHF) 💥
 

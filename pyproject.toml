@@ -42,6 +42,10 @@ cpu = [
 ]
 
 [dependency-groups]
+cpu = [
+    "einops>=0.8.1",
+    "torch>=2.9.0",
+]
 dev = [
     "jupyter>=1.1.1",
     "markdown>=3.8.2",

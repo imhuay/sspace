@@ -61,12 +61,13 @@ class RE:
 @dataclass
 class NoteInfo:
     top: bool = False
+    star: bool = False
     draft: bool = False
     thorough: bool = False
+    out_of_date: bool = False
     hidden_in_recent: bool = False
     section_number: bool = False
     apply_tex2svg: bool = True
-    out_of_date: bool = False
     tags: list[str] = field(default_factory=list)
     algo_tags: list[str] = field(default_factory=list)
     level: int = 0
@@ -562,6 +563,9 @@ class Note:
     TIP_OUTDATED = 'Out-of-Date'
     EMOJI_OUTDATED = '💾'  # 📦
 
+    TIP_STAR = 'Pin'
+    EMOJI_STAR = '✨'  # 🌟
+
     @staticmethod
     def _get_title_span(title: str, content: str):
         """"""
@@ -628,6 +632,9 @@ class Note:
         if self.out_of_date:
             suffix += self._get_title_span(self.TIP_OUTDATED, self.EMOJI_OUTDATED)
 
+        if self.star:
+            suffix += self._get_title_span(self.TIP_STAR, self.EMOJI_STAR)
+
         return suffix
 
     _toc_title_suffix: str = ''
@@ -692,6 +699,10 @@ class Note:
     def out_of_date(self):
         """"""
         return self.info.out_of_date
+
+    @property
+    def star(self):
+        return self.info.star
 
 
 @dataclass

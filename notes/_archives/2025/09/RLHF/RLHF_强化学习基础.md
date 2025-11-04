@@ -1,4 +1,4 @@
-强化学习基础 (RLHF 视角)
+强化学习基础 (RLHF)
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-25&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -145,7 +145,7 @@ extra_url: false
 
 
 <!-- omit in toc -->
-### 📌 术语之间的逻辑关系
+### 术语之间的逻辑关系 📌
 > 构成了强化学习最核心, 最通用, 不依赖于任何特定算法的基础语言;
 
 1. **智能体** 与 **环境** 是交互的两极;
