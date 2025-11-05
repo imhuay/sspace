@@ -42,7 +42,7 @@ with_keywords: false
 -->
 ## LLaMA 系列
 <!--END_SECTION:keyword-->
-> 将原版 Transformer 的 Post‑LN + 绝对位置 + ReLU/GeLU, 替换为 Pre‑LN + RMSNorm + RoPE + SwiGLU, 并使用 GQA 代替 MHA
+<!-- > 将原版 Transformer 的 Post‑LN + 绝对位置 + ReLU/GeLU, 替换为 Pre‑LN + RMSNorm + RoPE + SwiGLU, 并使用 GQA 代替 MHA -->
 
 - **优化重点**:
     - 稳定深层训练
@@ -56,9 +56,9 @@ with_keywords: false
 |---|---|---|---|
 | 网络结构 | Encoder–Decoder | Decoder‑only | 结构更简洁 🔸 专注自回归生成 🔸 提升参数与计算效率 |
 | `Attn` 位置编码 | 正弦位置编码 (绝对位置编码) | **RoPE** (相对位置编码) | 优化长序列建模 🔸 保留相对位置信息 🔸 **提升外推能力** |
-| `Attn` 注意力头映射 | **MHA**: Q/K/V 头数一致 | **GQA/MQA**: Q 头多, K/V 头减少 (分组共享) | 降低 KV 存储与计算成本 🔸 提升推理吞吐与显存效率 |
-| `FFN` 归一化位置 | **Post‑LN** (残差后归一化) | **Pre‑LN** (残差前归一化) | 改善深层训练稳定性 🔸 避免梯度消失/爆炸 🔸 支持更深层堆叠 |
-| `FFN` 归一化方法 | **LayerNorm** (层归一化) | **RMSNorm** (均方根层归一化) | 计算更轻量 🔸 数值更稳定 🔸 减少均值偏移的影响 |
+| `Attn` 注意力头映射 | MHA: Q/K/V 头数一致 | **GQA/MQA**: Q 头多, K/V 头减少 (分组共享) | 降低 KV 存储与计算成本 🔸 提升推理吞吐与显存效率 |
+| `FFN` 归一化位置 | Post‑LN (残差后归一化) | **Pre‑LN** (残差前归一化) | 改善深层训练稳定性 🔸 避免梯度消失/爆炸 🔸 支持更深层堆叠 |
+| `FFN` 归一化方法 | LayerNorm (层归一化) | **RMSNorm** (均方根层归一化) | 计算更轻量 🔸 数值更稳定 🔸 减少均值偏移的影响 |
 | `FFN` MLP 激活函数 | ReLU / GeLU | **SwiGLU** (门控激活) | 提升表示能力 🔸 改善训练稳定性 🔸 更高效的梯度流动 |
 
 - #### **SwiGLU** vs **ReLU**
