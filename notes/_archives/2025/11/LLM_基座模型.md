@@ -1,8 +1,8 @@
-LLM 基座模型 <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$[📋](#qa "面试问题整理(5)")$\color{Brown}^{5}$<span title="Pin">✨</span> <!-- suffix -->
+LLM 基座模型 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](#qa "面试问题整理(5)")<sup style="color:Brown">5</sup><span title="Pin">✨</span> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-04&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-08%2000%3A46%3A39&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-04 23:51:12
@@ -62,10 +62,7 @@ with_keywords: false
 | `FFN` MLP 激活函数 | ReLU / GeLU | **SwiGLU** (门控激活) | 提升表示能力 🔸 改善训练稳定性 🔸 更高效的梯度流动 |
 
 - #### **SwiGLU** vs **ReLU**
-    $$\begin{align*}
-        \text{FFN}(x) &= \big( \text{Swish}(xW_1) \otimes (xW_2) \big){\cdot}W_3 &&\scriptstyle\text{// SwiGLU} \\
-        \text{FFN}(x) &= \text{ReLU}(xW_1){\cdot}W_2 &&\scriptstyle\text{// ReLU}
-    \end{align*}$$
+    <div align='center'><a href='_formulas/LLM_基座模型/f_001.js.tex'><img src='_formulas/LLM_基座模型/f_001.js.svg'/></a></div>
 
     > $\otimes$ 表示逐元素相乘, 用来实现门控机制
 
@@ -92,13 +89,10 @@ with_keywords: false
 
 - #### **RMSNorm** vs **LayerNorm**
     > 计算更轻量 🔸 超参数更少 🔸 减少均值偏移的影响
-    $$\begin{align*}
-        \text{RMSNorm}(x) &= \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}} \cdot \gamma \\
-        \text{LayerNorm}(x) &= \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \cdot \gamma + \beta \;,\quad \mu = \frac{1}{d}\sum_{i=1}^d x_i \;,\quad \sigma^2 = \frac{1}{d}\sum_{i=1}^d (x_i - \mu)^2
-    \end{align*}$$
+    <div align='center'><a href='_formulas/LLM_基座模型/f_002.js.tex'><img src='_formulas/LLM_基座模型/f_002.js.svg'/></a></div>
 
     - **均方根 (RMS)** : 只做尺度归一化, 保留原始均值信息;  
-    - **$\gamma$** : 可学习的缩放参数，用于恢复模型的表达能力;  
+    - **$\gamma$** : 可学习的缩放参数, 用于恢复模型的表达能力;  
     - **$\epsilon$** : 防止分母为零的小常数;  
 
 ---
@@ -126,7 +120,7 @@ use_section_number: true
 <!--START_SECTION:qa_toc-->
 - [1. 🏷️ LLaMA 相关](#1-️-llama-相关)
     - [1.1. ✅ LLaMA 属于哪类架构? 与原版 Transformer 的差异? 改进的目的/效果](#11--llama-属于哪类架构-与原版-transformer-的差异-改进的目的效果)
-    - [1.2. ✅ LLaMA 系列为何偏向 Pre‑Norm 与 RMSNorm? 与 LayerNorm 的数值与性能差异](#12--llama-系列为何偏向-prenorm-与-rmsnorm-与-layernorm-的数值与性能差异)
+    - [1.2. ✅ LLaMA 系列为何偏向 Pre‑Norm 与 RMSNorm?](#12--llama-系列为何偏向-prenorm-与-rmsnorm)
     - [1.3. ✅ SwiGLU 取代 ReLU 的动机是什么, 如何做到的?](#13--swiglu-取代-relu-的动机是什么-如何做到的)
     - [1.4. ✅ LLaMA 为何采用 RoPE (旋转位置编码)? 与正弦编码相比的优势](#14--llama-为何采用-rope-旋转位置编码-与正弦编码相比的优势)
     - [1.5. ✅ GQA/MQA 的动机是什么, 如何做的?](#15--gqamqa-的动机是什么-如何做的)
@@ -158,22 +152,22 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - **更稳定的梯度传播 (Pre‑Norm)**
-        - Pre‑Norm 保证了输入到子层的分布始终稳定, 梯度在反向传播时可以直接穿过残差连接，不会被归一化层过度压缩;
+        - Pre‑Norm 保证了输入到子层的分布始终稳定, 梯度在反向传播时可以直接穿过残差连接, 不会被归一化层过度压缩;
 
     - **更好的数值鲁棒性 (RMSNorm)**
 
         1. **对输入分布的稳定性**  
-            - LayerNorm **强制零均值，可能破坏输入的偏移信息**；当输入分布有轻微变化时，模型输出波动较大;  
-            - RMSNorm 保留均值，只控制尺度，使得模型在不同输入分布下仍能保持稳定。  
+            - LayerNorm **强制零均值, 可能破坏输入的偏移信息**; 当输入分布有轻微变化时, 模型输出波动较大;  
+            - RMSNorm 保留均值, 只控制尺度, 使得模型在不同输入分布下仍能保持稳定. 
 
         2. **对梯度传播的稳定性**  
-            - 在深层网络中，梯度容易消失或爆炸；归一化的作用是控制梯度大小;  
+            - 在深层网络中, 梯度容易消失或爆炸; 归一化的作用是控制梯度大小;  
             - 梯度爆炸/消失主要与 **向量范数** 有关, 而不是均值偏移;
-            - RMSNorm 通过控制向量范数，确保梯度在反传时不会过度衰减或放大。  
+            - RMSNorm 通过控制向量范数, 确保梯度在反传时不会过度衰减或放大. 
 
         3. **对数值误差的稳定性**  
-            - 大模型训练涉及极大 batch size 和长序列，浮点运算误差不可避免;  
-            - RMSNorm 计算更简单（只算 RMS），减少了均值/方差计算带来的数值波动。 
+            - 大模型训练涉及极大 batch size 和长序列, 浮点运算误差不可避免;  
+            - RMSNorm 计算更简单 (只算 RMS), 减少了均值/方差计算带来的数值波动. 
 
     - **更低的计算开销 (RMSNorm)**
         - 去掉均值计算可减少一次 reduce 操作, FLOPs 降低约 7%–15%

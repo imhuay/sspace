@@ -1,0 +1,4 @@
+\begin{align*}
+    \text{RMSNorm}(x) &= \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}} \cdot \gamma \\
+    \text{LayerNorm}(x) &= \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \cdot \gamma + \beta \;,\quad \mu = \frac{1}{d}\sum_{i=1}^d x_i \;,\quad \sigma^2 = \frac{1}{d}\sum_{i=1}^d (x_i - \mu)^2
+\end{align*}

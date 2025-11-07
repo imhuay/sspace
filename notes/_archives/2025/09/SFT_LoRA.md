@@ -1,4 +1,4 @@
-LoRA (Low-Rank Adaptation, `ˈlɔːrə`) <!-- suffix --> [📋](#qa "面试问题整理(10)")$\color{Brown}^{10}$ <!-- suffix -->
+LoRA (Low-Rank Adaptation, `ˈlɔːrə`) <!-- suffix --> [📋](#qa "面试问题整理(10)")<sup style="color:Brown">10</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&labelColor=gray&color=lightsteelblue&style=flat-square)

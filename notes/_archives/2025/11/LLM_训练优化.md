@@ -1,4 +1,4 @@
-LLM 训练优化 <!-- suffix --> [📋](#qa "面试问题整理(2)")$\color{Brown}^{2}$ <!-- suffix -->
+LLM 训练优化 <!-- suffix --> [📋](#qa "面试问题整理(2)")<sup style="color:Brown">2</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-01&labelColor=gray&color=lightsteelblue&style=flat-square)

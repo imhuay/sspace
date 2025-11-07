@@ -1,4 +1,4 @@
-RLHF (基于人类反馈的强化学习) <!-- suffix --> <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](#qa "面试问题整理(13)")$\color{Brown}^{13}$ <!-- suffix -->
+RLHF (基于人类反馈的强化学习) <!-- suffix --> <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](#qa "面试问题整理(13)")<sup style="color:Brown">13</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)

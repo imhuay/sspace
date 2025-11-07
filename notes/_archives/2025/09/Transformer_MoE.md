@@ -1,4 +1,4 @@
-MoE 备忘 <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$[📋](#qa "面试问题整理(8)")$\color{Brown}^{8}$ <!-- suffix -->
+MoE 备忘 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](#qa "面试问题整理(8)")<sup style="color:Brown">8</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&labelColor=gray&color=lightsteelblue&style=flat-square)

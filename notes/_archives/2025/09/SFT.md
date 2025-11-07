@@ -1,4 +1,4 @@
-大模型微调 <!-- suffix --> [📋](#qa "面试问题整理(9)")$\color{Brown}^{9}$ <!-- suffix -->
+大模型微调 <!-- suffix --> [📋](#qa "面试问题整理(9)")<sup style="color:Brown">9</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-13&labelColor=gray&color=lightsteelblue&style=flat-square)

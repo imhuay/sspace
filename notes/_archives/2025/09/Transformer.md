@@ -1,4 +1,4 @@
-Transformer 模型架构 <!-- suffix --> [✒️](#todo "TODO(3)")$\color{Gray}^{3}$[📋](#qa "面试问题整理(22)")$\color{Brown}^{22}$ <!-- suffix -->
+Transformer 模型架构 <!-- suffix --> [✒️](#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](#qa "面试问题整理(22)")<sup style="color:Brown">22</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)

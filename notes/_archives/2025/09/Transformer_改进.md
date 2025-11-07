@@ -1,4 +1,4 @@
-Transformer 改进 <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$ <!-- suffix -->
+Transformer 改进 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-25&labelColor=gray&color=lightsteelblue&style=flat-square)

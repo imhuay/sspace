@@ -1,4 +1,4 @@
-BERT 系列模型 (Encoder-only 架构) <!-- suffix --> [✒️](#todo "TODO(1)")$\color{Gray}^{1}$[📋](#qa "面试问题整理(7)")$\color{Brown}^{7}$ <!-- suffix -->
+BERT 系列模型 (Encoder-only 架构) <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](#qa "面试问题整理(7)")<sup style="color:Brown">7</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-04&labelColor=gray&color=lightsteelblue&style=flat-square)

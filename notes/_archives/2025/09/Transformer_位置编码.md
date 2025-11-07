@@ -1,4 +1,4 @@
-位置编码 (Position Encoding) <!-- suffix --> [📋](#qa "面试问题整理(24)")$\color{Brown}^{24}$ <!-- suffix -->
+位置编码 (Position Encoding) <!-- suffix --> [📋](#qa "面试问题整理(24)")<sup style="color:Brown">24</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-09&labelColor=gray&color=lightsteelblue&style=flat-square)
