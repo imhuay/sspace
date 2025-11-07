@@ -58,35 +58,48 @@ with_keywords: false
 | `Attn` 位置编码 | 正弦位置编码 (绝对位置编码) | **RoPE** (相对位置编码) | 优化长序列建模 🔸 保留相对位置信息 🔸 **提升外推能力** |
 | `Attn` 注意力头映射 | MHA: Q/K/V 头数一致 | **GQA/MQA**: Q 头多, K/V 头减少 (分组共享) | 降低 KV 存储与计算成本 🔸 提升推理吞吐与显存效率 |
 | `FFN` 归一化位置 | Post‑LN (残差后归一化) | **Pre‑LN** (残差前归一化) | 改善深层训练稳定性 🔸 避免梯度消失/爆炸 🔸 支持更深层堆叠 |
-| `FFN` 归一化方法 | LayerNorm (层归一化) | **RMSNorm** (均方根层归一化) | 计算更轻量 🔸 数值更稳定 🔸 减少均值偏移的影响 |
+| `FFN` 归一化方法 | LayerNorm (层归一化) | **RMSNorm** (均方根层归一化) | 计算更轻量 🔸 数值更稳定 🔸 只做尺度归一化, 不强制均值为零, 保留更多信息 |
 | `FFN` MLP 激活函数 | ReLU / GeLU | **SwiGLU** (门控激活) | 提升表示能力 🔸 改善训练稳定性 🔸 更高效的梯度流动 |
 
 - #### **SwiGLU** vs **ReLU**
-    <div align='center'><a href='_formulas/LLM_基座模型/f_001.js.tex'><img src='_formulas/LLM_基座模型/f_001.js.svg'/></a></div>
+    $$\begin{align*}
+        \text{FFN}(x) &= \big( \text{Swish}(xW_1) \otimes (xW_2) \big){\cdot}W_3 &&\scriptstyle\text{// SwiGLU} \\
+        \text{FFN}(x) &= \text{ReLU}(xW_1){\cdot}W_2 &&\scriptstyle\text{// ReLU}
+    \end{align*}$$
 
     > $\otimes$ 表示逐元素相乘, 用来实现门控机制
 
-- #### **GQA/MQA 核心代码**
-    - $H$ 个 Query 头, $G$ 个 K/V 头
-    - $H > G$, 且 $H \bmod G = 0$
-    ```python
-    # 1) 线性投影, 
-    q = self.Wq(x)  # [B, L, H*d_k], H*d_k == d_model
-    k = self.Wk(x)  # [B, L, G*d_k]
-    v = self.Wv(x)  # [B, L, G*d_k]
+- #### **GQA / MQA** 核心代码
+    - `H` 个 Query 头, `G` 个 K/V 头, 且 `H % G == 0`
+        ```python
+        # 1) 线性投影
+        q = self.Wq(x)  # [B, L, H*d_k], H*d_k == d_model
+        k = self.Wk(x)  # [B, L, G*d_k]
+        v = self.Wv(x)  # [B, L, G*d_k]
 
-    # 2) 重排为多头形式
-    q = einops.rearrange(q, 'B L (H d) -> B H L d', H=H, d=d_k)          # [B, H, L, d_k]
-    k = einops.rearrange(k, 'B L (G d) -> B G d L', G=G, d=d_k)          # [B, G, d_k, L]
-    v = einops.rearrange(v, 'B L (G d) -> B G L d', G=G, d=d_k)          # [B, G, L, d_k]
+        # 2) 重排为多头形式
+        q = einops.rearrange(q, 'B L (H d) -> B H L d', H=H, d=d_k)  # [B, H, L, d_k]
+        k = einops.rearrange(k, 'B L (G d) -> B G d L', G=G, d=d_k)  # [B, G, d_k, L]
+        v = einops.rearrange(v, 'B L (G d) -> B G L d', G=G, d=d_k)  # [B, G, L, d_k]
 
-    # 3) 将 K/V 按分组复制到 Q 头数量 (GQA / MQA 核心)
-    group_size = H // G
-    # 每个 KV 头服务 group_size 个 Q 头
-    k = k.repeat_interleave(group_size, dim=1)                            # [B, H, d_k, L]
-    v = v.repeat_interleave(group_size, dim=1)                            # [B, H, L, d_k]
-    ```
-    > [transformer_gqa.py](../09/_code/transformer_gqa.py)
+        # 3) 将 K/V 按分组复制到 Q 头数量 (GQA / MQA 核心)
+        group_size = H // G
+        # 每个 KV 头服务 group_size 个 Q 头
+        k = k.repeat_interleave(group_size, dim=1)      # [B, H, d_k, L]
+        v = v.repeat_interleave(group_size, dim=1)      # [B, H, L, d_k]
+        ```
+        > [transformer_gqa.py](../09/_code/transformer_gqa.py)
+
+- #### **RMSNorm** vs **LayerNorm**
+    > 计算更轻量 🔸 超参数更少 🔸 减少均值偏移的影响
+    $$\begin{align*}
+        \text{RMSNorm}(x) &= \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}} \cdot \gamma \\
+        \text{LayerNorm}(x) &= \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \cdot \gamma + \beta \;,\quad \mu = \frac{1}{d}\sum_{i=1}^d x_i \;,\quad \sigma^2 = \frac{1}{d}\sum_{i=1}^d (x_i - \mu)^2
+    \end{align*}$$
+
+    - **均方根 (RMS)** : 只做尺度归一化, 保留原始均值信息;  
+    - **$\gamma$** : 可学习的缩放参数，用于恢复模型的表达能力;  
+    - **$\epsilon$** : 防止分母为零的小常数;  
 
 ---
 
@@ -139,8 +152,38 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.2. ✅ LLaMA 系列为何偏向 Pre‑Norm 与 RMSNorm? 与 LayerNorm 的数值与性能差异
-> • **目的**: 为了在超深层网络中获得 **更稳定的梯度传播**, **更低的计算开销** 和 **更好的数值鲁棒性** <br>
+#### 1.2. ✅ LLaMA 系列为何偏向 Pre‑Norm 与 RMSNorm?
+> • **更稳定的梯度传播** 🔸 **更好的数值鲁棒性** 🔸 更低的计算开销 <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+
+    - **更稳定的梯度传播 (Pre‑Norm)**
+        - Pre‑Norm 保证了输入到子层的分布始终稳定, 梯度在反向传播时可以直接穿过残差连接，不会被归一化层过度压缩;
+
+    - **更好的数值鲁棒性 (RMSNorm)**
+
+        1. **对输入分布的稳定性**  
+            - LayerNorm **强制零均值，可能破坏输入的偏移信息**；当输入分布有轻微变化时，模型输出波动较大;  
+            - RMSNorm 保留均值，只控制尺度，使得模型在不同输入分布下仍能保持稳定。  
+
+        2. **对梯度传播的稳定性**  
+            - 在深层网络中，梯度容易消失或爆炸；归一化的作用是控制梯度大小;  
+            - 梯度爆炸/消失主要与 **向量范数** 有关, 而不是均值偏移;
+            - RMSNorm 通过控制向量范数，确保梯度在反传时不会过度衰减或放大。  
+
+        3. **对数值误差的稳定性**  
+            - 大模型训练涉及极大 batch size 和长序列，浮点运算误差不可避免;  
+            - RMSNorm 计算更简单（只算 RMS），减少了均值/方差计算带来的数值波动。 
+
+    - **更低的计算开销 (RMSNorm)**
+        - 去掉均值计算可减少一次 reduce 操作, FLOPs 降低约 7%–15%
+
+    --- 
+
+    **相关问题** 📝
+    - **为什么 RMSNorm 只做尺度归一化, 不再强制均值为零?** 
+
+    </details>
 
 
 <!-- omit in toc -->
@@ -162,7 +205,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [GQA/MQA 核心代码](#gqamqa-核心代码)
+    > [GQA/MQA 核心代码](#gqa--mqa-核心代码)
 
     </details>
 <!--END_SECTION:qa-->
