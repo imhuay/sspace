@@ -1,4 +1,15 @@
-\begin{aligned}
-\sin(\omega_i (p+k)) &= \sin(\omega_i p)\cos(\omega_i k) + \cos(\omega_i p)\sin(\omega_i k) \\
-\cos(\omega_i (p+k)) &= \cos(\omega_i p)\cos(\omega_i k) - \sin(\omega_i p)\sin(\omega_i k)
-\end{aligned}
+f(q, m) = \begin{pmatrix}
+         q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
+         \end{pmatrix}
+         \otimes
+         \begin{pmatrix}
+         \cos(m\theta_0) \\ \cos(m\theta_0) \\ \vdots \\ \cos(m\theta_i) \\ \cos(m\theta_i) \\ \vdots \\ \cos(m\theta_{d/2-1}) \\ \cos(m\theta_{d/2-1})
+      \end{pmatrix}
+      +
+      \begin{pmatrix}
+          - q_1 \\ q_0 \\ \vdots \\ -q_{2i+1} \\ q_{2i} \\ \vdots \\ - q_{d-1} \\ q_{d-2}
+          \end{pmatrix}
+          \otimes
+          \begin{pmatrix}
+          \sin(m\theta_0) \\ \sin(m\theta_0) \\ \vdots \\ \sin(m\theta_i) \\ \sin(m\theta_i) \\ \vdots \\ \sin(m\theta_{d/2-1}) \\ \sin(m\theta_{d/2-1})
+  \end{pmatrix}

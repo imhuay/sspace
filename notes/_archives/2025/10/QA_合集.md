@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(108)">📋</span><sup style="color:Brown">108</sup> <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(109)">📋</span><sup style="color:Brown">109</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -34,7 +34,7 @@ algo_tags: []
 - [SFT · **基础概念** · `9`](#sft--基础概念--9)
 - [SFT · PEFT · **LoRA** · `10`](#sft--peft--lora--10)
 - [**MoE (Mixture of Experts)** · `8`](#moe-mixture-of-experts--8)
-- [**LLM 基座模型** · `5`](#llm-基座模型--5)
+- [**LLM 基座模型** · `6`](#llm-基座模型--6)
 - [**LLM 训练优化** · `2`](#llm-训练优化--2)
 - [Other · **非专业问题** · `2`](#other--非专业问题--2)
 <!--END_SECTION:toc-->
@@ -207,7 +207,7 @@ algo_tags: []
     - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 假设你要在一个多模态任务 (文本+图像) 上设计 MoE, 你会如何划分专家?](../09/Transformer_MoE.md#36-----️-️-️--假设你要在一个多模态任务-文本图像-上设计-moe-你会如何划分专家)
     - [3.7. ✅ 给定 8 专家, Top-2 策略, 400B 参数的 MoE 层, 估算单 token 实际激活的参数量和 batch size = 1024 时平均每个专家分配的 token 数.](../09/Transformer_MoE.md#37--给定-8-专家-top-2-策略-400b-参数的-moe-层-估算单-token-实际激活的参数量和-batch-size--1024-时平均每个专家分配的-token-数)
 
-## **LLM 基座模型** · `5`<!-- 0 -->
+## **LLM 基座模型** · `6`<!-- 0 -->
 
 - [1. 🏷️ LLaMA 相关](../11/LLM_基座模型.md#1-️-llama-相关)
     - [1.1. ✅ LLaMA 属于哪类架构? 与原版 Transformer 的差异? 改进的目的/效果](../11/LLM_基座模型.md#11--llama-属于哪类架构-与原版-transformer-的差异-改进的目的效果)
@@ -215,6 +215,8 @@ algo_tags: []
     - [1.3. ✅ SwiGLU 取代 ReLU 的动机是什么, 如何做到的?](../11/LLM_基座模型.md#13--swiglu-取代-relu-的动机是什么-如何做到的)
     - [1.4. ✅ LLaMA 为何采用 RoPE (旋转位置编码)? 与正弦编码相比的优势](../11/LLM_基座模型.md#14--llama-为何采用-rope-旋转位置编码-与正弦编码相比的优势)
     - [1.5. ✅ GQA/MQA 的动机是什么, 如何做的?](../11/LLM_基座模型.md#15--gqamqa-的动机是什么-如何做的)
+- [2. 🏷️ DeepSeek 相关](../11/LLM_基座模型.md#2-️-deepseek-相关)
+    - [2.1. ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?](../11/LLM_基座模型.md#21--deepseek-对-位置编码-rope-做了哪些改进)
 
 ## **LLM 训练优化** · `2`<!-- 0 -->
 

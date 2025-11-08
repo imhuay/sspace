@@ -2,7 +2,7 @@
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-09&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-27%2015%3A27%3A36&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-09%2005%3A26%3A06&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-09 11:03:29
@@ -200,17 +200,8 @@ extra_url: false
         - 两个分别旋转了 $m\theta$ 和 $n\theta$ 角度的向量, 其点积结果只与它们的原始模长和相对旋转角度 $(m-n)\theta$ 有关;
 
     - **二维 RoPE**
-        $$
-        f(q, m) =
-            \begin{pmatrix}
-                \cos(m\theta) & -\sin(m\theta) \\
-                \sin(m\theta) & \phantom{-}\cos(m\theta)
-            \end{pmatrix}
-            \begin{pmatrix}
-                q_0 \\ q_1
-            \end{pmatrix}
-        $$
-        
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_011.js.tex'><img src='_formulas/Transformer_位置编码/f_011.js.svg'/></a></div>
+
         > 对位于 $m$ 的向量 $q$ 施加 $m\theta$ 角度的旋转
 
     - 因此, **RoPE** 本质上是 **通过对输入向量施加一个位置相关的旋转** 来编码 **绝对位置信息**, 而 **旋转后向量的点积内在地反映了相对位置信息**;
@@ -221,61 +212,31 @@ extra_url: false
 - #### **$n$ 维 RoPE** ($n$ 为偶数) 📌
     - 内积满足分块线性叠加, 即 **高维 RoPE 可以分解为多个二维旋转的独立拼接**, 即
 
-    $$\begin{align*}
-    f(q, m) &= \underbrace{
-        \begin{pmatrix}
-            \cos(m\theta_0) & -\sin(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
-            \sin(m\theta_0) & \phantom{-}\cos(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
-            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 0 & \cdots & \cos(m\theta_i) & -\sin(m\theta_i) & \cdots & 0 & 0 \\
-            0 & 0 & \cdots & \sin(m\theta_i) & \phantom{-}\cos(m\theta_i) & \cdots & 0 & 0 \\
-            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 0 & \cdots & 0 & 0 & \cdots & \cos\!\big(m\theta_{d/2-1}\big) & -\sin\!\big(m\theta_{d/2-1}\big) \\
-            0 & 0 & \cdots & 0 & 0 & \cdots & \sin\!\big(m\theta_{d/2-1}\big) & \phantom{-}\cos\!\big(m\theta_{d/2-1}\big)
-        \end{pmatrix}
-        }_{R_m}
-        \begin{pmatrix}
-            q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
-        \end{pmatrix} 
-    \end{align*}$$
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_012.js.tex'><img src='_formulas/Transformer_位置编码/f_012.js.svg'/></a></div>
 
     > 由于旋转矩阵的稀疏性, 直接用矩阵乘法来实现会很浪费算力, 等价于
-    > $$f(q, m) = \begin{pmatrix}
-    >          q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
-    >          \end{pmatrix}
-    >          \otimes
-    >          \begin{pmatrix}
-    >          \cos(m\theta_0) \\ \cos(m\theta_0) \\ \vdots \\ \cos(m\theta_i) \\ \cos(m\theta_i) \\ \vdots \\ \cos(m\theta_{d/2-1}) \\ \cos(m\theta_{d/2-1})
-    >       \end{pmatrix}
-    >       +
-    >       \begin{pmatrix}
-    >           - q_1 \\ q_0 \\ \vdots \\ -q_{2i+1} \\ q_{2i} \\ \vdots \\ - q_{d-1} \\ q_{d-2}
-    >           \end{pmatrix}
-    >           \otimes
-    >           \begin{pmatrix}
-    >           \sin(m\theta_0) \\ \sin(m\theta_0) \\ \vdots \\ \sin(m\theta_i) \\ \sin(m\theta_i) \\ \vdots \\ \sin(m\theta_{d/2-1}) \\ \sin(m\theta_{d/2-1})
-    >   \end{pmatrix}$$
+    > <div align='center'><a href='_formulas/Transformer_位置编码/f_013.js.tex'><img src='_formulas/Transformer_位置编码/f_013.js.svg'/></a></div>
     >
     > 其中 $\otimes$ 为逐位相乘
 
 - #### **旋转角度** 的设计 💡
     - 对第 $m$ 个 token, 其第 $i$ 维 $\big(i \in {1,2,..,d/2}\big)$ 的旋转角度为:
-        <div align='center'><a href='_formulas/Transformer_位置编码/f_012.js.tex'><img src='_formulas/Transformer_位置编码/f_012.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_014.js.tex'><img src='_formulas/Transformer_位置编码/f_014.js.svg'/></a></div>
 
         <!-- - 其中 $m$ 为 **token** 位置索引; $i$ 为 **向量** 的分量索引; -->
 
     - **参数 $i$ 的作用**: **让向量中不同维度的分量负责不同尺度的位置信息** 📌
         - 低维 ($i$ 小): $θ_i$ 较大 (**高频**), 波长短; 这些维度旋转很快, 对位置变化敏感; **负责捕捉局部、精细的位置关系**;  
         - 高维 ($i$ 大): $θ_i$ 较小 (**低频**), 波长长; 这些维度旋转缓慢; **负责提供全局、稳定的位置信号**;
-    
+
     - **为什么这么设计 $\theta$?** —— **远程衰减性**, 即内积随相对距离增大而衰减, 这与 **距离越远, 依赖越弱** 的直觉一致;
 - **优点**:
     - 以绝对位置编码的形式, 实现相对位置编码的效果 (可以从绝对位置推导出相对关系);
     - **长文本外推能力**: 实验表明, RoPE 具有比之前的位置编码更好的 **外推性**;
         > 原始版本的 RoPE 在超长上下文中依然存在外推性不足的问题, 这也是后来 RoPE 改进的方向;
-    - **远程衰减性**: 随着相对距离的增加, 内积结果会自然衰减，有助于模型聚焦近邻依赖;
+    - **远程衰减性**: 随着相对距离的增加, 内积结果会自然衰减, 有助于模型聚焦近邻依赖;
         > 旋转角度差越大, 两个向量的点积越小;
-    - **数值稳定性**: 旋转矩阵是正交矩阵，不改变向量模长, 不会破坏数值稳定性;
+    - **数值稳定性**: 旋转矩阵是正交矩阵, 不改变向量模长, 不会破坏数值稳定性;
 
 -   <details><summary><b>♦️ 具体实现 ♦️</b></summary>
 
@@ -285,7 +246,7 @@ extra_url: false
     - 对于每个位置, 根据其位置索引计算出一个 **旋转角度**;
     - 通过 **旋转矩阵** 对 Q 和 K 向量的每一组二维分量进行旋转变换;
     - 经过此变换后, Q 和 K 的内积结果 **仅依赖于** 它们所对应 token 的 **相对位置**;
-        <div align='center'><a href='_formulas/Transformer_位置编码/f_011.js.tex'><img src='_formulas/Transformer_位置编码/f_011.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_015.js.tex'><img src='_formulas/Transformer_位置编码/f_015.js.svg'/></a></div>
 
         > $\text{RoPE}_{\theta}(v, p)$: 对位于 $p$ 的向量 $v$ 旋转 $p \cdot \theta$ 度;
 
@@ -449,7 +410,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    <div align='center'><a href='_formulas/Transformer_位置编码/f_013.js.tex'><img src='_formulas/Transformer_位置编码/f_013.js.svg'/></a></div>
+    <div align='center'><a href='_formulas/Transformer_位置编码/f_016.js.tex'><img src='_formulas/Transformer_位置编码/f_016.js.svg'/></a></div>
 
     </details>
 
@@ -566,7 +527,7 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - **关键等式**:
-        <div align='center'><a href='_formulas/Transformer_位置编码/f_014.js.tex'><img src='_formulas/Transformer_位置编码/f_014.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_017.js.tex'><img src='_formulas/Transformer_位置编码/f_017.js.svg'/></a></div>
 
     - 第一步: 对 Q/K 分别施加与 **绝对位置** 相关的旋转;
     - 第二步: 利用 **旋转矩阵的正交性**, 将两个绝对位置的 **旋转差** 化为单一的 **相对位移旋转**
@@ -581,7 +542,7 @@ use_section_number: true
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
     - **旋转角** 公式:
-        <div align='center'><a href='_formulas/Transformer_位置编码/f_015.js.tex'><img src='_formulas/Transformer_位置编码/f_015.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_018.js.tex'><img src='_formulas/Transformer_位置编码/f_018.js.svg'/></a></div>
 
         - 其中
             - $p$ 为 token 位置索引;

@@ -1,8 +1,8 @@
-LLM 基座模型 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](#qa "面试问题整理(5)")<sup style="color:Brown">5</sup><span title="Pin">✨</span> <!-- suffix -->
+LLM 基座模型 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](#qa "面试问题整理(6)")<sup style="color:Brown">6</sup><span title="Pin">✨</span> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-04&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-08%2000%3A46%3A39&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-09%2005%3A26%3A06&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-04 23:51:12
@@ -116,7 +116,7 @@ with_keywords: false
 - **优化目标**
     - 提升中文与多语言任务的表现, 降低推理成本
 - **具体改进**
-    
+
     | 改进方向 | 具体措施 | 目标效果 |
     |----------|----------|----------|
     | **位置编码 (RoPE 改进)** | 在标准 RoPE 基础上优化; 支持更长上下文窗口 | 提升长文本建模能力; 减少长序列退化 |
@@ -149,6 +149,8 @@ use_section_number: true
     - [1.3. ✅ SwiGLU 取代 ReLU 的动机是什么, 如何做到的?](#13--swiglu-取代-relu-的动机是什么-如何做到的)
     - [1.4. ✅ LLaMA 为何采用 RoPE (旋转位置编码)? 与正弦编码相比的优势](#14--llama-为何采用-rope-旋转位置编码-与正弦编码相比的优势)
     - [1.5. ✅ GQA/MQA 的动机是什么, 如何做的?](#15--gqamqa-的动机是什么-如何做的)
+- [2. 🏷️ DeepSeek 相关](#2-️-deepseek-相关)
+    - [2.1. ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?](#21--deepseek-对-位置编码-rope-做了哪些改进)
 <!--END_SECTION:qa_toc-->
 
 ---
@@ -231,20 +233,15 @@ use_section_number: true
 ---
 
 <!-- omit in toc -->
-### 🏷️ DeepSeek 相关
+### 2. 🏷️ DeepSeek 相关
 
 <!-- omit in toc -->
-#### ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?
+#### 2.1. ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?
 > • 解耦 RoPE 🔸 长上下文扩展 🔸 与 MLA 结合 🔸 推理阶段简化 <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
-    
-    
+
+
+
     </details>
-
-
-
-
-
 <!--END_SECTION:qa-->

@@ -1,1 +1,8 @@
-\langle \text{RoPE}_{\theta}(q, m), \text{RoPE}_{\theta}(k, n) \rangle = \langle q, \text{RoPE}_{\theta}(k, m - n) \rangle
+f(q, m) =
+    \begin{pmatrix}
+        \cos(m\theta) & -\sin(m\theta) \\
+        \sin(m\theta) & \phantom{-}\cos(m\theta)
+    \end{pmatrix}
+    \begin{pmatrix}
+        q_0 \\ q_1
+    \end{pmatrix}

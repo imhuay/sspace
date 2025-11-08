@@ -1,1 +1,17 @@
-\theta_i = m \cdot \dfrac{1}{10000^{2(i-1)/d}}
+\begin{align*}
+f(q, m) &= \underbrace{
+    \begin{pmatrix}
+        \cos(m\theta_0) & -\sin(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
+        \sin(m\theta_0) & \phantom{-}\cos(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & \cdots & \cos(m\theta_i) & -\sin(m\theta_i) & \cdots & 0 & 0 \\
+        0 & 0 & \cdots & \sin(m\theta_i) & \phantom{-}\cos(m\theta_i) & \cdots & 0 & 0 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & \cdots & 0 & 0 & \cdots & \cos\!\big(m\theta_{d/2-1}\big) & -\sin\!\big(m\theta_{d/2-1}\big) \\
+        0 & 0 & \cdots & 0 & 0 & \cdots & \sin\!\big(m\theta_{d/2-1}\big) & \phantom{-}\cos\!\big(m\theta_{d/2-1}\big)
+    \end{pmatrix}
+    }_{R_m}
+    \begin{pmatrix}
+        q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
+    \end{pmatrix}
+\end{align*}
