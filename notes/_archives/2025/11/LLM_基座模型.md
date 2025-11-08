@@ -28,7 +28,8 @@ algo_tags: []
 
 <!--START_SECTION:toc-->
 - [LLaMA 系列](#llama-系列)
-- [DeepSeek](#deepseek)
+- [DeepSeek 系列](#deepseek-系列)
+    - [DeepSeek-LLM](#deepseek-llm)
 - [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
@@ -55,7 +56,7 @@ with_keywords: false
 | 组件 | 原版 Transformer (Vaswani 2017) | LLaMA 家族 (典型做法) | 目的 |
 |---|---|---|---|
 | 网络结构 | Encoder–Decoder | Decoder‑only | 结构更简洁 🔸 专注自回归生成 🔸 提升参数与计算效率 |
-| `Attn` 位置编码 | 正弦位置编码 (绝对位置编码) | **RoPE** (相对位置编码) | 优化长序列建模 🔸 保留相对位置信息 🔸 **提升外推能力** |
+| `Attn` 位置编码 | 正弦位置编码 (绝对位置编码) | **RoPE** / **iRoPE** (旋转位置编码) | 优化长序列建模 🔸 保留相对位置信息 🔸 **提升外推能力** |
 | `Attn` 注意力头映射 | MHA: Q/K/V 头数一致 | **GQA/MQA**: Q 头多, K/V 头减少 (分组共享) | 降低 KV 存储与计算成本 🔸 提升推理吞吐与显存效率 |
 | `FFN` 归一化位置 | Post‑LN (残差后归一化) | **Pre‑LN** (残差前归一化) | 改善深层训练稳定性 🔸 避免梯度消失/爆炸 🔸 支持更深层堆叠 |
 | `FFN` 归一化方法 | LayerNorm (层归一化) | **RMSNorm** (均方根层归一化) | 计算更轻量 🔸 数值更稳定 🔸 只做尺度归一化, 不强制均值为零, 保留更多信息 |
@@ -95,10 +96,34 @@ with_keywords: false
     - **$\gamma$** : 可学习的缩放参数, 用于恢复模型的表达能力;  
     - **$\epsilon$** : 防止分母为零的小常数;  
 
+- #### RoPE
+    > [_相关笔记_](../09/Transformer_位置编码.md#旋转位置编码-rope)
+
 ---
 
-## DeepSeek
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'DeepSeek'
+extra_url: false
+with_keywords: false
+-->
+## DeepSeek 系列
+<!--END_SECTION:keyword-->
 > ##### TODO
+
+### DeepSeek-LLM
+
+- **优化目标**
+    - 提升中文与多语言任务的表现, 降低推理成本
+- **具体改进**
+    
+    | 改进方向 | 具体措施 | 目标效果 |
+    |----------|----------|----------|
+    | **位置编码 (RoPE 改进)** | 在标准 RoPE 基础上优化; 支持更长上下文窗口 | 提升长文本建模能力; 减少长序列退化 |
+    | **KV Cache 优化** | 引入 KV Cache 压缩与高效存储策略 | 降低显存占用; 提升多轮对话与长文本推理速度 |
+    | **训练数据构建** | 大规模中文语料清洗与去重; 多语言混合 | 增强中文能力; 保持跨语言泛化 |
+    | **推理加速工程优化** | 集成 FlashAttention 等高效算子; GPU/分布式优化 | 提升推理吞吐量; 降低延迟 |
+    | **模型规模与架构** | 提供 7B, 67B 等多种规模; 延续 Transformer 基座; 部分引入 MoE 思路 | 适配不同应用场景; 在保证性能的同时降低成本 |
 
 ---
 
@@ -202,4 +227,24 @@ use_section_number: true
     > [GQA/MQA 核心代码](#gqa--mqa-核心代码)
 
     </details>
+
+---
+
+<!-- omit in toc -->
+### 🏷️ DeepSeek 相关
+
+<!-- omit in toc -->
+#### ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?
+> • 解耦 RoPE 🔸 长上下文扩展 🔸 与 MLA 结合 🔸 推理阶段简化 <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    
+    
+    </details>
+
+
+
+
+
 <!--END_SECTION:qa-->

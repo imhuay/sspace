@@ -27,12 +27,8 @@ tags: [transformer]
     - [正弦位置编码](#正弦位置编码)
     - [可学习位置编码](#可学习位置编码)
 - [相对位置编码](#相对位置编码)
-    - [SHAW](#shaw)
-    - [XLNet](#xlnet)
-    - [T5](#t5)
-    - [DeBERTa](#deberta)
-    - [ALiBi](#alibi)
-- [旋转位置编码](#旋转位置编码)
+    - [SHAW . XLNet . T5 . DeBERTa . ALiBi 等](#shaw--xlnet--t5--deberta--alibi-等)
+- [旋转位置编码 (RoPE)](#旋转位置编码-rope)
 - [参考资料](#参考资料)
 - [Q\&A](#qa)
 <!--END_SECTION:toc-->
@@ -105,7 +101,7 @@ tags: [transformer]
 
 ### 可学习位置编码
 
-- **来源/使用模型**: BERT
+- **来源/模型**: BERT
 - **方法**: 随机初始化一个大小为 `(max_seq_len, d_model)` 的矩阵作为位置编码参数, 然后与模型的其他参数一起通过训练学习得到;
 - **优点**:
     - 灵活, 可能学到更适合特定任务的位置模式;
@@ -145,35 +141,42 @@ extra_url: false
 - **缺点**:
     - 有的实现较复杂, 可能会增加计算复杂度;
 
-### SHAW
+### SHAW . XLNet . T5 . DeBERTa . ALiBi 等
+
+<!-- omit in toc -->
+#### SHAW
 > _SHAW 是作者名_
 - **思路**: 去掉 $p_i W_Q$, 并将 $p_j W_K$ 替换为相对位置向量 $R^K_{i,j}$, 其中 $R^K_{i,j}$ 依赖于相对距离 $i-j$:
     <div align='center'><a href='_formulas/Transformer_位置编码/f_005.js.tex'><img src='_formulas/Transformer_位置编码/f_005.js.svg'/></a></div>
 
-### XLNet
+<!-- omit in toc -->
+#### XLNet
 - **思路**: 将 $p_j$ 替换为相对位置向量 $R_{i-j}$, 将 $p_i$ 替换为可训练向量 $u, v$, 其中 $R_{i-j}$ 用正弦位置编码生成:
     <div align='center'><a href='_formulas/Transformer_位置编码/f_006.js.tex'><img src='_formulas/Transformer_位置编码/f_006.js.svg'/></a></div>
 
-### T5
+<!-- omit in toc -->
+#### T5
 - **思路**: 去掉 **2, 3** 两项, 并用可训练偏置 $\beta_{i,j}$ 代替 **4** 项, 其中 $\beta_{i,j}$ 通过 **分桶** 映射相对距离后查表得到:
     <div align='center'><a href='_formulas/Transformer_位置编码/f_007.js.tex'><img src='_formulas/Transformer_位置编码/f_007.js.svg'/></a></div>
 
-### DeBERTa
+<!-- omit in toc -->
+#### DeBERTa
 - **思路**: 去掉 **4** 项, 保留 **2, 3** 两项, 并替换为相对位置向量, 其中 $R_{i,j}$ 依赖相对距离:
     <div align='center'><a href='_formulas/Transformer_位置编码/f_008.js.tex'><img src='_formulas/Transformer_位置编码/f_008.js.svg'/></a></div>
 
-### ALiBi
+<!-- omit in toc -->
+#### ALiBi
 - **思路**: 去掉 **2, 3** 两项, 并用 **固定线性偏置** 代替 **4** 项, 其中 $m$ 为第 $h$ 个注意力头的常数斜率:
     <div align='center'><a href='_formulas/Transformer_位置编码/f_009.js.tex'><img src='_formulas/Transformer_位置编码/f_009.js.svg'/></a></div>
 
-
+---
 
 <!--START_SECTION:keyword-->
 <!--keyword_info
-name: '旋转位置编码🔥'
+name: '旋转位置编码 (RoPE)🔥'
 extra_url: false
 -->
-## 旋转位置编码
+## 旋转位置编码 (RoPE)
 <!--END_SECTION:keyword-->
 > RoPE, Rotary Positional Encoding
 - **来源**: RoFormer
@@ -184,21 +187,100 @@ extra_url: false
     - 在计算注意力 (Query 和 Key 的点积) 时, 内积结果能够天然体现 token 之间的 **相对位置关系**;
     - 换言之, 目标是找到一种绝对位置编码方法, 使得编码后 Query 向量和 Key 向量的点积结果 **仅依赖于** 它们所对应 token 的 **相对位置**;
 -->
-- **思路/动机**:
+- **思路/直觉/实现**:
     <!-- - 数学上, 如果有一种变换, 使对两个元素 **相乘** 可以表达成它们 **差的形式**, 理论上就达成了目标; -->
-    - 从数学上看, 设计目标可以转化为: 寻找一种作用于向量的变换 $f$, 使得对于位置 $m$/$n$ 的向量 $q$/$k$, 即: 
+    - 从数学上看, 设计目标可以转化为, 寻找一种变换 $f$, 使得对于位置 $m$/$n$ 的向量 $q$/$k$, 有: 
         <div align='center'><a href='_formulas/Transformer_位置编码/f_010.js.tex'><img src='_formulas/Transformer_位置编码/f_010.js.svg'/></a></div>
 
-    - **二维旋转变换恰好可以满足这一性质**;
+        > $\langle \cdot, \cdot \rangle$ 表示求内积
+
+    - **二维旋转变换可以满足这一性质**
+
         - 在二维平面上, 将一个向量旋转角度 $\theta$, 其模长不变;
-        - 两个分别旋转了角度 $\theta_m$ 和 $\theta_n$ 的向量进行点积, 结果只与它们的原始向量和相对旋转角度 $\theta_m - \theta_n$ 有关, 而与各自的绝对角度 $\theta_m$, $\theta_n$ 无关;
-        <!--
-        - 对向量施加旋转, **不同旋转角度可以表达绝对位置**;
-        - 而两个向量经过旋转后点积, 其结果只与它们的 **相对位置 (旋转的角度差)** 有关, 与各自实际旋转的角度无关;
-         -->
-    - 因此, 可以通过对向量 **在不同位置施加不同的旋转角度** (代表绝对位置) 来编码位置信息, 而 **向量点积的结果会内在地反映出相对位置信息**; 这就实现了 **利用绝对位置编码达成相对位置编码效果** 的目标;
-    <!-- - **综上**, 通过对输入向量进行 **旋转** 即可达成目标 —— **利用绝对位置编码的方式, 实现相对位置编码的效果**; -->
-- **具体做法**:
+        - 两个分别旋转了 $m\theta$ 和 $n\theta$ 角度的向量, 其点积结果只与它们的原始模长和相对旋转角度 $(m-n)\theta$ 有关;
+
+    - **二维 RoPE**
+        $$
+        f(q, m) =
+            \begin{pmatrix}
+                \cos(m\theta) & -\sin(m\theta) \\
+                \sin(m\theta) & \phantom{-}\cos(m\theta)
+            \end{pmatrix}
+            \begin{pmatrix}
+                q_0 \\ q_1
+            \end{pmatrix}
+        $$
+        
+        > 对位于 $m$ 的向量 $q$ 施加 $m\theta$ 角度的旋转
+
+    - 因此, **RoPE** 本质上是 **通过对输入向量施加一个位置相关的旋转** 来编码 **绝对位置信息**, 而 **旋转后向量的点积内在地反映了相对位置信息**;
+        > **RoPE** 实际上是一种 **绝对位置编码**
+    <!-- - 因此, **RoPE** 本质上通过对输入向量 **施加不同的旋转角度** 来编码 **绝对位置信息**, 而 **向量点积的结果会内在地反映出相对位置信息**;  -->
+    <!-- - 这就实现了 **利用绝对位置编码达成相对位置编码效果** 的目标; -->
+
+- #### **$n$ 维 RoPE** ($n$ 为偶数) 📌
+    - 内积满足分块线性叠加, 即 **高维 RoPE 可以分解为多个二维旋转的独立拼接**, 即
+
+    $$\begin{align*}
+    f(q, m) &= \underbrace{
+        \begin{pmatrix}
+            \cos(m\theta_0) & -\sin(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
+            \sin(m\theta_0) & \phantom{-}\cos(m\theta_0) & \cdots & 0 & 0 & \cdots & 0 & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            0 & 0 & \cdots & \cos(m\theta_i) & -\sin(m\theta_i) & \cdots & 0 & 0 \\
+            0 & 0 & \cdots & \sin(m\theta_i) & \phantom{-}\cos(m\theta_i) & \cdots & 0 & 0 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            0 & 0 & \cdots & 0 & 0 & \cdots & \cos\!\big(m\theta_{d/2-1}\big) & -\sin\!\big(m\theta_{d/2-1}\big) \\
+            0 & 0 & \cdots & 0 & 0 & \cdots & \sin\!\big(m\theta_{d/2-1}\big) & \phantom{-}\cos\!\big(m\theta_{d/2-1}\big)
+        \end{pmatrix}
+        }_{R_m}
+        \begin{pmatrix}
+            q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
+        \end{pmatrix} 
+    \end{align*}$$
+
+    > 由于旋转矩阵的稀疏性, 直接用矩阵乘法来实现会很浪费算力, 等价于
+    > $$f(q, m) = \begin{pmatrix}
+    >          q_0 \\ q_1 \\ \vdots \\ q_{2i} \\ q_{2i+1} \\ \vdots \\ q_{d-2} \\ q_{d-1}
+    >          \end{pmatrix}
+    >          \otimes
+    >          \begin{pmatrix}
+    >          \cos(m\theta_0) \\ \cos(m\theta_0) \\ \vdots \\ \cos(m\theta_i) \\ \cos(m\theta_i) \\ \vdots \\ \cos(m\theta_{d/2-1}) \\ \cos(m\theta_{d/2-1})
+    >       \end{pmatrix}
+    >       +
+    >       \begin{pmatrix}
+    >           - q_1 \\ q_0 \\ \vdots \\ -q_{2i+1} \\ q_{2i} \\ \vdots \\ - q_{d-1} \\ q_{d-2}
+    >           \end{pmatrix}
+    >           \otimes
+    >           \begin{pmatrix}
+    >           \sin(m\theta_0) \\ \sin(m\theta_0) \\ \vdots \\ \sin(m\theta_i) \\ \sin(m\theta_i) \\ \vdots \\ \sin(m\theta_{d/2-1}) \\ \sin(m\theta_{d/2-1})
+    >   \end{pmatrix}$$
+    >
+    > 其中 $\otimes$ 为逐位相乘
+
+- #### **旋转角度** 的设计 💡
+    - 对第 $m$ 个 token, 其第 $i$ 维 $\big(i \in {1,2,..,d/2}\big)$ 的旋转角度为:
+        <div align='center'><a href='_formulas/Transformer_位置编码/f_012.js.tex'><img src='_formulas/Transformer_位置编码/f_012.js.svg'/></a></div>
+
+        <!-- - 其中 $m$ 为 **token** 位置索引; $i$ 为 **向量** 的分量索引; -->
+
+    - **参数 $i$ 的作用**: **让向量中不同维度的分量负责不同尺度的位置信息** 📌
+        - 低维 ($i$ 小): $θ_i$ 较大 (**高频**), 波长短; 这些维度旋转很快, 对位置变化敏感; **负责捕捉局部、精细的位置关系**;  
+        - 高维 ($i$ 大): $θ_i$ 较小 (**低频**), 波长长; 这些维度旋转缓慢; **负责提供全局、稳定的位置信号**;
+    
+    - **为什么这么设计 $\theta$?** —— **远程衰减性**, 即内积随相对距离增大而衰减, 这与 **距离越远, 依赖越弱** 的直觉一致;
+- **优点**:
+    - 以绝对位置编码的形式, 实现相对位置编码的效果 (可以从绝对位置推导出相对关系);
+    - **长文本外推能力**: 实验表明, RoPE 具有比之前的位置编码更好的 **外推性**;
+        > 原始版本的 RoPE 在超长上下文中依然存在外推性不足的问题, 这也是后来 RoPE 改进的方向;
+    - **远程衰减性**: 随着相对距离的增加, 内积结果会自然衰减，有助于模型聚焦近邻依赖;
+        > 旋转角度差越大, 两个向量的点积越小;
+    - **数值稳定性**: 旋转矩阵是正交矩阵，不改变向量模长, 不会破坏数值稳定性;
+
+-   <details><summary><b>♦️ 具体实现 ♦️</b></summary>
+
+    > [numpy 实现](./_code/test_rope.py#L32)
+
     - 将高维向量的 **每两维视为一个复数**, 或看作一组独立的二维平面;
     - 对于每个位置, 根据其位置索引计算出一个 **旋转角度**;
     - 通过 **旋转矩阵** 对 Q 和 K 向量的每一组二维分量进行旋转变换;
@@ -207,46 +289,29 @@ extra_url: false
 
         > $\text{RoPE}_{\theta}(v, p)$: 对位于 $p$ 的向量 $v$ 旋转 $p \cdot \theta$ 度;
 
-        > [python 实现](./_code/test_rope.py#L32)
 
-- **计算步骤**
-    > 演示代码: [demonstrate_rope_step_by_step](./_code/test_rope.py#L103)
-    ```txt
-    === RoPE 计算步骤演示 ===
-    步骤 1: 向量两两分组
-    [[0.497, -0.138], [0.648, 1.523], [-0.234, -0.234]] ...
+    - **计算步骤**
+        > 演示代码: [demonstrate_rope_step_by_step](./_code/test_rope.py#L103)
+        ```txt
+        === RoPE 计算步骤演示 ===
+        步骤 1: 向量两两分组
+        [[0.497, -0.138], [0.648, 1.523], [-0.234, -0.234]] ...
 
-    步骤 2: 计算各组的旋转角度, 数量为 D/2
-    [3.0, 0.3, 0.03] ...
+        步骤 2: 计算各组的旋转角度, 数量为 D/2
+        [3.0, 0.3, 0.03] ...
 
-    步骤 3: 分组应用旋转
-    原始向量 (分组): [[0.497, -0.138], [0.648, 1.523], [-0.234, -0.234]] ...
-    旋转后向量 (分组): [[-0.472, 0.207], [0.169, 1.646], [-0.227, -0.241]] ...
-    旋转后向量 (展开): [-0.472, 0.207, 0.169, 1.646, -0.227, -0.241] ...
+        步骤 3: 分组应用旋转
+        原始向量 (分组): [[0.497, -0.138], [0.648, 1.523], [-0.234, -0.234]] ...
+        旋转后向量 (分组): [[-0.472, 0.207], [0.169, 1.646], [-0.227, -0.241]] ...
+        旋转后向量 (展开): [-0.472, 0.207, 0.169, 1.646, -0.227, -0.241] ...
 
-    范数比较
-    原始范数: 2.48947373
-    旋转后范数: 2.48947373
-    ```
-- **旋转角度** 计算:
-    - 因 **两两分组**, 对第 $m$ 和 $m+1$ 个 token, 其在第 $i$ 个维度 ($i \in {1,2,..,d/2}$) 上的旋转角度为:
-    <div align='center'><a href='_formulas/Transformer_位置编码/f_012.js.tex'><img src='_formulas/Transformer_位置编码/f_012.js.svg'/></a></div>
+        范数比较
+        原始范数: 2.48947373
+        旋转后范数: 2.48947373
+        ```
 
-    - 其中
-        - $m$ 为 token 位置索引;
-        - $i$ 为 向量 的分量索引;
-            > 公式中加入 $i$ 的作用: 让向量中不同维度的分量负责不同尺度的位置信息;
-            >> - 低维 ($i$ 小): $θ_i$ 较大 (高频), 波长短; 这些维度对位置变化非常敏感, 旋转很快; 它们负责捕捉局部、精细的位置关系;  
-            >> - 高维 ($i$ 大): $θ_i$ 较小 (低频), 波长长; 这些维度旋转缓慢, 负责提供全局、稳定的位置信号;
-    - **为什么这么设计 $\theta$?** —— **远程衰减性**, 即内积随相对距离增大而衰减, 这与 **距离越远, 依赖越弱** 的直觉一致;
-- **优点**:
-    - 具备绝对位置的形式, 产生相对位置的效果 (从绝对位置推导出相对关系);
-    - 优秀的 **外推性**;
-    - 随着相对距离的增加, 依赖性自然衰减;
-        > 旋转角度差越大, 两个向量的点积越小;
-- **代码演示**:
-    > [demonstrate_relative_property](./_code/test_rope.py#L70)
     - **相对性验证**: $\langle \text{RoPE}(q, m), \text{RoPE}(k, n) \rangle = \langle q, \text{RoPE}(k, m - n) \rangle$
+        > [demonstrate_relative_property](./_code/test_rope.py#L70)
         ```txt
         === RoPE 相对性验证 ===
         m    n    m-n    dot_val     ro_dot_val
@@ -261,6 +326,8 @@ extra_url: false
         3    13   -10    -3.336345   -2.769302
         ```
         - **直观解释**: 对于两个经过 RoPE 旋转后的向量 $q_m$ (位于 $m$) 和 $k_n$ (位于 $n$), 它们的点积结果只与它们的相对位置 $m-n$ 有关, 与绝对位置无关;
+
+    </details>
 
 ## 参考资料
 - [设计位置编码 - HuggingFace Blog](https://huggingface.co/blog/zh/designing-positional-encoding)
@@ -362,7 +429,7 @@ use_section_number: true
 
     > [相对位置编码](#相对位置编码)
 
-    > [旋转位置编码](#旋转位置编码)
+    > [旋转位置编码](#旋转位置编码-rope)
 
     </details>
 
@@ -488,7 +555,7 @@ use_section_number: true
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
 
-    > [旋转位置编码](#旋转位置编码)
+    > [旋转位置编码](#旋转位置编码-rope)
 
     </details>
 

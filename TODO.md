@@ -26,6 +26,7 @@ algo_tags: []
 <!--START_SECTION:toc-->
 - [Reading List](#reading-list)
     - [LLM-based Data Augmentation](#llm-based-data-augmentation)
+    - [位置编码](#位置编码)
 <!--END_SECTION:toc-->
 
 ---
@@ -38,3 +39,8 @@ algo_tags: []
 
 - [ ] [\[2310.00277v2\] A Unified Framework for Generative Data Augmentation: A Comprehensive Survey](https://arxiv.org/abs/2310.00277v2)
 - [ ] [\[2403.02990\] Data Augmentation using Large Language Models: Data Perspectives, Learning Paradigms and Challenges](https://arxiv.org/abs/2403.02990)
+
+
+### 位置编码
+
+- [ ] [\[2305.19466\] The Impact of Positional Encoding on Length Generalization in Transformers](https://arxiv.org/abs/2305.19466)
