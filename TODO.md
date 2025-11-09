@@ -27,6 +27,7 @@ algo_tags: []
 - [Reading List](#reading-list)
     - [LLM-based Data Augmentation](#llm-based-data-augmentation)
     - [位置编码](#位置编码)
+- [README](#readme)
 <!--END_SECTION:toc-->
 
 ---
@@ -44,3 +45,10 @@ algo_tags: []
 ### 位置编码
 
 - [ ] [\[2305.19466\] The Impact of Positional Encoding on Length Generalization in Transformers](https://arxiv.org/abs/2305.19466)
+
+
+---
+
+## README
+
+- [ ] Algorithm Topics 部分加入父子结构

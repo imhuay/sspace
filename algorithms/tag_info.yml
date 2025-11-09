@@ -32,7 +32,6 @@
   priority: 3
   tags:
     链表:
-      notes: [2022/10/链表模板.md]
     字符串:
     设计:
     并查集:
@@ -58,6 +57,10 @@
     动态规划:
       add_to_collection: true
       aliases: [dp, 记忆化搜索, 递推, dfs2dp]
+    暴力递归与动态规划:
+      aliases: [dfs2dp]
+    树形递归:
+      aliases: [tree+dp, tree+dfs, 树形dp, TreeDp]
     排序:
       aliases: [快排, 归并排序]
     广度优先搜索:
@@ -71,7 +74,7 @@
   priority: 5
   tags:
     滑动窗口:
-      notes: [2022/10/滑动窗口模板.md]
+    定长滑窗:
     位运算:
     贪心:
     前缀和:
@@ -79,16 +82,11 @@
     双指针:
       add_to_collection: true
       aliases: [快慢指针, 快慢双指针, 首尾双指针]
-    暴力递归与动态规划:
-      aliases: [dfs2dp]
-      notes: [2022/10/从暴力递归到动态规划.md]
     单调栈/单调队列:
       aliases: [单调栈, 单调队列]
     哈希表(Hash):
       aliases: [Hash, 哈希表]
-    树形递归:
-      aliases: [tree+dp, tree+dfs, 树形dp, TreeDp]
-      notes: [2022/10/树形递归技巧.md]
+    区间合并:
 -
   tag_type: other
   priority: 6

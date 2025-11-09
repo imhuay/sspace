@@ -62,7 +62,8 @@ class Tag:
 
     @property
     def toc_line(self):
-        return f'- [{self.title} ({self.count})](#{MarkdownUtils.slugify(self.toc_title)})'
+        # return f'- [{self.title} ({self.count})](#{MarkdownUtils.slugify(self.toc_title)})'
+        return f'- [{self.title} <sup>({self.count})</sup>](#{MarkdownUtils.slugify(self.toc_title)})'
 
     @property
     def toc(self):

@@ -9,7 +9,7 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [堆, 热门]
+tags: [堆, 单调队列, 热门]
 source: LeetCode
 level: 困难
 number: '0239'
@@ -25,6 +25,19 @@ companies: [Soul]
 给你一个整数数组 nums, 有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧.
 你只可以看到在滑动窗口内的 k 个数字. 滑动窗口每次只向右移动一位.
 返回 滑动窗口中的最大值.
+
+示例
+输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
+输出：[3,3,5,5,6,7]
+解释：
+滑动窗口的位置                最大值
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
 ```
 
 <!--
@@ -38,6 +51,8 @@ companies: [Soul]
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
+---
+
 <summary><b>思路 1: 堆/优先队列</b></summary>
 
 - 维护一个最大堆保存窗口内的值;
@@ -47,29 +62,29 @@ companies: [Soul]
 <details><summary><b>Python</b></summary>
 
 ```python
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
 
-        import heapq
+    import heapq
 
-        h = []
-        for i in range(k):
-            heapq.heappush(h, (-nums[i], i))
+    h = []                                  # 初始化前 k 个元素入堆
+    for i in range(k):                      # Python 的 heapq 是最小堆, 所以用 -nums[i] 模拟最大堆
+        heapq.heappush(h, (-nums[i], i))    # 堆元素是 (值, 下标), 下标用于判断元素是否还在窗口内
 
-        ret = [-h[0][0]]
-        for i in range(k, len(nums)):
-            while h and h[0][1] <= i - k:
-                heapq.heappop(h)
-            heapq.heappush(h, (-nums[i], i))
-            ret.append(-h[0][0])
+    ret = [-h[0][0]]
+    for i in range(k, len(nums)):           # 从第 k 个元素开始滑动窗口
+        while h and h[0][1] <= i - k:       # 移除已经不在窗口内元素
+            heapq.heappop(h)
+        heapq.heappush(h, (-nums[i], i))
+        ret.append(-h[0][0])
 
-        return ret
+    return ret
 ```
 
 </details>
 
+---
 
-<summary><b>思路 2: 单调队列</b></summary>
+<summary><b>思路 2: 单调队列 (略)</b></summary>
 
 > [滑动窗口最大值 (方法二) - 力扣官方题解](https://leetcode.cn/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetco-ki6m/)
 

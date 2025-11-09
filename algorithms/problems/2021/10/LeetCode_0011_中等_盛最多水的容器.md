@@ -16,6 +16,8 @@ name: 盛最多水的容器
 companies: []
 -->
 
+> [11. 盛最多水的容器 - 力扣（LeetCode）](https://leetcode.cn/problems/container-with-most-water/)
+
 <summary><b>问题描述</b></summary>
 
 ```txt
@@ -27,14 +29,11 @@ companies: []
     输入: [1,8,6,2,5,4,8,3,7]
     输出: 49
     解释: 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]. 在此情况下, 容器能够容纳水 (表示为蓝色部分) 的最大值为 49.
-
-来源: 力扣 (LeetCode)
-链接: https://leetcode-cn.com/problems/container-with-most-water
-著作权归领扣网络所有. 商业转载请联系官方授权, 非商业转载请注明出处.
 ```
 
 <div align="center"><img src="../../../_assets/question_11.jpeg" height="150" /></div>
 
+---
 
 <summary><b>思路</b></summary>
 
@@ -44,23 +43,22 @@ companies: []
 <details><summary><b>Python</b></summary>
 
 ```python
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
+def maxArea(self, height: List[int]) -> int:
 
-        def cur_amount():
-            return (r - l) * min(height[l], height[r])
+    def cur_amount():
+        return (r - l) * min(height[l], height[r])
 
-        l, r = 0, len(height) - 1
-        ret = cur_amount()
-        while l < r:
-            if height[l] < height[r]:
-                l += 1
-            else:
-                r -= 1
+    l, r = 0, len(height) - 1
+    ret = cur_amount()
+    while l < r:
+        if height[l] < height[r]:
+            l += 1
+        else:
+            r -= 1
 
-            ret = max(ret, cur_amount())
+        ret = max(ret, cur_amount())
 
-        return ret
+    return ret
 ```
 
 </details>
