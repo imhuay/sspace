@@ -1,4 +1,11 @@
-## <title - autoUpdate>
+## 找到字符串中所有字母异位词
+<!--START_SECTION:badge-->
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-10%2003%3A02%3A25&labelColor=gray&color=thistle&style=flat-square)
+[![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
+[![](https://img.shields.io/static/v1?label=&message=%E5%AE%9A%E9%95%BF%E6%BB%91%E7%AA%97&color=blue&style=flat-square)](../../../README.md#定长滑窗)
+[![](https://img.shields.io/static/v1?label=&message=%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3&color=blue&style=flat-square)](../../../README.md#滑动窗口)
+<!--END_SECTION:badge-->
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
@@ -66,12 +73,44 @@ def findAnagrams(self, s: str, p: str) -> List[int]:
 
 <summary><b>思路 2: 不定长滑动窗口</b></summary>
 
-> [两种方法：定长滑窗/不定长滑窗 - 灵茶山艾府](https://leetcode.cn/problems/find-all-anagrams-in-a-string/solutions/2969498/liang-chong-fang-fa-ding-chang-hua-chuan-14pd)
+> [两种方法: 定长滑窗/不定长滑窗 - 灵茶山艾府](https://leetcode.cn/problems/find-all-anagrams-in-a-string/solutions/2969498/liang-chong-fang-fa-ding-chang-hua-chuan-14pd)
 
 
 <!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [二分查找相关](../../../../notes/_archives/2025/10/二分查找备忘.md)  
+- [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [链表操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
 <!--END_SECTION:relate_note-->
 
 
 <!--START_SECTION:relate_problem-->
+---
+
+### 相关问题
+
+
+<details><summary><b>滑动窗口 (6)</b></summary>
+
+> [[中等, LeetCode] 无重复字符的最长子串 🔥](../../2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)  
+> [[中等, 牛客] 最长无重复子数组](../../2022/03/牛客_0041_中等_最长无重复子数组.md)  
+  > 
+> [[困难, 剑指Offer] 滑动窗口的最大值](../../2022/01/剑指Offer_5901_困难_滑动窗口的最大值.md)  
+> [[困难, 牛客] 数组中的最长连续子序列](../../2022/04/牛客_0095_困难_数组中的最长连续子序列.md)  
+> [[困难, 牛客] 最小覆盖子串](../../2022/02/牛客_0028_困难_最小覆盖子串.md)  
+  > 
+> [[简单, 牛客] 压缩字符串(一)](../../2022/04/牛客_0101_简单_压缩字符串(一).md)  
+  > 
+
+</details>
 <!--END_SECTION:relate_problem-->

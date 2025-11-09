@@ -1,8 +1,9 @@
 ## 滑动窗口最大值
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-10%2003%3A02%3A25&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E5%9B%B0%E9%9A%BE&color=red&style=flat-square)](../../../README.md#困难)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
+[![](https://img.shields.io/static/v1?label=&message=%E5%8D%95%E8%B0%83%E6%A0%88/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&color=blue&style=flat-square)](../../../README.md#单调栈单调队列)
 [![](https://img.shields.io/static/v1?label=&message=%E5%A0%86/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97&color=blue&style=flat-square)](../../../README.md#堆优先队列)
 [![](https://img.shields.io/static/v1?label=&message=%E7%83%AD%E9%97%A8&color=blue&style=flat-square)](../../../README.md#热门)
 <!--END_SECTION:badge-->
@@ -119,6 +120,19 @@ def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
 
 ### 相关问题
 
+
+<details><summary><b>单调栈/单调队列 (5)</b></summary>
+
+> [[中等, LeetCode] 每日温度](../../2025/10/LeetCode_0739_中等_每日温度.md)  
+  > 
+> [[困难, LeetCode] 柱状图中最大的矩形](../../2025/10/LeetCode_0084_困难_柱状图中最大的矩形.md)  
+> [[困难, 剑指Offer] 滑动窗口的最大值](../01/剑指Offer_5901_困难_滑动窗口的最大值.md)  
+> [[困难, 牛客] 滑动窗口的最大值](../03/牛客_0082_困难_滑动窗口的最大值.md)  
+  > 
+> [[简单, LeetCode] 下一个更大元素](../../2021/11/LeetCode_0496_简单_下一个更大元素.md)  
+  > 
+
+</details>
 
 <details><summary><b>堆/优先队列 (8)</b></summary>
 

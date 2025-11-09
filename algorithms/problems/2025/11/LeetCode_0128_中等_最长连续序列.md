@@ -1,4 +1,11 @@
-## <title - autoUpdate>
+## 最长连续序列
+<!--START_SECTION:badge-->
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-10%2003%3A02%3A25&labelColor=gray&color=thistle&style=flat-square)
+[![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
+[![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
+[![](https://img.shields.io/static/v1?label=&message=%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6&color=blue&style=flat-square)](../../../README.md#区间合并)
+[![](https://img.shields.io/static/v1?label=&message=%E5%93%88%E5%B8%8C%E8%A1%A8%28Hash%29&color=blue&style=flat-square)](../../../README.md#哈希表hash)
+<!--END_SECTION:badge-->
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
@@ -9,7 +16,7 @@ number: '128'
 name: '最长连续序列'
 -->
 
-> [128. 最长连续序列 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-consecutive-sequence/)
+> [128. 最长连续序列 - 力扣 (LeetCode) ](https://leetcode.cn/problems/longest-consecutive-sequence/)
 
 <summary><b>问题简述</b></summary>
 
@@ -34,9 +41,9 @@ name: '最长连续序列'
 
 <summary><b>思路 1: 哈希集合/遍历</b></summary>
 
-- 逐一遍历每个元素会产生很多冗余工作，实际上我们无需一次针对每个元素 `x` 去判断 `x+1`, `x+2`, ... 是否在数组中
-- 如果 `x-1` 已经在数组中，那么 `x-1` 肯定会进行相应的遍历，然后遍历到 `x`，而且从 `x-1` 开始的遍历必定比从 `x` 开始的得到的序列更长
-- 因此，可将在一个连续序列中的元素进行删减，让其只在最小的元素才开始遍历
+- 逐一遍历每个元素会产生很多冗余工作, 实际上我们无需一次针对每个元素 `x` 去判断 `x+1`, `x+2`, ... 是否在数组中
+- 如果 `x-1` 已经在数组中, 那么 `x-1` 肯定会进行相应的遍历, 然后遍历到 `x`, 而且从 `x-1` 开始的遍历必定比从 `x` 开始的得到的序列更长
+- 因此, 可将在一个连续序列中的元素进行删减, 让其只在最小的元素才开始遍历
 
 <details><summary><b>Python</b></summary>
 
@@ -65,7 +72,7 @@ def longestConsecutive(self, nums: List[int]) -> int:
 <summary><b>思路 2: 哈希表/区间合并</b></summary>
 
 - 定义哈希表 `mp[i] = l` 表示: **如果 `i` 作为某个连续区间的边界, 则该区间的长度为 `l`**
-    - 插入一个新数 x 时，检查它左边和右边的区间长度
+    - 插入一个新数 x 时, 检查它左边和右边的区间长度
     - 把它和左右区间合并成一个更大的区间
     - 更新新区间的左右边界长度
 - **示例**
@@ -118,8 +125,48 @@ def longestConsecutive(self, nums: List[int]) -> int:
 
 
 <!--START_SECTION:relate_note-->
+---
+
+### 算法笔记
+
+> 🌧️ _暂无主题相关的笔记_
+
+
+<details><summary><b>其他算法笔记</b></summary>
+
+- [二分查找相关](../../../../notes/_archives/2025/10/二分查找备忘.md)  
+- [从递归到递推 (动态规划)](../../../../notes/_archives/2022/10/从暴力递归到动态规划.md)  
+- [树形递归技巧](../../../../notes/_archives/2022/10/树形递归技巧.md)  
+- [滑动窗口模板](../../../../notes/_archives/2022/10/滑动窗口模板.md)  
+- [链表操作备忘](../../../../notes/_archives/2022/10/链表模板.md)  
+
+</details>
 <!--END_SECTION:relate_note-->
 
 
 <!--START_SECTION:relate_problem-->
+---
+
+### 相关问题
+
+
+<details><summary><b>哈希表(Hash) (12)</b></summary>
+
+> [[中等, LeetCode] 字母异位词分组 🔥](../../2022/10/LeetCode_0049_中等_字母异位词分组.md)  
+> [[中等, LeetCode] 重复的DNA序列](../../2022/07/LeetCode_0187_中等_重复的DNA序列.md)  
+> [[中等, 剑指Offer] 复杂链表的复制 (深拷贝) 🔥](../../2021/12/剑指Offer_3500_中等_复杂链表的复制(深拷贝).md)  
+> [[中等, 剑指Offer] 最长不含重复字符的子字符串](../../2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  
+> [[中等, 牛客] 和为K的连续子数组](../../2022/05/牛客_0125_中等_和为K的连续子数组.md)  
+  > 
+> [[困难, 牛客] 数组中的最长连续子序列](../../2022/04/牛客_0095_困难_数组中的最长连续子序列.md)  
+  > 
+> [[简单, LeetCode] 两数之和 🔥](../../2021/10/LeetCode_0001_简单_两数之和.md)  
+> [[简单, 剑指Offer] 数组中重复的数字](../../2021/11/剑指Offer_0300_简单_数组中重复的数字.md)  
+> [[简单, 剑指Offer] 第一个只出现一次的字符](../../2021/12/剑指Offer_5000_简单_第一个只出现一次的字符.md)  
+> [[简单, 牛客] 两数之和](../../2022/03/牛客_0061_简单_两数之和.md)  
+> [[简单, 牛客] 第一个只出现一次的字符](../../2022/02/牛客_0031_简单_第一个只出现一次的字符.md)  
+> [[简单, 程序员面试金典] 判定是否互为字符重排](../../2022/09/程序员面试金典_0102_简单_判定是否互为字符重排.md)  
+  > 
+
+</details>
 <!--END_SECTION:relate_problem-->

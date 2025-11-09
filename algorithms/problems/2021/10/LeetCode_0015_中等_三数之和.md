@@ -1,6 +1,6 @@
 ## 三数之和
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-10%2003%3A02%3A25&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
@@ -16,7 +16,7 @@ name: 三数之和
 companies: []
 -->
 
-> [15. 三数之和 - 力扣（LeetCode）](https://leetcode.cn/problems/3sum/)
+> [15. 三数之和 - 力扣 (LeetCode) ](https://leetcode.cn/problems/3sum/)
 
 <summary><b>问题简述</b></summary>
 

@@ -250,11 +250,14 @@ class Solution:
 
 </details>
 
-<details><summary><b>前缀和 (3)</b></summary>
+<details><summary><b>前缀和 (5)</b></summary>
 
 > [[中等, LeetCode] 从魔法师身上吸取的最大能量](../../2025/10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)  
+> [[中等, LeetCode] 和为K的子数组](../../2025/11/LeetCode_0560_中等_和为K的子数组.md)  
 > [[中等, 剑指Offer] 构建乘积数组](../01/剑指Offer_6600_中等_构建乘积数组.md)  
 > [[中等, 牛客] 和为K的连续子数组](../05/牛客_0125_中等_和为K的连续子数组.md)  
+  > 
+> [[简单, LeetCode] 区域和检索 - 数组不可变](../../2025/11/LeetCode_0303_简单_区域和检索-数组不可变.md)  
   > 
 
 </details>

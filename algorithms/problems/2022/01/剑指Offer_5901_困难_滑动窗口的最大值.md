@@ -116,11 +116,12 @@ class Solution:
 ### 相关问题
 
 
-<details><summary><b>单调栈/单调队列 (4)</b></summary>
+<details><summary><b>单调栈/单调队列 (5)</b></summary>
 
 > [[中等, LeetCode] 每日温度](../../2025/10/LeetCode_0739_中等_每日温度.md)  
   > 
 > [[困难, LeetCode] 柱状图中最大的矩形](../../2025/10/LeetCode_0084_困难_柱状图中最大的矩形.md)  
+> [[困难, LeetCode] 滑动窗口最大值 🔥](../10/LeetCode_0239_困难_滑动窗口最大值.md)  
 > [[困难, 牛客] 滑动窗口的最大值](../03/牛客_0082_困难_滑动窗口的最大值.md)  
   > 
 > [[简单, LeetCode] 下一个更大元素](../../2021/11/LeetCode_0496_简单_下一个更大元素.md)  
@@ -128,8 +129,9 @@ class Solution:
 
 </details>
 
-<details><summary><b>滑动窗口 (5)</b></summary>
+<details><summary><b>滑动窗口 (6)</b></summary>
 
+> [[中等, LeetCode] 找到字符串中所有字母异位词](../../2025/11/LeetCode_0438_中等_找到字符串中所有字母异位词.md)  
 > [[中等, LeetCode] 无重复字符的最长子串 🔥](../02/LeetCode_0003_中等_无重复字符的最长子串.md)  
 > [[中等, 牛客] 最长无重复子数组](../03/牛客_0041_中等_最长无重复子数组.md)  
   > 
