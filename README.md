@@ -53,11 +53,11 @@
 
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(109)">📋</span><sup style="color:Brown">109</sup><span title="置顶">📌</span>
+- [`2025-10-21` QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup><span title="置顶">📌</span>
 - [`2025-11-01` LLM 训练优化](notes/_archives/2025/11/LLM_训练优化.md) [📋](notes/_archives/2025/11/LLM_训练优化.md#qa "LLM 训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
 - [`2025-10-03` 策略梯度定理及其推导](notes/_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](notes/_archives/2025/09/Transformer_位置编码.md) [📋](notes/_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")<sup style="color:Brown">24</sup>
-- [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer.md) [✒️](notes/_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(22)")<sup style="color:Brown">22</sup>
+- [`2025-09-05` Transformer 模型架构](notes/_archives/2025/09/Transformer.md) [✒️](notes/_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(23)")<sup style="color:Brown">23</sup>
 - [`2025-09-24` 策略梯度算法 ( RLHF 背景 )](notes/_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](notes/_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")<sup style="color:Gray">2</sup>[📋](notes/_archives/2025/09/RLHF/策略梯度算法.md#qa "策略梯度算法 · 面试问题整理(6)")<sup style="color:Brown">6</sup>
 - [`2025-09-18` RLHF ( 基于人类反馈的强化学习 )](notes/_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](notes/_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")<sup style="color:Brown">13</sup>
 - [`2025-08-22` AutoPhrase 备忘](notes/_archives/2025/08/AutoPhrase备忘.md) 
@@ -235,7 +235,7 @@ YAML       11 mins         -------------------------   00.63 %
 
 ### Transformer 🪄 LLM 🚀
 
-- [Transformer 基础架构](notes/_archives/2025/09/Transformer.md) [✒️](notes/_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(22)")<sup style="color:Brown">22</sup>
+- [Transformer 基础架构](notes/_archives/2025/09/Transformer.md) [✒️](notes/_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](notes/_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(23)")<sup style="color:Brown">23</sup>
   > <i>[Encoder-Decoder](notes/_archives/2025/09/Transformer.md#encoder-decoder-框架) • [注意力机制 (MHA)](notes/_archives/2025/09/Transformer.md#多头注意力机制-multi-head-attention-mechanism) • [FFN](notes/_archives/2025/09/Transformer.md#逐位置前馈网络-position-wise-ffn) • [正弦位置编码](notes/_archives/2025/09/Transformer.md#正弦位置编码)</i><br>
   - [Transformer 改进](notes/_archives/2025/09/Transformer_改进.md) [✒️](notes/_archives/2025/09/Transformer_改进.md#todo "TODO(1)")<sup style="color:Gray">1</sup>
     > <i>[位置编码](notes/_archives/2025/09/Transformer_位置编码.md)</i>[📋](notes/_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")<sup style="color:Brown">24</sup><i> • [相对位置编码](notes/_archives/2025/09/Transformer_位置编码.md#相对位置编码) • [旋转位置编码 (RoPE)🔥](notes/_archives/2025/09/Transformer_位置编码.md#旋转位置编码-rope) • [MoE (混合专家)](notes/_archives/2025/09/Transformer_MoE.md)</i>[✒️](notes/_archives/2025/09/Transformer_MoE.md#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](notes/_archives/2025/09/Transformer_MoE.md#qa "MoE (Mixture of Experts) · 面试问题整理(8)")<sup style="color:Brown">8</sup><i></i><br>
@@ -401,7 +401,7 @@ YAML       11 mins         -------------------------   00.63 %
 
 ### Reading List 🔖
 
-- [QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(109)">📋</span><sup style="color:Brown">109</sup>
+- [QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup>
 - [强化学习相关](notes/_archives/2025/08/强化学习相关资料.md) 
 - [HuggingFace ( 博客 & 代码 )](notes/_archives/2025/08/HuggingFace阅读列表.md) 
 - [GitHub ( 仓库 )](notes/_archives/2025/08/GitHub阅读列表.md) 

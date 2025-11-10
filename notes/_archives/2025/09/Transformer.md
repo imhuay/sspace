@@ -1,8 +1,8 @@
-Transformer 模型架构 <!-- suffix --> [✒️](#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](#qa "面试问题整理(22)")<sup style="color:Brown">22</sup> <!-- suffix -->
+Transformer 模型架构 <!-- suffix --> [✒️](#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](#qa "面试问题整理(23)")<sup style="color:Brown">23</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-05&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-11%2000%3A51%3A20&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-05 13:47:46
@@ -209,12 +209,13 @@ use_section_number: true
 
 <!--START_SECTION:qa_toc-->
 - [1. 🏷️ 模型总览](#1-️-模型总览)
-    - [1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](#11--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
-    - [1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](#12--说明-transformer-的并行计算与全局依赖是如何实现的)
-    - [1.3. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](#13--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
-    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](#15--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
-    - [1.6. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](#16--为什么主流-llm-选择-decoder-only-causal-lm-架构)
+    - [1.1. ✅ 详细说明 Transformer 的整体架构](#11--详细说明-transformer-的整体架构)
+    - [1.2. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](#12--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
+    - [1.3. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](#13--说明-transformer-的并行计算与全局依赖是如何实现的)
+    - [1.4. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](#14--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
+    - [1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](#15--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.6. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](#16--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
+    - [1.7. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](#17--为什么主流-llm-选择-decoder-only-causal-lm-架构)
 - [2. 🏷️ 模型细节](#2-️-模型细节)
     - [2.1. ✅ 说明自注意力机制的计算过程](#21--说明自注意力机制的计算过程)
     - [2.2. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](#22--为什么要对-qk-的点积进行缩放-缩放因子是)
@@ -247,30 +248,30 @@ use_section_number: true
 ### 1. 🏷️ 模型总览
 
 <!-- omit in toc -->
-#### ✅ 详细说明 Transformer 的整体架构
+#### 1.1. ✅ 详细说明 Transformer 的整体架构
 > • Transformer 整体是一个基于 Encoder–Decoder 框架的模型, <br>
 > • 输入层 (词嵌入 + 位置向量) ➡️ Encoder堆叠 (多头自注意力 → _残差+归一化_ → 前馈网络 → _残差+归一化_) ➡️ 解码器堆叠 (掩码自注意力 → _残差+归一化_ → 交叉注意力 → _残差+归一化_ → 前馈网络 → _残差+归一化_) ➡️ 输出层 (线性层 + Softmax) <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     <div align='center'><img src='./_assets/Transformer-architecture.png' height='400'/></div>
-    
+
     </details>
 
 
 <!-- omit in toc -->
-#### 1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?
+#### 1.2. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?
 > • **核心思想**: 通过自注意机制和位置编码, 实现全局依赖建模和完全并行化; <br>
 > • 解决了 RNN 的串行计算与长依赖问题, 和 CNN 的局部感受野限制; <br>
 
 <!-- omit in toc -->
-#### 1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?
+#### 1.3. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?
 > • **并行计算**: 通过矩阵化自注意力, 所有 token 同时处理; <br>
 > • **全局依赖**: 每个 token 与所有 token 直接交互, 单层即可捕获长程关系; 通过 **位置编码** 保留序列结构 <br>
 
 
 <!-- omit in toc -->
-#### 1.3. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点
+#### 1.4. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点
 > **Transformer (位置编码 + 全局依赖)** / **CNN (局部性 + 平移不变性)** / **RNN (顺序性 + 马尔可夫假设)**
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
@@ -303,7 +304,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
+#### 1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构
 > • **Encoder**: (文本表示, 自注意力 → FFN); <br>
 > • **Decoder**: (自回归, 掩码自注意力 → 交叉注意力 → FFN). <br>
 
@@ -328,7 +329,7 @@ use_section_number: true
     </details>
 
 <!-- omit in toc -->
-#### 1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式
+#### 1.6. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式
 > • Encoder–Decoder: 输入输出强依赖的 Seq2Seq 任务; 条件生成 (Conditional LM), 输入序列 → 输出序列 <br>
 > • Decoder-only: 通用生成与大模型预训练; 因果语言建模 (Causal LM), 预测下一个 token <br>
 > • Encoder-only: 理解与判别类任务; **掩码语言建模** (Masked LM), 随机 mask 输入 token 预测缺失部分 <br>
@@ -376,7 +377,7 @@ use_section_number: true
 
 
 <!-- omit in toc -->
-#### 1.6. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?
+#### 1.7. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?
 <!-- > • **LLM 的核心能力** 是自回归生成, 与 Decoder 的的工作模式相匹配; <br> -->
 > _Encoder-only 的生成能力较弱, 所以主要比较 Encoder-Decoder 架构_; <br>
 > • **参数效率**: 避免了双塔结构的冗余; <br>

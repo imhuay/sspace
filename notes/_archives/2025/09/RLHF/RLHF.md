@@ -2,7 +2,7 @@ RLHF (基于人类反馈的强化学习) <!-- suffix --> <span title="特别关�
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-18&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-11%2000%3A51%3A20&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-18 16:14:23
@@ -361,7 +361,7 @@ extra_url: false
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:
-        <div align='center'><a href='_formulas/RLHF/f_017.js.tex'><img src='_formulas/RLHF/f_017.js.svg'/></a></div>
+        <div align='center'><a href='_formulas/RLHF/f_014.js.tex'><img src='_formulas/RLHF/f_014.js.svg'/></a></div>
 
     - 该损失函数的直观作用是: **鼓励模型拉大强弱对象之间的分数差**, 使得模型的预测结果与观测到的胜负关系一致;
 

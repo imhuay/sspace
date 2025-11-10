@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(109)">📋</span><sup style="color:Brown">109</sup> <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -26,7 +26,7 @@ algo_tags: []
 <!--END_SECTION:paper_title-->
 
 <!--START_SECTION:toc-->
-- [Transformer · **基础模型** · `22`](#transformer--基础模型--22)
+- [Transformer · **基础模型** · `23`](#transformer--基础模型--23)
 - [Transformer · **位置编码** · `24`](#transformer--位置编码--24)
 - [Transformer · **BERT (Encoder-only)** · `7`](#transformer--bert-encoder-only--7)
 - [RLHF · **基础** · `13`](#rlhf--基础--13)
@@ -45,15 +45,16 @@ algo_tags: []
 ---
 
 <!--START_SECTION:sub_tocs-->
-## Transformer · **基础模型** · `22`<!-- 99 -->
+## Transformer · **基础模型** · `23`<!-- 99 -->
 
 - [1. 🏷️ 模型总览](../09/Transformer.md#1-️-模型总览)
-    - [1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](../09/Transformer.md#11--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
-    - [1.2. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](../09/Transformer.md#12--说明-transformer-的并行计算与全局依赖是如何实现的)
-    - [1.3. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](../09/Transformer.md#13--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
-    - [1.4. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](../09/Transformer.md#14--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
-    - [1.5. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](../09/Transformer.md#15--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
-    - [1.6. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](../09/Transformer.md#16--为什么主流-llm-选择-decoder-only-causal-lm-架构)
+    - [1.1. ✅ 详细说明 Transformer 的整体架构](../09/Transformer.md#11--详细说明-transformer-的整体架构)
+    - [1.2. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?](../09/Transformer.md#12--简述-transformer-的核心思想-归纳偏置-它解决了-rnncnn-的哪些瓶颈)
+    - [1.3. ✅ 说明 Transformer 的并行计算与全局依赖是如何实现的?](../09/Transformer.md#13--说明-transformer-的并行计算与全局依赖是如何实现的)
+    - [1.4. ✅ Transformer/CNN/RNN 的归纳偏置分别是什么? 比较它们的优缺点](../09/Transformer.md#14--transformercnnrnn-的归纳偏置分别是什么-比较它们的优缺点)
+    - [1.5. ✅ 简述 Transformer 中 Encoder 和 Decoder 各自的作用和结构](../09/Transformer.md#15--简述-transformer-中-encoder-和-decoder-各自的作用和结构)
+    - [1.6. ✅ 对比 Encoder–Decoder、Decoder-only、Encoder-only 三种形态, 解释它们各自更适合的任务与训练范式](../09/Transformer.md#16--对比-encoderdecoderdecoder-onlyencoder-only-三种形态-解释它们各自更适合的任务与训练范式)
+    - [1.7. 🚩 为什么主流 LLM 选择 Decoder-Only (Causal LM) 架构?](../09/Transformer.md#17--为什么主流-llm-选择-decoder-only-causal-lm-架构)
 - [2. 🏷️ 模型细节](../09/Transformer.md#2-️-模型细节)
     - [2.1. ✅ 说明自注意力机制的计算过程](../09/Transformer.md#21--说明自注意力机制的计算过程)
     - [2.2. ✅ 为什么要对 QK 的点积进行缩放? 缩放因子是?](../09/Transformer.md#22--为什么要对-qk-的点积进行缩放-缩放因子是)
