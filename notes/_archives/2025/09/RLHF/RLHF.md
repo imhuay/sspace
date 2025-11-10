@@ -331,6 +331,7 @@ extra_url: false
     - **输出**:
         - 标量分数 (越高表示越符合奖励模型学到的人类偏好);
 
+---
 
 <!--START_SECTION:keyword-->
 <!--keyword_info
@@ -353,33 +354,10 @@ extra_url: false
 
         其中 $\sigma(z) = \dfrac{1}{1 + e^{-z}}$ 为 **Sigmoid 函数**, 显然有 $P(y_j \succ y_k) + P(y_k \succ y_j) = 1$;
     - 因此, BT 模型本质上是通过 **Sigmoid 函数** 将两个对象的 **能力分数差** 映射为其比较的胜率;
-    <!-- - 即, **BT 模型** 试图通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率; -->
-    <!--
-    - 定义一个对象 $y$ 的 **能力分数** 为 $\alpha = \exp(r)$,
-    - 则 对象 $y_j$ **击败** 另一个对象 $y_k$ 的 **概率** 可以表示为 $P(y_j \succ y_k) = \dfrac{\alpha_j}{\alpha_j + \alpha_k}$:
-    - 为了便于优化和理解, 常写成指数形式, 记 $\alpha = \exp(r)$, 则
-        <div align='center'><a href='_formulas/RLHF/f_014.js.tex'><img src='_formulas/RLHF/f_014.js.svg'/></a></div>
 
-     -->
 - **目的**:
-    - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$,
-    - 学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其静态能力分数;
-    <!-- - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 为每个对象 **估计出一个静态的能力分数** $r$; -->
-    <!-- - BT 模型试图通过一系列 **成对比较结果** $(y_j, y_k)$, **为每个对象估算出一个标量分数** $r$, 代表其强度; -->
-    <!-- - 两个对象之间的 比较关系/胜负结果 是可以获取/累计的; -->
-    <!-- - **BT 模型的目的** 是基于一系列 **成对比较的结果** $(y_j, y_k)$, 学习 **计算对象强度 (一个标量分数) 的函数/模型** $R_{\phi}(\cdot)$; -->
-    <!--
-    - **定义**:
-        - 假设有两个对象 $y_j$ 和 $y_k$, 其强度分数为 $r_j$ 和 $r_k$
-        - 则定义 $y_j$ 优于 $y_k$ (记 $y_j \succ y_k$) 的概率为
-            <div align='center'><a href='_formulas/RLHF/f_015.js.tex'><img src='_formulas/RLHF/f_015.js.svg'/></a></div>
+    - 在经典 BT 模型中, 其目标是利用观测到的大量 **成对比较结果** $D = \{(y_j, y_k) \mid y_j \succ y_k\}$, 学习一个 **评分函数** $R_{\phi}(y)$; 该函数接收一个对象 $y$ 作为输入, 输出其静态能力分数;
 
-        - 根据 $\textbf{Sigmoid}$ **函数** $\sigma(z)=\dfrac{1}{1+e^{-z}}$, 即
-            <div align='center'><a href='_formulas/RLHF/f_016.js.tex'><img src='_formulas/RLHF/f_016.js.svg'/></a></div>
-
-        - 其中 $r_j = R_{\phi}(y_j)$, $r_k = R_{\phi}(y_k)$
-        - 因此, BT 模型本质上通过 **Sigmoid 函数** 将两个对象的分数差 $(r_j - r_k)$ 转换为一个比较概率;
-    -->
 - **优化过程/损失函数**:
     - 模型的优化目标是 **最大化** 所有观测结果在模型下的 **似然估计**;
     - 其对应的 **负对数似然损失函数** 为:

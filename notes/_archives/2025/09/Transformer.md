@@ -247,6 +247,18 @@ use_section_number: true
 ### 1. 🏷️ 模型总览
 
 <!-- omit in toc -->
+#### ✅ 详细说明 Transformer 的整体架构
+> • Transformer 整体是一个基于 Encoder–Decoder 框架的模型, <br>
+> • 输入层 (词嵌入 + 位置向量) ➡️ Encoder堆叠 (多头自注意力 → _残差+归一化_ → 前馈网络 → _残差+归一化_) ➡️ 解码器堆叠 (掩码自注意力 → _残差+归一化_ → 交叉注意力 → _残差+归一化_ → 前馈网络 → _残差+归一化_) ➡️ 输出层 (线性层 + Softmax) <br>
+
+-   <details><summary><b> 展开详情 ⬇️ </b></summary>
+    
+    <div align='center'><img src='./_assets/Transformer-architecture.png' height='400'/></div>
+    
+    </details>
+
+
+<!-- omit in toc -->
 #### 1.1. ✅ 简述 Transformer 的核心思想 (归纳偏置), 它解决了 RNN/CNN 的哪些瓶颈?
 > • **核心思想**: 通过自注意机制和位置编码, 实现全局依赖建模和完全并行化; <br>
 > • 解决了 RNN 的串行计算与长依赖问题, 和 CNN 的局部感受野限制; <br>

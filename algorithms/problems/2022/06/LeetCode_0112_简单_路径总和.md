@@ -14,6 +14,8 @@ name: 路径总和
 companies: []
 -->
 
+> [112. 路径总和 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/path-sum/)
+
 <summary><b>问题简述</b></summary>
 
 ```txt
@@ -21,7 +23,6 @@ companies: []
 
 叶子节点 是指没有子节点的节点.
 ```
-> [112. 路径总和 - 力扣 (LeetCode) ](https://leetcode-cn.com/problems/path-sum/)
 
 <!--
 <details><summary><b>详细描述</b></summary>
@@ -32,8 +33,9 @@ companies: []
 </details>
 -->
 
-
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
+
+---
 
 <summary><b>思路</b></summary>
 
@@ -52,15 +54,15 @@ companies: []
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
 
-        def dfs(x, rest):
-            if not x:
+        def dfs(n, rest):
+            if not n:
                 return False
 
-            rest -= x.val
-            if not x.left and not x.right:
+            rest -= n.val
+            if not n.left and not n.right:
                 return rest == 0
-            l, r = dfs(x.left, rest), dfs(x.right, rest)
-            rest += x.val
+            l, r = dfs(n.left, rest), dfs(n.right, rest)
+            # rest += n.val
             return l or r
 
         ret = dfs(root, targetSum)
