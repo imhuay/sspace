@@ -9,7 +9,7 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [哈希表, 区间合并]
+tags: [哈希表, 区间合并, lc100]
 source: LeetCode
 level: 中等
 number: '128'
@@ -120,8 +120,6 @@ def longestConsecutive(self, nums: List[int]) -> int:
 ```
 
 </details>
-
----
 
 
 <!--START_SECTION:relate_note-->

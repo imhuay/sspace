@@ -47,21 +47,22 @@ companies: []
 <details><summary><b>Python 写法1 (滑动窗口模板, 推荐写法) </b></summary>
 
 ```python
-def lengthOfLongestSubstring(self, s: str) -> int:
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
 
-    l = r = 0  # 窗口边界
-    used = set()
-    ans = 0
+        l = r = 0  # 窗口边界
+        used = set()
+        ans = 0
 
-    while r < len(s):
-        # 当右指针指向重复元素时, 一直移动左边界, 直到无重复
-        while s[r] in used:  # 注意判断的是右边界, 移动的是左边界
-            used.remove(s[l])
-            l += 1
-        used.add(s[r])
-        ans = max(ans, r - l + 1)
-        r += 1
-    return ans
+        while r < len(s):
+            # 当右指针指向重复元素时, 一直移动左边界, 直到无重复
+            while s[r] in used:  # 注意判断的是右边界, 移动的是左边界
+                used.remove(s[l])
+                l += 1
+            used.add(s[r])
+            ans = max(ans, r - l + 1)
+            r += 1
+        return ans
 ```
 
 </details>

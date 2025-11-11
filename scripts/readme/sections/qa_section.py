@@ -73,7 +73,7 @@ class QaSection:
     md_toc_title: str = ''
     section_title: str = ''
     toc_lines: list[TocLine] = field(default_factory=list)
-    max_section_level: int = 4
+    max_section_level: int = 5
     min_section_level: int = 2
     info: QaSectionInfo = field(default_factory=QaSectionInfo)
     _tokens: list[Token] = field(default_factory=list)

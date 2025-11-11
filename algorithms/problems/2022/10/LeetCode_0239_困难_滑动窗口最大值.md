@@ -10,7 +10,7 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [堆, 单调队列, 热门]
+tags: [堆, 单调队列, 热门, lc100]
 source: LeetCode
 level: 困难
 number: '0239'

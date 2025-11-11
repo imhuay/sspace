@@ -8,7 +8,7 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [前缀和]
+tags: [前缀和, lc100]
 source: 'LeetCode'
 level: '中等'
 number: '560'
@@ -38,7 +38,7 @@ name: '和为K的子数组'
 
 ---
 
-<summary><b>思路: 前缀和+哈希表</b></summary>
+<summary><b>思路: 前缀和 + 哈希表</b></summary>
 
 - 构建前缀和 `p`
 - 转化为查找问题

@@ -35,30 +35,32 @@ companies: []
 
 ---
 
-<summary><b>思路</b></summary>
+<summary><b>思路: 首尾双指针</b></summary>
 
-- 首尾双指针遍历;
-- 每次移动左指针还是右指针? ——贪心
+- **问题本质**: 在数组中找两条竖线, 使得它们与 x 轴形成的容器面积最大; 面积由两线间距和较短线的高度决定;
+- **暴力解法**: 枚举所有线对, 计算面积取最大值; 时间复杂度 O(n²)。
+- **双指针优化**: 用左右指针分别指向数组两端; 每次计算面积并更新最大值; 然后移动较短的一侧指针, 因为面积受限于短板, 移动长板不会增加面积
 
 <details><summary><b>Python</b></summary>
 
 ```python
-def maxArea(self, height: List[int]) -> int:
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
 
-    def cur_amount():
-        return (r - l) * min(height[l], height[r])
+        def f():
+            return (r - l) * min(height[l], height[r])
 
-    l, r = 0, len(height) - 1
-    ret = cur_amount()
-    while l < r:
-        if height[l] < height[r]:
-            l += 1
-        else:
-            r -= 1
+        l, r = 0, len(height) - 1
+        ret = 0
+        while l < r:
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
 
-        ret = max(ret, cur_amount())
+            ret = max(ret, f())
 
-    return ret
+        return ret
 ```
 
 </details>

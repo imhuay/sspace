@@ -8,7 +8,7 @@
 [![](https://img.shields.io/static/v1?label=&message=%E6%8E%92%E5%BA%8F&color=blue&style=flat-square)](../../../README.md#排序)
 <!--END_SECTION:badge-->
 <!--info
-tags: [首尾双指针, 排序, lc100]
+tags: [首尾双指针, lc100]
 source: LeetCode
 level: 中等
 number: '0015'
@@ -22,53 +22,54 @@ companies: []
 
 ```text
 给定一个数组, 找出该数组中所有和为 0 的不重复的三元组.
-
-进阶: 不使用 set 去重.
 ```
 
 ---
 
-<summary><b>思路</b></summary>
+<summary><b>思路: 首尾双指针</b></summary>
 
-- 排序后, 问题可以简化成两数之和 (LeetCode-167);
+- 排序后, 问题可以简化成 [两数之和](LeetCode_0001_简单_两数之和.md);
 - 先固定一个数, 然后利用首尾双指针进行对向遍历;
 - 注意跳过相同结果;
 
 <details><summary><b>Python</b></summary>
 
 ```python
-def threeSum(self, nums: List[int]) -> List[List[int]]:
-    ret = []
-    target = 0
-    nums.sort()
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        ret = []
+        target = 0
+        nums.sort()
 
-    L = len(nums)
-    for i in range(L - 2):  # 固定第一个数
+        n = len(nums)
+        for i in range(n - 2):  # 固定第一个数
 
-        # 剪枝
-        if i > 0 and nums[i] == nums[i - 1]: continue
-        if nums[i] + nums[i + 1] + nums[i + 2] > target: break
-        if nums[i] + nums[L - 1] + nums[L - 2] < target: continue
+            # 剪枝
+            if i > 0 and nums[i] == nums[i - 1]: continue
+            if nums[i] + nums[i + 1] + nums[i + 2] > target: break      # 因为已经排序过
+            if nums[i] + nums[n - 1] + nums[n - 2] < target: continue
 
-        # 首尾指针
-        l, r = i + 1, len(nums) - 1
-        while l < r:
-            
-            s = nums[i] + nums[l] + nums[r]
-            if s < target:
-                l += 1
-            elif s > target:
-                r -= 1
-            else:
-                ret.append([nums[i], nums[l], nums[r]])
+            # 首尾指针
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                
+                s = nums[i] + nums[l] + nums[r]
+                if s < target:
+                    l += 1
+                elif s > target:
+                    r -= 1
+                else:
+                    ret.append([nums[i], nums[l], nums[r]])
 
-                l += 1
-                r -= 1
-                # 剪枝, 注意边界条件
-                while l < r and nums[l] == nums[l - 1]: l += 1
-                while l < r and nums[r] == nums[r + 1]: r -= 1
+                    l += 1
+                    r -= 1
+                    # 移除重复元素, 注意边界条件
+                    while l < r and nums[l] == nums[l - 1]:
+                        l += 1
+                    while l < r and nums[r] == nums[r + 1]:
+                        r -= 1
 
-    return ret
+        return ret
 ```
 
 </details>

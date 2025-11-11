@@ -7,7 +7,7 @@
 [![](https://img.shields.io/static/v1?label=&message=%E5%93%88%E5%B8%8C%E8%A1%A8%28Hash%29&color=blue&style=flat-square)](../../../README.md#哈希表hash)
 <!--END_SECTION:badge-->
 <!--info
-tags: [Hash, lc100]
+tags: [哈希表, lc100]
 source: LeetCode
 level: 中等
 number: '0049'
@@ -24,22 +24,39 @@ companies: []
 字母异位词 是由重新排列源单词的字母得到的一个新单词, 所有源单词中的字母通常恰好只用一次.
 ```
 
-<!--
-<details><summary><b>详细描述</b></summary>
+---
 
-```txt
+<summary><b>思路: 哈希表</b></summary>
+
+- 设计一个方法 **将字母异位词转化为相同的 key**, 然后使用字典存储;
+- 比如:
+    - 方法 1: 将词的字母计数作为 key;
+    - 方法 2: 将排序后的词作为 key;
+
+<details><summary><b>Python: 方法 1 - 计数</b></summary>
+
+- 记录每个字符出现的次数;
+
+```python
+def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    from collections import defaultdict
+
+    def to_key(s):
+        cnt = [0] * 26
+        for c in s:
+            cnt[ord(c) - ord('a')] += 1
+        return tuple(cnt)
+
+    ret = defaultdict(list)
+    for s in strs:
+        ret[to_key(s)].append(s)
+
+    return list(ret.values())
 ```
 
 </details>
--->
 
-<!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
-
-<summary><b>思路</b></summary>
-
-- 设计一个方法将字母异位词转化为相同的 key, 然后使用字典存储;
-
-<details><summary><b>Python: 写法 1</b></summary>
+<details><summary><b>Python: 方法 2 - 排序</b></summary>
 
 - 将 s 排序后保存为 key;
 
@@ -60,29 +77,6 @@ class Solution:
 
 </details>
 
-<details><summary><b>Python: 写法 2</b></summary>
-
-- 记录每个字符出现的次数;
-
-```python
-class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        from collections import defaultdict
-
-        def to_key(s):
-            cnt = [0] * 26
-            for c in s:
-                cnt[ord(c) - ord('a')] += 1
-            return tuple(cnt)
-
-        ret = defaultdict(list)
-        for s in strs:
-            ret[to_key(s)].append(s)
-
-        return list(ret.values())
-```
-
-</details>
 
 <!--
 <summary><b>相关问题</b></summary>

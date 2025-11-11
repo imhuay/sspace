@@ -9,7 +9,7 @@
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [滑动窗口, 定长滑窗]
+tags: [滑动窗口, 定长滑动窗口, lc100]
 source: 'LeetCode'
 level: '中等'
 number: '438'
@@ -45,26 +45,27 @@ name: '找到字符串中所有字母异位词'
 <details><summary><b>Python</b></summary>
 
 ```python
-def findAnagrams(self, s: str, p: str) -> List[int]:
-    
-    from collections import Counter
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        
+        from collections import Counter
 
-    ans = []
-    lp = len(p)
-    cp = Counter(p)
-    cs = Counter(s[:lp - 1])
-    for r in range(lp - 1, len(s)):
-        cs[s[r]] += 1
-        l = r - lp + 1
+        ans = []
+        lp = len(p)
+        cp = Counter(p)
+        cs = Counter(s[:lp - 1])
+        for r in range(lp - 1, len(s)):
+            cs[s[r]] += 1
+            l = r - lp + 1
 
-        if cp == cs:
-            ans.append(l)
-            
-        cs[s[l]] -= 1
-        if cs[s[l]] == 0:
-            del cs[s[l]]
-    
-    return ans
+            if cp == cs:
+                ans.append(l)
+                
+            cs[s[l]] -= 1
+            if cs[s[l]] == 0:   # 删除数量为 0 的字母
+                del cs[s[l]]
+        
+        return ans
 ```
 
 </details>
