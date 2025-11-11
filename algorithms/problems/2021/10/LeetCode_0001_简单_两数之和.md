@@ -1,6 +1,6 @@
 ## 两数之和
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-11%2013%3A04%3A08&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E7%AE%80%E5%8D%95&color=green&style=flat-square)](../../../README.md#简单)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
@@ -15,7 +15,7 @@ name: 两数之和
 companies: []
 -->
 
-> [1. 两数之和 - 力扣（LeetCode）](https://leetcode.cn/problems/two-sum/)
+> [1. 两数之和 - 力扣 (LeetCode) ](https://leetcode.cn/problems/two-sum/)
 
 <summary><b>问题简述</b></summary>
 
@@ -27,9 +27,9 @@ companies: []
 
 <summary><b>思路: 哈希表</b></summary>
 
-- 遍历数组时，用哈希表记录已访问过的元素及其下标；
-- 遍历到 `nums[i]` 时, 若值 `target - nums[i]` 已在哈希表中出现，则说明找到了答案；
-- 这样只需一次遍历，时间复杂度 $O(n)$，空间复杂度 $O(n)$
+- 遍历数组时, 用哈希表记录已访问过的元素及其下标; 
+- 遍历到 `nums[i]` 时, 若值 `target - nums[i]` 已在哈希表中出现, 则说明找到了答案; 
+- 这样只需一次遍历, 时间复杂度 $O(n)$, 空间复杂度 $O(n)$
 
 <details><summary><b>Python3</b></summary>
 
@@ -77,7 +77,7 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
 ### 相关问题
 
 
-<details><summary><b>LeetCode Hot 100 (25)</b></summary>
+<details><summary><b>LeetCode Hot 100 (32)</b></summary>
 
 > [[中等, LeetCode] 三数之和 🔥](LeetCode_0015_中等_三数之和.md)  
 > [[中等, LeetCode] 下一个排列 🔥](../../2022/10/LeetCode_0031_中等_下一个排列.md)  
@@ -85,13 +85,16 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
 > [[中等, LeetCode] 全排列 🔥](../../2022/10/LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](../../2022/10/LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 删除链表的倒数第N个结点 🔥](../../2022/01/LeetCode_0019_中等_删除链表的倒数第N个结点.md)  
+> [[中等, LeetCode] 和为K的子数组 🔥](../../2025/11/LeetCode_0560_中等_和为K的子数组.md)  
 > [[中等, LeetCode] 在排序数组中查找元素的第一个和最后一个位置 🔥](../../2022/10/LeetCode_0034_中等_在排序数组中查找元素的第一个和最后一个位置.md)  
 > [[中等, LeetCode] 字母异位词分组 🔥](../../2022/10/LeetCode_0049_中等_字母异位词分组.md)  
+> [[中等, LeetCode] 找到字符串中所有字母异位词 🔥](../../2025/11/LeetCode_0438_中等_找到字符串中所有字母异位词.md)  
 > [[中等, LeetCode] 括号生成 🔥](../../2022/10/LeetCode_0022_中等_括号生成.md)  
 > [[中等, LeetCode] 搜索旋转排序数组 🔥](LeetCode_0033_中等_搜索旋转排序数组.md)  
 > [[中等, LeetCode] 数组中的第K个最大元素 🔥](../../2022/10/LeetCode_0215_中等_数组中的第K个最大元素.md)  
 > [[中等, LeetCode] 无重复字符的最长子串 🔥](../../2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)  
 > [[中等, LeetCode] 最长回文子串 🔥](LeetCode_0005_中等_最长回文子串.md)  
+> [[中等, LeetCode] 最长连续序列 🔥](../../2025/11/LeetCode_0128_中等_最长连续序列.md)  
 > [[中等, LeetCode] 电话号码的字母组合 🔥](../../2022/10/LeetCode_0017_中等_电话号码的字母组合.md)  
 > [[中等, LeetCode] 盛最多水的容器 🔥](LeetCode_0011_中等_盛最多水的容器.md)  
 > [[中等, LeetCode] 组合总和 🔥](../../2022/10/LeetCode_0039_中等_组合总和.md)  
@@ -101,11 +104,15 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
 > [[困难, LeetCode] 合并K个升序链表 🔥](../../2022/10/LeetCode_0023_困难_合并K个升序链表.md)  
 > [[困难, LeetCode] 寻找两个正序数组的中位数 🔥](../../2022/02/LeetCode_0004_困难_寻找两个正序数组的中位数.md)  
 > [[困难, LeetCode] 接雨水 🔥](LeetCode_0042_困难_接雨水.md)  
+> [[困难, LeetCode] 最小覆盖子串 🔥](../../2025/11/LeetCode_0076_困难_最小覆盖子串.md)  
 > [[困难, LeetCode] 最长有效括号 🔥](../../2022/10/LeetCode_0032_困难_最长有效括号.md)  
 > [[困难, LeetCode] 正则表达式匹配 🔥](../../2022/01/LeetCode_0010_困难_正则表达式匹配.md)  
+> [[困难, LeetCode] 滑动窗口最大值 🔥](../../2022/10/LeetCode_0239_困难_滑动窗口最大值.md)  
+> [[困难, 牛客] 最小覆盖子串 🔥](../../2022/02/牛客_0028_困难_最小覆盖子串.md)  
   > 
 > [[简单, LeetCode] 合并两个有序链表 🔥](LeetCode_0021_简单_合并两个有序链表.md)  
 > [[简单, LeetCode] 有效的括号 🔥](../../2022/03/LeetCode_0020_简单_有效的括号.md)  
+> [[简单, LeetCode] 移动零 🔥](../../2025/11/LeetCode_0283_简单_移动零.md)  
   > 
 
 </details>
@@ -113,7 +120,7 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
 <details><summary><b>哈希表(Hash) (12)</b></summary>
 
 > [[中等, LeetCode] 字母异位词分组 🔥](../../2022/10/LeetCode_0049_中等_字母异位词分组.md)  
-> [[中等, LeetCode] 最长连续序列](../../2025/11/LeetCode_0128_中等_最长连续序列.md)  
+> [[中等, LeetCode] 最长连续序列 🔥](../../2025/11/LeetCode_0128_中等_最长连续序列.md)  
 > [[中等, LeetCode] 重复的DNA序列](../../2022/07/LeetCode_0187_中等_重复的DNA序列.md)  
 > [[中等, 剑指Offer] 复杂链表的复制 (深拷贝) 🔥](../12/剑指Offer_3500_中等_复杂链表的复制(深拷贝).md)  
 > [[中等, 剑指Offer] 最长不含重复字符的子字符串](../12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)  

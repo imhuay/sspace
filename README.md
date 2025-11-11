@@ -106,8 +106,8 @@ YAML       11 mins         -------------------------   00.66 %
 ### Level 📈
 <!--START_SECTION:level-->
 - [中等 <sup>(157)</sup>](algorithms/README.md#中等)
-- [简单 <sup>(105)</sup>](algorithms/README.md#简单)
-- [困难 <sup>(36)</sup>](algorithms/README.md#困难)
+- [简单 <sup>(106)</sup>](algorithms/README.md#简单)
+- [困难 <sup>(37)</sup>](algorithms/README.md#困难)
 <!--END_SECTION:level-->
 
 
@@ -117,7 +117,7 @@ YAML       11 mins         -------------------------   00.66 %
 ### Hot 🔥
 <!--START_SECTION:hot-->
 - [经典 <sup>(38)</sup>](algorithms/README.md#经典)
-- [LeetCode Hot 100 <sup>(26)</sup>](algorithms/README.md#leetcode-hot-100)
+- [LeetCode Hot 100 <sup>(33)</sup>](algorithms/README.md#leetcode-hot-100)
 - [热门 <sup>(17)</sup>](algorithms/README.md#热门)
 <!--END_SECTION:hot-->
 
@@ -128,7 +128,7 @@ YAML       11 mins         -------------------------   00.66 %
 
 <!--START_SECTION:collection-->
 - [牛客 <sup>(131)</sup>](algorithms/README.md#牛客)
-- [LeetCode <sup>(86)</sup>](algorithms/README.md#leetcode)
+- [LeetCode <sup>(88)</sup>](algorithms/README.md#leetcode)
 - [剑指Offer <sup>(75)</sup>](algorithms/README.md#剑指offer)
 <!--END_SECTION:collection-->
 
@@ -137,7 +137,7 @@ YAML       11 mins         -------------------------   00.66 %
 <!--START_SECTION:collection_more-->
 - [动态规划 <sup>(54)</sup>](algorithms/README.md#动态规划)
 - [二叉树/树 <sup>(48)</sup>](algorithms/README.md#二叉树树)
-- [双指针 <sup>(25)</sup>](algorithms/README.md#双指针)
+- [双指针 <sup>(26)</sup>](algorithms/README.md#双指针)
 - [剑指Offer2 <sup>(3)</sup>](algorithms/README.md#剑指offer2)
 - [程序员面试金典 <sup>(2)</sup>](algorithms/README.md#程序员面试金典)
 - [牛客-华为机试 <sup>(1)</sup>](algorithms/README.md#牛客-华为机试)
@@ -182,7 +182,7 @@ YAML       11 mins         -------------------------   00.66 %
 - [二分查找 <sup>(24)</sup>](algorithms/README.md#二分查找)
 - [递归 <sup>(21)</sup>](algorithms/README.md#递归)
 - [深度优先搜索 <sup>(20)</sup>](algorithms/README.md#深度优先搜索)
-- [排序 <sup>(16)</sup>](algorithms/README.md#排序)
+- [排序 <sup>(15)</sup>](algorithms/README.md#排序)
 - [暴力递归与动态规划 <sup>(12)</sup>](algorithms/README.md#暴力递归与动态规划)
 - [树形递归 <sup>(6)</sup>](algorithms/README.md#树形递归)
 - [广度优先搜索 <sup>(4)</sup>](algorithms/README.md#广度优先搜索)
@@ -194,15 +194,15 @@ YAML       11 mins         -------------------------   00.66 %
 
 ### 技巧
 <!--START_SECTION:trick-->
-- [双指针 <sup>(25)</sup>](algorithms/README.md#双指针)
+- [双指针 <sup>(26)</sup>](algorithms/README.md#双指针)
 - [哈希表(Hash) <sup>(13)</sup>](algorithms/README.md#哈希表hash)
 - [位运算 <sup>(9)</sup>](algorithms/README.md#位运算)
-- [滑动窗口 <sup>(7)</sup>](algorithms/README.md#滑动窗口)
+- [滑动窗口 <sup>(8)</sup>](algorithms/README.md#滑动窗口)
 - [单调栈/单调队列 <sup>(6)</sup>](algorithms/README.md#单调栈单调队列)
 - [前缀和 <sup>(6)</sup>](algorithms/README.md#前缀和)
 - [贪心 <sup>(5)</sup>](algorithms/README.md#贪心)
 - [有限状态自动机 <sup>(1)</sup>](algorithms/README.md#有限状态自动机)
-- [定长滑窗 <sup>(1)</sup>](algorithms/README.md#定长滑窗)
+- [定长滑动窗口 <sup>(1)</sup>](algorithms/README.md#定长滑动窗口)
 - [区间合并 <sup>(1)</sup>](algorithms/README.md#区间合并)
 <!--END_SECTION:trick-->
 

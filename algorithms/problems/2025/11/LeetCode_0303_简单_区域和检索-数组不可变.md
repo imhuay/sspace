@@ -93,7 +93,7 @@ class NumArray:
 <details><summary><b>前缀和 (5)</b></summary>
 
 > [[中等, LeetCode] 从魔法师身上吸取的最大能量](../10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)  
-> [[中等, LeetCode] 和为K的子数组](LeetCode_0560_中等_和为K的子数组.md)  
+> [[中等, LeetCode] 和为K的子数组 🔥](LeetCode_0560_中等_和为K的子数组.md)  
 > [[中等, LeetCode] 路径总和III](../../2022/06/LeetCode_0437_中等_路径总和III.md)  
 > [[中等, 剑指Offer] 构建乘积数组](../../2022/01/剑指Offer_6600_中等_构建乘积数组.md)  
 > [[中等, 牛客] 和为K的连续子数组](../../2022/05/牛客_0125_中等_和为K的连续子数组.md)  

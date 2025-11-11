@@ -215,9 +215,8 @@ class Solution:
 
 </details>
 
-<details><summary><b>排序 (15)</b></summary>
+<details><summary><b>排序 (14)</b></summary>
 
-> [[中等, LeetCode] 三数之和 🔥](../10/LeetCode_0015_中等_三数之和.md)  
 > [[中等, LeetCode] 数组中的第K个最大元素 🔥](../../2022/10/LeetCode_0215_中等_数组中的第K个最大元素.md)  
 > [[中等, 剑指Offer2] 数组中的第K大的数字](../../2022/09/剑指Offer2_076_中等_数组中的第K大的数字.md)  
 > [[中等, 剑指Offer] 把数组排成最小的数](剑指Offer_4500_中等_把数组排成最小的数.md)  

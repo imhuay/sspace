@@ -10,8 +10,8 @@
 ### Level 📈
 <!--START_SECTION:level-->
 - [中等 <sup>(157)</sup>](#中等)
-- [简单 <sup>(105)</sup>](#简单)
-- [困难 <sup>(36)</sup>](#困难)
+- [简单 <sup>(106)</sup>](#简单)
+- [困难 <sup>(37)</sup>](#困难)
 <!--END_SECTION:level-->
 
 
@@ -21,7 +21,7 @@
 ### Hot 🔥
 <!--START_SECTION:hot-->
 - [经典 <sup>(38)</sup>](#经典)
-- [LeetCode Hot 100 <sup>(26)</sup>](#leetcode-hot-100)
+- [LeetCode Hot 100 <sup>(33)</sup>](#leetcode-hot-100)
 - [热门 <sup>(17)</sup>](#热门)
 <!--END_SECTION:hot-->
 
@@ -32,7 +32,7 @@
 
 <!--START_SECTION:collection-->
 - [牛客 <sup>(131)</sup>](#牛客)
-- [LeetCode <sup>(86)</sup>](#leetcode)
+- [LeetCode <sup>(88)</sup>](#leetcode)
 - [剑指Offer <sup>(75)</sup>](#剑指offer)
 <!--END_SECTION:collection-->
 
@@ -41,7 +41,7 @@
 <!--START_SECTION:collection_more-->
 - [动态规划 <sup>(54)</sup>](#动态规划)
 - [二叉树/树 <sup>(48)</sup>](#二叉树树)
-- [双指针 <sup>(25)</sup>](#双指针)
+- [双指针 <sup>(26)</sup>](#双指针)
 - [剑指Offer2 <sup>(3)</sup>](#剑指offer2)
 - [程序员面试金典 <sup>(2)</sup>](#程序员面试金典)
 - [牛客-华为机试 <sup>(1)</sup>](#牛客-华为机试)
@@ -86,7 +86,7 @@
 - [二分查找 <sup>(24)</sup>](#二分查找)
 - [递归 <sup>(21)</sup>](#递归)
 - [深度优先搜索 <sup>(20)</sup>](#深度优先搜索)
-- [排序 <sup>(16)</sup>](#排序)
+- [排序 <sup>(15)</sup>](#排序)
 - [暴力递归与动态规划 <sup>(12)</sup>](#暴力递归与动态规划)
 - [树形递归 <sup>(6)</sup>](#树形递归)
 - [广度优先搜索 <sup>(4)</sup>](#广度优先搜索)
@@ -98,15 +98,15 @@
 
 ### 技巧
 <!--START_SECTION:trick-->
-- [双指针 <sup>(25)</sup>](#双指针)
+- [双指针 <sup>(26)</sup>](#双指针)
 - [哈希表(Hash) <sup>(13)</sup>](#哈希表hash)
 - [位运算 <sup>(9)</sup>](#位运算)
-- [滑动窗口 <sup>(7)</sup>](#滑动窗口)
+- [滑动窗口 <sup>(8)</sup>](#滑动窗口)
 - [单调栈/单调队列 <sup>(6)</sup>](#单调栈单调队列)
 - [前缀和 <sup>(6)</sup>](#前缀和)
 - [贪心 <sup>(5)</sup>](#贪心)
 - [有限状态自动机 <sup>(1)</sup>](#有限状态自动机)
-- [定长滑窗 <sup>(1)</sup>](#定长滑窗)
+- [定长滑动窗口 <sup>(1)</sup>](#定长滑动窗口)
 - [区间合并 <sup>(1)</sup>](#区间合并)
 <!--END_SECTION:trick-->
 
@@ -265,7 +265,7 @@
 - [`牛客_0145_中等_01背包`](problems/2022/05/牛客_0145_中等_01背包.md)
 
 ### LeetCode
-![total](https://img.shields.io/static/v1?label=total&message=86&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=88&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0001_简单_两数之和`](problems/2021/10/LeetCode_0001_简单_两数之和.md)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
@@ -344,6 +344,7 @@
 - [`LeetCode_0988_中等_从叶结点开始的最小字符串`](problems/2022/07/LeetCode_0988_中等_从叶结点开始的最小字符串.md)
 - [`LeetCode_0128_中等_最长连续序列`](problems/2025/11/LeetCode_0128_中等_最长连续序列.md)
 - [`LeetCode_0237_中等_删除链表中的节点`](problems/2025/10/LeetCode_0237_中等_删除链表中的节点.md)
+- [`LeetCode_0283_简单_移动零`](problems/2025/11/LeetCode_0283_简单_移动零.md)
 - [`LeetCode_0303_简单_区域和检索-数组不可变`](problems/2025/11/LeetCode_0303_简单_区域和检索-数组不可变.md)
 - [`LeetCode_3147_中等_从魔法师身上吸取的最大能量`](problems/2025/10/LeetCode_3147_中等_从魔法师身上吸取的最大能量.md)
 - [`LeetCode_3186_中等_施咒的最大总伤害`](problems/2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)
@@ -351,6 +352,7 @@
 - [`LeetCode_0560_中等_和为K的子数组`](problems/2025/11/LeetCode_0560_中等_和为K的子数组.md)
 - [`LeetCode_0073_中等_矩阵置零`](problems/2025/10/LeetCode_0073_中等_矩阵置零.md)
 - [`LeetCode_0739_中等_每日温度`](problems/2025/10/LeetCode_0739_中等_每日温度.md)
+- [`LeetCode_0076_困难_最小覆盖子串`](problems/2025/11/LeetCode_0076_困难_最小覆盖子串.md)
 - [`LeetCode_0084_困难_柱状图中最大的矩形`](problems/2025/10/LeetCode_0084_困难_柱状图中最大的矩形.md)
 
 ### 剑指Offer
@@ -581,7 +583,7 @@
 - [`牛客_0145_中等_01背包`](problems/2022/05/牛客_0145_中等_01背包.md)
 
 ### LeetCode Hot 100
-![total](https://img.shields.io/static/v1?label=total&message=26&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=33&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0001_简单_两数之和`](problems/2021/10/LeetCode_0001_简单_两数之和.md)
 - [`LeetCode_0002_中等_两数相加`](problems/2021/10/LeetCode_0002_中等_两数相加.md)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
@@ -608,9 +610,16 @@
 - [`LeetCode_0047_中等_全排列II`](problems/2022/10/LeetCode_0047_中等_全排列II.md)
 - [`LeetCode_0049_中等_字母异位词分组`](problems/2022/10/LeetCode_0049_中等_字母异位词分组.md)
 - [`LeetCode_0215_中等_数组中的第K个最大元素`](problems/2022/10/LeetCode_0215_中等_数组中的第K个最大元素.md)
+- [`LeetCode_0239_困难_滑动窗口最大值`](problems/2022/10/LeetCode_0239_困难_滑动窗口最大值.md)
+- [`LeetCode_0128_中等_最长连续序列`](problems/2025/11/LeetCode_0128_中等_最长连续序列.md)
+- [`LeetCode_0283_简单_移动零`](problems/2025/11/LeetCode_0283_简单_移动零.md)
+- [`LeetCode_0438_中等_找到字符串中所有字母异位词`](problems/2025/11/LeetCode_0438_中等_找到字符串中所有字母异位词.md)
+- [`LeetCode_0560_中等_和为K的子数组`](problems/2025/11/LeetCode_0560_中等_和为K的子数组.md)
+- [`LeetCode_0076_困难_最小覆盖子串`](problems/2025/11/LeetCode_0076_困难_最小覆盖子串.md)
+- [`牛客_0028_困难_最小覆盖子串`](problems/2022/02/牛客_0028_困难_最小覆盖子串.md)
 
 ### 双指针
-![total](https://img.shields.io/static/v1?label=total&message=25&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=26&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0005_中等_最长回文子串`](problems/2021/10/LeetCode_0005_中等_最长回文子串.md)
 - [`LeetCode_0011_中等_盛最多水的容器`](problems/2021/10/LeetCode_0011_中等_盛最多水的容器.md)
 - [`LeetCode_0015_中等_三数之和`](problems/2021/10/LeetCode_0015_中等_三数之和.md)
@@ -621,6 +630,7 @@
 - [`LeetCode_0167_简单_两数之和II-输入有序数组`](problems/2022/07/LeetCode_0167_简单_两数之和II-输入有序数组.md)
 - [`LeetCode_0611_中等_有效三角形的个数`](problems/2021/10/LeetCode_0611_中等_有效三角形的个数.md)
 - [`LeetCode_0876_简单_链表的中间结点`](problems/2022/06/LeetCode_0876_简单_链表的中间结点.md)
+- [`LeetCode_0283_简单_移动零`](problems/2025/11/LeetCode_0283_简单_移动零.md)
 - [`剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面`](problems/2021/11/剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面.md)
 - [`剑指Offer_2200_简单_链表中倒数第k个节点`](problems/2021/11/剑指Offer_2200_简单_链表中倒数第k个节点.md)
 - [`剑指Offer_4800_中等_最长不含重复字符的子字符串`](problems/2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)
@@ -836,7 +846,7 @@
 - [`牛客_0145_中等_01背包`](problems/2022/05/牛客_0145_中等_01背包.md)
 
 ### 简单
-![total](https://img.shields.io/static/v1?label=total&message=105&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=106&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0001_简单_两数之和`](problems/2021/10/LeetCode_0001_简单_两数之和.md)
 - [`LeetCode_0020_简单_有效的括号`](problems/2022/03/LeetCode_0020_简单_有效的括号.md)
 - [`LeetCode_0021_简单_合并两个有序链表`](problems/2021/10/LeetCode_0021_简单_合并两个有序链表.md)
@@ -856,6 +866,7 @@
 - [`LeetCode_0496_简单_下一个更大元素`](problems/2021/11/LeetCode_0496_简单_下一个更大元素.md)
 - [`LeetCode_0859_简单_亲密字符串`](problems/2021/11/LeetCode_0859_简单_亲密字符串.md)
 - [`LeetCode_0876_简单_链表的中间结点`](problems/2022/06/LeetCode_0876_简单_链表的中间结点.md)
+- [`LeetCode_0283_简单_移动零`](problems/2025/11/LeetCode_0283_简单_移动零.md)
 - [`LeetCode_0303_简单_区域和检索-数组不可变`](problems/2025/11/LeetCode_0303_简单_区域和检索-数组不可变.md)
 - [`剑指Offer_0300_简单_数组中重复的数字`](problems/2021/11/剑指Offer_0300_简单_数组中重复的数字.md)
 - [`剑指Offer_0500_简单_替换空格`](problems/2021/11/剑指Offer_0500_简单_替换空格.md)
@@ -944,7 +955,7 @@
 - [`程序员面试金典_0102_简单_判定是否互为字符重排`](problems/2022/09/程序员面试金典_0102_简单_判定是否互为字符重排.md)
 
 ### 困难
-![total](https://img.shields.io/static/v1?label=total&message=36&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=37&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0004_困难_寻找两个正序数组的中位数`](problems/2022/02/LeetCode_0004_困难_寻找两个正序数组的中位数.md)
 - [`LeetCode_0010_困难_正则表达式匹配`](problems/2022/01/LeetCode_0010_困难_正则表达式匹配.md)
 - [`LeetCode_0023_困难_合并K个升序链表`](problems/2022/10/LeetCode_0023_困难_合并K个升序链表.md)
@@ -956,6 +967,7 @@
 - [`LeetCode_0124_困难_二叉树中的最大路径和`](problems/2022/02/LeetCode_0124_困难_二叉树中的最大路径和.md)
 - [`LeetCode_0239_困难_滑动窗口最大值`](problems/2022/10/LeetCode_0239_困难_滑动窗口最大值.md)
 - [`LeetCode_0352_困难_将数据流变为多个不相交区间`](problems/2021/10/LeetCode_0352_困难_将数据流变为多个不相交区间.md)
+- [`LeetCode_0076_困难_最小覆盖子串`](problems/2025/11/LeetCode_0076_困难_最小覆盖子串.md)
 - [`LeetCode_0084_困难_柱状图中最大的矩形`](problems/2025/10/LeetCode_0084_困难_柱状图中最大的矩形.md)
 - [`剑指Offer_1900_困难_正则表达式匹配`](problems/2021/11/剑指Offer_1900_困难_正则表达式匹配.md)
 - [`剑指Offer_3700_困难_序列化二叉树`](problems/2021/12/剑指Offer_3700_困难_序列化二叉树.md)
@@ -1287,8 +1299,7 @@
 - [`牛客_0121_中等_字符串的排列`](problems/2022/05/牛客_0121_中等_字符串的排列.md)
 
 ### 排序
-![total](https://img.shields.io/static/v1?label=total&message=16&labelColor=gray&color=blue&style=flat-square)
-- [`LeetCode_0015_中等_三数之和`](problems/2021/10/LeetCode_0015_中等_三数之和.md)
+![total](https://img.shields.io/static/v1?label=total&message=15&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0215_中等_数组中的第K个最大元素`](problems/2022/10/LeetCode_0215_中等_数组中的第K个最大元素.md)
 - [`剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票)`](problems/2021/12/剑指Offer_3900_简单_数组中出现次数超过一半的数字(摩尔投票).md)
 - [`剑指Offer_4000_简单_最小的k个数(partition操作)`](problems/2021/12/剑指Offer_4000_简单_最小的k个数(partition操作).md)
@@ -1344,7 +1355,7 @@
 - [`剑指Offer2_076_中等_数组中的第K大的数字`](problems/2022/09/剑指Offer2_076_中等_数组中的第K大的数字.md)
 
 ### 双指针
-![total](https://img.shields.io/static/v1?label=total&message=25&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=26&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0005_中等_最长回文子串`](problems/2021/10/LeetCode_0005_中等_最长回文子串.md)
 - [`LeetCode_0011_中等_盛最多水的容器`](problems/2021/10/LeetCode_0011_中等_盛最多水的容器.md)
 - [`LeetCode_0015_中等_三数之和`](problems/2021/10/LeetCode_0015_中等_三数之和.md)
@@ -1355,6 +1366,7 @@
 - [`LeetCode_0167_简单_两数之和II-输入有序数组`](problems/2022/07/LeetCode_0167_简单_两数之和II-输入有序数组.md)
 - [`LeetCode_0611_中等_有效三角形的个数`](problems/2021/10/LeetCode_0611_中等_有效三角形的个数.md)
 - [`LeetCode_0876_简单_链表的中间结点`](problems/2022/06/LeetCode_0876_简单_链表的中间结点.md)
+- [`LeetCode_0283_简单_移动零`](problems/2025/11/LeetCode_0283_简单_移动零.md)
 - [`剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面`](problems/2021/11/剑指Offer_2100_简单_调整数组顺序使奇数位于偶数前面.md)
 - [`剑指Offer_2200_简单_链表中倒数第k个节点`](problems/2021/11/剑指Offer_2200_简单_链表中倒数第k个节点.md)
 - [`剑指Offer_4800_中等_最长不含重复字符的子字符串`](problems/2021/12/剑指Offer_4800_中等_最长不含重复字符的子字符串.md)
@@ -1400,9 +1412,10 @@
 - [`牛客_0120_简单_二进制中1的个数`](problems/2022/05/牛客_0120_简单_二进制中1的个数.md)
 
 ### 滑动窗口
-![total](https://img.shields.io/static/v1?label=total&message=7&labelColor=gray&color=blue&style=flat-square)
+![total](https://img.shields.io/static/v1?label=total&message=8&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0003_中等_无重复字符的最长子串`](problems/2022/02/LeetCode_0003_中等_无重复字符的最长子串.md)
 - [`LeetCode_0438_中等_找到字符串中所有字母异位词`](problems/2025/11/LeetCode_0438_中等_找到字符串中所有字母异位词.md)
+- [`LeetCode_0076_困难_最小覆盖子串`](problems/2025/11/LeetCode_0076_困难_最小覆盖子串.md)
 - [`剑指Offer_5901_困难_滑动窗口的最大值`](problems/2022/01/剑指Offer_5901_困难_滑动窗口的最大值.md)
 - [`牛客_0028_困难_最小覆盖子串`](problems/2022/02/牛客_0028_困难_最小覆盖子串.md)
 - [`牛客_0041_中等_最长无重复子数组`](problems/2022/03/牛客_0041_中等_最长无重复子数组.md)
@@ -1439,7 +1452,7 @@
 ![total](https://img.shields.io/static/v1?label=total&message=1&labelColor=gray&color=blue&style=flat-square)
 - [`剑指Offer_2000_中等_表示数值的字符串`](problems/2021/11/剑指Offer_2000_中等_表示数值的字符串.md)
 
-### 定长滑窗
+### 定长滑动窗口
 ![total](https://img.shields.io/static/v1?label=total&message=1&labelColor=gray&color=blue&style=flat-square)
 - [`LeetCode_0438_中等_找到字符串中所有字母异位词`](problems/2025/11/LeetCode_0438_中等_找到字符串中所有字母异位词.md)
 

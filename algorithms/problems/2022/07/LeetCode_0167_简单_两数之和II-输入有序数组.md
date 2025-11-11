@@ -108,7 +108,7 @@ class Solution:
 ### 相关问题
 
 
-<details><summary><b>双指针 (24)</b></summary>
+<details><summary><b>双指针 (25)</b></summary>
 
 > [[中等, LeetCode] 三数之和 🔥](../../2021/10/LeetCode_0015_中等_三数之和.md)  
 > [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
@@ -125,6 +125,7 @@ class Solution:
 > [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
 > [[困难, 牛客] 接雨水问题 🔥](../05/牛客_0128_困难_接雨水问题.md)  
   > 
+> [[简单, LeetCode] 移动零 🔥](../../2025/11/LeetCode_0283_简单_移动零.md)  
 > [[简单, LeetCode] 链表的中间结点](../06/LeetCode_0876_简单_链表的中间结点.md)  
 > [[简单, 剑指Offer] 两个链表的第一个公共节点](../01/剑指Offer_5200_简单_两个链表的第一个公共节点.md)  
 > [[简单, 剑指Offer] 和为s的两个数字](../01/剑指Offer_5701_简单_和为s的两个数字.md)  
