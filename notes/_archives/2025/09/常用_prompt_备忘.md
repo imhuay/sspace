@@ -23,8 +23,7 @@ tags: [llm_prompt]
 <!--START_SECTION:toc-->
 - [背景](#背景)
 - [各 AI 助手使用记录](#各-ai-助手使用记录)
-    - [Copilot# (Edge 版)](#copilot-edge-版)
-        - [记忆保持](#记忆保持)
+    - [Copilot (Edge 版)](#copilot-edge-版)
 - [补充 Prompt](#补充-prompt)
     - [格式](#格式)
     - [正则化描述](#正则化描述)
@@ -44,14 +43,7 @@ tags: [llm_prompt]
 
 ## 各 AI 助手使用记录
 
-### Copilot# (Edge 版)
-
-#### 记忆保持
-
-- **用法**: 在需要长期记忆的 Prompt 前使用 **"请记住:/记忆保持:"** 等类似提示, 就可以将后续内容保存到 **内存中**:
-    - 实际使用中, Copilot 似乎还会抓取历史对话摘要作为 **记忆**;
-- **示例**:
-    <div align='center'><img src='./_assets/Copilot-记忆保持.png' height='350'/></div>
+### Copilot (Edge 版)
 
 ## 补充 Prompt
 

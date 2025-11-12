@@ -16,7 +16,6 @@ Notes
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
     - [Algorithms 🧩](#algorithms-)
-    - [Reading List 🔖](#reading-list-)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -62,9 +61,6 @@ Notes
 #### Prompt Engineering
 
 {{llm_prompt}}
-
-<!-- omit in toc -->
-<!-- #### Reinforcement Learning -->
 
 </td>
 <td rowspan="1" valign="top" width="1000">
@@ -165,9 +161,15 @@ Notes
 <tr>
 <td rowspan="2" valign="top" width="1000">
 
+<!-- omit in toc -->
 ### Reading List 🔖
 
 {{read}}
+
+<!-- omit in toc -->
+### AI 工具
+
+{{ai_tool}}
 
 </td>
 </tr>
