@@ -37,7 +37,6 @@
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
     - [Algorithms 🧩](#algorithms-)
-    - [Reading List 🔖](#reading-list-)
     - [Paper Notes 📝](#paper-notes-)
 - [Engineerings](#engineerings)
     - [Python 🐍](#python-)
@@ -68,7 +67,6 @@
 - [`2025-08-02` 批量删除历史已提交文件](notes/_archives/2025/08/git-删除历史已提交文件.md) 
 - [`2025-07-08` 链表操作备忘](notes/_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](notes/_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
-- [`2025-07-08` 设计模式 Wiki](notes/_archives/2022/09/设计模式.md) 
 
 <!--END_SECTION:recent-->
 
@@ -267,9 +265,6 @@ YAML       11 mins         -------------------------   00.77 %
 - [常用 prompt 备忘](notes/_archives/2025/09/常用_prompt_备忘.md) 
 - [反思 ( Reflection )](notes/_archives/2025/08/Prompt_工程-自反思.md) 
 
-<!-- omit in toc -->
-<!-- #### Reinforcement Learning -->
-
 </td>
 <td rowspan="1" valign="top" width="1000">
 
@@ -399,12 +394,18 @@ YAML       11 mins         -------------------------   00.77 %
 <tr>
 <td rowspan="2" valign="top" width="1000">
 
+<!-- omit in toc -->
 ### Reading List 🔖
 
 - [QA 合集](notes/_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup>
 - [强化学习相关](notes/_archives/2025/08/强化学习相关资料.md) 
 - [HuggingFace ( 博客 & 代码 )](notes/_archives/2025/08/HuggingFace阅读列表.md) 
 - [GitHub ( 仓库 )](notes/_archives/2025/08/GitHub阅读列表.md) 
+
+<!-- omit in toc -->
+### AI 工具
+
+- [Copilot_备忘](notes/_archives/2025/11/Copilot_备忘.md) 
 
 </td>
 </tr>
