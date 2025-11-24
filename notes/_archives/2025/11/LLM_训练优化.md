@@ -60,9 +60,9 @@ algo_tags: []
 
 <!--START_SECTION:qa-->
 <!--qa_info
-subject: ''  # Transformer, RLHF, SFT, Other
+subject: 'LLM'  # Transformer, RLHF, SFT, Other
 subject_level: 0  # subject 间的排序信号; 对已经设置过的 subject, 取最大值
-topic: ''  # 默认取文档的 toc_title, 如果有层级结构, 用 · 分隔, 如 'SFT · PEFT'
+topic: '训练优化'  # 默认取文档的 toc_title, 如果有层级结构, 用 · 分隔, 如 'SFT · PEFT'
 topic_level: 0  # 同一个 subject 下的排序信号
 with_section_title: true  # 如果不需要 section_title
 use_section_number: true

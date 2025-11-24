@@ -12,6 +12,7 @@ Notes
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
         - [大模型微调 (SFT · RLHF) 💥](#大模型微调-sft--rlhf-)
+        - [Agent](#agent)
     - [Machine Learning 🤖](#machine-learning-)
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
@@ -57,10 +58,9 @@ Notes
 
 {{llm_sft}}
 
-<!-- omit in toc -->
-#### Prompt Engineering
+#### Agent
 
-{{llm_prompt}}
+{{llm_agent}}
 
 </td>
 <td rowspan="1" valign="top" width="1000">

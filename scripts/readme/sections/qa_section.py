@@ -27,6 +27,15 @@ from utils import MarkdownUtils, NoteUtils
 _md = MarkdownIt()
 
 
+subject_level = [
+    'Transformer',
+    'RLHF',
+    'SFT',
+    'LLM',
+    'Agent',
+]
+
+
 @dataclass
 class TocLine:
     """"""

@@ -137,9 +137,9 @@ tags: [llm_sft]
 
 <!--START_SECTION:qa-->
 <!--qa_info
-subject: 'SFT · PEFT'
+subject: 'SFT'
 subject_level: 0
-topic: 'LoRA'
+topic: 'PEFT · LoRA'
 topic_level: 0
 with_section_title: true
 use_section_number: true

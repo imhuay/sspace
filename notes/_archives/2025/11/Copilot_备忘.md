@@ -40,8 +40,11 @@ algo_tags: []
 - **用法**: 在需要长期记忆的 Prompt 前使用 **"请记住:/记忆保持:"** 等类似提示, 就可以将后续内容保存到 **内存中**:
     - 实际使用中, 当上下文太长时, 似乎还是会遗忘; 也可能是优先级会低于当前上下文的命令;
 - **示例**:
-    <div align='center'><img src='./_assets/Copilot-记忆保持.png' height='350'/></div>
+    <div align='center'><img src='./_assets/Copilot_记忆保持.png' height='350'/></div>
 
+> \[2025-11-24\] 已失效, 可能是BUG
+
+---
 
 ### 隐私管理 (边栏模式)
 > 右上角 `···` → `设置` → `隐私`
@@ -50,6 +53,7 @@ algo_tags: []
 - 如果真的需要参考某选项卡, 可以显式 @;
 <!-- - 实际使用中, Copilot 似乎还会抓取历史对话摘要作为 **记忆**; -->
 
+---
 
 ### 工具栏图标消失解决方法
 > [edge更新后工具栏中 copilot 图标消失 - Microsoft Q&A](https://learn.microsoft.com/zh-cn/answers/questions/5606011/edge-142-0-3595-53-\(-\)-\(64-\)-copilot)

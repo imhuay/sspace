@@ -767,8 +767,14 @@ class MarkdownUtils:
             '：': ':',
         }
         quo_punc_map = {
-            ('“', '”'): ('"', '"'),
-            ('‘', '’'): ("'", "'"),
+            ('"', '"'): ('"**', '**"'),
+            ("'", "'"): ('"**', '**"'),
+            ('**“', '”**'): ('"**', '**"'),
+            ('“**', '**”'): ('"**', '**"'),
+            ('“', '”'): ('"**', '**"'),
+            ('**‘', '’**'): ("'**", "**'"),
+            ('‘**', '**’'): ("'**", "**'"),
+            ('‘', '’'): ("'**", "**'"),
             ('（', '）'): ('(', ')'),
         }
 
@@ -830,6 +836,7 @@ class MarkdownUtils:
                 line = re.sub(rf'\s*{cn_punc}\s*', f'{en_punc} ', line)
             # 处理成对的中文引号和括号
             for (cn_left, cn_right), (en_left, en_right) in quo_punc_map.items():
+                cn_left, cn_right = re.escape(cn_left), re.escape(cn_right)
                 line = re.sub(rf'\s*{cn_left}\s*(.*?)\s*{cn_right}\s*', f' {en_left}\\1{en_right} ', line)
             for _, en_right in quo_punc_map.values():
                 for seg_punc in punc_map.values():
