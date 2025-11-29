@@ -435,8 +435,9 @@ class Problem:
 
     def set_file_name(self, max_no_len: int):
         """"""
+        _name = re.sub(r'\s+', '', self.name)
         self._file_name = '{src}_{no}_{level}_{name}.md'.format(
-            src=self.source, no=str.zfill(self.number, max_no_len), level=self.level, name=re.sub(r'\s+', '', self.name)
+            src=self.source, no=str.zfill(self.number, max_no_len), level=self.level, name=_name
         )
 
     @property

@@ -39,8 +39,8 @@ companies: []
 <summary><b>思路</b></summary>
 
 - 定义 `dfs(i)` 表示前 `i` 家能打劫的最大价值;
-- 【递归基】`i <= 0` 时, 有 `dfs(0) = 0`;
-    > 小细节: 因为会用到 ` i-2` 的状态, 所以需要定义 `i < 0` 时的状态;
+- 【递归基】`i < 0` 时, 有 `dfs(0) = 0`;
+    > 小细节: 因为会用到 `i-2` 的状态, 所以需要定义 `i < 0` 时的状态;
 - 递推公式: `dfs(i) = max(dfs(i-1), dfs(i-2) + nums[i-1])`;
     > 对第 `i` 家 (`nums[i-1]`), 有两种可能, 不抢 (`dfs(i-1)`), 抢 (`dfs(i-2) + nums[i-1]`), 去其中的较大值;
 
@@ -49,28 +49,21 @@ companies: []
 ```python
 class Solution:
     def rob(self, nums: List[int]) -> int:
-
-        from functools import lru_cache
-
-        @lru_cache(maxsize=None)
+        
+        @cache
         def dfs(i):
-            if i == 0:  # 显然
+            if i < 0: 
                 return 0
-            if i == 1:  # 只有一家时, 必抢
-                return nums[0]
-
-            r1 = dfs(i - 1)  # 不抢
-            r2 = dfs(i - 2) + nums[i - 1]  # 抢
-            return max(r1, r2)
-
-        N = len(nums)
-        return dfs(N)
+            return max(dfs(i - 1), dfs(i - 2) + nums[i])
+        
+        n = len(nums)
+        return dfs(n - 1)
 ```
 
 </details>
 
 
-<details><summary><b>Python: 动态规划</b></summary>
+<details><summary><b>Python: 递推</b></summary>
 
 ```python
 class Solution:

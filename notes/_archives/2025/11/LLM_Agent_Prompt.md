@@ -29,6 +29,8 @@ algo_tags: []
 - [ReAct (Reasoning and Acting)](#react-reasoning-and-acting)
 - [Plan \& Execute](#plan--execute)
 - [反思 (Reflexion)](#反思-reflexion)
+- [Debate (辩论)](#debate-辩论)
+    - [参考资料](#参考资料-3)
 - [Q\&A](#qa)
 <!--END_SECTION:toc-->
 
@@ -86,7 +88,7 @@ with_keywords: false
 </details>
 
 <!-- omit in toc -->
-### 相关资料
+### 参考资料
 - [ReAct 框架 | Prompt Engineering Guide](https://www.promptingguide.ai/zh/techniques/react)
 - [\[2210.03629\] ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
 
@@ -137,7 +139,7 @@ with_keywords: false
 <!--END_SECTION:keyword-->
 
 <!-- omit in toc -->
-### 相关资料
+### 参考资料
 - [自反思 (Self-Reflexion) | Prompt Engineering Guide](https://www.promptingguide.ai/zh/techniques/reflexion)
 - [\[2303.11366\] Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366)
     > [[GitHub] noahshinn/reflexion](https://github.com/noahshinn/reflexion)
@@ -153,6 +155,26 @@ with_keywords: false
     > 通过多 Agent 实现反思
 - [[Local] self_reflect.py](../../../../examples/llm/prompts/self_reflect.py)
     > 通过多轮对话实现自反思
+
+---
+
+<!--START_SECTION:keyword-->
+<!--keyword_info
+name: 'Debate'
+extra_url: false
+with_keywords: false
+-->
+## Debate (辩论)
+<!--END_SECTION:keyword-->
+
+
+### 参考资料
+- [\[2406.11776\] Improving Multi-Agent Debate with Sparse Communication Topology](https://arxiv.org/abs/2406.11776)
+    - 多智能体辩论 (multi-agent debate) 已被证明能提升大语言模型在推理和事实性任务上的表现;
+    - 传统的 **全连接通信** 成本高, **稀疏拓扑 (链式/环形/分组/稀疏图)** 表现与全连接相当, 同时显著降低计算成本;
+- [ASMAD: Adaptive Sparse Communication Topology Multi-Agent Debate Framework with Opinion Dynamics | OpenReview](https://openreview.net/forum?id=t64WsUDPbw)
+    - **静态稀疏** 拓扑降低计算, 但忽视了语义关系与动态意见演化.
+    - **动态控制** 可见性, 让智能体只关注语义相关的交流对象.
 
 ---
 

@@ -27,6 +27,7 @@ algo_tags: []
 - [Reading List](#reading-list)
     - [LLM-based Data Augmentation](#llm-based-data-augmentation)
     - [位置编码](#位置编码)
+    - [多模态大模型](#多模态大模型)
 - [README](#readme)
 <!--END_SECTION:toc-->
 
@@ -46,6 +47,10 @@ algo_tags: []
 
 - [ ] [\[2305.19466\] The Impact of Positional Encoding on Length Generalization in Transformers](https://arxiv.org/abs/2305.19466)
 
+
+### 多模态大模型
+
+- [ ] [\[2407.07726\] PaliGemma: A versatile 3B VLM for transfer](https://arxiv.org/abs/2407.07726)
 
 ---
 

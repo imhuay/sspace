@@ -11,7 +11,7 @@ tags: [dfs2dp, 动态规划]
 source: LeetCode
 level: 中等
 number: '0322'
-name: 零钱兑换
+name: '零钱兑换 (完全背包)'
 companies: []
 -->
 
@@ -39,7 +39,9 @@ companies: []
 <summary><b>思路: 完全背包</b></summary>
 
 - 定义 `dfs(a)` 表示凑成金额 `a` 需要的最少硬币数;
-- **递归基**: 1) 显然 `dfs(0) = 0`; 2) 当 `a` 小于币值时, 返回无穷大, 表示无效结果;
+- **递归基**: 
+    - **1.** `dfs(a=0) = 0`; 
+    - **2.** `dfs(a<0) = INF`;
 
 <details><summary><b>Python: 递归</b></summary>
 
@@ -47,23 +49,25 @@ companies: []
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
-        from functools import lru_cache
+        from functools import cache
 
         N = len(coins)
+        INF = int(1e5)
 
-        @lru_cache(maxsize=None)
+        @cache
         def dfs(a):
-            if a == 0: return 0
-            if a < 0: return float('inf')
+            if a == 0: 
+                return 0
+            elif a < 0: 
+                return INF
 
-            ret = float('inf')
+            ret = INF
             for i in range(N):
-                if a >= coins[i]:
-                    ret = min(ret, dfs(a - coins[i]) + 1)
+                ret = min(ret, dfs(a - coins[i]) + 1)
             return ret
 
         ret = dfs(amount)
-        return -1 if ret == float('inf') else ret
+        return -1 if ret == INF else ret
 ```
 
 </details>

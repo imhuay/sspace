@@ -37,7 +37,7 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路: 树形 dp + 记忆化搜索</b></summary>
+<summary><b>思路: 树形 dp</b></summary>
 
 - 树形 dp 问题, 就是否抢劫当前节点分两种情况讨论, 详见代码;
 
@@ -53,9 +53,7 @@ companies: []
 class Solution:
     def rob(self, root: TreeNode) -> int:
 
-        from functools import lru_cache
-
-        @lru_cache(maxsize=None)
+        @cache
         def dfs(x):
             # 空节点
             if not x: return 0
