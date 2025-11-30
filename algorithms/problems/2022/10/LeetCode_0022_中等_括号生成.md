@@ -34,7 +34,7 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路</b></summary>
+<summary><b>思路: 二叉树模板 (有条件的 "选或不选")</b></summary>
 
 - 相当于对 `['(', ')']` 进行深度优先遍历;
 - 通过剪枝排除无效情况;
@@ -43,6 +43,37 @@ companies: []
 
     > [回溯算法 (深度优先遍历) + 广度优先遍历 (Java) - liweiwei1419](https://leetcode.cn/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/)
 
+-->
+
+<details><summary><b>Python (推荐) </b></summary>
+
+```python
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        ans = []
+        m = 2 * n
+        p = [''] * m
+
+        def dfs(i, l):
+            if i == m:
+                ans.append(''.join(p))
+                return
+            
+            # 有条件的选或不选
+            if l < n:       # 左括号数量 < n 时
+                p[i] = '('
+                dfs(i + 1, l + 1)
+
+            if i - l < l:   # 右括号 < 左括号时
+                p[i] = ')'
+                dfs(i + 1, l)
+        
+        dfs(0, 0)
+        return ans
+```
+
+</details>
 
 <details><summary><b>Python (写法 1) </b></summary>
 

@@ -35,8 +35,9 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路 1</b></summary>
+<summary><b>思路 1: 多叉树模板</b></summary>
 
+<!-- 
 - 递归+回溯模板:
 - 把递归过程看作一棵树的生成过程, 考虑两个关键问题:
   1. 每个节点需要产生哪些分支;
@@ -46,33 +47,56 @@ companies: []
     - 路径上的每个节点代表一次递归的深入, 所以需要使用全局变量来记录 (或者把变量作为参数传递到下一层), 这个过程可以看作是一次**纵向剪枝**;
     - 如果是**横向剪枝**, 则可以使用一个局部变量来记录 (相关问题: [全排列 II](https://leetcode.cn/problems/permutations-ii/));
   - 对第二个问题: 使用一个变量记录当前的递归深度 (最简单); 或者判断全局变量中每个数字都使用过;
+-->
 
-<details><summary><b>Python</b></summary>
+<details><summary><b>Python (写法 1, 更好理解)</b></summary>
 
 ```python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        ans = []
+        p = []
+        n = len(nums)
 
-        ret = []
-        used = [0] * len(nums)  # 记录各位置的使用情况
-        nums_len = len(nums)
-
-        def dfs(deep, tmp):  # deep: 递归深度
-            if deep == nums_len:  # len(tmp) == nums_len 也可以, 省一个变量
-                ret.append(tmp[:])
+        def dfs(i, s: set):  # 长度为 i 的排列, s 表示剩余可选的元素
+            if i == n:
+                ans.append(p[:])
                 return
+            
+            for e in s:
+                p.append(e)
+                dfs(i + 1, s - {e})
+                p.pop()
+        
+        dfs(0, set(nums))
+        return ans
+```
 
-            for i in range(nums_len):
-                if used[i]: continue
+</details>
 
-                used[i] = 1
-                tmp.append(nums[i])
-                dfs(deep + 1, tmp)
-                tmp.pop()
-                used[i] = 0
+<details><summary><b>Python (写法 2, 更通用)</b></summary>
 
-        dfs(0, [])
-        return ret
+```python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        ans = []
+        p = []
+        n = len(nums)
+
+        def dfs(i, s: set):  # 长度为 i 的排列, s 表示剩余可选的元素
+            if i == n:
+                ans.append(p[:])
+                return
+            
+            for e in s:
+                p.append(e)
+                dfs(i + 1, s - {e})
+                p.pop()
+        
+        dfs(0, set(nums))
+        return ans
 ```
 
 </details>
