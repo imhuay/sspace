@@ -1,4 +1,4 @@
-QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup> <!-- suffix -->
+QA 合集 <!-- suffix --> <span title="特别关注">🧣</span><span title="面试问题整理(114)">📋</span><sup style="color:Brown">114</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-10-21&labelColor=gray&color=lightsteelblue&style=flat-square)
@@ -32,10 +32,11 @@ algo_tags: []
 - [RLHF · **基础** · `13`](#rlhf--基础--13)
 - [RLHF · **策略梯度算法** · `6`](#rlhf--策略梯度算法--6)
 - [SFT · **基础概念** · `9`](#sft--基础概念--9)
-- [SFT · PEFT · **LoRA** · `10`](#sft--peft--lora--10)
-- [**MoE (Mixture of Experts)** · `8`](#moe-mixture-of-experts--8)
-- [**LLM 基座模型** · `6`](#llm-基座模型--6)
-- [**LLM 训练优化** · `2`](#llm-训练优化--2)
+- [SFT · **PEFT · LoRA** · `10`](#sft--peft--lora--10)
+- [Agent · **Promptint** · `4`](#agent--promptint--4)
+- [LLM · **MoE (Mixture of Experts)** · `8`](#llm--moe-mixture-of-experts--8)
+- [LLM · **基座模型** · `6`](#llm--基座模型--6)
+- [LLM · **训练优化** · `2`](#llm--训练优化--2)
 - [Other · **非专业问题** · `2`](#other--非专业问题--2)
 <!--END_SECTION:toc-->
 
@@ -170,7 +171,7 @@ algo_tags: []
     - [2.2. ✅ 介绍常见的 **PEFT** 技术](../09/SFT.md#22--介绍常见的-peft-技术)
     - [2.3. 💡 比较 **LoRA** / **Prefix Tuning** / **P-Tuning V2** / **Adapter** / **BitFit**](../09/SFT.md#23--比较-lora--prefix-tuning--p-tuning-v2--adapter--bitfit)
 
-## SFT · PEFT · **LoRA** · `10`<!-- 97 -->
+## SFT · **PEFT · LoRA** · `10`<!-- 97 -->
 
 - [1. 🏷️ LoRA 相关](../09/SFT_LoRA.md#1-️-lora-相关)
     - [1.1. ✅ 什么是 LoRA? 它解决了什么问题? 适用什么场景?](../09/SFT_LoRA.md#11--什么是-lora-它解决了什么问题-适用什么场景)
@@ -185,7 +186,14 @@ algo_tags: []
 - [2. 🏷️ LoRA 的变体](../09/SFT_LoRA.md#2-️-lora-的变体)
     - [2.1. ✅ QLoRA/AdaLoRA/DoRA 的核心思路是什么?](../09/SFT_LoRA.md#21--qloraadaloradora-的核心思路是什么)
 
-## **MoE (Mixture of Experts)** · `8`<!-- 0 -->
+## Agent · **Promptint** · `4`<!-- 0 -->
+
+- [1. ✅ 介绍下 ReAct 框架](../11/LLM_Agent_Prompt.md#1--介绍下-react-框架)
+    - [1.1. ✅ 为什么 ReAct 有效? ReAct 的优点](../11/LLM_Agent_Prompt.md#11--为什么-react-有效-react-的优点)
+- [2. ✅ 介绍下 Plan-Execute 框架](../11/LLM_Agent_Prompt.md#2--介绍下-plan-execute-框架)
+    - [2.1. ✅ Plan-Execute 框架的优点 (相比 ReAct)](../11/LLM_Agent_Prompt.md#21--plan-execute-框架的优点-相比-react)
+
+## LLM · **MoE (Mixture of Experts)** · `8`<!-- 0 -->
 
 - [1. 🏷️ MoE 基础](../09/Transformer_MoE.md#1-️-moe-基础)
     - [1.1. ✅ 什么是 MoE (Mixture of Experts)? 它与传统稠密 Transformer 的主要区别是什么?](../09/Transformer_MoE.md#11--什么是-moe-mixture-of-experts-它与传统稠密-transformer-的主要区别是什么)
@@ -208,7 +216,7 @@ algo_tags: []
     - [3.6. 🚨 🚩 💡 ❓ ⚠️ ⬆️ 🏷️ ✅ 假设你要在一个多模态任务 (文本+图像) 上设计 MoE, 你会如何划分专家?](../09/Transformer_MoE.md#36-----️-️-️--假设你要在一个多模态任务-文本图像-上设计-moe-你会如何划分专家)
     - [3.7. ✅ 给定 8 专家, Top-2 策略, 400B 参数的 MoE 层, 估算单 token 实际激活的参数量和 batch size = 1024 时平均每个专家分配的 token 数.](../09/Transformer_MoE.md#37--给定-8-专家-top-2-策略-400b-参数的-moe-层-估算单-token-实际激活的参数量和-batch-size--1024-时平均每个专家分配的-token-数)
 
-## **LLM 基座模型** · `6`<!-- 0 -->
+## LLM · **基座模型** · `6`<!-- 0 -->
 
 - [1. 🏷️ LLaMA 相关](../11/LLM_基座模型.md#1-️-llama-相关)
     - [1.1. ✅ LLaMA 属于哪类架构? 与原版 Transformer 的差异? 改进的目的/效果](../11/LLM_基座模型.md#11--llama-属于哪类架构-与原版-transformer-的差异-改进的目的效果)
@@ -219,7 +227,7 @@ algo_tags: []
 - [2. 🏷️ DeepSeek 相关](../11/LLM_基座模型.md#2-️-deepseek-相关)
     - [2.1. ✅ DeepSeek 对 **位置编码 (RoPE)** 做了哪些改进?](../11/LLM_基座模型.md#21--deepseek-对-位置编码-rope-做了哪些改进)
 
-## **LLM 训练优化** · `2`<!-- 0 -->
+## LLM · **训练优化** · `2`<!-- 0 -->
 
 - [1. 🏷️ 数据层优化](../11/LLM_训练优化.md#1-️-数据层优化)
 - [2. 🏷️ 模型结构优化](../11/LLM_训练优化.md#2-️-模型结构优化)

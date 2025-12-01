@@ -12,6 +12,7 @@ Notes
 - [Researches](#researches)
     - [Transformer 🪄 LLM 🚀](#transformer--llm-)
         - [大模型微调 (SFT · RLHF) 💥](#大模型微调-sft--rlhf-)
+        - [Agent](#agent)
     - [Machine Learning 🤖](#machine-learning-)
     - [Deep Learning 🧠](#deep-learning-)
     - [NLP 🔤](#nlp-)
@@ -32,8 +33,8 @@ Notes
 <!-- omit in toc -->
 ## Recent 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup><span title="置顶">📌</span>
-- [`2025-11-01` LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "LLM 训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(114)">📋</span><sup style="color:Brown">114</sup><span title="置顶">📌</span>
+- [`2025-11-01` LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")<sup style="color:Brown">24</sup>
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [✒️](_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(23)")<sup style="color:Brown">23</sup>
@@ -47,6 +48,7 @@ Notes
 - [`2025-08-02` 批量删除历史已提交文件](_archives/2025/08/git-删除历史已提交文件.md) 
 - [`2025-07-08` 链表操作备忘](_archives/2022/10/链表模板.md) 
 - [`2025-07-08` 过拟合与正则化](_archives/2022/05/过拟合与正则化.md) <span title="TODO">✒️</span>
+- [`2025-07-08` 设计模式 Wiki](_archives/2022/09/设计模式.md) 
 
 <!--END_SECTION:recent-->
 
@@ -70,8 +72,8 @@ Notes
   > <i>[Encoder-Decoder](_archives/2025/09/Transformer.md#encoder-decoder-框架) • [注意力机制 (MHA)](_archives/2025/09/Transformer.md#多头注意力机制-multi-head-attention-mechanism) • [FFN](_archives/2025/09/Transformer.md#逐位置前馈网络-position-wise-ffn) • [正弦位置编码](_archives/2025/09/Transformer.md#正弦位置编码)</i><br>
   - [Transformer 改进](_archives/2025/09/Transformer_改进.md) [✒️](_archives/2025/09/Transformer_改进.md#todo "TODO(1)")<sup style="color:Gray">1</sup>
     > <i>[位置编码](_archives/2025/09/Transformer_位置编码.md)</i>[📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")<sup style="color:Brown">24</sup><i> • [相对位置编码](_archives/2025/09/Transformer_位置编码.md#相对位置编码) • [旋转位置编码 (RoPE)🔥](_archives/2025/09/Transformer_位置编码.md#旋转位置编码-rope) • [MoE (混合专家)](_archives/2025/09/Transformer_MoE.md)</i>[✒️](_archives/2025/09/Transformer_MoE.md#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](_archives/2025/09/Transformer_MoE.md#qa "MoE (Mixture of Experts) · 面试问题整理(8)")<sup style="color:Brown">8</sup><i></i><br>
-- [LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "LLM 训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
-- [LLM 基座模型](_archives/2025/11/LLM_基座模型.md) [✒️](_archives/2025/11/LLM_基座模型.md#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](_archives/2025/11/LLM_基座模型.md#qa "LLM 基座模型 · 面试问题整理(6)")<sup style="color:Brown">6</sup><span title="Pin">✨</span>
+- [LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
+- [LLM 基座模型](_archives/2025/11/LLM_基座模型.md) [✒️](_archives/2025/11/LLM_基座模型.md#todo "TODO(1)")<sup style="color:Gray">1</sup>[📋](_archives/2025/11/LLM_基座模型.md#qa "基座模型 · 面试问题整理(6)")<sup style="color:Brown">6</sup><span title="Pin">✨</span>
   > <i>[LLaMA](_archives/2025/11/LLM_基座模型.md#llama-系列) • [DeepSeek](_archives/2025/11/LLM_基座模型.md#deepseek-系列)</i><br>
 - [Transformer 常见面试问题](_archives/2022/05/Transformer常见问题.md) <span title="Out-of-Date">💾</span>
 - [Transformer Wiki](_archives/2022/05/TransformerWiki.md) <span title="Out-of-Date">💾</span>
@@ -80,7 +82,7 @@ Notes
 #### 大模型微调 (SFT · RLHF) 💥
 
 - [SFT 基础概念](_archives/2025/09/SFT.md) [📋](_archives/2025/09/SFT.md#qa "基础概念 · 面试问题整理(9)")<sup style="color:Brown">9</sup>
-  > <i>[PEFT](_archives/2025/09/SFT.md#peft) • [LoRA](_archives/2025/09/SFT_LoRA.md)</i>[📋](_archives/2025/09/SFT_LoRA.md#qa "LoRA · 面试问题整理(10)")<sup style="color:Brown">10</sup><i></i><br>
+  > <i>[PEFT](_archives/2025/09/SFT.md#peft) • [LoRA](_archives/2025/09/SFT_LoRA.md)</i>[📋](_archives/2025/09/SFT_LoRA.md#qa "PEFT · LoRA · 面试问题整理(10)")<sup style="color:Brown">10</sup><i></i><br>
   - [训练数据构建](_archives/2025/09/SFT_构建高质量训练数据.md) <span title="TODO">✒️</span>
     > <i>[覆盖率](_archives/2025/09/SFT_构建高质量训练数据.md#覆盖率) • [多样性](_archives/2025/09/SFT_构建高质量训练数据.md#多样性) • [一致性](_archives/2025/09/SFT_构建高质量训练数据.md#一致性)</i><br>
 - [**RLHF** ( 偏好学习, 对齐学习 )](_archives/2025/09/RLHF/RLHF.md) <span title="特别关注">🧣</span><span title="TODO">✒️</span>[📋](_archives/2025/09/RLHF/RLHF.md#qa "基础 · 面试问题整理(13)")<sup style="color:Brown">13</sup>
@@ -92,11 +94,10 @@ Notes
   - [**策略梯度算法**](_archives/2025/09/RLHF/策略梯度算法.md) <span title="特别关注">🧣</span>[✒️](_archives/2025/09/RLHF/策略梯度算法.md#todo "TODO(2)")<sup style="color:Gray">2</sup>[📋](_archives/2025/09/RLHF/策略梯度算法.md#qa "策略梯度算法 · 面试问题整理(6)")<sup style="color:Brown">6</sup>
     > <i>[PPO](_archives/2025/09/RLHF/策略梯度算法.md#ppo) • [DPO](_archives/2025/09/RLHF/策略梯度算法.md#dpo) • [GRPO](_archives/2025/09/RLHF/策略梯度算法.md#grpo)</i><br>
 
-<!-- omit in toc -->
-#### Prompt Engineering
+#### Agent
 
-- [常用 prompt 备忘](_archives/2025/09/常用_prompt_备忘.md) 
-- [反思 ( Reflection )](_archives/2025/08/Prompt_工程-自反思.md) 
+- [Prompt Engineering](_archives/2025/11/LLM_Agent_Prompt.md) [📋](_archives/2025/11/LLM_Agent_Prompt.md#qa "Promptint · 面试问题整理(4)")<sup style="color:Brown">4</sup>
+  > <i>[ReAct](_archives/2025/11/LLM_Agent_Prompt.md#react-reasoning-and-acting) • [Plan & Execute](_archives/2025/11/LLM_Agent_Prompt.md#plan--execute) • [Reflexion](_archives/2025/11/LLM_Agent_Prompt.md#反思-reflexion) • [Debate](_archives/2025/11/LLM_Agent_Prompt.md#debate-辩论)</i><br>
 
 </td>
 <td rowspan="1" valign="top" width="1000">
@@ -230,7 +231,7 @@ Notes
 <!-- omit in toc -->
 ### Reading List 🔖
 
-- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup>
+- [QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(114)">📋</span><sup style="color:Brown">114</sup>
 - [强化学习相关](_archives/2025/08/强化学习相关资料.md) 
 - [HuggingFace ( 博客 & 代码 )](_archives/2025/08/HuggingFace阅读列表.md) 
 - [GitHub ( 仓库 )](_archives/2025/08/GitHub阅读列表.md) 
@@ -406,6 +407,7 @@ Notes
 - [多轮MRC信息抽取的优缺点](_archives/2025/08/多轮MRC信息抽取的优缺点.md) 
 - [实体链接相关概念](_archives/2022/04/实体链接/实体链接相关概念.md) 
 - [实验报告模板](_archives/2022/12/实验报告模板.md) 
+- [常用 prompt 备忘](_archives/2025/09/常用_prompt_备忘.md) 
 - [常见的文本相似度计算](_archives/2022/12/文本相似度计算.md) 
 - [常见面试问题 ( 非技术 )](_archives/2022/06/常见面试问题（非技术）.md) 
 - [快捷键记录](_archives/2022/07/快捷键记录.md) 

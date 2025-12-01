@@ -2,7 +2,7 @@ LLM 训练优化 <!-- suffix --> [📋](#qa "面试问题整理(2)")<sup style="
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-01&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-05%2006%3A22%3A30&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-24%2020%3A11%3A49&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-01 17:44:51

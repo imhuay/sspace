@@ -2,7 +2,7 @@ LoRA (Low-Rank Adaptation, `ˈlɔːrə`) <!-- suffix --> [📋](#qa "面试问�
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-15&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-10-24%2018%3A18%3A57&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-24%2020%3A11%3A49&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-15 02:29:31

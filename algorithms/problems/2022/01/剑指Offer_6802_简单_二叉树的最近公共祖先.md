@@ -243,7 +243,7 @@ class Solution:
 
 </details>
 
-<details><summary><b>树形递归 (5)</b></summary>
+<details><summary><b>树形递归 (6)</b></summary>
 
 > [[中等, LeetCode] 打家劫舍III](../06/LeetCode_0337_中等_打家劫舍III.md)  
 > [[中等, LeetCode] 路径总和III](../06/LeetCode_0437_中等_路径总和III.md)  
@@ -251,6 +251,7 @@ class Solution:
   > 
 > [[困难, LeetCode] 二叉树中的最大路径和](../02/LeetCode_0124_困难_二叉树中的最大路径和.md)  
   > 
+> [[简单, LeetCode] 二叉树的直径](../../2025/11/LeetCode_0543_简单_二叉树的直径.md)  
 > [[简单, LeetCode] 平衡二叉树 🔥](../09/LeetCode_0110_简单_平衡二叉树.md)  
   > 
 

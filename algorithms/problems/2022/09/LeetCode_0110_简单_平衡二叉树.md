@@ -164,7 +164,7 @@ class Solution:
 
 </details>
 
-<details><summary><b>树形递归 (5)</b></summary>
+<details><summary><b>树形递归 (6)</b></summary>
 
 > [[中等, LeetCode] 打家劫舍III](../06/LeetCode_0337_中等_打家劫舍III.md)  
 > [[中等, LeetCode] 路径总和III](../06/LeetCode_0437_中等_路径总和III.md)  
@@ -172,6 +172,7 @@ class Solution:
   > 
 > [[困难, LeetCode] 二叉树中的最大路径和](../02/LeetCode_0124_困难_二叉树中的最大路径和.md)  
   > 
+> [[简单, LeetCode] 二叉树的直径](../../2025/11/LeetCode_0543_简单_二叉树的直径.md)  
 > [[简单, 剑指Offer] 二叉树的最近公共祖先](../01/剑指Offer_6802_简单_二叉树的最近公共祖先.md)  
   > 
 
@@ -179,7 +180,7 @@ class Solution:
 
 <details><summary><b>热门 (16)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
 > [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 搜索二维矩阵 II 🔥](../07/LeetCode_0240_中等_搜索二维矩阵II.md)  

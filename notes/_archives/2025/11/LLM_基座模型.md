@@ -2,7 +2,7 @@ LLM 基座模型 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-04&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-09%2005%3A26%3A06&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-24%2020%3A11%3A49&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-04 23:51:12

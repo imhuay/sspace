@@ -2,7 +2,7 @@ MoE 备忘 <!-- suffix --> [✒️](#todo "TODO(1)")<sup style="color:Gray">1</s
 ===
 <!--START_SECTION:badge-->
 ![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-09-03&labelColor=gray&color=lightsteelblue&style=flat-square)
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-01%2003%3A20%3A21&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-24%2020%3A11%3A49&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-09-03 08:53:08

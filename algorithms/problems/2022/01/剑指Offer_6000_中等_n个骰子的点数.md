@@ -141,23 +141,27 @@ class Solution:
 ### 相关问题
 
 
-<details><summary><b>动态规划 (53)</b></summary>
+<details><summary><b>动态规划 (58)</b></summary>
 
 > [[中等, LeetCode] 一和零](../06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 三角形最小路径和](../06/LeetCode_0120_中等_三角形最小路径和.md)  
 > [[中等, LeetCode] 不同的二叉搜索树](../03/LeetCode_0096_中等_不同的二叉搜索树.md)  
 > [[中等, LeetCode] 乘积最大子数组](../06/LeetCode_0152_中等_乘积最大子数组.md)  
-> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 (含冷冻期)](../../2025/11/LeetCode_0309_中等_买卖股票的最佳时机(含冷冻期).md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 多边形三角剖分的最低得分](../../2025/11/LeetCode_1039_中等_多边形三角剖分的最低得分.md)  
 > [[中等, LeetCode] 完全平方数](../02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](../06/LeetCode_0198_中等_打家劫舍.md)  
 > [[中等, LeetCode] 打家劫舍II](../06/LeetCode_0213_中等_打家劫舍II.md)  
 > [[中等, LeetCode] 整数拆分](../../2021/12/LeetCode_0343_中等_整数拆分.md)  
 > [[中等, LeetCode] 施咒的最大总伤害](../../2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)  
 > [[中等, LeetCode] 最小路径和](LeetCode_0064_中等_最小路径和.md)  
+> [[中等, LeetCode] 最长公共子序列](../../2025/11/LeetCode_1143_中等_最长公共子序列.md)  
 > [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
+> [[中等, LeetCode] 最长回文子序列](../../2025/11/LeetCode_0516_中等_最长回文子序列.md)  
 > [[中等, LeetCode] 最长递增子序列 🔥](../06/LeetCode_0300_中等_最长递增子序列.md)  
 > [[中等, LeetCode] 解码方法](../02/LeetCode_0091_中等_解码方法.md)  
-> [[中等, LeetCode] 零钱兑换](../06/LeetCode_0322_中等_零钱兑换.md)  
+> [[中等, LeetCode] 零钱兑换 (完全背包)](../06/LeetCode_0322_中等_零钱兑换(完全背包).md)  
 > [[中等, LeetCode] 零钱兑换II](../06/LeetCode_0518_中等_零钱兑换II.md)  
 > [[中等, 剑指Offer] 丑数 🔥](../../2021/12/剑指Offer_4900_中等_丑数.md)  
 > [[中等, 剑指Offer] 剪绳子 (整数拆分)](../../2021/11/剑指Offer_1401_中等_剪绳子(整数拆分).md)  
@@ -176,6 +180,7 @@ class Solution:
 > [[中等, 牛客] 矩阵的最小路径和](../03/牛客_0059_中等_矩阵的最小路径和.md)  
 > [[中等, 牛客] 连续子数组的最大乘积](../04/牛客_0083_中等_连续子数组的最大乘积.md)  
   > 
+> [[困难, LeetCode] 买卖股票的最佳时机 IV (至多交易 K 次)](../../2025/11/LeetCode_0188_困难_买卖股票的最佳时机IV(至多交易K次).md)  
 > [[困难, LeetCode] 买卖股票的最佳时机III](../06/LeetCode_0123_困难_买卖股票的最佳时机III.md)  
 > [[困难, LeetCode] 最长有效括号 🔥](../10/LeetCode_0032_困难_最长有效括号.md)  
 > [[困难, LeetCode] 正则表达式匹配 🔥](LeetCode_0010_困难_正则表达式匹配.md)  
@@ -202,14 +207,15 @@ class Solution:
 
 </details>
 
-<details><summary><b>暴力递归与动态规划 (11)</b></summary>
+<details><summary><b>暴力递归与动态规划 (12)</b></summary>
 
 > [[中等, LeetCode] 一和零](../06/LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 完全平方数](../02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](../06/LeetCode_0198_中等_打家劫舍.md)  
 > [[中等, LeetCode] 施咒的最大总伤害](../../2025/10/LeetCode_3186_中等_施咒的最大总伤害.md)  
+> [[中等, LeetCode] 最长公共子序列](../../2025/11/LeetCode_1143_中等_最长公共子序列.md)  
 > [[中等, LeetCode] 解码方法](../02/LeetCode_0091_中等_解码方法.md)  
-> [[中等, LeetCode] 零钱兑换](../06/LeetCode_0322_中等_零钱兑换.md)  
+> [[中等, LeetCode] 零钱兑换 (完全背包)](../06/LeetCode_0322_中等_零钱兑换(完全背包).md)  
 > [[中等, 牛客] 01背包 🔥](../05/牛客_0145_中等_01背包.md)  
 > [[中等, 牛客] 最长公共子串](../05/牛客_0127_中等_最长公共子串.md)  
   > 

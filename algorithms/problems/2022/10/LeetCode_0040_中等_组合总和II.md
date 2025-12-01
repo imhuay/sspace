@@ -1,6 +1,6 @@
-## 组合总和II
+## 组合总和 II
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-07-08%2016%3A53%3A13&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-12-01%2000%3A20%3A11&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode%20Hot%20100&color=blue&style=flat-square)](../../../README.md#leetcode-hot-100)
@@ -147,10 +147,14 @@ class Solution:
 
 </details>
 
-<details><summary><b>递归 (20)</b></summary>
+<details><summary><b>递归 (25)</b></summary>
 
 > [[中等, LeetCode] 全排列 🔥](LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](LeetCode_0047_中等_全排列II.md)  
+> [[中等, LeetCode] 分割回文串](../../2025/11/LeetCode_0131_中等_分割回文串.md)  
+> [[中等, LeetCode] 子集](../../2025/11/LeetCode_0078_中等_子集.md)  
+> [[中等, LeetCode] 组合](../../2025/11/LeetCode_0077_中等_组合.md)  
+> [[中等, LeetCode] 组合总和 III](../../2025/11/LeetCode_0216_中等_组合总和III.md)  
 > [[中等, LeetCode] 组合总和 🔥](LeetCode_0039_中等_组合总和.md)  
 > [[中等, 剑指Offer] 二叉搜索树与双向链表 🔥](../../2021/12/剑指Offer_3600_中等_二叉搜索树与双向链表.md)  
 > [[中等, 剑指Offer] 数值的整数次方 (快速幂) 🔥](../../2021/11/剑指Offer_1600_中等_数值的整数次方(快速幂).md)  
@@ -163,6 +167,7 @@ class Solution:
 > [[中等, 牛客] 没有重复项数字的全排列](../03/牛客_0043_中等_没有重复项数字的全排列.md)  
 > [[中等, 牛客] 集合的所有子集(一)](../02/牛客_0027_中等_集合的所有子集(一).md)  
   > 
+> [[困难, LeetCode] 51](../../2025/11/LeetCode_N 皇后_困难_51.md)  
 > [[困难, 剑指Offer] 正则表达式匹配](../../2021/11/剑指Offer_1900_困难_正则表达式匹配.md)  
 > [[困难, 牛客] N皇后问题](../03/牛客_0039_困难_N皇后问题.md)  
 > [[困难, 牛客] 数独](../03/牛客_0047_困难_数独.md)  

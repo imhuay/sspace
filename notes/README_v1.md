@@ -30,8 +30,8 @@ Notes
 <!-- omit in toc -->
 ## Recently 📖
 <!--START_SECTION:recent-->
-- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(110)">📋</span><sup style="color:Brown">110</sup><span title="置顶">📌</span>
-- [`2025-11-01` LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "LLM 训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
+- [`2025-10-21` QA 合集](_archives/2025/10/QA_合集.md) <span title="特别关注">🧣</span><span title="面试问题整理(114)">📋</span><sup style="color:Brown">114</sup><span title="置顶">📌</span>
+- [`2025-11-01` LLM 训练优化](_archives/2025/11/LLM_训练优化.md) [📋](_archives/2025/11/LLM_训练优化.md#qa "训练优化 · 面试问题整理(2)")<sup style="color:Brown">2</sup>
 - [`2025-10-03` 策略梯度定理及其推导](_archives/2025/09/RLHF/策略梯度定理及其推导.md) <span title="特别关注">🧣</span>
 - [`2025-09-09` 位置编码 ( Position Encoding )](_archives/2025/09/Transformer_位置编码.md) [📋](_archives/2025/09/Transformer_位置编码.md#qa "位置编码 · 面试问题整理(24)")<sup style="color:Brown">24</sup>
 - [`2025-09-05` Transformer 模型架构](_archives/2025/09/Transformer.md) [✒️](_archives/2025/09/Transformer.md#todo "TODO(3)")<sup style="color:Gray">3</sup>[📋](_archives/2025/09/Transformer.md#qa "基础模型 · 面试问题整理(23)")<sup style="color:Brown">23</sup>

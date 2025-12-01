@@ -1,6 +1,8 @@
-Prompt Engineering
+Prompt Engineering <!-- suffix --> [📋](#qa "面试问题整理(4)")<sup style="color:Brown">4</sup> <!-- suffix -->
 ===
 <!--START_SECTION:badge-->
+![create date](https://img.shields.io/static/v1?label=create%20date&message=2025-11-23&labelColor=gray&color=lightsteelblue&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-30%2001%3A14%3A52&labelColor=gray&color=thistle&style=flat-square)
 <!--END_SECTION:badge-->
 <!--info
 date: 2025-11-23 17:52:54
@@ -83,7 +85,7 @@ with_keywords: false
     - **Observation 3**: `计算结果为: 6984.06`
 
 - **Thought 4**: 现在我已经收集齐了所有信息; 我可以给出最终答案了;
-    - **Final Answer**: 珠穆朗玛峰高约8848.86米; 它比黄山（高约1864.8米）高出约6984.06米;
+    - **Final Answer**: 珠穆朗玛峰高约8848.86米; 它比黄山 (高约1864.8米) 高出约6984.06米;
 
 </details>
 
@@ -190,20 +192,24 @@ use_section_number: true
 ## Q&A
 
 <!--START_SECTION:qa_toc-->
+- [1. ✅ 介绍下 ReAct 框架](#1--介绍下-react-框架)
+    - [1.1. ✅ 为什么 ReAct 有效? ReAct 的优点](#11--为什么-react-有效-react-的优点)
+- [2. ✅ 介绍下 Plan-Execute 框架](#2--介绍下-plan-execute-框架)
+    - [2.1. ✅ Plan-Execute 框架的优点 (相比 ReAct)](#21--plan-execute-框架的优点-相比-react)
 <!--END_SECTION:qa_toc-->
 
 ---
 
 <!-- omit in toc -->
-### ✅ 介绍下 ReAct 框架
+### 1. ✅ 介绍下 ReAct 框架
 > [**核心思想** . **工作流程**](#react-reasoning-and-acting)
 
 <!-- omit in toc -->
-#### ✅ 为什么 ReAct 有效? ReAct 的优点
+#### 1.1. ✅ 为什么 ReAct 有效? ReAct 的优点
 > • **减少幻觉** . **复杂问题拆解, 增强可解释性** <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **减少幻觉**
         - 传统的链式思考 (CoT) 只在模型内部进行推理, 缺乏与外部世界交互, 容易产生幻觉;
         - ReAct 将 Reasoning (推理) 与 Action (行动) 交替结合, 使模型具备 **调用工具或检索信息** 的能力;
@@ -212,19 +218,19 @@ use_section_number: true
         - 整个流程模拟了人类在解决复杂问题时的工作过程, 
         - 通过一步步拆解, 将复杂的问题分解成一系列简单问题, 
         - 让我们能清晰地理解模型是如何一步步得出最终答案的.
-    
+
     </details>
 
 <!-- omit in toc -->
-### ✅ 介绍下 Plan-Execute 框架
+### 2. ✅ 介绍下 Plan-Execute 框架
 > [**核心思想** . **工作流程**](#plan--execute)
 
 <!-- omit in toc -->
-#### ✅ Plan-Execute 框架的优点 (相比 ReAct)
+#### 2.1. ✅ Plan-Execute 框架的优点 (相比 ReAct)
 > • **显式的长期规划, 可控性更强** . **适合长流程任务** . **方便调试与复用** <br>
 
 -   <details><summary><b> 展开详情 ⬇️ </b></summary>
-    
+
     - **显式的长期规划, 可控性更强**
         - Plan-Execute 的计划是显式的, 可以被检查, 修改或约束;
         - 避免不可预测的推理路径;
@@ -234,9 +240,6 @@ use_section_number: true
     - **方便调试与复用**
         - Planner 输出的计划可以单独保存或复用, 方便调试和迭代;
         - ReAct 的推理轨迹虽然透明, 但不易直接复用为固定流程;
-    
+
     </details>
-
-
-
 <!--END_SECTION:qa-->

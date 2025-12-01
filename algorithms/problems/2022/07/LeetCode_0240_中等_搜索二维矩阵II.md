@@ -112,7 +112,7 @@ class Solution:
 
 <details><summary><b>热门 (16)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
 > [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 搜索旋转排序数组 🔥](../../2021/10/LeetCode_0033_中等_搜索旋转排序数组.md)  

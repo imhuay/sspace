@@ -133,8 +133,8 @@ class Solution:
 > [[中等, LeetCode] 最长连续序列 🔥](../../2025/11/LeetCode_0128_中等_最长连续序列.md)  
 > [[中等, LeetCode] 电话号码的字母组合 🔥](../10/LeetCode_0017_中等_电话号码的字母组合.md)  
 > [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
+> [[中等, LeetCode] 组合总和 II 🔥](../10/LeetCode_0040_中等_组合总和II.md)  
 > [[中等, LeetCode] 组合总和 🔥](../10/LeetCode_0039_中等_组合总和.md)  
-> [[中等, LeetCode] 组合总和II 🔥](../10/LeetCode_0040_中等_组合总和II.md)  
   > 
 > [[困难, LeetCode] 合并K个升序链表 🔥](../10/LeetCode_0023_困难_合并K个升序链表.md)  
 > [[困难, LeetCode] 寻找两个正序数组的中位数 🔥](LeetCode_0004_困难_寻找两个正序数组的中位数.md)  
@@ -155,7 +155,7 @@ class Solution:
 
 <details><summary><b>热门 (16)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
 > [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 搜索二维矩阵 II 🔥](../07/LeetCode_0240_中等_搜索二维矩阵II.md)  
