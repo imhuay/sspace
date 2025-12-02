@@ -58,7 +58,7 @@ class Solution:
             if i == 0 or j == 0:
                 return 0
             
-            if s[i - 1] == t[j - 1]:
+            if s[i - 1] == t[j - 1]:    # 公共长度 + 1
                 r1 = dfs(i - 1, j - 1)
                 return r1 + 1
             

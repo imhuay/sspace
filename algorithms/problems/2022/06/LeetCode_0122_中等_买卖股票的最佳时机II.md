@@ -12,7 +12,7 @@ tags: [动态规划, 贪心, 热门]
 source: LeetCode
 level: 中等
 number: '0122'
-name: '买卖股票的最佳时机 II'
+name: '买卖股票的最佳时机 II (不限交易次数)'
 companies: []
 -->
 

@@ -33,12 +33,32 @@ companies: []
 
 <!-- <div align="center"><img src="../../../_assets/xxx.png" height="300" /></div> -->
 
-<summary><b>思路 1: 动态规划</b></summary>
+<summary><b>思路: 动态规划</b></summary>
 
 **状态定义**: `dp[i]` 表示以 `nums[i]` 结尾的最长递增子序列长度;
 > 不能将 `dp[i]` 定义 `nums[:i]` 子数组中的最长递增子序列长度, 虽然这样定义很直观, 但它不满足**最优子结构**的条件, 简单来说, 就是你无法通过 `dp[i-1]` 得到 `dp[i]`.
 
-<details><summary><b>Python</b></summary>
+<details><summary><b>Python: 递归</b></summary>
+
+```python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        
+        @cache
+        def dfs(i):
+            res = 0
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    res = max(res, dfs(j))
+            return res + 1
+        
+        n = len(nums)
+        return max(dfs(i) for i in range(n))
+```
+
+</details>
+
+<details><summary><b>Python: DP</b></summary>
 
 ```python
 class Solution:
@@ -58,9 +78,7 @@ class Solution:
 
 </details>
 
-<summary><b>思路 2: 优化 dp 的状态定义</b></summary>
-
-<details><summary><b>Python: </b></summary>
+<details><summary><b>Python: 优化 dp 的状态定义</b></summary>
 
 - 考虑新的**状态定义**: `dp[i]` 表示长度为 `i + 1` 的最长递增子序列末尾的最小值;
     > `dp` 序列一定时单调递增的, 可用反证法证明, 详见: [最长递增子序列 (动态规划 + 二分查找, 清晰图解) - Krahets](https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/zui-chang-shang-sheng-zi-xu-lie-dong-tai-gui-hua-2/)

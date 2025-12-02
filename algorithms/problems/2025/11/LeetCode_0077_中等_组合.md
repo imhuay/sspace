@@ -28,12 +28,12 @@ name: '组合'
     输入：n = 4, k = 2
     输出：
     [
-    [2,4],
-    [3,4],
-    [2,3],
-    [1,2],
-    [1,3],
-    [1,4],
+        [2,4],
+        [3,4],
+        [2,3],
+        [1,2],
+        [1,3],
+        [1,4],
     ]
 ```
 
@@ -59,21 +59,20 @@ name: '组合'
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         
-        ans, path = [], []
+        ans = []
 
-        def dfs(i):
+        def dfs(i, path):
+
             c = len(path)               # 当前已经添加的个数
             if c == k:
                 ans.append(path[:])
                 return
-            if n - i + 1 < k - c:       # 剩下的数不够组成 k 个
+            if n - i + 1 < k - c:       # 剩下的数不够组成 k 个 (剪枝, 不写也可以)
                 return
             for j in range(i, n + 1):
-                path.append(j)
-                dfs(j + 1)
-                path.pop()
+                dfs(j + 1, path + [j])
         
-        dfs(1)  # 从 1 到 n
+        dfs(1, [])  # 从 1 到 n
         return ans
 ```
 

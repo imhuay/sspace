@@ -64,7 +64,7 @@ class Solution:
             if hold == 1:
                 r2 = dfs(i - 1, j, 0) - prices[i - 1]
             else:
-                r2 = dfs(i - 1, j - 1, 1) + prices[i - 1]
+                r2 = dfs(i - 1, j - 1, 1) + prices[i - 1]  # 卖出时才算一次交易次数
             
             return max(r1, r2)
         

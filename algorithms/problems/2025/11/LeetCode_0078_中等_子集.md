@@ -46,7 +46,7 @@ name: '子集'
 
 > [回溯算法套路①子集型回溯【基础算法精讲 14】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mG4y1A7Gu?t=359.0)
 
-<details><summary><b>Python: 模板 1</b></summary>
+<details><summary><b>Python: 二叉树模板 (每条从根到叶的路径是一个答案)</b></summary>
 
 - **1. 当前操作**:
     - 枚举第 `i` 个元素: **选 / 不选**
@@ -79,7 +79,7 @@ class Solution:
 
 </details>
 
-<details><summary><b>Python: 模板 2 (每个节点都是答案)</b></summary>
+<details><summary><b>Python: 多叉树模板 (每个叶节点是一个答案, 推荐)</b></summary>
 
 - **1. 当前操作**:
     - 枚举一个下标 `j >= i` 的数字, 加入 `path`
@@ -93,20 +93,18 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
         ans = []
-        path = []
         n = len(nums)
 
-        def dfs(i):
-            ans.append(path[:])
-            if i == n:
+        def dfs(i, path):
+            if i == n + 1:
+                ans.append(path[:])
                 return
-            
-            for j in range(i, n):
-                path.append(nums[j])
-                dfs(j + 1)
-                path.pop()
+
+            for j in range(i, n + 1):   # 用 j == n 模拟不添加元素
+                dfs(j + 1,
+                    path + [nums[j]] if j < n else path)
         
-        dfs(0)
+        dfs(0, [])
         return ans
 ```
 

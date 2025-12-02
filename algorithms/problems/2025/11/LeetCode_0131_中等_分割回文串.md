@@ -56,20 +56,17 @@ name: '分割回文串'
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         
-        ans, path, n = [], [], len(s)
+        ans, n = [], len(s)
 
-        def dfs(i):
+        def dfs(i, path):
             if i == n:
                 ans.append(path[:])
 
             for j in range(i, n):
                 t = s[i: j + 1]
-                if t == t[::-1]:
-                    path.append(t)
-                    dfs(j + 1)
-                    path.pop()
-        
-        dfs(0)
+                if t == t[::-1]:        # 是回文串
+                    dfs(j + 1, path + [t])
+        dfs(0, [])
         return ans
 ```
 

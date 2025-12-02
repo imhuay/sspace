@@ -10,7 +10,7 @@
 <!--info
 tags: [动态规划, 经典, 热门]
 source: LeetCode
-level: 困难
+level: '中等'
 number: '0072'
 name: 编辑距离
 companies: []

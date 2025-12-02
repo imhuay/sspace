@@ -11,8 +11,8 @@
 tags: [回溯]
 source: 'LeetCode'
 level: '困难'
-number: 'N 皇后'
-name: '51'
+number: '51'
+name: 'N 皇后'
 -->
 
 > [51. N 皇后 - 力扣 (LeetCode) ](https://leetcode.cn/problems/n-queens/)
@@ -83,8 +83,8 @@ class Solution:
         ans = []
         col = [0] * n  # (r, col[r]) 表示在该坐标有一个皇后
         used = [0] * n
-        diag1 = [0] * (2*n-1)   # r+c 取值范围 [0, 2n]
-        diag2 = [0] * (2*n-1)   # r-c 取值范围 [-n, n]
+        diag1 = [0] * (2*n-1)   # r+c 取值范围 [0, 2n), 最后一行 (n,n) 生成结果
+        diag2 = [0] * (2*n-1)   # r-c 取值范围 (-n, n], 最后一行 (0,n) 生成结果
         
         def dfs(r):
 
