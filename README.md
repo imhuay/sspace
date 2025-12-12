@@ -81,12 +81,10 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 4 hrs 22 mins
+Total Time: 3 hrs 8 mins
 
-Markdown   3 hrs 34 mins   >>>>>>>>>>>>>>>>>>>>-----   81.78 %
-GitHub     47 mins         >>>>>--------------------   18.01 %
-Python     0 secs          -------------------------   00.16 %
-TeX        0 secs          -------------------------   00.05 %
+Markdown   2 hrs 20 mins   >>>>>>>>>>>>>>>>>>>------   74.28 %
+GitHub     48 mins         >>>>>>-------------------   25.72 %
 ```
 
 <!--END_SECTION:waka-->
