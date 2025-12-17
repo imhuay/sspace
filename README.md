@@ -81,10 +81,10 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 57 mins
+Total Time: 30 mins
 
-GitHub     31 mins         >>>>>>>>>>>>>>-----------   55.33 %
-Markdown   25 mins         >>>>>>>>>>>--------------   44.67 %
+Markdown   25 mins         >>>>>>>>>>>>>>>>>>>>>----   84.20 %
+GitHub     4 mins          >>>>---------------------   15.80 %
 ```
 
 <!--END_SECTION:waka-->
