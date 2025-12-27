@@ -51,37 +51,35 @@ k 是一个正整数, 它的值小于或等于链表的长度. 如果节点总�
 <details><summary><b>Python</b></summary>
 
 ```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-
 class Solution:
-
-    def reverse(self, head):
-        pre, cur = None, head
-        while cur:
-            nxt = cur.next
-            cur.next = pre
-            pre = cur
-            cur = nxt
-        return pre, head
-
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        def reverse(head, k=None):
+            prev, cur = None, head
+            cnt = 0
+            while cur and (k is None or cnt < k):  # 如果 k=None，就无限循环直到链表结束
+                nxt = cur.next
+                cur.next = prev
+                prev, cur = cur, nxt
+                cnt += 1
+            new_head, new_tail, nxt = prev, head, cur
+            return new_head, new_tail, nxt
 
-        dummy = cur = ListNode(next=head)  # 设置伪头节点
-        while cur:
-            pre = cur  # 子链表头节点的前一个节点
+        dummy = ListNode(0, head)
+        pre = dummy
+        while True:
+            # 检查是否有 k 个节点
+            tmp = pre
             for _ in range(k):
-                if not cur.next:
+                tmp = tmp.next
+                if not tmp:
                     return dummy.next
-                cur = cur.next
-            sub_head = cur.next  # 子链表尾节点的下一个节点
-            cur.next = None  # 断开子链表
-            pre.next, sub_tail = self.reverse(pre.next)  # 反转子链表, 返回反转后的头尾节点
-            sub_tail.next = sub_head
-            cur = sub_tail
+            # 反转 k 个节点
+            new_head, new_tail, nxt = reverse(pre.next, k)
+            # 拼接
+            pre.next = new_head
+            new_tail.next = nxt
+            pre = new_tail
 
         return dummy.next
 ```
