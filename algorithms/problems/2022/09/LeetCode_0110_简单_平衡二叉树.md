@@ -164,13 +164,14 @@ class Solution:
 
 </details>
 
-<details><summary><b>树形递归 (6)</b></summary>
+<details><summary><b>树形递归 (7)</b></summary>
 
 > [[中等, LeetCode] 打家劫舍III](../06/LeetCode_0337_中等_打家劫舍III.md)  
 > [[中等, LeetCode] 路径总和III](../06/LeetCode_0437_中等_路径总和III.md)  
 > [[中等, 牛客] 判断一棵二叉树是否为搜索二叉树和完全二叉树](../03/牛客_0060_中等_判断一棵二叉树是否为搜索二叉树和完全二叉树.md)  
   > 
 > [[困难, LeetCode] 二叉树中的最大路径和](../02/LeetCode_0124_困难_二叉树中的最大路径和.md)  
+> [[困难, LeetCode] 监控二叉树](../../2025/12/LeetCode_0968_困难_监控二叉树.md)  
   > 
 > [[简单, LeetCode] 二叉树的直径](../../2025/11/LeetCode_0543_简单_二叉树的直径.md)  
 > [[简单, 剑指Offer] 二叉树的最近公共祖先](../01/剑指Offer_6802_简单_二叉树的最近公共祖先.md)  
@@ -180,11 +181,12 @@ class Solution:
 
 <details><summary><b>热门 (16)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II (不限交易次数) 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II(不限交易次数).md)  
 > [[中等, LeetCode] 全排列 🔥](../10/LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](../10/LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 搜索二维矩阵 II 🔥](../07/LeetCode_0240_中等_搜索二维矩阵II.md)  
 > [[中等, LeetCode] 搜索旋转排序数组 🔥](../../2021/10/LeetCode_0033_中等_搜索旋转排序数组.md)  
+> [[中等, LeetCode] 编辑距离 🔥](../06/LeetCode_0072_中等_编辑距离.md)  
 > [[中等, LeetCode] 重排链表 🔥](../06/LeetCode_0143_中等_重排链表.md)  
 > [[中等, 剑指Offer] 把字符串转换成整数 🔥](../01/剑指Offer_6700_中等_把字符串转换成整数.md)  
 > [[中等, 牛客] 三数之和 🔥](../03/牛客_0054_中等_三数之和.md)  
@@ -194,7 +196,6 @@ class Solution:
 > [[困难, LeetCode] 合并K个升序链表 🔥](../10/LeetCode_0023_困难_合并K个升序链表.md)  
 > [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
 > [[困难, LeetCode] 滑动窗口最大值 🔥](../10/LeetCode_0239_困难_滑动窗口最大值.md)  
-> [[困难, LeetCode] 编辑距离 🔥](../06/LeetCode_0072_困难_编辑距离.md)  
   > 
 > [[简单, LeetCode] x 的平方根 🔥](../10/LeetCode_0069_简单_x的平方根.md)  
 > [[简单, 牛客] 两个链表的第一个公共结点 🔥](../03/牛客_0066_简单_两个链表的第一个公共结点.md)  

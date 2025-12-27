@@ -200,11 +200,12 @@ class Solution:
 
 <details><summary><b>热门 (16)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II (不限交易次数) 🔥](../06/LeetCode_0122_中等_买卖股票的最佳时机II(不限交易次数).md)  
 > [[中等, LeetCode] 全排列 🔥](LeetCode_0046_中等_全排列.md)  
 > [[中等, LeetCode] 全排列II 🔥](LeetCode_0047_中等_全排列II.md)  
 > [[中等, LeetCode] 搜索二维矩阵 II 🔥](../07/LeetCode_0240_中等_搜索二维矩阵II.md)  
 > [[中等, LeetCode] 搜索旋转排序数组 🔥](../../2021/10/LeetCode_0033_中等_搜索旋转排序数组.md)  
+> [[中等, LeetCode] 编辑距离 🔥](../06/LeetCode_0072_中等_编辑距离.md)  
 > [[中等, LeetCode] 重排链表 🔥](../06/LeetCode_0143_中等_重排链表.md)  
 > [[中等, 剑指Offer] 把字符串转换成整数 🔥](../01/剑指Offer_6700_中等_把字符串转换成整数.md)  
 > [[中等, 牛客] 三数之和 🔥](../03/牛客_0054_中等_三数之和.md)  
@@ -213,7 +214,6 @@ class Solution:
 > [[困难, LeetCode] K个一组翻转链表 🔥](../02/LeetCode_0025_困难_K个一组翻转链表.md)  
 > [[困难, LeetCode] 接雨水 🔥](../../2021/10/LeetCode_0042_困难_接雨水.md)  
 > [[困难, LeetCode] 滑动窗口最大值 🔥](LeetCode_0239_困难_滑动窗口最大值.md)  
-> [[困难, LeetCode] 编辑距离 🔥](../06/LeetCode_0072_困难_编辑距离.md)  
   > 
 > [[简单, LeetCode] x 的平方根 🔥](LeetCode_0069_简单_x的平方根.md)  
 > [[简单, LeetCode] 平衡二叉树 🔥](../09/LeetCode_0110_简单_平衡二叉树.md)  

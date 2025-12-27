@@ -105,7 +105,7 @@ Python     11 mins         >------------------------   03.67 %
 
 ### Level 📈
 <!--START_SECTION:level-->
-- [中等 <sup>(165)</sup>](algorithms/README.md#中等)
+- [中等 <sup>(167)</sup>](algorithms/README.md#中等)
 - [简单 <sup>(107)</sup>](algorithms/README.md#简单)
 - [困难 <sup>(39)</sup>](algorithms/README.md#困难)
 <!--END_SECTION:level-->
@@ -128,14 +128,14 @@ Python     11 mins         >------------------------   03.67 %
 
 <!--START_SECTION:collection-->
 - [牛客 <sup>(131)</sup>](algorithms/README.md#牛客)
-- [LeetCode <sup>(99)</sup>](algorithms/README.md#leetcode)
+- [LeetCode <sup>(101)</sup>](algorithms/README.md#leetcode)
 - [剑指Offer <sup>(75)</sup>](algorithms/README.md#剑指offer)
 <!--END_SECTION:collection-->
 
 <details><summary><b> More 🗃️ </b></summary>
 
 <!--START_SECTION:collection_more-->
-- [动态规划 <sup>(59)</sup>](algorithms/README.md#动态规划)
+- [动态规划 <sup>(60)</sup>](algorithms/README.md#动态规划)
 - [二叉树/树 <sup>(48)</sup>](algorithms/README.md#二叉树树)
 - [双指针 <sup>(26)</sup>](algorithms/README.md#双指针)
 - [剑指Offer2 <sup>(3)</sup>](algorithms/README.md#剑指offer2)
@@ -178,13 +178,13 @@ Python     11 mins         >------------------------   03.67 %
 
 ### 算法
 <!--START_SECTION:algo-->
-- [动态规划 <sup>(59)</sup>](algorithms/README.md#动态规划)
+- [动态规划 <sup>(60)</sup>](algorithms/README.md#动态规划)
 - [递归 <sup>(26)</sup>](algorithms/README.md#递归)
 - [二分查找 <sup>(24)</sup>](algorithms/README.md#二分查找)
 - [深度优先搜索 <sup>(20)</sup>](algorithms/README.md#深度优先搜索)
 - [排序 <sup>(15)</sup>](algorithms/README.md#排序)
 - [暴力递归与动态规划 <sup>(13)</sup>](algorithms/README.md#暴力递归与动态规划)
-- [树形递归 <sup>(7)</sup>](algorithms/README.md#树形递归)
+- [树形递归 <sup>(8)</sup>](algorithms/README.md#树形递归)
 - [广度优先搜索 <sup>(4)</sup>](algorithms/README.md#广度优先搜索)
 - [分治 <sup>(4)</sup>](algorithms/README.md#分治)
 <!--END_SECTION:algo-->

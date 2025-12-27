@@ -1,33 +1,31 @@
-## 最长公共子序列
+## 目标和
 <!--START_SECTION:badge-->
 ![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-12-02%2013%3A39%3A41&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#动态规划)
-[![](https://img.shields.io/static/v1?label=&message=%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#暴力递归与动态规划)
 <!--END_SECTION:badge-->
 <!--START_SECTION:badge-->
 <!--END_SECTION:badge-->
 <!--info
-tags: [dfs2dp]
+tags: [DP]
 source: 'LeetCode'
 level: '中等'
-number: '1143'
-name: '最长公共子序列'
+number: '494'
+name: '目标和'
 -->
 
-> [1143. 最长公共子序列 - 力扣 (LeetCode) ](https://leetcode.cn/problems/longest-common-subsequence/)
+> [494. 目标和 - 力扣 (LeetCode) ](https://leetcode.cn/problems/target-sum/description/)
 
 <summary><b>问题简述</b></summary>
 
 ```md
-给定两个字符串 text1 和 text2，返回这两个字符串的最长 **公共子序列** 的长度。
-如果不存在 **公共子序列**，返回 0 。
+给你一个非负整数数组 nums 和一个整数 target 。
 
-示例:
-    输入：text1 = "abcde", text2 = "ace" 
-    输出：3  
-    解释：最长公共子序列是 "ace" ，它的长度为 3 。
+向数组中的每个整数前添加 '+' 或 '-' ，然后串联起所有整数，可以构造一个 表达式 ：
+
+例如，nums = [2, 1] ，可以在 2 之前添加 '+' ，在 1 之前添加 '-' ，然后串联起来得到表达式 "+2-1" 。
+返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。
 ```
 
 <!-- 
@@ -43,31 +41,36 @@ name: '最长公共子序列'
 
 ---
 
-<summary><b>思路: dfs</b></summary>
+<summary><b>思路: 转化成 "01背包" 问题</b></summary>
 
-> [最长公共子序列 编辑距离【基础算法精讲 19】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1TM4y1o7ug?t=0.1)
+- 通过以下变换将问题转换成从 `nums` 中选数:
+    - 记 `p` = 所有添加 `+` 的数之和, `s` = 所有数之和
+    - 则 `s - p` = 所有添加 `-` 的数之和
+    - 则 `target = p - (s - p)`
+    - `p = (s + target) / 2 = t / 2`, 其中 `t > 0` 且为偶数;
 
 <details><summary><b>Python</b></summary>
 
 ```python
 class Solution:
-    def longestCommonSubsequence(self, s: str, t: str) -> int:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
         
+        t = target + sum(nums)
+        if t < 0 or t % 2:
+            return 0
+        p = t // 2
+
         @cache
-        def dfs(i, j):
-            if i == 0 or j == 0:
-                return 0
+        def dfs(i, c):
+            if i == 0:
+                return 1 if c == 0 else 0
             
-            if s[i - 1] == t[j - 1]:    # 公共长度 + 1
-                r1 = dfs(i - 1, j - 1)
-                return r1 + 1
-            
-            r2 = dfs(i - 1, j)
-            r3 = dfs(i, j - 1)
-            return max(r2, r3)
+            r1 = dfs(i - 1, c)
+            r2 = dfs(i - 1, c - nums[i - 1]) if c >= nums[i - 1] else 0
+            return r1 + r2
         
-        m, n = len(s), len(t)
-        return dfs(m, n)
+        n = len(nums)
+        return dfs(n, p)
 ```
 
 </details>
@@ -103,19 +106,19 @@ class Solution:
 > [[中等, LeetCode] 三角形最小路径和](../../2022/06/LeetCode_0120_中等_三角形最小路径和.md)  
 > [[中等, LeetCode] 不同的二叉搜索树](../../2022/03/LeetCode_0096_中等_不同的二叉搜索树.md)  
 > [[中等, LeetCode] 乘积最大子数组](../../2022/06/LeetCode_0152_中等_乘积最大子数组.md)  
-> [[中等, LeetCode] 买卖股票的最佳时机 (含冷冻期)](LeetCode_0309_中等_买卖股票的最佳时机(含冷冻期).md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 (含冷冻期)](../11/LeetCode_0309_中等_买卖股票的最佳时机(含冷冻期).md)  
 > [[中等, LeetCode] 买卖股票的最佳时机 II (不限交易次数) 🔥](../../2022/06/LeetCode_0122_中等_买卖股票的最佳时机II(不限交易次数).md)  
-> [[中等, LeetCode] 多边形三角剖分的最低得分](LeetCode_1039_中等_多边形三角剖分的最低得分.md)  
+> [[中等, LeetCode] 多边形三角剖分的最低得分](../11/LeetCode_1039_中等_多边形三角剖分的最低得分.md)  
 > [[中等, LeetCode] 完全平方数](../../2022/02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](../../2022/06/LeetCode_0198_中等_打家劫舍.md)  
 > [[中等, LeetCode] 打家劫舍II](../../2022/06/LeetCode_0213_中等_打家劫舍II.md)  
 > [[中等, LeetCode] 整数拆分](../../2021/12/LeetCode_0343_中等_整数拆分.md)  
 > [[中等, LeetCode] 施咒的最大总伤害](../10/LeetCode_3186_中等_施咒的最大总伤害.md)  
 > [[中等, LeetCode] 最小路径和](../../2022/01/LeetCode_0064_中等_最小路径和.md)  
+> [[中等, LeetCode] 最长公共子序列](../11/LeetCode_1143_中等_最长公共子序列.md)  
 > [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
-> [[中等, LeetCode] 最长回文子序列](LeetCode_0516_中等_最长回文子序列.md)  
+> [[中等, LeetCode] 最长回文子序列](../11/LeetCode_0516_中等_最长回文子序列.md)  
 > [[中等, LeetCode] 最长递增子序列 🔥](../../2022/06/LeetCode_0300_中等_最长递增子序列.md)  
-> [[中等, LeetCode] 目标和](../12/LeetCode_0494_中等_目标和.md)  
 > [[中等, LeetCode] 编辑距离 🔥](../../2022/06/LeetCode_0072_中等_编辑距离.md)  
 > [[中等, LeetCode] 解码方法](../../2022/02/LeetCode_0091_中等_解码方法.md)  
 > [[中等, LeetCode] 零钱兑换 (完全背包)](../../2022/06/LeetCode_0322_中等_零钱兑换(完全背包).md)  
@@ -138,7 +141,7 @@ class Solution:
 > [[中等, 牛客] 矩阵的最小路径和](../../2022/03/牛客_0059_中等_矩阵的最小路径和.md)  
 > [[中等, 牛客] 连续子数组的最大乘积](../../2022/04/牛客_0083_中等_连续子数组的最大乘积.md)  
   > 
-> [[困难, LeetCode] 买卖股票的最佳时机 IV (至多交易 K 次)](LeetCode_0188_困难_买卖股票的最佳时机IV(至多交易K次).md)  
+> [[困难, LeetCode] 买卖股票的最佳时机 IV (至多交易 K 次)](../11/LeetCode_0188_困难_买卖股票的最佳时机IV(至多交易K次).md)  
 > [[困难, LeetCode] 买卖股票的最佳时机III](../../2022/06/LeetCode_0123_困难_买卖股票的最佳时机III.md)  
 > [[困难, LeetCode] 最长有效括号 🔥](../../2022/10/LeetCode_0032_困难_最长有效括号.md)  
 > [[困难, LeetCode] 正则表达式匹配 🔥](../../2022/01/LeetCode_0010_困难_正则表达式匹配.md)  
@@ -160,26 +163,6 @@ class Solution:
 > [[简单, 牛客] 求路径](../../2022/02/牛客_0034_简单_求路径.md)  
 > [[简单, 牛客] 跳台阶](../../2022/03/牛客_0068_简单_跳台阶.md)  
 > [[简单, 牛客] 连续子数组的最大和](../../2022/01/牛客_0019_简单_连续子数组的最大和.md)  
-  > 
-
-</details>
-
-<details><summary><b>暴力递归与动态规划 (12)</b></summary>
-
-> [[中等, LeetCode] 一和零](../../2022/06/LeetCode_0474_中等_一和零.md)  
-> [[中等, LeetCode] 完全平方数](../../2022/02/LeetCode_0279_中等_完全平方数.md)  
-> [[中等, LeetCode] 打家劫舍](../../2022/06/LeetCode_0198_中等_打家劫舍.md)  
-> [[中等, LeetCode] 施咒的最大总伤害](../10/LeetCode_3186_中等_施咒的最大总伤害.md)  
-> [[中等, LeetCode] 解码方法](../../2022/02/LeetCode_0091_中等_解码方法.md)  
-> [[中等, LeetCode] 零钱兑换 (完全背包)](../../2022/06/LeetCode_0322_中等_零钱兑换(完全背包).md)  
-> [[中等, 剑指Offer] n个骰子的点数](../../2022/01/剑指Offer_6000_中等_n个骰子的点数.md)  
-> [[中等, 牛客] 01背包 🔥](../../2022/05/牛客_0145_中等_01背包.md)  
-> [[中等, 牛客] 最长公共子串](../../2022/05/牛客_0127_中等_最长公共子串.md)  
-  > 
-> [[困难, 牛客] 编辑距离(二)](../../2022/02/牛客_0035_困难_编辑距离(二).md)  
-> [[困难, 牛客] 通配符匹配](../../2022/03/牛客_0044_困难_通配符匹配.md)  
-  > 
-> [[简单, LeetCode] 爬楼梯](../../2022/01/LeetCode_0070_简单_爬楼梯.md)  
   > 
 
 </details>

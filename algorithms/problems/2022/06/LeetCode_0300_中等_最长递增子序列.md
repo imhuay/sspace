@@ -1,6 +1,6 @@
 ## 最长递增子序列
 <!--START_SECTION:badge-->
-![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-11-30%2001%3A14%3A52&labelColor=gray&color=thistle&style=flat-square)
+![last modify](https://img.shields.io/static/v1?label=last%20modify&message=2025-12-02%2013%3A39%3A41&labelColor=gray&color=thistle&style=flat-square)
 [![](https://img.shields.io/static/v1?label=&message=%E4%B8%AD%E7%AD%89&color=yellow&style=flat-square)](../../../README.md#中等)
 [![](https://img.shields.io/static/v1?label=&message=LeetCode&color=darkcyan&style=flat-square)](../../../README.md#leetcode)
 [![](https://img.shields.io/static/v1?label=&message=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&color=blue&style=flat-square)](../../../README.md#动态规划)
@@ -150,14 +150,14 @@ class Solution:
 ### 相关问题
 
 
-<details><summary><b>动态规划 (58)</b></summary>
+<details><summary><b>动态规划 (59)</b></summary>
 
 > [[中等, LeetCode] 一和零](LeetCode_0474_中等_一和零.md)  
 > [[中等, LeetCode] 三角形最小路径和](LeetCode_0120_中等_三角形最小路径和.md)  
 > [[中等, LeetCode] 不同的二叉搜索树](../03/LeetCode_0096_中等_不同的二叉搜索树.md)  
 > [[中等, LeetCode] 乘积最大子数组](LeetCode_0152_中等_乘积最大子数组.md)  
 > [[中等, LeetCode] 买卖股票的最佳时机 (含冷冻期)](../../2025/11/LeetCode_0309_中等_买卖股票的最佳时机(含冷冻期).md)  
-> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II (不限交易次数) 🔥](LeetCode_0122_中等_买卖股票的最佳时机II(不限交易次数).md)  
 > [[中等, LeetCode] 多边形三角剖分的最低得分](../../2025/11/LeetCode_1039_中等_多边形三角剖分的最低得分.md)  
 > [[中等, LeetCode] 完全平方数](../02/LeetCode_0279_中等_完全平方数.md)  
 > [[中等, LeetCode] 打家劫舍](LeetCode_0198_中等_打家劫舍.md)  
@@ -168,6 +168,8 @@ class Solution:
 > [[中等, LeetCode] 最长公共子序列](../../2025/11/LeetCode_1143_中等_最长公共子序列.md)  
 > [[中等, LeetCode] 最长回文子串 🔥](../../2021/10/LeetCode_0005_中等_最长回文子串.md)  
 > [[中等, LeetCode] 最长回文子序列](../../2025/11/LeetCode_0516_中等_最长回文子序列.md)  
+> [[中等, LeetCode] 目标和](../../2025/12/LeetCode_0494_中等_目标和.md)  
+> [[中等, LeetCode] 编辑距离 🔥](LeetCode_0072_中等_编辑距离.md)  
 > [[中等, LeetCode] 解码方法](../02/LeetCode_0091_中等_解码方法.md)  
 > [[中等, LeetCode] 零钱兑换 (完全背包)](LeetCode_0322_中等_零钱兑换(完全背包).md)  
 > [[中等, LeetCode] 零钱兑换II](LeetCode_0518_中等_零钱兑换II.md)  
@@ -193,7 +195,6 @@ class Solution:
 > [[困难, LeetCode] 买卖股票的最佳时机III](LeetCode_0123_困难_买卖股票的最佳时机III.md)  
 > [[困难, LeetCode] 最长有效括号 🔥](../10/LeetCode_0032_困难_最长有效括号.md)  
 > [[困难, LeetCode] 正则表达式匹配 🔥](../01/LeetCode_0010_困难_正则表达式匹配.md)  
-> [[困难, LeetCode] 编辑距离 🔥](LeetCode_0072_困难_编辑距离.md)  
 > [[困难, 剑指Offer] 正则表达式匹配](../../2021/11/剑指Offer_1900_困难_正则表达式匹配.md)  
 > [[困难, 牛客] 最长上升子序列(三)](../04/牛客_0091_困难_最长上升子序列(三).md)  
 > [[困难, 牛客] 正则表达式匹配](../05/牛客_0122_困难_正则表达式匹配.md)  
@@ -220,6 +221,7 @@ class Solution:
 
 > [[中等, LeetCode] 下一个排列 🔥](../10/LeetCode_0031_中等_下一个排列.md)  
 > [[中等, LeetCode] 二叉树的完全性检验 🔥](../03/LeetCode_0958_中等_二叉树的完全性检验.md)  
+> [[中等, LeetCode] 编辑距离 🔥](LeetCode_0072_中等_编辑距离.md)  
 > [[中等, 剑指Offer2] 整数除法 🔥](../09/剑指Offer2_001_中等_整数除法.md)  
 > [[中等, 剑指Offer] 丑数 🔥](../../2021/12/剑指Offer_4900_中等_丑数.md)  
 > [[中等, 剑指Offer] 二叉搜索树与双向链表 🔥](../../2021/12/剑指Offer_3600_中等_二叉搜索树与双向链表.md)  
@@ -242,7 +244,6 @@ class Solution:
 > [[中等, 牛客] 栈和排序 🔥](../05/牛客_0115_中等_栈和排序.md)  
 > [[中等, 牛客] 汉诺塔问题 🔥](../03/牛客_0067_中等_汉诺塔问题.md)  
   > 
-> [[困难, LeetCode] 编辑距离 🔥](LeetCode_0072_困难_编辑距离.md)  
 > [[困难, 剑指Offer] 数组中的逆序对 🔥](../01/剑指Offer_5100_困难_数组中的逆序对.md)  
 > [[困难, 牛客] 接雨水问题 🔥](../05/牛客_0128_困难_接雨水问题.md)  
 > [[困难, 牛客] 设计LFU缓存结构 🔥](../04/牛客_0094_困难_设计LFU缓存结构.md)  
@@ -263,7 +264,7 @@ class Solution:
 
 <details><summary><b>贪心 (4)</b></summary>
 
-> [[中等, LeetCode] 买卖股票的最佳时机 II 🔥](LeetCode_0122_中等_买卖股票的最佳时机II.md)  
+> [[中等, LeetCode] 买卖股票的最佳时机 II (不限交易次数) 🔥](LeetCode_0122_中等_买卖股票的最佳时机II(不限交易次数).md)  
 > [[中等, LeetCode] 盛最多水的容器 🔥](../../2021/10/LeetCode_0011_中等_盛最多水的容器.md)  
 > [[中等, 剑指Offer] 剪绳子 (整数拆分)](../../2021/11/剑指Offer_1401_中等_剪绳子(整数拆分).md)  
 > [[中等, 牛客] 分糖果问题](../05/牛客_0130_中等_分糖果问题.md)  
