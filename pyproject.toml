@@ -1,5 +1,5 @@
 [project]
-name = "huaytools"
+name = "huay"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -17,6 +17,7 @@ dependencies = [
     "transformers>=4.56.1",
     "emoji>=2.14.1",
     "regex>=2025.9.1",
+    "jupyterlab>=4.1.6",
 ]
 
 [tool.uv]
