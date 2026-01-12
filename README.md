@@ -81,13 +81,13 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 15 hrs 46 mins
+Total Time: 18 hrs 22 mins
 
-GitHub       5 hrs 8 mins    >>>>>>>>-----------------   32.59 %
-Python       4 hrs 26 mins   >>>>>>>------------------   28.15 %
-Markdown     2 hrs 32 mins   >>>>---------------------   16.12 %
-JSON         1 hr 17 mins    >>-----------------------   08.15 %
-Other        37 mins         >------------------------   03.93 %
+Python       5 hrs 3 mins    >>>>>>>------------------   27.54 %
+GitHub       5 hrs           >>>>>>>------------------   27.29 %
+Markdown     4 hrs 27 mins   >>>>>>-------------------   24.26 %
+JSON         1 hr 20 mins    >>-----------------------   07.30 %
+Bash         43 mins         >------------------------   03.90 %
 ```
 
 <!--END_SECTION:waka-->
