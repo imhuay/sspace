@@ -81,12 +81,9 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 1 hr 23 mins
+Total Time: 0 secs
 
-Python   54 mins               >>>>>>>>>>>>>>>>---------   64.83 %
-Groovy   25 mins               >>>>>>>>-----------------   30.81 %
-CSV      2 mins                >------------------------   03.59 %
-GitHub   0 secs                -------------------------   00.77 %
+No activity tracked
 ```
 
 <!--END_SECTION:waka-->
