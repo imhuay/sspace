@@ -81,13 +81,13 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 44 hrs 5 mins
+Total Time: 38 hrs 21 mins
 
-Python       18 hrs 7 mins         >>>>>>>>>>---------------   41.12 %
-Markdown     9 hrs 40 mins         >>>>>--------------------   21.96 %
-TypeScript   6 hrs 6 mins          >>>----------------------   13.86 %
-Other        5 hrs 47 mins         >>>----------------------   13.12 %
-JavaScript   56 mins               >------------------------   02.12 %
+Python       13 hrs 4 mins         >>>>>>>>>----------------   34.08 %
+Markdown     8 hrs 19 mins         >>>>>--------------------   21.70 %
+TypeScript   7 hrs 2 mins          >>>>>--------------------   18.37 %
+Other        5 hrs 11 mins         >>>----------------------   13.53 %
+CSS          56 mins               >------------------------   02.47 %
 ```
 
 <!--END_SECTION:waka-->
