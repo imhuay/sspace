@@ -81,11 +81,10 @@
 <!--START_SECTION:waka-->
 
 ```txt
-Total Time: 34 mins
+Total Time: 31 mins
 
-Other      21 mins               >>>>>>>>>>>>>>>----------   61.81 %
-Markdown   12 mins               >>>>>>>>>----------------   35.90 %
-Groovy     0 secs                >------------------------   02.28 %
+Other      21 mins               >>>>>>>>>>>>>>>>>--------   69.18 %
+Markdown   9 mins                >>>>>>>>-----------------   30.82 %
 ```
 
 <!--END_SECTION:waka-->
