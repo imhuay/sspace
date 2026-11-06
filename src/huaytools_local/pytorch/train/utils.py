@@ -64,7 +64,7 @@ def get_optimizer_by_name(opt: Union[str, type]):
     else:
         try:
             return getattr(torch.optim, opt)
-        except:
+        except AttributeError:
             raise ValueError(f'No Optimizer named `{opt}` in `torch.optim`.')
 
 
